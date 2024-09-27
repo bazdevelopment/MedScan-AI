@@ -2,7 +2,7 @@ appId: ${APP_ID}
 tags:
   - util
 ---
-- assertVisible: 'Obytes Starter'
+- assertVisible: 'X-Ray analizer'
 - assertVisible: "Let's Get Started "
 - tapOn: "Let's Get Started "
 - assertVisible: 'Sign In'

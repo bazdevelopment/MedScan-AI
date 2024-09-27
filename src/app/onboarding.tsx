@@ -39,7 +39,7 @@ export default function Onboarding() {
           label="Let's Get Started "
           onPress={() => {
             setIsFirstTime(false);
-            router.replace('/login');
+            router.replace('/');
           }}
         />
       </SafeAreaView>

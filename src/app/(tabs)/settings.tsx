@@ -1,6 +1,9 @@
+/* eslint-disable max-lines-per-function */
 /* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
+import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
+import React from 'react';
 
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
@@ -20,7 +23,7 @@ export default function Settings() {
       <FocusAwareStatusBar />
 
       <ScrollView>
-        <View className="flex-1 px-4 pt-16 ">
+        <View className="mb-20 flex-1 px-4">
           <Text className="text-xl font-bold">
             {translate('settings.title')}
           </Text>
@@ -64,6 +67,13 @@ export default function Settings() {
               text="settings.website"
               icon={<Website color={iconColor} />}
               onPress={() => {}}
+            />
+          </ItemsContainer>
+
+          <ItemsContainer title="settings.devMode.title">
+            <Item
+              text="settings.devMode.componentsLibrary"
+              onPress={() => router.navigate('/ui-library')}
             />
           </ItemsContainer>
 

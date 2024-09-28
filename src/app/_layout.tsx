@@ -17,7 +17,7 @@ import { useThemeConfig } from '@/core/use-theme-config';
 export { ErrorBoundary } from 'expo-router';
 
 export const unstable_settings = {
-  initialRouteName: '(app)',
+  initialRouteName: '(tabs)',
 };
 
 hydrateAuth();
@@ -29,7 +29,7 @@ export default function RootLayout() {
   return (
     <Providers>
       <Stack>
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
       </Stack>

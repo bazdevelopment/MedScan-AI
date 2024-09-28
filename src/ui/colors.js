@@ -1,6 +1,8 @@
 module.exports = {
   white: '#ffffff',
   black: '#000000',
+  darkGray:"#10152C",
+  muzli:"#F1EEFB",
   charcoal: {
     50: '#F2F2F2',
     100: '#E5E5E5',
@@ -28,6 +30,7 @@ module.exports = {
     900: '#171717',
   },
   primary: {
+    "base":"A935F8",
     50: '#E7E9FF',   // Very light purple
     100: '#C2C7FE',  // Light purple
     200: '#9DA4FE',  // Soft light purple
@@ -40,6 +43,7 @@ module.exports = {
     900: '#1A1E70',  // Very dark purple
   },
   secondary: {
+    "base":"7CD0FC",
     50:  '#E3F8FF',  // Very light blue
     100: '#C8F0FF',  // Lighter blue
     200: '#B9EEFF',  // Soft blue (Base)

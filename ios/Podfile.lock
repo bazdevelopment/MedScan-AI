@@ -1,5 +1,7 @@
 PODS:
   - boost (1.83.0)
+  - BVLinearGradient (2.8.3):
+    - React-Core
   - DoubleConversion (1.1.6)
   - EXConstants (16.0.2):
     - ExpoModulesCore
@@ -257,8 +259,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - ExpoSystemUI (3.0.7):
-    - ExpoModulesCore
   - EXSplashScreen (0.27.5):
     - DoubleConversion
     - ExpoModulesCore
@@ -1513,6 +1513,8 @@ PODS:
     - React-logger (= 0.74.5)
     - React-perflogger (= 0.74.5)
     - React-utils (= 0.74.5)
+  - RNCMaskedView (0.1.11):
+    - React
   - RNFlashList (1.6.4):
     - React-Core
   - RNGestureHandler (2.16.2):
@@ -1597,6 +1599,7 @@ PODS:
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
@@ -1614,7 +1617,6 @@ DEPENDENCIES:
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoLocalization (from `../node_modules/expo-localization/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
-  - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - EXUpdatesInterface (from `../node_modules/expo-updates-interface/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1674,6 +1676,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -1697,6 +1700,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXConstants:
@@ -1731,8 +1736,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-localization/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
-  ExpoSystemUI:
-    :path: "../node_modules/expo-system-ui/ios"
   EXSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
   EXUpdatesInterface:
@@ -1848,6 +1851,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-community/masked-view"
   RNFlashList:
     :path: "../node_modules/@shopify/flash-list"
   RNGestureHandler:
@@ -1863,6 +1868,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
+  BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   EXConstants: 409690fbfd5afea964e5e9d6c4eb2c2b59222c59
   EXJSONUtils: 30c17fd9cc364d722c0946a550dfbf1be92ef6a4
@@ -1880,7 +1886,6 @@ SPEC CHECKSUMS:
   ExpoKeepAwake: 3b8815d9dd1d419ee474df004021c69fdd316d08
   ExpoLocalization: f04eeec2e35bed01ab61c72ee1768ec04d093d01
   ExpoModulesCore: d15ce10fea70ab650230feb69f45bb208d3a6596
-  ExpoSystemUI: d4f065a016cae6721b324eb659cdee4d4cf0cb26
   EXSplashScreen: fbf0ec78e9cee911df188bf17b4fe51d15a84b87
   EXUpdatesInterface: 996527fd7d1a5d271eb523258d603f8f92038f24
   FBLazyVector: ac12dc084d1c8ec4cc4d7b3cf1b0ebda6dab85af
@@ -1943,6 +1948,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: cfbe85c3510c541ec6dc815c7729b41304b67961
   React-utils: f242eb7e7889419d979ca0e1c02ccc0ea6e43b29
   ReactCommon: f7da14a8827b72704169a48c929bcde802698361
+  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNGestureHandler: 2282cfbcf86c360d29f44ace393203afd5c6cff7
   RNReanimated: 35f9ac9c3ac42d0497ebd1cce5c39d7687a8493e

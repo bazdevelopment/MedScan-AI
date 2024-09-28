@@ -7,7 +7,7 @@ const Reports = () => {
   return (
     <View className="flex-1 ">
       <FocusAwareStatusBar />
-      <Text>Reports scren</Text>
+      <Text>Reports screen</Text>
     </View>
   );
 };

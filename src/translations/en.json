@@ -27,7 +27,11 @@
     },
     "title": "Settings",
     "version": "Version",
-    "website": "Website"
+    "website": "Website",
+    "devMode": {
+      "title": "Developer mode",
+      "componentsLibrary": "UI library"
+    }
   },
   "welcome": "Welcome to X-Ray analizer app site"
 }

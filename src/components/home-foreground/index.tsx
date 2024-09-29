@@ -10,6 +10,7 @@ import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/icons';
 
 import Avatar from '../avatar';
+import UserInfoCard from '../user-info-card';
 import { type IHomeForeground } from './home-forground.interface';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
@@ -30,7 +31,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   return (
     <View
       pointerEvents="none"
-      className="h-[250px] rounded-b-[50px] bg-primary-300 pt-[20px]"
+      className="h-[290px] rounded-b-[50px] bg-primary-300 pt-[20px]"
     >
       <Animated.View style={foregroundWrapperAnimatedStyle}>
         <View className="mr-10 mt-5 flex-row justify-end">
@@ -40,15 +41,19 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
         <View className="mt-8 flex-row items-center justify-between px-[35px]">
           <View>
             <Text className="text-white">Welcome</Text>
-            <Text className="text-xl font-bold text-white">Robin Stewart</Text>
+            <Text className="text-[24px] font-bold text-white">
+              Robin Stewart
+            </Text>
+            <UserInfoCard age="24" className="mt-4" />
           </View>
+
           <Avatar
             imageUrl="https://randomuser.me/api/portraits/men/1.jpg"
             size="large"
           />
         </View>
 
-        <View className="bg-tertiary-200 absolute top-[170px] w-4/5 flex-col items-center self-center rounded-[40px] p-[20px] dark:bg-charcoal-800">
+        <View className="bg-tertiary-200 absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] p-[20px] dark:bg-charcoal-800">
           <Text className="text-md font-bold">Start using X-Ray Analizer</Text>
           <Text className="mt-4 text-center text-sm">
             Get vital information in an intuitive way required for better health
@@ -56,11 +61,13 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           </Text>
           <Button
             label="Upload report"
-            className="mb-0 mt-4 rounded-full"
+            className="mb-0 mt-4 w-[70%] rounded-full"
+            size="lg"
+            textClassName="text-md"
             icon={
               <UploadIcon
-                width={26}
-                height={26}
+                width={27}
+                height={27}
                 color={isDark ? colors.black : colors.white}
               />
             }

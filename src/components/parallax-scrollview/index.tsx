@@ -93,7 +93,7 @@ const ParallaxScrollView = ({
         )}
         showsVerticalScrollIndicator={false}
       >
-        <View className="mb-[600px]">{children}</View>
+        <View className="mb-[600px] mt-14">{children}</View>
         {shoScrollEndAnimation && (
           <EndScrollPlaceholder onScrollToTop={scrollToTop} />
         )}

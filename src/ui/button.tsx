@@ -50,7 +50,7 @@ const button = tv({
         label: 'text-base',
       },
       lg: {
-        container: 'h-12 px-8',
+        container: 'h-14 px-8',
         label: 'text-xl',
       },
       sm: {

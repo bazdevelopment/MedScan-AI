@@ -10,6 +10,7 @@ import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/icons';
 
 import Avatar from '../avatar';
+import IconBadge from '../icon-badge';
 import UserInfoCard from '../user-info-card';
 import { type IHomeForeground } from './home-forground.interface';
 
@@ -35,7 +36,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
     >
       <Animated.View style={foregroundWrapperAnimatedStyle}>
         <View className="mr-10 mt-5 flex-row justify-end">
-          <MailIcon color={colors.white} />
+          <IconBadge icon={<MailIcon color={colors.white} />} badgeValue={12} />
         </View>
 
         <View className="mt-8 flex-row items-center justify-between px-[35px]">

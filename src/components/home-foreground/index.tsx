@@ -9,6 +9,7 @@ import Animated, {
 import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/icons';
 
+import Avatar from '../avatar';
 import { type IHomeForeground } from './home-forground.interface';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
@@ -32,13 +33,19 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
       className="h-[250px] rounded-b-[50px] bg-primary-300 pt-[20px]"
     >
       <Animated.View style={foregroundWrapperAnimatedStyle}>
-        <View className="flex-row justify-end p-10 ">
+        <View className="mr-10 mt-5 flex-row justify-end">
           <MailIcon color={colors.white} />
         </View>
 
-        <View className="ml-8">
-          <Text className="text-white">Welcome</Text>
-          <Text className="text-xl font-bold text-white">Robin Stewart</Text>
+        <View className="mt-8 flex-row items-center justify-between px-[35px]">
+          <View>
+            <Text className="text-white">Welcome</Text>
+            <Text className="text-xl font-bold text-white">Robin Stewart</Text>
+          </View>
+          <Avatar
+            imageUrl="https://randomuser.me/api/portraits/men/1.jpg"
+            size="large"
+          />
         </View>
 
         <View className="bg-tertiary-200 absolute top-[170px] w-4/5 flex-col items-center self-center rounded-[40px] p-[20px] dark:bg-charcoal-800">

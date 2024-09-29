@@ -46,6 +46,7 @@ export default function TabLayout() {
           key={tab.id}
           name={tab.screenName}
           options={{
+            header: () => null,
             title: tab.title,
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon

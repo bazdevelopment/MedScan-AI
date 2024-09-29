@@ -1,6 +1,6 @@
-import React from 'react';
-import type { PressableProps, View } from 'react-native';
-import { ActivityIndicator, Pressable, Text } from 'react-native';
+import React, { type ReactElement } from 'react';
+import type { PressableProps } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import { tv } from 'tailwind-variants';
 
@@ -90,6 +90,7 @@ interface Props extends ButtonVariants, Omit<PressableProps, 'disabled'> {
   loading?: boolean;
   className?: string;
   textClassName?: string;
+  icon?: ReactElement;
 }
 
 export const Button = React.forwardRef<View, Props>(
@@ -101,6 +102,7 @@ export const Button = React.forwardRef<View, Props>(
       disabled = false,
       size = 'default',
       className = '',
+      icon,
       testID,
       textClassName = '',
       ...props
@@ -131,12 +133,15 @@ export const Button = React.forwardRef<View, Props>(
                 testID={testID ? `${testID}-activity-indicator` : undefined}
               />
             ) : (
-              <Text
-                testID={testID ? `${testID}-label` : undefined}
-                className={styles.label({ className: textClassName })}
-              >
-                {text}
-              </Text>
+              <>
+                <Text
+                  testID={testID ? `${testID}-label` : undefined}
+                  className={styles.label({ className: textClassName })}
+                >
+                  {text}
+                </Text>
+                {!!icon && <View className="ml-2">{icon}</View>}
+              </>
             )}
           </>
         )}

@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { View } from 'react-native';
@@ -7,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Button, colors, Text } from '@/ui';
-import { MailIcon, UploadIcon } from '@/ui/icons';
+import { MailIcon, UploadIcon } from '@/ui/assets/icons';
 
 import Avatar from '../avatar';
 import IconBadge from '../icon-badge';
@@ -30,10 +31,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   }, [scrollValue]);
 
   return (
-    <View
-      pointerEvents="none"
-      className="h-[290px] rounded-b-[50px] bg-primary-300 pt-[20px]"
-    >
+    <View className="h-[290px] rounded-b-[50px] bg-primary-300 pt-[20px]">
       <Animated.View style={foregroundWrapperAnimatedStyle}>
         <View className="mr-10 mt-5 flex-row justify-end">
           <IconBadge icon={<MailIcon color={colors.white} />} badgeValue={12} />
@@ -54,7 +52,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           />
         </View>
 
-        <View className="bg-tertiary-200 absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] p-[20px] dark:bg-charcoal-800">
+        <View className="absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] dark:bg-charcoal-800">
           <Text className="text-md font-bold">Start using X-Ray Analizer</Text>
           <Text className="mt-4 text-center text-sm">
             Get vital information in an intuitive way required for better health
@@ -65,6 +63,9 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             className="mb-0 mt-4 w-[70%] rounded-full"
             size="lg"
             textClassName="text-md"
+            onPress={() => {
+              router.navigate('/modals-stack/upload-file-flow-modal');
+            }}
             icon={
               <UploadIcon
                 width={27}

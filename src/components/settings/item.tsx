@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import type { TxKeyPath } from '@/core';
 import { Pressable, Text, View } from '@/ui';
-import { ArrowRight } from '@/ui/icons';
+import { ArrowRight } from '@/ui/assets/icons';
 
 type ItemProps = {
   text: TxKeyPath;

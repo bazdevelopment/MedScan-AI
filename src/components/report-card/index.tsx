@@ -3,7 +3,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
 import { colors, Text } from '@/ui';
-import { DownloadIcon, ShareIcon } from '@/ui/icons';
+import { DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 
 import { type IReportCard } from './report-card.interface';
 

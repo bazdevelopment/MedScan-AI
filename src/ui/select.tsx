@@ -15,7 +15,7 @@ import Svg, { Path } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import colors from '@/ui/colors';
-import { CaretDown } from '@/ui/icons';
+import { CaretDown } from '@/ui/assets/icons';
 
 import type { InputControllerType } from './input';
 import { useModal } from './modal';
@@ -88,7 +88,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           testID={testID ? `${testID}-item-${item.value}` : undefined}
         />
       ),
-      [onSelect, value, testID]
+      [onSelect, value, testID],
     );
 
     return (
@@ -109,7 +109,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
         />
       </Modal>
     );
-  }
+  },
 );
 
 const Option = React.memo(
@@ -130,7 +130,7 @@ const Option = React.memo(
         {selected && <Check />}
       </Pressable>
     );
-  }
+  },
 );
 
 export interface SelectProps {
@@ -165,7 +165,7 @@ export const Select = (props: SelectProps) => {
       onSelect?.(option.value);
       modal.dismiss();
     },
-    [modal, onSelect]
+    [modal, onSelect],
   );
 
   const styles = React.useMemo(
@@ -174,15 +174,15 @@ export const Select = (props: SelectProps) => {
         error: Boolean(error),
         disabled,
       }),
-    [error, disabled]
+    [error, disabled],
   );
 
   const textValue = React.useMemo(
     () =>
       value !== undefined
-        ? options?.filter((t) => t.value === value)?.[0]?.label ?? placeholder
+        ? (options?.filter((t) => t.value === value)?.[0]?.label ?? placeholder)
         : placeholder,
-    [value, options, placeholder]
+    [value, options, placeholder],
   );
 
   return (
@@ -228,7 +228,7 @@ export const Select = (props: SelectProps) => {
 
 // only used with react-hook-form
 export function ControlledSelect<T extends FieldValues>(
-  props: ControlledSelectProps<T>
+  props: ControlledSelectProps<T>,
 ) {
   const { name, control, rules, onSelect: onNSelect, ...selectProps } = props;
 
@@ -238,7 +238,7 @@ export function ControlledSelect<T extends FieldValues>(
       field.onChange(value);
       onNSelect?.(value);
     },
-    [field, onNSelect]
+    [field, onNSelect],
   );
   return (
     <Select

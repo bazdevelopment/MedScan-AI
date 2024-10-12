@@ -10,7 +10,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, colors } from '@/ui';
-import { UploadIcon } from '@/ui/icons';
+import { UploadIcon } from '@/ui/assets/icons';
 
 import GradientText from '../gradient-text';
 import { type IHomeHeaderBar } from './home-header-bar.interface';
@@ -80,7 +80,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>
           <Button
             label="Upload report"
-            className=" rounded-full"
+            className="rounded-full"
             icon={
               <UploadIcon
                 width={26}

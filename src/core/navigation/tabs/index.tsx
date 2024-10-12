@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Feed as FeedIcon, ReportIcon, Settings } from '@/ui/icons';
+import { Feed as FeedIcon, ReportIcon, Settings } from '@/ui/assets/icons';
 
 import { type ITabsNavigationScreen } from './tabs.interface';
 

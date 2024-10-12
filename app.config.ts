@@ -49,6 +49,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-localization',
+    [
+      'expo-image-picker',
+      {
+        photosPermission: 'Allow $(PRODUCT_NAME) to access your photo',
+        cameraPermission: 'Allow $(PRODUCT_NAME) to access your camera',
+        //'Disables the microphone permission',
+        microphonePermission: false,
+      },
+    ],
+    ['expo-document-picker'],
     'expo-router',
     [
       'app-icon-badge',

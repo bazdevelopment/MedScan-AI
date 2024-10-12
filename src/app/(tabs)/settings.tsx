@@ -11,7 +11,7 @@ import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
 import { translate, useAuth } from '@/core';
 import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
-import { Github, Rate, ShareIcon, Support, Website } from '@/ui/icons';
+import { Github, Rate, ShareIcon, Support, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
   const signOut = useAuth.use.signOut();

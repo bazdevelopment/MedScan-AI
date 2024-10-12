@@ -1,10 +1,10 @@
 /* eslint-disable max-lines-per-function */
-import { Redirect, SplashScreen, Tabs } from 'expo-router';
+import { SplashScreen, Tabs } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useCallback, useEffect } from 'react';
 
 import { TabBarIcon } from '@/components/tab-bar-icon';
-import { useAuth, useIsFirstTime } from '@/core';
+import { useAuth } from '@/core';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
@@ -12,7 +12,7 @@ import { colors } from '@/ui';
 
 export default function TabLayout() {
   const status = useAuth.use.status();
-  const [isFirstTime] = useIsFirstTime();
+  // const [isFirstTime] = useIsFirstTime();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
@@ -29,9 +29,9 @@ export default function TabLayout() {
     }
   }, [hideSplash, status]);
 
-  if (isFirstTime) {
-    return <Redirect href="/onboarding" />;
-  }
+  // if (isFirstTime) {
+  //   return <Redirect href="/onboarding" />;
+  // }
 
   return (
     <Tabs

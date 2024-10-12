@@ -32,6 +32,14 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="modals-stack"
+          options={{
+            headerShown: false,
+            presentation: 'modal',
+            // gestureEnabled: false,
+          }}
+        />
       </Stack>
     </Providers>
   );

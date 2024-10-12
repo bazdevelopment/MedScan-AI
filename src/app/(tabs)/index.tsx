@@ -1,9 +1,11 @@
+import { reports } from '__mocks__/reports';
 import React from 'react';
 
 import { Foreground } from '@/components/home-foreground';
 import { HomeHeaderBar } from '@/components/home-header-bar';
 import ParallaxScrollView from '@/components/parallax-scrollview';
-import { Text, View } from '@/ui';
+import ReportCard from '@/components/report-card';
+import { ScrollView, Text, View } from '@/ui';
 
 const PARALLAX_HEIGHT = 330;
 const HEADER_BAR_HEIGHT = 110;
@@ -21,7 +23,28 @@ export default function Home() {
       HeaderBarComponent={<HomeHeaderBar />}
     >
       <View>
-        <Text>{MOCK_TEXT}</Text>
+        <View className="ml-6 mt-4">
+          <Text className="my-5">Recent reports</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerClassName="gap-4"
+            snapToInterval={300}
+            snapToAlignment={'center'}
+            decelerationRate={0}
+          >
+            {reports.map(({ title, date, description, score, id }) => (
+              <ReportCard
+                key={id}
+                title={title}
+                date={date}
+                description={description}
+                score={score}
+              />
+            ))}
+          </ScrollView>
+          <Text>{MOCK_TEXT}</Text>
+        </View>
       </View>
     </ParallaxScrollView>
   );

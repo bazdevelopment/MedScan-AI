@@ -3,7 +3,7 @@ import { Path, Svg } from 'react-native-svg';
 
 import { type ISvgProps } from '@/types/svg-types';
 
-export const ShareIcon = (props: ISvgProps) => (
+export const DownloadIcon = (props: ISvgProps) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={18}
@@ -13,22 +13,17 @@ export const ShareIcon = (props: ISvgProps) => (
   >
     <Path
       stroke={props.color || '#10152C'}
+      strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.2}
-      d="M13.125 6a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75ZM4.875 10.875a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Z"
+      d="M2.25 9.003v6.747h13.5V9"
     />
     <Path
       stroke={props.color || '#10152C'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.2}
-      d="M11.25 5.09 6.502 7.967M6.502 9.961l5.003 2.957"
-    />
-    <Path
-      stroke={props.color || '#10152C'}
-      strokeLinejoin="round"
-      strokeWidth={1.2}
-      d="M13.125 12a1.875 1.875 0 1 1 0 3.75 1.875 1.875 0 0 1 0-3.75Z"
+      d="M12.375 8.625 9 12 5.625 8.625M8.997 2.25V12"
     />
   </Svg>
 );

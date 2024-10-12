@@ -11,7 +11,7 @@ import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
 import { translate, useAuth } from '@/core';
 import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
-import { Github, Rate, Share, Support, Website } from '@/ui/icons';
+import { Github, Rate, ShareIcon, Support, Website } from '@/ui/icons';
 
 export default function Settings() {
   const signOut = useAuth.use.signOut();
@@ -40,7 +40,7 @@ export default function Settings() {
           <ItemsContainer title="settings.support_us">
             <Item
               text="settings.share"
-              icon={<Share color={iconColor} />}
+              icon={<ShareIcon color={iconColor} />}
               onPress={() => {}}
             />
             <Item

@@ -17,4 +17,5 @@ export * from './share';
 export * from './style';
 export * from './support';
 export * from './upload';
+export * from './wand-sparkle';
 export * from './website';

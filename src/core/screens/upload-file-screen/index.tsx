@@ -12,13 +12,18 @@ import { Camera, Gallery, PaperClip } from '@/ui/assets/icons';
 import { UploadFilesIllustration } from '@/ui/assets/illustrations';
 import HorizontalLine from '@/ui/horizontal-line';
 
-import { type IUploadFileOptions } from './upload-file-screen.interface';
+import {
+  type IUploadFileOptions,
+  type IUploadFileScreen,
+} from './upload-file-screen.interface';
 
-const UploadFileScreen = () => {
+const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
   const modal = useModal();
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   const { onChooseImageFromGallery, onChooseFromFiles, onTakePhoto } =
-    useMediaPiker();
+    useMediaPiker({ onUploadFinished: goToNextScreen });
 
   const onSelectFileUploadMethod = (method: string) => {
     if (method.includes('Gallery')) {
@@ -31,7 +36,7 @@ const UploadFileScreen = () => {
 
   return (
     <>
-      <View className="bg-primary-300">
+      <View className="bg-primary-300 dark:bg-charcoal-900">
         <View className="flex-row justify-center pt-10">
           <UploadFilesIllustration width={300} height={200} />
         </View>
@@ -44,10 +49,10 @@ const UploadFileScreen = () => {
 
         <Button
           label="Open camera & take picture"
-          className="top-6 mb-0 mt-4 w-[70%] self-center rounded-full"
+          className="top-6 mb-0 mt-4 w-[70%] self-center rounded-full dark:bg-primary-300"
           size="lg"
           textClassName="text-md"
-          icon={<Camera color={colors.white} />}
+          icon={<Camera color={isDark ? colors.black : colors.white} />}
           onPress={onTakePhoto}
         />
       </View>

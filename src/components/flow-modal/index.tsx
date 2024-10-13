@@ -1,5 +1,6 @@
+import { router } from 'expo-router';
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import { colors } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
@@ -33,11 +34,19 @@ const FlowModal = ({
 
   return (
     <>
-      <View className="bg-primary-300 px-[16px]">
+      <View className="bg-primary-300 px-[16px] dark:bg-charcoal-900">
         <View className="mt-8 flex-row items-center">
-          <ArrowLeft color={colors.white} width={24} height={24} />
+          <TouchableOpacity
+            onPress={isFirstScreenDisplayed ? router.back : onGoBack}
+          >
+            <ArrowLeft color={colors.white} width={24} height={24} />
+          </TouchableOpacity>
           <View className="flex-1 flex-row justify-center ">
-            <ProgressBar currentStep={currentScreenIndex + 1} totalSteps={3} />
+            <ProgressBar
+              currentStep={currentScreenIndex + 1}
+              totalSteps={totalSteps}
+              isTextShown
+            />
           </View>
         </View>
       </View>

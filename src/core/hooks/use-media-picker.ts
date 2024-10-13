@@ -10,7 +10,7 @@ interface IMediaPicker {
   file: string;
 }
 
-export const useMediaPiker = (): IMediaPicker => {
+export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
   const [file, setFile] = useState('');
 
   const handleLoadFile = (file: string) => {
@@ -44,6 +44,7 @@ export const useMediaPiker = (): IMediaPicker => {
 
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
+      onUploadFinished && onUploadFinished({ file: result.assets[0].uri });
     } catch (error) {
       alert(
         'Something went wrong while selecting the image. Please try again.',
@@ -64,6 +65,7 @@ export const useMediaPiker = (): IMediaPicker => {
 
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
+      onUploadFinished && onUploadFinished({ file: result.assets[0].uri });
     } catch (error) {
       alert(
         'Something went wrong while picking the document. Please try again.',
@@ -99,6 +101,7 @@ export const useMediaPiker = (): IMediaPicker => {
 
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
+      onUploadFinished && onUploadFinished({ file: result.assets[0].uri });
     } catch (error) {
       console.error('Error taking photo:', error);
       alert('Something went wrong while taking the photo. Please try again.');

@@ -23,7 +23,7 @@ export default function Home() {
       HeaderBarComponent={<HomeHeaderBar />}
     >
       <View>
-        <View className="ml-6 mt-4">
+        <View className="ml-4 mt-4">
           <Text className="my-5">Recent reports</Text>
           <ScrollView
             horizontal

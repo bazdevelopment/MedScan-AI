@@ -4,6 +4,10 @@ import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import { tv } from 'tailwind-variants';
 
+import GradientText from '@/components/gradient-text';
+
+import colors from './colors';
+
 const button = tv({
   slots: {
     container: 'my-2 flex flex-row items-center justify-center rounded-md px-4',
@@ -91,6 +95,7 @@ interface Props extends ButtonVariants, Omit<PressableProps, 'disabled'> {
   className?: string;
   textClassName?: string;
   icon?: ReactElement;
+  withGradientText?: boolean;
 }
 
 export const Button = React.forwardRef<View, Props>(
@@ -105,6 +110,7 @@ export const Button = React.forwardRef<View, Props>(
       icon,
       testID,
       textClassName = '',
+      withGradientText = false,
       ...props
     },
     ref,
@@ -134,12 +140,26 @@ export const Button = React.forwardRef<View, Props>(
               />
             ) : (
               <>
-                <Text
-                  testID={testID ? `${testID}-label` : undefined}
-                  className={styles.label({ className: textClassName })}
-                >
-                  {text}
-                </Text>
+                {withGradientText ? (
+                  <GradientText
+                    colors={[colors.lightSkyBlue, colors.primaryPurple]}
+                  >
+                    <Text
+                      testID={testID ? `${testID}-label` : undefined}
+                      className={styles.label({ className: textClassName })}
+                    >
+                      {text}
+                    </Text>
+                  </GradientText>
+                ) : (
+                  <Text
+                    testID={testID ? `${testID}-label` : undefined}
+                    className={styles.label({ className: textClassName })}
+                  >
+                    {text}
+                  </Text>
+                )}
+
                 {!!icon && <View className="ml-2">{icon}</View>}
               </>
             )}

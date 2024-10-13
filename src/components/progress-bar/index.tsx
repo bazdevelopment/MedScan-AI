@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { Animated, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-import { Text } from '@/ui';
+import { colors, Text } from '@/ui';
 
 import { type IProgressBar } from './progress-bar.interface';
 
@@ -21,22 +22,31 @@ const ProgressBar = ({
     useNativeDriver: false,
   }).start();
 
-  const labelText = `${currentStep}/${totalSteps}`;
+  // const labelText = `${currentStep} / ${totalSteps}`;
+  const labelText = `${Math.round((currentStep / totalSteps) * 100)}%`;
   return (
     <View className="w-[180px] flex-row items-center">
-      <View className="h-3 flex-1 overflow-hidden rounded-full bg-slate-100">
-        <Animated.View
-          className="h-full bg-primary-800"
-          style={{
-            width: progress.interpolate({
-              inputRange: [0, 100],
-              outputRange: ['0%', '100%'],
-            }),
-          }}
-        />
+      <View className="h-3 flex-1 overflow-hidden rounded-full">
+        <LinearGradient
+          colors={[colors.primary[300], colors.primary[400]]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+        >
+          <Animated.View
+            className="h-full bg-primary-800"
+            style={{
+              width: progress.interpolate({
+                inputRange: [0, 100],
+                outputRange: ['0%', '100%'],
+              }),
+            }}
+          />
+        </LinearGradient>
       </View>
       {isTextShown && (
-        <Text className="ml-2 text-center text-xs font-bold">{labelText}</Text>
+        <Text className="ml-5 text-center text-base font-medium text-white">
+          {labelText}
+        </Text>
       )}
     </View>
   );

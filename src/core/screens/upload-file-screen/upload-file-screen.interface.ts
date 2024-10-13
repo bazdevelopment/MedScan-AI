@@ -11,3 +11,7 @@ export interface IUploadFileOptions {
   onSelect: (method: string) => void;
   testID: string;
 }
+
+export interface IUploadFileScreen {
+  goToNextScreen: () => void;
+}

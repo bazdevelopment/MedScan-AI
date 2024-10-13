@@ -22,7 +22,6 @@ export default function AddPost() {
   const { mutate: addPost, isPending } = useAddPost();
 
   const onSubmit = (data: FormType) => {
-    console.log(data);
     addPost(
       { ...data, userId: 1 },
       {
@@ -37,7 +36,7 @@ export default function AddPost() {
         onError: () => {
           showErrorMessage('Error adding post');
         },
-      }
+      },
     );
   };
   return (

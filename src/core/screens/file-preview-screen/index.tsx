@@ -1,8 +1,10 @@
+/* eslint-disable max-lines-per-function */
 import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import GradientText from '@/components/gradient-text';
+import ImageScannerModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
 import { Button, colors, Image, Text } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
@@ -15,6 +17,7 @@ const FilePreviewScreen = ({
 }: IFilePreviewScreen) => {
   const [promptMessage, setPromptMessage] = useState('');
   const [additionalInfo, setAdditionalInfo] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleUpdatePromptMessage = (message: string) => {
     setPromptMessage(message);
@@ -63,12 +66,19 @@ const FilePreviewScreen = ({
             size="lg"
             textClassName="text-md font-bold"
             //todo: add in this function the result of the scan, the scanning will be in this screen
-            onPress={() => goToNextScreen({ promptMessage, additionalInfo })}
+            // onPress={() => goToNextScreen({ promptMessage, additionalInfo })}
+            onPress={() => setIsModalVisible(true)}
             withGradientText
             icon={<WandSparkle width={20} height={20} withLinearGradient />}
           />
         </View>
       </ScrollView>
+
+      <ImageScannerModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        imagePath={collectedData.file}
+      />
     </KeyboardStickyView>
   );
 };

@@ -13,6 +13,7 @@ const ImageScannerModal = ({
   visible,
   onClose,
   imagePath,
+  goToNextScreen,
 }: IImageScannerModal) => {
   const [isScanning, setIsScanning] = useState(false);
   const [showRetry, setShowRetry] = useState(false);
@@ -26,7 +27,8 @@ const ImageScannerModal = ({
       setIsScanning(false);
       setShowRetry(true);
       // handle function to move to the next screen
-    }, 10000);
+      goToNextScreen();
+    }, 5000);
   };
 
   useEffect(() => {

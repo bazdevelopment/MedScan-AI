@@ -2,6 +2,7 @@ export * from './arrow-left';
 export * from './arrow-right';
 export * from './camera';
 export * from './caret-down';
+export * from './close';
 export * from './download';
 export * from './feed';
 export * from './gallery';

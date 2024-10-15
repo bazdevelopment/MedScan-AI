@@ -43,7 +43,8 @@ const ParallaxScrollView = ({
     snapToEdge: true,
   });
 
-  const [shoScrollEndAnimation, setShowScrollEndAnimation] = useState(false);
+  const [showScrollEndAnimation, setShowScrollEndAnimation] = useState(false);
+  const [isHeaderPrio, setIsHeaderPrio] = useState(scrollValue.value !== 0);
 
   const scrollToTop = () => {
     scrollViewRef.current?.scrollTo({
@@ -56,6 +57,17 @@ const ParallaxScrollView = ({
   const handleScroll = (event: NativeScrollEvent) => {
     'worklet';
     const { contentOffset, contentSize, layoutMeasurement } = event;
+
+    /**
+     * check if the scroll is performed so we know to decrease zIndex otherwise the buttons won't work
+     * 5 is just a reference
+     */
+    if (contentOffset.y > 5) {
+      runOnJS(setIsHeaderPrio)(true);
+    }
+    if (contentOffset.y < 5) {
+      runOnJS(setIsHeaderPrio)(false);
+    }
 
     if (isCloseToBottom({ layoutMeasurement, contentOffset, contentSize })) {
       runOnJS(setShowScrollEndAnimation)(true);
@@ -71,7 +83,7 @@ const ParallaxScrollView = ({
     <View className="flex-1">
       {/* Render Header Bar */}
       <View
-        className="absolute inset-x-0 top-0 z-10 flex-1 items-center overflow-hidden bg-transparent"
+        className={`absolute inset-x-0 items-center overflow-hidden ${isHeaderPrio ? 'z-10' : 'z-0'}`}
         style={{
           width: windowWidth,
           height: headerHeight,
@@ -86,7 +98,7 @@ const ParallaxScrollView = ({
         onScrollEndDrag={onScrollEndDrag}
         onMomentumScrollEnd={onMomentumScrollEnd}
         renderHeader={() => (
-          <View pointerEvents="box-none" style={{ height: scrollHeight }}>
+          <View style={{ height: scrollHeight }}>
             <StatusBar hidden />
             {cloneElement(ForegroundComponent, { scrollValue })}
           </View>
@@ -94,7 +106,7 @@ const ParallaxScrollView = ({
         showsVerticalScrollIndicator={false}
       >
         <View className="mb-[600px] mt-14">{children}</View>
-        {shoScrollEndAnimation && (
+        {showScrollEndAnimation && (
           <EndScrollPlaceholder onScrollToTop={scrollToTop} />
         )}
       </StickyHeaderScrollView>

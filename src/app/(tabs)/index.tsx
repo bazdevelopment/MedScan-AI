@@ -7,7 +7,7 @@ import ParallaxScrollView from '@/components/parallax-scrollview';
 import ReportCard from '@/components/report-card';
 import { ScrollView, Text, View } from '@/ui';
 
-const PARALLAX_HEIGHT = 330;
+const PARALLAX_HEIGHT = 310;
 const HEADER_BAR_HEIGHT = 110;
 const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
@@ -23,7 +23,7 @@ export default function Home() {
       HeaderBarComponent={<HomeHeaderBar />}
     >
       <View>
-        <View className="ml-4 mt-4">
+        <View className="ml-4 mt-14">
           <Text className="my-5">Recent reports</Text>
           <ScrollView
             horizontal

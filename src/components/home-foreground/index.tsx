@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -34,7 +34,12 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
     <View className="h-[290px] rounded-b-[50px] bg-primary-300 pt-[20px]">
       <Animated.View style={foregroundWrapperAnimatedStyle}>
         <View className="mr-10 mt-5 flex-row justify-end">
-          <IconBadge icon={<MailIcon color={colors.white} />} badgeValue={12} />
+          <TouchableOpacity onPress={() => console.log('clicked message icon')}>
+            <IconBadge
+              icon={<MailIcon color={colors.white} />}
+              badgeValue={12}
+            />
+          </TouchableOpacity>
         </View>
 
         <View className="mt-8 flex-row items-center justify-between px-[35px]">

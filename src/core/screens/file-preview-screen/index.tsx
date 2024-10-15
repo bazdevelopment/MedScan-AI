@@ -74,11 +74,14 @@ const FilePreviewScreen = ({
         </View>
       </ScrollView>
 
-      <ImageScannerModal
-        visible={isModalVisible}
-        onClose={() => setIsModalVisible(false)}
-        imagePath={collectedData.file}
-      />
+      {isModalVisible && (
+        <ImageScannerModal
+          visible={isModalVisible}
+          onClose={() => setIsModalVisible(false)}
+          imagePath={collectedData.file}
+          goToNextScreen={goToNextScreen}
+        />
+      )}
     </KeyboardStickyView>
   );
 };

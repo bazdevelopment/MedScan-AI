@@ -24,6 +24,7 @@ const UploadFileFlow = ({ onSubmitCollectedData }: IFlowModal) => {
   const handleOnFinishFlow = () => {
     onSubmitCollectedData(collectedData);
   };
+
   return (
     <FlowModal
       currentScreenIndex={currentScreenIndex}

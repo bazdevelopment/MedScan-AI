@@ -33,7 +33,7 @@ const FlowModal = ({
     : currentActiveScreen;
 
   return (
-    <>
+    <View className="flex-1">
       <View className="bg-primary-300 px-[16px] dark:bg-charcoal-900">
         <View className="mt-8 flex-row items-center">
           {!isLastScreenDisplayed && (
@@ -56,7 +56,7 @@ const FlowModal = ({
         </View>
       </View>
       {wrappedCurrentChild}
-    </>
+    </View>
   );
 };
 

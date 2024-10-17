@@ -12,7 +12,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/ui';
 import { DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 
-import GradientText from '../gradient-text';
 import { type IHomeHeaderBar } from '../home-header-bar/home-header-bar.interface';
 
 export const FinalReportHeader = ({ scrollValue }: IHomeHeaderBar) => {
@@ -68,11 +67,9 @@ export const FinalReportHeader = ({ scrollValue }: IHomeHeaderBar) => {
         }}
       >
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
-          <GradientText colors={[colors.primary[600], colors.primaryPurple]}>
-            <Text className="font-bold dark:text-primary-400">
-              This is the report results!
-            </Text>
-          </GradientText>
+          <Text className="font-bold dark:text-primary-400">
+            This is the report results!
+          </Text>
         </Animated.View>
 
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>

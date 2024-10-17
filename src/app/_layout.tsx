@@ -3,8 +3,9 @@ import '../../global.css';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -26,6 +27,19 @@ loadSelectedTheme();
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    inter: require('../../assets/fonts/Inter.ttf'),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <Providers>
       <Stack>
@@ -37,7 +51,7 @@ export default function RootLayout() {
           options={{
             headerShown: false,
             presentation: 'modal',
-            gestureEnabled: false,
+            gestureEnabled: true,
           }}
         />
       </Stack>

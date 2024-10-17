@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "XRayAnalizer.app"
-               BlueprintName = "xrayanalizer"
-               ReferencedContainer = "container:xrayanalizer.xcodeproj">
+               BlueprintName = "XRayAnalizer"
+               ReferencedContainer = "container:XRayAnalizer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "xrayanalizerTests.xctest"
-               BlueprintName = "xrayanalizerTests"
-               ReferencedContainer = "container:xrayanalizer.xcodeproj">
+               BuildableName = "XRayAnalizerTests.xctest"
+               BlueprintName = "XRayAnalizerTests"
+               ReferencedContainer = "container:XRayAnalizer.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,8 +56,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "XRayAnalizer.app"
-            BlueprintName = "xrayanalizer"
-            ReferencedContainer = "container:xrayanalizer.xcodeproj">
+            BlueprintName = "XRayAnalizer"
+            ReferencedContainer = "container:XRayAnalizer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -73,8 +73,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "XRayAnalizer.app"
-            BlueprintName = "xrayanalizer"
-            ReferencedContainer = "container:xrayanalizer.xcodeproj">
+            BlueprintName = "XRayAnalizer"
+            ReferencedContainer = "container:XRayAnalizer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

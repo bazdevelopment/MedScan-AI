@@ -44,7 +44,7 @@ if (getRNMinorVersion() >= 75) {
   }
 }
 
-rootProject.name = 'X-Ray Analizer'
+rootProject.name = 'X-Ray Analyzer'
 
 dependencyResolutionManagement {
   versionCatalogs {

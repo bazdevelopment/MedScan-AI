@@ -34,10 +34,11 @@ require('dotenv').config({
 
 const BUNDLE_ID = 'com.x-ray-analizer'; // ios bundle id
 const PACKAGE = 'com.xrayanalizer'; // android package name
-const NAME = 'X-Ray Analizer'; // app name
+const NAME = 'X-Ray Analyzer'; // app name
 const EXPO_ACCOUNT_OWNER = 'bazdevelopment'; // expo account owner
-const EAS_PROJECT_ID = 'c3e1075b-6fe7-4686-aa49-35b46a229044'; // eas project id
+const EAS_PROJECT_ID = 'ca05aaac-9ba7-494f-b6a6-1ab6cf0ff301'; // eas project id
 const SCHEME = 'x-ray-analizer'; // app scheme
+const SLUG="x-ray-analyzer"
 
 /**
  * We declare a function withEnvSuffix that will add a suffix to the variable name based on the APP_ENV
@@ -75,18 +76,18 @@ const client = z.object({
   BUNDLE_ID: z.string(),
   PACKAGE: z.string(),
   VERSION: z.string(),
+  SLUG:z.string(),
 
   // ADD YOUR CLIENT ENV VARS HERE
-  API_URL: z.string(),
-  VAR_NUMBER: z.number(),
-  VAR_BOOL: z.boolean(),
+
+  GOOGLE_SERVICES_JSON_PATH:z.string(),
+  GOOGLE_SERVICES_PLIST_PATH:z.string()
 });
 
 const buildTime = z.object({
   EXPO_ACCOUNT_OWNER: z.string(),
   EAS_PROJECT_ID: z.string(),
   // ADD YOUR BUILD TIME ENV VARS HERE
-  SECRET_KEY: z.string(),
 });
 
 /**
@@ -94,16 +95,17 @@ const buildTime = z.object({
  */
 const _clientEnv = {
   APP_ENV,
-  NAME: NAME,
-  SCHEME: SCHEME,
+  NAME,
+  SCHEME,
   BUNDLE_ID: withEnvSuffix(BUNDLE_ID),
   PACKAGE: withEnvSuffix(PACKAGE),
   VERSION: packageJSON.version,
+  SLUG,
 
   // ADD YOUR ENV VARS HERE TOO
-  API_URL: process.env.API_URL,
-  VAR_NUMBER: Number(process.env.VAR_NUMBER),
-  VAR_BOOL: process.env.VAR_BOOL === 'true',
+
+  GOOGLE_SERVICES_JSON_PATH:process.env.GOOGLE_SERVICES_JSON_PATH,
+  GOOGLE_SERVICES_PLIST_PATH:process.env.GOOGLE_SERVICES_PLIST_PATH
 };
 
 /**
@@ -113,7 +115,6 @@ const _buildTimeEnv = {
   EXPO_ACCOUNT_OWNER,
   EAS_PROJECT_ID,
   // ADD YOUR ENV VARS HERE TOO
-  SECRET_KEY: process.env.SECRET_KEY,
 };
 
 /**

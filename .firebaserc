@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "dev": "x-ray-analizer-dev",
+    "prod": "x-ray-analizer-prod",
+    "default": "x-ray-analizer-dev"
+  }
+}

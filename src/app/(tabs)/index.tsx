@@ -1,5 +1,6 @@
 import { reports } from '__mocks__/reports';
-import React from 'react';
+import { firebaseCloudFunctionsInstance } from 'firebase/config';
+import React, { useEffect } from 'react';
 
 import { Foreground } from '@/components/home-foreground';
 import { HomeHeaderBar } from '@/components/home-header-bar';
@@ -13,6 +14,23 @@ const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
+  useEffect(() => {
+    const handleFirebase = async () => {
+      try {
+        const result = await firebaseCloudFunctionsInstance.httpsCallable(
+          'helloWorld2',
+        )({
+          message: 'Hello from the emulator',
+        });
+
+        console.log('result', result);
+      } catch (err: Error) {
+        console.log('err', err.message);
+      }
+    };
+
+    handleFirebase();
+  }, []);
   return (
     <ParallaxScrollView
       parallaxHeight={PARALLAX_HEIGHT}

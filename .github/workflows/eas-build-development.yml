@@ -42,28 +42,13 @@ jobs:
           echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Load environment variables from GitHub Secrets
-        run: |
-            # Hardcoding APP_ENV
-            APP_ENV="development"  # Change to "production" as needed
-  
-            echo "Loading environment variables for APP_ENV=${APP_ENV}"
-            
-            # Determine the file name based on the APP_ENV
-            ENV_FILE=".env.${APP_ENV}"
-  
-            # Create or overwrite the .env file
-            echo "" > $ENV_FILE
-  
-            if [ "$APP_ENV" == "development" ]; then
-              echo "Loading development environment variables"
-              echo "${{ secrets.ENV_DEVELOPMENT }}" >> $ENV_FILE
-              - name: Load environment variables from GitHub Secrets
+
         run: |
           # Hardcoding APP_ENV
           APP_ENV="development"  # Change to "production" as needed
 
             echo "Loading environment variables for APP_ENV=${APP_ENV}"
-          
+
           # Determine the file name based on the APP_ENV
           ENV_FILE=".env.${APP_ENV}"
 
@@ -104,13 +89,8 @@ jobs:
               echo "No valid APP_ENV provided. Exiting."
               exit 1
             fi
-  
+
             echo "Environment variables loaded successfully into $ENV_FILE."
-  
-      - name: Verify Loaded Environment Variables
-          run: |
-            echo "Verifying environment variables from $APP_ENV"
-            cat .env.${APP_ENV}  # Check the contents (be cautious with sensitive data)
 
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk

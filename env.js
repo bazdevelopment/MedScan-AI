@@ -104,8 +104,8 @@ const _clientEnv = {
 
   // ADD YOUR ENV VARS HERE TOO
 
-  GOOGLE_SERVICES_JSON_PATH:process.env.GOOGLE_SERVICES_JSON_PATH || "./google-services-local/DEV-ANDROID/google-services.json",
-  GOOGLE_SERVICES_PLIST_PATH:process.env.GOOGLE_SERVICES_PLIST_PATH || "./google-services-local/DEV-IOS/GoogleService-Info.plist"
+  GOOGLE_SERVICES_JSON_PATH:process.env.GOOGLE_SERVICES_JSON_PATH,
+  GOOGLE_SERVICES_PLIST_PATH:process.env.GOOGLE_SERVICES_PLIST_PATH
 };
 
 /**

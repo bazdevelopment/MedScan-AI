@@ -29,6 +29,14 @@ on:
           - major
           - minor
           - patch
+      environment:
+        type: choice
+        description: 'Environment type (one of): development, production'
+        required: true
+        default: 'development'
+        options:
+          - development
+          - production
 
 jobs:
   release:
@@ -56,6 +64,34 @@ jobs:
 
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
+
+      - name: Load environment variables from GitHub Secrets
+
+        run: |
+
+          ENV_FILE=".env.${{inputs.environment}}"
+
+          # Create or overwrite the .env file
+          echo "" > $ENV_FILE
+
+          if [ ${{inputs.environment}} == "development" ]; then
+            echo "Loading development environment variables"
+            echo "${{ secrets.ENV_DEVELOPMENT }}" >> $ENV_FILE
+            echo "${{ vars.ENV_DEVELOPMENT }}" >> $ENV_FILE
+            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
+            
+          elif [ ${{inputs.environment}} == "production" ]; then
+            echo "Loading production environment variables"
+            echo "${{ secrets.ENV_PRODUCTION }}" >> $ENV_FILE
+               echo "${{ vars.ENV_PRODUCTION }}" >> $ENV_FILE
+            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
+            
+          else
+            echo "No valid APP_ENV provided. Exiting."
+            exit 1
+          fi
+
+          echo "Environment variables loaded successfully into $ENV_FILE."
 
       - name: 🏃‍♂️ Run App release
         run: |

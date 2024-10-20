@@ -89,7 +89,7 @@ jobs:
           # Prepare for displaying variables
           ALLMYSECRETS="${{ toJSON(secrets) }}"
           ALLMYVARS="${{ toJSON(vars) }}"
-          ALLSECRETSWITHOUTJSON=${{secrets}}
+          ALLSECRETSWITHOUTJSON="${{secrets}}""
 
           # Output all loaded secrets and vars for debugging
           echo "Loaded secrets: $ALLMYSECRETS"

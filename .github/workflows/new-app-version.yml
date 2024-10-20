@@ -23,11 +23,13 @@ on:
       release-type:
         type: choice
         description: 'Release type (one of): major, minor, path'
+        default: ' '
         required: false
         options:
           - major
           - minor
           - patch
+          - ' '
 
       new-app-version:
         type: string

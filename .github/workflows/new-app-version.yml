@@ -65,32 +65,37 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: Load environment variables from GitHub Secrets
+      - name: Load environment variables
         run: |
+          # Determine the environment and load the appropriate variables
           ENV_FILE=".env.${{ inputs.environment }}"
 
           # Create or overwrite the .env file
           echo "" > $ENV_FILE
-
-          if [ ${{ inputs.environment }} == "development" ]; then
+          if [ "${{ inputs.environment }}" == "development" ]; then
             echo "Loading development environment variables"
-            echo ${{ secrets.ENV_DEVELOPMENT }} >> $ENV_FILE
-            echo ${{ vars.ENV_DEVELOPMENT }} >> $ENV_FILE
-            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
-            
-          elif [ ${{ inputs.environment }} == "production" ]; then
+            echo "${{ secrets.development }}" >> $GITHUB_ENV
+            echo "${{ vars.development }}" >> $GITHUB_ENV
+          elif [ "${{ inputs.environment }}" == "production" ]; then
             echo "Loading production environment variables"
-            echo ${{ secrets.ENV_PRODUCTION }} >> $ENV_FILE
-            echo ${{ vars.ENV_PRODUCTION }} >> $ENV_FILE
-            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
-            
+            echo "${{ secrets.production }}" >> $GITHUB_ENV
+            echo "${{ vars.production }}" >> $GITHUB_ENV
           else
             echo "No valid APP_ENV provided. Exiting."
             exit 1
           fi
 
-          echo "Environment variables loaded successfully into $ENV_FILE."
+          # Prepare for displaying variables
+          ALLMYSECRETS="${{ toJSON(secrets) }}"
+          ALLMYVARS="${{ toJSON(vars) }}"
 
+          # Output all loaded secrets and vars for debugging
+          echo "Loaded secrets: $ALLMYSECRETS"
+          echo "Loaded vars: $ALLMYVARS"
+
+          # Optionally log the variables for later use
+          echo "Loaded variables successfully."
+        shell: bash
       - name: 🏃‍♂️ Run App release
         run: |
           pnpm app-release ${{ github.event.inputs.release-type }}

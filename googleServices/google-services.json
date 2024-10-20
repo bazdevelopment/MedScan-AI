@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "951069774280",
+    "project_id": "x-ray-analizer-dev",
+    "storage_bucket": "x-ray-analizer-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951069774280:android:f12cda33f8793dc4ddb0fd",
+        "android_client_info": {
+          "package_name": "com.xrayanalizer.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951069774280-776570j92ivn6qkepsl55fb800qk8gq8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xrayanalizer.development",
+            "certificate_hash": "f366d778c6125a5630fce01b55423daae916ee0d"
+          }
+        },
+        {
+          "client_id": "951069774280-1itt9d298j5o912o7f02f6kd2b745jc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEPGXGxq176OAkjM84-aG-NMLAbTKBZFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951069774280-1itt9d298j5o912o7f02f6kd2b745jc3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "951069774280-pkev7071pf8biurjs6n439uf6fnqldqp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.x-ray-analizer.development"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

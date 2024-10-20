@@ -75,8 +75,8 @@ jobs:
           echo "" > $ENV_FILE
           if [ "${{ inputs.environment }}" == "development" ]; then
             echo "Loading development environment variables"
-            echo "${{ toJSON(secrets) }}" >> $GITHUB_ENV
-            echo "${{ toJSON(vars) }}" >> $GITHUB_ENV
+            echo "${{ secrets}}" >> $GITHUB_ENV
+            echo "${{ vars}}" >> $GITHUB_ENV
           elif [ "${{ inputs.environment }}" == "production" ]; then
             echo "Loading production environment variables"
             echo "${{ secrets.production }}" >> $GITHUB_ENV
@@ -87,8 +87,8 @@ jobs:
           fi
 
           # Prepare for displaying variables
-          ALLMYSECRETS="${{ toJSON(secrets) }}"
-          ALLMYVARS="${{ toJSON(vars) }}"
+          ALLMYSECRETS="${{ secrets}}"
+          ALLMYVARS="${{ vars }}"
 
           # Output all loaded secrets and vars for debugging
           echo "Loaded secrets: $ALLMYSECRETS"

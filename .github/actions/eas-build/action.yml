@@ -107,7 +107,7 @@ runs:
       if: ${{ inputs.ANDROID == 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
-        PATH: /home/runner/work/fit-log-mobile/fit-log-mobile
+        PATH: /home/runner/work/x-ray-analizer/x-ray-analizer
         VERSION: ${{ inputs.VERSION }}
         FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_ANDROID }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}
@@ -116,7 +116,7 @@ runs:
       if: ${{ inputs.IOS == 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
-        PATH: /home/runner/work/fit-log-mobile/fit-log-mobile
+        PATH: /home/runner/work/x-ray-analizer/x-ray-analizer
         VERSION: ${{ inputs.VERSION }}
         FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_IOS }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}

@@ -11,8 +11,8 @@ name: EAS Development Build (Android & IOS) (EAS)
 
 on:
   push:
-    branches:
-      - master #change to development
+    tags:
+      - '*'
 
 jobs:
   Build:

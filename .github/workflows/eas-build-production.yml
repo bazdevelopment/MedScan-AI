@@ -11,8 +11,8 @@ name: EAS Production Build (Android & IOS) (EAS)
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 
 jobs:
   Build:

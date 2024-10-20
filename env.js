@@ -80,8 +80,8 @@ const client = z.object({
 
   // ADD YOUR CLIENT ENV VARS HERE
 
-  GOOGLE_SERVICES_JSON_PATH:z.string(),
-  GOOGLE_SERVICES_PLIST_PATH:z.string()
+  GOOGLE_SERVICES_JSON_PATH:z.string().optional(),
+  GOOGLE_SERVICES_PLIST_PATH:z.string().optional()
 });
 
 const buildTime = z.object({

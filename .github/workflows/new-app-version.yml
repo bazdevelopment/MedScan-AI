@@ -23,12 +23,19 @@ on:
       release-type:
         type: choice
         description: 'Release type (one of): major, minor, path'
-        required: true
-        default: 'patch'
+        required: false
+        default: ''
         options:
           - major
           - minor
           - patch
+
+      new-app-version:
+        type: string
+        description: "Add a new app version manually if you didn't select release type"
+        required: false
+        default: ''
+
       environment:
         type: choice
         description: 'Environment type (one of): development, production'
@@ -38,6 +45,15 @@ on:
           - development
           - production
 
+      should_submit:
+        type: choice
+        description: Whether to perform the EAS submit step
+        required: true
+        default: 'false'
+        options:
+          - true
+          - false
+
 jobs:
   release:
     name: Create New Version and push new tag
@@ -46,6 +62,14 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Validate inputs
+        id: validate-inputs
+        run: |
+          if [ -z "${{ github.event.inputs.release-type }}" ] && [ -z "${{ github.event.inputs.version }}" ]; then
+           echo "Error: No release type or version provided. At least one must be specified."
+           exit 1
+          fi
+
       - name: 🔍 GH_TOKEN
         if: env.GH_TOKEN == ''
         env:
@@ -72,26 +96,25 @@ jobs:
           ENV_FILE=".env.${{ inputs.environment }}"
 
           # Create or overwrite the .env file
-          echo "" > $ENV_FILE
           if [ "${{ inputs.environment }}" == "development" ]; then
             echo "Loading development environment variables"
             echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
             echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
+            echo "SHOULD_SUBMIT=${{ github.event.inputs.should_submit }}" >> $GITHUB_ENV
+
             echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
             echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
 
-          elif [ "${{ inputs.environment }}" == "production" ]; then
-            echo "Loading production environment variables"
-            echo "${{ secrets.production }}" >> $GITHUB_ENV
-            echo "${{ vars.production }}" >> $GITHUB_ENV
-          else
-            echo "No valid APP_ENV provided. Exiting."
-            exit 1
-          fi
 
           # Optionally log the variables for later use
           echo "Loaded variables successfully."
         shell: bash
       - name: 🏃‍♂️ Run App release
         run: |
-          pnpm app-release ${{ github.event.inputs.release-type }}
+          if [ -n "${{ github.event.inputs.release-type }}" ]; then
+            echo "Running app-release with app version: ${{ github.event.inputs.release-type }}"
+            pnpm app-release ${{ github.event.inputs.release-type }} ${{ github.event.inputs.release-type }}
+          else
+            echo "Running app-release with release type: ${{ github.event.inputs.new-app-version }} only."
+            pnpm app-release ${{ github.event.inputs.new-app-version }}
+          fi

@@ -33,15 +33,15 @@ runs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
 
-    - name: Generate Test APK
-      run: |
-        pnpm prebuild:${{ inputs.APP_ENV }}
-        cd  android
-        chmod +x ./gradlew
-        ./gradlew assembleRelease --no-daemon
-        cd ..
-      shell: bash
-      env:
-        EXPO_NO_DOTENV: '1'
-        APP_ENV: ${{ inputs.APP_ENV }}
-        CI: 'true'
+    # - name: Generate Test APK
+    #   run: |
+    #     pnpm prebuild:${{ inputs.APP_ENV }}
+    #     cd  android
+    #     chmod +x ./gradlew
+    #     ./gradlew assembleRelease --no-daemon
+    #     cd ..
+    #   shell: bash
+    #   env:
+    #     EXPO_NO_DOTENV: '1'
+    #     APP_ENV: ${{ inputs.APP_ENV }}
+    #     CI: 'true'

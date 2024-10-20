@@ -41,6 +41,12 @@ jobs:
           # Set the version as an environment variable for later steps
           echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
 
+      - name: Use the SHOULD_SUBMIT secret
+        run: |
+          echo "The shouldSubmit value from the secret is: ${{ secrets.SHOULD_SUBMIT }}"
+          echo "${{ toJSON(secrets) }}"
+          echo  "${{ toJSON(env) }}"
+
       - name: Load environment variables from GitHub Secrets
 
         run: |
@@ -55,42 +61,11 @@ jobs:
           # Create or overwrite the .env file
           echo "" > $ENV_FILE
 
-          if [ "$APP_ENV" == "development" ]; then
-            echo "Loading development environment variables"
-            echo "${{ secrets.ENV_DEVELOPMENT }}" >> $ENV_FILE
-            echo "${{ vars.ENV_DEVELOPMENT }}" >> $ENV_FILE
-            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
-            
-          elif [ "$APP_ENV" == "production" ]; then
-            echo "Loading production environment variables"
-            echo "${{ secrets.ENV_PRODUCTION }}" >> $ENV_FILE
-               echo "${{ vars.ENV_PRODUCTION }}" >> $ENV_FILE
-            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
-            
-          else
-            echo "No valid APP_ENV provided. Exiting."
-            exit 1
-          fi
+
+
+
 
           echo "Environment variables loaded successfully into $ENV_FILE."
-
-      - name: Verify Loaded Environment Variables
-        run: |
-          echo "Verifying environment variables from $APP_ENV"
-          cat .env.${APP_ENV}  # Check the contents (be cautious with sensitive data)
-              echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
-              
-            elif [ "$APP_ENV" == "production" ]; then
-              echo "Loading production environment variables"
-              echo "${{ secrets.ENV_PRODUCTION }}" >> $ENV_FILE
-              echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
-              
-            else
-              echo "No valid APP_ENV provided. Exiting."
-              exit 1
-            fi
-
-            echo "Environment variables loaded successfully into $ENV_FILE."
 
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk

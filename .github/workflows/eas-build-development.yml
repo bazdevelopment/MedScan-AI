@@ -1,0 +1,129 @@
+# ✍️ Description:
+# This workflow is used to trigger a build on EAS for the QA environment.
+# It will run on every GitHub release published on the repo or can be triggered manually from the actions tab.
+# This workflow will use ./actions/eas-build action to trigger the build on EAS with staging env.
+
+# 🚨 GITHUB SECRETS REQUIRED:
+#         - EXPO_TOKEN: Expo token to authenticate with EAS
+#         - You can get it from https://expo.dev/settings/access-tokens
+
+name: EAS Development Build (Android & IOS) (EAS)
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  Build:
+    name: EAS Development Build (Android & IOS) (EAS)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+      - name: 📦 Checkout project repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node + PNPM + install deps
+        uses: ./.github/actions/setup-node-pnpm-install
+
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          # Use Node.js to extract the version
+          VERSION=$(node -p "require('./package.json').version")
+          # Set the version as an environment variable for later steps
+          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Load environment variables from GitHub Secrets
+        run: |
+            # Hardcoding APP_ENV
+            APP_ENV="development"  # Change to "production" as needed
+  
+            echo "Loading environment variables for APP_ENV=${APP_ENV}"
+            
+            # Determine the file name based on the APP_ENV
+            ENV_FILE=".env.${APP_ENV}"
+  
+            # Create or overwrite the .env file
+            echo "" > $ENV_FILE
+  
+            if [ "$APP_ENV" == "development" ]; then
+              echo "Loading development environment variables"
+              echo "${{ secrets.ENV_DEVELOPMENT }}" >> $ENV_FILE
+              - name: Load environment variables from GitHub Secrets
+        run: |
+          # Hardcoding APP_ENV
+          APP_ENV="development"  # Change to "production" as needed
+
+            echo "Loading environment variables for APP_ENV=${APP_ENV}"
+          
+          # Determine the file name based on the APP_ENV
+          ENV_FILE=".env.${APP_ENV}"
+
+          # Create or overwrite the .env file
+          echo "" > $ENV_FILE
+
+          if [ "$APP_ENV" == "development" ]; then
+            echo "Loading development environment variables"
+            echo "${{ secrets.ENV_DEVELOPMENT }}" >> $ENV_FILE
+            echo "${{ vars.ENV_DEVELOPMENT }}" >> $ENV_FILE
+            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
+            
+          elif [ "$APP_ENV" == "production" ]; then
+            echo "Loading production environment variables"
+            echo "${{ secrets.ENV_PRODUCTION }}" >> $ENV_FILE
+               echo "${{ vars.ENV_PRODUCTION }}" >> $ENV_FILE
+            echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
+            
+          else
+            echo "No valid APP_ENV provided. Exiting."
+            exit 1
+          fi
+
+          echo "Environment variables loaded successfully into $ENV_FILE."
+
+      - name: Verify Loaded Environment Variables
+        run: |
+          echo "Verifying environment variables from $APP_ENV"
+          cat .env.${APP_ENV}  # Check the contents (be cautious with sensitive data)
+              echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
+              
+            elif [ "$APP_ENV" == "production" ]; then
+              echo "Loading production environment variables"
+              echo "${{ secrets.ENV_PRODUCTION }}" >> $ENV_FILE
+              echo "Loaded variables: VAR_ONE, VAR_TWO, VAR_THREE" >> $ENV_FILE
+              
+            else
+              echo "No valid APP_ENV provided. Exiting."
+              exit 1
+            fi
+  
+            echo "Environment variables loaded successfully into $ENV_FILE."
+  
+      - name: Verify Loaded Environment Variables
+          run: |
+            echo "Verifying environment variables from $APP_ENV"
+            cat .env.${APP_ENV}  # Check the contents (be cautious with sensitive data)
+
+      - name: 📦 Set Up JDK
+        uses: ./.github/actions/setup-jdk-generate-apk
+        with:
+          APP_ENV: development
+
+      - name: ⏱️ EAS Build
+        uses: ./.github/actions/eas-build
+        with:
+          APP_ENV: development
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
+          VERSION: ${{ env.PACKAGE_VERSION }}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}
+          IOS: false # TODO: set as true when IOS account is ready
+

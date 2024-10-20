@@ -24,7 +24,6 @@ on:
         type: choice
         description: 'Release type (one of): major, minor, path'
         required: false
-        default: ''
         options:
           - major
           - minor

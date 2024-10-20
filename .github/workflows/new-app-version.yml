@@ -75,8 +75,11 @@ jobs:
           echo "" > $ENV_FILE
           if [ "${{ inputs.environment }}" == "development" ]; then
             echo "Loading development environment variables"
-            echo "${{ secrets}}" >> $GITHUB_ENV
-            echo "${{ vars}}" >> $GITHUB_ENV
+            echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
+            echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
+            echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
+            echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+
           elif [ "${{ inputs.environment }}" == "production" ]; then
             echo "Loading production environment variables"
             echo "${{ secrets.production }}" >> $GITHUB_ENV
@@ -85,15 +88,6 @@ jobs:
             echo "No valid APP_ENV provided. Exiting."
             exit 1
           fi
-
-          # Prepare for displaying variables
-          ALLMYSECRETS="${{ secrets}}"
-          ALLMYVARS="${{ vars }}"
-
-          # Output all loaded secrets and vars for debugging
-          echo "Loaded secrets: $ALLMYSECRETS"
-          echo "Loaded secrets: $ALLMYSECRETS"
-          echo "Loaded vars: $ALLMYVARS"
 
           # Optionally log the variables for later use
           echo "Loaded variables successfully."

@@ -18,9 +18,11 @@ const firebaseStorage = storage();
 const firebaseCrashlytics = crashlytics();
 const firebaseAnalytics = analytics();
 
-const getCloudFunctionInstance = (): FirebaseFunctionsTypes.Module => {
+const getCloudFunctionInstance = (
+  isEmulatorEnabled: boolean = false,
+): FirebaseFunctionsTypes.Module => {
   const wrapper = firebase.app().functions('europe-west1');
-  if (__DEV__) {
+  if (__DEV__ && isEmulatorEnabled) {
     /*
     Use the emulator if in development mode
     make sure that emulator/start runs and npm run build is in watch mode build:watch

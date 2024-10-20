@@ -38,6 +38,9 @@ importers:
       '@react-native-firebase/functions':
         specifier: ^21.0.0
         version: 21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))
+      '@react-native-firebase/remote-config':
+        specifier: ^21.0.0
+        version: 21.0.0(@react-native-firebase/analytics@21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)))(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))
       '@react-native-firebase/storage':
         specifier: ^21.0.0
         version: 21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))
@@ -1980,6 +1983,12 @@ packages:
   '@react-native-firebase/functions@21.0.0':
     resolution: {integrity: sha512-owiLnJQ7P4rXRQJC6hQWNPwR7zXJ0OI2JdGf18LVwEK6CuGrSG44CiMp6PmdCYRyrN8k6buH+AeJF9Tl0NIVQw==}
     peerDependencies:
+      '@react-native-firebase/app': 21.0.0
+
+  '@react-native-firebase/remote-config@21.0.0':
+    resolution: {integrity: sha512-B/u87cXFS0XoM67LJVSnl3F8m/SL4J7F53Tm/PqFHEDsuhMdgWBBjN/bpdwSxkj4Fz16DGK4wZSpvfmZTpTNDA==}
+    peerDependencies:
+      '@react-native-firebase/analytics': 21.0.0
       '@react-native-firebase/app': 21.0.0
 
   '@react-native-firebase/storage@21.0.0':
@@ -10574,6 +10583,11 @@ snapshots:
 
   '@react-native-firebase/functions@21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))':
     dependencies:
+      '@react-native-firebase/app': 21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+
+  '@react-native-firebase/remote-config@21.0.0(@react-native-firebase/analytics@21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)))(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))':
+    dependencies:
+      '@react-native-firebase/analytics': 21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))
       '@react-native-firebase/app': 21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
 
   '@react-native-firebase/storage@21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))':

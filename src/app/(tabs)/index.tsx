@@ -1,5 +1,6 @@
 import { reports } from '__mocks__/reports';
 import { firebaseCloudFunctionsInstance } from 'firebase/config';
+import { checkForAppUpdate } from 'firebase/remote-config';
 import React, { useEffect } from 'react';
 
 import { Foreground } from '@/components/home-foreground';
@@ -14,18 +15,14 @@ const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
+  checkForAppUpdate();
+
   useEffect(() => {
     const handleFirebase = async () => {
       try {
-        const result = await firebaseCloudFunctionsInstance.httpsCallable(
-          'helloWorld2',
-        )({
-          message: 'Hello from the emulator',
-        });
-
-        console.log('result', result);
+        await firebaseCloudFunctionsInstance.httpsCallable('getHelloWorld')();
       } catch (err: Error) {
-        console.log('err', err.message);
+        console.log('error-cloud-fnc-invocation----->', err.message);
       }
     };
 

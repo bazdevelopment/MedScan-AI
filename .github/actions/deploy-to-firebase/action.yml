@@ -1,0 +1,51 @@
+name: 'Deploy to Firebase'
+description: 'Upload Artifact to Firebase App Distribution'
+
+# Define inputs for the composite action
+inputs:
+  release_notes:
+    required: false
+    default: 'New deployment'
+    description: 'New deployment'
+  FIREBASE_APP_ID:
+    required: true
+    description: 'Firebase APP ID from Github secrets'
+  CREDENTIAL_FILE_CONTENT_GOOGLE_KEY:
+    required: true
+    description: 'Google key from Github secrets'
+  VERSION:
+    required: true
+    description: 'App version'
+  PATH:
+    required: true
+    description: 'Path for APK'
+
+# Composite action execution steps
+runs:
+  using: 'composite'
+  steps:
+    - name: Get app file name
+      id: app-name
+      run: |
+        # Find the APK or IPA file based on the provided path and version
+        APP_NAME=$(find "${{ inputs.PATH }}" -name "*.apk" -or -name "*.ipa" | head -1)
+
+        if [[ -z "$APP_NAME" ]]; then
+          echo "No files found matching the criteria. Exiting."
+          exit 1
+        fi
+
+        echo "Found app file: $APP_NAME"
+        echo "::set-output name=APP_NAME::$APP_NAME"
+      shell: bash
+
+    - name: Deploy APK to Firebase
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+        appId: ${{ inputs.FIREBASE_APP_ID }}
+        serviceCredentialsFileContent: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}
+        testers: 'bazilucm@gmail.com'
+        file: ${{ steps.app-name.outputs.APP_NAME }}
+        releaseNotes: ${{ inputs.release_notes }}
+
+      #  - name: Deploy IPA to firebase TBA

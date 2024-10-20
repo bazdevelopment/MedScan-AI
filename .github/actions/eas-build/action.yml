@@ -1,11 +1,8 @@
-# 🔗 Links:
-# EAS Build docs: https://docs.expo.dev/eas-update/github-actions/
-
 # ✍️ Description:
 # This is a composite action, which means it can be used in other actions.
 # This action is used to trigger an EAS Build for a specific environment (development, staging, production).
 # This action accepts those inputs:
-#        `APP_ENV`, which is used to generate an APK for a specific environment (development, staging, production). We use staging by default.
+#        `APP_ENV`, which is used to generate an APK for a specific environment (development, staging, production). We use development by default.
 #        `AUTO_SUBMIT`, false by default, set to true if you want to automatically submit your build to stores.
 #        `EXPO_TOKEN`, required, access token for your Expo account. https://expo.dev/settings/access-tokens
 #        `VERSION`, required, version of the app to build. used as the build message.
@@ -19,7 +16,7 @@
 #      - name: ⏱️ EAS Build
 #        uses: ./.github/actions/eas-build
 #        with:
-#          APP_ENV: staging
+#          APP_ENV: development
 #          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 #          VERSION: ${{ github.event.release.tag_name }}
 #          IOS: false
@@ -28,9 +25,9 @@ name: 'Setup EAS Build + Trigger Build'
 description: 'Setup EAS Build + Trigger Build'
 inputs:
   APP_ENV:
-    description: 'APP_ENV (one of): development, staging, production'
+    description: 'APP_ENV (one of): development, production'
     required: true
-    default: 'staging'
+    default: 'development'
   AUTO_SUBMIT: ## TODO: we need to handle this too
     description: 'AUTO_SUBMIT (one of): true, false'
     required: true
@@ -51,6 +48,12 @@ inputs:
     description: 'EXPO_TOKEN'
     required: true
     default: 'false'
+  FIREBASE_APP_ID:
+    description: ' FIREBASE_APP_ID'
+    required: true
+  CREDENTIAL_FILE_CONTENT_GOOGLE_KEY:
+    description: 'CREDENTIAL_FILE_CONTENT_GOOGLE_KEY'
+    required: true
 
 runs:
   using: 'composite'
@@ -75,10 +78,33 @@ runs:
 
     - name: 📱 Run Android Build
       if: ${{ inputs.ANDROID == 'true' }}
-      run: pnpm build:${{ inputs.APP_ENV }}:android --non-interactive  --no-wait --message "Build  ${{ inputs.APP_ENV }} ${{ inputs.VERSION }}"
+      run: pnpm build:${{ inputs.APP_ENV }}:android --local  --non-interactive  --no-wait  --output=${{ github.workspace }}/${{ inputs.VERSION }}.apk  --message "Build  ${{ inputs.APP_ENV }} ${{ inputs.VERSION }}"
       shell: bash
 
     - name: 📱 Run IOS Build
       if: ${{ inputs.IOS == 'true' }}
-      run: pnpm build:${{ inputs.APP_ENV }}:ios --non-interactive  --no-wait --message "Build ${{ inputs.APP_ENV }} ${{ inputs.VERSION }}"
+      run: pnpm build:${{ inputs.APP_ENV }}:ios  --local --non-interactive --output=${{ github.workspace }}/${{ inputs.VERSION }}.ipa  --no-wait --message "Build ${{ inputs.APP_ENV }} ${{ inputs.VERSION }}"
       shell: bash
+
+    - name: 🏁 Upload APK artifact IOS
+      if: ${{ inputs.IOS == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.VERSION }}
+        path: ${{ github.workspace }}/${{ inputs.VERSION }}.ipa
+
+    - name: 🏁 Upload APK artifact ANDROID
+      if: ${{ inputs.ANDROID == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.VERSION }}
+        path: ${{ github.workspace }}/${{ inputs.VERSION }}.apk
+
+    - name: Deploy to Firebase - APK
+      if: ${{ inputs.ANDROID == 'true' }}
+      uses: ./.github/actions/deploy-to-firebase
+      with:
+        PATH: /home/runner/work/fit-log-mobile/fit-log-mobile
+        VERSION: ${{ inputs.VERSION }}
+        FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID }}
+        CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}

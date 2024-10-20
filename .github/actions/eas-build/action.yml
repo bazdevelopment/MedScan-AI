@@ -48,8 +48,11 @@ inputs:
     description: 'EXPO_TOKEN'
     required: true
     default: 'false'
-  FIREBASE_APP_ID:
-    description: ' FIREBASE_APP_ID'
+  FIREBASE_APP_ID_IOS:
+    description: 'FIREBASE_APP_ID_IOS'
+    required: true
+  FIREBASE_APP_ID_ANDROID:
+    description: 'FIREBASE_APP_ID_ANDROID'
     required: true
   CREDENTIAL_FILE_CONTENT_GOOGLE_KEY:
     description: 'CREDENTIAL_FILE_CONTENT_GOOGLE_KEY'
@@ -106,5 +109,14 @@ runs:
       with:
         PATH: /home/runner/work/fit-log-mobile/fit-log-mobile
         VERSION: ${{ inputs.VERSION }}
-        FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID }}
+        FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_ANDROID }}
+        CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}
+
+    - name: Deploy to Firebase - IPA
+      if: ${{ inputs.IOS == 'true' }}
+      uses: ./.github/actions/deploy-to-firebase
+      with:
+        PATH: /home/runner/work/fit-log-mobile/fit-log-mobile
+        VERSION: ${{ inputs.VERSION }}
+        FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_IOS }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}

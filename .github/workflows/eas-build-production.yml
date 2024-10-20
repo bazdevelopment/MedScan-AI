@@ -1,5 +1,5 @@
 # ✍️ Description:
-# This workflow is used to trigger a build on EAS for the development environment.
+# This workflow is used to trigger a build on EAS for the production environment.
 # It will run on every GitHub release published on the repo or can be triggered manually from the actions tab.
 # This workflow will use ./actions/eas-build action to trigger the build on EAS with staging env.
 
@@ -7,18 +7,18 @@
 #         - EXPO_TOKEN: Expo token to authenticate with EAS
 #         - You can get it from https://expo.dev/settings/access-tokens
 
-name: EAS Development Build (Android & IOS) (EAS)
+name: EAS Production Build (Android & IOS) (EAS)
 
 on:
   push:
     branches:
-      - master #change to development
+      - master
 
 jobs:
   Build:
-    name: EAS Development Build (Android & IOS) (EAS)
+    name: EAS Production Build (Android & IOS) (EAS)
     runs-on: ubuntu-latest
-    environment: development
+    environment: production
     steps:
       - name: Check for EXPO_TOKEN
         run: |
@@ -46,24 +46,27 @@ jobs:
 
         run: |
           # Hardcoding APP_ENV
-            APP_ENV="development"  # Change to "production" as needed
-            ENV_FILE=".env.${APP_ENV}"
+          APP_ENV="production"  
+          ENV_FILE=".env.${APP_ENV}"
 
           echo "Loading environment variables for APP_ENV=${APP_ENV}"
 
            # Create or overwrite the .env file
-            echo "Loading development environment variables"
+            echo "Loading production environment variables"
             echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
             echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
 
             echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
             echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+            
+
+
+          # Determine the file name based on the APP_ENV
 
 
           # Create or overwrite the .env file
-          echo "here are the env FILES" >  ${{ toJSON(secrets) }}
-          echo "MY_ENV_VAR1 is set to:  ${{ toJSON(env) }}"
-          echo "MY_ENV_VAR2 is set to:  ${{ toJSON(env.development) }}" 
+          echo "here are the env" > $ENV_FILE
+
 
 
           echo "Environment variables loaded successfully into $ENV_FILE."
@@ -71,16 +74,16 @@ jobs:
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk
         with:
-          APP_ENV: development
+          APP_ENV: production
 
       - name: ⏱️ EAS Build
         uses: ./.github/actions/eas-build
         with:
-          APP_ENV: development
+          APP_ENV: production
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
           VERSION: ${{ env.PACKAGE_VERSION }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
           FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
-          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
+          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets. FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT }}
           IOS: false # TODO: set as true when IOS account is ready
 

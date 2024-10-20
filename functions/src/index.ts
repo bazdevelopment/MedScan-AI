@@ -16,7 +16,7 @@ import * as functions from 'firebase-functions/v1';
 
 admin.initializeApp();
 
-export const helloWorld = functions
+export const getHelloWorld = functions
   .region('europe-west1') // Specify the region here
   .https.onCall((data, context) => {
     logger.info('Hello logs!', { structuredData: true });

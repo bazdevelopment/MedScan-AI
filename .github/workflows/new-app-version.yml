@@ -42,6 +42,7 @@ jobs:
   release:
     name: Create New Version and push new tag
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     permissions:
       contents: write
     steps:
@@ -74,8 +75,8 @@ jobs:
           echo "" > $ENV_FILE
           if [ "${{ inputs.environment }}" == "development" ]; then
             echo "Loading development environment variables"
-            echo "${{ secrets.development }}" >> $GITHUB_ENV
-            echo "${{ vars.development }}" >> $GITHUB_ENV
+            echo "${{ toJSON(secrets) }}" >> $GITHUB_ENV
+            echo "${{ toJSON(vars) }}" >> $GITHUB_ENV
           elif [ "${{ inputs.environment }}" == "production" ]; then
             echo "Loading production environment variables"
             echo "${{ secrets.production }}" >> $GITHUB_ENV
@@ -88,10 +89,13 @@ jobs:
           # Prepare for displaying variables
           ALLMYSECRETS="${{ toJSON(secrets) }}"
           ALLMYVARS="${{ toJSON(vars) }}"
+          ALLSECRETSWITHOUTJSON=${{secrets}}
 
           # Output all loaded secrets and vars for debugging
           echo "Loaded secrets: $ALLMYSECRETS"
+          echo "Loaded secrets: $ALLMYSECRETS"
           echo "Loaded vars: $ALLMYVARS"
+          echo "Loaded vars: $ALLSECRETSWITHOUTJSON"
 
           # Optionally log the variables for later use
           echo "Loaded variables successfully."

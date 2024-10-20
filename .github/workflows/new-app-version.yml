@@ -97,7 +97,6 @@ jobs:
           ENV_FILE=".env.${{ inputs.environment }}"
 
           # Create or overwrite the .env file
-          if [ "${{ inputs.environment }}" == "development" ]; then
             echo "Loading development environment variables"
             echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
             echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV

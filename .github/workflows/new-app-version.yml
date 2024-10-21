@@ -94,7 +94,8 @@ jobs:
       - name: Load environment variables
         run: |
           # Determine the environment and load the appropriate variables
-          # ENV_FILE=".env.${{ inputs.environment }}"
+           
+            ENV_FILE=".env.${{ inputs.environment }}"
 
             echo "Loading development environment variables"
             echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV

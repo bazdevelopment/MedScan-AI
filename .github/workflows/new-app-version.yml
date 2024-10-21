@@ -121,7 +121,7 @@ jobs:
 
       - name: Test printing your secret (Remove this step in production)
         run: |
-          cat .env
+          cat .env.production
       # - name: Load environment variables
       #   run: |
       #     # Determine the environment and load the appropriate variables

@@ -152,3 +152,17 @@ jobs:
             echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
             pnpm app-release ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
           fi
+
+      - name: 🏃‍♂️ Align native code with version changes by running prebuild
+        run: |
+          if [ "${{ inputs.environment }}" = "development" ]; then
+          echo "Running prebuild-push:development for the ${{
+           inputs.environment }} environment"
+          pnpm prebuild-push:development
+          elif [ "${{ inputs.environment }}" = "production" ]; then
+          echo "Running prebuild-push:production for the ${{
+           inputs.environment }} environment"
+          pnpm prebuild-push:production
+          else
+          echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
+          fi

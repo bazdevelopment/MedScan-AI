@@ -95,25 +95,22 @@ jobs:
         run: |
           # Determine the environment and load the appropriate variables
           # ENV_FILE=".env.${{ inputs.environment }}"
-          echo "json file is secrets ${{ toJson(secrets)}}"
-          echo "json file is vars ${{ toJson(vars)}}"
-
 
             echo "Loading development environment variables"
             echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
             echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
 
-      #       echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
-      #       echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+            echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
+            echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
 
-      #     echo "Loaded variables successfully."
+          echo "Loaded variables successfully."
       #   shell: bash
       - name: 🏃‍♂️ Run App release
         run: |
           if [ -n "${{ github.event.inputs.release-type }}" ]; then
             echo "Running app-release with app version: ${{ github.event.inputs.release-type }}"
-            pnpm app-release ${{ github.event.inputs.release-type }} --tag  ${{ inputs.environment }}/$(date +' %Y %m %d-%H:%M')
+            pnpm app-release ${{ github.event.inputs.release-type }} --tag  ${{ inputs.environment }}/$(date +'%Y-%m-%d %H:%M')
           else
             echo "Running app-release with release type: ${{ github.event.inputs.new-app-version }} only."
-            pnpm app-release ${{ github.event.inputs.new-app-version }}  --tag  ${{ inputs.environment }}/${{ github.event.inputs.new-app-version }}-$(date +' %Y %m %d-%H:%M')
+            pnpm app-release ${{ github.event.inputs.new-app-version }}  --tag  ${{ inputs.environment }}/${{ github.event.inputs.new-app-version }}-$(date +'%Y-%m-%d %H:%M')
           fi

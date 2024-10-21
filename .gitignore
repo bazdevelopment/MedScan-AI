@@ -22,4 +22,5 @@ expo-env.d.ts
 .env.development
 .env.production
 credentials.json
+googleServices
 # @end expo-cli

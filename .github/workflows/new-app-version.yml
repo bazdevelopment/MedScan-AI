@@ -20,20 +20,26 @@ name: New App Version
 on:
   workflow_dispatch:
     inputs:
-      release-type:
-        type: choice
-        description: 'Release type (one of): major, minor, path'
-        default: ' '
-        required: false
-        options:
-          - major
-          - minor
-          - patch
-          - ' '
+      # release-type:
+      #   type: choice
+      #   description: 'Release type (one of): major, minor, path'
+      #   default: ' '
+      #   required: false
+      #   options:
+      #     - major
+      #     - minor
+      #     - patch
+      #     - ' '
 
       new-app-version:
         type: string
-        description: "Add a new app version manually if you didn't select release type"
+        description: |
+          Rules
+
+          Production build => 24.10.2 (Ensure that the version is unique and does not contain any suffixes)
+          Development build -> e.g. 24.10.1-dev
+          Staging build (not enabled yet) -> e.g. 24.10.1-staging
+
         required: false
         default: ''
 

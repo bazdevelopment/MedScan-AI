@@ -37,7 +37,7 @@
     "test:watch": "pnpm run test --watch",
     "install-maestro": "curl -Ls 'https://get.maestro.mobile.dev' | bash",
     "e2e-test": "maestro test .maestro/ -e APP_ID=com.x-ray-analizer.development",
-    "eas-build-pre-install": "pnpm run decode_google_services",
+    "eas-build-pre-install": "pnpm run decode-google-services",
     "decode-google-services": "./scripts/decode_google_services.sh"
   },
   "dependencies": {

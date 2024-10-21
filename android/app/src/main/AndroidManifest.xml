@@ -28,6 +28,7 @@
         <data android:scheme="x-ray-analizer"/>
         <data android:scheme="com.xrayanalizer.development"/>
         <data android:scheme="exp+x-ray-analyzer"/>
+        <data android:scheme="com.xrayanalizer"/>
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" android:exported="false"/>

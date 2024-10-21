@@ -50,7 +50,15 @@ jobs:
       - name: 'Load environment variables'
         run: |
           # Define the environment file name based on the input environment
-          ENV_FILE=".env.${{ inputs.environment }}"
+          APP_ENV="production"
+          ENV_FILE=".env.${APP_ENV}"
+
+           echo "APP_ENV: ${APP_ENV}"
+           echo "ENV_FILE: ${ENV_FILE}"
+           echo "Secrets : ${{fromJson(secrets)}}"
+           echo "Vars : ${{fromJson(vars)}}"
+           echo "Input : ${{fromJson(inputs)}}"
+           echo "Env : ${{fromJson(env)}}"
 
           # Create the environment file (use $ENV_FILE variable)
           touch $ENV_FILE

@@ -12,7 +12,7 @@ name: EAS Development Build (Android & IOS) (EAS)
 on:
   push:
     tags:
-      - 'development/*' # Only triggers for tags that start with 'development/'
+      - '*-dev' # Matches tags ending with '-dev'
 
 jobs:
   Build:

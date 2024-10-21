@@ -34,3 +34,7 @@ To run the app on Android
 ```sh
 pnpm android
 ```
+
+## 👨🏼‍🔧 Troubleshooting
+
+-np versions above "^8.0.4" do not support only version param, they require patch | minor | major | prepatch | preminor | premajor | prerelease |

@@ -12,7 +12,7 @@ name: EAS Production Build (Android & IOS) (EAS)
 on:
   push:
     tags:
-      - '*'
+      - 'production/*' # Only triggers for tags that start with 'production/'
 
 jobs:
   Build:

@@ -12,7 +12,7 @@ name: EAS Production Build (Android & IOS) (EAS)
 on:
   push:
     tags:
-      - '[0-9]*.[0-9]*.[0-9]*' # Matches tags like 1.0.0, 2.5.3, etc. (no suffixes like -dev, -staging)
+      - '^v?[0-9]+\.[0-9]+\.[0-9]+$' # Matches tags like v1.0.0, v2.5.3, etc. (no suffixes like -dev, -staging)
 
 jobs:
   Build:

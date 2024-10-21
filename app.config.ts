@@ -3,6 +3,8 @@ import type { ConfigContext, ExpoConfig } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
 
+console.log('ClientEnv', ClientEnv);
+console.log('env', Env);
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: Env.NAME,

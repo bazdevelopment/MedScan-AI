@@ -110,8 +110,8 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.release-type }}" ]; then
             echo "Running app-release with app version: ${{ github.event.inputs.release-type }}"
-            pnpm app-release ${{ github.event.inputs.release-type }} --tag  ${{ inputs.environment }}/$(date +'%Y-%m-%d %H:%M')
+            pnpm app-release ${{ github.event.inputs.release-type }} --tag=${{ inputs.environment }}/$(date +'%Y-%m-%d %H:%M')
           else
             echo "Running app-release with release type: ${{ github.event.inputs.new-app-version }} only."
-            pnpm app-release ${{ github.event.inputs.new-app-version }}  --tag  ${{ inputs.environment }}/${{ github.event.inputs.new-app-version }}-$(date +'%Y-%m-%d %H:%M')
+            pnpm app-release ${{ github.event.inputs.new-app-version }}  --tag=${{ inputs.environment }}/${{ github.event.inputs.new-app-version }}-$(date +'%Y-%m-%d %H:%M')
           fi

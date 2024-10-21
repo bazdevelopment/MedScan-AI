@@ -20,5 +20,7 @@ googleServices
 
 expo-env.d.ts
 # Ignore environment variable files
+.env.development
+.env.production
 credentials.json
 # @end expo-cli

@@ -119,9 +119,9 @@ jobs:
           echo "show env variables ${{toJson(env.vars)}}"
           echo "show env variables: $ENV_FILE"
 
-      - name: Test printing your secret (Remove this step in production)
-        run: |
-          cat .env.production
+      # - name: Test printing your secret (Remove this step in production)
+      #   run: |
+      #     cat .env.production
       # - name: Load environment variables
       #   run: |
       #     # Determine the environment and load the appropriate variables

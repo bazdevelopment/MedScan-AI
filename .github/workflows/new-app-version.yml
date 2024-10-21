@@ -37,7 +37,9 @@ on:
           Rules
 
           Production build => 24.10.2 (Ensure that the version is unique and does not contain any suffixes)
+
           Development build -> e.g. 24.10.1-dev
+
           Staging build (not enabled yet) -> e.g. 24.10.1-staging
 
         required: false

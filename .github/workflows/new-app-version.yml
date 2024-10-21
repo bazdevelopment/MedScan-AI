@@ -106,7 +106,8 @@ jobs:
             echo "Loading development environment variables"
             echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
             echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
-
+            
+            echo "APP_ENV=${{inputs.environment }}" >> $ENV_FILE
             echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
             echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
 

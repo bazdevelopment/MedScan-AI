@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>951069774280-pkev7071pf8biurjs6n439uf6fnqldqp.apps.googleusercontent.com</string>
+	<string>152612175524-0kv1mo3cedvf6i73ht9c119dqf27l9e8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.951069774280-pkev7071pf8biurjs6n439uf6fnqldqp</string>
+	<string>com.googleusercontent.apps.152612175524-0kv1mo3cedvf6i73ht9c119dqf27l9e8</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>951069774280-776570j92ivn6qkepsl55fb800qk8gq8.apps.googleusercontent.com</string>
+	<string>152612175524-3o36eokb2917kmendir1mughqfqvfl5d.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCqyQmLdkaRIiz_ScQwsRqC6EX4VXbVDcg</string>
+	<string>AIzaSyCKF-fHHrDPfmNo1LPsJPviCzfcVlzgTGQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>951069774280</string>
+	<string>152612175524</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.x-ray-analizer.development</string>
+	<string>com.x-ray-analizer</string>
 	<key>PROJECT_ID</key>
-	<string>x-ray-analizer-dev</string>
+	<string>x-ray-analizer-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>x-ray-analizer-dev.appspot.com</string>
+	<string>x-ray-analizer-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:951069774280:ios:df6eadcc996eecd3ddb0fd</string>
+	<string>1:152612175524:ios:4743964fce9e1d50573031</string>
 </dict>
 </plist>

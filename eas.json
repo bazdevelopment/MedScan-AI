@@ -7,6 +7,7 @@
     "production": {
       "channel": "production",
       "distribution": "store",
+      "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
         "image": "latest"
@@ -28,6 +29,7 @@
     "staging": {
       "channel": "staging",
       "distribution": "internal",
+      "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
         "image": "latest"
@@ -50,6 +52,7 @@
     "development": {
       "developmentClient": false, //change it to true if you want to debug the build
       "distribution": "internal",
+      "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
         "image": "latest"

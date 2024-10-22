@@ -7,7 +7,7 @@
 #         - EXPO_TOKEN: Expo token to authenticate with EAS
 #         - You can get it from https://expo.dev/settings/access-tokens
 
-name: EAS Production Build (Android & IOS) (EAS)
+name: EAS Staging Build (Android & IOS) (EAS)
 
 on:
   push:

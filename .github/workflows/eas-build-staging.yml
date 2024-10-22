@@ -1,0 +1,89 @@
+# ✍️ Description:
+# This workflow is used to trigger a build on EAS for the production environment.
+# It will run on every GitHub release published on the repo or can be triggered manually from the actions tab.
+# This workflow will use ./actions/eas-build action to trigger the build on EAS with staging env.
+
+# 🚨 GITHUB SECRETS REQUIRED:
+#         - EXPO_TOKEN: Expo token to authenticate with EAS
+#         - You can get it from https://expo.dev/settings/access-tokens
+
+name: EAS Production Build (Android & IOS) (EAS)
+
+on:
+  push:
+    tags:
+      - '*-staging' # Matches tags ending with '-staging'
+
+jobs:
+  Build:
+    name: EAS Production Build (Android & IOS) (EAS)
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+      - name: 📦 Checkout project repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node + PNPM + install deps
+        uses: ./.github/actions/setup-node-pnpm-install
+
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          # Use Node.js to extract the version
+          VERSION=$(node -p "require('./package.json').version")
+          # Set the version as an environment variable for later steps
+          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: 'Load environment variables'
+        run: |
+          # Define the environment file name based on the input environment
+          APP_ENV="production"
+          ENV_FILE=".env.${APP_ENV}"
+
+           echo "APP_ENV: ${APP_ENV}"
+           echo "ENV_FILE: ${ENV_FILE}"
+           echo "Secrets : ${{toJson(secrets)}}"
+           echo "Vars : ${{toJson(vars)}}"
+           echo "Input : ${{toJson(inputs)}}"
+           echo "Env : ${{toJson(env)}}"
+
+          # Create the environment file (use $ENV_FILE variable)
+          touch $ENV_FILE
+
+          # Export Google Services JSON secrets to the GitHub environment
+          echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
+          echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
+
+          # Append environment variables to the defined env file
+          echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
+          echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+
+      - name: 🧑‍💻 Decode google services
+        run: |
+          echo "Run decode services command"
+          pnpm run decode-google-services
+
+      - name: 📦 Set Up JDK
+        uses: ./.github/actions/setup-jdk-generate-apk
+        with:
+          APP_ENV: production
+
+      - name: ⏱️ EAS Build
+        uses: ./.github/actions/eas-build
+        with:
+          APP_ENV: staging #do not use production because it will change the eas build profile to --production
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
+          VERSION: ${{ env.PACKAGE_VERSION }}
+          FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
+          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT }}
+          IOS: false # TODO: set as true when IOS account is ready
+

@@ -37,7 +37,7 @@ on:
           **Rules:**
 
           Production build => 24.10.2 (Ensure that the version is unique and does not contain any suffixes); 
-          Staging build (not enabled yet) -> e.g. 24.10.1-staging."
+          Staging build -> e.g. 24.10.1-staging" (uses prod configs)
           Development build -> e.g. 24.10.1-dev;
 
         required: false

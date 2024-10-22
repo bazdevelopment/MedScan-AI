@@ -37,7 +37,7 @@
         "image": "latest"
       },
       "env": {
-        "APP_ENV": "staging",
+        "APP_ENV": "production", // by default was set to "staging" but we want to run staging with the prod configs
         "EXPO_NO_DOTENV": "1",
         "FLIPPER_DISABLE": "1"
       },

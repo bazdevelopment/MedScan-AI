@@ -48,7 +48,7 @@
       }
     },
     "development": {
-      "developmentClient": true,
+      "developmentClient": false, //change it to true if you want to debug the build
       "distribution": "internal",
       "pnpm": "8.15.4",
       "ios": {

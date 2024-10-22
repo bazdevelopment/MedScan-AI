@@ -14,7 +14,9 @@ export const checkForAppUpdate = async (): Promise<{
 }> => {
   try {
     // Fetch and activate the latest remote config
-    await remoteConfig().fetchAndActivate();
+    await remoteConfig()
+      .fetchAndActivate()
+      .catch((error) => alert(`remote config catch, ${JSON.stringify(error)}`));
 
     // Get all the configuration values
     const config = remoteConfig().getAll();
@@ -25,6 +27,7 @@ export const checkForAppUpdate = async (): Promise<{
 
     return { isUpdateRequired };
   } catch (error) {
+    alert(`checkForAppUpdate catch, ${JSON.stringify(error)}`);
     console.error('Error fetching or activating remote config:', error);
 
     throw new Error(

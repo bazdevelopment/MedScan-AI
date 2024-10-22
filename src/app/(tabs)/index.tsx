@@ -1,5 +1,5 @@
 import { reports } from '__mocks__/reports';
-import { firebaseCloudFunctionsInstance } from 'firebase/config';
+import { firebaseApp, firebaseCloudFunctionsInstance } from 'firebase/config';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import React, { useEffect } from 'react';
 
@@ -15,7 +15,11 @@ const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
-  checkForAppUpdate();
+  const getAppInfo = async () => {
+    const info = firebaseApp.app();
+    alert(JSON.stringify(info));
+    console.log('info', info);
+  };
 
   useEffect(() => {
     const handleFirebase = async () => {
@@ -27,6 +31,8 @@ export default function Home() {
     };
 
     handleFirebase();
+    checkForAppUpdate();
+    getAppInfo();
   }, []);
   return (
     <ParallaxScrollView

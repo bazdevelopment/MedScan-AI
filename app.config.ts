@@ -15,6 +15,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
+  androidStatusBar: {
+    barStyle: 'light-content',
+    backgroundColor: '#060047',
+    translucent: true,
+  },
   splash: {
     image: './assets/splash.png',
     resizeMode: 'cover',

@@ -28,13 +28,13 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>x-ray-analizer</string>
-          <string>com.x-ray-analizer</string>
+          <string>com.x-ray-analizer.development</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.googleusercontent.apps.152612175524-0kv1mo3cedvf6i73ht9c119dqf27l9e8</string>
+          <string>com.googleusercontent.apps.951069774280-pkev7071pf8biurjs6n439uf6fnqldqp</string>
         </array>
       </dict>
       <dict>
@@ -61,6 +61,7 @@
     <string>Allow $(PRODUCT_NAME) to access your photo</string>
     <key>NSUserActivityTypes</key>
     <array>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>

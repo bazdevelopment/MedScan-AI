@@ -7,14 +7,12 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import * as admin from 'firebase-admin';
 import * as logger from 'firebase-functions/logger';
 import * as functions from 'firebase-functions/v1';
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+import * as userFunctions from './user';
 
-admin.initializeApp();
+const euFuntions = functions.region('europe-west1');
 
 export const getHelloWorld = functions
   .region('europe-west1') // Specify the region here
@@ -31,3 +29,16 @@ export const getHelloWorld = functions
     }
     return { message: data }; // Return a JSON response
   });
+
+export const createAnonymousAccount = euFuntions.https.onCall(
+  userFunctions.createAnonymousAccountHandler,
+);
+
+export const incrementUserScans = euFuntions.https.onCall(
+  userFunctions.incrementUserScans,
+);
+export const updateUserSubscription = euFuntions.https.onCall(
+  userFunctions.updateUserSubscription,
+);
+
+export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);

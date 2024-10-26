@@ -26,7 +26,6 @@ export const checkForAppUpdate = async (): Promise<{
     return { isUpdateRequired };
   } catch (error) {
     console.error('Error fetching or activating remote config:', error);
-
     throw new Error(
       `Failed to fetch and activate remote config: ${error instanceof Error ? error.message : 'Unknown error'}`,
     );

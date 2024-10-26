@@ -1,24 +1,50 @@
-import { useRouter } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
+import { ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 
-import type { LoginFormProps } from '@/components/login-form';
-import { LoginForm } from '@/components/login-form';
-import { useAuth } from '@/core';
-import { FocusAwareStatusBar } from '@/ui';
+import { useCreateAnonymousAccount } from '@/api/user/user.hooks';
+import { Button, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 
 export default function Login() {
-  const router = useRouter();
-  const signIn = useAuth.use.signIn();
-
-  const onSubmit: LoginFormProps['onSubmit'] = (data) => {
-    console.log(data);
-    signIn({ access: 'access-token', refresh: 'refresh-token' });
-    router.push('/');
-  };
   return (
     <>
       <FocusAwareStatusBar />
-      <LoginForm onSubmit={onSubmit} />
+      <LoginFrm />
     </>
   );
 }
+
+const LoginFrm = () => {
+  const { mutate: handleSubmit, isPending } = useCreateAnonymousAccount();
+
+  const [userName, setUserName] = useState('');
+
+  const handleUpdateUserName = (text: string) => setUserName(text);
+
+  return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior="padding"
+      keyboardVerticalOffset={10}
+    >
+      <View className="flex-1 justify-center p-4">
+        {isPending && <ActivityIndicator />}
+        <Text testID="form-title" className="pb-6 text-center text-2xl">
+          Sign In
+        </Text>
+
+        <Input
+          testID="name"
+          label="Name"
+          value={userName}
+          onChangeText={handleUpdateUserName}
+        />
+
+        <Button
+          testID="login-button"
+          label="Login"
+          onPress={() => handleSubmit({ userName })}
+        />
+      </View>
+    </KeyboardAvoidingView>
+  );
+};

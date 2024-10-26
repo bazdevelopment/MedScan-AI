@@ -1,5 +1,4 @@
 /* eslint-disable max-lines-per-function */
-import { StatusBar } from 'expo-status-bar';
 import React, { cloneElement, useState } from 'react';
 import {
   type NativeScrollEvent,
@@ -99,7 +98,7 @@ const ParallaxScrollView = ({
         onMomentumScrollEnd={onMomentumScrollEnd}
         renderHeader={() => (
           <View style={{ height: scrollHeight }}>
-            <StatusBar hidden />
+            {/* <StatusBar hidden /> */}
             {cloneElement(ForegroundComponent, { scrollValue })}
           </View>
         )}

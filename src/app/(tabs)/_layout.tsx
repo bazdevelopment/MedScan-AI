@@ -1,37 +1,24 @@
 /* eslint-disable max-lines-per-function */
-import { SplashScreen, Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 import { useColorScheme } from 'nativewind';
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 
 import { TabBarIcon } from '@/components/tab-bar-icon';
-import { useAuth } from '@/core';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
+import * as storage from '@/core/storage';
 import { colors } from '@/ui';
 
 export default function TabLayout() {
-  const status = useAuth.use.status();
-  // const [isFirstTime] = useIsFirstTime();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
+  const isLoggedIn = !!storage.getItem('userId');
 
-  const hideSplash = useCallback(async () => {
-    await SplashScreen.hideAsync();
-  }, []);
-
-  useEffect(() => {
-    if (status !== 'idle') {
-      setTimeout(() => {
-        hideSplash();
-      }, 1000);
-    }
-  }, [hideSplash, status]);
-
-  // if (isFirstTime) {
-  //   return <Redirect href="/onboarding" />;
-  // }
+  if (!isLoggedIn) {
+    return <Redirect href="/login" />;
+  }
 
   return (
     <Tabs

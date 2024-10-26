@@ -3,7 +3,6 @@ import type { ConfigContext, ExpoConfig } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
 
-console.log('ClientEnv', ClientEnv);
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: Env.NAME,
@@ -15,6 +14,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
+  androidStatusBar: {
+    barStyle: 'light-content',
+    backgroundColor: '#060047',
+    translucent: true,
+  },
   splash: {
     image: './assets/splash.png',
     resizeMode: 'cover',
@@ -38,6 +42,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#2E3C4B',
     },
+
     package: Env.PACKAGE,
   },
   web: {

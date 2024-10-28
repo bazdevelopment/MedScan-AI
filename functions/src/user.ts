@@ -66,6 +66,7 @@ const getUserInfo = async (data: { userId: string }) => {
   const { userId } = data;
   const userDoc = db.collection('users').doc(userId);
   const userInfo = await userDoc.get();
+
   if (!userInfo.exists) {
     throw new functions.https.HttpsError('not-found', 'User does not exist.');
   }

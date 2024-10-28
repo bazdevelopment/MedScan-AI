@@ -10,6 +10,7 @@
 import * as logger from 'firebase-functions/logger';
 import * as functions from 'firebase-functions/v1';
 
+import * as imageFunctions from './image';
 import * as userFunctions from './user';
 
 const euFuntions = functions.region('europe-west1');
@@ -19,7 +20,6 @@ export const getHelloWorld = functions
   .https.onCall((data, context) => {
     logger.info('Hello logs!', { structuredData: true });
     const req = context.rawRequest;
-
     const authorizationHeader = req.get('Authorization');
     if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
       throw new functions.https.HttpsError(
@@ -42,3 +42,7 @@ export const updateUserSubscription = euFuntions.https.onCall(
 );
 
 export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);
+
+export const analyzeImage = euFuntions.https.onCall(
+  imageFunctions.analyzeImage,
+);

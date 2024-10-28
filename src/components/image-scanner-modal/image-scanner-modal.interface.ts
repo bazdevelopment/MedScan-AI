@@ -1,6 +1,8 @@
 export interface IImageScannerModal {
   visible: boolean;
   onClose: () => void;
+  onRetry: () => void;
   imagePath: string;
-  goToNextScreen: () => void;
+  error: string;
+  isPending: boolean;
 }

@@ -3,6 +3,8 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
+import { getImageExtension } from '../get-image-extension';
+
 interface IMediaPicker {
   onChooseImageFromGallery: () => void;
   onChooseFromFiles: () => void;
@@ -35,6 +37,7 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
         allowsEditing: true, //todo: make sure in the future that you want to allow editing
         aspect: [4, 3],
         quality: 1,
+        base64: true,
       });
 
       // Check if the user didn't cancel the action and a URI is available
@@ -44,7 +47,12 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
 
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
-      onUploadFinished && onUploadFinished({ file: result.assets[0].uri });
+      onUploadFinished &&
+        onUploadFinished({
+          base64Image: result.assets[0].base64,
+          imageMimeType: result.assets[0].mimeType,
+          imageExtension: getImageExtension(result.assets[0].fileName),
+        });
     } catch (error) {
       alert(
         'Something went wrong while selecting the image. Please try again.',

@@ -16,7 +16,6 @@ const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
   checkForAppUpdate();
-
   useEffect(() => {
     const handleFirebase = async () => {
       try {

@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
+import { useAnalyzeImage } from '@/api/image/image.hooks';
 import GradientText from '@/components/gradient-text';
 import ImageScannerModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
+import * as storage from '@/core/storage';
 import { Button, colors, Image, Text } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
 
@@ -18,6 +20,15 @@ const FilePreviewScreen = ({
   const [promptMessage, setPromptMessage] = useState('');
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const {
+    mutate: handleAnalyzeImageUsingAi,
+    error,
+    isPending,
+  } = useAnalyzeImage({ onSuccessCallback: goToNextScreen });
+  // const { data } = useUser();
+  //todo: to be changed in the future with useUser hook
+  const userId = storage.getItem('userId') as string;
 
   const handleUpdatePromptMessage = (message: string) => {
     setPromptMessage(message);
@@ -33,7 +44,9 @@ const FilePreviewScreen = ({
           <View className="w-[90%] self-center rounded-xl">
             <Image
               className="h-[150px] rounded-t-xl"
-              source={collectedData.file}
+              source={{
+                uri: `data:image/jpeg;base64,${collectedData.base64Image}`,
+              }}
               contentFit="cover"
             />
             <View className="space-between flex-row items-end rounded-b-xl bg-slate-100 p-4 dark:bg-charcoal-900">
@@ -41,7 +54,9 @@ const FilePreviewScreen = ({
                 <Text className="font-regular">Uploaded: 01:022 2020-22</Text>
                 <Text className="font-regular text-slate-500">Today</Text>
               </View>
-              <Text className="font-regular text-sm text-slate-500">JPG</Text>
+              <Text className="font-regular text-sm text-slate-500">
+                {collectedData.imageExtension}
+              </Text>
             </View>
           </View>
         </View>
@@ -67,19 +82,33 @@ const FilePreviewScreen = ({
             textClassName="text-md font-bold"
             //todo: add in this function the result of the scan, the scanning will be in this screen
             // onPress={() => goToNextScreen({ promptMessage, additionalInfo })}
-            onPress={() => setIsModalVisible(true)}
+            onPress={() => {
+              setIsModalVisible(true);
+              handleAnalyzeImageUsingAi({
+                base64Image: collectedData.base64Image,
+                userId,
+                imageType: collectedData.imageMimeType,
+              });
+            }}
             withGradientText
             icon={<WandSparkle width={20} height={20} withLinearGradient />}
           />
         </View>
       </ScrollView>
-
       {isModalVisible && (
         <ImageScannerModal
           visible={isModalVisible}
           onClose={() => setIsModalVisible(false)}
-          imagePath={collectedData.file}
-          goToNextScreen={goToNextScreen}
+          imagePath={collectedData.base64Image}
+          error={error}
+          isPending={isPending}
+          onRetry={() =>
+            handleAnalyzeImageUsingAi({
+              base64Image: collectedData.base64Image,
+              userId,
+              imageType: collectedData.imageMimeType,
+            })
+          }
         />
       )}
     </KeyboardStickyView>

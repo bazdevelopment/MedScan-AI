@@ -3,6 +3,7 @@ import React, { cloneElement, useState } from 'react';
 import {
   type NativeScrollEvent,
   type ScrollView,
+  StatusBar,
   useWindowDimensions,
   View,
 } from 'react-native';
@@ -98,7 +99,7 @@ const ParallaxScrollView = ({
         onMomentumScrollEnd={onMomentumScrollEnd}
         renderHeader={() => (
           <View style={{ height: scrollHeight }}>
-            {/* <StatusBar hidden /> */}
+            <StatusBar hidden />
             {cloneElement(ForegroundComponent, { scrollValue })}
           </View>
         )}

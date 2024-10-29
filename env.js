@@ -80,9 +80,9 @@ const client = z.object({
 
   // ADD YOUR CLIENT ENV VARS HERE
 
-  GOOGLE_SERVICES_JSON_PATH:z.string().optional(),
-  GOOGLE_SERVICES_PLIST_PATH:z.string().optional(),
-  ANTHROPIC_API_KEY:z.string()
+  GOOGLE_SERVICES_JSON_PATH:z.string().optional(), // optional for CI
+  GOOGLE_SERVICES_PLIST_PATH:z.string().optional(), // optional for CI
+  ANTHROPIC_API_KEY:z.string().optional() // optional for CI
 });
 
 const buildTime = z.object({

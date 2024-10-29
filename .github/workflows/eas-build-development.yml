@@ -58,6 +58,7 @@ jobs:
           # Append environment variables to the defined env file
           echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
           echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+          echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
 
       - name: 🧑‍💻 Decode google services
         run: |

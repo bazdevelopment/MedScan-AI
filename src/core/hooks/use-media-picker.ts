@@ -33,7 +33,7 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
 
       // Launch the image library picker
       const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true, //todo: make sure in the future that you want to allow editing
         aspect: [4, 3],
         quality: 1,
@@ -49,9 +49,11 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
       handleLoadFile(result.assets[0].uri);
       onUploadFinished &&
         onUploadFinished({
-          base64Image: result.assets[0].base64,
-          imageMimeType: result.assets[0].mimeType,
-          imageExtension: getImageExtension(result.assets[0].fileName),
+          fileBase64: result.assets[0].base64,
+          fileMimeType: result.assets[0].mimeType,
+          fileExtension: getImageExtension(result.assets[0].fileName),
+          fileUri: result.assets[0].uri,
+          fileName: result.assets[0].fileName,
         });
     } catch (error) {
       alert(

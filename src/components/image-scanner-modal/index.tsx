@@ -11,7 +11,7 @@ import { imageScannerModalStyles } from './image-scanner-modal.styles';
 const ImageScannerModal = ({
   visible,
   onClose,
-  imagePath,
+  filePath,
   error,
   isPending,
   onRetry,
@@ -28,7 +28,7 @@ const ImageScannerModal = ({
           <View>
             <Image
               source={{
-                uri: `data:image/jpeg;base64,${imagePath}`,
+                uri: `data:image/jpeg;base64,${filePath}`,
               }}
               className="h-[300px] w-[300px] rounded-xl"
               resizeMode="cover"

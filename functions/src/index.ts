@@ -46,3 +46,8 @@ export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);
 export const analyzeImage = euFuntions.https.onCall(
   imageFunctions.analyzeImage,
 );
+
+/** Make sure you use onRequest instead of onCall for analyzeVideo function because onCall do not support FormData */
+export const analyzeVideo = euFuntions.https.onRequest(
+  imageFunctions.analyzeVideo,
+);

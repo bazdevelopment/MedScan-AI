@@ -117,10 +117,10 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.release-type }}" ]; then
             echo "Running app-release with release type: ${{ github.event.inputs.release-type }}"
-            pnpm app-release ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
+            pnpm app-release --branch=${{ inputs.environment }} ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
           else
             echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
-            pnpm app-release ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
+            pnpm app-release --branch=${{ inputs.environment }} ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
           fi
 
       - name: 🏃‍♂️ Align native code with version changes by running prebuild

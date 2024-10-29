@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
-import { useAnalyzeImage } from '@/api/image/image.hooks';
+import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
 import GradientText from '@/components/gradient-text';
 import ImageScannerModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
@@ -13,6 +13,49 @@ import { WandSparkle } from '@/ui/assets/icons';
 
 import { type IFilePreviewScreen } from './file-preview-screen.interface';
 
+const videoExtensions = [
+  'mp4', // MPEG-4 Video
+  'mkv', // Matroska Video
+  'webm', // WebM Video
+  'flv', // Flash Video
+  'vob', // Video Object (DVD Video)
+  'ogv', // Ogg Video
+  'ogg', // Ogg Multimedia (may contain video)
+  'avi', // Audio Video Interleave
+  'wmv', // Windows Media Video
+  'mov', // QuickTime Movie
+  'qt', // QuickTime Movie
+  'm4v', // MPEG-4 Video
+  'mpg', // MPEG Video
+  'mpeg', // MPEG Video
+  '3gp', // 3GPP Multimedia File
+  '3g2', // 3GPP2 Multimedia File
+  'f4v', // Flash MP4 Video
+  'f4p', // Flash MP4 Protected Video
+  'f4a', // Flash MP4 Audio
+  'f4b', // Flash MP4 Audiobook
+];
+
+const createFormDataVidePayload = ({
+  fileUri,
+  fileName,
+  fileMimeType,
+}: {
+  fileUri: string;
+  fileName: string;
+  fileMimeType: string;
+}) => {
+  const formData = new FormData();
+  // @ts-expect-error: special react native format for form data
+  formData.append('video', {
+    uri: fileUri,
+    name: fileName ?? fileUri.split('/').pop(),
+    type: fileMimeType,
+  });
+
+  return formData;
+};
+
 const FilePreviewScreen = ({
   collectedData,
   goToNextScreen,
@@ -21,11 +64,40 @@ const FilePreviewScreen = ({
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const payload = createFormDataVidePayload({
+    fileUri: collectedData.fileUri,
+    fileName: collectedData.fileName,
+    fileMimeType: collectedData.fileMimeType,
+  });
+
+  const isVideo = videoExtensions.includes(
+    collectedData.fileExtension.toLowerCase(),
+  );
+
   const {
     mutate: handleAnalyzeImageUsingAi,
-    error,
-    isPending,
+    error: errorAnalyzeImage,
+    isPending: isPendingAnalyzeImage,
   } = useAnalyzeImage({ onSuccessCallback: goToNextScreen });
+
+  const {
+    mutate: handleAnalyzeVideoUsingAI,
+    error: errorAnalyzeVideo,
+    isPending: isPendingAnalyzeVideo,
+  } = useAnalyzeVideo({ onSuccessCallback: goToNextScreen });
+
+  const onAnalyze = () => {
+    if (isVideo) {
+      handleAnalyzeVideoUsingAI(payload);
+    } else {
+      handleAnalyzeImageUsingAi({
+        base64Image: collectedData.fileBase64,
+        userId,
+        imageType: collectedData.fileMimeType,
+      });
+    }
+  };
+
   // const { data } = useUser();
   //todo: to be changed in the future with useUser hook
   const userId = storage.getItem('userId') as string;
@@ -45,7 +117,7 @@ const FilePreviewScreen = ({
             <Image
               className="h-[150px] rounded-t-xl"
               source={{
-                uri: `data:image/jpeg;base64,${collectedData.base64Image}`,
+                uri: `data:image/jpeg;base64,${collectedData.fileBase64}`,
               }}
               contentFit="cover"
             />
@@ -55,7 +127,7 @@ const FilePreviewScreen = ({
                 <Text className="font-regular text-slate-500">Today</Text>
               </View>
               <Text className="font-regular text-sm text-slate-500">
-                {collectedData.imageExtension}
+                {collectedData.fileExtension}
               </Text>
             </View>
           </View>
@@ -84,11 +156,7 @@ const FilePreviewScreen = ({
             // onPress={() => goToNextScreen({ promptMessage, additionalInfo })}
             onPress={() => {
               setIsModalVisible(true);
-              handleAnalyzeImageUsingAi({
-                base64Image: collectedData.base64Image,
-                userId,
-                imageType: collectedData.imageMimeType,
-              });
+              onAnalyze();
             }}
             withGradientText
             icon={<WandSparkle width={20} height={20} withLinearGradient />}
@@ -99,16 +167,11 @@ const FilePreviewScreen = ({
         <ImageScannerModal
           visible={isModalVisible}
           onClose={() => setIsModalVisible(false)}
-          imagePath={collectedData.base64Image}
-          error={error}
-          isPending={isPending}
-          onRetry={() =>
-            handleAnalyzeImageUsingAi({
-              base64Image: collectedData.base64Image,
-              userId,
-              imageType: collectedData.imageMimeType,
-            })
-          }
+          filePath={isVideo ? collectedData.fileUri : collectedData.fileBase64}
+          isVideo={isVideo}
+          error={errorAnalyzeImage || errorAnalyzeVideo}
+          isPending={isPendingAnalyzeImage || isPendingAnalyzeVideo}
+          onRetry={onAnalyze}
         />
       )}
     </KeyboardStickyView>

@@ -3,18 +3,21 @@ import LottieView from 'lottie-react-native';
 import React from 'react';
 import { Image, Modal, View } from 'react-native';
 
+import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
 import { Button, Text } from '@/ui';
 
+import VideoPlayer from '../video';
 import { type IImageScannerModal } from './image-scanner-modal.interface';
 import { imageScannerModalStyles } from './image-scanner-modal.styles';
 
-const ImageScannerModal = ({
+const ScanningModal = ({
   visible,
   onClose,
   filePath,
   error,
   isPending,
   onRetry,
+  isVideo,
 }: IImageScannerModal) => {
   return (
     <Modal
@@ -26,13 +29,20 @@ const ImageScannerModal = ({
       <BlurView intensity={80} className="flex-1" tint="dark">
         <View className="flex-1 items-center justify-center">
           <View>
-            <Image
-              source={{
-                uri: `data:image/jpeg;base64,${filePath}`,
-              }}
-              className="h-[300px] w-[300px] rounded-xl"
-              resizeMode="cover"
-            />
+            {isVideo ? (
+              <VideoPlayer
+                videoSource={filePath as string}
+                additionalVideoStyles={{ width: 300, height: 300 }}
+              />
+            ) : (
+              <Image
+                source={{
+                  uri: getBase64ImageUri(filePath as string),
+                }}
+                className="h-[300px] w-[300px] rounded-xl"
+                resizeMode="cover"
+              />
+            )}
 
             {isPending && (
               <View className="absolute inset-0 items-center justify-center">
@@ -58,4 +68,4 @@ const ImageScannerModal = ({
   );
 };
 
-export default ImageScannerModal;
+export default ScanningModal;

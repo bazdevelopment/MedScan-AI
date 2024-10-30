@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { DEVICE_TYPE } from '@/core/device-type';
+import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import { colors } from '@/ui';
 
 export const getBottomTabBarStyle = (isDark: boolean) =>

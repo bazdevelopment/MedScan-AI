@@ -13,7 +13,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 import { APIProvider } from '@/api';
 import { hydrateAuth, loadSelectedTheme } from '@/core';
-import { useThemeConfig } from '@/core/use-theme-config';
+import { useThemeConfig } from '@/core/utilities/use-theme-config';
 
 export { ErrorBoundary } from 'expo-router';
 

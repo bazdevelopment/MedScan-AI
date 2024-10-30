@@ -1,4 +1,6 @@
+import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
+
 export interface IFilePreviewScreen {
-  collectedData: object;
+  collectedData: ICollectedData;
   goToNextScreen: () => void;
 }

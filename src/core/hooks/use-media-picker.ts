@@ -3,16 +3,14 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
-import { getImageExtension } from '../get-image-extension';
+import { type ICollectedData } from '../flows/upload-file-flow/upload-file-flow.interface';
+import { getImageExtension } from '../utilities/get-image-extension';
 
 interface IMediaPicker {
-  onChooseImageFromGallery: () => void;
-  onChooseFromFiles: () => void;
-  onTakePhoto: () => void;
-  file: string;
+  onUploadFinished: (data: ICollectedData) => void;
 }
 
-export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
+export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
   const [file, setFile] = useState('');
 
   const handleLoadFile = (file: string) => {
@@ -49,9 +47,8 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
       handleLoadFile(result.assets[0].uri);
       onUploadFinished &&
         onUploadFinished({
-          fileBase64: result.assets[0].base64,
           fileMimeType: result.assets[0].mimeType,
-          fileExtension: getImageExtension(result.assets[0].fileName),
+          fileExtension: getImageExtension(result.assets[0].fileName as string),
           fileUri: result.assets[0].uri,
           fileName: result.assets[0].fileName,
         });
@@ -65,7 +62,7 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
     try {
       // Launch the document picker for selecting an image file
       const result = await DocumentPicker.getDocumentAsync({
-        type: 'image/*',
+        type: '*/*',
       });
 
       // Check if the user canceled the action or if the URI is missing
@@ -75,7 +72,12 @@ export const useMediaPiker = ({ onUploadFinished }): IMediaPicker => {
 
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
-      onUploadFinished && onUploadFinished({ file: result.assets[0].uri });
+      onUploadFinished({
+        fileMimeType: result.assets[0].mimeType,
+        fileExtension: getImageExtension(result.assets[0].name),
+        fileUri: result.assets[0].uri,
+        fileName: result.assets[0].name,
+      });
     } catch (error) {
       alert(
         'Something went wrong while picking the document. Please try again.',

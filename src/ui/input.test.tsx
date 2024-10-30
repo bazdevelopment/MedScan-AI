@@ -2,7 +2,12 @@
 import React from 'react';
 import { I18nManager } from 'react-native';
 
-import { cleanup, fireEvent, render, screen } from '@/core/test-utils';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@/core/utilities/test-utils';
 
 import { Input } from './input';
 
@@ -33,7 +38,7 @@ describe('Input component ', () => {
     render(<Input testID="input" placeholder="Enter your username" />);
     expect(screen.getByTestId('input')).toBeOnTheScreen();
     expect(
-      screen.getByPlaceholderText('Enter your username')
+      screen.getByPlaceholderText('Enter your username'),
     ).toBeOnTheScreen();
   });
 
@@ -49,7 +54,7 @@ describe('Input component ', () => {
     expect(screen.getByTestId('input')).toBeOnTheScreen();
 
     expect(screen.getByTestId('input-error')).toHaveTextContent(
-      'This is an error message'
+      'This is an error message',
     );
   });
   it('should render the label, error message & placeholder correctly ', () => {
@@ -59,17 +64,17 @@ describe('Input component ', () => {
         label="Username"
         placeholder="Enter your username"
         error="This is an error message"
-      />
+      />,
     );
     expect(screen.getByTestId('input')).toBeOnTheScreen();
 
     expect(screen.getByTestId('input-label')).toHaveTextContent('Username');
     expect(screen.getByTestId('input-error')).toBeOnTheScreen();
     expect(screen.getByTestId('input-error')).toHaveTextContent(
-      'This is an error message'
+      'This is an error message',
     );
     expect(
-      screen.getByPlaceholderText('Enter your username')
+      screen.getByPlaceholderText('Enter your username'),
     ).toBeOnTheScreen();
   });
 

@@ -6,11 +6,20 @@ import FilePreviewScreen from '@/core/screens/file-preview-screen';
 import GenerateReportScreen from '@/core/screens/generate-report-screen';
 import UploadFileScreen from '@/core/screens/upload-file-screen';
 
+import { type ICollectedData } from './upload-file-flow.interface';
+
 const UploadFileFlow = ({ onSubmitCollectedData }: IFlowModal) => {
-  const [collectedData, setCollectedData] = useState({});
+  const [collectedData, setCollectedData] = useState<ICollectedData>({
+    fileBase64: '',
+    fileName: '',
+    fileUri: '',
+    fileMimeType: '',
+    fileExtension: '',
+    interpretationResult: '',
+  });
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
 
-  const handleGoToNextScreen = (newCollectedData: object) => {
+  const handleGoToNextScreen = (newCollectedData: ICollectedData) => {
     setCollectedData((prevCollectedData) => ({
       ...prevCollectedData,
       ...newCollectedData,

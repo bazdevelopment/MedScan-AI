@@ -1,8 +1,11 @@
+import { type AxiosError } from 'axios';
+
 export interface IImageScannerModal {
   visible: boolean;
   onClose: () => void;
   onRetry: () => void;
-  imagePath: string;
-  error: string;
+  filePath: string | null | undefined;
+  error: AxiosError | null | undefined;
   isPending: boolean;
+  isVideo: boolean;
 }

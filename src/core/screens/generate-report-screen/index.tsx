@@ -5,51 +5,14 @@ import { FinalReportHeader } from '@/components/final-report-header';
 import ParallaxScrollView from '@/components/parallax-scrollview';
 import { Text, View } from '@/ui';
 
+import { type IGenerateReportScreen } from './generate-report-screen.interface';
+
 const PARALLAX_HEIGHT = 100;
 const _HEADER_BAR_HEIGHT = 110;
 const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 300;
 
-const GenerateReportScreen = ({ collectedData }) => {
-  // const [response, setResponse] = useState('');
-  // const generateResponse = async () => {
-  //   try {
-  //     const message = await anthropic.messages.create({
-  //       model: 'claude-3-haiku-20240307',
-  //       max_tokens: 1024,
-  //       messages: [
-  //         {
-  //           role: 'user',
-  //           content: [
-  //             {
-  //               type: 'image',
-  //               source: {
-  //                 type: 'base64',
-  //                 media_type: 'image/png',
-  //                 data: collectedData.base64Image,
-  //               },
-  //             },
-  //             {
-  //               type: 'text',
-  //               text: 'Please analyze this image and describe what you see in detail, consider that you are an expert in analyzing X-Ray images and be professional.',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     });
-
-  //     console.log('message here', message);
-  //     setResponse(message.content[0].text);
-  //     return message;
-  //   } catch (err) {
-  //     console.log('err', err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   generateResponse();
-  // }, []);
-
+const GenerateReportScreen = ({ collectedData }: IGenerateReportScreen) => {
   return (
     <ParallaxScrollView
       parallaxHeight={PARALLAX_HEIGHT}

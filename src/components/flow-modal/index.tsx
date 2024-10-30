@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
+import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
 import { colors } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
 
@@ -20,7 +21,7 @@ const FlowModal = ({
   const isFirstScreenDisplayed = currentScreenIndex === 0;
   const isLastScreenDisplayed = currentScreenIndex === totalSteps - 1;
 
-  const goToNextScreen = (data: object) => onGoNext(data);
+  const goToNextScreen = (data: ICollectedData) => onGoNext(data);
   const currentActiveScreen =
     React.Children.toArray(children)[currentScreenIndex];
 

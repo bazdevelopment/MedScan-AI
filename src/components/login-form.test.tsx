@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { cleanup, fireEvent, render, screen, waitFor } from '@/core/test-utils';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@/core/utilities/test-utils';
 
 import type { LoginFormProps } from './login-form';
 import { LoginForm } from './login-form';
@@ -59,7 +65,7 @@ describe('LoginForm Form ', () => {
         email: 'youssef@gmail.com',
         password: 'password',
       },
-      undefined
+      undefined,
     );
   });
 });

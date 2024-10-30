@@ -118,7 +118,7 @@ export const analyzeVideo = async (req: Request, res: any) => {
         {
           type: 'text',
           text: `Image ${index + 1}:`,
-        } as TextBlockParam, // Explicitly assert type here
+        } as TextBlockParam,
         {
           type: 'image',
           source: {
@@ -126,12 +126,12 @@ export const analyzeVideo = async (req: Request, res: any) => {
             media_type: 'image/jpeg',
             data: base64String,
           },
-        } as ImageBlockParam, // Explicitly assert type here
+        } as ImageBlockParam,
       ]),
       {
         type: 'text',
         text: 'How are these images different?',
-      } as TextBlockParam, // Explicitly assert type here
+      } as TextBlockParam,
     ];
 
     // Initialize Anthropic client

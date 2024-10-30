@@ -5,36 +5,16 @@ import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
 import GradientText from '@/components/gradient-text';
-import ImageScannerModal from '@/components/image-scanner-modal';
+import ScanningModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
+import VideoPlayer from '@/components/video';
+import { VIDEO_EXTENSIONS } from '@/constants/video-extensions';
 import * as storage from '@/core/storage';
+import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
 import { Button, colors, Image, Text } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
 
 import { type IFilePreviewScreen } from './file-preview-screen.interface';
-
-const videoExtensions = [
-  'mp4', // MPEG-4 Video
-  'mkv', // Matroska Video
-  'webm', // WebM Video
-  'flv', // Flash Video
-  'vob', // Video Object (DVD Video)
-  'ogv', // Ogg Video
-  'ogg', // Ogg Multimedia (may contain video)
-  'avi', // Audio Video Interleave
-  'wmv', // Windows Media Video
-  'mov', // QuickTime Movie
-  'qt', // QuickTime Movie
-  'm4v', // MPEG-4 Video
-  'mpg', // MPEG Video
-  'mpeg', // MPEG Video
-  '3gp', // 3GPP Multimedia File
-  '3g2', // 3GPP2 Multimedia File
-  'f4v', // Flash MP4 Video
-  'f4p', // Flash MP4 Protected Video
-  'f4a', // Flash MP4 Audio
-  'f4b', // Flash MP4 Audiobook
-];
 
 const createFormDataVidePayload = ({
   fileUri,
@@ -70,8 +50,8 @@ const FilePreviewScreen = ({
     fileMimeType: collectedData.fileMimeType,
   });
 
-  const isVideo = videoExtensions.includes(
-    collectedData.fileExtension.toLowerCase(),
+  const isVideo = VIDEO_EXTENSIONS.includes(
+    collectedData.fileExtension!.toLowerCase(),
   );
 
   const {
@@ -91,9 +71,9 @@ const FilePreviewScreen = ({
       handleAnalyzeVideoUsingAI(payload);
     } else {
       handleAnalyzeImageUsingAi({
-        base64Image: collectedData.fileBase64,
+        base64Image: collectedData.fileBase64 as string,
         userId,
-        imageType: collectedData.fileMimeType,
+        imageType: collectedData.fileMimeType as string,
       });
     }
   };
@@ -113,14 +93,21 @@ const FilePreviewScreen = ({
     <KeyboardStickyView className="flex-1">
       <ScrollView bounces={false}>
         <View className="bg-primary-300 px-10 pb-14 pt-10 dark:bg-black">
-          <View className="w-[90%] self-center rounded-xl">
-            <Image
-              className="h-[150px] rounded-t-xl"
-              source={{
-                uri: `data:image/jpeg;base64,${collectedData.fileBase64}`,
-              }}
-              contentFit="cover"
-            />
+          <View className="w-full self-center rounded-xl">
+            {isVideo ? (
+              <VideoPlayer videoSource={collectedData.fileUri} />
+            ) : (
+              <Image
+                className="h-[150px] rounded-t-xl"
+                source={{
+                  uri: collectedData.fileBase64
+                    ? getBase64ImageUri(collectedData.fileBase64)
+                    : collectedData.fileUri,
+                }}
+                contentFit="cover"
+              />
+            )}
+
             <View className="space-between flex-row items-end rounded-b-xl bg-slate-100 p-4 dark:bg-charcoal-900">
               <View className="flex-1">
                 <Text className="font-regular">Uploaded: 01:022 2020-22</Text>
@@ -152,8 +139,6 @@ const FilePreviewScreen = ({
             className="bottom-0 mt-4 w-[70%] gap-2 self-center rounded-full bg-white dark:bg-black"
             size="lg"
             textClassName="text-md font-bold"
-            //todo: add in this function the result of the scan, the scanning will be in this screen
-            // onPress={() => goToNextScreen({ promptMessage, additionalInfo })}
             onPress={() => {
               setIsModalVisible(true);
               onAnalyze();
@@ -164,7 +149,7 @@ const FilePreviewScreen = ({
         </View>
       </ScrollView>
       {isModalVisible && (
-        <ImageScannerModal
+        <ScanningModal
           visible={isModalVisible}
           onClose={() => setIsModalVisible(false)}
           filePath={isVideo ? collectedData.fileUri : collectedData.fileBase64}

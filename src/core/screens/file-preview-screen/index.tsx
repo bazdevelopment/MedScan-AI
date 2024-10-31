@@ -36,6 +36,30 @@ const createFormDataVidePayload = ({
   return formData;
 };
 
+const createFormDataImagePayload = ({
+  fileUri,
+  fileName,
+  fileMimeType,
+  userId,
+}: {
+  fileUri: string;
+  fileName: string;
+  fileMimeType: string;
+  userId: string;
+}) => {
+  const formData = new FormData();
+  // @ts-expect-error: special react native format for form data
+  formData.append('image', {
+    uri: fileUri,
+    name: fileName ?? fileUri.split('/').pop(),
+    type: fileMimeType,
+  });
+
+  formData.append('userId', userId);
+
+  return formData;
+};
+
 const FilePreviewScreen = ({
   collectedData,
   goToNextScreen,
@@ -44,10 +68,21 @@ const FilePreviewScreen = ({
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const payload = createFormDataVidePayload({
-    fileUri: collectedData.fileUri,
-    fileName: collectedData.fileName,
-    fileMimeType: collectedData.fileMimeType,
+  // const { data } = useUser();
+  //todo: to be changed in the future with useUser hook
+  const userId = storage.getItem('userId') as string;
+
+  const videoPayload = createFormDataVidePayload({
+    fileUri: collectedData.fileUri as string,
+    fileName: collectedData.fileName as string,
+    fileMimeType: collectedData.fileMimeType as string,
+  });
+
+  const imagePayload = createFormDataImagePayload({
+    fileUri: collectedData.fileUri as string,
+    fileName: collectedData.fileName as string,
+    fileMimeType: collectedData.fileMimeType as string,
+    userId,
   });
 
   const isVideo = VIDEO_EXTENSIONS.includes(
@@ -68,19 +103,11 @@ const FilePreviewScreen = ({
 
   const onAnalyze = () => {
     if (isVideo) {
-      handleAnalyzeVideoUsingAI(payload);
+      handleAnalyzeVideoUsingAI(videoPayload);
     } else {
-      handleAnalyzeImageUsingAi({
-        base64Image: collectedData.fileBase64 as string,
-        userId,
-        imageType: collectedData.fileMimeType as string,
-      });
+      handleAnalyzeImageUsingAi(imagePayload);
     }
   };
-
-  // const { data } = useUser();
-  //todo: to be changed in the future with useUser hook
-  const userId = storage.getItem('userId') as string;
 
   const handleUpdatePromptMessage = (message: string) => {
     setPromptMessage(message);
@@ -95,14 +122,14 @@ const FilePreviewScreen = ({
         <View className="bg-primary-300 px-10 pb-14 pt-10 dark:bg-black">
           <View className="w-full self-center rounded-xl">
             {isVideo ? (
-              <VideoPlayer videoSource={collectedData.fileUri} />
+              <VideoPlayer videoSource={collectedData.fileUri as string} />
             ) : (
               <Image
                 className="h-[150px] rounded-t-xl"
                 source={{
                   uri: collectedData.fileBase64
                     ? getBase64ImageUri(collectedData.fileBase64)
-                    : collectedData.fileUri,
+                    : (collectedData.fileUri as string),
                 }}
                 contentFit="cover"
               />

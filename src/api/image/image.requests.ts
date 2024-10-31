@@ -1,28 +1,20 @@
 import axios from 'axios';
-import { firebaseCloudFunctionsInstance } from 'firebase/config';
 
-/** Get user info  */
-export const analyzeImageUsingAi = async ({
-  userId,
-  base64Image,
-  imageType,
-}: {
-  userId: string;
-  base64Image: string;
-  imageType: string;
-}) => {
+export const analyzeImageUsingAi = async (payload: FormData) => {
   try {
-    const { data } = await firebaseCloudFunctionsInstance.httpsCallable(
-      'analyzeImage',
-    )({
-      userId,
-      base64Image,
-      mediaType: imageType,
-    });
-
-    return data;
+    const response = await axios.post(
+      'https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/analyzeImage',
+      payload,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    return response.data;
   } catch (err: Error) {
-    throw err.message;
+    throw error.message;
   }
 };
 

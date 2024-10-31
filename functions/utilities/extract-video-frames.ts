@@ -41,7 +41,7 @@ export const getBase64ImageFrames = async (
     .filter((fileName) => fileName.endsWith('.jpg'))
     .map((fileName) => {
       const frameBuffer = fs.readFileSync(path.join(framesDir, fileName));
-      return frameBuffer.toString('base64');
+      return convertBufferToBase64(frameBuffer);
     });
 
   // Clean up temporary files
@@ -50,3 +50,6 @@ export const getBase64ImageFrames = async (
 
   return base64Frames;
 };
+
+export const convertBufferToBase64 = (buffer: Buffer) =>
+  buffer.toString('base64');

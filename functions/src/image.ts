@@ -2,40 +2,54 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { ImageBlockParam, TextBlockParam } from '@anthropic-ai/sdk/resources';
 import ffmpegPath from '@ffmpeg-installer/ffmpeg';
-import * as functions from 'firebase-functions/v1';
 import { Request } from 'firebase-functions/v1/https';
 import ffmpeg from 'fluent-ffmpeg';
 
-import { getBase64ImageFrames } from '../utilities/extract-video-frames';
+import {
+  convertBufferToBase64,
+  getBase64ImageFrames,
+} from '../utilities/extract-video-frames';
+import { handleOnRequestError } from '../utilities/handle-on-request-error';
 import { processUploadedFile } from '../utilities/multipart';
 ffmpeg.setFfmpegPath(ffmpegPath.path);
 
-export const analyzeImage = async (data: {
-  userId: string;
-  base64Image: string;
-  mediaType: 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp';
-}) => {
-  const { base64Image, userId } = data;
-
-  if (!base64Image) {
-    throw new functions.https.HttpsError(
-      'invalid-argument',
-      'No image provided',
-    );
-  }
-
-  if (!userId) {
-    throw new functions.https.HttpsError(
-      'invalid-argument',
-      'No userId provided',
-    );
-  }
-  // Initialize Anthropic client
-  const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
-  });
-
+export const analyzeImage = async (req: Request, res: any) => {
   try {
+    res.set('Access-Control-Allow-Origin', '*');
+
+    if (req.method === 'OPTIONS') {
+      res.set('Access-Control-Allow-Methods', 'GET');
+      res.set('Access-Control-Allow-Headers', 'Content-Type');
+      res.set('Access-Control-Max-Age', '3600');
+    }
+
+    const { files, fields } = await processUploadedFile(req);
+
+    const { userId } = fields;
+    const [imageFile] = files;
+
+    if (!userId) {
+      handleOnRequestError({
+        error: { message: 'No user id provided' },
+        res,
+        context: 'Analyze image',
+      });
+    }
+    if (!imageFile.buf) {
+      handleOnRequestError({
+        error: { message: 'No image provided' },
+        res,
+        context: 'Analyze image',
+      });
+    }
+
+    // Initialize Anthropic client
+    const anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    });
+
+    const base64String = convertBufferToBase64(imageFile.buf);
+
     const message = await anthropic.messages.create({
       model: 'claude-3-haiku-20240307',
       max_tokens: 1024,
@@ -47,8 +61,8 @@ export const analyzeImage = async (data: {
               type: 'image',
               source: {
                 type: 'base64',
-                media_type: data.mediaType,
-                data: base64Image,
+                media_type: imageFile.mimeType,
+                data: base64String,
               },
             },
             {
@@ -63,30 +77,19 @@ export const analyzeImage = async (data: {
     const messageContent = message.content[0] as any;
     const textResult: string = messageContent.text;
 
-    // TODO: update the number of scans that user has
-
-    return {
-      message: 'Successfully analyzed base64 image',
-      interpretationResult: textResult,
-    };
+    if (messageContent?.text) {
+      res.status(200).json({
+        success: true,
+        message: 'Successfully analyzed base64 image frames',
+        interpretationResult: textResult,
+      });
+    }
   } catch (error: any) {
-    // Handle specific error types
-    if (error instanceof functions.https.HttpsError) {
-      throw error;
-    }
-
-    // Handle Anthropic API errors
-    if (error.status) {
-      throw new functions.https.HttpsError(
-        'internal',
-        `Anthropic API error: ${error.message}`,
-      );
-    }
-
-    throw new functions.https.HttpsError(
-      'internal',
-      'Failed to analyze X-Ray image',
-    );
+    handleOnRequestError({
+      error,
+      res,
+      context: 'Analyze image',
+    });
   }
 };
 
@@ -112,7 +115,6 @@ export const analyzeVideo = async (req: Request, res: any) => {
       videoFile.filename,
       videoFile.buf,
     );
-
     const content: (TextBlockParam | ImageBlockParam)[] = [
       ...base64Frames.flatMap((base64String, index) => [
         {
@@ -156,14 +158,15 @@ export const analyzeVideo = async (req: Request, res: any) => {
     // TODO: update the number of scans that user has
 
     return res.status(200).json({
+      success: true,
       message: 'Successfully analyzed base64 image frames',
       interpretationResult: textResult,
     });
   } catch (error) {
-    if (error instanceof Error) {
-      return res.status(500).json({ error: error.message });
-    } else {
-      return res.status(500).json({ error: 'An unknown error occurred' });
-    }
+    handleOnRequestError({
+      error,
+      res,
+      context: 'Analyze video',
+    });
   }
 };

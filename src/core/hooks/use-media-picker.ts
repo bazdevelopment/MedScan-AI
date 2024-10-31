@@ -4,6 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
 import { type ICollectedData } from '../flows/upload-file-flow/upload-file-flow.interface';
+import { checkFileSize } from '../utilities/check-file-size';
+import { getFileSizeInMB } from '../utilities/get-file-size-in-mb';
 import { getImageExtension } from '../utilities/get-image-extension';
 
 interface IMediaPicker {
@@ -43,15 +45,24 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         return;
       }
 
-      // Handle the loaded file with the URI
-      handleLoadFile(result.assets[0].uri);
-      onUploadFinished &&
-        onUploadFinished({
-          fileMimeType: result.assets[0].mimeType,
-          fileExtension: getImageExtension(result.assets[0].fileName as string),
-          fileUri: result.assets[0].uri,
-          fileName: result.assets[0].fileName,
-        });
+      const sizeInMb = getFileSizeInMB(result.assets[0].fileSize as number);
+      const { isLimitReached } = checkFileSize(
+        Number(sizeInMb),
+        result.assets[0].type,
+      );
+      if (!isLimitReached) {
+        // Handle the loaded file with the URI
+        handleLoadFile(result.assets[0].uri);
+        onUploadFinished &&
+          onUploadFinished({
+            fileMimeType: result.assets[0].mimeType,
+            fileExtension: getImageExtension(
+              result.assets[0].fileName as string,
+            ),
+            fileUri: result.assets[0].uri,
+            fileName: result.assets[0].fileName,
+          });
+      }
     } catch (error) {
       alert(
         'Something went wrong while selecting the image. Please try again.',
@@ -62,22 +73,32 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
     try {
       // Launch the document picker for selecting an image file
       const result = await DocumentPicker.getDocumentAsync({
-        type: '*/*',
+        type: ['image/*', 'video/*'], // Accepts only images and videos
       });
 
       // Check if the user canceled the action or if the URI is missing
       if (!result.assets || !result.assets[0]?.uri) {
         return;
       }
+      const fileType = result.assets[0].mimeType?.startsWith('image')
+        ? 'image'
+        : result.assets[0].mimeType?.startsWith('video')
+          ? 'video'
+          : 'image';
+
+      const sizeInMb = getFileSizeInMB(result.assets[0].size as number);
+      const { isLimitReached } = checkFileSize(Number(sizeInMb), fileType);
 
       // Handle the loaded file with the URI
-      handleLoadFile(result.assets[0].uri);
-      onUploadFinished({
-        fileMimeType: result.assets[0].mimeType,
-        fileExtension: getImageExtension(result.assets[0].name),
-        fileUri: result.assets[0].uri,
-        fileName: result.assets[0].name,
-      });
+      if (!isLimitReached) {
+        handleLoadFile(result.assets[0].uri);
+        onUploadFinished({
+          fileMimeType: result.assets[0].mimeType,
+          fileExtension: getImageExtension(result.assets[0].name),
+          fileUri: result.assets[0].uri,
+          fileName: result.assets[0].name,
+        });
+      }
     } catch (error) {
       alert(
         'Something went wrong while picking the document. Please try again.',

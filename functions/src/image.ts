@@ -2,6 +2,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { ImageBlockParam, TextBlockParam } from '@anthropic-ai/sdk/resources';
 import ffmpegPath from '@ffmpeg-installer/ffmpeg';
+import * as functions from 'firebase-functions/v1';
 import { Request } from 'firebase-functions/v1/https';
 import ffmpeg from 'fluent-ffmpeg';
 
@@ -11,7 +12,10 @@ import {
 } from '../utilities/extract-video-frames';
 import { handleOnRequestError } from '../utilities/handle-on-request-error';
 import { processUploadedFile } from '../utilities/multipart';
+import { admin } from './common';
 ffmpeg.setFfmpegPath(ffmpegPath.path);
+
+const db = admin.firestore();
 
 export const analyzeImage = async (req: Request, res: any) => {
   try {
@@ -27,6 +31,24 @@ export const analyzeImage = async (req: Request, res: any) => {
 
     const { userId } = fields;
     const [imageFile] = files;
+
+    const userDoc = db.collection('users').doc(userId);
+    const userInfoSnapshot = await userDoc.get();
+
+    if (!userInfoSnapshot.exists) {
+      throw new functions.https.HttpsError('not-found', 'User does not exist!');
+    }
+
+    const { scansRemaining } = userInfoSnapshot.data() as {
+      scansRemaining: number;
+    };
+
+    if (scansRemaining <= 0) {
+      throw new functions.https.HttpsError(
+        'resource-exhausted',
+        'You have reached the maximum number of scans.',
+      );
+    }
 
     if (!userId) {
       handleOnRequestError({
@@ -73,17 +95,14 @@ export const analyzeImage = async (req: Request, res: any) => {
         },
       ],
     });
-
     const messageContent = message.content[0] as any;
     const textResult: string = messageContent.text;
 
-    if (messageContent?.text) {
-      res.status(200).json({
-        success: true,
-        message: 'Successfully analyzed base64 image frames',
-        interpretationResult: textResult,
-      });
-    }
+    res.status(200).json({
+      success: true,
+      message: 'Successfully analyzed base64 image frames',
+      interpretationResult: textResult,
+    });
   } catch (error: any) {
     handleOnRequestError({
       error,

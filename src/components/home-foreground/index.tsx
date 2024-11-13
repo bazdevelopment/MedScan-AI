@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
@@ -7,6 +8,7 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
+import { useUser } from '@/api/user/user.hooks';
 import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/assets/icons';
 
@@ -18,6 +20,17 @@ import { type IHomeForeground } from './home-forground.interface';
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
+  const { data: userInfo } = useUser();
+
+  const onStartUploadMediaFile = () => {
+    if (userInfo?.scansRemaining <= 0) {
+      return alert(
+        'You reached the maximum number of scan! Please upgrade to premium!',
+      );
+    }
+    router.navigate('/modals-stack/upload-file-flow-modal');
+  };
 
   const foregroundWrapperAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -48,7 +61,11 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             <Text className="text-[24px] font-bold text-white">
               Robin Stewart
             </Text>
-            <UserInfoCard age="24" className="mt-4" />
+            <UserInfoCard
+              remainingScans={userInfo?.scansRemaining}
+              age="24"
+              className="mt-4"
+            />
           </View>
 
           <Avatar
@@ -68,9 +85,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             className="mb-0 mt-4 w-[70%] rounded-full"
             size="lg"
             textClassName="text-md"
-            onPress={() => {
-              router.navigate('/modals-stack/upload-file-flow-modal');
-            }}
+            onPress={onStartUploadMediaFile}
             icon={
               <UploadIcon
                 width={27}

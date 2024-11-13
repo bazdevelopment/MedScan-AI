@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 // Default options that will be applied to all toasts
 const defaultOptions = {
-  duration: 4000,
+  duration: 5000,
   position: 'top-center',
 } as ToastProps;
 

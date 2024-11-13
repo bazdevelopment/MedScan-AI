@@ -9,8 +9,7 @@ export const useAnalyzeImage = ({ onSuccessCallback }) =>
   useMutation<Response, AxiosError, FormData>({
     mutationFn: (variables) => analyzeImageUsingAi(variables),
     onSuccess: (data) => {
-      !!data?.interpretationResult &&
-        onSuccessCallback({ interpretationResult: data.interpretationResult });
+      onSuccessCallback({ interpretationResult: data?.interpretationResult });
     },
     onError: () => {},
   });

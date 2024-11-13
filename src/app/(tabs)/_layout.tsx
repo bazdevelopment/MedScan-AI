@@ -14,7 +14,6 @@ export default function TabLayout() {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
-  console.log('firebaseAuth.currentUser', firebaseAuth.currentUser);
 
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
 

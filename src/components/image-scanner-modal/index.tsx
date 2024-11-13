@@ -3,7 +3,6 @@ import LottieView from 'lottie-react-native';
 import React from 'react';
 import { Image, Modal, View } from 'react-native';
 
-import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
 import { Button, Text } from '@/ui';
 
 import VideoPlayer from '../video';
@@ -37,7 +36,7 @@ const ScanningModal = ({
             ) : (
               <Image
                 source={{
-                  uri: getBase64ImageUri(filePath as string),
+                  uri: filePath as string,
                 }}
                 className="h-[300px] w-[300px] rounded-xl"
                 resizeMode="cover"

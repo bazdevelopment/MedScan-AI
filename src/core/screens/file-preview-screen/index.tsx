@@ -5,6 +5,7 @@ import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
+import { useDecrementScans } from '@/api/user/user.hooks';
 import GradientText from '@/components/gradient-text';
 import ScanningModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
@@ -68,7 +69,17 @@ const FilePreviewScreen = ({
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // const { data } = useUser();
+  const { mutate: onDecrementScans } = useDecrementScans();
+
+  const onSuccess = ({
+    interpretationResult,
+  }: {
+    interpretationResult: string;
+  }) => {
+    goToNextScreen({ interpretationResult });
+    onDecrementScans();
+  };
+
   //todo: to be changed in the future with useUser hook
   const userId = firebaseAuth.currentUser?.uid as string;
 
@@ -93,13 +104,13 @@ const FilePreviewScreen = ({
     mutate: handleAnalyzeImageUsingAi,
     error: errorAnalyzeImage,
     isPending: isPendingAnalyzeImage,
-  } = useAnalyzeImage({ onSuccessCallback: goToNextScreen });
+  } = useAnalyzeImage({ onSuccessCallback: onSuccess });
 
   const {
     mutate: handleAnalyzeVideoUsingAI,
     error: errorAnalyzeVideo,
     isPending: isPendingAnalyzeVideo,
-  } = useAnalyzeVideo({ onSuccessCallback: goToNextScreen });
+  } = useAnalyzeVideo({ onSuccessCallback: onSuccess });
 
   const onAnalyze = () => {
     if (isVideo) {
@@ -179,7 +190,13 @@ const FilePreviewScreen = ({
         <ScanningModal
           visible={isModalVisible}
           onClose={() => setIsModalVisible(false)}
-          filePath={isVideo ? collectedData.fileUri : collectedData.fileBase64}
+          filePath={
+            isVideo
+              ? collectedData.fileUri
+              : collectedData.fileBase64
+                ? getBase64ImageUri(collectedData.fileBase64)
+                : (collectedData.fileUri as string)
+          }
           isVideo={isVideo}
           error={errorAnalyzeImage || errorAnalyzeVideo}
           isPending={isPendingAnalyzeImage || isPendingAnalyzeVideo}

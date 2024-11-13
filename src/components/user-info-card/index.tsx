@@ -9,12 +9,14 @@ const UserInfoCard = ({
   age = '-',
   gender = '-',
   occupation = '-',
+  remainingScans = '-',
   className = '',
 }: IIUserInfoCard) => {
   const userInfo = [
     { label: 'Age', value: age, id: '1' },
     { label: 'Gender', value: gender, id: '2' },
     { label: 'Occupation', value: occupation, id: '3' },
+    { label: 'Scans', value: remainingScans, id: '4' },
   ];
   return (
     <View className={className}>

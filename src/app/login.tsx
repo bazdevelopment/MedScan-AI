@@ -18,7 +18,8 @@ const LoginFrm = () => {
 
   const [userName, setUserName] = useState('');
 
-  const handleUpdateUserName = (text: string) => setUserName(text);
+  const handleUpdateUserName = (text: string) =>
+    setUserName(text.toLowerCase());
 
   return (
     <KeyboardAvoidingView

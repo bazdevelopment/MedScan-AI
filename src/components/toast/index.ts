@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
 const defaultOptions = {
   duration: 4000,
   position: 'top-center',
-  style: { height: 200 },
 } as ToastProps;
 
 // Helper function to merge options

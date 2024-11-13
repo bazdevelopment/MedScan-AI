@@ -16,6 +16,9 @@
     "src",
     "utilities/extract-video-frames.ts",
     "utilities/multipart.ts",
-    "utilities/handle-on-request-error.ts"
+    "utilities/handle-on-request-error.ts",
+    "utilities/generate-verification-code.ts",
+    "utilities/send-otp-code-email.ts",
+    "utilities/email-templates/generate-otp-code-template.ts"
   ]
 }

@@ -1,5 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { Redirect, Tabs } from 'expo-router';
+import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 
@@ -7,14 +8,15 @@ import { TabBarIcon } from '@/components/tab-bar-icon';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
-import * as storage from '@/core/storage';
 import { colors } from '@/ui';
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
-  const isLoggedIn = !!storage.getItem('userId');
+  console.log('firebaseAuth.currentUser', firebaseAuth.currentUser);
+
+  const isLoggedIn = !!firebaseAuth.currentUser?.uid;
 
   if (!isLoggedIn) {
     return <Redirect href="/login" />;

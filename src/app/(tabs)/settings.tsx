@@ -80,6 +80,10 @@ export default function Settings() {
           <View className="my-8">
             <ItemsContainer>
               <Item text="settings.logout" onPress={logout} />
+              <Item
+                text="Verify email"
+                onPress={() => router.navigate('/verify-email')}
+              />
             </ItemsContainer>
           </View>
         </View>

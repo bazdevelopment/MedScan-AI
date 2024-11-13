@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useUser } from '@/api/user/user.hooks';
 import { Button, colors } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 
@@ -21,6 +22,16 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
   const insets = useSafeAreaInsets();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
+  const { data: userInfo } = useUser();
+
+  const onStartUploadMediaFile = () => {
+    if (userInfo?.scansRemaining <= 0) {
+      alert(
+        'You reached the maximum number of scan! Please upgrade to premium!',
+      );
+    }
+  };
 
   const headerContainerAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -81,6 +92,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
           <Button
             label="Upload report"
             className="rounded-full"
+            onPress={onStartUploadMediaFile}
             icon={
               <UploadIcon
                 width={26}

@@ -224,40 +224,55 @@ const incrementUserScans = async (data: { userId: string }) => {
   return { scans: scans + 1, message: 'Successfully scanned on more time!' };
 };
 
-const decrementUserScans = async (data: { userId: string }) => {
-  const { userId } = data;
-  const userDoc = db.collection('users').doc(userId);
-  const userInfoSnapshot = await userDoc.get();
+const decrementUserScans = async (_: any, context: any) => {
+  try {
+    // Ensure user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'User must be authenticated.',
+      );
+    }
 
-  if (!userInfoSnapshot.exists) {
-    throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    const uid = context.auth?.uid;
+
+    const userDoc = db.collection('users').doc(uid);
+    const userInfoSnapshot = await userDoc.get();
+
+    if (!userInfoSnapshot.exists) {
+      throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    }
+
+    const { scansRemaining } = userInfoSnapshot.data() as {
+      scansRemaining: number;
+    };
+
+    if (scansRemaining <= 0) {
+      throw new functions.https.HttpsError(
+        'resource-exhausted',
+        'You have reached the maximum number of scans.',
+      );
+    }
+
+    // Decrement the scansRemaining field
+    await userDoc.update({
+      scansRemaining: admin.firestore.FieldValue.increment(-1),
+    });
+
+    // Fetch the updated document to get the latest scansRemaining count
+    const updatedUserData = (await userDoc.get()).data() as {
+      scansRemaining: number;
+    };
+
+    return {
+      scansRemaining: updatedUserData.scansRemaining,
+      message: 'Successfully completed a scan!',
+    };
+  } catch (error: any) {
+    throw new functions.https.HttpsError(error.code, error.message, {
+      message: error.message || 'Unable to update the number of scans!',
+    });
   }
-
-  const { scansRemaining } = userInfoSnapshot.data() as {
-    scansRemaining: number;
-  };
-
-  if (scansRemaining <= 0) {
-    throw new functions.https.HttpsError(
-      'resource-exhausted',
-      'You have reached the maximum number of scans.',
-    );
-  }
-
-  // Decrement the scansRemaining field
-  await userDoc.update({
-    scansRemaining: admin.firestore.FieldValue.increment(-1),
-  });
-
-  // Fetch the updated document to get the latest scansRemaining count
-  const updatedUserData = (await userDoc.get()).data() as {
-    scansRemaining: number;
-  };
-
-  return {
-    scansRemaining: updatedUserData.scansRemaining,
-    message: 'Successfully completed a scan!',
-  };
 };
 
 const updateUserSubscription = async (data: { userId: string }) => {
@@ -274,8 +289,17 @@ const updateUserSubscription = async (data: { userId: string }) => {
   return { message: 'Successfully subscribed!' };
 };
 
-const getUserInfo = async (data: { userId: string }) => {
-  const { userId } = data;
+const getUserInfo = async (_: any, context: any) => {
+  // Ensure user is authenticated
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+      'unauthenticated',
+      'User must be authenticated.',
+    );
+  }
+
+  const userId = context.auth?.uid;
+
   const userDoc = db.collection('users').doc(userId);
   const userInfo = await userDoc.get();
 

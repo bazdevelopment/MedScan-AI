@@ -62,15 +62,23 @@ export const validateVerificationCode = async ({
   }
 };
 
-/** Get user info  */
-export const getUserInfo = async ({ userName }: { userName: string }) => {
+export const decrementNumberOfScans = async () => {
   try {
-    const { data } = await firebaseCloudFunctionsInstance.httpsCallable(
-      'getUserInfo',
-    )({
-      userName,
-    });
+    const handleDecrementScans =
+      firebaseCloudFunctionsInstance.httpsCallable('decrementUserScans');
+    const { data } = await handleDecrementScans();
 
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+/** Get user info  */
+export const getUserInfo = async () => {
+  try {
+    const { data } =
+      await firebaseCloudFunctionsInstance.httpsCallable('getUserInfo')();
     return data;
   } catch (error) {
     throw error;

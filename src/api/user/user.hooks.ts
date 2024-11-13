@@ -4,16 +4,15 @@ import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
 
+import { queryClient } from '../common';
 import {
   createAnonymousAccount,
+  decrementNumberOfScans,
   getUserInfo,
   sendOtpCodeViaEmail,
   validateVerificationCode,
 } from './user.requests';
 
-interface IVariables {
-  userName: string;
-}
 type Response = any;
 
 interface ISendOtpCodeVariables {
@@ -27,7 +26,7 @@ interface IValidateAuthCode {
 
 export const useCreateAnonymousAccount = createMutation<
   Response,
-  IVariables,
+  any,
   AxiosError
 >({
   mutationFn: (variables) => createAnonymousAccount(variables),
@@ -40,9 +39,9 @@ export const useCreateAnonymousAccount = createMutation<
   },
 });
 
-export const useUser = createQuery<Response, IVariables, AxiosError>({
-  queryKey: ['user'],
-  fetcher: (variables) => getUserInfo(variables),
+export const useUser = createQuery<Response, any, AxiosError>({
+  queryKey: ['user-info'],
+  fetcher: getUserInfo,
 });
 
 export const useSendVerificationCode = ({ email }: { email: string }) =>
@@ -66,6 +65,16 @@ export const useValidateAuthCode = createMutation<
   onSuccess: (data) => {
     Toast.success(data.message);
     router.navigate('/(tabs)');
+  },
+  onError: (error) => {
+    Toast.error(error.message || 'Error when validating auth code');
+  },
+});
+
+export const useDecrementScans = createMutation<Response, void, AxiosError>({
+  mutationFn: decrementNumberOfScans,
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['user-info'] });
   },
   onError: (error) => {
     Toast.error(error.message || 'Error when validating auth code');

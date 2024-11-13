@@ -27,6 +27,9 @@ export default function Home() {
 
     handleFirebase();
   }, []);
+
+  // Set an initializing state whilst Firebase connects
+
   return (
     <ParallaxScrollView
       parallaxHeight={PARALLAX_HEIGHT}

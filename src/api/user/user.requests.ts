@@ -1,8 +1,7 @@
 import { router } from 'expo-router';
-import { firebaseCloudFunctionsInstance } from 'firebase/config';
-import { showMessage } from 'react-native-flash-message';
+import { firebaseAuth, firebaseCloudFunctionsInstance } from 'firebase/config';
 
-import { storage } from '@/core/storage';
+import Toast from '@/components/toast';
 
 /** Create anonymous account */
 export const createAnonymousAccount = async ({
@@ -11,15 +10,55 @@ export const createAnonymousAccount = async ({
   userName: string;
 }) => {
   try {
-    const { data } = await firebaseCloudFunctionsInstance.httpsCallable(
-      'createAnonymousAccount',
-    )({
-      userName,
+    const { data }: { data: any } =
+      await firebaseCloudFunctionsInstance.httpsCallable(
+        'createAnonymousAccount',
+      )({
+        userName,
+      });
+    const userCredentials = await firebaseAuth.signInWithCustomToken(
+      data.authToken,
+    );
+    return userCredentials;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const sendOtpCodeViaEmail = async ({ email }: { email: string }) => {
+  try {
+    const sendEmailVerificationLink =
+      firebaseCloudFunctionsInstance.httpsCallable(
+        'sendVerificationCodeViaEmail',
+      );
+    const { data } = await sendEmailVerificationLink({
+      email,
     });
 
     return data;
-  } catch (err: Error) {
-    console.log('createAnonymousAccount-->', err.message);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const validateVerificationCode = async ({
+  authenticationCode,
+  email,
+}: {
+  authenticationCode: string;
+  email: string;
+}) => {
+  try {
+    const verifyAuthenticationCode =
+      firebaseCloudFunctionsInstance.httpsCallable('verifyAuthenticationCode');
+    const { data } = await verifyAuthenticationCode({
+      authenticationCode,
+      email,
+    });
+
+    return data;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -33,13 +72,14 @@ export const getUserInfo = async ({ userName }: { userName: string }) => {
     });
 
     return data;
-  } catch (err: Error) {
-    console.log('getUserInfo-error', err.message);
+  } catch (error) {
+    throw error;
   }
 };
 
-export const logout = () => {
-  storage.delete('userId');
+export const logout = async () => {
+  // await firebaseAuth.currentUser?.delete();
+  await firebaseAuth.signOut();
   router.navigate('/login');
-  showMessage({ message: 'Successfully logged out', floating: true });
+  Toast.success('Successfully logged out!');
 };

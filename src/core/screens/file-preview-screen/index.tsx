@@ -1,4 +1,5 @@
 /* eslint-disable max-lines-per-function */
+import { firebaseAuth } from 'firebase/config';
 import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
@@ -9,7 +10,6 @@ import ScanningModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
 import VideoPlayer from '@/components/video';
 import { VIDEO_EXTENSIONS } from '@/constants/video-extensions';
-import * as storage from '@/core/storage';
 import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
 import { Button, colors, Image, Text } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
@@ -70,7 +70,7 @@ const FilePreviewScreen = ({
 
   // const { data } = useUser();
   //todo: to be changed in the future with useUser hook
-  const userId = storage.getItem('userId') as string;
+  const userId = firebaseAuth.currentUser?.uid as string;
 
   const videoPayload = createFormDataVidePayload({
     fileUri: collectedData.fileUri as string,

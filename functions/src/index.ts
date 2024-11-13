@@ -37,8 +37,19 @@ export const createAnonymousAccount = euFuntions.https.onCall(
 export const incrementUserScans = euFuntions.https.onCall(
   userFunctions.incrementUserScans,
 );
+export const decrementUserScans = euFuntions.https.onCall(
+  userFunctions.decrementUserScans,
+);
 export const updateUserSubscription = euFuntions.https.onCall(
   userFunctions.updateUserSubscription,
+);
+
+export const sendVerificationCodeViaEmail = euFuntions.https.onCall(
+  userFunctions.sendEmailVerification,
+);
+
+export const verifyAuthenticationCode = euFuntions.https.onCall(
+  userFunctions.verifyAuthenticationCodeHandler,
 );
 
 export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);

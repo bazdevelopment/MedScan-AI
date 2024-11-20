@@ -1,13 +1,15 @@
+/* eslint-disable max-lines-per-function */
 import { reports } from '__mocks__/reports';
-import { firebaseCloudFunctionsInstance } from 'firebase/config';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import React, { useEffect } from 'react';
 
+import { useSendGlobalPushNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { Foreground } from '@/components/home-foreground';
 import { HomeHeaderBar } from '@/components/home-header-bar';
 import ParallaxScrollView from '@/components/parallax-scrollview';
 import ReportCard from '@/components/report-card';
-import { ScrollView, Text, View } from '@/ui';
+import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
+import { Button, ScrollView, Text, View } from '@/ui';
 
 const PARALLAX_HEIGHT = 310;
 const HEADER_BAR_HEIGHT = 110;
@@ -15,19 +17,19 @@ const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
+  const { arePushNotificationEnabled, enablePushNotifications } =
+    usePushNotificationSetup(); //todo: check if here is the best place to call the hook
+
+  const { mutate: onHandleGlobalPushNotifications } =
+    useSendGlobalPushNotifications();
+
   checkForAppUpdate();
+
   useEffect(() => {
-    const handleFirebase = async () => {
-      try {
-        await firebaseCloudFunctionsInstance.httpsCallable('getHelloWorld')();
-      } catch (err: Error) {
-        console.log('error-cloud-fnc-invocation----->', err.message);
-      }
-    };
-
-    handleFirebase();
-  }, []);
-
+    if (!arePushNotificationEnabled) {
+      enablePushNotifications();
+    }
+  }, [arePushNotificationEnabled, enablePushNotifications]);
   // Set an initializing state whilst Firebase connects
 
   return (
@@ -50,6 +52,19 @@ export default function Home() {
             snapToAlignment={'center'}
             decelerationRate={0}
           >
+            <Button
+              label="Send device token"
+              onPress={enablePushNotifications}
+            />
+            <Button
+              label="Submit notification"
+              onPress={() =>
+                onHandleGlobalPushNotifications({
+                  title: 'This is a global notification',
+                  body: 'This is a global notification body',
+                })
+              }
+            />
             {reports.map(({ title, date, description, score, id }) => (
               <ReportCard
                 key={id}

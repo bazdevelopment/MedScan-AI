@@ -11,6 +11,7 @@ import * as logger from 'firebase-functions/logger';
 import * as functions from 'firebase-functions/v1';
 
 import * as imageFunctions from './image';
+import * as pushNotificationsFunctions from './push-notifications';
 import * as userFunctions from './user';
 
 const euFuntions = functions.region('europe-west1');
@@ -54,6 +55,13 @@ export const verifyAuthenticationCode = euFuntions.https.onCall(
 
 export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);
 
+export const storeDeviceToken = euFuntions.https.onCall(
+  pushNotificationsFunctions.storeDeviceToken,
+);
+
+export const sendGlobalPushNotifications = euFuntions.https.onCall(
+  pushNotificationsFunctions.handleSendGlobalPushNotifications,
+);
 export const analyzeImage = euFuntions.https.onRequest(
   imageFunctions.analyzeImage,
 );

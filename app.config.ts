@@ -51,6 +51,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     [
+      'expo-notifications',
+      {
+        icon: './assets/icon-transparent.png',
+        color: '#523BF5',
+        defaultChannel: 'default',
+      },
+    ],
+    [
       'expo-font',
       {
         fonts: ['./assets/fonts/Inter.ttf'],

@@ -4,6 +4,7 @@ import '../../global.css';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
+import * as Notifications from 'expo-notifications';
 import { SplashScreen, Stack } from 'expo-router';
 import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
@@ -13,6 +14,7 @@ import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
 import { hydrateAuth, loadSelectedTheme } from '@/core';
+import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 
 export { ErrorBoundary } from 'expo-router';
@@ -26,10 +28,20 @@ loadSelectedTheme();
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldPlaySound: false,
+    shouldShowAlert: true,
+    shouldSetBadge: true,
+  }),
+});
+
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     inter: require('../../assets/fonts/Inter.ttf'),
   });
+
+  useNotificationListeners();
 
   useEffect(() => {
     if (fontsLoaded) {

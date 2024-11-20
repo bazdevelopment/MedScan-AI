@@ -1,3 +1,4 @@
+import { type ReactElement } from 'react';
 import { StyleSheet } from 'react-native';
 import { toast } from 'sonner-native';
 import { type ToastProps } from 'sonner-native/lib/typescript/commonjs/src/types';
@@ -132,6 +133,12 @@ export const dismissAll = () => {
   toast.dismiss();
 };
 
+export const showCustomToast = (jsx: ReactElement, options?: ToastProps) => {
+  toast.custom(jsx, {
+    ...mergeOptions(options),
+    duration: 10000,
+  });
+};
 // Export all functions as a single object for convenience
 const Toast = {
   success: showSuccess,
@@ -143,6 +150,7 @@ const Toast = {
   withAction: showWithAction,
   dismiss,
   dismissAll,
+  showCustomToast,
 };
 
 export default Toast;

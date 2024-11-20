@@ -7,6 +7,7 @@
     "production": {
       "channel": "production",
       "distribution": "store",
+      "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
         "image": "latest"
@@ -29,6 +30,7 @@
       "channel": "staging",
       "distribution": "internal",
       "pnpm": "8.15.4",
+      "autoIncrement": true,
       "ios": {
         "image": "latest"
       },
@@ -48,8 +50,9 @@
       }
     },
     "development": {
-      "developmentClient": true,
+      "developmentClient": false,
       "distribution": "internal",
+      "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
         "image": "latest"

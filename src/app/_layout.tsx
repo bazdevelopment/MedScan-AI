@@ -83,7 +83,7 @@ function Providers({ children }: { children: React.ReactNode }) {
           <APIProvider>
             <BottomSheetModalProvider>
               {children}
-              <Toaster autoWiggleOnUpdate="toast-change" />
+              <Toaster autoWiggleOnUpdate="always" />
             </BottomSheetModalProvider>
           </APIProvider>
         </ThemeProvider>

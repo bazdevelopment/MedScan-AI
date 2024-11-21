@@ -20,6 +20,9 @@ importers:
       '@react-native-community/masked-view':
         specifier: ^0.1.11
         version: 0.1.11(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      '@react-native-community/netinfo':
+        specifier: 11.3.1
+        version: 11.3.1(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))
       '@react-native-firebase/analytics':
         specifier: ^21.0.0
         version: 21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))
@@ -1959,6 +1962,11 @@ packages:
     peerDependencies:
       react: '>=16.0'
       react-native: '>=0.57'
+
+  '@react-native-community/netinfo@11.3.1':
+    resolution: {integrity: sha512-UBnJxyV0b7i9Moa97Av+HKho1ByzX0DtbJXzUQS5E3xhQs6P2D/Os0iw3ouy7joY1TVd6uIhplPbr7l1SJNaNQ==}
+    peerDependencies:
+      react-native: '>=0.59'
 
   '@react-native-firebase/analytics@21.0.0':
     resolution: {integrity: sha512-qWit9CdX+lXwouHS81NHtvwoCqznhJrBCFY5lu2kJ3vnMpNRUoVslB8EMKW/xnOisoPe5VWY6Bm1+/Ife//x+A==}
@@ -10834,6 +10842,10 @@ snapshots:
   '@react-native-community/masked-view@0.1.11(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
     dependencies:
       react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0)
+
+  '@react-native-community/netinfo@11.3.1(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))':
+    dependencies:
       react-native: 0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0)
 
   '@react-native-firebase/analytics@21.0.0(@react-native-firebase/app@21.0.0(expo@51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2)))(react-native@0.74.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))':

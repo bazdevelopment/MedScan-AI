@@ -73,7 +73,6 @@ export const showInfo = (message: string, options?: ToastProps) => {
 export const showLoading = (message: string, options?: ToastProps) => {
   return toast.loading(message, {
     ...mergeOptions(options),
-    duration: Infinity, // Loading toasts should stay until manually dismissed
   });
 };
 
@@ -135,8 +134,8 @@ export const dismissAll = () => {
 
 export const showCustomToast = (jsx: ReactElement, options?: ToastProps) => {
   toast.custom(jsx, {
-    ...mergeOptions(options),
     duration: 10000,
+    ...mergeOptions(options),
   });
 };
 // Export all functions as a single object for convenience

@@ -32,6 +32,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supportsTablet: true,
     bundleIdentifier: Env.BUNDLE_ID,
     googleServicesFile: ClientEnv.GOOGLE_SERVICES_PLIST_PATH,
+    entitlements: {
+      'com.apple.developer.networking.wifi-info': true,
+    },
   },
   experiments: {
     typedRoutes: true,

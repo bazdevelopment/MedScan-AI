@@ -18,7 +18,6 @@ export const checkForAppUpdate = async (): Promise<{
 
     // Get all the configuration values
     const config = remoteConfig().getAll();
-
     const minimumVersion = config.MINIMUM_VERSION_ALLOWED._value || Env.VERSION;
     // Compare versions to determine if an update is required
     const isUpdateRequired = compareVersions(minimumVersion, Env.VERSION);

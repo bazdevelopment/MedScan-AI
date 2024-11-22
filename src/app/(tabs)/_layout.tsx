@@ -9,7 +9,6 @@ import { Platform, Vibration } from 'react-native';
 
 import { NoInternetConnectionModal } from '@/components/modals/no-internet-modal';
 import { TabBarIcon } from '@/components/tab-bar-icon';
-import Toast from '@/components/toast';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
@@ -39,7 +38,7 @@ export default function TabLayout() {
       playSound('error');
       Vibration.vibrate(Platform.OS === 'ios' ? [0, 500] : 500);
     } else {
-      Toast.dismiss();
+      modal.dismiss();
     }
   }, [isConnected, modal]);
 

@@ -1,6 +1,5 @@
 /* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
-import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import Animated, {
@@ -14,9 +13,6 @@ import { CloseIcon, DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 import { type IHomeForeground } from '../home-foreground/home-forground.interface';
 
 export const FinalReportForeground = ({ scrollValue }: IHomeForeground) => {
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
-
   const foregroundWrapperAnimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: interpolate(

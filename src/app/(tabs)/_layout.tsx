@@ -5,10 +5,10 @@ import { Redirect, Tabs } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
-import { Platform, Vibration } from 'react-native';
 
 import { NoInternetConnectionModal } from '@/components/modals/no-internet-modal';
 import { TabBarIcon } from '@/components/tab-bar-icon';
+import { useHaptic } from '@/core/hooks/use-haptics';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
@@ -24,6 +24,8 @@ export default function TabLayout() {
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
 
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
+  const addLightHapticEffect = useHaptic('light');
+  const addHeavyHapticEffect = useHaptic('heavy');
 
   if (!isLoggedIn) {
     return <Redirect href="/login" />;
@@ -36,11 +38,11 @@ export default function TabLayout() {
     if (!isConnected) {
       modal.present();
       playSound('error');
-      Vibration.vibrate(Platform.OS === 'ios' ? [0, 500] : 500);
+      addHeavyHapticEffect?.();
     } else {
       modal.dismiss();
     }
-  }, [isConnected, modal]);
+  }, [isConnected, modal, addHeavyHapticEffect]);
 
   return (
     <>
@@ -55,6 +57,7 @@ export default function TabLayout() {
           <Tabs.Screen
             key={tab.id}
             name={tab.screenName}
+            listeners={{ tabPress: addLightHapticEffect }}
             options={{
               header: () => null,
               title: tab.title,

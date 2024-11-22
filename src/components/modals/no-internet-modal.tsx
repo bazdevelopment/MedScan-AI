@@ -1,10 +1,10 @@
 import { type BottomSheetModal } from '@gorhom/bottom-sheet';
+import { reloadAppAsync } from 'expo';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
-import { Linking, Platform } from 'react-native';
 
 import { colors, Modal } from '@/ui';
-import { SettingsWheelIcon } from '@/ui/assets/icons';
+import { RetryIcon } from '@/ui/assets/icons';
 import { NoInternetIllustration } from '@/ui/assets/illustrations';
 
 import EdgeCaseTemplate from '../edge-case-template';
@@ -39,16 +39,14 @@ export const NoInternetConnectionModal = React.forwardRef<BottomSheetModal>(
           title="You're offline!"
           message="Turn on mobile data or connect to a Wi-Fi. Or just take a break and go for a walk!"
           primaryAction={{
-            label: 'Settings',
-            onPress: () => {
-              if (Platform.OS === 'ios') {
-                Linking.openURL('App-Prefs:root=WIFI');
-              } else {
-                Linking.openSettings();
-              }
-            },
+            label: 'Retry',
+            onPress: () => reloadAppAsync(),
             icon: (
-              <SettingsWheelIcon width={20} height={20} color={colors.white} />
+              <RetryIcon
+                width={18}
+                height={18}
+                color={isDark ? colors.black : colors.white}
+              />
             ),
           }}
         />

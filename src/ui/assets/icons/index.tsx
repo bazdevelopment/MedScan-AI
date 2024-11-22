@@ -13,6 +13,7 @@ export * from './mail';
 export * from './paperclip';
 export * from './rate';
 export * from './report';
+export * from './retry-icon';
 export * from './settings';
 export * from './settings-wheel';
 export * from './share';

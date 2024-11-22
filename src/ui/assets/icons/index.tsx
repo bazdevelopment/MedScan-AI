@@ -14,6 +14,7 @@ export * from './paperclip';
 export * from './rate';
 export * from './report';
 export * from './settings';
+export * from './settings-wheel';
 export * from './share';
 export * from './style';
 export * from './support';

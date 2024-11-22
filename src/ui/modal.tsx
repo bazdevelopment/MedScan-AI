@@ -42,6 +42,7 @@ import { Text } from './text';
 
 type ModalProps = BottomSheetModalProps & {
   title?: string;
+  canBeDismissed?: boolean;
 };
 
 type ModalRef = React.ForwardedRef<BottomSheetModal>;
@@ -62,12 +63,15 @@ export const useModal = () => {
   return { ref, present, dismiss };
 };
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 export const Modal = React.forwardRef(
   (
     {
       snapPoints: _snapPoints = ['60%'],
       title,
       detached = false,
+      canBeDismissed = true,
       ...props
     }: ModalProps,
     ref: ModalRef,
@@ -88,11 +92,29 @@ export const Modal = React.forwardRef(
       () => (
         <>
           <View className="mb-8 mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700" />
-          <ModalHeader title={title} dismiss={modal.dismiss} />
+          {canBeDismissed && (
+            <ModalHeader title={title} dismiss={modal.dismiss} />
+          )}
         </>
       ),
-      [title, modal.dismiss],
+      [title, modal.dismiss, canBeDismissed],
     );
+
+    const CustomBackdrop = ({ style }: BottomSheetBackdropProps) => {
+      const { close } = useBottomSheet();
+      return (
+        <AnimatedPressable
+          onPress={() => canBeDismissed && close()}
+          entering={FadeIn.duration(50)}
+          exiting={FadeOut.duration(20)}
+          style={[style, { backgroundColor: 'rgba(0, 0, 0, 0.4)' }]}
+        />
+      );
+    };
+
+    const renderBackdrop = (props: BottomSheetBackdropProps) => {
+      return <CustomBackdrop {...props} />;
+    };
 
     return (
       <BottomSheetModal
@@ -102,7 +124,7 @@ export const Modal = React.forwardRef(
         index={0}
         snapPoints={snapPoints}
         backdropComponent={props.backdropComponent || renderBackdrop}
-        handleComponent={renderHandleComponent}
+        handleComponent={canBeDismissed ? renderHandleComponent : null}
       />
     );
   },
@@ -111,24 +133,6 @@ export const Modal = React.forwardRef(
 /**
  * Custom Backdrop
  */
-
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
-const CustomBackdrop = ({ style }: BottomSheetBackdropProps) => {
-  const { close } = useBottomSheet();
-  return (
-    <AnimatedPressable
-      onPress={() => close()}
-      entering={FadeIn.duration(50)}
-      exiting={FadeOut.duration(20)}
-      style={[style, { backgroundColor: 'rgba(0, 0, 0, 0.4)' }]}
-    />
-  );
-};
-
-export const renderBackdrop = (props: BottomSheetBackdropProps) => (
-  <CustomBackdrop {...props} />
-);
 
 /**
  *

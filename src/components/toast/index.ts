@@ -48,9 +48,9 @@ export const showSuccess = (message: string, options?: ToastProps) => {
 // Error toast
 export const showError = (message: string, options?: ToastProps) => {
   return toast.error(message, {
-    ...mergeOptions(options),
     duration: 5000, // Longer duration for errors
     richColors: true,
+    ...mergeOptions(options),
   });
 };
 

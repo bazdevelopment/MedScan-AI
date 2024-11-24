@@ -24,7 +24,7 @@ export default function TabLayout() {
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
 
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
-  const addLightHapticEffect = useHaptic('light');
+  const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
 
   if (!isLoggedIn) {
@@ -57,7 +57,7 @@ export default function TabLayout() {
           <Tabs.Screen
             key={tab.id}
             name={tab.screenName}
-            listeners={{ tabPress: addLightHapticEffect }}
+            listeners={{ tabPress: addSelectionHapticEffect }}
             options={{
               header: () => null,
               title: tab.title,

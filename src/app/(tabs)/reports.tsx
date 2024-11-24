@@ -1,13 +1,16 @@
-import React from 'react';
+import { useScrollToTop } from '@react-navigation/native';
+import React, { useRef } from 'react';
 import { View } from 'react-native';
 
-import { FocusAwareStatusBar, Text } from '@/ui';
+import { FocusAwareStatusBar, ScrollView } from '@/ui';
 
 const Reports = () => {
+  const scrollViewRef = useRef(null);
+  useScrollToTop(scrollViewRef);
   return (
     <View className="flex-1 ">
       <FocusAwareStatusBar />
-      <Text>Reports screen</Text>
+      <ScrollView ref={scrollViewRef}>Reports screen</ScrollView>
     </View>
   );
 };

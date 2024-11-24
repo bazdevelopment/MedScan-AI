@@ -2,16 +2,12 @@
 import React, { cloneElement, useState } from 'react';
 import {
   type NativeScrollEvent,
-  type ScrollView,
   StatusBar,
   useWindowDimensions,
   View,
 } from 'react-native';
 import { runOnJS } from 'react-native-reanimated';
-import {
-  StickyHeaderScrollView,
-  useStickyHeaderScrollProps,
-} from 'react-native-sticky-parallax-header';
+import { StickyHeaderScrollView } from 'react-native-sticky-parallax-header';
 
 import { EndScrollPlaceholder } from '../end-scroll-placeholder';
 import {
@@ -20,28 +16,18 @@ import {
 } from './parallax-scrollview.interface';
 
 const ParallaxScrollView = ({
-  parallaxHeight = 330,
   headerHeight = 110,
-  snapStartThreshold = 70,
-  snapStopThreshold = 330,
   ForegroundComponent,
   HeaderBarComponent,
   children,
+  onScroll,
+  onScrollEndDrag,
+  scrollHeight,
+  scrollValue,
+  scrollViewRef,
+  onMomentumScrollEnd,
 }: IParallaxScrollView) => {
   const { width: windowWidth } = useWindowDimensions();
-  const {
-    onMomentumScrollEnd,
-    onScroll,
-    onScrollEndDrag,
-    scrollHeight,
-    scrollValue,
-    scrollViewRef,
-  } = useStickyHeaderScrollProps<ScrollView>({
-    parallaxHeight,
-    snapStartThreshold,
-    snapStopThreshold,
-    snapToEdge: true,
-  });
 
   const [showScrollEndAnimation, setShowScrollEndAnimation] = useState(false);
   const [isHeaderPrio, setIsHeaderPrio] = useState(scrollValue.value !== 0);

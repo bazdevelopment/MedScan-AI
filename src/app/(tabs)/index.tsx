@@ -1,7 +1,9 @@
 /* eslint-disable max-lines-per-function */
 import { reports } from '__mocks__/reports';
+import { useScrollToTop } from '@react-navigation/native';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import React, { useEffect } from 'react';
+import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
 import { useSendGlobalPushNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { Foreground } from '@/components/home-foreground';
@@ -32,14 +34,33 @@ export default function Home() {
   }, [arePushNotificationEnabled, enablePushNotifications]);
   // Set an initializing state whilst Firebase connects
 
+  const {
+    onMomentumScrollEnd,
+    onScroll,
+    onScrollEndDrag,
+    scrollHeight,
+    scrollValue,
+    scrollViewRef,
+  } = useStickyHeaderScrollProps<ScrollView>({
+    parallaxHeight: PARALLAX_HEIGHT,
+    snapStartThreshold: SNAP_START_THRESHOLD,
+    snapStopThreshold: SNAP_STOP_THRESHOLD,
+    snapToEdge: true,
+  });
+
+  useScrollToTop(scrollViewRef);
+
   return (
     <ParallaxScrollView
-      parallaxHeight={PARALLAX_HEIGHT}
       headerHeight={HEADER_BAR_HEIGHT}
-      snapStartThreshold={SNAP_START_THRESHOLD}
-      snapStopThreshold={SNAP_STOP_THRESHOLD}
       ForegroundComponent={<Foreground />}
       HeaderBarComponent={<HomeHeaderBar />}
+      onMomentumScrollEnd={onMomentumScrollEnd}
+      onScroll={onScroll}
+      onScrollEndDrag={onScrollEndDrag}
+      scrollHeight={scrollHeight}
+      scrollValue={scrollValue}
+      scrollViewRef={scrollViewRef}
     >
       <View>
         <View className="ml-4 mt-14">

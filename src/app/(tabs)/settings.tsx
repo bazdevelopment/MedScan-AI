@@ -1,9 +1,9 @@
 /* eslint-disable max-lines-per-function */
-/* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
+import { useScrollToTop } from '@react-navigation/native';
 import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { logout } from '@/api/user/user.requests';
 import { Item } from '@/components/settings/item';
@@ -16,13 +16,17 @@ import { Github, Rate, ShareIcon, Support, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
+  const scrollViewRef = useRef(null);
   const iconColor =
     colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+
+  useScrollToTop(scrollViewRef);
+
   return (
     <>
       <FocusAwareStatusBar />
 
-      <ScrollView>
+      <ScrollView ref={scrollViewRef}>
         <View className="mb-20 flex-1 px-4">
           <Text className="text-xl font-bold">
             {translate('settings.title')}

@@ -12,6 +12,10 @@ import * as functions from 'firebase-functions/v1';
 
 import * as imageFunctions from './image';
 import * as pushNotificationsFunctions from './push-notifications';
+import {
+  getScanCategoriesHandler,
+  handleUploadScanCategories,
+} from './scan-categories';
 import * as userFunctions from './user';
 
 const euFuntions = functions.region('europe-west1');
@@ -68,4 +72,12 @@ export const analyzeImage = euFuntions.https.onRequest(
 /** Make sure you use onRequest instead of onCall for analyzeVideo function because onCall do not support FormData */
 export const analyzeVideo = euFuntions.https.onRequest(
   imageFunctions.analyzeVideo,
+);
+/** Get scan categories together with images*/
+export const getScanCategories = euFuntions.https.onCall(
+  getScanCategoriesHandler,
+);
+/** Get scan categories together with images*/
+export const uploadScanCategories = euFuntions.https.onRequest(
+  handleUploadScanCategories,
 );

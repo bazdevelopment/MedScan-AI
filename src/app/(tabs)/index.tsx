@@ -21,7 +21,7 @@ const SNAP_STOP_THRESHOLD = 330;
 export default function Home() {
   const { arePushNotificationEnabled, enablePushNotifications } =
     usePushNotificationSetup(); //todo: check if here is the best place to call the hook
-
+  // const { data } = useScanCategories();
   const { mutate: onHandleGlobalPushNotifications } =
     useSendGlobalPushNotifications();
 
@@ -73,19 +73,6 @@ export default function Home() {
             snapToAlignment={'center'}
             decelerationRate={0}
           >
-            <Button
-              label="Send device token"
-              onPress={enablePushNotifications}
-            />
-            <Button
-              label="Submit notification"
-              onPress={() =>
-                onHandleGlobalPushNotifications({
-                  title: 'This is a global notification',
-                  body: 'This is a global notification body',
-                })
-              }
-            />
             {reports.map(({ title, date, description, score, id }) => (
               <ReportCard
                 key={id}
@@ -96,7 +83,18 @@ export default function Home() {
               />
             ))}
           </ScrollView>
+
           <Text>{MOCK_TEXT}</Text>
+          <Button label="Send device token" onPress={enablePushNotifications} />
+          <Button
+            label="Submit notification"
+            onPress={() =>
+              onHandleGlobalPushNotifications({
+                title: 'This is a global notification',
+                body: 'This is a global notification body',
+              })
+            }
+          />
         </View>
       </View>
     </ParallaxScrollView>

@@ -59,7 +59,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           <View>
             <Text className="text-white">Welcome</Text>
             <Text className="text-[24px] font-bold text-white">
-              Robin Stewart
+              {userInfo?.userName}
             </Text>
             <UserInfoCard
               remainingScans={userInfo?.scansRemaining}
@@ -77,11 +77,11 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
         <View className="absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] dark:bg-charcoal-800">
           <Text className="text-md font-bold">Start using X-Ray Analizer</Text>
           <Text className="mt-4 text-center text-sm">
-            Get vital information in an intuitive way required for better health
-            & lifestyle of patients.
+            Get vital insights with MRI, X-rays, CT scans, PET imaging,
+            ultrasounds, and nuclear medicine.
           </Text>
           <Button
-            label="Upload report"
+            label="Upload scan"
             className="mb-0 mt-4 w-[70%] rounded-full"
             size="lg"
             textClassName="text-md"

@@ -26,7 +26,7 @@ export const EndScrollPlaceholder = ({
 
   return (
     <Animated.View
-      className="top-[-250px] m-[40px] items-center justify-center rounded-xl bg-primary-100 p-4"
+      className="top-[-100] m-[40px] items-center justify-center rounded-xl bg-primary-100 p-4"
       style={[{ opacity: fadeAnim }]}
     >
       <Text className="text-xl font-bold">You're all caught up!</Text>

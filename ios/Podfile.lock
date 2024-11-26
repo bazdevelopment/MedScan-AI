@@ -2998,35 +2998,35 @@ PODS:
   - RecaptchaInterop (100.0.0)
   - RNCMaskedView (0.1.11):
     - React
-  - RNFBAnalytics (21.6.0):
+  - RNFBAnalytics (21.6.1):
     - Firebase/Analytics (= 11.5.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (21.6.0):
+  - RNFBApp (21.6.1):
     - Firebase/CoreOnly (= 11.5.0)
     - React-Core
-  - RNFBAuth (21.6.0):
+  - RNFBAuth (21.6.1):
     - Firebase/Auth (= 11.5.0)
     - React-Core
     - RNFBApp
-  - RNFBCrashlytics (21.6.0):
+  - RNFBCrashlytics (21.6.1):
     - Firebase/Crashlytics (= 11.5.0)
     - FirebaseCoreExtension
     - React-Core
     - RNFBApp
-  - RNFBFirestore (21.6.0):
+  - RNFBFirestore (21.6.1):
     - Firebase/Firestore (= 11.5.0)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (21.6.0):
+  - RNFBFunctions (21.6.1):
     - Firebase/Functions (= 11.5.0)
     - React-Core
     - RNFBApp
-  - RNFBRemoteConfig (21.6.0):
+  - RNFBRemoteConfig (21.6.1):
     - Firebase/RemoteConfig (= 11.5.0)
     - React-Core
     - RNFBApp
-  - RNFBStorage (21.6.0):
+  - RNFBStorage (21.6.1):
     - Firebase/Storage (= 11.5.0)
     - React-Core
     - RNFBApp
@@ -3604,14 +3604,14 @@ SPEC CHECKSUMS:
   ReactCommon: f79ae672224dc1e6c2d932062176883c98eebd57
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNFBAnalytics: e644d1f68f9b14976015a74d18e40e1f62670b47
-  RNFBApp: 148efc8715a42c85cdf2d8458a500f26866a7a7b
-  RNFBAuth: d2c9d05747e53b52566489b2b3361ff1f13c38b8
-  RNFBCrashlytics: 817eba5f98e2f0609a3cb081261e6a8ab1bc2320
-  RNFBFirestore: e708df2b501e20bcde1604fd57a5823b7207a4d6
-  RNFBFunctions: af030cf8353c63a5126b3f48709450685d9e0448
-  RNFBRemoteConfig: 4bb22035555a383a74cdf3e39bce14db44172931
-  RNFBStorage: 71597cfcc10067e04e75e292d9c99218fbe6d776
+  RNFBAnalytics: 2db198b84b1809770b1ddfafd1113f351ac459d1
+  RNFBApp: 1de631bffe154f4f8b56f8dbfb13d6305d658e97
+  RNFBAuth: aa53108a283606c560e4380d75d093c35a13d8dd
+  RNFBCrashlytics: 3eb256ac2a6456ad04954a132f35bb07bee23447
+  RNFBFirestore: 040e9607af616bec5d3903f5fa6a1a4e5dd0e4bd
+  RNFBFunctions: 1d776445e48abced7913f435a0b6ce2b48513830
+  RNFBRemoteConfig: 9558ac5d11d4da5a36f939a5e3ca5652413d059e
+  RNFBStorage: debf79a222417a239adacd5ef2419395c33d6dd2
   RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNGestureHandler: 20a4307fd21cbff339abfcfa68192f3f0a6a518b
   RNReanimated: d51431fd3597a8f8320319dce8e42cee82a5445f

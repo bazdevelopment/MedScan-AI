@@ -83,14 +83,14 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
           <GradientText colors={[colors.lightSkyBlue, colors.primaryPurple]}>
             <Text className="font-bold dark:text-primary-400">
-              Welcome, Robin Stewart
+              {`Welcome, ${userInfo?.userName}!`}
             </Text>
           </GradientText>
         </Animated.View>
 
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>
           <Button
-            label="Upload report"
+            label="Upload scan"
             className="rounded-full"
             onPress={onStartUploadMediaFile}
             icon={

@@ -1,8 +1,10 @@
+import LottieView from 'lottie-react-native';
 import { useEffect, useRef } from 'react';
-import { Animated } from 'react-native';
+import { Animated, TouchableOpacity } from 'react-native';
 
-import { Button, Text } from '@/ui';
+import { Text } from '@/ui';
 
+import { endScrollPlaceholderStyle } from './end-scoll-placeholder.styles';
 import { type IEndScrollPlaceholder } from './end-scroll-placeholder.interface';
 
 export const EndScrollPlaceholder = ({
@@ -26,11 +28,18 @@ export const EndScrollPlaceholder = ({
 
   return (
     <Animated.View
-      className="top-[-100] m-[40px] items-center justify-center rounded-xl bg-primary-100 p-4"
+      className="top-[-120]  items-center justify-center"
       style={[{ opacity: fadeAnim }]}
     >
-      <Text className="text-xl font-bold">You're all caught up!</Text>
-      <Button label="Scroll to top" onPress={onScrollToTop} />
+      <TouchableOpacity onPress={onScrollToTop}>
+        <LottieView
+          source={require('assets/lottie/scroll-top-animation.json')}
+          autoPlay
+          loop
+          style={endScrollPlaceholderStyle.scrollTopAnimation}
+        />
+        <Text className="top-[-30] text-center text-sm">Scroll to Top</Text>
+      </TouchableOpacity>
     </Animated.View>
   );
 };

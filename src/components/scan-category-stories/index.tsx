@@ -80,7 +80,6 @@ const ScanCategoriesStories: React.FC<{
         modalAnimationDuration={250}
         storyAnimationDuration={250}
         textStyle={{ color: isDark ? colors.white : colors.black }}
-        containerStyle={{ marginTop: -30 }}
         avatarListContainerProps={{
           showsHorizontalScrollIndicator: false,
           estimatedItemSize: 65,

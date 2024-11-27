@@ -65,7 +65,7 @@ export default function TabLayout() {
                 <TabBarIcon
                   icon={tab.icon(color, focused)}
                   focused={focused}
-                  textClassName={`text-xs font-medium text-[${color}]`}
+                  textClassName={`text-xs  text-[${color}] ${focused ? 'font-bold' : 'font-medium'} `}
                   title={tab.title}
                 />
               ),

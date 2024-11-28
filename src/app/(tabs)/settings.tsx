@@ -27,10 +27,12 @@ export default function Settings() {
       <FocusAwareStatusBar />
 
       <ScrollView ref={scrollViewRef}>
-        <View className="mb-20 flex-1 px-4">
-          <Text className="text-xl font-bold">
+        <View className="mb-20 mt-6 flex-1 px-4">
+          <Text className="text-xl font-bold"></Text>
+          <Text className="text-3xl font-bold">
             {translate('settings.title')}
           </Text>
+
           <ItemsContainer title="settings.generale">
             <LanguageItem />
             <ThemeItem />

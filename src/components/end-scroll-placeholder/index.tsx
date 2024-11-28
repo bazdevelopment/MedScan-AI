@@ -28,7 +28,7 @@ export const EndScrollPlaceholder = ({
 
   return (
     <Animated.View
-      className="top-[-120]  items-center justify-center"
+      className="top-[-100]  items-center justify-center"
       style={[{ opacity: fadeAnim }]}
     >
       <TouchableOpacity onPress={onScrollToTop}>

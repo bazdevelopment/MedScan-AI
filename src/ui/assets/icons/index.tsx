@@ -2,6 +2,8 @@ export * from './arrow-left';
 export * from './arrow-right';
 export * from './camera';
 export * from './caret-down';
+export * from './chevron-left-rounded';
+export * from './chevron-right-rounded';
 export * from './close';
 export * from './download';
 export * from './feed';

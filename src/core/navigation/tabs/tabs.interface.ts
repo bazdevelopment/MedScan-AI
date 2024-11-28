@@ -4,4 +4,5 @@ export interface ITabsNavigationScreen {
   title: string;
   tabBarTestID: string;
   icon: (color: string, focused: boolean) => React.JSX.Element;
+  header: any;
 }

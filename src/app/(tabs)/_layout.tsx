@@ -59,7 +59,8 @@ export default function TabLayout() {
             name={tab.screenName}
             listeners={{ tabPress: addSelectionHapticEffect }}
             options={{
-              header: () => null,
+              // header: (props) => !!tab.header && tab.header(props),
+              header: () => false,
               title: tab.title,
               tabBarIcon: ({ color, focused }) => (
                 <TabBarIcon
@@ -69,6 +70,7 @@ export default function TabLayout() {
                   title={tab.title}
                 />
               ),
+
               tabBarTestID: tab.tabBarTestID,
             }}
           />

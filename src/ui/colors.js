@@ -6,6 +6,7 @@ module.exports = {
   muzli:"#F1EEFB",
   primaryPurple:"#A935F8",
   lightSkyBlue: "#7CD0FC",
+  transparent: "transparent",
   charcoal: {
     50: '#F2F2F2',
     100: '#E5E5E5',

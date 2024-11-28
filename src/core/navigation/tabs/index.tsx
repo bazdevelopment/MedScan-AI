@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CustomHeader from '@/components/cusom-header';
 import { Feed as FeedIcon, ReportIcon, Settings } from '@/ui/assets/icons';
 
 import { type ITabsNavigationScreen } from './tabs.interface';
@@ -13,6 +14,7 @@ export const tabScreens: ITabsNavigationScreen[] = [
     icon: (color: string, focused: boolean) => (
       <FeedIcon color={color} withLinearGradient={focused} />
     ),
+    header: null,
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ export const tabScreens: ITabsNavigationScreen[] = [
     icon: (color: string, focused: boolean) => (
       <ReportIcon color={color} withLinearGradient={focused} />
     ),
+    header: (props) => <CustomHeader {...props} />,
   },
   {
     id: 3,
@@ -31,5 +34,6 @@ export const tabScreens: ITabsNavigationScreen[] = [
     icon: (color: string, focused: boolean) => (
       <Settings color={color} withLinearGradient={focused} />
     ),
+    header: (props) => <CustomHeader {...props} />,
   },
 ];

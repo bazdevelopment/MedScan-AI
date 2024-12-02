@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { View } from 'react-native';
 
 import { useSegmentedSelection } from '@/core/hooks/use-segmented-selection';
+import { wait } from '@/core/utilities/wait';
 import { colors, Text } from '@/ui';
 import { ChevronLeftRounded, ChevronRightRounded } from '@/ui/assets/icons';
 
@@ -30,7 +31,7 @@ const WeekBlock = ({
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const { checkIsActive, handleChangeSelection, selectedOption } =
-    useSegmentedSelection(initialDayFocused);
+    useSegmentedSelection(initialDayFocused as ISegmentedControlOption);
 
   /**
    * When user navigation to the current week I want the current day to be selected
@@ -42,18 +43,18 @@ const WeekBlock = ({
         onScrollToIndex(0, 0);
       } else {
         handleChangeSelection(initialDayFocused as ISegmentedControlOption);
-        // const indexes = findSectionIndexToScroll(
-        //   initialDayFocused?.subtitle,
-        //   reportSections,
-        // );
+        const indexToScrollFound = findSectionIndexToScroll(
+          initialDayFocused?.subtitle as string,
+          reportSections,
+        );
 
         /**
          *  Delay added to ensure the UI has time to update before scrolling
          * TODO: maybe the check ofr indexes && can be replace with something more specific
          */
-        // wait(500).then(() =>
-        //   onScrollToIndex(indexes[0]?.sectionIndex, indexes[0]?.itemIndex),
-        // );
+
+        typeof indexToScrollFound === 'number' &&
+          wait(500).then(() => onScrollToIndex(indexToScrollFound));
       }
     };
     handleWeekOffsetChange();
@@ -88,12 +89,12 @@ const WeekBlock = ({
         onOptionPress={(option) => {
           handleChangeSelection(option);
 
-          // const indexes = findSectionIndexToScroll(
-          //   `${option.month}-${option.subtitle}`,
-          //   data,
-          // );
-          // indexes?.length &&
-          //   onScrollToIndex(indexes[0].sectionIndex, indexes[0].itemIndex);
+          const indexToScroll = findSectionIndexToScroll(
+            `${option.month}-${option.subtitle}`,
+            reportSections,
+          );
+
+          typeof indexToScroll === 'number' && onScrollToIndex(indexToScroll);
         }}
         withBorder
         borderColor={colors.primary[300]}
@@ -113,6 +114,8 @@ export default WeekBlock;
 const findSectionIndexToScroll = (
   selectedDayTitle: string,
   reports: any,
-): { sectionIndex: number; itemIndex: number }[] => {
-  return true;
+): number => {
+  return reports.findIndex((record: ISegmentedControlOption) =>
+    record.month.includes(selectedDayTitle),
+  );
 };

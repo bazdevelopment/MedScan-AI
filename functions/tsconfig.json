@@ -20,6 +20,8 @@
     "utilities/generate-verification-code.ts",
     "utilities/send-otp-code-email.ts",
     "utilities/email-templates/generate-otp-code-template.ts",
-    "utilities/__mocks__/scan-categories.ts"
+    "utilities/__mocks__/scan-categories.ts",
+    "utilities/generate-unique-id.ts",
+    "dayjs/index.ts"
   ]
 }

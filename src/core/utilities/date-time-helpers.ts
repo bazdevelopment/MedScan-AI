@@ -1,7 +1,7 @@
-import dayjs, { type Dayjs } from 'dayjs';
-
 import { type ISegmentedControlOption } from '@/components/segmented-control/segmented-control.interface';
 import { type IDayOfWeek } from '@/types/date-time';
+
+import dayjs from '../../lib/dayjs';
 
 /**
  * Utility function used to get the week number based on week offset
@@ -101,9 +101,18 @@ export const getCurrentDay = (format: string): string => dayjs().format(format);
 export const getStartAndEndWeek = (
   year: number,
   weekNumber: number,
-): { startOfWeek: Dayjs; endOfWeek: Dayjs } => {
-  const startOfWeek = dayjs().year(year).isoWeek(weekNumber).startOf('isoWeek'); // Get the start of the specified week with offset
-  const endOfWeek = dayjs().year(year).isoWeek(weekNumber).endOf('isoWeek'); // Get the end of the specified week with offset: ;
+): { startOfWeek: string; endOfWeek: string } => {
+  const startOfWeek = dayjs()
+    .year(year)
+    .isoWeek(weekNumber)
+    .startOf('isoWeek')
+    .format('YYYY-MM-DD'); // Format the start of the week to "YYYY-MM-DD"
+
+  const endOfWeek = dayjs()
+    .year(year)
+    .isoWeek(weekNumber)
+    .endOf('isoWeek')
+    .format('YYYY-MM-DD'); // Format the end of the week to "YYYY-MM-DD"
 
   return { startOfWeek, endOfWeek };
 };

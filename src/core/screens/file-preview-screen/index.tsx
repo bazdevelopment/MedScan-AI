@@ -21,10 +21,14 @@ const createFormDataVidePayload = ({
   fileUri,
   fileName,
   fileMimeType,
+  userId,
+  promptMessage,
 }: {
   fileUri: string;
   fileName: string;
   fileMimeType: string;
+  userId: string;
+  promptMessage: string;
 }) => {
   const formData = new FormData();
   // @ts-expect-error: special react native format for form data
@@ -34,6 +38,9 @@ const createFormDataVidePayload = ({
     type: fileMimeType,
   });
 
+  formData.append('userId', userId);
+  formData.append('promptMessage', promptMessage);
+
   return formData;
 };
 
@@ -42,11 +49,13 @@ const createFormDataImagePayload = ({
   fileName,
   fileMimeType,
   userId,
+  promptMessage,
 }: {
   fileUri: string;
   fileName: string;
   fileMimeType: string;
   userId: string;
+  promptMessage: string;
 }) => {
   const formData = new FormData();
   // @ts-expect-error: special react native format for form data
@@ -57,6 +66,7 @@ const createFormDataImagePayload = ({
   });
 
   formData.append('userId', userId);
+  formData.append('promptMessage', promptMessage);
 
   return formData;
 };
@@ -87,12 +97,15 @@ const FilePreviewScreen = ({
     fileUri: collectedData.fileUri as string,
     fileName: collectedData.fileName as string,
     fileMimeType: collectedData.fileMimeType as string,
+    promptMessage,
+    userId,
   });
 
   const imagePayload = createFormDataImagePayload({
     fileUri: collectedData.fileUri as string,
     fileName: collectedData.fileName as string,
     fileMimeType: collectedData.fileMimeType as string,
+    promptMessage: promptMessage,
     userId,
   });
 

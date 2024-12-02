@@ -17,4 +17,5 @@ export interface ISegmentedControlOption {
   id: number;
   title: string;
   subtitle?: Nullable<string>;
+  month: string;
 }

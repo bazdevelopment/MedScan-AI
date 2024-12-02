@@ -10,6 +10,7 @@ import {
   convertBufferToBase64,
   getBase64ImageFrames,
 } from '../utilities/extract-video-frames';
+import { generateUniqueId } from '../utilities/generate-unique-id';
 import { handleOnRequestError } from '../utilities/handle-on-request-error';
 import { processUploadedFile } from '../utilities/multipart';
 import { admin } from './common';
@@ -29,11 +30,12 @@ export const analyzeImage = async (req: Request, res: any) => {
 
     const { files, fields } = await processUploadedFile(req);
 
-    const { userId } = fields;
+    const { userId, promptMessage } = fields;
     const [imageFile] = files;
 
     const userDoc = db.collection('users').doc(userId);
     const userInfoSnapshot = await userDoc.get();
+    const storage = admin.storage();
 
     if (!userInfoSnapshot.exists) {
       throw new functions.https.HttpsError('not-found', 'User does not exist!');
@@ -98,6 +100,68 @@ export const analyzeImage = async (req: Request, res: any) => {
     const messageContent = message.content[0] as any;
     const textResult: string = messageContent.text;
 
+    /* Logic for storing the image in db */
+    // Generate a unique filename
+    const uniqueId = generateUniqueId();
+    const filePath = `interpretations/${userId}/${uniqueId}`;
+    const bucket = storage.bucket();
+
+    // Upload the image to Firebase Storage
+    const file = bucket.file(filePath);
+
+    try {
+      await file.save(imageFile.buf, {
+        metadata: {
+          contentType: imageFile.mimeType,
+        },
+      });
+    } catch (error) {
+      console.error('Error uploading file to Firebase Storage:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to upload the image to Firebase Storage.',
+      });
+    }
+
+    let url;
+    try {
+      [url] = await file.getSignedUrl({
+        action: 'read',
+        expires: '03-01-2500',
+      });
+    } catch (error) {
+      console.error('Error generating signed URL:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to generate the image URL.',
+      });
+    }
+    // Save the analysis result and metadata in Firestore
+    try {
+      const analysisDocRef = admin
+        .firestore()
+        .collection('interpretations')
+        .doc();
+      const createdAt = admin.firestore.FieldValue.serverTimestamp();
+
+      await analysisDocRef.set({
+        userId,
+        url,
+        filePath,
+        interpretationResult: textResult,
+        createdAt,
+        id: uniqueId,
+        mimeType: imageFile.mimeType,
+        promptMessage,
+      });
+    } catch (error) {
+      console.error('Error saving analysis metadata to Firestore:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to save analysis result to Firestore.',
+      });
+    }
+
     res.status(200).json({
       success: true,
       message: 'Successfully analyzed base64 image frames',
@@ -121,8 +185,11 @@ export const analyzeVideo = async (req: Request, res: any) => {
       res.set('Access-Control-Allow-Headers', 'Content-Type');
       res.set('Access-Control-Max-Age', '3600');
     }
+    const storage = admin.storage();
 
-    const { files } = await processUploadedFile(req);
+    const { files, fields } = await processUploadedFile(req);
+    const { userId, promptMessage } = fields;
+
     // Assuming we process the first video file
     const videoFile = files[0];
 
@@ -176,9 +243,72 @@ export const analyzeVideo = async (req: Request, res: any) => {
     const textResult = messageContent.text;
     // TODO: update the number of scans that user has
 
+    /* Logic for storing the video in db */
+    // Generate a unique filename
+    const uniqueId = generateUniqueId();
+    const filePath = `interpretations/${userId}/${uniqueId}`;
+    const bucket = storage.bucket();
+
+    // Upload the video to Firebase Storage
+    const file = bucket.file(filePath);
+
+    try {
+      await file.save(videoFile.buf, {
+        metadata: {
+          contentType: videoFile.mimeType,
+        },
+      });
+    } catch (error) {
+      console.error('Error uploading file to Firebase Storage:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to upload the image to Firebase Storage.',
+      });
+    }
+
+    let url;
+    try {
+      [url] = await file.getSignedUrl({
+        action: 'read',
+        expires: '03-01-2500',
+      });
+    } catch (error) {
+      console.error('Error generating signed URL:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to generate the image video url.',
+      });
+    }
+
+    // Save the analysis result and metadata in Firestore
+
+    try {
+      const analysisDocRef = admin
+        .firestore()
+        .collection('interpretations')
+        .doc();
+      const createdAt = admin.firestore.FieldValue.serverTimestamp();
+
+      await analysisDocRef.set({
+        userId,
+        url,
+        filePath,
+        interpretationResult: textResult,
+        createdAt,
+        id: uniqueId,
+        mimeType: videoFile.mimeType,
+        promptMessage,
+      });
+    } catch (error) {
+      console.error('Error saving analysis metadata to Firestore:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to save analysis result to Firestore.',
+      });
+    }
     return res.status(200).json({
       success: true,
-      message: 'Successfully analyzed base64 image frames',
+      message: 'Successfully analyzed base64 image frames(video)',
       interpretationResult: textResult,
     });
   } catch (error) {

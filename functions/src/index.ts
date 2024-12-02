@@ -11,6 +11,7 @@ import * as logger from 'firebase-functions/logger';
 import * as functions from 'firebase-functions/v1';
 
 import * as imageFunctions from './image';
+import { getInterpretationByDateHandler } from './interpretations';
 import * as pushNotificationsFunctions from './push-notifications';
 import {
   getScanCategoriesHandler,
@@ -80,4 +81,9 @@ export const getScanCategories = euFuntions.https.onCall(
 /** Get scan categories together with images*/
 export const uploadScanCategories = euFuntions.https.onRequest(
   handleUploadScanCategories,
+);
+
+/** Get interpretations by date for logged in user */
+export const getInterpretationByDate = euFuntions.https.onCall(
+  getInterpretationByDateHandler,
 );

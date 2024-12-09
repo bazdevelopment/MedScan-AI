@@ -6,5 +6,6 @@ export interface IIcon {
   labelStyle?: string; // Tailwind styles for the label
   containerStyle?: string; // Tailwind styles for the container
   iconContainerStyle?: string;
+  disabled?: boolean;
   onPress?: () => void;
 }

@@ -7,9 +7,9 @@ import { isRTL } from '@/core';
 
 export const ArrowRight = ({ color = '#CCC', style, ...props }: SvgProps) => (
   <Svg
-    width={7}
+    width={14}
     height={14}
-    viewBox="0 0 7 14"
+    viewBox="0 0 16 16"
     fill="none"
     {...props}
     style={StyleSheet.flatten([

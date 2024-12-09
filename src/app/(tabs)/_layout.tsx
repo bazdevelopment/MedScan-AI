@@ -17,10 +17,10 @@ import { colors, useModal } from '@/ui';
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
   const modal = useModal();
 
   const { isConnected } = useNetInfo();
-  const isDark = colorScheme === 'dark';
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
 
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;

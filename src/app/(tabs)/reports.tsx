@@ -1,9 +1,15 @@
 /* eslint-disable max-lines-per-function */
 import { FlashList } from '@shopify/flash-list';
+import { router } from 'expo-router';
 import React, { useMemo, useRef } from 'react';
 import { RefreshControl, View } from 'react-native';
 
-import { useInterpretationByDate } from '@/api/interpretation/interpretation.hooks';
+import {
+  useInterpretationByDate,
+  useUpdateInterpretationFields,
+} from '@/api/interpretation/interpretation.hooks';
+import CardWrapper from '@/components/card-wrapper';
+import ScanReportCard from '@/components/scan-report-card';
 import SkeletonLoader from '@/components/skeleton-loader';
 import WeekBlock from '@/components/week-block';
 import { DATE_FORMAT } from '@/constants/date-format';
@@ -16,6 +22,7 @@ import {
   type IInterpretationResult,
 } from '@/types/interpretation-report';
 import { Text } from '@/ui';
+import HorizontalLine from '@/ui/horizontal-line';
 
 const Reports = () => {
   const scrollViewRef = useRef<FlashList<any>>(null);
@@ -38,10 +45,14 @@ const Reports = () => {
     endDate: endOfWeek,
     weekNumber,
   })();
+
+  const {
+    mutate: onUpdateInterpretationFields,
+    isPending: isUpdateTitlePending,
+  } = useUpdateInterpretationFields({ weekNumber })();
   const { panResponder } = useWeekPanSwipe({
     onChangeWeekOffset: changeWeekOffset,
   });
-
   const { isRefetching, onRefetch } = useDelayedRefetch(refetch);
 
   // Helper function to transform daily reports
@@ -103,13 +114,35 @@ const Reports = () => {
           </Text>
         </View>
       ) : (
-        <View className="space-y-2">
+        <View className="mt-4">
           {Array.isArray(item.records) &&
-            item.records.map((record, index) => (
-              <View key={index} className="rounded-lg bg-gray-50 p-4">
-                <Text className="text-gray-700">Record #{index + 1}</Text>
-              </View>
-            ))}
+            item.records.map((record: IInterpretationResult) => {
+              const areMoreRecords = item.records.length > 1;
+              return (
+                <CardWrapper
+                  key={record.id}
+                  isEntirelyClickable
+                  onPress={() =>
+                    router.push({
+                      pathname: '/scan-interpretation/[id]',
+                      params: { id: record.id },
+                    })
+                  }
+                >
+                  <ScanReportCard
+                    {...record}
+                    isUpdateTitlePending={isUpdateTitlePending}
+                    onEditTitle={(title, documentId) =>
+                      onUpdateInterpretationFields({
+                        documentId,
+                        fieldsToUpdate: { title },
+                      })
+                    }
+                  />
+                  {areMoreRecords && <HorizontalLine className="mb-4" />}
+                </CardWrapper>
+              );
+            })}
         </View>
       )}
     </View>

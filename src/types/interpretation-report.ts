@@ -4,6 +4,9 @@ export interface IInterpretationResult {
   interpretation: string;
   mimeType: string;
   url: string;
+  promptMessage: string;
+  title: string;
+  docId: string;
 }
 
 export interface IInterpretationRecord {

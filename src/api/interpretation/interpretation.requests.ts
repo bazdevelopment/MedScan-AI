@@ -24,3 +24,15 @@ export const getInterpretationByDate = async ({
     throw error;
   }
 };
+
+export const updateInterpretationFields = async (fields: any) => {
+  try {
+    const onUpdateInterpretationFields =
+      firebaseCloudFunctionsInstance.httpsCallable('updateInterpretation');
+    const { data } = await onUpdateInterpretationFields(fields);
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

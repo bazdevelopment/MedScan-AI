@@ -2,6 +2,21 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
+interface IInterpretationResult {
+  docId: string; // Firestore document ID
+  userId: string;
+  title: string;
+  createdAt: FirebaseFirestore.Timestamp; // Firestore timestamp
+  url?: string;
+  filePath?: string;
+  interpretationResult?: string;
+  mimeType?: string;
+  promptMessage?: string;
+  id: string;
+}
+
+const db = admin.firestore();
+
 export const getInterpretationByDateHandler = async (
   data: { startDate: string; endDate: string }, // Assuming input is in ISO 8601 format (string)
   context: any,
@@ -44,8 +59,10 @@ export const getInterpretationByDateHandler = async (
       .orderBy('createdAt', 'asc')
       .get();
 
-    const results = querySnapshot.docs.map((doc) => doc.data());
-    // Generate all the dates between startDate and endDate
+    const results = querySnapshot.docs.map((doc) => ({
+      docId: doc.id, // Include the document ID
+      ...doc.data(), // Spread the document data
+    })) as IInterpretationResult[]; // Generate all the dates between startDate and endDate
     const allDatesInRange: string[] = [];
     const currentDate = new Date(start);
     while (currentDate <= end) {
@@ -79,6 +96,8 @@ export const getInterpretationByDateHandler = async (
           createdAt: createdAt.toISOString(),
           id: item.id,
           mimeType: item.mimeType,
+          title: item.title,
+          docId: item.docId,
         });
       }
     });
@@ -94,5 +113,45 @@ export const getInterpretationByDateHandler = async (
       error.message || 'Failed to fetch analyses!',
       { message: error.message },
     );
+  }
+};
+
+export const updateScanInterpretation = async (data: any, context: any) => {
+  try {
+    // Ensure the user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'Request not authorized. Please log in.',
+      );
+    }
+
+    // Extract the `documentId` and `fieldsToUpdate` from the request data
+    const { documentId, fieldsToUpdate } = data;
+
+    // Validate input
+    if (!documentId || !fieldsToUpdate || typeof fieldsToUpdate !== 'object') {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        "'documentId' and 'fieldsToUpdate' are required.",
+      );
+    }
+
+    // Firestore collection where your records are stored
+    const collectionName = 'interpretations'; // Replace with your actual collection name
+
+    // Update the document with the provided fields
+    await db.collection(collectionName).doc(documentId).update(fieldsToUpdate);
+
+    return {
+      message: 'Scan interpretation record updated successfully!',
+      updatedFields: fieldsToUpdate,
+    };
+  } catch (error: any) {
+    throw new functions.https.HttpsError(error.code, error.message, {
+      message:
+        error.message ||
+        'An error occurred while updating the scan interpretation record.',
+    });
   }
 };

@@ -1,4 +1,4 @@
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { useVideoPlayer, type VideoSource, VideoView } from 'expo-video';
 import { useRef } from 'react';
 import { StyleSheet, View, type ViewStyle } from 'react-native';
 
@@ -6,7 +6,7 @@ export default function VideoPlayer({
   videoSource,
   additionalVideoStyles = styles.video,
 }: {
-  videoSource: string;
+  videoSource: VideoSource;
   additionalVideoStyles?: ViewStyle;
 }) {
   const ref = useRef(null);

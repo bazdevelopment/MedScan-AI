@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useRef } from 'react';
 
+import { useSendGlobalPushNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { logout } from '@/api/user/user.requests';
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
@@ -19,6 +20,9 @@ export default function Settings() {
   const scrollViewRef = useRef(null);
   const iconColor =
     colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+
+  const { mutate: onHandleGlobalPushNotifications } =
+    useSendGlobalPushNotifications();
 
   useScrollToTop(scrollViewRef);
 
@@ -89,6 +93,16 @@ export default function Settings() {
               <Item
                 text="Verify email"
                 onPress={() => router.navigate('/verify-email')}
+              />
+
+              <Item
+                text="Send global push notification"
+                onPress={() =>
+                  onHandleGlobalPushNotifications({
+                    title: 'This is a global notification',
+                    body: 'This is a global notification body',
+                  })
+                }
               />
             </ItemsContainer>
           </View>

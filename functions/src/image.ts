@@ -153,6 +153,7 @@ export const analyzeImage = async (req: Request, res: any) => {
         id: uniqueId,
         mimeType: imageFile.mimeType,
         promptMessage,
+        title: '',
       });
     } catch (error) {
       console.error('Error saving analysis metadata to Firestore:', error);
@@ -298,6 +299,7 @@ export const analyzeVideo = async (req: Request, res: any) => {
         id: uniqueId,
         mimeType: videoFile.mimeType,
         promptMessage,
+        title: '',
       });
     } catch (error) {
       console.error('Error saving analysis metadata to Firestore:', error);

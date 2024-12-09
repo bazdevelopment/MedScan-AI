@@ -43,7 +43,6 @@ const ParallaxScrollView = ({
   const handleScroll = (event: NativeScrollEvent) => {
     'worklet';
     const { contentOffset, contentSize, layoutMeasurement } = event;
-
     /**
      * check if the scroll is performed so we know to decrease zIndex otherwise the buttons won't work
      * 5 is just a reference
@@ -77,9 +76,10 @@ const ParallaxScrollView = ({
       >
         {cloneElement(HeaderBarComponent, { scrollValue })}
       </View>
-
+      {/* <ScrollView contentContainerStyle={{ flex: 1 }} ref={scrollViewRef}> */}
       <StickyHeaderScrollView
         ref={scrollViewRef}
+        bounces
         onScroll={handleScroll}
         onScrollEndDrag={onScrollEndDrag}
         onMomentumScrollEnd={onMomentumScrollEnd}
@@ -96,6 +96,7 @@ const ParallaxScrollView = ({
           <EndScrollPlaceholder onScrollToTop={scrollToTop} />
         )}
       </StickyHeaderScrollView>
+      {/* </ScrollView> */}
     </View>
   );
 };

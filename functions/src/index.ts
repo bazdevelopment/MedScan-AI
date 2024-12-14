@@ -13,6 +13,7 @@ import * as functions from 'firebase-functions/v1';
 import * as imageFunctions from './image';
 import {
   getInterpretationByDateHandler,
+  getInterpretationByDocumentId,
   updateScanInterpretation,
 } from './interpretations';
 import * as pushNotificationsFunctions from './push-notifications';
@@ -93,4 +94,8 @@ export const getInterpretationByDate = euFuntions.https.onCall(
 
 export const updateInterpretation = euFuntions.https.onCall(
   updateScanInterpretation,
+);
+
+export const getInterpretationById = euFuntions.https.onCall(
+  getInterpretationByDocumentId,
 );

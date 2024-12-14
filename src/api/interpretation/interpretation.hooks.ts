@@ -7,12 +7,17 @@ import { type IInterpretationRecord } from '@/types/interpretation-report';
 import { queryClient } from '../common';
 import {
   getInterpretationByDate,
+  getInterpretationByDocumentId,
   updateInterpretationFields,
 } from './interpretation.requests';
 type IPayload = {
   startDate: string;
   endDate: string;
   weekNumber: number;
+};
+
+type IInterpretationById = {
+  documentId: string;
 };
 export const useInterpretationByDate = (variables: IPayload) =>
   createQuery<IInterpretationRecord, IPayload, AxiosError>({
@@ -36,4 +41,10 @@ export const useUpdateInterpretationFields = (variables: {
         error.message || 'Error when updating interpretation fields!',
       );
     },
+  });
+
+export const useInterpretationById = (variables: IInterpretationById) =>
+  createQuery<any, IInterpretationById, AxiosError>({
+    queryKey: ['interpretations-by-id', variables.documentId],
+    fetcher: () => getInterpretationByDocumentId(variables.documentId),
   });

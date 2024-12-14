@@ -148,12 +148,8 @@ const ScanReportCard = ({
       </View>
       <CustomModal visible={isMediaModalVisible} onClose={closeModal}>
         {isVideo ? (
-          <VideoPlayer
-            videoSource={{ uri: url }}
-            // additionalVideoStyles={{ width: 300, height: 300 }}
-          />
+          <VideoPlayer videoSource={{ uri: url }} />
         ) : (
-          // Replace this with a video player like react-native-video
           <Image source={{ uri: url }} className="h-96 w-96" />
         )}
       </CustomModal>

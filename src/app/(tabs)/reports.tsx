@@ -125,7 +125,7 @@ const Reports = () => {
                   onPress={() =>
                     router.push({
                       pathname: '/scan-interpretation/[id]',
-                      params: { id: record.id },
+                      params: { id: record.docId },
                     })
                   }
                 >

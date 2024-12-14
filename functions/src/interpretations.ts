@@ -155,3 +155,58 @@ export const updateScanInterpretation = async (data: any, context: any) => {
     });
   }
 };
+
+export const getInterpretationByDocumentId = async (
+  data: any,
+  context: any,
+) => {
+  try {
+    // Ensure the user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'Request not authorized. Please log in.',
+      );
+    }
+
+    // Extract the `documentId` from the request data
+    const { documentId } = data;
+
+    // Validate input
+    if (!documentId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        "'DocumentId' is required.",
+      );
+    }
+
+    // Firestore collection where your records are stored
+    const collectionName = 'interpretations'; // Replace with your actual collection name
+
+    // Get the document by ID
+    const doc = await db.collection(collectionName).doc(documentId).get();
+
+    if (!doc.exists) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        `No document found with the ID: ${documentId}`,
+      );
+    }
+
+    // Return the document data
+    return {
+      message: 'Document retrieved successfully!',
+      record: doc.data(),
+    };
+  } catch (error: any) {
+    throw new functions.https.HttpsError(
+      error.code || 'unknown',
+      error.message,
+      {
+        message:
+          error.message ||
+          'An error occurred while retrieving the interpretation by documentId.',
+      },
+    );
+  }
+};

@@ -36,3 +36,15 @@ export const updateInterpretationFields = async (fields: any) => {
     throw error;
   }
 };
+
+export const getInterpretationByDocumentId = async (documentId: string) => {
+  try {
+    const onGetInterpretationById =
+      firebaseCloudFunctionsInstance.httpsCallable('getInterpretationById');
+    const { data } = await onGetInterpretationById({ documentId });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

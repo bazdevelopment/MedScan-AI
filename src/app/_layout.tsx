@@ -16,11 +16,6 @@ import { APIProvider } from '@/api';
 import { hydrateAuth, loadSelectedTheme } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
-import {
-  logEvent,
-  recordError,
-  setAttributes,
-} from '@/crashlytics/crashlytics.utils';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -47,9 +42,6 @@ export default function RootLayout() {
   });
 
   useNotificationListeners();
-  logEvent('app mounted');
-  setAttributes({ error: 'here' });
-  recordError('error boss');
 
   useEffect(() => {
     if (fontsLoaded) {

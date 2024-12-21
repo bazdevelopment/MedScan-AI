@@ -1,6 +1,12 @@
 /* eslint-disable max-lines-per-function */
 import React, { useCallback, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Animated,
+  Platform,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 import { colors } from '@/ui';
@@ -93,6 +99,7 @@ const PullToRefresh = ({
         onGestureEvent={onGestureEvent}
         onHandlerStateChange={handleStateChange}
         enabled={!refreshing}
+        activeOffsetY={Platform.OS === 'android' ? [-200, 100] : undefined}
       >
         <Animated.View
           style={[

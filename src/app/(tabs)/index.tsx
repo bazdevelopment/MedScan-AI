@@ -83,35 +83,33 @@ export default function Home() {
         scrollValue={scrollValue}
         scrollViewRef={scrollViewRef}
       >
-        <View>
-          <View className="ml-4 mt-14">
-            <Text className="my-6">Scan examples</Text>
+        <View className="ml-4 mt-14">
+          <Text className="my-6">Scan examples</Text>
 
-            <ScanCategoriesStories
-              categories={data?.categories}
-              isLoading={areScanCategoriesLoading}
-            />
-            <Text className="my-6">Recent reports</Text>
+          <ScanCategoriesStories
+            categories={data?.categories}
+            isLoading={areScanCategoriesLoading}
+          />
+          <Text className="my-6">Recent reports</Text>
 
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerClassName="gap-4"
-              snapToInterval={300}
-              snapToAlignment="center"
-              decelerationRate={0}
-            >
-              {reports.map(({ title, date, description, score, id }) => (
-                <ReportCard
-                  key={id}
-                  title={title}
-                  date={date}
-                  description={description}
-                  score={score}
-                />
-              ))}
-            </ScrollView>
-          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerClassName="gap-4"
+            snapToInterval={300}
+            snapToAlignment="center"
+            decelerationRate={0}
+          >
+            {reports.map(({ title, date, description, score, id }) => (
+              <ReportCard
+                key={id}
+                title={title}
+                date={date}
+                description={description}
+                score={score}
+              />
+            ))}
+          </ScrollView>
         </View>
       </ParallaxScrollView>
     </PullToRefresh>

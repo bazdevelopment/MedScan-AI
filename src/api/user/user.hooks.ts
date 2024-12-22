@@ -9,6 +9,7 @@ import {
   createAnonymousAccount,
   decrementNumberOfScans,
   getUserInfo,
+  loginWithEmail,
   sendOtpCodeViaEmail,
   validateVerificationCode,
 } from './user.requests';
@@ -38,6 +39,21 @@ export const useCreateAnonymousAccount = createMutation<
     Toast.error(error.message || 'Error signing in anonymously');
   },
 });
+
+export const useLoginWithEmail = (variables: { email: string }) =>
+  createMutation<Response, any, AxiosError>({
+    mutationFn: (variables) => loginWithEmail(variables),
+    onSuccess: () => {
+      Toast.success('Successfully logged in');
+      router.push({
+        pathname: '/verify-auth-code',
+        params: { email: variables.email },
+      });
+    },
+    onError: (error) => {
+      Toast.error(error.message || 'Error signing in anonymously');
+    },
+  });
 
 export const useUser = createQuery<Response, any, AxiosError>({
   queryKey: ['user-info'],

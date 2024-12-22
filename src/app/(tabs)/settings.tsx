@@ -38,6 +38,7 @@ export default function Settings() {
           </Text>
 
           <ItemsContainer title="settings.generale">
+            <Item text="settings.profile" onPress={() => {}} />
             <LanguageItem />
             <ThemeItem />
           </ItemsContainer>

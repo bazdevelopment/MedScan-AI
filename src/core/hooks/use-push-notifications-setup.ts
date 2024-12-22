@@ -10,6 +10,7 @@ import Toast from '@/components/toast';
 
 import { Env } from '../env';
 import { storage } from '../storage';
+import { getUniqueDeviceIdentifier } from '../utilities/get-unique-device-identifier';
 
 export const usePushNotificationSetup = () => {
   const [arePushNotificationEnabled, setArePushNotificationsEnabled] =
@@ -67,6 +68,7 @@ export const usePushNotificationSetup = () => {
         deviceName: DeviceInfo.deviceName || '',
         deviceModel: DeviceInfo.modelName || '',
         deviceBrand: DeviceInfo.brand || '',
+        deviceUniqueId: getUniqueDeviceIdentifier(),
       });
       if (response.success) {
         // Update state and storage

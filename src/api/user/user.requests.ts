@@ -6,8 +6,10 @@ import Toast from '@/components/toast';
 /** Create anonymous account */
 export const createAnonymousAccount = async ({
   userName,
+  deviceUniqueId,
 }: {
   userName: string;
+  deviceUniqueId: string;
 }) => {
   try {
     const { data }: { data: any } =
@@ -15,6 +17,23 @@ export const createAnonymousAccount = async ({
         'createAnonymousAccount',
       )({
         userName,
+        deviceUniqueId,
+      });
+    const userCredentials = await firebaseAuth.signInWithCustomToken(
+      data.authToken,
+    );
+    return userCredentials;
+  } catch (error) {
+    throw error;
+  }
+};
+
+/** Create anonymous account */
+export const loginWithEmail = async ({ email }: { email: string }) => {
+  try {
+    const { data }: { data: any } =
+      await firebaseCloudFunctionsInstance.httpsCallable('loginUserViaEmail')({
+        email,
       });
     const userCredentials = await firebaseAuth.signInWithCustomToken(
       data.authToken,

@@ -1,7 +1,8 @@
+/* eslint-disable max-lines-per-function */
 import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 
-import { useCreateAnonymousAccount } from '@/api/user/user.hooks';
+import { useLoginWithEmail } from '@/api/user/user.hooks';
 import { Button, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 
 export default function Login() {
@@ -14,12 +15,12 @@ export default function Login() {
 }
 
 const LoginFrm = () => {
-  const { mutate: handleSubmit, isPending } = useCreateAnonymousAccount();
+  const [email, setEmail] = useState('');
 
-  const [userName, setUserName] = useState('');
+  const { mutate: handleLoginViaEmail, isPending: isLoginPending } =
+    useLoginWithEmail({ email })();
 
-  const handleUpdateUserName = (text: string) =>
-    setUserName(text.toLowerCase());
+  const handleUpdateEmail = (text: string) => setEmail(text.toLowerCase());
 
   return (
     <KeyboardAvoidingView
@@ -28,22 +29,28 @@ const LoginFrm = () => {
       keyboardVerticalOffset={10}
     >
       <View className="flex-1 justify-center p-4">
-        {isPending && <ActivityIndicator />}
+        {isLoginPending && <ActivityIndicator />}
+
         <Text testID="form-title" className="pb-6 text-center text-2xl">
-          Sign In
+          Welcome
         </Text>
 
+        <Text className="mb-4 text-center text-gray-600">
+          Please enter your email to continue
+        </Text>
         <Input
-          testID="name"
-          label="Name"
-          value={userName}
-          onChangeText={handleUpdateUserName}
+          testID="email"
+          label="Email"
+          value={email}
+          onChangeText={handleUpdateEmail}
+          autoCapitalize="none"
+          keyboardType="email-address"
         />
-
         <Button
           testID="login-button"
-          label="Login"
-          onPress={() => handleSubmit({ userName })}
+          label="Continue"
+          onPress={() => handleLoginViaEmail({ email })}
+          disabled={isLoginPending || !email}
         />
       </View>
     </KeyboardAvoidingView>

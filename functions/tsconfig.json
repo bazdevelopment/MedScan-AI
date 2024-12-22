@@ -22,6 +22,7 @@
     "utilities/email-templates/generate-otp-code-template.ts",
     "utilities/__mocks__/scan-categories.ts",
     "utilities/generate-unique-id.ts",
+    "utilities/truncate-email-address.ts",
     "dayjs/index.ts"
   ]
 }

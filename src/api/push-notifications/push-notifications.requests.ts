@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { firebaseCloudFunctionsInstance } from 'firebase/config';
 
 import {
@@ -13,6 +14,7 @@ export const storeMobileDeviceToken = async ({
   deviceName,
   deviceModel,
   deviceBrand,
+  deviceUniqueId,
 }: IMobileDeviceInfo): Promise<IStoreDeviceTokenResponse> => {
   try {
     const handleStoreDeviceToken =
@@ -24,6 +26,7 @@ export const storeMobileDeviceToken = async ({
       deviceName,
       deviceModel,
       deviceBrand,
+      deviceUniqueId,
     });
 
     return data as IStoreDeviceTokenResponse;
@@ -52,5 +55,19 @@ export const sendGlobalPushNotifications = async ({
     return data as IGlobalNotificationsResponse;
   } catch (error) {
     throw error;
+  }
+};
+
+export const getDeviceInfoByUniqueIdentifier = async (
+  deviceUniqueId: string,
+): Promise<any> => {
+  try {
+    const response = await axios.get(
+      `https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/getDeviceInfoByUniqueIdentifier?deviceUniqueId=${deviceUniqueId}`,
+    );
+    return response.data.data; // With axios, the response data is directly accessible as `response.data`
+  } catch (error: any) {
+    console.log('error', error);
+    throw new Error(error.message); // Catch error messages from axios
   }
 };

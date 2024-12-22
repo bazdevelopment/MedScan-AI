@@ -3,6 +3,7 @@
     "message": "Welcome to X-Ray analizer app site"
   },
   "settings": {
+    "profile": "Profile",
     "about": "About",
     "app_name": "App Name",
     "arabic": "Arabic",

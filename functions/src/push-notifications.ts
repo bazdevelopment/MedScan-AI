@@ -20,6 +20,7 @@ const storeDeviceToken = async (
     deviceName,
     deviceModel,
     deviceBrand,
+    deviceUniqueId,
   }: {
     deviceToken: string;
     platform: string;
@@ -27,6 +28,7 @@ const storeDeviceToken = async (
     deviceName: string;
     deviceModel: string;
     deviceBrand: string;
+    deviceUniqueId: string;
   },
   context: any,
 ) => {
@@ -51,6 +53,7 @@ const storeDeviceToken = async (
       deviceName,
       deviceModel,
       deviceBrand,
+      deviceUniqueId,
       platform: platform || 'unknown',
       updatedAt: admin.firestore.FieldValue.serverTimestamp(),
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
@@ -143,6 +146,40 @@ const handleSendGlobalPushNotifications = async (
   }
 };
 
+const checkDeviceUniqueIdentifier = async (req: any, res: any) => {
+  try {
+    // Get deviceId and pushToken from the client
+    const { deviceUniqueId } = req.query;
+
+    if (!deviceUniqueId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Device ID is required.',
+      );
+    }
+
+    const devicesRef = admin.firestore().collection('mobileDevices');
+
+    // Check if the device is already registered
+    const deviceQuery = await devicesRef
+      .where('deviceUniqueId', '==', deviceUniqueId)
+      .get();
+
+    return res.status(200).json({
+      message: 'Device identified properly!',
+      data: deviceQuery.docs[0].data(),
+    });
+  } catch (error) {
+    console.error('Error checking device trial:', error);
+
+    // Throw a Cloud Function error to the client
+    throw new functions.https.HttpsError(
+      'unknown',
+      'An error occurred while checking device trial.',
+    );
+  }
+};
+
 /** 
  *  Cleanup function for inactive device tokens
  * !Consider removing inactive or making them inactive users in this job storeDeviceToken will be called many many times the submitToken  will be called many times
@@ -184,4 +221,8 @@ exports.cleanupInactiveTokens = functions.pubsub
 
   */
 
-export { handleSendGlobalPushNotifications, storeDeviceToken };
+export {
+  checkDeviceUniqueIdentifier,
+  handleSendGlobalPushNotifications,
+  storeDeviceToken,
+};

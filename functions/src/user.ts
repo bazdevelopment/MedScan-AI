@@ -4,12 +4,36 @@ import * as functions from 'firebase-functions/v1';
 import { generateOptCodeTemplate } from '../utilities/email-templates/generate-otp-code-template';
 import { generateVerificationCode } from '../utilities/generate-verification-code';
 import { sendOtpCodeViaEmail } from '../utilities/send-otp-code-email';
+import { truncateEmailAddress } from '../utilities/truncate-email-address';
 import { admin } from './common';
 
 const db = admin.firestore();
 
-const createAnonymousAccountHandler = async (data: { userName: string }) => {
+const createAnonymousAccountHandler = async (data: {
+  userName: string;
+  deviceUniqueId: string;
+}) => {
   try {
+    if (!data.deviceUniqueId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Device ID is required.',
+      );
+    }
+
+    const devicesRef = admin.firestore().collection('mobileDevices');
+
+    // Check if the device is already registered
+    const deviceQuery = await devicesRef
+      .where('deviceUniqueId', '==', data.deviceUniqueId)
+      .get();
+
+    if (!deviceQuery.empty) {
+      throw new functions.https.HttpsError(
+        'already-exists',
+        'Free trial already used on this device',
+      );
+    }
     const createdUser = await admin.auth().createUser({});
     const customToken = await admin.auth().createCustomToken(createdUser.uid);
     const createdUserDoc = db.collection('users').doc(createdUser.uid);
@@ -37,6 +61,114 @@ const createAnonymousAccountHandler = async (data: { userName: string }) => {
   }
 };
 
+const loginUserViaEmailHandler = async (data: { email: string }) => {
+  try {
+    if (!data.email) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Email is required.',
+      );
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Invalid email format.',
+      );
+    }
+
+    const db = admin.firestore();
+
+    // Find user by email
+    const usersQuery = await db
+      .collection('users')
+      .where('email', '==', data.email)
+      .limit(1)
+      .get();
+
+    let userId: string;
+    let isNewUser = false;
+    const verificationCode = generateVerificationCode();
+    const verificationExpiry = admin.firestore.Timestamp.fromDate(
+      new Date(Date.now() + 15 * 60 * 1000), // 15 minutes expiry
+    );
+
+    if (usersQuery.empty) {
+      // Create new user if doesn't exist
+      const createdUser = await admin.auth().createUser({
+        email: data.email,
+      });
+
+      userId = createdUser.uid;
+
+      isNewUser = true;
+
+      // Create user document with initial data
+      await db
+        .collection('users')
+        .doc(userId)
+        .set({
+          email: data.email,
+          scansRemaining: 10,
+          maxScans: 10,
+          subscribed: false,
+          isActive: false,
+          isAnonymous: false,
+          userName: truncateEmailAddress(data.email),
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
+          userId: userId,
+          verificationCode,
+          verificationCodeExpiry: verificationExpiry,
+        });
+    } else {
+      // Update existing user with new verification code
+      userId = usersQuery.docs[0].id;
+      await db.collection('users').doc(userId).update({
+        verificationCode,
+        verificationCodeExpiry: verificationExpiry,
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+    }
+    const customToken = await admin.auth().createCustomToken(userId);
+
+    // Here you would typically send the verification code via email
+    // await sendVerificationEmail(data.email, verificationCode);
+
+    await sendOtpCodeViaEmail({
+      receiverEmail: data.email,
+      subject: 'X-Ray Analyzer verification code',
+      htmlTemplate: generateOptCodeTemplate(
+        truncateEmailAddress(data.email),
+        verificationCode,
+      ),
+    });
+
+    return {
+      userId,
+      message: isNewUser
+        ? 'Account created! Please check your email for verification code.'
+        : 'Verification code sent to your email.',
+      email: data.email,
+      isNewUser,
+      authToken: customToken,
+    };
+  } catch (error: any) {
+    console.error('Auth error:', error);
+
+    if (error instanceof functions.https.HttpsError) {
+      throw error;
+    }
+
+    throw new functions.https.HttpsError(
+      'internal',
+      'Error processing authentication.',
+      { message: error.message || 'Unknown error occurred.' },
+    );
+  }
+};
+
 const sendEmailVerification = async (data: { email: string }, context: any) => {
   // Ensure user is authenticated
   try {
@@ -48,7 +180,6 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
     }
 
     const { email } = data;
-
     const uid = context.auth?.uid;
     const verificationCode = generateVerificationCode();
 
@@ -109,7 +240,11 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
         verificationCode,
       ),
     });
-    return { success: true, message: 'Successfully sent the code via email!' };
+
+    return {
+      success: true,
+      message: 'Successfully sent the code via email!',
+    };
   } catch (error: any) {
     throw new functions.https.HttpsError(error.code, error.message, {
       message: error.message || 'Error starting email verification.',
@@ -183,6 +318,7 @@ const verifyAuthenticationCodeHandler = async (
 
     await db.collection('users').doc(uid).update({
       isAnonymous: false,
+      isActive: true,
       email,
     });
 
@@ -191,7 +327,10 @@ const verifyAuthenticationCodeHandler = async (
       emailVerified: true,
     });
 
-    return { success: true, message: 'Successfully verified the user!' };
+    return {
+      success: true,
+      message: 'Successfully verified the user!',
+    };
   } catch (error: any) {
     throw new functions.https.HttpsError(error.code, error.message, {
       message: error.message || 'Error for authentication code verification',
@@ -316,6 +455,7 @@ export {
   decrementUserScans,
   getUserInfo,
   incrementUserScans,
+  loginUserViaEmailHandler,
   sendEmailVerification,
   updateUserSubscription,
   verifyAuthenticationCodeHandler,

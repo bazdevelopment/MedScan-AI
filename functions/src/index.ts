@@ -44,6 +44,10 @@ export const createAnonymousAccount = euFuntions.https.onCall(
   userFunctions.createAnonymousAccountHandler,
 );
 
+export const loginUserViaEmail = euFuntions.https.onCall(
+  userFunctions.loginUserViaEmailHandler,
+);
+
 export const incrementUserScans = euFuntions.https.onCall(
   userFunctions.incrementUserScans,
 );
@@ -66,6 +70,10 @@ export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);
 
 export const storeDeviceToken = euFuntions.https.onCall(
   pushNotificationsFunctions.storeDeviceToken,
+);
+
+export const getDeviceInfoByUniqueIdentifier = euFuntions.https.onRequest(
+  pushNotificationsFunctions.checkDeviceUniqueIdentifier,
 );
 
 export const sendGlobalPushNotifications = euFuntions.https.onCall(

@@ -196,7 +196,10 @@ export const getInterpretationByDocumentId = async (
     // Return the document data
     return {
       message: 'Document retrieved successfully!',
-      record: doc.data(),
+      record: {
+        ...doc.data(),
+        createdAt: doc.data()?.createdAt.toDate().toISOString(),
+      },
     };
   } catch (error: any) {
     throw new functions.https.HttpsError(

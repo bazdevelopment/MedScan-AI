@@ -19,12 +19,10 @@ const ScanInterpretationDetailsScreen = () => {
   const { data, isPending } = useInterpretationById({
     documentId: documentId as string,
   })();
-
   const isVideo = useMemo(
     () => data?.record?.mimeType === 'video/quicktime',
     [data?.record?.mimeType],
   );
-
   if (isPending) {
     return (
       <View className="flex-1 items-center justify-center bg-white">
@@ -47,7 +45,7 @@ const ScanInterpretationDetailsScreen = () => {
         <View className="h-48 w-full overflow-hidden rounded-xl">
           <Image source={{ uri: data.record.url }} className="h-full w-full" />
           <BlurView intensity={60} className="absolute bottom-0 w-full p-2">
-            <Text className="text-sm text-white">Tap to view full size</Text>
+            <Text className="text-sm">Tap to view full size</Text>
           </BlurView>
         </View>
       )}
@@ -81,7 +79,7 @@ const ScanInterpretationDetailsScreen = () => {
                 color={colors.white}
               />
               <Text className="ml-2 text-sm text-gray-500">
-                {new Date(data.record.createdAt).toLocaleDateString(undefined, {
+                {new Date(data.record.createdAt).toLocaleDateString('ro', {
                   year: 'numeric',
                   month: 'short',
                   day: 'numeric',
@@ -93,6 +91,8 @@ const ScanInterpretationDetailsScreen = () => {
           <View className="my-4 h-px bg-gray-100" />
 
           <View className="mb-2">
+            <Text className="text-xltext-gray-500 mb-1">Title</Text>
+            <Text className="mb-4 text-xl">{data?.record?.title}</Text>
             <Text className="mb-1 text-sm text-gray-500">Document ID</Text>
             <Text className="font-mono text-base">{documentId}</Text>
           </View>

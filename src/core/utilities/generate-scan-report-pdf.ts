@@ -1,0 +1,183 @@
+/* eslint-disable max-lines-per-function */
+
+interface IGenerateScanReportPdf {
+  createdAt: string;
+  interpretation: string;
+  mimeType: string;
+  promptMessage: string;
+  title: string;
+  docId: string;
+}
+
+export const generateScanReportPdf = ({
+  createdAt,
+  interpretation,
+  mimeType,
+  promptMessage,
+  title,
+  docId,
+}: IGenerateScanReportPdf): string => {
+  // Format date for better readability
+  const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>${title}</title>
+        <style>
+          @page {
+            margin: 1cm;
+          }
+        </style>
+      </head>
+      <body style="
+        font-family: 'Helvetica', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+      ">
+        <!-- Header with App Logo and Name -->
+        <header style="
+          background: linear-gradient(135deg, #2563eb, #1e40af);
+          color: white;
+          padding: 20px;
+          text-align: center;
+          border-radius: 0 0 15px 15px;
+          margin-bottom: 30px;
+        ">
+          <h1 style="
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+          ">X-Ray Analyzer</h1>
+          <p style="
+            margin: 5px 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+          ">Document Analysis Report</p>
+        </header>
+
+        <!-- Main Content -->
+        <div style="padding: 0 40px;">
+          <!-- Document Title Section -->
+          <div style="
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+          ">
+            <h2 style="
+              color: #1e40af;
+              margin: 0 0 10px;
+              font-size: 24px;
+            ">${title}</h2>
+            <p style="
+              margin: 0;
+              color: #64748b;
+              font-size: 14px;
+            ">Document ID: ${docId}</p>
+          </div>
+
+          <!-- Analysis Details -->
+          <div style="
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+          ">
+            <!-- Creation Time -->
+            <div style="
+              background-color: white;
+              border-radius: 8px;
+              padding: 15px;
+              border: 1px solid #e2e8f0;
+            ">
+              <h3 style="
+                margin: 0 0 8px;
+                color: #334155;
+                font-size: 16px;
+                font-weight: bold;
+              ">📅 Created At</h3>
+              <p style="margin: 0; color: #64748b;">${formattedDate}</p>
+            </div>
+
+            <!-- Document Type -->
+            <div style="
+              background-color: white;
+              border-radius: 8px;
+              padding: 15px;
+              border: 1px solid #e2e8f0;
+            ">
+              <h3 style="
+                margin: 0 0 8px;
+                color: #334155;
+                font-size: 16px;
+                font-weight: bold;
+              ">📄 Document Type</h3>
+              <p style="margin: 0; color: #64748b;">${mimeType}</p>
+            </div>
+
+            <!-- Prompt -->
+            <div style="
+              background-color: white;
+              border-radius: 8px;
+              padding: 15px;
+              border: 1px solid #e2e8f0;
+            ">
+              <h3 style="
+                margin: 0 0 8px;
+                color: #334155;
+                font-size: 16px;
+                font-weight: bold;
+              ">❓ Analysis Prompt</h3>
+              <p style="margin: 0; color: #64748b;">${promptMessage}</p>
+            </div>
+          </div>
+
+          <!-- Interpretation -->
+          <div style="
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+          ">
+            <h3 style="
+              margin: 0 0 15px;
+              color: #334155;
+              font-size: 20px;
+              font-weight: bold;
+            ">🤖 AI Interpretation</h3>
+            <div style="
+              color: #334155;
+              line-height: 1.8;
+              white-space: pre-wrap;
+            ">${interpretation}</div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer style="
+          text-align: center;
+          padding: 20px;
+          color: #64748b;
+          font-size: 12px;
+          border-top: 1px solid #e2e8f0;
+          margin-top: 40px;
+        ">
+          <p style="margin: 0;">Generated by X-Ray Analyzer • ${formattedDate}</p>
+        </footer>
+      </body>
+    </html>
+  `;
+};

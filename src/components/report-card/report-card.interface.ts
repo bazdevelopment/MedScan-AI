@@ -1,5 +1,5 @@
 export interface IReportCard {
-  date: Date | string;
+  date: Date;
   title: string;
   description: string;
   score: number;

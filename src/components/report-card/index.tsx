@@ -1,16 +1,13 @@
-import { useColorScheme } from 'nativewind';
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 
-import { colors, Text } from '@/ui';
-import { DownloadIcon, ShareIcon } from '@/ui/assets/icons';
+import { generateScanReportPdf } from '@/core/utilities/generate-scan-report-pdf';
+import { Text } from '@/ui';
 
+import SharePdfActionButtons from '../share-pdf-action-buttons';
 import { type IReportCard } from './report-card.interface';
 
 const ReportCard = ({ date, title, description, score }: IReportCard) => {
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
-
   return (
     <View className="w-[300px] rounded-[30px] bg-secondary-200 p-6 dark:bg-charcoal-800">
       <Text className="text-xs text-gray-600">Date: {date.toString()}</Text>
@@ -21,14 +18,19 @@ const ReportCard = ({ date, title, description, score }: IReportCard) => {
           <Text className="mt-2 text-xs">Health Score</Text>
           <Text className="text-xl font-bold">{score}</Text>
         </View>
-        <View className="flex-row gap-3 self-end">
-          <TouchableOpacity className="mr-2">
-            <ShareIcon color={isDark ? colors.white : colors.darkGray} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <DownloadIcon color={isDark ? colors.white : colors.darkGray} />
-          </TouchableOpacity>
-        </View>
+        <SharePdfActionButtons
+          heading={title}
+          date={date}
+          html={generateScanReportPdf({
+            createdAt: new Date().toISOString(),
+            interpretation: 'Your interpretation text here...',
+            mimeType: 'application/pdf',
+            url: 'https://example.com/doc',
+            promptMessage: 'What is the reason?',
+            title: 'Document Analysis',
+            docId: 'DOC123',
+          })}
+        />
       </View>
     </View>
   );

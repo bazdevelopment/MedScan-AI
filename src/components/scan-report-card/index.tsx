@@ -41,7 +41,8 @@ const ScanReportCard = ({
     if (editableTitle !== title) onEditTitle?.(editableTitle, docId); // Call the parent `onEdit` callback with the new title
   };
   const handleEdit = (docId: string) => {
-    onEditTitle?.(editableTitle, docId);
+    editableTitle !== title && onEditTitle?.(editableTitle, docId);
+    setIsEditing(false);
   };
 
   const isVideo = mimeType === 'video/quicktime';

@@ -8,6 +8,7 @@ import { queryClient } from '../common';
 import {
   getInterpretationByDate,
   getInterpretationByDocumentId,
+  getRecentReports,
   updateInterpretationFields,
 } from './interpretation.requests';
 type IPayload = {
@@ -18,6 +19,9 @@ type IPayload = {
 
 type IInterpretationById = {
   documentId: string;
+};
+type IRecentInterpretations = {
+  limit: number;
 };
 export const useInterpretationByDate = (variables: IPayload) =>
   createQuery<IInterpretationRecord, IPayload, AxiosError>({
@@ -47,4 +51,10 @@ export const useInterpretationById = (variables: IInterpretationById) =>
   createQuery<any, IInterpretationById, AxiosError>({
     queryKey: ['interpretations-by-id', variables.documentId],
     fetcher: () => getInterpretationByDocumentId(variables.documentId),
+  });
+
+export const useRecentInterpretations = (variables: IRecentInterpretations) =>
+  createQuery<any, IRecentInterpretations, AxiosError>({
+    queryKey: ['recent-interpretations'],
+    fetcher: () => getRecentReports(variables.limit),
   });

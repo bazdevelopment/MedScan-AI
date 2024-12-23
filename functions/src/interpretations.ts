@@ -213,3 +213,73 @@ export const getInterpretationByDocumentId = async (
     );
   }
 };
+
+export const getRecentInterpretationHandler = async (
+  data: { limit?: number },
+  context: any,
+) => {
+  try {
+    // Ensure the user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'Request not authorized. Please log in.',
+      );
+    }
+
+    // Extract the limit from the request data or use default value
+    const { limit = 5 } = data;
+
+    // Validate limit
+    if (typeof limit !== 'number' || limit < 1 || limit > 100) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Limit must be a number between 1 and 100',
+      );
+    }
+
+    // Firestore collection reference
+    const collectionName = 'interpretations';
+
+    // Query the most recent interpretations
+    const querySnapshot = await db
+      .collection(collectionName)
+      .where('userId', '==', context.auth.uid) // Assuming you want to get only user's interpretations
+      .orderBy('createdAt', 'desc')
+      .limit(limit)
+      .get();
+
+    if (querySnapshot.empty) {
+      return {
+        message: 'No interpretations found',
+        records: [],
+      };
+    }
+
+    // Transform the documents data
+    const records = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...data,
+        createdAt: data.createdAt.toDate().toISOString(),
+      };
+    });
+
+    return {
+      message: 'Recent interpretations retrieved successfully!',
+      records,
+      total: records.length,
+    };
+  } catch (error: any) {
+    console.error('Error in getRecentInterpretations:', error);
+    throw new functions.https.HttpsError(
+      error.code || 'unknown',
+      error.message ||
+        'An error occurred while retrieving recent interpretations.',
+      {
+        message: error.message || 'Internal server error occurred.',
+      },
+    );
+  }
+};

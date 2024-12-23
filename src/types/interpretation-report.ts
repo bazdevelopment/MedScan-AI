@@ -1,12 +1,15 @@
 export interface IInterpretationResult {
   createdAt: string;
   id: string;
-  interpretation: string;
+  interpretationResult: string;
   mimeType: string;
   url: string;
   promptMessage: string;
   title: string;
   docId: string;
+}
+export interface IInterpretationResultRecords {
+  records: IInterpretationResult[];
 }
 
 export interface IInterpretationRecord {

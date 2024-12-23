@@ -34,7 +34,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Launch the image library picker
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true, //todo: make sure in the future that you want to allow editing
+        // allowsEditing: true, //todo: make sure in the future that you want to allow editing
         aspect: [4, 3],
         quality: 1,
         base64: true,

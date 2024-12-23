@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -10,22 +11,27 @@ import { type IReportCard } from './report-card.interface';
 const ReportCard = ({ date, title, description, score }: IReportCard) => {
   return (
     <View className="w-[300px] rounded-[30px] bg-secondary-200 p-6 dark:bg-charcoal-800">
-      <Text className="text-xs text-gray-600">Date: {date.toString()}</Text>
-      <Text className="my-1 font-inter text-xl">{title}</Text>
-      <Text className="mt-1 text-sm ">{description}</Text>
+      <Text className="text-xs text-gray-600">
+        {dayjs(date).format('MMMM D, YYYY')}
+      </Text>
+      <Text className="mt-2 font-inter text-xl">
+        {title || 'Unnamed report'}
+      </Text>
+      <Text className="mt-1 text-sm" numberOfLines={2}>
+        {description}
+      </Text>
       <View className="flex-row items-center justify-between">
         <View>
           <Text className="mt-2 text-xs">Health Score</Text>
-          <Text className="text-xl font-bold">{score}</Text>
+          <Text className="text-xl font-bold">{score || '-'}</Text>
         </View>
         <SharePdfActionButtons
           heading={title}
           date={date}
           html={generateScanReportPdf({
-            createdAt: new Date().toISOString(),
+            createdAt: dayjs(date).format('dddd-DD'),
             interpretation: 'Your interpretation text here...',
             mimeType: 'application/pdf',
-            url: 'https://example.com/doc',
             promptMessage: 'What is the reason?',
             title: 'Document Analysis',
             docId: 'DOC123',

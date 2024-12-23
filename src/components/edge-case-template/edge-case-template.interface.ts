@@ -8,7 +8,7 @@ type ActionButton = {
 export interface IEdgeCaseTemplate {
   image: React.ReactElement;
   title: string;
-  message: string;
+  message?: string;
   primaryAction?: ActionButton;
   secondaryAction?: ActionButton;
   additionalClassName?: string;

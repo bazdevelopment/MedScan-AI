@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
+import { DEVICE_DIMENSIONS } from '@/constants/device-dimentions';
 import { Button, Text } from '@/ui';
 
 import { type IEdgeCaseTemplate } from './edge-case-template.interface';
@@ -16,14 +17,17 @@ const EdgeCaseTemplate = ({
   return (
     <View
       className={`flex-1 items-center justify-center px-6 ${additionalClassName}`}
+      style={{ width: DEVICE_DIMENSIONS.DEVICE_WIDTH }}
     >
       {image && <View className="mb-4">{image}</View>}
       <Text className="mb-2 text-center text-2xl font-semibold text-gray-900">
         {title}
       </Text>
-      <Text className=" mb-8 text-center text-base text-gray-600">
-        {message}
-      </Text>
+      {!!message && (
+        <Text className=" mb-8 text-center text-base text-gray-600">
+          {message}
+        </Text>
+      )}
 
       <View className="w-full flex-row items-center justify-center gap-4">
         {!!primaryAction && (

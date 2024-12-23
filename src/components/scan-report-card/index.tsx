@@ -87,7 +87,7 @@ const ScanReportCard = ({
                   />
                 ) : (
                   <Text className="mr-2  text-lg" numberOfLines={2}>
-                    {editableTitle || 'Unnamed Report'}
+                    {editableTitle || 'Unnamed report'}
                   </Text>
                 )}
               </View>

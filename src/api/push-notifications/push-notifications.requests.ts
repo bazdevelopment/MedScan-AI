@@ -67,7 +67,6 @@ export const getDeviceInfoByUniqueIdentifier = async (
     );
     return response.data.data; // With axios, the response data is directly accessible as `response.data`
   } catch (error: any) {
-    console.log('error', error);
     throw new Error(error.message); // Catch error messages from axios
   }
 };

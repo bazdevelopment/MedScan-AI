@@ -1,20 +1,28 @@
 /* eslint-disable max-lines-per-function */
-import { reports } from '__mocks__/reports';
 import { useScrollToTop } from '@react-navigation/native';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
+import { useRecentInterpretations } from '@/api/interpretation/interpretation.hooks';
 import { useScanCategories } from '@/api/scan-categories/scan-categories.hooks';
+import { useUser } from '@/api/user/user.hooks';
+import EdgeCaseTemplate from '@/components/edge-case-template';
 import { Foreground } from '@/components/home-foreground';
 import { HomeHeaderBar } from '@/components/home-header-bar';
 import ParallaxScrollView from '@/components/parallax-scrollview';
 import PullToRefresh from '@/components/pull-to-refresh';
 import ReportCard from '@/components/report-card';
+import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
+import {
+  type IInterpretationResult,
+  type IInterpretationResultRecords,
+} from '@/types/interpretation-report';
 import { ActivityIndicator, colors, ScrollView, Text, View } from '@/ui';
+import { NoReports } from '@/ui/assets/illustrations';
 
 const PARALLAX_HEIGHT = 310;
 const HEADER_BAR_HEIGHT = 110;
@@ -25,8 +33,23 @@ export default function Home() {
   const { arePushNotificationEnabled, enablePushNotifications } =
     usePushNotificationSetup(); //todo: check if here is the best place to call the hook
 
+  const {
+    data: recentInterpretations,
+    refetch: refetchRecentReports,
+    isPending: areRecentReportsLoading,
+  } = useRecentInterpretations({
+    limit: 5,
+  })();
+
+  const { refetch: refetchUserInfo } = useUser();
+
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
+  const onFullSync = () => {
+    refetchRecentReports();
+    refetchUserInfo();
+  };
 
   const { data, isPending: areScanCategoriesLoading } = useScanCategories();
 
@@ -57,7 +80,7 @@ export default function Home() {
 
   return (
     <PullToRefresh
-      onRefresh={() => console.log('-----refresh-----')}
+      onRefresh={onFullSync}
       refreshingComponent={
         <View
           style={{
@@ -92,26 +115,59 @@ export default function Home() {
           />
           <Text className="my-6">Recent reports</Text>
 
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerClassName="gap-4"
-            snapToInterval={300}
-            snapToAlignment="center"
-            decelerationRate={0}
-          >
-            {reports.map(({ title, date, description, score, id }) => (
-              <ReportCard
-                key={id}
-                title={title}
-                date={date}
-                description={description}
-                score={score}
-              />
-            ))}
-          </ScrollView>
+          <ReportsScrollableList
+            areRecentReportsLoading={areRecentReportsLoading}
+            recentInterpretations={recentInterpretations}
+          />
         </View>
       </ParallaxScrollView>
     </PullToRefresh>
   );
 }
+
+const ReportsScrollableList = ({
+  areRecentReportsLoading,
+  recentInterpretations,
+}: {
+  areRecentReportsLoading: boolean;
+  recentInterpretations: IInterpretationResultRecords;
+}) => {
+  return (
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerClassName="gap-4"
+      snapToInterval={300}
+      snapToAlignment="center"
+      decelerationRate={0}
+    >
+      {areRecentReportsLoading ? (
+        <ReportSkeleton />
+      ) : !recentInterpretations?.records?.length ? (
+        <EdgeCaseTemplate
+          additionalClassName="mt-4 ml-[-10]"
+          image={
+            <NoReports width={100} height={100} fill={colors.danger[500]} />
+          }
+          title="No reports yet!"
+        />
+      ) : (
+        recentInterpretations?.records?.map(
+          ({
+            title,
+            createdAt,
+            interpretationResult,
+            id,
+          }: IInterpretationResult) => (
+            <ReportCard
+              key={id}
+              title={title}
+              date={createdAt}
+              description={interpretationResult}
+            />
+          ),
+        )
+      )}
+    </ScrollView>
+  );
+};

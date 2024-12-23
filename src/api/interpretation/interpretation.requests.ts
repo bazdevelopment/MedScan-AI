@@ -20,7 +20,6 @@ export const getInterpretationByDate = async ({
 
     return data as IInterpretationRecord;
   } catch (error) {
-    console.log('err', error);
     throw error;
   }
 };
@@ -43,6 +42,17 @@ export const getInterpretationByDocumentId = async (documentId: string) => {
       firebaseCloudFunctionsInstance.httpsCallable('getInterpretationById');
     const { data } = await onGetInterpretationById({ documentId });
 
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getRecentReports = async (limit: number) => {
+  try {
+    const onGetRecentReportInterpretations =
+      firebaseCloudFunctionsInstance.httpsCallable('getRecentInterpretations');
+    const { data } = await onGetRecentReportInterpretations({ limit });
     return data;
   } catch (error) {
     throw error;

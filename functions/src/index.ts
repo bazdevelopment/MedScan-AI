@@ -14,6 +14,7 @@ import * as imageFunctions from './image';
 import {
   getInterpretationByDateHandler,
   getInterpretationByDocumentId,
+  getRecentInterpretationHandler,
   updateScanInterpretation,
 } from './interpretations';
 import * as pushNotificationsFunctions from './push-notifications';
@@ -106,4 +107,8 @@ export const updateInterpretation = euFuntions.https.onCall(
 
 export const getInterpretationById = euFuntions.https.onCall(
   getInterpretationByDocumentId,
+);
+
+export const getRecentInterpretations = euFuntions.https.onCall(
+  getRecentInterpretationHandler,
 );

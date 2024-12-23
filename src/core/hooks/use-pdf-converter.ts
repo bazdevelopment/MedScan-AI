@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import * as FileSystem from 'expo-file-system';
 import * as Print from 'expo-print';
 import { useState } from 'react';
@@ -24,7 +25,7 @@ export const usePdfConverter = () => {
 
       // Create a new file name with timestamp to avoid conflicts
       // const timestamp = dayjs(date).format('YYYY-MM-DD');
-      const newFileName = `${title} (${date}).pdf`;
+      const newFileName = `${title || 'Report'} (${dayjs(date).format('MMMM D, YYYY')}).pdf`;
       const newUri = `${FileSystem.documentDirectory}${newFileName}`;
 
       // Copy the file to documents directory

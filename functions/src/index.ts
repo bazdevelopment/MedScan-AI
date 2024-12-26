@@ -80,6 +80,17 @@ export const getDeviceInfoByUniqueIdentifier = euFuntions.https.onRequest(
 export const sendGlobalPushNotifications = euFuntions.https.onCall(
   pushNotificationsFunctions.handleSendGlobalPushNotifications,
 );
+export const sendIndividualPushNotification = euFuntions.https.onCall(
+  pushNotificationsFunctions.sendUserPushNotification,
+);
+
+export const fetchUserNotifications = euFuntions.https.onCall(
+  pushNotificationsFunctions.handleGetUserNotification,
+);
+
+export const markNotificationAsRead = euFuntions.https.onCall(
+  pushNotificationsFunctions.handleMarkNotificationAsRead,
+);
 export const analyzeImage = euFuntions.https.onRequest(
   imageFunctions.analyzeImage,
 );

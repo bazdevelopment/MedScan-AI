@@ -5,7 +5,11 @@ import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useRef } from 'react';
 
-import { useSendGlobalPushNotifications } from '@/api/push-notifications/push-notifications.hooks';
+import {
+  useSendGlobalPushNotifications,
+  useSendIndividualPushNotification,
+} from '@/api/push-notifications/push-notifications.hooks';
+import { useUser } from '@/api/user/user.hooks';
 import { logout } from '@/api/user/user.requests';
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
@@ -17,6 +21,8 @@ import { Github, Rate, ShareIcon, Support, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
+  const { data: userInfo } = useUser();
+
   const scrollViewRef = useRef(null);
   const iconColor =
     colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
@@ -24,6 +30,8 @@ export default function Settings() {
   const { mutate: onHandleGlobalPushNotifications } =
     useSendGlobalPushNotifications();
 
+  const { mutate: onHandleIndividualNotification } =
+    useSendIndividualPushNotification();
   useScrollToTop(scrollViewRef);
 
   return (
@@ -100,8 +108,18 @@ export default function Settings() {
                 text="Send global push notification"
                 onPress={() =>
                   onHandleGlobalPushNotifications({
-                    title: 'This is a global notification',
+                    title: 'This is a global notification title',
                     body: 'This is a global notification body',
+                  })
+                }
+              />
+              <Item
+                text="Send individual push notification"
+                onPress={() =>
+                  onHandleIndividualNotification({
+                    title: 'This is an individual notification title',
+                    body: 'This is an individual notification body',
+                    userId: userInfo.userId,
                   })
                 }
               />

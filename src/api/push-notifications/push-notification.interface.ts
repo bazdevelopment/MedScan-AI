@@ -9,6 +9,11 @@ export interface IGlobalNotificationsResponse {
   results: Record<string, any>[];
 }
 
+export interface IMarkNotificationAsReadResponse {
+  success: boolean;
+  message: string;
+}
+
 export interface IMobileDeviceInfo {
   deviceToken: string;
   platform: string;

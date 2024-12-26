@@ -58,6 +58,31 @@ export const sendGlobalPushNotifications = async ({
   }
 };
 
+export const sendIndividualPushNotification = async ({
+  title,
+  body,
+  userId,
+}: {
+  title: string;
+  body: string;
+  userId: string;
+}): Promise<IGlobalNotificationsResponse> => {
+  try {
+    const onSubmitIndividualNotification =
+      firebaseCloudFunctionsInstance.httpsCallable(
+        'sendIndividualPushNotification',
+      );
+    const { data } = await onSubmitIndividualNotification({
+      title,
+      body,
+      userId,
+    });
+    return data as IGlobalNotificationsResponse;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getDeviceInfoByUniqueIdentifier = async (
   deviceUniqueId: string,
 ): Promise<any> => {
@@ -67,6 +92,37 @@ export const getDeviceInfoByUniqueIdentifier = async (
     );
     return response.data.data; // With axios, the response data is directly accessible as `response.data`
   } catch (error: any) {
+    throw new Error(error.message); // Catch error messages from axios
+  }
+};
+
+export const getUserNotifications = async (variables: {
+  userId: string;
+}): Promise<any> => {
+  try {
+    const onGetUserNotifications = firebaseCloudFunctionsInstance.httpsCallable(
+      'fetchUserNotifications',
+    );
+    const { data } = await onGetUserNotifications(variables);
+
+    return data;
+  } catch (error: any) {
+    console.log('err', error);
+    throw new Error(error.message); // Catch error messages from axios
+  }
+};
+
+export const markNotificationAsRead = async (variables: {
+  notificationId: string;
+}): Promise<any> => {
+  try {
+    const onMarkNotificationAsRead =
+      firebaseCloudFunctionsInstance.httpsCallable('markNotificationAsRead');
+    const { data } = await onMarkNotificationAsRead(variables);
+
+    return data;
+  } catch (error: any) {
+    console.log('err', error);
     throw new Error(error.message); // Catch error messages from axios
   }
 };

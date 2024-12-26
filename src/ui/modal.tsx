@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 /**
  * Modal
  * Dependencies:
@@ -33,7 +34,7 @@ import type {
   BottomSheetModalProps,
 } from '@gorhom/bottom-sheet';
 import { BottomSheetModal, useBottomSheet } from '@gorhom/bottom-sheet';
-import * as React from 'react';
+import React from 'react';
 import { Pressable, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { Path, Svg } from 'react-native-svg';
@@ -72,6 +73,7 @@ export const Modal = React.forwardRef(
       title,
       detached = false,
       canBeDismissed = true,
+      children,
       ...props
     }: ModalProps,
     ref: ModalRef,
@@ -125,7 +127,9 @@ export const Modal = React.forwardRef(
         snapPoints={snapPoints}
         backdropComponent={props.backdropComponent || renderBackdrop}
         handleComponent={canBeDismissed ? renderHandleComponent : null}
-      />
+      >
+        {children}
+      </BottomSheetModal>
     );
   },
 );

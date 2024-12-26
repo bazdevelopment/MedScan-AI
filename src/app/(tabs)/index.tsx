@@ -16,6 +16,7 @@ import PullToRefresh from '@/components/pull-to-refresh';
 import ReportCard from '@/components/report-card';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
+import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import {
   type IInterpretationResult,
@@ -44,9 +45,12 @@ export default function Home() {
   const { refetch: refetchUserInfo } = useUser();
 
   const { colorScheme } = useColorScheme();
+  const addSelectionHapticEffect = useHaptic('selection');
+
   const isDark = colorScheme === 'dark';
 
   const onFullSync = () => {
+    addSelectionHapticEffect?.();
     refetchRecentReports();
     refetchUserInfo();
   };

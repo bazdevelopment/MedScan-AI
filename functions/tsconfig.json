@@ -23,6 +23,7 @@
     "utilities/__mocks__/scan-categories.ts",
     "utilities/generate-unique-id.ts",
     "utilities/truncate-email-address.ts",
+    "utilities/cloud-functions-utils",
     "dayjs/index.ts"
   ]
 }

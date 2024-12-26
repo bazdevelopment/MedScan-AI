@@ -75,6 +75,13 @@ export default function RootLayout() {
             gestureEnabled: true,
           }}
         />
+        <Stack.Screen
+          name="notifications"
+          options={{
+            title: 'Notifications',
+            headerBackTitle: 'Back',
+          }}
+        />
       </Stack>
     </Providers>
   );

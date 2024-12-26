@@ -2,6 +2,11 @@
 import Expo, { ExpoPushMessage } from 'expo-server-sdk';
 import * as functions from 'firebase-functions/v1';
 
+import {
+  createUserNotificationReferences,
+  storeGlobalNotification,
+  storeIndividualUserNotification,
+} from '../utilities/cloud-functions-utils';
 import { admin } from './common';
 
 const ExpoInstance = new Expo();
@@ -9,8 +14,11 @@ const ExpoInstance = new Expo();
 interface INotificationPayload {
   title: string;
   body: string;
+  userId?: string;
   data?: Record<string, any>;
 }
+
+const BATCH_SIZE = 500;
 
 const storeDeviceToken = async (
   {
@@ -72,13 +80,78 @@ const storeDeviceToken = async (
   }
 };
 
+// Function to send notification to a single user
+const sendUserPushNotification = async (
+  data: INotificationPayload,
+  context: any,
+) => {
+  try {
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'Authentication required',
+      );
+    }
+
+    // Get user's device tokens
+    const devicesSnapshot = await admin
+      .firestore()
+      .collection('mobileDevices')
+      .where('userId', '==', data.userId)
+      .get();
+
+    const tokens = devicesSnapshot.docs
+      .map((doc) => doc.data().deviceToken)
+      .filter((token) => Expo.isExpoPushToken(token));
+
+    if (!tokens.length) {
+      return {
+        success: false,
+        message: 'No valid Expo tokens to send notifications',
+      };
+    }
+
+    // Send push notification
+    const messages: ExpoPushMessage[] = tokens.map((token) => ({
+      to: token,
+      title: data.title,
+      body: data.body,
+      data: data.data || {},
+    }));
+
+    const chunks = ExpoInstance.chunkPushNotifications(messages);
+    const results = await Promise.all(
+      chunks.map((chunk) =>
+        ExpoInstance.sendPushNotificationsAsync(chunk).catch((error) => {
+          console.error('Push notification error:', error);
+          return [];
+        }),
+      ),
+    );
+
+    // Store notification in Firestore
+    await storeIndividualUserNotification(data.userId as string, data);
+
+    return {
+      success: true,
+      results: results.flat().length,
+    };
+  } catch (error: any) {
+    throw new functions.https.HttpsError(
+      'internal',
+      'Failed to send notification',
+      error,
+    );
+  }
+};
+
+// Enhanced global push notification function
 const handleSendGlobalPushNotifications = async (
   data: INotificationPayload,
   context: any,
 ) => {
   try {
-    // Optional admin check for sensitive notifications
-    // todo: maybe admin only can send these notifications
+    // Authentication and input validation
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
@@ -95,54 +168,95 @@ const handleSendGlobalPushNotifications = async (
       );
     }
 
-    // Query device tokens based on filters
-    const query = admin.firestore().collection('mobileDevices');
+    // Store global notification first
+    const globalNotificationRef = await storeGlobalNotification(
+      data,
+      context.auth.uid,
+    );
 
-    // Fetch matching device tokens
-    const snapshot = await query.get();
-    // Extract valid Expo push tokens
-    const tokens = snapshot.docs
-      .map((doc) => doc.data().deviceToken)
-      .filter((token) => Expo.isExpoPushToken(token));
-
-    if (!tokens.length) {
-      return {
-        success: false,
-        message: 'No valid Expo tokens to send notifications',
-        totalTokens: 0,
-      };
-    }
-
-    // Prepare notification messages
-    const messages: ExpoPushMessage[] = tokens.map((token) => ({
-      to: token,
-      title,
-      body,
-      data: {}, // todo add additionalData in the future if needed
-    }));
-
-    const chunks = ExpoInstance.chunkPushNotifications(messages);
+    // Initialize counters and pagination control
+    let processedUsers = 0;
+    let lastDocId: string | null = null;
     const messagesSent = [];
-    for (const chunk of chunks) {
-      try {
-        const ticketChunk =
-          await ExpoInstance.sendPushNotificationsAsync(chunk);
-        messagesSent.push(...ticketChunk);
-      } catch (error) {
-        console.error('Chunk sending error:', error);
+
+    let hasMoreDocuments = true;
+    while (hasMoreDocuments) {
+      // Query devices with pagination
+      let devicesQuery = admin
+        .firestore()
+        .collection('mobileDevices')
+        .orderBy(admin.firestore.FieldPath.documentId())
+        .limit(BATCH_SIZE);
+
+      if (lastDocId) {
+        devicesQuery = devicesQuery.startAfter(lastDocId);
       }
+
+      const devicesSnapshot = await devicesQuery.get();
+      if (devicesSnapshot.empty) {
+        hasMoreDocuments = false;
+        break;
+      }
+      if (devicesSnapshot.empty) break;
+
+      // Update lastDocId for next iteration
+      lastDocId = devicesSnapshot.docs[devicesSnapshot.docs.length - 1].id;
+
+      // Extract valid tokens
+      const tokens = devicesSnapshot.docs
+        .map((doc) => doc.data().deviceToken)
+        .filter((token) => Expo.isExpoPushToken(token));
+
+      if (tokens.length) {
+        // Prepare notification messages
+        const messages: ExpoPushMessage[] = tokens.map((token) => ({
+          to: token,
+          title,
+          body,
+          data: data.data || {},
+        }));
+
+        const chunks = ExpoInstance.chunkPushNotifications(messages);
+
+        // Send chunks sequentially to ensure control over errors
+        for (const chunk of chunks) {
+          try {
+            const ticketChunk =
+              await ExpoInstance.sendPushNotificationsAsync(chunk);
+            messagesSent.push(...ticketChunk);
+          } catch (error) {
+            console.error('Chunk sending error:', error);
+          }
+        }
+      }
+
+      // Create user notification references in batches
+      const userIds = new Set(
+        devicesSnapshot.docs.map((doc) => doc.data().userId),
+      );
+
+      await createUserNotificationReferences(Array.from(userIds), title, body);
+
+      processedUsers += userIds.size;
     }
 
     return {
       success: true,
-      totalTokens: tokens.length,
-      results: messagesSent,
+      totalProcessedUsers: processedUsers,
+      globalNotificationId: globalNotificationRef.id,
+      totalTokensSent: messagesSent.length,
+      messageDetails: messagesSent,
     };
   } catch (error: any) {
-    throw new functions.https.HttpsError(error.code, error.message, {
-      message: 'Failed to send notifications',
-      details: error.details,
-    });
+    console.error('Error in handleSendGlobalPushNotifications:', error);
+    throw new functions.https.HttpsError(
+      'internal',
+      'Failed to send global notification',
+      {
+        message: 'An error occurred while processing notifications.',
+        details: error,
+      },
+    );
   }
 };
 
@@ -176,6 +290,168 @@ const checkDeviceUniqueIdentifier = async (req: any, res: any) => {
     throw new functions.https.HttpsError(
       'unknown',
       'An error occurred while checking device trial.',
+    );
+  }
+};
+
+const handleGetUserNotification = async (
+  data: { userId: string; lastDocId: string; limit?: number },
+  context: any,
+) => {
+  try {
+    // Authentication check
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'Authentication required',
+      );
+    }
+
+    const { userId, limit = 20, lastDocId } = data;
+
+    if (!userId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'User ID is required',
+      );
+    }
+
+    let query = admin
+      .firestore()
+      .collection('notifications')
+      .where('userId', '==', userId)
+      .orderBy('createdAt', 'desc')
+      .limit(limit);
+
+    if (lastDocId) {
+      const lastDoc = await admin
+        .firestore()
+        .doc(`notifications/${lastDocId}`)
+        .get();
+      if (lastDoc.exists) {
+        query = query.startAfter(lastDoc);
+      } else {
+        throw new functions.https.HttpsError(
+          'not-found',
+          'Last document not found',
+        );
+      }
+    }
+
+    const snapshot = await query.get();
+
+    const notifications = await Promise.all(
+      snapshot.docs.map(async (doc) => {
+        const data = doc.data();
+        const docId = doc.id; // Explicitly define docId here
+
+        if (data.notificationRef) {
+          const globalNotif = await data.notificationRef.get();
+          return {
+            docId,
+            ...globalNotif.data(),
+            isRead: data.isRead,
+            createdAt: data.createdAt.toDate().toISOString(),
+          };
+        }
+        return {
+          docId,
+          ...data,
+          createdAt: data.createdAt.toDate().toISOString(),
+        };
+      }),
+    );
+
+    return {
+      success: true,
+      notifications,
+      lastDocId: snapshot.docs[snapshot.docs.length - 1]?.id || null,
+    };
+  } catch (error: any) {
+    console.error('Error fetching user notifications:', error);
+    throw new functions.https.HttpsError(
+      'internal',
+      'Failed to fetch user notifications',
+      {
+        message: 'An error occurred while fetching user notifications.',
+        details: error,
+      },
+    );
+  }
+};
+
+const handleMarkNotificationAsRead = async (
+  data: { notificationId: string },
+  context: any,
+) => {
+  try {
+    // Check if user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'User must be authenticated to mark notifications as read',
+      );
+    }
+
+    const { notificationId } = data;
+
+    // Validate input
+    if (!notificationId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Notification ID is required',
+      );
+    }
+
+    // Reference to user's notification
+    const notificationRef = admin
+      .firestore()
+      .collection('notifications')
+      .doc(notificationId);
+
+    // Get the notification to verify ownership and current status
+    const notificationDoc = await notificationRef.get();
+
+    // Check if notification exists
+    if (!notificationDoc.exists) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        'Notification not found',
+      );
+    }
+
+    const notificationData = notificationDoc.data();
+
+    // Check if already read to avoid unnecessary updates
+    if (notificationData?.isRead) {
+      return {
+        success: true,
+        message: 'Notification was already marked as read',
+      };
+    }
+
+    // Update the notification
+    await notificationRef.update({
+      isRead: true,
+    });
+
+    return {
+      success: true,
+      message: 'Notification marked as read successfully.',
+    };
+  } catch (error) {
+    console.error('Error marking notification as read:', error);
+
+    // Handle known error types
+    if (error instanceof functions.https.HttpsError) {
+      throw error;
+    }
+
+    // Handle unexpected errors
+    throw new functions.https.HttpsError(
+      'internal',
+      'An unexpected error occurred while marking the notification as read',
+      error,
     );
   }
 };
@@ -223,6 +499,9 @@ exports.cleanupInactiveTokens = functions.pubsub
 
 export {
   checkDeviceUniqueIdentifier,
+  handleGetUserNotification,
+  handleMarkNotificationAsRead,
   handleSendGlobalPushNotifications,
+  sendUserPushNotification,
   storeDeviceToken,
 };

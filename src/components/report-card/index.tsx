@@ -22,7 +22,7 @@ const ReportCard = ({ date, title, description, score }: IReportCard) => {
       </Text>
       <View className="flex-row items-center justify-between">
         <View>
-          <Text className="mt-2 text-xs">Health Score</Text>
+          <Text className="mt-2 text-xs">Rating</Text>
           <Text className="text-xl font-bold">{score || '-'}</Text>
         </View>
         <SharePdfActionButtons

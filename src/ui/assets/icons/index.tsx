@@ -15,6 +15,7 @@ export * from './github';
 export * from './home';
 export * from './language';
 export * from './mail';
+export * from './notification-bell';
 export * from './paperclip';
 export * from './player-icon';
 export * from './rate';

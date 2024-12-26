@@ -8,12 +8,14 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
+import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/assets/icons';
 
 import Avatar from '../avatar';
 import IconBadge from '../icon-badge';
+import { type INotificationItem } from '../notifications/notification-item/notification-item.interface';
 import UserInfoCard from '../user-info-card';
 import { type IHomeForeground } from './home-forground.interface';
 
@@ -22,6 +24,13 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const isDark = colorScheme === 'dark';
 
   const { data: userInfo } = useUser();
+  const { data: userNotifications } = useFetchUserNotifications({
+    userId: userInfo?.userId,
+  })();
+
+  const unReadMessages = userNotifications?.notifications.filter(
+    (notification: INotificationItem) => !notification.isRead,
+  ).length;
 
   const onStartUploadMediaFile = () => {
     if (userInfo?.scansRemaining <= 0) {
@@ -47,10 +56,10 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
     <View className="h-[290px] rounded-b-[50px] bg-primary-300 pt-[20px]">
       <Animated.View style={foregroundWrapperAnimatedStyle}>
         <View className="mr-10 mt-5 flex-row justify-end">
-          <TouchableOpacity onPress={() => console.log('clicked message icon')}>
+          <TouchableOpacity onPress={() => router.navigate('/notifications')}>
             <IconBadge
               icon={<MailIcon color={colors.white} />}
-              badgeValue={12}
+              badgeValue={unReadMessages}
             />
           </TouchableOpacity>
         </View>

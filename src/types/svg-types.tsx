@@ -5,4 +5,5 @@ export interface ISvgProps extends SvgProps {
   xmlSpace?: string;
   withLinearGradient?: boolean;
   top?: number;
+  isRead?: boolean;
 }

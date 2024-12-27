@@ -19,7 +19,7 @@ import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
 import { translate } from '@/core';
 import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
-import { Github, Rate, ShareIcon, Support, Website } from '@/ui/assets/icons';
+import { Github, Rate, ShareIcon, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -65,17 +65,16 @@ export default function Settings() {
             <Item
               text="settings.share"
               icon={<ShareIcon color={iconColor} />}
-              onPress={() => {}}
+              onPress={() => router.navigate('/share')}
             />
             <Item
               text="settings.rate"
               icon={<Rate color={iconColor} />}
-              onPress={() => {}}
-            />
-            <Item
-              text="settings.support"
-              icon={<Support color={iconColor} />}
-              onPress={() => {}}
+              onPress={() =>
+                console.log(
+                  'add here the url for app store/play store review section',
+                )
+              }
             />
           </ItemsContainer>
 

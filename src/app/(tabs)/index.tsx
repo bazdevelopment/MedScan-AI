@@ -2,10 +2,11 @@
 import { useScrollToTop } from '@react-navigation/native';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
 import { useRecentInterpretations } from '@/api/interpretation/interpretation.hooks';
+import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useScanCategories } from '@/api/scan-categories/scan-categories.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import EdgeCaseTemplate from '@/components/edge-case-template';
@@ -16,7 +17,6 @@ import PullToRefresh from '@/components/pull-to-refresh';
 import ReportCard from '@/components/report-card';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
-import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
@@ -30,9 +30,6 @@ const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
-  const { arePushNotificationEnabled, enablePushNotifications } =
-    usePushNotificationSetup(); //todo: check if here is the best place to call the hook
-
   const {
     data: recentInterpretations,
     refetch: refetchRecentReports,
@@ -41,7 +38,11 @@ export default function Home() {
     limit: 5,
   })();
 
-  const { refetch: refetchUserInfo } = useUser();
+  const { data: userInfo, refetch: refetchUserInfo } = useUser();
+
+  const { refetch: refetchUserNotifications } = useFetchUserNotifications({
+    userId: userInfo?.userId,
+  })();
 
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
@@ -49,18 +50,12 @@ export default function Home() {
   const onFullSync = () => {
     refetchRecentReports();
     refetchUserInfo();
+    refetchUserNotifications();
   };
 
   const { data, isPending: areScanCategoriesLoading } = useScanCategories();
 
   checkForAppUpdate();
-
-  useEffect(() => {
-    if (!arePushNotificationEnabled) {
-      enablePushNotifications();
-    }
-  }, [arePushNotificationEnabled, enablePushNotifications]);
-  // Set an initializing state whilst Firebase connects
 
   const {
     onMomentumScrollEnd,

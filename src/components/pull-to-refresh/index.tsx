@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
+import { useHaptic } from '@/core/hooks/use-haptics';
 import { colors } from '@/ui';
 
 const REFRESH_THRESHOLD = 80;
@@ -22,6 +23,7 @@ const PullToRefresh = ({
 }) => {
   const [refreshing, setRefreshing] = useState(false);
   const translateY = useRef(new Animated.Value(0)).current;
+  const addSelectionHapticEffect = useHaptic('selection');
 
   const isPulling = useRef(false);
 
@@ -47,7 +49,7 @@ const PullToRefresh = ({
 
     try {
       await new Promise((resolve) => setTimeout(resolve, REFRESH_DELAY));
-
+      addSelectionHapticEffect?.();
       if (onRefresh) {
         await onRefresh();
       }

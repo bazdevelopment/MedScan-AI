@@ -22,6 +22,10 @@ import {
   getScanCategoriesHandler,
   handleUploadScanCategories,
 } from './scan-categories';
+import {
+  getTermsOfServiceHandler,
+  uploadTermsOfServiceHandler,
+} from './terms-of-service';
 import * as userFunctions from './user';
 
 const euFuntions = functions.region('europe-west1');
@@ -122,4 +126,12 @@ export const getInterpretationById = euFuntions.https.onCall(
 
 export const getRecentInterpretations = euFuntions.https.onCall(
   getRecentInterpretationHandler,
+);
+
+export const uploadTermsOfService = euFuntions.https.onCall(
+  uploadTermsOfServiceHandler,
+);
+
+export const getTermsOfService = euFuntions.https.onCall(
+  getTermsOfServiceHandler,
 );

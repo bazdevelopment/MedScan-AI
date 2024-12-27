@@ -107,6 +107,7 @@ export const getUserNotifications = async (variables: {
 
     return data;
   } catch (error: any) {
+    console.log('pica aiic');
     console.log('err', error);
     throw new Error(error.message); // Catch error messages from axios
   }

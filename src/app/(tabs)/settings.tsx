@@ -9,6 +9,7 @@ import {
   useSendGlobalPushNotifications,
   useSendIndividualPushNotification,
 } from '@/api/push-notifications/push-notifications.hooks';
+import { useUploadTermsOfService } from '@/api/terms-of-service/terms-of-service.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import { logout } from '@/api/user/user.requests';
 import { Item } from '@/components/settings/item';
@@ -33,6 +34,8 @@ export default function Settings() {
   const { mutate: onHandleIndividualNotification } =
     useSendIndividualPushNotification();
   useScrollToTop(scrollViewRef);
+
+  const { mutate: onUploadTermsOfService } = useUploadTermsOfService();
 
   return (
     <>
@@ -76,7 +79,10 @@ export default function Settings() {
 
           <ItemsContainer title="settings.links">
             <Item text="settings.privacy" onPress={() => {}} />
-            <Item text="settings.terms" onPress={() => {}} />
+            <Item
+              text="settings.terms"
+              onPress={() => router.navigate('/terms-of-service')}
+            />
             <Item
               text="settings.github"
               icon={<Github color={iconColor} />}
@@ -122,6 +128,10 @@ export default function Settings() {
                     userId: userInfo.userId,
                   })
                 }
+              />
+              <Item
+                text="Upload terms of service"
+                onPress={onUploadTermsOfService}
               />
             </ItemsContainer>
           </View>

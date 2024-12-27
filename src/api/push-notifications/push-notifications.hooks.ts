@@ -64,6 +64,7 @@ export const useFetchUserNotifications = (variables: { userId: string }) =>
   createQuery<any, TUniqueIdentifierPayload, AxiosError>({
     queryKey: ['individual-user-notifications', variables.userId],
     fetcher: () => getUserNotifications(variables),
+    enabled: !!variables.userId,
   });
 
 export const useDeviceInfoByUniqueIdentifier = (

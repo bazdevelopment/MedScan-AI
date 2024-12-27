@@ -82,6 +82,14 @@ export default function RootLayout() {
             headerBackTitle: 'Back',
           }}
         />
+
+        <Stack.Screen
+          name="terms-of-service"
+          options={{
+            title: 'Terms of Service',
+            headerBackTitle: 'Back',
+          }}
+        />
       </Stack>
     </Providers>
   );

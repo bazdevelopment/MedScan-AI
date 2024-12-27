@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useRef } from 'react';
 
+import { useUploadPrivacyPolicy } from '@/api/privacy-policy/privacy-policy.hooks';
 import {
   useSendGlobalPushNotifications,
   useSendIndividualPushNotification,
@@ -36,6 +37,7 @@ export default function Settings() {
   useScrollToTop(scrollViewRef);
 
   const { mutate: onUploadTermsOfService } = useUploadTermsOfService();
+  const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
 
   return (
     <>
@@ -78,7 +80,10 @@ export default function Settings() {
           </ItemsContainer>
 
           <ItemsContainer title="settings.links">
-            <Item text="settings.privacy" onPress={() => {}} />
+            <Item
+              text="settings.privacy"
+              onPress={() => router.navigate('/privacy-policy')}
+            />
             <Item
               text="settings.terms"
               onPress={() => router.navigate('/terms-of-service')}
@@ -132,6 +137,10 @@ export default function Settings() {
               <Item
                 text="Upload terms of service"
                 onPress={onUploadTermsOfService}
+              />
+              <Item
+                text="Upload privacy policy"
+                onPress={onUploadPrivacyPolicy}
               />
             </ItemsContainer>
           </View>

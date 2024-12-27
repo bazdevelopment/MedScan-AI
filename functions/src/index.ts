@@ -17,6 +17,10 @@ import {
   getRecentInterpretationHandler,
   updateScanInterpretation,
 } from './interpretations';
+import {
+  getPrivacyPolicyHandler,
+  uploadPrivacyPolicyHandler,
+} from './privacy-policy';
 import * as pushNotificationsFunctions from './push-notifications';
 import {
   getScanCategoriesHandler,
@@ -134,4 +138,12 @@ export const uploadTermsOfService = euFuntions.https.onCall(
 
 export const getTermsOfService = euFuntions.https.onCall(
   getTermsOfServiceHandler,
+);
+
+export const uploadPrivacyPolicy = euFuntions.https.onCall(
+  uploadPrivacyPolicyHandler,
+);
+
+export const getPrivacyPolicy = euFuntions.https.onCall(
+  getPrivacyPolicyHandler,
 );

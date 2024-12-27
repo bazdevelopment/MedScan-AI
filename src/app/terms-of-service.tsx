@@ -20,7 +20,10 @@ const TermsOfService = () => {
 
   return (
     <View className="flex-1 bg-white p-4">
-      <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 50 }}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <Text className="mb-4 text-center text-xl font-bold text-blue-600">
           Terms of Service for X-Ray Analyzer

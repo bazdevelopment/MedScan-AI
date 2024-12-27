@@ -25,6 +25,7 @@
     "utilities/truncate-email-address.ts",
     "utilities/cloud-functions-utils",
     "utilities/terms-of-service-structure.ts",
+    "utilities/privacy-policy-structure.ts",
     "dayjs/index.ts"
   ]
 }

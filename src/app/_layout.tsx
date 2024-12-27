@@ -82,11 +82,17 @@ export default function RootLayout() {
             headerBackTitle: 'Back',
           }}
         />
-
         <Stack.Screen
           name="terms-of-service"
           options={{
             title: 'Terms of Service',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="privacy-policy"
+          options={{
+            title: 'Privacy Policy',
             headerBackTitle: 'Back',
           }}
         />

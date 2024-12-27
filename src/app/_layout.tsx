@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 // Import  global CSS file
 import '../../global.css';
 
@@ -93,6 +94,13 @@ export default function RootLayout() {
           name="privacy-policy"
           options={{
             title: 'Privacy Policy',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="share"
+          options={{
+            title: 'Share',
             headerBackTitle: 'Back',
           }}
         />

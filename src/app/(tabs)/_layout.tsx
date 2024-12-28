@@ -26,7 +26,6 @@ export default function TabLayout() {
 
   const { arePushNotificationEnabled, enablePushNotifications } =
     usePushNotificationSetup(); //todo: check if here is the best place to call the hook
-
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
   const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
@@ -52,7 +51,7 @@ export default function TabLayout() {
     if (!arePushNotificationEnabled) {
       enablePushNotifications();
     }
-  }, [arePushNotificationEnabled, enablePushNotifications]);
+  }, [arePushNotificationEnabled]);
   // Set an initializing state whilst Firebase connects
 
   return (

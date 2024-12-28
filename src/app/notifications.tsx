@@ -11,7 +11,6 @@ import EdgeCaseTemplate from '@/components/edge-case-template';
 import NotificationGroup from '@/components/notifications/notification-group';
 import { type INotificationItem } from '@/components/notifications/notification-item/notification-item.interface';
 import SkeletonLoader from '@/components/skeleton-loader';
-import { useModal } from '@/ui';
 import { NoNotification } from '@/ui/assets/illustrations';
 
 export default function NotificationsScreen() {
@@ -22,8 +21,6 @@ export default function NotificationsScreen() {
     })();
 
   const { mutate: onMarkNotificationAsRead } = useMarkNotificationAsRead();
-
-  const modal = useModal();
 
   const groupedNotifications = userNotifications?.notifications?.reduce(
     (groups: any, notification: INotificationItem) => {
@@ -55,7 +52,7 @@ export default function NotificationsScreen() {
           <EdgeCaseTemplate
             image={<NoNotification width={250} height={250} />}
             title="No notifications yet!"
-            additionalClassName="absolute top-[20%]"
+            additionalClassName="mt-32"
           />
         ) : (
           Object.entries(groupedNotifications)?.map(

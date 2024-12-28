@@ -6,6 +6,8 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as Notifications from 'expo-notifications';
+import * as QuickActions from 'expo-quick-actions';
+import { useQuickActionRouting } from 'expo-quick-actions/router';
 import { SplashScreen, Stack } from 'expo-router';
 import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
@@ -38,6 +40,20 @@ Notifications.setNotificationHandler({
 });
 
 export default function RootLayout() {
+  useQuickActionRouting();
+
+  useEffect(() => {
+    QuickActions.setItems<QuickActions.Action>([
+      {
+        title: "Wait! Don't delete me!",
+        subtitle: 'Send a feedback instead',
+        icon: 'heart_icon',
+        id: '0',
+        params: { href: '/rate' },
+      },
+    ]);
+  }, []);
+
   const [fontsLoaded] = useFonts({
     inter: require('../../assets/fonts/Inter.ttf'),
   });
@@ -101,6 +117,13 @@ export default function RootLayout() {
           name="share"
           options={{
             title: 'Share',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="rate"
+          options={{
+            title: 'Give us a feedback!',
             headerBackTitle: 'Back',
           }}
         />

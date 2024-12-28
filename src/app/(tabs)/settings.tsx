@@ -70,11 +70,7 @@ export default function Settings() {
             <Item
               text="settings.rate"
               icon={<Rate color={iconColor} />}
-              onPress={() =>
-                console.log(
-                  'add here the url for app store/play store review section',
-                )
-              }
+              onPress={() => router.navigate('/rate')}
             />
           </ItemsContainer>
 
@@ -87,6 +83,7 @@ export default function Settings() {
               text="settings.terms"
               onPress={() => router.navigate('/terms-of-service')}
             />
+            <Item text="FAQ" onPress={() => console.log('go to faq screen')} />
             <Item
               text="settings.github"
               icon={<Github color={iconColor} />}

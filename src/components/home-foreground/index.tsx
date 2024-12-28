@@ -86,7 +86,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
         <View className="absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] dark:bg-charcoal-800">
           <Text className="text-md font-bold">Start using X-Ray Analizer</Text>
           <Text className="mt-4 text-center text-sm">
-            Get vital insights with MRI, X-rays, CT scans, PET imaging,
+            Get vital insights with MRI, X-Rays, CT scans, PET imaging,
             ultrasounds, and nuclear medicine.
           </Text>
           <Button

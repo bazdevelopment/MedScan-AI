@@ -108,6 +108,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
+    [
+      'expo-quick-actions',
+      {
+        androidIcons: {
+          heart_icon: {
+            foregroundImage: './assets/heart-icon-android.png',
+            backgroundColor: '#FFFFFF',
+          },
+        },
+        iosIcons: {
+          heart_icon: './assets/heart-icon-ios.png',
+        },
+      },
+    ],
   ],
   extra: {
     ...ClientEnv,

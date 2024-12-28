@@ -81,6 +81,7 @@
     "expo-localization": "~15.0.3",
     "expo-notifications": "~0.28.19",
     "expo-print": "~13.0.1",
+    "expo-quick-actions": "2.0.0",
     "expo-router": "~3.5.23",
     "expo-sharing": "~12.0.1",
     "expo-splash-screen": "0.27.5",

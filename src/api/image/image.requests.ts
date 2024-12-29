@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-export const analyzeImageUsingAi = async (payload: FormData) => {
+export const analyzeImageUsingAi = async (
+  payload: FormData,
+  language: string,
+) => {
   try {
     const response = await axios.post(
       'https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/analyzeImage',
@@ -9,6 +12,7 @@ export const analyzeImageUsingAi = async (payload: FormData) => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'multipart/form-data',
+          'Accept-Language': language,
         },
       },
     );
@@ -18,7 +22,10 @@ export const analyzeImageUsingAi = async (payload: FormData) => {
   }
 };
 
-export const analyzeVideoUsingAi = async (payload: FormData) => {
+export const analyzeVideoUsingAi = async (
+  payload: FormData,
+  language: string,
+) => {
   try {
     const response = await axios.post(
       'https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/analyzeVideo',
@@ -27,6 +34,7 @@ export const analyzeVideoUsingAi = async (payload: FormData) => {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'multipart/form-data',
+          'Accept-Language': language,
         },
       },
     );

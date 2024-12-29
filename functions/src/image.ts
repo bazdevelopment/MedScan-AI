@@ -12,6 +12,7 @@ import {
 } from '../utilities/extract-video-frames';
 import { generateUniqueId } from '../utilities/generate-unique-id';
 import { handleOnRequestError } from '../utilities/handle-on-request-error';
+import { LANGUAGES } from '../utilities/languages';
 import { processUploadedFile } from '../utilities/multipart';
 import { admin } from './common';
 ffmpeg.setFfmpegPath(ffmpegPath.path);
@@ -29,7 +30,10 @@ export const analyzeImage = async (req: Request, res: any) => {
     }
 
     const { files, fields } = await processUploadedFile(req);
-
+    const languageAbbreviation = req.headers['accept-language'];
+    const preferredLanguage =
+      LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
+    const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
     const { userId, promptMessage } = fields;
     const [imageFile] = files;
 
@@ -91,7 +95,7 @@ export const analyzeImage = async (req: Request, res: any) => {
             },
             {
               type: 'text',
-              text: process.env.IMAGE_ANALYZE_PROMPT as string,
+              text: `${process.env.IMAGE_ANALYZE_PROMPT}.${additionalLngPrompt}`,
             },
           ],
         },
@@ -191,6 +195,11 @@ export const analyzeVideo = async (req: Request, res: any) => {
     const { files, fields } = await processUploadedFile(req);
     const { userId, promptMessage } = fields;
 
+    const languageAbbreviation = req.headers['accept-language'];
+    const preferredLanguage =
+      LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
+    const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
+
     // Assuming we process the first video file
     const videoFile = files[0];
 
@@ -219,7 +228,7 @@ export const analyzeVideo = async (req: Request, res: any) => {
       ]),
       {
         type: 'text',
-        text: 'How are these images different?',
+        text: `${process.env.IMAGE_ANALYZE_PROMPT}.${additionalLngPrompt}`,
       } as TextBlockParam,
     ];
 

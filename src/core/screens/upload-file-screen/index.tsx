@@ -7,6 +7,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
+import { translate } from '@/core/i18n';
 import { Button, colors, Modal, Text, useModal } from '@/ui';
 import { Camera, Gallery, PaperClip } from '@/ui/assets/icons';
 import { UploadFilesIllustration } from '@/ui/assets/illustrations';
@@ -41,14 +42,14 @@ const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
           <UploadFilesIllustration width={300} height={200} />
         </View>
         <Text className="text-center text-xl font-bold text-white">
-          You need to upload your X-RAY / CT
+          {translate('flows.createReport.uploadFile.title')}
         </Text>
         <Text className="text-center text-sm text-white">
-          Maximum file size: 10MB
+          {translate('flows.createReport.uploadFile.size')}
         </Text>
 
         <Button
-          label="Open camera & take picture"
+          label={translate('flows.createReport.uploadFile.openCamera')}
           className="top-6 mb-0 mt-4 w-[70%] self-center rounded-full dark:bg-primary-300"
           size="lg"
           textClassName="text-md"
@@ -65,10 +66,10 @@ const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
         <Gallery color={colors.primary[300]} width={32} height={42} top={1} />
         <View>
           <Text className="font-bold text-primary-300">
-            Select from Gallery or Files
+            {translate('flows.createReport.uploadFile.location')}
           </Text>
           <Text className="-mt-1 text-sm text-gray-400">
-            PNG, JPG, PDF, or MP4
+            {translate('flows.createReport.uploadFile.fileType')}
           </Text>
         </View>
       </TouchableOpacity>
@@ -90,7 +91,11 @@ const galleryOptions = [
     id: 1,
     icon: <Gallery width={27} height={27} />,
   },
-  { label: 'Files', id: 2, icon: <PaperClip width={27} height={27} /> },
+  {
+    label: 'Files',
+    id: 2,
+    icon: <PaperClip width={27} height={27} />,
+  },
 ];
 
 export const UploadFileOptionsModal = React.forwardRef<

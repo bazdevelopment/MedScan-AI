@@ -17,6 +17,7 @@ import PullToRefresh from '@/components/pull-to-refresh';
 import ReportCard from '@/components/report-card';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
+import { translate } from '@/core';
 import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
@@ -102,13 +103,17 @@ export default function Home() {
         scrollViewRef={scrollViewRef}
       >
         <View className="ml-4 mt-14">
-          <Text className="my-6">Scan examples</Text>
+          <Text className="my-6">
+            {translate('home.scanCategories.heading')}
+          </Text>
 
           <ScanCategoriesStories
             categories={data?.categories}
             isLoading={areScanCategoriesLoading}
           />
-          <Text className="my-6">Recent reports</Text>
+          <Text className="my-6">
+            {translate('home.recentReports.heading')}
+          </Text>
 
           <ReportsScrollableList
             areRecentReportsLoading={areRecentReportsLoading}

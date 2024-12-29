@@ -10,6 +10,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useUser } from '@/api/user/user.hooks';
+import { translate } from '@/core';
 import { Button, colors } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 
@@ -83,14 +84,14 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
           <GradientText colors={[colors.lightSkyBlue, colors.primaryPurple]}>
             <Text className="font-bold dark:text-primary-400">
-              {`Welcome, ${userInfo?.userName}!`}
+              {`${translate('general.welcome')}, ${userInfo?.userName}!`}
             </Text>
           </GradientText>
         </Animated.View>
 
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>
           <Button
-            label="Upload scan"
+            label={translate('uploadScan.title')}
             className="rounded-full"
             onPress={onStartUploadMediaFile}
             icon={

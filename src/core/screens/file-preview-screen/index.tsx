@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import { firebaseAuth } from 'firebase/config';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
@@ -10,7 +11,7 @@ import GradientText from '@/components/gradient-text';
 import ScanningModal from '@/components/image-scanner-modal';
 import PromptSection from '@/components/prompt-section';
 import VideoPlayer from '@/components/video';
-import { VIDEO_EXTENSIONS } from '@/constants/video-extensions';
+import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
 import { Button, colors, Image, Text } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
@@ -80,7 +81,9 @@ const FilePreviewScreen = ({
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { mutate: onDecrementScans } = useDecrementScans();
-
+  const {
+    i18n: { language },
+  } = useTranslation();
   const onSuccess = ({
     interpretationResult,
   }: {
@@ -109,21 +112,19 @@ const FilePreviewScreen = ({
     userId,
   });
 
-  const isVideo = VIDEO_EXTENSIONS.includes(
-    collectedData.fileExtension!.toLowerCase(),
-  );
+  const isVideo = checkIsVideo(collectedData.fileExtension!);
 
   const {
     mutate: handleAnalyzeImageUsingAi,
     error: errorAnalyzeImage,
     isPending: isPendingAnalyzeImage,
-  } = useAnalyzeImage({ onSuccessCallback: onSuccess });
+  } = useAnalyzeImage({ onSuccessCallback: onSuccess, language });
 
   const {
     mutate: handleAnalyzeVideoUsingAI,
     error: errorAnalyzeVideo,
     isPending: isPendingAnalyzeVideo,
-  } = useAnalyzeVideo({ onSuccessCallback: onSuccess });
+  } = useAnalyzeVideo({ onSuccessCallback: onSuccess, language });
 
   const onAnalyze = () => {
     if (isVideo) {

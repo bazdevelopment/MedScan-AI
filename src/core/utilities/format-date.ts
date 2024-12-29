@@ -1,6 +1,10 @@
-import dayjs from 'dayjs';
+import dayjs from '../../lib/dayjs';
 
-export const formatDate = (dateString: string, dateFormat: string) => {
-  const date = dayjs(dateString);
+export const formatDate = (
+  dateString: string,
+  dateFormat: string,
+  locale: string,
+) => {
+  const date = dayjs(dateString).locale(locale);
   return date.format(dateFormat);
 };

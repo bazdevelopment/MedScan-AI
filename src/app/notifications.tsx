@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
 import {
@@ -11,9 +11,15 @@ import EdgeCaseTemplate from '@/components/edge-case-template';
 import NotificationGroup from '@/components/notifications/notification-group';
 import { type INotificationItem } from '@/components/notifications/notification-item/notification-item.interface';
 import SkeletonLoader from '@/components/skeleton-loader';
+import { translate } from '@/core';
 import { NoNotification } from '@/ui/assets/illustrations';
 
+import dayjs from '../lib/dayjs';
+
 export default function NotificationsScreen() {
+  const {
+    i18n: { language },
+  } = useTranslation();
   const { data: userInfo } = useUser();
   const { data: userNotifications, isPending: areUserNotificationsLoading } =
     useFetchUserNotifications({
@@ -24,11 +30,11 @@ export default function NotificationsScreen() {
 
   const groupedNotifications = userNotifications?.notifications?.reduce(
     (groups: any, notification: INotificationItem) => {
-      const date = dayjs(notification.createdAt);
+      const date = dayjs(notification.createdAt).locale(language);
       const formattedDate = date.isSame(dayjs(), 'day')
-        ? 'Today'
+        ? translate('weekDays.today')
         : date.isSame(dayjs().subtract(1, 'day'), 'day')
-          ? 'Yesterday'
+          ? translate('weekDays.yesterday')
           : date.format('MMMM D, YYYY');
 
       if (!groups[formattedDate]) {

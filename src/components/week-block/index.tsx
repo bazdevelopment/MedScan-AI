@@ -3,6 +3,7 @@ import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 
+import { translate } from '@/core';
 import { useSegmentedSelection } from '@/core/hooks/use-segmented-selection';
 import { wait } from '@/core/utilities/wait';
 import { colors, Text } from '@/ui';
@@ -73,7 +74,7 @@ const WeekBlock = ({
         <View className="flex-1 items-center justify-center">
           <Text className="text-lg font-bold">{interval}</Text>
 
-          <Text className="font-primary text-lg">{`Week ${weekNumber} - ${currentMonth} ${currentYear}`}</Text>
+          <Text className="font-primary text-lg">{`${translate('components.WeekBlock.week')} ${weekNumber} - ${currentMonth} ${currentYear}`}</Text>
         </View>
 
         <Icon

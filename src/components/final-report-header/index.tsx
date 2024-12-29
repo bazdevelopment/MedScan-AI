@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { translate } from '@/core';
 import { colors } from '@/ui';
 import { DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 
@@ -68,7 +69,7 @@ export const FinalReportHeader = ({ scrollValue }: IHomeHeaderBar) => {
       >
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
           <Text className="font-bold dark:text-primary-400">
-            This is the report results!
+            {translate('flows.createReport.finalReportHeader.message')}
           </Text>
         </Animated.View>
 

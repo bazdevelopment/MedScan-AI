@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { router } from 'react-query-kit';
@@ -6,6 +5,7 @@ import { router } from 'react-query-kit';
 import { colors, Text } from '@/ui';
 import { ArrowRight } from '@/ui/assets/icons';
 
+import dayjs from '../../lib/dayjs';
 import Icon from '../icon';
 
 /**

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, View } from 'react-native';
 
 import { useValidateAuthCode } from '@/api/user/user.hooks';
+import { translate } from '@/core';
 import { Button, Input, Text } from '@/ui';
 
 const VerifyAuthCode = () => {
@@ -15,7 +16,7 @@ const VerifyAuthCode = () => {
       <Stack.Screen
         options={{
           headerBackTitleVisible: false,
-          title: 'Authentication code',
+          title: translate('auth.authCodeHeading'),
         }}
       />
       <KeyboardAvoidingView
@@ -26,7 +27,7 @@ const VerifyAuthCode = () => {
         {isPending && <ActivityIndicator />}
         <View className="flex-1 justify-center p-4">
           <Text testID="form-title" className="pb-6 text-center text-2xl">
-            Verify auth code
+            {translate('auth.verifyAuthCode')}
           </Text>
 
           <Input
@@ -37,7 +38,7 @@ const VerifyAuthCode = () => {
 
           <Button
             testID="Verify auth code"
-            label="Verify code"
+            label={translate('auth.verifyAuthCodeButton')}
             onPress={() =>
               onVerifyAuthCode({ authenticationCode, email: email as string })
             }

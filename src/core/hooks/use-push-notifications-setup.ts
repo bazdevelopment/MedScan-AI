@@ -9,6 +9,7 @@ import { storeMobileDeviceToken } from '@/api/push-notifications/push-notificati
 import Toast from '@/components/toast';
 
 import { Env } from '../env';
+import { translate } from '../i18n';
 import { storage } from '../storage';
 import { getUniqueDeviceIdentifier } from '../utilities/get-unique-device-identifier';
 import useAppState from './use-app-state';
@@ -33,12 +34,12 @@ export const usePushNotificationSetup = () => {
       }
       if (finalStatus !== 'granted') {
         return Alert.alert(
-          'Enable Notifications',
-          'Notifications are disabled. Please enable them in your device settings.',
+          translate('alerts.enableNotifications.heading'),
+          translate('alerts.enableNotifications.subHeading'),
           [
-            { text: 'Cancel', style: 'cancel' },
+            { text: translate('general.cancel'), style: 'cancel' },
             {
-              text: 'Open Settings',
+              text: translate('general.openSettings'),
               onPress: () => {
                 if (Platform.OS === 'ios') {
                   Linking.openURL('app-settings:');
@@ -55,7 +56,7 @@ export const usePushNotificationSetup = () => {
       const projectId = Constants.expoConfig?.extra?.eas.projectId;
 
       if (!projectId) {
-        return Toast.error('Notification project ID not found.');
+        return Toast.error(translate('alerts.projectIdNotFound'));
       }
       const { data: token } = await Notifications.getExpoPushTokenAsync({
         projectId,
@@ -77,10 +78,10 @@ export const usePushNotificationSetup = () => {
         // await AsyncStorage.setItem('notificationsEnabled', 'true');
         // storage.set('notificationsEnabled', true);
       } else {
-        Toast.error('Failed to enable notifications.');
+        Toast.error(translate('alerts.enableNotificationFailed'));
       }
     } catch (error) {
-      Toast.error('An error occurred while enabling notifications');
+      Toast.error(translate('alerts.enableNotificationError'));
     }
   };
 
@@ -92,12 +93,12 @@ export const usePushNotificationSetup = () => {
         // Update state and storage
         setArePushNotificationsEnabled(false);
         // storage.set('notificationsEnabled', false);
-        Toast.success('Notifications disabled successfully.');
+        Toast.success(translate('alerts.notificationDisabledSuccess'));
       } else {
-        Toast.success('Failed to unregister device for notifications.');
+        Toast.success(translate('alerts.notificationDisabledRegisterError'));
       }
     } catch (error) {
-      Toast.error('An error occurred while disabling notifications.');
+      Toast.success(translate('alerts.notificationDisabledError'));
     }
   };
 
@@ -112,7 +113,7 @@ export const usePushNotificationSetup = () => {
         // storage.set('notificationsEnabled', false);
       }
     } catch (error) {
-      Toast.error('Error checking notification status.');
+      Toast.success(translate('alerts.checkNotificationStatusError'));
     }
   };
 

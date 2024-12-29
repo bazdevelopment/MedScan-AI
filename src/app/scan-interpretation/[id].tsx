@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import { BlurView } from 'expo-blur';
 import { useLocalSearchParams } from 'expo-router';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { useInterpretationById } from '@/api/interpretation/interpretation.hooks';
@@ -9,6 +9,7 @@ import CustomModal from '@/components/custom-modal';
 import Icon from '@/components/icon';
 import VideoPlayer from '@/components/video';
 import { useModal } from '@/core/hooks/use-modal';
+import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { colors, Image, Text } from '@/ui';
 import { CalendarIcon, DocumentIcon, PlayerIcon } from '@/ui/assets/icons';
 
@@ -19,10 +20,8 @@ const ScanInterpretationDetailsScreen = () => {
   const { data, isPending } = useInterpretationById({
     documentId: documentId as string,
   })();
-  const isVideo = useMemo(
-    () => data?.record?.mimeType === 'video/quicktime',
-    [data?.record?.mimeType],
-  );
+
+  const isVideo = checkIsVideo(data?.record?.mimeType);
   if (isPending) {
     return (
       <View className="flex-1 items-center justify-center bg-white">

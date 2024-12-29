@@ -6,8 +6,8 @@ import dayjs from '../../lib/dayjs';
 /**
  * Utility function used to get the week number based on week offset
  */
-export const getWeekNumber = (weekOffset: number): number => {
-  const currentDate = dayjs();
+export const getWeekNumber = (weekOffset: number, locale: string): number => {
+  const currentDate = dayjs().locale(locale);
   const targetDate = currentDate.add(weekOffset, 'week');
   return targetDate.isoWeek();
 };
@@ -20,9 +20,19 @@ export const getWeekNumber = (weekOffset: number): number => {
 export const getDaysOfWeek = (
   weekNumber: number,
   year: number,
+  locale: string,
 ): IDayOfWeek[] => {
-  const startOfWeek = dayjs().year(year).isoWeek(weekNumber).startOf('isoWeek'); // Get the start of the specified week with offset
-  const endOfWeek = dayjs().year(year).isoWeek(weekNumber).endOf('isoWeek'); // Get the end of the specified week with offset: ;
+  const startOfWeek = dayjs()
+    .locale(locale)
+    .year(year)
+    .isoWeek(weekNumber)
+    .startOf('isoWeek'); // Get the start of the specified week with offset
+
+  const endOfWeek = dayjs()
+    .locale(locale)
+    .year(year)
+    .isoWeek(weekNumber)
+    .endOf('isoWeek'); // Get the end of the specified week with offset: ;
   const daysOfWeek = [];
 
   let currentDay = startOfWeek;
@@ -45,8 +55,11 @@ export const getDaysOfWeek = (
 /**
  * Utility function used to get a specific year based on week offset
  */
-export const getYearFromWeekOffset = (weekOffset: number): number => {
-  const date = dayjs().add(weekOffset, 'weeks');
+export const getYearFromWeekOffset = (
+  weekOffset: number,
+  locale: string,
+): number => {
+  const date = dayjs().locale(locale).add(weekOffset, 'weeks');
   return date.isoWeekYear();
 };
 
@@ -67,12 +80,15 @@ export const getSegmentedDays = (
   });
   return mappedDays;
 };
-
 /**
  * Utility function used to get the current month of the current week also considering year
  */
-export const getCurrentMonth = (year: number, weekNumber: number): string => {
-  const currentDate = dayjs().year(year).week(weekNumber);
+export const getCurrentMonth = (
+  year: number,
+  weekNumber: number,
+  locale: string,
+): string => {
+  const currentDate = dayjs().locale(locale).year(year).week(weekNumber);
   return currentDate.format('MMMM');
 };
 
@@ -80,9 +96,22 @@ export const getCurrentMonth = (year: number, weekNumber: number): string => {
  * Utility function which returns a string with the interval of the week
  * E.g for the week between 22 and 28 april it will show => 22.04 - 28.04
  */
-export const getWeekInterval = (year: number, weekNumber: number): string => {
-  const startOfWeek = dayjs().year(year).isoWeek(weekNumber).startOf('isoWeek'); // Get the start of the specified week with offset
-  const endOfWeek = dayjs().year(year).isoWeek(weekNumber).endOf('isoWeek'); // Get the end of the specified week with offset: ;
+export const getWeekInterval = (
+  year: number,
+  weekNumber: number,
+  locale: string,
+): string => {
+  const startOfWeek = dayjs()
+    .year(year)
+    .locale(locale)
+    .isoWeek(weekNumber)
+    .startOf('isoWeek'); // Get the start of the specified week with offset
+
+  const endOfWeek = dayjs()
+    .locale(locale)
+    .year(year)
+    .isoWeek(weekNumber)
+    .endOf('isoWeek'); // Get the end of the specified week with offset: ;
 
   const formatStartOfWeek = startOfWeek.format('DD.MM');
   const formatEndOfWeek = endOfWeek.format('DD.MM');
@@ -93,7 +122,8 @@ export const getWeekInterval = (year: number, weekNumber: number): string => {
 /**
  * Utility function used to get the current day in ddd format like "Mon"
  */
-export const getCurrentDay = (format: string): string => dayjs().format(format);
+export const getCurrentDay = (format: string, locale: string): string =>
+  dayjs().locale(locale).format(format);
 
 /**
  * Utility function which returns the start and end week
@@ -101,14 +131,17 @@ export const getCurrentDay = (format: string): string => dayjs().format(format);
 export const getStartAndEndWeek = (
   year: number,
   weekNumber: number,
-): { startOfWeek: string; endOfWeek: string } => {
+  locale: string,
+): { startOfWeek: string; endOfWeek: string; locale: string } => {
   const startOfWeek = dayjs()
+    .locale(locale)
     .year(year)
     .isoWeek(weekNumber)
     .startOf('isoWeek')
     .format('YYYY-MM-DD'); // Format the start of the week to "YYYY-MM-DD"
 
   const endOfWeek = dayjs()
+    .locale(locale)
     .year(year)
     .isoWeek(weekNumber)
     .endOf('isoWeek')
@@ -118,9 +151,9 @@ export const getStartAndEndWeek = (
 };
 
 /* Function that checks if a date of format "2024-06-23" is today  */
-export const checkIsToday = (date: string) => {
-  const today = dayjs().format('YYYY-MM-DD');
-  const isToday = dayjs(date).isSame(today, 'day');
+export const checkIsToday = (date: string, locale: string) => {
+  const today = dayjs().locale(locale).format('YYYY-MM-DD');
+  const isToday = dayjs(date).locale(locale).isSame(today, 'day');
 
   return isToday;
 };

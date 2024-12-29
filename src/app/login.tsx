@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 
 import { useLoginWithEmail } from '@/api/user/user.hooks';
+import { translate } from '@/core';
 import { Button, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 
 export default function Login() {
@@ -32,15 +33,15 @@ const LoginFrm = () => {
         {isLoginPending && <ActivityIndicator />}
 
         <Text testID="form-title" className="pb-6 text-center text-2xl">
-          Welcome
+          {translate('general.welcome')}
         </Text>
 
         <Text className="mb-4 text-center text-gray-600">
-          Please enter your email to continue
+          {translate('auth.loginViaEmailHeading')}
         </Text>
         <Input
           testID="email"
-          label="Email"
+          label={translate('auth.emailAddress')}
           value={email}
           onChangeText={handleUpdateEmail}
           autoCapitalize="none"
@@ -48,7 +49,7 @@ const LoginFrm = () => {
         />
         <Button
           testID="login-button"
-          label="Continue"
+          label={translate('general.continue')}
           onPress={() => handleLoginViaEmail({ email })}
           disabled={isLoginPending || !email}
         />

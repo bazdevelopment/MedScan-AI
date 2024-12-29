@@ -19,4 +19,7 @@ export const VIDEO_EXTENSIONS = [
   'f4p', // Flash MP4 Protected Video
   'f4a', // Flash MP4 Audio
   'f4b', // Flash MP4 Audiobook
+  'video/quicktime',
+  'video/mp4',
+  'mp3',
 ];

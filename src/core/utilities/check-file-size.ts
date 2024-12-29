@@ -1,3 +1,5 @@
+import { translate } from '../i18n';
+
 export const checkFileSize = (
   fileSize: number,
   type: 'image' | 'video' | undefined,
@@ -8,17 +10,14 @@ export const checkFileSize = (
   let isLimitReached;
 
   if (type === 'image' && fileSize > imageLimit) {
-    alert(
-      `Image is too large! File size is ${fileSize} MB, but the limit is ${imageLimit} MB.`,
-    );
+    alert(translate('alerts.imageSizeLarge', { fileSize, imageLimit }));
 
     isLimitReached = true;
   }
 
   if (type === 'video' && fileSize > videoLimit) {
-    alert(
-      `Video is too large! File size is ${fileSize} MB, but the limit is ${videoLimit} MB.`,
-    );
+    alert(translate('alerts.videoSizeLarge', { fileSize, videoLimit }));
+
     isLimitReached = true;
   }
 

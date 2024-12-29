@@ -1,14 +1,15 @@
 /* eslint-disable max-lines-per-function */
 import { type BottomSheetModal } from '@gorhom/bottom-sheet';
-import dayjs from 'dayjs';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { colors, Modal, Text } from '@/ui';
 import { CalendarIcon, NotificationBell } from '@/ui/assets/icons';
 import HorizontalLine from '@/ui/horizontal-line';
 
+import dayjs from '../../lib/dayjs';
 import Icon from '../icon';
 
 interface NotificationDetailsModalProps {
@@ -27,6 +28,9 @@ export const NotificationDetailsModal = React.forwardRef<
   const snapPoints = React.useMemo(() => [height, '70%'], [height]);
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const {
+    i18n: { language },
+  } = useTranslation();
 
   return (
     <Modal
@@ -43,7 +47,7 @@ export const NotificationDetailsModal = React.forwardRef<
           <Icon icon={<CalendarIcon isRead />} size={24} color={colors.white} />
 
           <Text className="text-sm font-medium">
-            {dayjs(date).format('MMMM D, YYYY • h:mm A')}
+            {dayjs(date).locale(language).format('MMMM D, YYYY • h:mm A')}
           </Text>
         </View>
 

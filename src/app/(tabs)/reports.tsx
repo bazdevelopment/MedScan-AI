@@ -2,6 +2,7 @@
 import { FlashList } from '@shopify/flash-list';
 import { router } from 'expo-router';
 import React, { useMemo, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { RefreshControl, View } from 'react-native';
 
 import {
@@ -13,6 +14,7 @@ import ScanReportCard from '@/components/scan-report-card';
 import SkeletonLoader from '@/components/skeleton-loader';
 import WeekBlock from '@/components/week-block';
 import { DATE_FORMAT } from '@/constants/date-format';
+import { translate } from '@/core';
 import { useDelayedRefetch } from '@/core/hooks/use-delayed-refetch';
 import { useWeekNavigation } from '@/core/hooks/use-week-navigation';
 import { useWeekPanSwipe } from '@/core/hooks/use-week-pan-swipe';
@@ -26,6 +28,10 @@ import HorizontalLine from '@/ui/horizontal-line';
 
 const Reports = () => {
   const scrollViewRef = useRef<FlashList<any>>(null);
+
+  const {
+    i18n: { language },
+  } = useTranslation();
 
   const {
     weekOffset,
@@ -104,13 +110,13 @@ const Reports = () => {
   const renderItem = ({ item }) => (
     <View className="mb-2 mt-4">
       <Text className="mb-2 text-xl font-bold text-gray-800">
-        {formatDate(item.date, DATE_FORMAT.weekDayMonth)}
+        {formatDate(item.date, DATE_FORMAT.weekDayMonth, language)}
       </Text>
 
-      {item.records === null ? (
+      {!item.records.length ? (
         <View className="rounded-lg bg-gray-50 p-4">
           <Text className="text-base text-gray-500">
-            No reports available for this date
+            {translate('reports.noReportsAvailable')}
           </Text>
         </View>
       ) : (
@@ -150,7 +156,9 @@ const Reports = () => {
 
   return (
     <View className="mt-14 flex-1">
-      <Text className="mb-4 ml-4 text-3xl font-bold">Reports</Text>
+      <Text className="mb-4 ml-4 text-3xl font-bold">
+        {translate('reports.heading')}
+      </Text>
       <WeekBlock
         reportSections={sections}
         onScrollToIndex={onScrollToIndex}

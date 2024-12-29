@@ -4,6 +4,7 @@ import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header'
 import { FinalReportForeground } from '@/components/final-report-foreground';
 import { FinalReportHeader } from '@/components/final-report-header';
 import ParallaxScrollView from '@/components/parallax-scrollview';
+import { translate } from '@/core/i18n';
 import { type ScrollView, Text, View } from '@/ui';
 
 import { type IGenerateReportScreen } from './generate-report-screen.interface';
@@ -43,7 +44,7 @@ const GenerateReportScreen = ({ collectedData }: IGenerateReportScreen) => {
       onMomentumScrollEnd={onMomentumScrollEnd}
     >
       <View className="top-[-150px] ml-4">
-        <Text className="my-5">Recent reports</Text>
+        <Text className="my-5">{translate('home.recentReports.heading')}</Text>
         <Text>{collectedData.interpretationResult}</Text>
       </View>
     </ParallaxScrollView>

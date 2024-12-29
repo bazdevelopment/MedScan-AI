@@ -26,6 +26,7 @@
     "utilities/cloud-functions-utils",
     "utilities/terms-of-service-structure.ts",
     "utilities/privacy-policy-structure.ts",
+    "utilities/languages.ts",
     "dayjs/index.ts"
   ]
 }

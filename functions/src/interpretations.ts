@@ -41,7 +41,15 @@ export const getInterpretationByDateHandler = async (
     }
 
     const start = new Date(startDate);
+    start.setUTCHours(0, 0, 0, 0);
+
     const end = new Date(endDate);
+    // Set end date to end of the day (23:59:59.999)
+    end.setUTCHours(23, 59, 59, 999);
+
+    // Convert to Firestore Timestamps
+    const startTimestamp = admin.firestore.Timestamp.fromDate(start);
+    const endTimestamp = admin.firestore.Timestamp.fromDate(end);
 
     if (start > end) {
       throw new functions.https.HttpsError(
@@ -54,50 +62,46 @@ export const getInterpretationByDateHandler = async (
     const analysesRef = admin.firestore().collection('interpretations');
     const querySnapshot = await analysesRef
       .where('userId', '==', userId)
-      .where('createdAt', '>=', start)
-      .where('createdAt', '<=', end)
+      .where('createdAt', '>=', startTimestamp)
+      .where('createdAt', '<=', endTimestamp)
       .orderBy('createdAt', 'asc')
       .get();
 
-    const results = querySnapshot.docs.map((doc) => ({
-      docId: doc.id, // Include the document ID
-      ...doc.data(), // Spread the document data
-    })) as IInterpretationResult[]; // Generate all the dates between startDate and endDate
+    // Generate all dates in the range (inclusive)
     const allDatesInRange: string[] = [];
     const currentDate = new Date(start);
-    while (currentDate <= end) {
-      const dateString = currentDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-      allDatesInRange.push(dateString);
 
-      // Increment the date by one day
+    while (currentDate <= end) {
+      // Format as YYYY-MM-DD
+      const dateString = currentDate.toISOString().split('T')[0];
+      allDatesInRange.push(dateString);
+      // Move to next day
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
-    // Initialize an object to store results for each date
-    const record: { [key: string]: any } = {};
+    // Initialize record object with empty arrays
+    const record: { [key: string]: any[] } = {};
     allDatesInRange.forEach((date) => {
-      record[date] = null; // Default to null for each date
+      record[date] = [];
     });
 
-    // Map results to the record object, replacing null with actual data for dates that have records
-    results.forEach((item) => {
-      const createdAt = item.createdAt.toDate();
-      const date = createdAt.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    // Map results to dates
+    querySnapshot.docs.forEach((doc) => {
+      const data = doc.data() as IInterpretationResult;
+      const createdAt = data.createdAt.toDate();
+      // Format as YYYY-MM-DD
+      const date = createdAt.toISOString().split('T')[0];
 
-      // If the date exists in the range, update it with the workout data
-      if (record[date] !== undefined) {
-        if (record[date] === null) {
-          record[date] = []; // Initialize an empty array if it's the first record
-        }
+      if (Object.prototype.hasOwnProperty.call(record, date)) {
         record[date].push({
-          interpretation: item.interpretationResult,
-          promptMessage: item.promptMessage,
-          url: item.url,
+          interpretation: data.interpretationResult,
+          promptMessage: data.promptMessage,
+          url: data.url,
           createdAt: createdAt.toISOString(),
-          id: item.id,
-          mimeType: item.mimeType,
-          title: item.title,
-          docId: item.docId,
+          id: data.id,
+          mimeType: data.mimeType,
+          title: data.title,
+          docId: doc.id,
         });
       }
     });
@@ -105,6 +109,7 @@ export const getInterpretationByDateHandler = async (
     return {
       success: true,
       record,
+      allDatesInRange,
     };
   } catch (error: any) {
     console.error('Error fetching user analyses:', error);

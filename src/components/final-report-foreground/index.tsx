@@ -7,6 +7,7 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
+import { translate } from '@/core';
 import { colors, Text } from '@/ui';
 import { CloseIcon, DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 
@@ -43,7 +44,7 @@ export const FinalReportForeground = ({ scrollValue }: IHomeForeground) => {
         <View className="mt-2 self-center rounded-full bg-white px-4 py-2">
           {/* <GradientText colors={[colors.lightSkyBlue, colors.primaryPurple]}> */}
           <Text className="text-center text-base font-bold">
-            Thank you for your patience!
+            {translate('flows.createReport.finalReportForeground.message')}
           </Text>
           {/* </GradientText> */}
         </View>

@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 
 import { DEVICE_DIMENSIONS } from '@/constants/device-dimentions';
+import { translate } from '@/core';
 import { useModal } from '@/core/hooks/use-modal';
+import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { colors, Image, Input, Text } from '@/ui';
 import { EditIcon, PlayerIcon, TickCircle } from '@/ui/assets/icons';
 
@@ -17,7 +19,7 @@ const ScanReportCard = ({
   interpretation,
   mimeType,
   url,
-  promptMessage = 'What is the reason?',
+  promptMessage = translate('components.ScanReportCard.promptMessage'),
   title,
   onEditTitle,
   docId,
@@ -45,7 +47,7 @@ const ScanReportCard = ({
     setIsEditing(false);
   };
 
-  const isVideo = mimeType === 'video/quicktime';
+  const isVideo = checkIsVideo(mimeType);
   return (
     <>
       <View className="mb-3 overflow-hidden rounded-lg">
@@ -76,7 +78,9 @@ const ScanReportCard = ({
                 {isEditing ? (
                   <Input
                     value={editableTitle}
-                    placeholder="Add a title"
+                    placeholder={translate(
+                      'components.ScanReportCard.reportTitlePlaceholder',
+                    )}
                     onChangeText={handleTitleChange}
                     onSubmitEditing={() => handleTitleSubmit(docId)}
                     onBlur={() => handleTitleSubmit(docId)} // Save the title on blur
@@ -87,7 +91,8 @@ const ScanReportCard = ({
                   />
                 ) : (
                   <Text className="mr-2  text-lg" numberOfLines={2}>
-                    {editableTitle || 'Unnamed report'}
+                    {editableTitle ||
+                      translate('components.ScanReportCard.unnamedReport')}
                   </Text>
                 )}
               </View>

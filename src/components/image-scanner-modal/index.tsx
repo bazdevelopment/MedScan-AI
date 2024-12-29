@@ -3,6 +3,7 @@ import LottieView from 'lottie-react-native';
 import React from 'react';
 import { Image, Modal, View } from 'react-native';
 
+import { translate } from '@/core';
 import { Button, Text } from '@/ui';
 
 import VideoPlayer from '../video';
@@ -56,9 +57,17 @@ const ScanningModal = ({
           </View>
           <View className="mt-10 flex-row justify-center gap-5">
             {!!error && (
-              <Button label="Retry" onPress={onRetry} disabled={isPending} />
+              <Button
+                label={translate('general.retry')}
+                onPress={onRetry}
+                disabled={isPending}
+              />
             )}
-            <Button label="Close" onPress={onClose} disabled={isPending} />
+            <Button
+              label={translate('general.close')}
+              onPress={onClose}
+              disabled={isPending}
+            />
             {!!error && <Text>{error.toString()}</Text>}
           </View>
         </View>

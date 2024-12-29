@@ -10,6 +10,7 @@ import Animated, {
 
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
+import { translate } from '@/core';
 import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/assets/icons';
 
@@ -34,9 +35,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
 
   const onStartUploadMediaFile = () => {
     if (userInfo?.scansRemaining <= 0) {
-      return alert(
-        'You reached the maximum number of scan! Please upgrade to premium!',
-      );
+      return alert(translate('home.homeForeground.maxNumberOfScans'));
     }
     router.navigate('/modals-stack/upload-file-flow-modal');
   };
@@ -66,7 +65,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
 
         <View className="mt-8 flex-row items-center justify-between px-[35px]">
           <View>
-            <Text className="text-white">Welcome</Text>
+            <Text className="text-white">{translate('general.welcome')}</Text>
             <Text className="text-[24px] font-bold text-white">
               {userInfo?.userName}
             </Text>
@@ -84,13 +83,14 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
         </View>
 
         <View className="absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] dark:bg-charcoal-800">
-          <Text className="text-md font-bold">Start using X-Ray Analizer</Text>
+          <Text className="text-md font-bold">
+            {translate('home.homeForeground.heading')}
+          </Text>
           <Text className="mt-4 text-center text-sm">
-            Get vital insights with MRI, X-Rays, CT scans, PET imaging,
-            ultrasounds, and nuclear medicine.
+            {translate('home.homeForeground.subHeading')}
           </Text>
           <Button
-            label="Upload scan"
+            label={translate('uploadScan.title')}
             className="mb-0 mt-4 w-[70%] rounded-full"
             size="lg"
             textClassName="text-md"

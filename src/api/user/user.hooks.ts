@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
+import { translate } from '@/core';
 
 import { queryClient } from '../common';
 import {
@@ -32,11 +33,11 @@ export const useCreateAnonymousAccount = createMutation<
 >({
   mutationFn: (variables) => createAnonymousAccount(variables),
   onSuccess: () => {
-    Toast.success('Successfully logged in');
+    Toast.success(translate('alerts.loggedInSuccess'));
     router.navigate('/(tabs)');
   },
   onError: (error) => {
-    Toast.error(error.message || 'Error signing in anonymously');
+    Toast.error(error.message || translate('alerts.anonymousSignInError'));
   },
 });
 
@@ -50,7 +51,7 @@ export const useLoginWithEmail = (variables: { email: string }) =>
       });
     },
     onError: (error) => {
-      Toast.error(error.message || 'Error signing in anonymously');
+      Toast.error(error.message || translate('alerts.emailLoginError'));
     },
   });
 
@@ -67,7 +68,9 @@ export const useSendVerificationCode = ({ email }: { email: string }) =>
       router.push({ pathname: '/verify-auth-code', params: { email } });
     },
     onError: (error) => {
-      Toast.error(error.message || 'Error when sending verification code');
+      Toast.error(
+        error.message || translate('alerts.sendVerificationCodeError'),
+      );
     },
   });
 
@@ -82,7 +85,7 @@ export const useValidateAuthCode = createMutation<
     router.navigate('/(tabs)');
   },
   onError: (error) => {
-    Toast.error(error.message || 'Error when validating auth code');
+    Toast.error(error.message || translate('alerts.validateAuthCodeError'));
   },
 });
 
@@ -92,6 +95,6 @@ export const useDecrementScans = createMutation<Response, void, AxiosError>({
     queryClient.invalidateQueries({ queryKey: ['user-info'] });
   },
   onError: (error) => {
-    Toast.error(error.message || 'Error when validating auth code');
+    Toast.error(error.message || translate('alerts.validateAuthCodeError'));
   },
 });

@@ -16,7 +16,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
-import { hydrateAuth, loadSelectedTheme } from '@/core';
+import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 
@@ -45,8 +45,8 @@ export default function RootLayout() {
   useEffect(() => {
     QuickActions.setItems<QuickActions.Action>([
       {
-        title: "Wait! Don't delete me!",
-        subtitle: 'Send a feedback instead',
+        title: translate('deleteApp.title'),
+        subtitle: translate('deleteApp.subtitle'),
         icon: 'heart_icon',
         id: '0',
         params: { href: '/rate' },
@@ -79,8 +79,10 @@ export default function RootLayout() {
         <Stack.Screen
           name="scan-interpretation"
           options={{
-            headerBackTitle: 'Reports',
-            title: 'Interpretation result',
+            headerBackTitle: translate(
+              'rootLayout.screens.scanInterpretation.headerBackTitle',
+            ),
+            title: translate('rootLayout.screens.scanInterpretation.title'),
           }}
         />
 
@@ -95,36 +97,36 @@ export default function RootLayout() {
         <Stack.Screen
           name="notifications"
           options={{
-            title: 'Notifications',
-            headerBackTitle: 'Back',
+            title: translate('rootLayout.screens.notifications.title'),
+            headerBackTitle: translate('general.back'),
           }}
         />
         <Stack.Screen
           name="terms-of-service"
           options={{
-            title: 'Terms of Service',
-            headerBackTitle: 'Back',
+            title: translate('rootLayout.screens.termsOfService.title'),
+            headerBackTitle: translate('general.back'),
           }}
         />
         <Stack.Screen
           name="privacy-policy"
           options={{
-            title: 'Privacy Policy',
-            headerBackTitle: 'Back',
+            title: translate('rootLayout.screens.privacyPolicy.title'),
+            headerBackTitle: translate('general.back'),
           }}
         />
         <Stack.Screen
           name="share"
           options={{
-            title: 'Share',
-            headerBackTitle: 'Back',
+            title: translate('rootLayout.screens.share.title'),
+            headerBackTitle: translate('general.back'),
           }}
         />
         <Stack.Screen
           name="rate"
           options={{
-            title: 'Give us a feedback!',
-            headerBackTitle: 'Back',
+            title: translate('rootLayout.screens.rate.title'),
+            headerBackTitle: translate('general.back'),
           }}
         />
       </Stack>

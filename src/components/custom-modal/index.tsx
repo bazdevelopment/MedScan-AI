@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, View } from 'react-native';
 
+import { translate } from '@/core';
 import { Button, colors } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
 
@@ -31,9 +32,8 @@ const CustomModal: React.FC<CustomModalProps> = ({
 
           {/* Close Button */}
           <Button
-            label="Close"
+            label={translate('general.close')}
             variant="outline"
-            className="mt-"
             icon={<CloseIcon color={colors.black} width={20} height={20} />}
             onPress={onClose}
           />

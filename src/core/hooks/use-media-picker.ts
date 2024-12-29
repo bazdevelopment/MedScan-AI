@@ -4,6 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
 import { type ICollectedData } from '../flows/upload-file-flow/upload-file-flow.interface';
+import { translate } from '../i18n';
 import { checkFileSize } from '../utilities/check-file-size';
 import { getFileSizeInMB } from '../utilities/get-file-size-in-mb';
 import { getImageExtension } from '../utilities/get-image-extension';
@@ -27,7 +28,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Check if the permission is granted
       if (status !== 'granted') {
-        alert('Sorry, we need camera permissions to make this work!');
+        alert(translate('alerts.mediaPickerPermissions'));
         return;
       }
 
@@ -64,9 +65,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
           });
       }
     } catch (error) {
-      alert(
-        'Something went wrong while selecting the image. Please try again.',
-      );
+      alert(translate('alerts.errorSelectingImagePicker'));
     }
   };
   const handleChooseFromFiles = async () => {
@@ -100,9 +99,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         });
       }
     } catch (error) {
-      alert(
-        'Something went wrong while picking the document. Please try again.',
-      );
+      alert(translate('alerts.errorSelectingDocumentPicker'));
     }
   };
 
@@ -116,7 +113,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Check if the permission is granted
       if (status !== 'granted') {
-        alert('Sorry, we need camera permissions to make this work!');
+        alert(translate('alerts.mediaPickerPermissions'));
         return;
       }
 
@@ -134,10 +131,11 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
-      onUploadFinished && onUploadFinished({ file: result.assets[0].uri });
+      onUploadFinished &&
+        onUploadFinished({ file: result.assets[0].uri } as ICollectedData);
     } catch (error) {
       console.error('Error taking photo:', error);
-      alert('Something went wrong while taking the photo. Please try again.');
+      alert(translate('alerts.errorTakingPicture'));
     }
   };
 

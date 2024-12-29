@@ -1,11 +1,16 @@
-import dayjs from 'dayjs';
 import * as FileSystem from 'expo-file-system';
 import * as Print from 'expo-print';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as DocumentOpener from 'react-native-document-opener';
+
+import dayjs from '../../lib/dayjs';
 
 export const usePdfConverter = () => {
   const [isConverting, setIsConverting] = useState(false);
+  const {
+    i18n: { language },
+  } = useTranslation();
   const convertToPdfAndDownload = async ({
     html,
     title,
@@ -25,7 +30,7 @@ export const usePdfConverter = () => {
 
       // Create a new file name with timestamp to avoid conflicts
       // const timestamp = dayjs(date).format('YYYY-MM-DD');
-      const newFileName = `${title || 'Report'} (${dayjs(date).format('MMMM D, YYYY')}).pdf`;
+      const newFileName = `${title || 'Report'} (${dayjs(date).locale(language).format('MMMM D, YYYY')}).pdf`;
       const newUri = `${FileSystem.documentDirectory}${newFileName}`;
 
       // Copy the file to documents directory

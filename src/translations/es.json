@@ -1,0 +1,184 @@
+{
+  "onboarding": {
+    "message": "Bienvenido a la aplicación de análisis de rayos X"
+  },
+  "general": {
+    "back": "Atrás",
+    "welcome": "Bienvenido",
+    "continue": "Continuar",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "gallery": "Galería",
+    "files": "Archivos",
+    "cancel": "Cancelar",
+    "openSettings": "Abrir configuración"
+  },
+  "internet": {
+    "noConnectionTitle": "¡Estás desconectado!",
+    "noConnectionMessage": "Activa los datos móviles o conéctate a una red Wi-Fi. ¡O simplemente toma un descanso y da un paseo!"
+  },
+  "uploadScan": {
+    "title": "Subir escaneo"
+  },
+  "weekDays": {
+    "today": "Hoy",
+    "yesterday": "Ayer"
+  },
+  "auth": {
+    "verifyAuthCode": "Verificar código de autenticación",
+    "verifyAuthCodeButton": "Verificar código",
+    "authCodeHeading": "Código de autenticación",
+    "loginViaEmailHeading": "Por favor, ingresa tu correo electrónico para continuar",
+    "emailAddress": "Correo electrónico"
+  },
+  "rootLayout": {
+    "screens": {
+      "scanInterpretation": {
+        "title": "Resultado de la interpretación",
+        "headerBackTitle": "Informes"
+      },
+      "notifications": {
+        "title": "Notificaciones"
+      },
+      "termsOfService": {
+        "title": "Términos de servicio"
+      },
+      "privacyPolicy": {
+        "title": "Política de privacidad"
+      },
+      "share": {
+        "title": "Compartir"
+      },
+      "rate": {
+        "title": "¡Danos tu opinión!"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "¡Espera! ¡No me elimines!",
+    "subtitle": "Envíanos tu opinión en su lugar"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "¡Gracias por tu paciencia!"
+      },
+      "finalReportHeader": {
+        "message": "¡Este es el resultado del informe!"
+      },
+      "uploadFile": {
+        "title": "Necesitas subir tu RAYOS X / CT",
+        "size": "Tamaño máximo del archivo: 10MB",
+        "location": "Selecciona desde la Galería o Archivos",
+        "fileType": "PNG, JPG, PDF o MP4",
+        "openCamera": "Abra la cámara y tome una fotografía."
+      }
+    }
+  },
+  "home": {
+    "tab": "Inicio",
+    "homeForeground": {
+      "maxNumberOfScans": "¡Has alcanzado el número máximo de escaneos! Por favor, actualiza a premium.",
+      "heading": "Comienza a usar Analizador de Rayos X",
+      "subHeading": "Obtén información vital con MRI, rayos X, tomografías, imágenes PET, ultrasonidos y medicina nuclear"
+    },
+    "scanCategories": {
+      "heading": "Categorías de escaneo"
+    },
+    "recentReports": {
+      "heading": "Informes recientes",
+      "noReports": "¡Aún no hay informes!"
+    }
+  },
+  "reports": {
+    "tab": "Informes",
+    "noReportsAvailable": "No hay informes disponibles para esta fecha",
+    "heading": "Informes"
+  },
+  "settings": {
+    "tab": "Configuración",
+    "profile": "Perfil",
+    "about": "Acerca de",
+    "app_name": "Nombre de la aplicación",
+    "languages": {
+      "arabic": "Árabe",
+      "english": "Inglés",
+      "mandarin_chinese": "Chino",
+      "spanish": "Español",
+      "hindi": "Hindi",
+      "portuguese": "Portugués",
+      "russian": "Ruso",
+      "japanese": "Japonés",
+      "korean": "Coreano",
+      "german": "Alemán",
+      "french": "Francés",
+      "romanian": "Rumano"
+    },
+    "generale": "General",
+    "github": "Github",
+    "language": "Idioma",
+    "links": "Enlaces",
+    "logout": "Cerrar sesión",
+    "more": "Más",
+    "privacy": "Política de privacidad",
+    "faq": "Preguntas frecuentes",
+    "rate": "Calificar",
+    "share": "Compartir",
+    "support": "Soporte",
+    "support_us": "Apóyanos",
+    "terms": "Términos de servicio",
+    "theme": {
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Sistema",
+      "title": "Tema"
+    },
+    "title": "Configuración",
+    "version": "Versión",
+    "website": "Sitio web",
+    "devMode": {
+      "title": "Modo desarrollador",
+      "componentsLibrary": "Biblioteca UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Calificación"
+    },
+    "ScanReportCard": {
+      "promptMessage": "¿Cuál es la razón?",
+      "unnamedReport": "Informe sin nombre",
+      "reportTitlePlaceholder": "Agregar un título"
+    },
+    "WeekBlock": {
+      "week": "Semana"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Desplazar hacia arriba"
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Lo sentimos, necesitamos permisos de cámara para que esto funcione.",
+    "errorSelectingImagePicker": "Algo salió mal al seleccionar la imagen. Por favor, inténtalo de nuevo.",
+    "errorSelectingDocumentPicker": "Algo salió mal al seleccionar el documento. Por favor, inténtalo de nuevo.",
+    "errorTakingPicture": "Algo salió mal al tomar la foto. Por favor, inténtalo de nuevo.",
+    "enableNotifications": {
+      "heading": "Habilitar notificaciones",
+      "subHeading": "Las notificaciones están deshabilitadas. Por favor, habilítalas en la configuración de tu dispositivo."
+    },
+    "enableNotificationFailed": "No se pudieron habilitar las notificaciones.",
+    "enableNotificationError": "Ocurrió un error al habilitar las notificaciones.",
+    "notificationDisabledSuccess": "Notificaciones deshabilitadas con éxito.",
+    "notificationDisabledRegisterError": "Error al anular el registro del dispositivo para las notificaciones.",
+    "notificationDisabledError": "Ocurrió un error al deshabilitar las notificaciones.",
+    "checkNotificationStatusError": "Error al verificar el estado de las notificaciones.",
+    "projectIdNotFound": "ID del proyecto de notificaciones no encontrado.",
+    "imageSizeLarge": "¡La imagen es demasiado grande! El tamaño del archivo es {{fileSize}} MB, pero el límite es {{imageLimit}} MB.",
+    "videoSizeLarge": "¡El video es demasiado grande! El tamaño del archivo es {{fileSize}} MB, pero el límite es {{videoLimit}} MB.",
+    "loggedInSuccess": "Inicio de sesión exitoso",
+    "sendVerificationCodeError": "Error al enviar el código de verificación",
+    "validateAuthCodeError": "Error al validar el código de autenticación",
+    "anonymousSignInError": "Error al iniciar sesión de forma anónima",
+    "emailLoginError": "Error al iniciar sesión con correo electrónico"
+  }
+}

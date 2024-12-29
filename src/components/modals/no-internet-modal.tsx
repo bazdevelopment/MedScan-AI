@@ -3,6 +3,7 @@ import { reloadAppAsync } from 'expo';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 
+import { translate } from '@/core';
 import { colors, Modal } from '@/ui';
 import { RetryIcon } from '@/ui/assets/icons';
 import { NoInternetIllustration } from '@/ui/assets/illustrations';
@@ -36,10 +37,11 @@ export const NoInternetConnectionModal = React.forwardRef<BottomSheetModal>(
               fill={colors.danger[500]}
             />
           }
-          title="You're offline!"
-          message="Turn on mobile data or connect to a Wi-Fi. Or just take a break and go for a walk!"
+          title={translate('internet.noConnectionTitle')}
+          message={translate('internet.noConnectionMessage')}
           primaryAction={{
-            label: 'Retry',
+            label: translate('general.retry'),
+
             onPress: () => reloadAppAsync(),
             icon: (
               <RetryIcon

@@ -5,4 +5,5 @@ export interface ICollectedData {
   fileMimeType: string | null | undefined;
   fileExtension: string | null | undefined;
   interpretationResult?: string | null | undefined;
+  file?: string;
 }

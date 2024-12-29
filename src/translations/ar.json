@@ -1,33 +1,184 @@
 {
   "onboarding": {
-    "message": "مرحبا بكم في موقع تطبيق X-Ray Analizer"
+    "message": "مرحبًا بك في موقع تطبيق محلل الأشعة السينية"
+  },
+  "general": {
+    "back": "رجوع",
+    "welcome": "مرحبًا",
+    "continue": "متابعة",
+    "retry": "إعادة المحاولة",
+    "close": "إغلاق",
+    "gallery": "المعرض",
+    "files": "الملفات",
+    "cancel": "إلغاء",
+    "openSettings": "فتح الإعدادات"
+  },
+  "internet": {
+    "noConnectionTitle": "أنت غير متصل!",
+    "noConnectionMessage": "قم بتشغيل بيانات الهاتف أو الاتصال بشبكة Wi-Fi. أو خذ استراحة واذهب للتنزه!"
+  },
+  "uploadScan": {
+    "title": "رفع الفحص"
+  },
+  "weekDays": {
+    "today": "اليوم",
+    "yesterday": "أمس"
+  },
+  "auth": {
+    "verifyAuthCode": "تحقق من رمز المصادقة",
+    "verifyAuthCodeButton": "تحقق من الرمز",
+    "authCodeHeading": "رمز المصادقة",
+    "loginViaEmailHeading": "يرجى إدخال بريدك الإلكتروني للمتابعة",
+    "emailAddress": "البريد الإلكتروني"
+  },
+  "rootLayout": {
+    "screens": {
+      "scanInterpretation": {
+        "title": "نتيجة التفسير",
+        "headerBackTitle": "التقارير"
+      },
+      "notifications": {
+        "title": "الإشعارات"
+      },
+      "termsOfService": {
+        "title": "شروط الخدمة"
+      },
+      "privacyPolicy": {
+        "title": "سياسة الخصوصية"
+      },
+      "share": {
+        "title": "مشاركة"
+      },
+      "rate": {
+        "title": "قدم لنا ملاحظاتك!"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "انتظر! لا تحذفني!",
+    "subtitle": "بدلاً من ذلك، أرسل لنا ملاحظاتك"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "شكرًا لصبرك!"
+      },
+      "finalReportHeader": {
+        "message": "هذه هي نتيجة التقرير!"
+      },
+      "uploadFile": {
+        "title": "تحتاج إلى تحميل أشعة X أو CT الخاصة بك",
+        "size": "الحجم الأقصى للملف: 10 ميغابايت",
+        "location": "حدد من المعرض أو الملفات",
+        "fileType": "PNG، JPG، PDF، أو MP4",
+        "openCamera": "افتح الكاميرا والتقط الصورة"
+      }
+    }
+  },
+  "home": {
+    "tab": "الصفحة الرئيسية",
+    "homeForeground": {
+      "maxNumberOfScans": "لقد وصلت إلى الحد الأقصى لعدد الفحوصات! يرجى الترقية إلى البريميوم!",
+      "heading": "ابدأ باستخدام محلل الأشعة السينية",
+      "subHeading": "احصل على رؤى هامة باستخدام التصوير بالرنين المغناطيسي، الأشعة السينية، الفحوصات المقطعية، تصوير PET، الموجات فوق الصوتية، والطب النووي"
+    },
+    "scanCategories": {
+      "heading": "فئات الفحص"
+    },
+    "recentReports": {
+      "heading": "التقارير الأخيرة",
+      "noReports": "لا توجد تقارير حتى الآن!"
+    }
+  },
+  "reports": {
+    "tab": "التقارير",
+    "noReportsAvailable": "لا توجد تقارير متاحة لهذا التاريخ",
+    "heading": "التقارير"
   },
   "settings": {
-    "about": "حول التطبيق ",
+    "tab": "الإعدادات",
+    "profile": "الملف الشخصي",
+    "about": "حول",
     "app_name": "اسم التطبيق",
-    "arabic": "عربي",
-    "english": "إنجليزي",
+    "languages": {
+      "arabic": "العربية",
+      "english": "الإنجليزية",
+      "mandarin_chinese": "الصينية",
+      "spanish": "الإسبانية",
+      "hindi": "الهندية",
+      "portuguese": "البرتغالية",
+      "russian": "الروسية",
+      "japanese": "اليابانية",
+      "korean": "الكورية",
+      "german": "الألمانية",
+      "french": "الفرنسية",
+      "romanian": "الرومانية"
+    },
     "generale": "عام",
-    "github": "جيثب",
-    "language": "لغة",
+    "github": "جيت هاب",
+    "language": "اللغة",
     "links": "الروابط",
-    "logout": "تسجيل خروج",
-    "more": "أكثر",
+    "logout": "تسجيل الخروج",
+    "more": "المزيد",
     "privacy": "سياسة الخصوصية",
-    "rate": "تقييم",
+    "faq": "الأسئلة الشائعة",
+    "rate": "قيمنا",
     "share": "شارك",
     "support": "الدعم",
     "support_us": "ادعمنا",
     "terms": "شروط الخدمة",
     "theme": {
-      "dark": "مظلم",
-      "light": "خفيفة",
-      "system": "System",
-      "title": "سمة"
+      "dark": "داكن",
+      "light": "فاتح",
+      "system": "النظام",
+      "title": "السمة"
     },
-    "title": "إعدادات",
-    "version": "إصدار",
-    "website": "موقع الكتروني"
+    "title": "الإعدادات",
+    "version": "الإصدار",
+    "website": "الموقع الإلكتروني",
+    "devMode": {
+      "title": "وضع المطور",
+      "componentsLibrary": "مكتبة المكونات"
+    }
   },
-  "welcome": "test arabic"
+  "components": {
+    "ReportCard": {
+      "rating": "التقييم"
+    },
+    "ScanReportCard": {
+      "promptMessage": "ما هو السبب؟",
+      "unnamedReport": "تقرير غير مسمى",
+      "reportTitlePlaceholder": "أضف عنوانًا"
+    },
+    "WeekBlock": {
+      "week": "الأسبوع"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "العودة إلى الأعلى"
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "عذرًا، نحتاج إلى إذن الكاميرا لتشغيل هذا!",
+    "errorSelectingImagePicker": "حدث خطأ أثناء تحديد الصورة. يرجى المحاولة مرة أخرى.",
+    "errorSelectingDocumentPicker": "حدث خطأ أثناء اختيار المستند. يرجى المحاولة مرة أخرى.",
+    "errorTakingPicture": "حدث خطأ أثناء التقاط الصورة. يرجى المحاولة مرة أخرى.",
+    "enableNotifications": {
+      "heading": "تفعيل الإشعارات",
+      "subHeading": "تم تعطيل الإشعارات. يرجى تفعيلها في إعدادات جهازك."
+    },
+    "enableNotificationFailed": "فشل في تفعيل الإشعارات.",
+    "enableNotificationError": "حدث خطأ أثناء تفعيل الإشعارات",
+    "notificationDisabledSuccess": "تم تعطيل الإشعارات بنجاح.",
+    "notificationDisabledRegisterError": "فشل في إلغاء تسجيل الجهاز للإشعارات.",
+    "notificationDisabledError": "حدث خطأ أثناء تعطيل الإشعارات.",
+    "checkNotificationStatusError": "خطأ في التحقق من حالة الإشعارات.",
+    "projectIdNotFound": "لم يتم العثور على معرف مشروع الإشعارات.",
+    "imageSizeLarge": "الصورة كبيرة جدًا! حجم الملف {{fileSize}} ميغابايت، لكن الحد الأقصى هو {{imageLimit}} ميغابايت.",
+    "videoSizeLarge": "الفيديو كبير جدًا! حجم الملف {{fileSize}} ميغابايت، لكن الحد الأقصى هو {{videoLimit}} ميغابايت.",
+    "loggedInSuccess": "تم تسجيل الدخول بنجاح",
+    "sendVerificationCodeError": "حدث خطأ أثناء إرسال رمز التحقق",
+    "validateAuthCodeError": "حدث خطأ أثناء التحقق من رمز المصادقة",
+    "anonymousSignInError": "حدث خطأ أثناء تسجيل الدخول كمجهول",
+    "emailLoginError": "حدث خطأ أثناء تسجيل الدخول"
+  }
 }

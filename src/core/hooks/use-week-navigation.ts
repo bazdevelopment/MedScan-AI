@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { POSITIONS, type TPositions } from '@/constants/positions';
 import { type IDayOfWeek } from '@/types/date-time';
@@ -19,17 +20,27 @@ import {
  */
 export const useWeekNavigation = () => {
   const [weekOffset, setWeekOffset] = useState<number>(0);
-  const weekNumber: number = getWeekNumber(weekOffset);
-  const currentYear = getYearFromWeekOffset(weekOffset);
-  const weekDates: IDayOfWeek[] = getDaysOfWeek(weekNumber, currentYear);
-  const currentMonth = getCurrentMonth(currentYear, weekNumber);
+
+  const {
+    i18n: { language },
+  } = useTranslation();
+
+  const weekNumber: number = getWeekNumber(weekOffset, language);
+  const currentYear = getYearFromWeekOffset(weekOffset, language);
+  const weekDates: IDayOfWeek[] = getDaysOfWeek(
+    weekNumber,
+    currentYear,
+    language,
+  );
+  const currentMonth = getCurrentMonth(currentYear, weekNumber, language);
   const segmentedDays = getSegmentedDays(weekDates);
-  const interval = getWeekInterval(currentYear, weekNumber);
-  const currentDay = getCurrentDay('ddd');
+  const interval = getWeekInterval(currentYear, weekNumber, language);
+  const currentDay = getCurrentDay('ddd', language);
 
   const { startOfWeek, endOfWeek } = getStartAndEndWeek(
     currentYear,
     weekNumber,
+    language,
   );
   const initialDayFocused = segmentedDays.find(
     (day) => day.title === currentDay,

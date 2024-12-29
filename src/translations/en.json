@@ -2,12 +2,118 @@
   "onboarding": {
     "message": "Welcome to X-Ray analizer app site"
   },
+  "general": {
+    "back": "Back",
+    "welcome": "Welcome",
+    "continue": "Continue",
+    "retry": "Retry",
+    "close": "Close",
+    "gallery": "Gallery",
+    "files": "Files",
+    "cancel": "Cancel",
+    "openSettings": "Open Settings"
+  },
+  "internet": {
+    "noConnectionTitle": "You're offline!",
+    "noConnectionMessage": "Turn on mobile data or connect to a Wi-Fi. Or just take a break and go for a walk!"
+  },
+  "uploadScan": {
+    "title": "Upload scan"
+  },
+  "weekDays": {
+    "today": "Today",
+    "yesterday": "Yesterday"
+  },
+  "auth": {
+    "verifyAuthCode": "Verify authentication code",
+    "verifyAuthCodeButton": "Verify code",
+    "authCodeHeading": "Authentication code",
+    "loginViaEmailHeading": "Please enter your email to continue",
+    "emailAddress": "Email"
+  },
+  "rootLayout": {
+    "screens": {
+      "scanInterpretation": {
+        "title": "Interpretation result",
+        "headerBackTitle": "Reports"
+      },
+      "notifications": {
+        "title": "Notifications"
+      },
+      "termsOfService": {
+        "title": "Terms of Service"
+      },
+      "privacyPolicy": {
+        "title": "Privacy Policy"
+      },
+      "share": {
+        "title": "Share"
+      },
+      "rate": {
+        "title": "Give us a feedback!"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Wait! Don't delete me!",
+    "subtitle": "Send a feedback instead"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Thank you for your patience!"
+      },
+      "finalReportHeader": {
+        "message": "This is the report result!"
+      },
+      "uploadFile": {
+        "title": "You need to upload your X-RAY / CT",
+        "size": "Maximum file size: 10MB",
+        "location": "Select from Gallery or Files",
+        "fileType": "PNG, JPG, PDF, or MP4",
+        "openCamera": "Open camera & take picture"
+      }
+    }
+  },
+  "home": {
+    "tab": "Home",
+    "homeForeground": {
+      "maxNumberOfScans": "You reached the maximum number of scan! Please upgrade to premium!",
+      "heading": "Start using X-Ray Analizer",
+      "subHeading": "Get vital insights with MRI, X-Rays, CT scans, PET imaging, ultrasounds, and nuclear medicine"
+    },
+    "scanCategories": {
+      "heading": "Scan categories"
+    },
+    "recentReports": {
+      "heading": "Recent reports",
+      "noReports": "No reports yet!"
+    }
+  },
+  "reports": {
+    "tab": "Reports",
+    "noReportsAvailable": "No reports available for this date",
+    "heading": "Reports"
+  },
   "settings": {
+    "tab": "Settings",
     "profile": "Profile",
     "about": "About",
     "app_name": "App Name",
-    "arabic": "Arabic",
-    "english": "English",
+    "languages": {
+      "arabic": "Arabic",
+      "english": "English",
+      "mandarin_chinese": "Chinese",
+      "spanish": "Spanish",
+      "hindi": "Hindi",
+      "portuguese": "Portuguese",
+      "russian": "Russian",
+      "japanese": "Japanese",
+      "korean": "Korean",
+      "german": "German",
+      "french": "French",
+      "romanian": "Romanian"
+    },
     "generale": "General",
     "github": "Github",
     "language": "Language",
@@ -15,6 +121,7 @@
     "logout": "Logout",
     "more": "More",
     "privacy": "Privacy Policy",
+    "faq": "FAQ",
     "rate": "Rate",
     "share": "Share",
     "support": "Support",
@@ -34,5 +141,44 @@
       "componentsLibrary": "UI library"
     }
   },
-  "welcome": "Welcome to X-Ray analizer app site"
+  "components": {
+    "ReportCard": {
+      "rating": "Rating"
+    },
+    "ScanReportCard": {
+      "promptMessage": "What is the reason?",
+      "unnamedReport": "Unnamed report",
+      "reportTitlePlaceholder": "Add a title"
+    },
+    "WeekBlock": {
+      "week": "Week"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Scroll to Top"
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Sorry, we need camera permissions to make this work!",
+    "errorSelectingImagePicker": "Something went wrong while selecting the image. Please try again.",
+    "errorSelectingDocumentPicker": "Something went wrong while picking the document. Please try again.",
+    "errorTakingPicture": "Something went wrong while taking the photo. Please try again.",
+    "enableNotifications": {
+      "heading": "Enable Notifications",
+      "subHeading": "Notifications are disabled. Please enable them in your device settings."
+    },
+    "enableNotificationFailed": "Failed to enable notifications.",
+    "enableNotificationError": "An error occurred while enabling notifications",
+    "notificationDisabledSuccess": "Notifications disabled successfully.",
+    "notificationDisabledRegisterError": "Failed to unregister device for notifications.",
+    "notificationDisabledError": "An error occurred while disabling notifications.",
+    "checkNotificationStatusError": "Error checking notification status.",
+    "projectIdNotFound": "Notification project ID not found.",
+    "imageSizeLarge": "Image is too large! File size is {{fileSize}} MB, but the limit is {{imageLimit}} MB.",
+    "videoSizeLarge": "Video is too large! File size is {{fileSize}} MB, but the limit is {{videoLimit}} MB.",
+    "loggedInSuccess": "Successfully logged in",
+    "sendVerificationCodeError": "Error when sending verification code",
+    "validateAuthCodeError": "Error when validating auth code",
+    "anonymousSignInError": "Error signing in anonymously",
+    "emailLoginError": "Error when signing in"
+  }
 }

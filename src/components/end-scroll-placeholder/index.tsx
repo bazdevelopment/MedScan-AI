@@ -2,6 +2,7 @@ import LottieView from 'lottie-react-native';
 import { useEffect, useRef } from 'react';
 import { Animated, TouchableOpacity } from 'react-native';
 
+import { translate } from '@/core';
 import { Text } from '@/ui';
 
 import { endScrollPlaceholderStyle } from './end-scoll-placeholder.styles';
@@ -38,7 +39,9 @@ export const EndScrollPlaceholder = ({
           loop
           style={endScrollPlaceholderStyle.scrollTopAnimation}
         />
-        <Text className="top-[-30] text-center text-sm">Scroll to Top</Text>
+        <Text className="top-[-30] text-center text-sm">
+          {translate('components.EndScrollPlaceholder.scrollToTop')}
+        </Text>
       </TouchableOpacity>
     </Animated.View>
   );

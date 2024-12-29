@@ -83,7 +83,10 @@ export default function Settings() {
               text="settings.terms"
               onPress={() => router.navigate('/terms-of-service')}
             />
-            <Item text="FAQ" onPress={() => console.log('go to faq screen')} />
+            <Item
+              text="settings.faq"
+              onPress={() => console.log('go to faq screen')}
+            />
             <Item
               text="settings.github"
               icon={<Github color={iconColor} />}

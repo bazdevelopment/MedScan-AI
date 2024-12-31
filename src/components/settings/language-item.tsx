@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { useSelectedLanguage } from '@/core';
-import { translate } from '@/core';
-import type { Language } from '@/core/i18n/resources';
+import { translate, useSelectedLanguage } from '@/core';
+import { type Language } from '@/core/i18n/resources';
 import type { OptionType } from '@/ui';
 import { Options, useModal } from '@/ui';
 
@@ -41,7 +40,6 @@ export const LanguageItem = () => {
     () => langs.find((lang) => lang.value === language),
     [language, langs],
   );
-
   return (
     <>
       <Item

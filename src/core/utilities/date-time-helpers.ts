@@ -22,17 +22,16 @@ export const getDaysOfWeek = (
   year: number,
   locale: string,
 ): IDayOfWeek[] => {
-  const startOfWeek = dayjs()
+  // Explicitly calculate a date from the given year and week
+  const baseDate = dayjs(`${year}-01-01`) // Start with January 1st of the given year
     .locale(locale)
-    .year(year)
-    .isoWeek(weekNumber)
-    .startOf('isoWeek'); // Get the start of the specified week with offset
+    .startOf('year') // Start of the year
+    .add(weekNumber - 1, 'weeks') // Navigate to the correct week
+    .startOf('isoWeek'); // Ensure alignment to the ISO week start
 
-  const endOfWeek = dayjs()
-    .locale(locale)
-    .year(year)
-    .isoWeek(weekNumber)
-    .endOf('isoWeek'); // Get the end of the specified week with offset: ;
+  const startOfWeek = baseDate;
+  const endOfWeek = baseDate.endOf('isoWeek');
+
   const daysOfWeek = [];
 
   let currentDay = startOfWeek;
@@ -101,20 +100,15 @@ export const getWeekInterval = (
   weekNumber: number,
   locale: string,
 ): string => {
-  const startOfWeek = dayjs()
-    .year(year)
+  // Explicitly calculate a date from the given year and week
+  const baseDate = dayjs(`${year}-01-01`) // Start with January 1st of the given year
     .locale(locale)
-    .isoWeek(weekNumber)
-    .startOf('isoWeek'); // Get the start of the specified week with offset
+    .startOf('year') // Start of the year
+    .add(weekNumber - 1, 'weeks') // Navigate to the correct week
+    .startOf('isoWeek'); // Ensure alignment to the ISO week start
 
-  const endOfWeek = dayjs()
-    .locale(locale)
-    .year(year)
-    .isoWeek(weekNumber)
-    .endOf('isoWeek'); // Get the end of the specified week with offset: ;
-
-  const formatStartOfWeek = startOfWeek.format('DD.MM');
-  const formatEndOfWeek = endOfWeek.format('DD.MM');
+  const formatStartOfWeek = baseDate.format('DD.MM'); // Start of the week
+  const formatEndOfWeek = baseDate.endOf('isoWeek').format('DD.MM'); // End of the week
 
   return `${formatStartOfWeek} - ${formatEndOfWeek}`;
 };
@@ -133,23 +127,18 @@ export const getStartAndEndWeek = (
   weekNumber: number,
   locale: string,
 ): { startOfWeek: string; endOfWeek: string; locale: string } => {
-  const startOfWeek = dayjs()
+  // Explicitly calculate a date from the given year and week
+  const baseDate = dayjs(`${year}-01-01`) // Start with January 1st of the given year
     .locale(locale)
-    .year(year)
-    .isoWeek(weekNumber)
-    .startOf('isoWeek')
-    .format('YYYY-MM-DD'); // Format the start of the week to "YYYY-MM-DD"
+    .startOf('year') // Start of the year
+    .add(weekNumber - 1, 'weeks') // Navigate to the correct week
+    .startOf('isoWeek'); // Ensure alignment to the ISO week start
 
-  const endOfWeek = dayjs()
-    .locale(locale)
-    .year(year)
-    .isoWeek(weekNumber)
-    .endOf('isoWeek')
-    .format('YYYY-MM-DD'); // Format the end of the week to "YYYY-MM-DD"
+  const startOfWeek = baseDate.format('YYYY-MM-DD'); // Start of the week
+  const endOfWeek = baseDate.endOf('isoWeek').format('YYYY-MM-DD'); // End of the week
 
-  return { startOfWeek, endOfWeek };
+  return { startOfWeek, endOfWeek, locale };
 };
-
 /* Function that checks if a date of format "2024-06-23" is today  */
 export const checkIsToday = (date: string, locale: string) => {
   const today = dayjs().locale(locale).format('YYYY-MM-DD');

@@ -118,6 +118,7 @@ export const analyzeImage = async (req: Request, res: any) => {
         metadata: {
           contentType: imageFile.mimeType,
         },
+        public: true,
       });
     } catch (error) {
       console.error('Error uploading file to Firebase Storage:', error);
@@ -126,20 +127,7 @@ export const analyzeImage = async (req: Request, res: any) => {
         message: 'Failed to upload the image to Firebase Storage.',
       });
     }
-
-    let url;
-    try {
-      [url] = await file.getSignedUrl({
-        action: 'read',
-        expires: '03-01-2500',
-      });
-    } catch (error) {
-      console.error('Error generating signed URL:', error);
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to generate the image URL.',
-      });
-    }
+    const url = file.publicUrl();
     // Save the analysis result and metadata in Firestore
     try {
       const analysisDocRef = admin
@@ -267,6 +255,7 @@ export const analyzeVideo = async (req: Request, res: any) => {
         metadata: {
           contentType: videoFile.mimeType,
         },
+        public: true,
       });
     } catch (error) {
       console.error('Error uploading file to Firebase Storage:', error);
@@ -276,19 +265,7 @@ export const analyzeVideo = async (req: Request, res: any) => {
       });
     }
 
-    let url;
-    try {
-      [url] = await file.getSignedUrl({
-        action: 'read',
-        expires: '03-01-2500',
-      });
-    } catch (error) {
-      console.error('Error generating signed URL:', error);
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to generate the image video url.',
-      });
-    }
+    const url = file.publicUrl();
 
     // Save the analysis result and metadata in Firestore
 

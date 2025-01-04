@@ -27,6 +27,7 @@
     "utilities/terms-of-service-structure.ts",
     "utilities/privacy-policy-structure.ts",
     "utilities/languages.ts",
+    "utilities/language.ts",
     "dayjs/index.ts"
   ]
 }

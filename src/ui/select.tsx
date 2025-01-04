@@ -8,14 +8,19 @@ import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
-import { Platform, TouchableOpacity, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Platform,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { Pressable, type PressableProps } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 import Svg, { Path } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
-import colors from '@/ui/colors';
 import { CaretDown } from '@/ui/assets/icons';
+import colors from '@/ui/colors';
 
 import type { InputControllerType } from './input';
 import { useModal } from './modal';
@@ -62,6 +67,7 @@ export type OptionType = { label: string; value: string | number };
 
 type OptionsProps = {
   options: OptionType[];
+  isPending: boolean;
   onSelect: (option: OptionType) => void;
   value?: string | number;
   testID?: string;
@@ -72,7 +78,7 @@ function keyExtractor(item: OptionType) {
 }
 
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
-  ({ options, onSelect, value, testID }, ref) => {
+  ({ options, onSelect, value, isPending, testID }, ref) => {
     const height = options.length * 70 + 100;
     const snapPoints = React.useMemo(() => [height], [height]);
     const { colorScheme } = useColorScheme();
@@ -100,6 +106,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           backgroundColor: isDark ? colors.neutral[800] : colors.white,
         }}
       >
+        {isPending && <ActivityIndicator size="small" />}
         <List
           data={options}
           keyExtractor={keyExtractor}

@@ -6,8 +6,10 @@ import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 
+import { useUser, useUserPreferredLanguage } from '@/api/user/user.hooks';
 import { NoInternetConnectionModal } from '@/components/modals/no-internet-modal';
 import { TabBarIcon } from '@/components/tab-bar-icon';
+import { useSelectedLanguage } from '@/core';
 import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import { tabScreens } from '@/core/navigation/tabs';
@@ -20,6 +22,11 @@ export default function TabLayout() {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const modal = useModal();
+
+  const { data: userInfo } = useUser();
+  const { language: actualLocalLanguage } = useSelectedLanguage();
+  const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
+  const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
 
   const { isConnected } = useNetInfo();
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
@@ -54,6 +61,10 @@ export default function TabLayout() {
   }, [arePushNotificationEnabled]);
   // Set an initializing state whilst Firebase connects
 
+  useEffect(() => {
+    if (userInfoLanguage && userInfoLanguage !== actualLocalLanguage)
+      onUpdatePreferredLanguage({ language: actualLocalLanguage });
+  }, []);
   return (
     <>
       <Tabs

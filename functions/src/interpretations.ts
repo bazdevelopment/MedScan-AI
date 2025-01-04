@@ -2,6 +2,8 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
+import { getTranslation } from './translations';
+
 interface IInterpretationResult {
   docId: string; // Firestore document ID
   userId: string;
@@ -142,6 +144,17 @@ export const updateScanInterpretation = async (data: any, context: any) => {
       );
     }
 
+    const uid = context.auth?.uid;
+    const userDoc = db.collection('users').doc(uid);
+    const userInfo = await userDoc.get();
+    const userInfoData = userInfo.data();
+
+    if (!userInfo.exists) {
+      throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    }
+
+    const t = getTranslation(userInfoData?.preferredLanguage);
+
     // Firestore collection where your records are stored
     const collectionName = 'interpretations'; // Replace with your actual collection name
 
@@ -149,7 +162,7 @@ export const updateScanInterpretation = async (data: any, context: any) => {
     await db.collection(collectionName).doc(documentId).update(fieldsToUpdate);
 
     return {
-      message: 'Scan interpretation record updated successfully!',
+      message: t.updateScanInterpretation.success,
       updatedFields: fieldsToUpdate,
     };
   } catch (error: any) {

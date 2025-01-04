@@ -77,6 +77,10 @@ export const verifyAuthenticationCode = euFuntions.https.onCall(
 
 export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);
 
+export const updatePreferredLanguage = euFuntions.https.onCall(
+  userFunctions.handleUpdateUserLanguage,
+);
+
 export const storeDeviceToken = euFuntions.https.onCall(
   pushNotificationsFunctions.storeDeviceToken,
 );

@@ -121,6 +121,7 @@ const loginUserViaEmailHandler = async (data: { email: string }) => {
           userId: userId,
           verificationCode,
           verificationCodeExpiry: verificationExpiry,
+          preferredLanguage: 'en',
         });
     } else {
       // Update existing user with new verification code
@@ -428,6 +429,45 @@ const updateUserSubscription = async (data: { userId: string }) => {
   return { message: 'Successfully subscribed!' };
 };
 
+const handleUpdateUserLanguage = async (
+  data: { language: string },
+  context: any,
+) => {
+  try {
+    const { language } = data;
+    // Ensure user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'User must be authenticated.',
+      );
+    }
+    if (!language) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        'Language code is mandatory',
+      );
+    }
+
+    const uid = context.auth?.uid;
+    const userDoc = db.collection('users').doc(uid);
+    const userInfo = await userDoc.get();
+
+    if (!userInfo.exists) {
+      throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    }
+
+    await userDoc.update({ preferredLanguage: language });
+
+    return { message: 'Successfully updated the language!', language };
+  } catch (error) {
+    throw new functions.https.HttpsError(
+      'internal',
+      'An unexpected error occurred while updating the language. Please try again later.',
+    );
+  }
+};
+
 const getUserInfo = async (_: any, context: any) => {
   // Ensure user is authenticated
   if (!context.auth) {
@@ -447,13 +487,22 @@ const getUserInfo = async (_: any, context: any) => {
   }
 
   const userInfoData = userInfo.data();
-  return { ...userInfoData, message: 'Successfully fetched userInfo data' };
+  return {
+    ...userInfoData,
+    verificationCodeExpiry: userInfoData?.verificationCodeExpiry
+      .toDate()
+      .toISOString(),
+    createdAt: userInfoData?.createdAt?.toDate().toISOString(),
+    updatedAt: userInfoData?.updatedAt?.toDate().toISOString(),
+    message: 'Successfully fetched userInfo data',
+  };
 };
 
 export {
   createAnonymousAccountHandler,
   decrementUserScans,
   getUserInfo,
+  handleUpdateUserLanguage,
   incrementUserScans,
   loginUserViaEmailHandler,
   sendEmailVerification,

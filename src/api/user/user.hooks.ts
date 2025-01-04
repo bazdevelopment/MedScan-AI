@@ -12,6 +12,7 @@ import {
   getUserInfo,
   loginWithEmail,
   sendOtpCodeViaEmail,
+  updateUserPreferredLanguage,
   validateVerificationCode,
 } from './user.requests';
 
@@ -96,5 +97,17 @@ export const useDecrementScans = createMutation<Response, void, AxiosError>({
   },
   onError: (error) => {
     Toast.error(error.message || translate('alerts.validateAuthCodeError'));
+  },
+});
+
+export const useUserPreferredLanguage = createMutation<
+  Response,
+  { language: string },
+  AxiosError
+>({
+  mutationFn: (variables) => updateUserPreferredLanguage(variables),
+  onSuccess: () => {},
+  onError: (error) => {
+    Toast.error(error.message || translate('alerts.preferredLanguageError'));
   },
 });

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { useUserPreferredLanguage } from '@/api/user/user.hooks';
 import { translate, useSelectedLanguage } from '@/core';
 import { type Language } from '@/core/i18n/resources';
 import type { OptionType } from '@/ui';
@@ -8,15 +9,18 @@ import { Options, useModal } from '@/ui';
 import { Item } from './item';
 
 export const LanguageItem = () => {
+  const { mutateAsync: onSelectPreferredLanguage, isPending } =
+    useUserPreferredLanguage();
   const { language, setLanguage } = useSelectedLanguage();
   const modal = useModal();
-  const onSelect = React.useCallback(
-    (option: OptionType) => {
+  const onSelect = async (option: OptionType) => {
+    await onSelectPreferredLanguage({
+      language: option.value as Language,
+    }).then(() => {
       setLanguage(option.value as Language);
       modal.dismiss();
-    },
-    [setLanguage, modal],
-  );
+    });
+  };
 
   const langs = React.useMemo(
     () => [
@@ -48,6 +52,7 @@ export const LanguageItem = () => {
         onPress={modal.present}
       />
       <Options
+        isPending={isPending}
         ref={modal.ref}
         options={langs}
         onSelect={onSelect}

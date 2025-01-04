@@ -93,6 +93,23 @@ export const decrementNumberOfScans = async () => {
   }
 };
 
+export const updateUserPreferredLanguage = async ({
+  language,
+}: {
+  language: string;
+}) => {
+  try {
+    const onUpdateLanguage = firebaseCloudFunctionsInstance.httpsCallable(
+      'updatePreferredLanguage',
+    );
+    const { data } = await onUpdateLanguage({ language });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 /** Get user info  */
 export const getUserInfo = async () => {
   try {
@@ -100,6 +117,7 @@ export const getUserInfo = async () => {
       await firebaseCloudFunctionsInstance.httpsCallable('getUserInfo')();
     return data;
   } catch (error) {
+    console.log('Err', error);
     throw error;
   }
 };

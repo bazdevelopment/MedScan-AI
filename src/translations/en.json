@@ -179,6 +179,7 @@
     "sendVerificationCodeError": "Error when sending verification code",
     "validateAuthCodeError": "Error when validating auth code",
     "anonymousSignInError": "Error signing in anonymously",
-    "emailLoginError": "Error when signing in"
+    "emailLoginError": "Error when signing in",
+    "preferredLanguageError": "Error when updating user's preferred language"
   }
 }

@@ -1,9 +1,10 @@
 import { firebaseCloudFunctionsInstance } from 'firebase/config';
 
-export const getScanCategories = async () => {
+export const getScanCategories = async ({ language }: { language: string }) => {
   try {
-    const { data } =
-      await firebaseCloudFunctionsInstance.httpsCallable('getScanCategories')();
+    const { data } = await firebaseCloudFunctionsInstance.httpsCallable(
+      'getScanCategories',
+    )({ language });
     return data;
   } catch (error) {
     throw error;

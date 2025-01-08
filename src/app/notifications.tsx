@@ -20,10 +20,12 @@ export default function NotificationsScreen() {
   const {
     i18n: { language },
   } = useTranslation();
-  const { data: userInfo } = useUser();
+
+  const { data: userInfo } = useUser(language);
   const { data: userNotifications, isPending: areUserNotificationsLoading } =
     useFetchUserNotifications({
       userId: userInfo?.userId,
+      language,
     })();
 
   const { mutate: onMarkNotificationAsRead } = useMarkNotificationAsRead();

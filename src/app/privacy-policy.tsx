@@ -3,10 +3,12 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { usePrivacyPolicy } from '@/api/privacy-policy/privacy-policy.hooks';
+import { useSelectedLanguage } from '@/core';
 import { Text } from '@/ui'; // Assuming you have a Text component in your app
 
 const PrivacyPolicy = () => {
-  const { data, isPending, error } = usePrivacyPolicy();
+  const { language } = useSelectedLanguage();
+  const { data, isPending, error } = usePrivacyPolicy(language);
 
   if (isPending) {
     return (

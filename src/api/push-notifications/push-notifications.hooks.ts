@@ -19,17 +19,20 @@ import {
 type TVariables = {
   body: string;
   title: string;
+  language: string;
 };
 type TVariablesIndividualNotification = {
   body: string;
   title: string;
   userId: string;
+  language: string;
 };
 
-type TMarkNotificationAsRead = { notificationId: string };
+type TMarkNotificationAsRead = { notificationId: string; language: string };
 
 type TUniqueIdentifierPayload = {
   deviceUniqueId: string;
+  language: string;
 };
 
 export const useSendGlobalPushNotifications = createMutation<
@@ -52,7 +55,7 @@ export const useSendIndividualPushNotification = createMutation<
   AxiosError
 >({
   mutationFn: (variables) => sendIndividualPushNotification(variables),
-  onSuccess: () => {
+  onSuccess: (data) => {
     Toast.success('Successfully sent individual push notifications!');
   },
   onError: (error) => {
@@ -60,7 +63,10 @@ export const useSendIndividualPushNotification = createMutation<
   },
 });
 
-export const useFetchUserNotifications = (variables: { userId: string }) =>
+export const useFetchUserNotifications = (variables: {
+  userId: string;
+  language: string;
+}) =>
   createQuery<any, TUniqueIdentifierPayload, AxiosError>({
     queryKey: ['individual-user-notifications', variables.userId],
     fetcher: () => getUserNotifications(variables),
@@ -72,7 +78,11 @@ export const useDeviceInfoByUniqueIdentifier = (
 ) =>
   createQuery<any, TUniqueIdentifierPayload, AxiosError>({
     queryKey: ['device-info-by-unique-identifier', variables.deviceUniqueId],
-    fetcher: () => getDeviceInfoByUniqueIdentifier(variables.deviceUniqueId),
+    fetcher: () =>
+      getDeviceInfoByUniqueIdentifier(
+        variables.deviceUniqueId,
+        variables.language,
+      ),
   });
 
 export const useMarkNotificationAsRead = createMutation<

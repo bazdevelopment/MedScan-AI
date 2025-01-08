@@ -15,13 +15,16 @@ type IPayload = {
   startDate: string;
   endDate: string;
   weekNumber: number;
+  language: string;
 };
 
 type IInterpretationById = {
   documentId: string;
+  language: string;
 };
 type IRecentInterpretations = {
   limit: number;
+  language: string;
 };
 export const useInterpretationByDate = (variables: IPayload) =>
   createQuery<IInterpretationRecord, IPayload, AxiosError>({
@@ -50,11 +53,12 @@ export const useUpdateInterpretationFields = (variables: {
 export const useInterpretationById = (variables: IInterpretationById) =>
   createQuery<any, IInterpretationById, AxiosError>({
     queryKey: ['interpretations-by-id', variables.documentId],
-    fetcher: () => getInterpretationByDocumentId(variables.documentId),
+    fetcher: () =>
+      getInterpretationByDocumentId(variables.documentId, variables.language),
   });
 
 export const useRecentInterpretations = (variables: IRecentInterpretations) =>
   createQuery<any, IRecentInterpretations, AxiosError>({
     queryKey: ['recent-interpretations'],
-    fetcher: () => getRecentReports(variables.limit),
+    fetcher: () => getRecentReports(variables.limit, variables.language),
   });

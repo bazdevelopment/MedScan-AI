@@ -17,7 +17,7 @@ import PullToRefresh from '@/components/pull-to-refresh';
 import ReportCard from '@/components/report-card';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
-import { translate } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
@@ -31,18 +31,22 @@ const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
+  const { language } = useSelectedLanguage();
+
   const {
     data: recentInterpretations,
     refetch: refetchRecentReports,
     isPending: areRecentReportsLoading,
   } = useRecentInterpretations({
     limit: 5,
+    language,
   })();
 
-  const { data: userInfo, refetch: refetchUserInfo } = useUser();
+  const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
 
   const { refetch: refetchUserNotifications } = useFetchUserNotifications({
     userId: userInfo?.userId,
+    language,
   })();
 
   const { colorScheme } = useColorScheme();
@@ -54,7 +58,8 @@ export default function Home() {
     refetchUserNotifications();
   };
 
-  const { data, isPending: areScanCategoriesLoading } = useScanCategories();
+  const { data, isPending: areScanCategoriesLoading } =
+    useScanCategories(language);
 
   checkForAppUpdate();
 

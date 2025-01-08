@@ -29,11 +29,18 @@ export const createAnonymousAccount = async ({
 };
 
 /** Create anonymous account */
-export const loginWithEmail = async ({ email }: { email: string }) => {
+export const loginWithEmail = async ({
+  email,
+  language,
+}: {
+  email: string;
+  language: string;
+}) => {
   try {
     const { data }: { data: any } =
       await firebaseCloudFunctionsInstance.httpsCallable('loginUserViaEmail')({
         email,
+        language,
       });
     const userCredentials = await firebaseAuth.signInWithCustomToken(
       data.authToken,
@@ -44,7 +51,13 @@ export const loginWithEmail = async ({ email }: { email: string }) => {
   }
 };
 
-export const sendOtpCodeViaEmail = async ({ email }: { email: string }) => {
+export const sendOtpCodeViaEmail = async ({
+  email,
+  language,
+}: {
+  email: string;
+  language: string;
+}) => {
   try {
     const sendEmailVerificationLink =
       firebaseCloudFunctionsInstance.httpsCallable(
@@ -52,6 +65,7 @@ export const sendOtpCodeViaEmail = async ({ email }: { email: string }) => {
       );
     const { data } = await sendEmailVerificationLink({
       email,
+      language,
     });
 
     return data;
@@ -63,9 +77,11 @@ export const sendOtpCodeViaEmail = async ({ email }: { email: string }) => {
 export const validateVerificationCode = async ({
   authenticationCode,
   email,
+  language,
 }: {
   authenticationCode: string;
   email: string;
+  language: string;
 }) => {
   try {
     const verifyAuthenticationCode =
@@ -73,6 +89,7 @@ export const validateVerificationCode = async ({
     const { data } = await verifyAuthenticationCode({
       authenticationCode,
       email,
+      language,
     });
 
     return data;
@@ -81,11 +98,15 @@ export const validateVerificationCode = async ({
   }
 };
 
-export const decrementNumberOfScans = async () => {
+export const decrementNumberOfScans = async ({
+  language,
+}: {
+  language: string;
+}) => {
   try {
     const handleDecrementScans =
       firebaseCloudFunctionsInstance.httpsCallable('decrementUserScans');
-    const { data } = await handleDecrementScans();
+    const { data } = await handleDecrementScans({ language });
 
     return data;
   } catch (error) {
@@ -111,13 +132,13 @@ export const updateUserPreferredLanguage = async ({
 };
 
 /** Get user info  */
-export const getUserInfo = async () => {
+export const getUserInfo = async ({ language }: { language: string }) => {
   try {
-    const { data } =
-      await firebaseCloudFunctionsInstance.httpsCallable('getUserInfo')();
+    const { data } = await firebaseCloudFunctionsInstance.httpsCallable(
+      'getUserInfo',
+    )({ language });
     return data;
   } catch (error) {
-    console.log('Err', error);
     throw error;
   }
 };

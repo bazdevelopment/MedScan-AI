@@ -17,13 +17,14 @@ import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
-import { translate } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
 import { Github, Rate, ShareIcon, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
-  const { data: userInfo } = useUser();
+  const { language } = useSelectedLanguage();
+  const { data: userInfo } = useUser(language);
 
   const scrollViewRef = useRef(null);
   const iconColor =
@@ -120,6 +121,7 @@ export default function Settings() {
                   onHandleGlobalPushNotifications({
                     title: 'This is a global notification title',
                     body: 'This is a global notification body',
+                    language,
                   })
                 }
               />
@@ -130,16 +132,17 @@ export default function Settings() {
                     title: 'This is an individual notification title',
                     body: 'This is an individual notification body',
                     userId: userInfo.userId,
+                    language,
                   })
                 }
               />
               <Item
                 text="Upload terms of service"
-                onPress={onUploadTermsOfService}
+                onPress={() => onUploadTermsOfService({ language })}
               />
               <Item
                 text="Upload privacy policy"
-                onPress={onUploadPrivacyPolicy}
+                onPress={() => onUploadPrivacyPolicy({ language })}
               />
             </ItemsContainer>
           </View>

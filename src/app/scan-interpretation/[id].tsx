@@ -8,6 +8,7 @@ import { useInterpretationById } from '@/api/interpretation/interpretation.hooks
 import CustomModal from '@/components/custom-modal';
 import Icon from '@/components/icon';
 import VideoPlayer from '@/components/video';
+import { useSelectedLanguage } from '@/core';
 import { useModal } from '@/core/hooks/use-modal';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { colors, Image, Text } from '@/ui';
@@ -16,9 +17,11 @@ import { CalendarIcon, DocumentIcon, PlayerIcon } from '@/ui/assets/icons';
 const ScanInterpretationDetailsScreen = () => {
   const { id: documentId } = useLocalSearchParams();
   const { isVisible: isMediaModalVisible, openModal, closeModal } = useModal();
+  const { language } = useSelectedLanguage();
 
   const { data, isPending } = useInterpretationById({
     documentId: documentId as string,
+    language,
   })();
 
   const isVideo = checkIsVideo(data?.record?.mimeType);

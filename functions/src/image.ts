@@ -15,6 +15,7 @@ import { handleOnRequestError } from '../utilities/handle-on-request-error';
 import { LANGUAGES } from '../utilities/languages';
 import { processUploadedFile } from '../utilities/multipart';
 import { admin } from './common';
+import { getTranslation } from './translations';
 ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 const db = admin.firestore();
@@ -31,9 +32,9 @@ export const analyzeImage = async (req: Request, res: any) => {
 
     const { files, fields } = await processUploadedFile(req);
     const languageAbbreviation = req.headers['accept-language'];
-    const preferredLanguage =
-      LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
-    const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
+
+    const additionalLngPrompt = `The response language must be in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]}`;
+    const t = getTranslation(languageAbbreviation as string);
     const { userId, promptMessage } = fields;
     const [imageFile] = files;
 
@@ -42,7 +43,7 @@ export const analyzeImage = async (req: Request, res: any) => {
     const storage = admin.storage();
 
     if (!userInfoSnapshot.exists) {
-      throw new functions.https.HttpsError('not-found', 'User does not exist!');
+      throw new functions.https.HttpsError('not-found', t.common.noUserFound);
     }
 
     const { scansRemaining } = userInfoSnapshot.data() as {
@@ -52,20 +53,20 @@ export const analyzeImage = async (req: Request, res: any) => {
     if (scansRemaining <= 0) {
       throw new functions.https.HttpsError(
         'resource-exhausted',
-        'You have reached the maximum number of scans.',
+        t.analyzeImage.scanLimitReached,
       );
     }
 
     if (!userId) {
       handleOnRequestError({
-        error: { message: 'No user id provided' },
+        error: { message: t.common.userIdMissing },
         res,
         context: 'Analyze image',
       });
     }
     if (!imageFile.buf) {
       handleOnRequestError({
-        error: { message: 'No image provided' },
+        error: { message: t.analyzeImage.imageMissing },
         res,
         context: 'Analyze image',
       });
@@ -124,7 +125,7 @@ export const analyzeImage = async (req: Request, res: any) => {
       console.error('Error uploading file to Firebase Storage:', error);
       return res.status(500).json({
         success: false,
-        message: 'Failed to upload the image to Firebase Storage.',
+        message: t.analyzeImage.uploadImageStorageError,
       });
     }
     const url = file.publicUrl();
@@ -151,13 +152,13 @@ export const analyzeImage = async (req: Request, res: any) => {
       console.error('Error saving analysis metadata to Firestore:', error);
       return res.status(500).json({
         success: false,
-        message: 'Failed to save analysis result to Firestore.',
+        message: t.analyzeImage.interpretationNotSaved,
       });
     }
 
     res.status(200).json({
       success: true,
-      message: 'Successfully analyzed base64 image frames',
+      message: t.analyzeImage.analysisCompleted,
       interpretationResult: textResult,
     });
   } catch (error: any) {
@@ -187,12 +188,12 @@ export const analyzeVideo = async (req: Request, res: any) => {
     const preferredLanguage =
       LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
     const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
-
+    const t = getTranslation(languageAbbreviation as string);
     // Assuming we process the first video file
     const videoFile = files[0];
 
     if (!videoFile) {
-      return res.status(400).send({ error: 'No video file uploaded.' });
+      return res.status(400).send({ error: t.analyzeVideo.noVideoFound });
     }
 
     const base64Frames = await getBase64ImageFrames(
@@ -258,10 +259,10 @@ export const analyzeVideo = async (req: Request, res: any) => {
         public: true,
       });
     } catch (error) {
-      console.error('Error uploading file to Firebase Storage:', error);
+      console.error('Error uploading video to Firebase Storage:', error);
       return res.status(500).json({
         success: false,
-        message: 'Failed to upload the image to Firebase Storage.',
+        message: t.analyzeVideo.uploadVideoStorageError,
       });
     }
 
@@ -291,12 +292,12 @@ export const analyzeVideo = async (req: Request, res: any) => {
       console.error('Error saving analysis metadata to Firestore:', error);
       return res.status(500).json({
         success: false,
-        message: 'Failed to save analysis result to Firestore.',
+        message: t.analyzeVideo.interpretationNotSaved,
       });
     }
     return res.status(200).json({
       success: true,
-      message: 'Successfully analyzed base64 image frames(video)',
+      message: t.analyzeVideo.analysisCompleted,
       interpretationResult: textResult,
     });
   } catch (error) {

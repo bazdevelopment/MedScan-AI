@@ -84,13 +84,14 @@ const FilePreviewScreen = ({
   const {
     i18n: { language },
   } = useTranslation();
+
   const onSuccess = ({
     interpretationResult,
   }: {
     interpretationResult: string;
   }) => {
     goToNextScreen({ interpretationResult });
-    onDecrementScans();
+    onDecrementScans({ language });
   };
 
   //todo: to be changed in the future with useUser hook

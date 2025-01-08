@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 
 import { useLoginWithEmail } from '@/api/user/user.hooks';
-import { translate } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { Button, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 
 export default function Login() {
@@ -17,7 +17,7 @@ export default function Login() {
 
 const LoginFrm = () => {
   const [email, setEmail] = useState('');
-
+  const { language } = useSelectedLanguage();
   const { mutate: handleLoginViaEmail, isPending: isLoginPending } =
     useLoginWithEmail({ email })();
 
@@ -50,7 +50,7 @@ const LoginFrm = () => {
         <Button
           testID="login-button"
           label={translate('general.continue')}
-          onPress={() => handleLoginViaEmail({ email })}
+          onPress={() => handleLoginViaEmail({ email, language })}
           disabled={isLoginPending || !email}
         />
       </View>

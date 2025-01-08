@@ -1,12 +1,13 @@
-/* eslint-disable max-lines-per-function */
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { useTermsOfService } from '@/api/terms-of-service/terms-of-service.hooks';
+import { useSelectedLanguage } from '@/core';
 import { Text } from '@/ui';
 
 const TermsOfService = () => {
-  const { data, isPending } = useTermsOfService();
+  const { language } = useSelectedLanguage();
+  const { data, isPending } = useTermsOfService(language);
 
   if (isPending) {
     return (

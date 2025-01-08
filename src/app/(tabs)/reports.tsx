@@ -50,6 +50,7 @@ const Reports = () => {
     startDate: startOfWeek,
     endDate: endOfWeek,
     weekNumber,
+    language,
   })();
 
   const {
@@ -142,6 +143,7 @@ const Reports = () => {
                       onUpdateInterpretationFields({
                         documentId,
                         fieldsToUpdate: { title },
+                        language,
                       })
                     }
                   />

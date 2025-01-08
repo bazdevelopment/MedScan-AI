@@ -76,7 +76,7 @@ const ParallaxScrollView = ({
       >
         {cloneElement(HeaderBarComponent, { scrollValue })}
       </View>
-      {/* <ScrollView contentContainerStyle={{ flex: 1 }} ref={scrollViewRef}> */}
+      {/* <ScrollView contentContainerStyle={{ flexGrow: 1, height: '400' }}> */}
       <StickyHeaderScrollView
         ref={scrollViewRef}
         bounces

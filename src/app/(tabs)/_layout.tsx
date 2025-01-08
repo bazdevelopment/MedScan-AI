@@ -22,8 +22,8 @@ export default function TabLayout() {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const modal = useModal();
-
-  const { data: userInfo } = useUser();
+  const { language } = useSelectedLanguage();
+  const { data: userInfo } = useUser(language);
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();

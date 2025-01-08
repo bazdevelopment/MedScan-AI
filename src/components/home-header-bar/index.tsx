@@ -10,7 +10,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useUser } from '@/api/user/user.hooks';
-import { translate } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 
@@ -23,8 +23,8 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
   const insets = useSafeAreaInsets();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-
-  const { data: userInfo } = useUser();
+  const { language } = useSelectedLanguage();
+  const { data: userInfo } = useUser(language);
 
   const onStartUploadMediaFile = () => {
     if (userInfo?.scansRemaining <= 0) {

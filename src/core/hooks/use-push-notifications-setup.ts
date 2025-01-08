@@ -9,7 +9,7 @@ import { storeMobileDeviceToken } from '@/api/push-notifications/push-notificati
 import Toast from '@/components/toast';
 
 import { Env } from '../env';
-import { translate } from '../i18n';
+import { translate, useSelectedLanguage } from '../i18n';
 import { storage } from '../storage';
 import { getUniqueDeviceIdentifier } from '../utilities/get-unique-device-identifier';
 import useAppState from './use-app-state';
@@ -20,6 +20,8 @@ export const usePushNotificationSetup = () => {
   const [deviceToken, setDeviceToken] = useState('');
 
   const { appState } = useAppState();
+
+  const { language } = useSelectedLanguage();
 
   const enablePushNotifications = async () => {
     try {
@@ -71,6 +73,7 @@ export const usePushNotificationSetup = () => {
         deviceModel: DeviceInfo.modelName || '',
         deviceBrand: DeviceInfo.brand || '',
         deviceUniqueId: getUniqueDeviceIdentifier(),
+        language,
       });
       if (response.success) {
         // Update state and storage

@@ -3,13 +3,19 @@ import * as functions from 'firebase-functions/v1';
 
 import { SCAN_CATEGORIES } from '../utilities/__mocks__/scan-categories';
 import { admin } from './common';
+import { getTranslation } from './translations';
 
-export const getScanCategoriesHandler = async (_: unknown, context: any) => {
+export const getScanCategoriesHandler = async (
+  data: { language: string },
+  context: any,
+) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Authentication required',
+        t.common.noUserFound,
       );
     }
 
@@ -18,7 +24,10 @@ export const getScanCategoriesHandler = async (_: unknown, context: any) => {
     const categoriesSnapshot = await db.collection('scan_categories').get();
 
     if (categoriesSnapshot.empty) {
-      throw new functions.https.HttpsError('not-found', 'No categories found!');
+      throw new functions.https.HttpsError(
+        'not-found',
+        t.getScanCategories.noCategoryFound,
+      );
     }
 
     const categories = [];
@@ -55,9 +64,10 @@ export const getScanCategoriesHandler = async (_: unknown, context: any) => {
     }
     return { success: true, categories };
   } catch (error: any) {
+    t = t || getTranslation('en');
     console.error('Error getting scan categories:', error);
     throw new functions.https.HttpsError(error.code, error.message, {
-      message: error.message || 'Error retrieving scan categories..',
+      message: error.message || t.getScanCategories.noCategoryFound,
     });
   }
 };
@@ -80,8 +90,11 @@ async function getImageUrl(imagePath: string, storage: Storage) {
   }
 }
 
-export const handleUploadScanCategories = async (_: any, res: any) => {
+export const handleUploadScanCategories = async (req: any, res: any) => {
+  let t;
   try {
+    const languageAbbreviation = req.headers['accept-language'];
+    t = getTranslation(languageAbbreviation);
     const db = admin.firestore();
     // Loop through SCAN_CATEGORIES
     for (const category of SCAN_CATEGORIES) {
@@ -99,10 +112,10 @@ export const handleUploadScanCategories = async (_: any, res: any) => {
         await examplesRef.add(example);
       }
     }
-
-    res.status(200).send('Scan categories uploaded successfully!');
+    res.status(200).send(t.uploadScanCategories.successfullyUploaded);
   } catch (error) {
+    t = t || getTranslation('en');
     console.error('Error uploading scan categories:', error);
-    res.status(500).send('Failed to upload scan categories.');
+    res.status(500).send(t.uploadScanCategories.generalError);
   }
 };

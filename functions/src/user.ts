@@ -6,9 +6,11 @@ import { generateVerificationCode } from '../utilities/generate-verification-cod
 import { sendOtpCodeViaEmail } from '../utilities/send-otp-code-email';
 import { truncateEmailAddress } from '../utilities/truncate-email-address';
 import { admin } from './common';
+import { getTranslation } from './translations';
 
 const db = admin.firestore();
 
+/*
 const createAnonymousAccountHandler = async (data: {
   userName: string;
   deviceUniqueId: string;
@@ -61,12 +63,26 @@ const createAnonymousAccountHandler = async (data: {
   }
 };
 
-const loginUserViaEmailHandler = async (data: { email: string }) => {
+/*
+
+/**
+ * Handles user login via email.
+ * !note: The translataion here is not mandatory because by default the language will be english and login it's one of the first screens that the user will see.
+ * @param {Object} data - The data object containing the email.
+ * @param {string} data.email - The email address of the user.
+ * @return {Promise<Object>} The result of the login operation.
+ */
+const loginUserViaEmailHandler = async (data: {
+  email: string;
+  language: string;
+}) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     if (!data.email) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Email is required.',
+        t.loginUserViaEmail.mandatoryEmail,
       );
     }
 
@@ -75,7 +91,7 @@ const loginUserViaEmailHandler = async (data: { email: string }) => {
     if (!emailRegex.test(data.email)) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Invalid email format.',
+        t.loginUserViaEmail.invalidEmail,
       );
     }
 
@@ -121,7 +137,7 @@ const loginUserViaEmailHandler = async (data: { email: string }) => {
           userId: userId,
           verificationCode,
           verificationCodeExpiry: verificationExpiry,
-          preferredLanguage: 'en',
+          preferredLanguage: data.language || 'en',
         });
     } else {
       // Update existing user with new verification code
@@ -139,7 +155,7 @@ const loginUserViaEmailHandler = async (data: { email: string }) => {
 
     await sendOtpCodeViaEmail({
       receiverEmail: data.email,
-      subject: 'X-Ray Analyzer verification code',
+      subject: 'X-Ray Analyzer app verification code',
       htmlTemplate: generateOptCodeTemplate(
         truncateEmailAddress(data.email),
         verificationCode,
@@ -149,38 +165,45 @@ const loginUserViaEmailHandler = async (data: { email: string }) => {
     return {
       userId,
       message: isNewUser
-        ? 'Account created! Please check your email for verification code.'
-        : 'Verification code sent to your email.',
+        ? t.loginUserViaEmail.accountCreated
+        : t.loginUserViaEmail.verificationCodeSent,
       email: data.email,
       isNewUser,
       authToken: customToken,
     };
   } catch (error: any) {
-    console.error('Auth error:', error);
+    t = t || getTranslation('en');
 
+    console.error('Auth via email error:', error);
     if (error instanceof functions.https.HttpsError) {
       throw error;
     }
 
     throw new functions.https.HttpsError(
       'internal',
-      'Error processing authentication.',
+      t.loginUserViaEmail.verificationCodeSent,
       { message: error.message || 'Unknown error occurred.' },
     );
   }
 };
 
-const sendEmailVerification = async (data: { email: string }, context: any) => {
+const sendEmailVerification = async (
+  data: { email: string; language: string },
+  context: any,
+) => {
   // Ensure user is authenticated
+  let t;
   try {
+    t = getTranslation(data.language);
+
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'User must be authenticated.',
+        t.common.noUserFound,
       );
     }
 
-    const { email } = data;
+    const { email, language } = data;
     const uid = context.auth?.uid;
     const verificationCode = generateVerificationCode();
 
@@ -194,9 +217,7 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
         ),
       });
 
-    const userDoc = db.collection('users').doc(uid);
-    const userInfo = await userDoc.get();
-    const userInfoData = userInfo.data();
+    const userInfoData = await getUserInfoById(uid, language);
 
     const usersCollection = db.collection('users');
 
@@ -208,7 +229,7 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
     if (!email || typeof email !== 'string') {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Email is required!',
+        t.sendEmailVerification.emailMandatory,
       );
     }
 
@@ -216,7 +237,7 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
     if (!emailQuerySnapshot.empty) {
       throw new functions.https.HttpsError(
         'already-exists',
-        'This email is already used! Please try to use another',
+        t.sendEmailVerification.emailUsed,
       );
     }
 
@@ -229,7 +250,7 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
     if (userQuery.empty) {
       throw new functions.https.HttpsError(
         'not-found',
-        'User does not exist in SF',
+        t.sendEmailVerification.userNotFound,
       );
     }
 
@@ -244,25 +265,29 @@ const sendEmailVerification = async (data: { email: string }, context: any) => {
 
     return {
       success: true,
-      message: 'Successfully sent the code via email!',
+      message: t.sendEmailVerification.verificationCodeSent,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
+
     throw new functions.https.HttpsError(error.code, error.message, {
-      message: error.message || 'Error starting email verification.',
+      message: error.message || t.sendEmailVerification.generalError,
     });
   }
 };
 
 const verifyAuthenticationCodeHandler = async (
-  data: { authenticationCode: string; email: string },
+  data: { authenticationCode: string; email: string; language: string },
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     // Ensure user is authenticated
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'User must be authenticated.',
+        t.common.noUserFound,
       );
     }
 
@@ -270,13 +295,13 @@ const verifyAuthenticationCodeHandler = async (
     if (!authenticationCode) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Authentication code is mandatory',
+        t.verifyAuthenticationCode.authCodeMandatory,
       );
     }
     if (!email || typeof email !== 'string') {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Email is required!',
+        t.verifyAuthenticationCode.emailAddressMandatory,
       );
     }
 
@@ -288,17 +313,17 @@ const verifyAuthenticationCodeHandler = async (
       .where('userId', '==', uid)
       .get();
 
-    if (userQuery.empty) {
-      throw new functions.https.HttpsError(
-        'not-found',
-        'User does not exist in SF',
-      );
-    }
-
     const docSnapshot = await db.collection('users').doc(uid).get();
 
     const { verificationCode, verificationCodeExpiry } =
       docSnapshot.data() as any;
+
+    if (userQuery.empty) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        t.verifyAuthenticationCode.userNotFound,
+      );
+    }
 
     const authenticationCodeMatches = verificationCode === authenticationCode;
     const isOtpExpired = new Date() > new Date(verificationCodeExpiry);
@@ -306,14 +331,14 @@ const verifyAuthenticationCodeHandler = async (
     if (!authenticationCodeMatches) {
       throw new functions.https.HttpsError(
         'not-found',
-        'This is an invalid authentication code',
+        t.verifyAuthenticationCode.invalidAuthCode,
       );
     }
 
     if (isOtpExpired) {
       throw new functions.https.HttpsError(
         'not-found',
-        'Your authentication code expired! Please try to login again with your email address!',
+        t.verifyAuthenticationCode.authCodeExpired,
       );
     }
 
@@ -330,67 +355,76 @@ const verifyAuthenticationCodeHandler = async (
 
     return {
       success: true,
-      message: 'Successfully verified the user!',
+      message: t.verifyAuthenticationCode.authCodeVerified,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
+
+    console.error('Error verifying authentication code:', error);
     throw new functions.https.HttpsError(error.code, error.message, {
-      message: error.message || 'Error for authentication code verification',
+      message: error.message || t.verifyAuthenticationCode.generalError,
     });
   }
 };
 
-const incrementUserScans = async (data: { userId: string }) => {
-  const { userId } = data;
-  const userDoc = db.collection('users').doc(userId);
-  const userInfo = await userDoc.get();
+const incrementUserScans = async (data: {
+  userId: string;
+  language: string;
+}) => {
+  let t;
+  try {
+    const { userId, language } = data;
+    const t = getTranslation(language);
+    const userInfoData = await getUserInfoById(userId, language);
+    const userDoc = db.collection('users').doc(userId);
 
-  if (!userInfo.exists) {
-    throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    const { scans, maxScans } = userInfoData;
+
+    if (scans >= maxScans) {
+      throw new functions.https.HttpsError(
+        'failed-precondition',
+        t.common.scanLimitReached,
+      );
+    }
+
+    await userDoc.update({ scans: scans + 1 });
+
+    return {
+      scans: scans + 1,
+      message: t.incrementUsersScans.incrementSuccessScan,
+    };
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
+    throw new functions.https.HttpsError(error.code, error.message, {
+      message: error.message || t.incrementUsersScans.generalError,
+    });
   }
-
-  const { scans, maxScans } = userInfo.data() as {
-    scans: string;
-    maxScans: string;
-  };
-  if (scans >= maxScans) {
-    throw new functions.https.HttpsError(
-      'failed-precondition',
-      'Max scan limit reached.',
-    );
-  }
-
-  await userDoc.update({ scans: scans + 1 });
-
-  return { scans: scans + 1, message: 'Successfully scanned on more time!' };
 };
 
-const decrementUserScans = async (_: any, context: any) => {
+const decrementUserScans = async (data: { language: string }, context: any) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     // Ensure user is authenticated
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'User must be authenticated.',
+        t.common.noUserFound,
       );
     }
 
     const uid = context.auth?.uid;
 
     const userDoc = db.collection('users').doc(uid);
-    const userInfoSnapshot = await userDoc.get();
+    const userInfo = await getUserInfoById(uid, data.language);
 
-    if (!userInfoSnapshot.exists) {
-      throw new functions.https.HttpsError('not-found', 'User does not exist.');
-    }
-
-    const { scansRemaining } = userInfoSnapshot.data() as {
-      scansRemaining: number;
-    };
+    const { scansRemaining } = userInfo;
 
     if (scansRemaining <= 0) {
       throw new functions.https.HttpsError(
         'resource-exhausted',
-        'You have reached the maximum number of scans.',
+        t.common.scanLimitReached,
       );
     }
 
@@ -400,46 +434,57 @@ const decrementUserScans = async (_: any, context: any) => {
     });
 
     // Fetch the updated document to get the latest scansRemaining count
-    const updatedUserData = (await userDoc.get()).data() as {
-      scansRemaining: number;
-    };
+    const updatedUserData = await getUserInfoById(uid, data.language);
 
     return {
       scansRemaining: updatedUserData.scansRemaining,
-      message: 'Successfully completed a scan!',
+      message: t.decrementUserScans.decrementSuccessScan,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
+
     throw new functions.https.HttpsError(error.code, error.message, {
-      message: error.message || 'Unable to update the number of scans!',
+      message: error.message || t.decrementUserScans.generalError,
     });
   }
 };
 
-const updateUserSubscription = async (data: { userId: string }) => {
-  const { userId } = data;
-  const userDoc = db.collection('users').doc(userId);
-  const userInfo = await userDoc.get();
+const updateUserSubscription = async (data: {
+  userId: string;
+  language: string;
+}) => {
+  let t;
+  try {
+    const { userId, language } = data;
+    const userDoc = db.collection('users').doc(userId);
+    t = getTranslation(language);
 
-  if (!userInfo.exists) {
-    throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    await userDoc.update({ subscribed: true, maxScans: 200 });
+
+    return { message: t.updateUserSubscription.subscribeSuccess };
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
+    throw new functions.https.HttpsError(error.code, error.message, {
+      message:
+        error.message || t?.updateUserSubscription.updateSubscriptionError,
+    });
   }
-
-  await userDoc.update({ subscribed: true, maxScans: 200 });
-
-  return { message: 'Successfully subscribed!' };
 };
 
 const handleUpdateUserLanguage = async (
   data: { language: string },
   context: any,
 ) => {
+  let t;
   try {
     const { language } = data;
+    t = getTranslation(language);
     // Ensure user is authenticated
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'User must be authenticated.',
+        t.common.noUserFound,
       );
     }
     if (!language) {
@@ -448,60 +493,110 @@ const handleUpdateUserLanguage = async (
         'Language code is mandatory',
       );
     }
-
     const uid = context.auth?.uid;
     const userDoc = db.collection('users').doc(uid);
-    const userInfo = await userDoc.get();
-
-    if (!userInfo.exists) {
-      throw new functions.https.HttpsError('not-found', 'User does not exist.');
-    }
 
     await userDoc.update({ preferredLanguage: language });
 
-    return { message: 'Successfully updated the language!', language };
+    return { message: t.updateUserLanguage.updateSuccess, language };
   } catch (error) {
+    t = t || getTranslation('en');
+
     throw new functions.https.HttpsError(
       'internal',
-      'An unexpected error occurred while updating the language. Please try again later.',
+      t.updateUserLanguage.updateError,
     );
   }
 };
 
-const getUserInfo = async (_: any, context: any) => {
-  // Ensure user is authenticated
-  if (!context.auth) {
+const getUserInfo = async (data: { language: string }, context: any) => {
+  let t;
+  try {
+    t = getTranslation(data.language);
+
+    // Ensure user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        t.common.noUserFound,
+      );
+    }
+
+    const userId = context.auth?.uid;
+    const userInfoData = await getUserInfoById(userId, data.language);
+
+    return {
+      ...userInfoData,
+      verificationCodeExpiry: userInfoData?.verificationCodeExpiry
+        .toDate()
+        .toISOString(),
+      createdAt: userInfoData?.createdAt?.toDate().toISOString(),
+      updatedAt: userInfoData?.updatedAt?.toDate().toISOString(),
+      message: t.getUserInfo.successGetInfo,
+    };
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
     throw new functions.https.HttpsError(
-      'unauthenticated',
-      'User must be authenticated.',
+      'internal',
+      t.getUserInfo.errorGetInfo,
     );
   }
+};
 
-  const userId = context.auth?.uid;
+const getUserInfoById = async (
+  userId: string,
+  language: string,
+): Promise<any> => {
+  let t;
+  try {
+    t = getTranslation(language);
 
-  const userDoc = db.collection('users').doc(userId);
-  const userInfo = await userDoc.get();
+    // Check if userId is valid
+    if (!userId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        t.common.userIdMissing,
+      );
+    }
 
-  if (!userInfo.exists) {
-    throw new functions.https.HttpsError('not-found', 'User does not exist.');
+    // Fetch the user info from the database or service
+    const userInfoData = await db.collection('users').doc(userId).get();
+
+    // Ensure user data is not null/undefined
+    if (!userInfoData.exists) {
+      throw new functions.https.HttpsError(
+        'data-loss',
+        t.getUserInfoById.noUserInfoData,
+      );
+    }
+
+    // Return the user info data
+    return userInfoData.data();
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
+    // Handle errors and rethrow as HttpsError for consistency
+    if (error instanceof functions.https.HttpsError) {
+      throw error; // Rethrow known HttpsError
+    }
+
+    // Log the error for debugging purposes
+    console.error('Error fetching user info:', error);
+
+    // Throw a generic error for unexpected issues
+    throw new functions.https.HttpsError(
+      'unknown',
+      t.getUserInfoById.getUserFetchError,
+      { details: error.message },
+    );
   }
-
-  const userInfoData = userInfo.data();
-  return {
-    ...userInfoData,
-    verificationCodeExpiry: userInfoData?.verificationCodeExpiry
-      .toDate()
-      .toISOString(),
-    createdAt: userInfoData?.createdAt?.toDate().toISOString(),
-    updatedAt: userInfoData?.updatedAt?.toDate().toISOString(),
-    message: 'Successfully fetched userInfo data',
-  };
 };
 
 export {
-  createAnonymousAccountHandler,
   decrementUserScans,
   getUserInfo,
+  getUserInfoById,
   handleUpdateUserLanguage,
   incrementUserScans,
   loginUserViaEmailHandler,

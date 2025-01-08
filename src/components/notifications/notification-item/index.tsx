@@ -2,6 +2,7 @@ import { View } from 'react-native';
 
 import CardWrapper from '@/components/card-wrapper';
 import { NotificationDetailsModal } from '@/components/modals/notification-details-modal';
+import { useSelectedLanguage } from '@/core';
 import { Text, useModal } from '@/ui';
 
 import NotificationIcon from '../notification-icon';
@@ -14,11 +15,14 @@ const NotificationItem = ({
   notification: INotificationItem;
   onMarkNotificationAsRead: ({
     notificationId,
+    language,
   }: {
     notificationId: string;
+    language: string;
   }) => void;
 }) => {
   const modal = useModal();
+  const { language } = useSelectedLanguage();
   return (
     <CardWrapper
       key={notification.id}
@@ -31,7 +35,10 @@ const NotificationItem = ({
         modal.present();
 
         !notification.isRead &&
-          onMarkNotificationAsRead({ notificationId: notification.docId });
+          onMarkNotificationAsRead({
+            notificationId: notification.docId,
+            language,
+          });
       }}
       className="flex-row items-center space-x-4 rounded-xl bg-slate-100 px-4 py-6"
     >

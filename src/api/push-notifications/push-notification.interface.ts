@@ -18,6 +18,7 @@ export interface IMobileDeviceInfo {
   deviceToken: string;
   platform: string;
   version: string;
+  language: string;
   deviceName?: string;
   deviceModel?: string;
   deviceBrand?: string;

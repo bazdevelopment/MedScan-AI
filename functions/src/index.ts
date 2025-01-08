@@ -49,17 +49,17 @@ export const getHelloWorld = functions
     return { message: data }; // Return a JSON response
   });
 
-export const createAnonymousAccount = euFuntions.https.onCall(
-  userFunctions.createAnonymousAccountHandler,
-);
+// export const createAnonymousAccount = euFuntions.https.onCall(
+//   userFunctions.createAnonymousAccountHandler,
+// );
 
 export const loginUserViaEmail = euFuntions.https.onCall(
   userFunctions.loginUserViaEmailHandler,
 );
 
-export const incrementUserScans = euFuntions.https.onCall(
-  userFunctions.incrementUserScans,
-);
+// export const incrementUserScans = euFuntions.https.onCall(
+//   userFunctions.incrementUserScans,
+// );
 export const decrementUserScans = euFuntions.https.onCall(
   userFunctions.decrementUserScans,
 );

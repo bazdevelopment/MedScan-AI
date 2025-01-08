@@ -3,6 +3,7 @@ import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 
 import { getTranslation } from './translations';
+import { getUserInfoById } from './user';
 
 interface IInterpretationResult {
   docId: string; // Firestore document ID
@@ -20,15 +21,18 @@ interface IInterpretationResult {
 const db = admin.firestore();
 
 export const getInterpretationByDateHandler = async (
-  data: { startDate: string; endDate: string }, // Assuming input is in ISO 8601 format (string)
+  data: { startDate: string; endDate: string; language: string }, // Assuming input is in ISO 8601 format (string)
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
+
     // Validate authentication
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'User must be authenticated.',
+        t.common.noUserFound,
       );
     }
     const userId = context.auth?.uid;
@@ -38,7 +42,7 @@ export const getInterpretationByDateHandler = async (
     if (!startDate || !endDate) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'StartDate and endDate are required!',
+        t.getInterpretationByDate.startEndDateRequired,
       );
     }
 
@@ -56,7 +60,7 @@ export const getInterpretationByDateHandler = async (
     if (start > end) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'StartDate must be before or equal to endDate.',
+        t.getInterpretationByDate.startDatePriority,
       );
     }
 
@@ -115,21 +119,28 @@ export const getInterpretationByDateHandler = async (
     };
   } catch (error: any) {
     console.error('Error fetching user analyses:', error);
+    t = t || getTranslation('en');
     throw new functions.https.HttpsError(
       error.code || 'internal',
-      error.message || 'Failed to fetch analyses!',
+      error.message || t.getInterpretationByDate.generalError,
       { message: error.message },
     );
   }
 };
 
-export const updateScanInterpretation = async (data: any, context: any) => {
+export const updateScanInterpretation = async (
+  data: { language: string; documentId: string; fieldsToUpdate: object },
+  context: any,
+) => {
+  let t;
   try {
+    t = getTranslation(data.language);
+
     // Ensure the user is authenticated
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Request not authorized. Please log in.',
+        t.common.noUserFound,
       );
     }
 
@@ -140,20 +151,13 @@ export const updateScanInterpretation = async (data: any, context: any) => {
     if (!documentId || !fieldsToUpdate || typeof fieldsToUpdate !== 'object') {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        "'documentId' and 'fieldsToUpdate' are required.",
+        t.updateScanInterpretation.paramsRequired,
       );
     }
 
     const uid = context.auth?.uid;
-    const userDoc = db.collection('users').doc(uid);
-    const userInfo = await userDoc.get();
-    const userInfoData = userInfo.data();
-
-    if (!userInfo.exists) {
-      throw new functions.https.HttpsError('not-found', 'User does not exist.');
-    }
-
-    const t = getTranslation(userInfoData?.preferredLanguage);
+    // to check if user is detected
+    await getUserInfoById(uid, data.language);
 
     // Firestore collection where your records are stored
     const collectionName = 'interpretations'; // Replace with your actual collection name
@@ -162,39 +166,45 @@ export const updateScanInterpretation = async (data: any, context: any) => {
     await db.collection(collectionName).doc(documentId).update(fieldsToUpdate);
 
     return {
+      success: true,
       message: t.updateScanInterpretation.success,
       updatedFields: fieldsToUpdate,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
+
     throw new functions.https.HttpsError(error.code, error.message, {
-      message:
-        error.message ||
-        'An error occurred while updating the scan interpretation record.',
+      message: error.message || t.updateScanInterpretation.generalError,
     });
   }
 };
 
 export const getInterpretationByDocumentId = async (
-  data: any,
+  data: { language: string; documentId: string },
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
+
     // Ensure the user is authenticated
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Request not authorized. Please log in.',
+        t.common.noUserFound,
       );
     }
 
     // Extract the `documentId` from the request data
-    const { documentId } = data;
-
+    const { documentId, language } = data;
+    const uid = context.auth.uid;
+    // to check if user is detected
+    await getUserInfoById(uid, language);
     // Validate input
     if (!documentId) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        "'DocumentId' is required.",
+        t.getInterpretationByDocumentId.paramsRequired,
       );
     }
 
@@ -207,43 +217,51 @@ export const getInterpretationByDocumentId = async (
     if (!doc.exists) {
       throw new functions.https.HttpsError(
         'not-found',
-        `No document found with the ID: ${documentId}`,
+        `${t.getInterpretationByDocumentId.noDocIdFound} ${documentId}`,
       );
     }
 
     // Return the document data
     return {
-      message: 'Document retrieved successfully!',
+      success: true,
+      message: t.getInterpretationByDocumentId.success,
       record: {
         ...doc.data(),
         createdAt: doc.data()?.createdAt.toDate().toISOString(),
       },
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
+
     throw new functions.https.HttpsError(
       error.code || 'unknown',
       error.message,
       {
-        message:
-          error.message ||
-          'An error occurred while retrieving the interpretation by documentId.',
+        message: error.message || t.getInterpretationByDocumentId.generalError,
       },
     );
   }
 };
 
 export const getRecentInterpretationHandler = async (
-  data: { limit?: number },
+  data: { limit?: number; language: string },
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
+
     // Ensure the user is authenticated
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Request not authorized. Please log in.',
+        t.common.noUserFound,
       );
     }
+
+    const uid = context.auth.uid;
+    const userInfo = await getUserInfoById(uid, data.language);
+    t = getTranslation(userInfo.preferredLanguage);
 
     // Extract the limit from the request data or use default value
     const { limit = 5 } = data;
@@ -252,7 +270,7 @@ export const getRecentInterpretationHandler = async (
     if (typeof limit !== 'number' || limit < 1 || limit > 100) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Limit must be a number between 1 and 100',
+        t.getRecentInterpretation.limitRequired,
       );
     }
 
@@ -269,8 +287,9 @@ export const getRecentInterpretationHandler = async (
 
     if (querySnapshot.empty) {
       return {
-        message: 'No interpretations found',
+        message: t.getRecentInterpretation.noInterpretationFound,
         records: [],
+        success: true,
       };
     }
 
@@ -285,18 +304,21 @@ export const getRecentInterpretationHandler = async (
     });
 
     return {
-      message: 'Recent interpretations retrieved successfully!',
+      message: t.getRecentInterpretation.success,
       records,
       total: records.length,
+      success: true,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
+
     console.error('Error in getRecentInterpretations:', error);
     throw new functions.https.HttpsError(
       error.code || 'unknown',
-      error.message ||
-        'An error occurred while retrieving recent interpretations.',
+      error.message || t.getRecentInterpretation.generalError,
       {
-        message: error.message || 'Internal server error occurred.',
+        message:
+          error.message || t.getRecentInterpretation.generalErrorAdditional,
       },
     );
   }

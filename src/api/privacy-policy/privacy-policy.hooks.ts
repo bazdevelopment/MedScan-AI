@@ -8,13 +8,18 @@ import {
   uploadPrivacyPolicy,
 } from './privacy-policy.requests';
 
-export const usePrivacyPolicy = createQuery<any, any, AxiosError>({
-  queryKey: ['privacy-policy'],
-  fetcher: getPrivacyPolicy,
-});
+export const usePrivacyPolicy = (language: string) =>
+  createQuery<any, any, AxiosError>({
+    queryKey: ['privacy-policy'],
+    fetcher: () => getPrivacyPolicy({ language }),
+  })();
 
-export const useUploadPrivacyPolicy = createMutation<any, void, AxiosError>({
-  mutationFn: uploadPrivacyPolicy,
+export const useUploadPrivacyPolicy = createMutation<
+  any,
+  { language: string },
+  AxiosError
+>({
+  mutationFn: (variables) => uploadPrivacyPolicy(variables),
   onError: (error) => {
     Toast.error(error.message);
   },

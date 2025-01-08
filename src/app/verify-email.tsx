@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 
 import { useSendVerificationCode } from '@/api/user/user.hooks';
+import { useSelectedLanguage } from '@/core';
 import { Button, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 
 export default function Login() {
@@ -16,7 +17,7 @@ export default function Login() {
 
 const VerifyEmailForm = () => {
   const [email, setEmail] = useState('');
-
+  const { language } = useSelectedLanguage();
   const handleUpdateEmail = (text: string) => setEmail(text.toLowerCase());
 
   const { mutate: handleSubmitEmail, isPending } = useSendVerificationCode({
@@ -52,7 +53,7 @@ const VerifyEmailForm = () => {
           <Button
             testID="email-verification"
             label="Email verification"
-            onPress={() => handleSubmitEmail({ email })}
+            onPress={() => handleSubmitEmail({ email, language })}
           />
         </View>
       </KeyboardAvoidingView>

@@ -8,12 +8,14 @@ import {
   storeIndividualUserNotification,
 } from '../utilities/cloud-functions-utils';
 import { admin } from './common';
+import { getTranslation } from './translations';
 
 const ExpoInstance = new Expo();
 
 interface INotificationPayload {
   title: string;
   body: string;
+  language: string;
   userId?: string;
   data?: Record<string, any>;
 }
@@ -29,6 +31,7 @@ const storeDeviceToken = async (
     deviceModel,
     deviceBrand,
     deviceUniqueId,
+    language,
   }: {
     deviceToken: string;
     platform: string;
@@ -37,17 +40,20 @@ const storeDeviceToken = async (
     deviceModel: string;
     deviceBrand: string;
     deviceUniqueId: string;
+    language: string;
   },
   context: any,
 ) => {
-  if (!deviceToken) {
-    throw new functions.https.HttpsError(
-      'invalid-argument',
-      'Device token is required',
-    );
-  }
+  let t;
 
   try {
+    t = getTranslation(language);
+    if (!deviceToken) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        t.storeDeviceToken.deviceTokenRequired,
+      );
+    }
     // Reference to the centralized device tokens collection
     const deviceTokenRef = admin
       .firestore()
@@ -74,8 +80,9 @@ const storeDeviceToken = async (
 
     return { success: true, token: deviceToken };
   } catch (error: any) {
+    t = t || getTranslation('en');
     throw new functions.https.HttpsError(error.code, error.message, {
-      message: error.message || 'Error storing token.',
+      message: error.message || t.storeDeviceToken.deviceTokenRequired,
     });
   }
 };
@@ -85,11 +92,13 @@ const sendUserPushNotification = async (
   data: INotificationPayload,
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Authentication required',
+        t.common.noUserFound,
       );
     }
 
@@ -107,7 +116,7 @@ const sendUserPushNotification = async (
     if (!tokens.length) {
       return {
         success: false,
-        message: 'No valid Expo tokens to send notifications',
+        message: t.sendUserNotification.noTokenFound,
       };
     }
 
@@ -137,9 +146,10 @@ const sendUserPushNotification = async (
       results: results.flat().length,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
     throw new functions.https.HttpsError(
       'internal',
-      'Failed to send notification',
+      t.sendUserNotification.noTokenFound,
       error,
     );
   }
@@ -150,12 +160,14 @@ const handleSendGlobalPushNotifications = async (
   data: INotificationPayload,
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     // Authentication and input validation
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Authentication required',
+        t.common.noUserFound,
       );
     }
 
@@ -164,7 +176,7 @@ const handleSendGlobalPushNotifications = async (
     if (!title || !body) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Notification title and body are required',
+        t.sendGlobalPushNotifications.requiredParams,
       );
     }
 
@@ -248,12 +260,13 @@ const handleSendGlobalPushNotifications = async (
       messageDetails: messagesSent,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
     console.error('Error in handleSendGlobalPushNotifications:', error);
     throw new functions.https.HttpsError(
       'internal',
-      'Failed to send global notification',
+      t.sendGlobalPushNotifications.generalErrorAdditional,
       {
-        message: 'An error occurred while processing notifications.',
+        message: t.sendGlobalPushNotifications.generalError,
         details: error,
       },
     );
@@ -261,14 +274,24 @@ const handleSendGlobalPushNotifications = async (
 };
 
 const checkDeviceUniqueIdentifier = async (req: any, res: any) => {
+  let t;
   try {
+    const language = req.headers['accept-language'];
+
     // Get deviceId and pushToken from the client
     const { deviceUniqueId } = req.query;
-
+    t = getTranslation(language);
     if (!deviceUniqueId) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Device ID is required.',
+        t.checkDeviceUniqueIdentifier.deviceMandatory,
+      );
+    }
+
+    if (!language) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        t.checkDeviceUniqueIdentifier.languageMandatory,
       );
     }
 
@@ -280,30 +303,39 @@ const checkDeviceUniqueIdentifier = async (req: any, res: any) => {
       .get();
 
     return res.status(200).json({
-      message: 'Device identified properly!',
+      message: t.checkDeviceUniqueIdentifier.deviceIdentified,
       data: deviceQuery.docs[0].data(),
     });
   } catch (error) {
+    t = t || getTranslation('en');
+
     console.error('Error checking device trial:', error);
 
     // Throw a Cloud Function error to the client
     throw new functions.https.HttpsError(
       'unknown',
-      'An error occurred while checking device trial.',
+      t.checkDeviceUniqueIdentifier.generalError,
     );
   }
 };
 
 const handleGetUserNotification = async (
-  data: { userId: string; lastDocId: string; limit?: number },
+  data: {
+    userId: string;
+    language: string;
+    lastDocId: string;
+    limit?: number;
+  },
   context: any,
 ) => {
+  let t;
   try {
+    t = getTranslation(data.language);
     // Authentication check
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
-        'Authentication required',
+        t.common.noUserFound,
       );
     }
 
@@ -312,7 +344,7 @@ const handleGetUserNotification = async (
     if (!userId) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'User ID is required',
+        t.common.userIdMissing,
       );
     }
 
@@ -368,12 +400,13 @@ const handleGetUserNotification = async (
       lastDocId: snapshot.docs[snapshot.docs.length - 1]?.id || null,
     };
   } catch (error: any) {
+    t = t || getTranslation('en');
     console.error('Error fetching user notifications:', error);
     throw new functions.https.HttpsError(
       'internal',
-      'Failed to fetch user notifications',
+      t.getUserNotification.generalError,
       {
-        message: 'An error occurred while fetching user notifications.',
+        message: t.getUserNotification.generalErrorAdditional,
         details: error,
       },
     );

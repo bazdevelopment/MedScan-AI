@@ -8,13 +8,18 @@ import {
   uploadTermsOfService,
 } from './terms-of-service.requests';
 
-export const useTermsOfService = createQuery<any, any, AxiosError>({
-  queryKey: ['terms-of-service'],
-  fetcher: getTermsOfService,
-});
+export const useTermsOfService = (language: string) =>
+  createQuery<any, any, AxiosError>({
+    queryKey: ['terms-of-service'],
+    fetcher: () => getTermsOfService({ language }),
+  })();
 
-export const useUploadTermsOfService = createMutation<any, void, AxiosError>({
-  mutationFn: uploadTermsOfService,
+export const useUploadTermsOfService = createMutation<
+  any,
+  { language: string },
+  AxiosError
+>({
+  mutationFn: (variables) => uploadTermsOfService(variables),
   onError: (error) => {
     Toast.error(error.message);
   },

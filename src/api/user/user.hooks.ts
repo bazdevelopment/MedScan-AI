@@ -20,11 +20,13 @@ type Response = any;
 
 interface ISendOtpCodeVariables {
   email: string;
+  language: string;
 }
 
 interface IValidateAuthCode {
   authenticationCode: string;
   email: string;
+  language: string;
 }
 
 export const useCreateAnonymousAccount = createMutation<
@@ -56,10 +58,11 @@ export const useLoginWithEmail = (variables: { email: string }) =>
     },
   });
 
-export const useUser = createQuery<Response, any, AxiosError>({
-  queryKey: ['user-info'],
-  fetcher: getUserInfo,
-});
+export const useUser = (language: string) =>
+  createQuery<Response, any, AxiosError>({
+    queryKey: ['user-info'], // Include variables in the queryKey
+    fetcher: () => getUserInfo({ language }), // Pass variables to the fetcher function
+  })();
 
 export const useSendVerificationCode = ({ email }: { email: string }) =>
   createMutation<Response, ISendOtpCodeVariables, AxiosError>({
@@ -81,7 +84,7 @@ export const useValidateAuthCode = createMutation<
   AxiosError
 >({
   mutationFn: (variables) => validateVerificationCode(variables),
-  onSuccess: (data) => {
+  onSuccess: () => {
     // Toast.success(data.message);
     router.navigate('/(tabs)');
   },
@@ -90,8 +93,12 @@ export const useValidateAuthCode = createMutation<
   },
 });
 
-export const useDecrementScans = createMutation<Response, void, AxiosError>({
-  mutationFn: decrementNumberOfScans,
+export const useDecrementScans = createMutation<
+  Response,
+  { language: string },
+  AxiosError
+>({
+  mutationFn: (variables) => decrementNumberOfScans(variables),
   onSuccess: () => {
     queryClient.invalidateQueries({ queryKey: ['user-info'] });
   },

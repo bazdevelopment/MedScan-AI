@@ -10,7 +10,7 @@ import Animated, {
 
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
-import { translate } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, Text } from '@/ui';
 import { MailIcon, UploadIcon } from '@/ui/assets/icons';
 
@@ -23,10 +23,12 @@ import { type IHomeForeground } from './home-forground.interface';
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const { language } = useSelectedLanguage();
 
-  const { data: userInfo } = useUser();
+  const { data: userInfo } = useUser(language);
   const { data: userNotifications } = useFetchUserNotifications({
     userId: userInfo?.userId,
+    language,
   })();
 
   const unReadMessages = userNotifications?.notifications.filter(

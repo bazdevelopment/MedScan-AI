@@ -5,9 +5,11 @@ import { type IInterpretationRecord } from '@/types/interpretation-report';
 export const getInterpretationByDate = async ({
   startDate,
   endDate,
+  language,
 }: {
   startDate: string;
   endDate: string;
+  language: string;
 }): Promise<IInterpretationRecord> => {
   try {
     const onGetInterpretation = firebaseCloudFunctionsInstance.httpsCallable(
@@ -16,6 +18,7 @@ export const getInterpretationByDate = async ({
     const { data } = await onGetInterpretation({
       startDate,
       endDate,
+      language,
     });
 
     return data as IInterpretationRecord;
@@ -36,11 +39,14 @@ export const updateInterpretationFields = async (fields: any) => {
   }
 };
 
-export const getInterpretationByDocumentId = async (documentId: string) => {
+export const getInterpretationByDocumentId = async (
+  documentId: string,
+  language: string,
+) => {
   try {
     const onGetInterpretationById =
       firebaseCloudFunctionsInstance.httpsCallable('getInterpretationById');
-    const { data } = await onGetInterpretationById({ documentId });
+    const { data } = await onGetInterpretationById({ documentId, language });
 
     return data;
   } catch (error) {
@@ -48,11 +54,14 @@ export const getInterpretationByDocumentId = async (documentId: string) => {
   }
 };
 
-export const getRecentReports = async (limit: number) => {
+export const getRecentReports = async (limit: number, language: string) => {
   try {
     const onGetRecentReportInterpretations =
       firebaseCloudFunctionsInstance.httpsCallable('getRecentInterpretations');
-    const { data } = await onGetRecentReportInterpretations({ limit });
+    const { data } = await onGetRecentReportInterpretations({
+      limit,
+      language,
+    });
     return data;
   } catch (error) {
     throw error;

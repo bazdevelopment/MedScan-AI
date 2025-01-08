@@ -15,6 +15,7 @@ export const storeMobileDeviceToken = async ({
   deviceModel,
   deviceBrand,
   deviceUniqueId,
+  language,
 }: IMobileDeviceInfo): Promise<IStoreDeviceTokenResponse> => {
   try {
     const handleStoreDeviceToken =
@@ -27,6 +28,7 @@ export const storeMobileDeviceToken = async ({
       deviceModel,
       deviceBrand,
       deviceUniqueId,
+      language,
     });
 
     return data as IStoreDeviceTokenResponse;
@@ -38,9 +40,11 @@ export const storeMobileDeviceToken = async ({
 export const sendGlobalPushNotifications = async ({
   title,
   body,
+  language,
 }: {
   title: string;
   body: string;
+  language: string;
 }): Promise<IGlobalNotificationsResponse> => {
   try {
     const onSubmitGlobalNotifications =
@@ -50,6 +54,7 @@ export const sendGlobalPushNotifications = async ({
     const { data } = await onSubmitGlobalNotifications({
       title,
       body,
+      language,
     });
 
     return data as IGlobalNotificationsResponse;
@@ -62,10 +67,12 @@ export const sendIndividualPushNotification = async ({
   title,
   body,
   userId,
+  language,
 }: {
   title: string;
   body: string;
   userId: string;
+  language: string;
 }): Promise<IGlobalNotificationsResponse> => {
   try {
     const onSubmitIndividualNotification =
@@ -76,6 +83,7 @@ export const sendIndividualPushNotification = async ({
       title,
       body,
       userId,
+      language,
     });
     return data as IGlobalNotificationsResponse;
   } catch (error) {
@@ -85,10 +93,11 @@ export const sendIndividualPushNotification = async ({
 
 export const getDeviceInfoByUniqueIdentifier = async (
   deviceUniqueId: string,
+  language: string,
 ): Promise<any> => {
   try {
     const response = await axios.get(
-      `https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/getDeviceInfoByUniqueIdentifier?deviceUniqueId=${deviceUniqueId}`,
+      `https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/getDeviceInfoByUniqueIdentifier?deviceUniqueId=${deviceUniqueId}&language=${language}`,
     );
     return response.data.data; // With axios, the response data is directly accessible as `response.data`
   } catch (error: any) {
@@ -98,6 +107,7 @@ export const getDeviceInfoByUniqueIdentifier = async (
 
 export const getUserNotifications = async (variables: {
   userId: string;
+  language: string;
 }): Promise<any> => {
   try {
     const onGetUserNotifications = firebaseCloudFunctionsInstance.httpsCallable(
@@ -113,6 +123,7 @@ export const getUserNotifications = async (variables: {
 
 export const markNotificationAsRead = async (variables: {
   notificationId: string;
+  language: string;
 }): Promise<any> => {
   try {
     const onMarkNotificationAsRead =

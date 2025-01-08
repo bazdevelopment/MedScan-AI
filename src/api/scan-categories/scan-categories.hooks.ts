@@ -3,7 +3,8 @@ import { createQuery } from 'react-query-kit';
 
 import { getScanCategories } from './scan-categories.requests';
 
-export const useScanCategories = createQuery<any, any, AxiosError>({
-  queryKey: ['scan-categories'],
-  fetcher: getScanCategories,
-});
+export const useScanCategories = (language: string) =>
+  createQuery<any, any, AxiosError>({
+    queryKey: ['scan-categories'],
+    fetcher: () => getScanCategories({ language }),
+  })();

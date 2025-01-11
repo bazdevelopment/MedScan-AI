@@ -19,7 +19,8 @@ import { scanCategoryStyles } from './scan-category-stories.styles';
 const ScanCategoriesStories: React.FC<{
   categories: ScanType[];
   isLoading: boolean;
-}> = ({ categories, isLoading }) => {
+  className: string;
+}> = ({ categories, isLoading, className }) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
@@ -54,7 +55,7 @@ const ScanCategoriesStories: React.FC<{
     return <StoriesSkeletonLoader />;
   }
   return (
-    <View style={scanCategoryStyles.container}>
+    <View style={scanCategoryStyles.container} className={className}>
       <InstagramStories
         ref={ref}
         stories={stories}
@@ -63,7 +64,7 @@ const ScanCategoriesStories: React.FC<{
           paddingRight: 16,
         }}
         avatarBorderColors={[
-          colors.primary[300],
+          colors.primary[900],
           colors.secondary[300],
           colors.primary[600],
         ]}
@@ -74,7 +75,7 @@ const ScanCategoriesStories: React.FC<{
           ...scanCategoryStyles.nameText,
           color: isDark ? colors.white : colors.black,
         }}
-        progressActiveColor={colors.primary[300]}
+        progressActiveColor={colors.primary[900]}
         progressColor={colors.lightGray}
         closeIconColor={isDark ? colors.white : colors.black}
         modalAnimationDuration={250}

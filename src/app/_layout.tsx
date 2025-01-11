@@ -2,13 +2,20 @@
 // Import  global CSS file
 import '../../global.css';
 
+import {
+  NunitoSans_300Light,
+  NunitoSans_400Regular,
+  NunitoSans_600SemiBold,
+  NunitoSans_700Bold,
+  NunitoSans_800ExtraBold,
+} from '@expo-google-fonts/nunito-sans';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as Notifications from 'expo-notifications';
 import * as QuickActions from 'expo-quick-actions';
 import { useQuickActionRouting } from 'expo-quick-actions/router';
-import { SplashScreen, Stack } from 'expo-router';
+import { router, SplashScreen, Stack } from 'expo-router';
 import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -16,6 +23,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
+import CustomHeader from '@/components/cusom-header';
 import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
@@ -56,6 +64,12 @@ export default function RootLayout() {
 
   const [fontsLoaded] = useFonts({
     inter: require('../../assets/fonts/Inter.ttf'),
+    'Font-Regular': NunitoSans_400Regular,
+    'Font-SemiBold': NunitoSans_600SemiBold,
+    'Font-Light': NunitoSans_300Light,
+    'Font-Bold': NunitoSans_700Bold,
+    'Font-Medium': NunitoSans_400Regular,
+    'Font-Extra-Bold': NunitoSans_800ExtraBold,
   });
 
   useNotificationListeners();
@@ -73,16 +87,27 @@ export default function RootLayout() {
   return (
     <Providers>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen
           name="scan-interpretation"
           options={{
-            headerBackTitle: translate(
-              'rootLayout.screens.scanInterpretation.headerBackTitle',
+            headerTitle: () => null,
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('rootLayout.screens.scanInterpretation.title')}
+                className="h-[100] pt-16"
+                titlePosition="left"
+                onGoBack={router.back}
+              />
             ),
-            title: translate('rootLayout.screens.scanInterpretation.title'),
           }}
         />
 
@@ -129,6 +154,13 @@ export default function RootLayout() {
             headerBackTitle: translate('general.back'),
           }}
         />
+        <Stack.Screen
+          name="profile"
+          options={{
+            title: translate('rootLayout.screens.profile.title'),
+            headerBackTitle: translate('general.back'),
+          }}
+        />
       </Stack>
     </Providers>
   );
@@ -147,7 +179,7 @@ function Providers({ children }: { children: React.ReactNode }) {
           <APIProvider>
             <BottomSheetModalProvider>
               {children}
-              <Toaster autoWiggleOnUpdate="always" />
+              <Toaster autoWiggleOnUpdate="toast-change" />
             </BottomSheetModalProvider>
           </APIProvider>
         </ThemeProvider>

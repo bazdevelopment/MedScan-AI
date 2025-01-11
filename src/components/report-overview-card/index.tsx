@@ -30,7 +30,9 @@ const ReportOverviewCard = ({
           <Text>{dayjs(report.createdAt).format('dddd-DD')}</Text>
           {/* <View className=""> */}
           <Icon
-            icon={<ArrowRight width={14} height={14} fill={colors.lightGray} />}
+            icon={<ArrowRight />}
+            color={colors.danger[200]}
+            size={24}
             onPress={() =>
               router.push({
                 pathname: 'report-details-screen',
@@ -50,7 +52,7 @@ const ReportOverviewCard = ({
               </Fragment>
             ))
           ) : (
-            <Text className="font-bold">No reports yet!</Text>
+            <Text className="font-bold-nunito">No reports yet!</Text>
           )}
         </View>
       </View>

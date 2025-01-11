@@ -8,4 +8,5 @@ export interface IScanReportCard {
   onEditTitle: (updatedTitle: string, documentId: string) => void;
   isUpdateTitlePending: boolean;
   docId: string;
+  language: string;
 }

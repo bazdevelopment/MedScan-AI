@@ -5,18 +5,28 @@ import { type ISvgProps } from '@/types/svg-types';
 
 export const EditIcon = (props: ISvgProps) => {
   return (
-    <Svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
-      fill="none"
-      viewBox="0 0 24 24"
-      {...props}
-    >
+    <Svg xmlns="http://www.w3.org/2000/svg" width={21} height={21} fill="none">
       <Path
-        fill="#000"
-        fillRule="evenodd"
-        d="M15.198 3.52a1.612 1.612 0 0 1 2.223 2.336L6.346 16.421l-2.854.375 1.17-3.272L15.197 3.521zm3.725-1.322a3.612 3.612 0 0 0-5.102-.128L3.11 12.238a1 1 0 0 0-.253.388l-1.8 5.037a1 1 0 0 0 1.072 1.328l4.8-.63a1 1 0 0 0 .56-.267L18.8 7.304a3.612 3.612 0 0 0 .122-5.106zM12 17a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6z"
+        stroke={props.fill || '#18181B'}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M11.956 17.552H18"
+      />
+      <Path
+        stroke={props.fill || '#18181B'}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M11.15 3.679a1.871 1.871 0 0 1 2.597-.253c.043.035 1.444 1.123 1.444 1.123a1.785 1.785 0 0 1 .6 2.486c-.028.046-7.948 9.952-7.948 9.952a1.416 1.416 0 0 1-1.09.527l-3.033.038-.684-2.892c-.095-.406 0-.834.264-1.162l7.85-9.82Z"
+        clipRule="evenodd"
+      />
+      <Path
+        stroke={props.fill || '#18181B'}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="m9.684 5.518 4.543 3.489"
       />
     </Svg>
   );

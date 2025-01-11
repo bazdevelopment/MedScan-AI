@@ -7,6 +7,8 @@ module.exports = {
   primaryPurple:"#A935F8",
   lightSkyBlue: "#7CD0FC",
   transparent: "transparent",
+  blackEerie:"#18181B",
+  blackBeauty:"#27272A",
   charcoal: {
     50: '#F2F2F2',
     100: '#E5E5E5',
@@ -36,16 +38,16 @@ module.exports = {
   primary: {
 
     "base":"#A935F8",
-    50: '#E7E9FF',   // Very light purple
-    100: '#C2C7FE',  // Light purple
-    200: '#9DA4FE',  // Soft light purple
-    300: '#7982FD',  // Light-medium purple
-    400: '#636BFD',  // Medium purple
-    500: '#4D54FD',  // Primary color (main)
-    600: '#3F45DC',  // Darker shade of purple
-    700: '#3237B8',  // Dark purple
-    800: '#262A94',  // Darker purple
-    900: '#1A1E70',  // Very dark purple
+    50: '#FAFAFF',   // Very light purple
+    100: '#F0F1FF',  // Light purple
+    200: '#E1E3FF',  // Soft light purple
+    300: '#D2D5FE',  // Light-medium purple
+    400: '#C3C7FE',  // Medium purple
+    500: '#B4B9FE',  // Primary color (main)
+    600: '#A5AAFE',  // Darker shade of purple
+    700: '#959CFD',  // Dark purple
+    800: '#868EFD',  // Darker purple
+    900: '#7982FD',  // Very dark purple
   },
   secondary: {
     "base":"#7CD0FC",

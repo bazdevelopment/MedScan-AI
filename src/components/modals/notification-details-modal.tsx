@@ -59,9 +59,9 @@ export const NotificationDetailsModal = React.forwardRef<
           <Icon
             icon={<NotificationBell isRead />}
             size={24}
-            color={isDark ? colors.primary[300] : colors.primary[600]}
+            color={isDark ? colors.primary[900] : colors.primary[600]}
           />
-          <Text className={`my-4 text-xl  font-semibold`}>{title}</Text>
+          <Text className="my-4 font-semibold-nunito  text-xl">{title}</Text>
         </View>
 
         {/* Body */}

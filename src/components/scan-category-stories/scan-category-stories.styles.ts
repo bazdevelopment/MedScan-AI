@@ -6,8 +6,8 @@ export const scanCategoryStyles = StyleSheet.create({
     paddingVertical: 4,
   },
   nameText: {
-    fontSize: 14,
-    fontWeight: '600',
+    fontSize: 12,
+    fontWeight: '500',
     textAlign: 'center',
     marginTop: 8,
   },

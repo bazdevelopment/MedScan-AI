@@ -11,7 +11,7 @@ import colors from './colors';
 const button = tv({
   slots: {
     container: 'my-2 flex flex-row items-center justify-center rounded-md px-4',
-    label: 'font-inter text-base font-semibold',
+    label: 'font-semibold-nunito text-base',
     indicator: 'h-6 text-white',
   },
 
@@ -23,7 +23,7 @@ const button = tv({
         indicator: 'text-white dark:text-black',
       },
       secondary: {
-        container: 'bg-primary-600',
+        container: 'bg-primary-900',
         label: 'text-secondary-600',
         indicator: 'text-white',
       },

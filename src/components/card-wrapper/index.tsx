@@ -2,15 +2,17 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
+import { colors } from '@/ui';
 import { ArrowRight } from '@/ui/assets/icons';
 
 import Icon from '../icon';
 
 const CardWrapper = ({
-  isEntirelyClickable = true,
+  isEntirelyClickable = false,
   children,
   className = '',
   onPress,
+  chevronColor = colors.white,
 }) => {
   const Container = isEntirelyClickable ? TouchableOpacity : View;
 
@@ -25,8 +27,9 @@ const CardWrapper = ({
       {/* Chevron Icon */}
       <Icon
         icon={<ArrowRight />}
-        iconContainerStyle="left-4"
+        size={25}
         onPress={onPress}
+        color={chevronColor}
       />
     </Container>
   );

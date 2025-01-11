@@ -35,7 +35,7 @@ const FlowModal = ({
 
   return (
     <View className="flex-1">
-      <View className="bg-primary-300 px-[16px] dark:bg-charcoal-900">
+      <View className="bg-primary-900 px-[16px] dark:bg-charcoal-900">
         <View className="mt-8 flex-row items-center">
           {!isLastScreenDisplayed && (
             <>

@@ -1,28 +1,74 @@
-import { View } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { twMerge } from 'tailwind-merge';
 
 import { colors, Text } from '@/ui';
+import { ChevronLeftIcon } from '@/ui/assets/icons';
 
-const CustomHeader = ({ ...props }) => {
+import { type ICustomHeader } from './custom-header.interface';
+
+const CustomHeader = ({
+  title,
+  onGoBack,
+  rightContent,
+  className,
+  titlePosition = 'center', // Default position is 'center'
+  ...props
+}: ICustomHeader) => {
   return (
     <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        height: 100,
-        backgroundColor: colors.primary[300],
-        position: 'relative',
-      }}
+      className={twMerge(
+        'flex-row items-center bg-white dark:bg-blackEerie py-3',
+        className,
+      )}
     >
-      <Text
-        style={{
-          fontWeight: 'bold',
-          textAlign: 'center',
-          marginBottom: 15,
-        }}
+      {/* Left/Back Button */}
+      <View className="flex-row items-center">
+        {!!onGoBack && (
+          <TouchableOpacity
+            onPress={onGoBack}
+            className="absolute ml-4 rounded-xl border border-slate-300 p-2"
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
+            <ChevronLeftIcon
+              color={colors.charcoal[700]}
+              width={24}
+              height={24}
+            />
+          </TouchableOpacity>
+        )}
+        {titlePosition === 'left' && !onGoBack && (
+          <Text className="ml-4 font-bold-nunito text-3xl text-gray-800">
+            {title}
+          </Text>
+        )}
+        {titlePosition === 'left' && onGoBack && (
+          <Text className="ml-20 font-bold-nunito text-2xl text-gray-800">
+            {title}
+          </Text>
+        )}
+      </View>
+
+      {/* Title */}
+      <View
+        className={twMerge(
+          'w-full',
+          titlePosition === 'left'
+            ? 'items-start'
+            : titlePosition === 'right'
+              ? 'items-end pr-4'
+              : 'items-center',
+        )}
       >
-        {props.options.title}
-      </Text>
+        {titlePosition !== 'left' && (
+          <Text className="font-bold-nunito text-2xl text-gray-800">
+            {title}
+          </Text>
+        )}
+      </View>
+
+      {/* Right Content */}
+      <View className="w-10">{rightContent}</View>
     </View>
   );
 };

@@ -1,13 +1,13 @@
 type ActionButton = {
   label: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary';
+  variant?: 'default' | 'secondary';
   icon?: React.ReactElement;
 };
 
 export interface IEdgeCaseTemplate {
   image: React.ReactElement;
-  title: string;
+  title?: string;
   message?: string;
   primaryAction?: ActionButton;
   secondaryAction?: ActionButton;

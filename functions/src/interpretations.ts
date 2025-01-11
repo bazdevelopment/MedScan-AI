@@ -297,9 +297,11 @@ export const getRecentInterpretationHandler = async (
     const records = querySnapshot.docs.map((doc) => {
       const data = doc.data();
       return {
-        id: doc.id,
         ...data,
+        id: doc.id,
+        docId: doc.id,
         createdAt: data.createdAt.toDate().toISOString(),
+        interpretation: data.interpretationResult,
       };
     });
 

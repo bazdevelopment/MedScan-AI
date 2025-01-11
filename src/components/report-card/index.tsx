@@ -16,11 +16,11 @@ const ReportCard = ({ date, title, description, score }: IReportCard) => {
   } = useTranslation();
 
   return (
-    <View className="w-[300px] rounded-[30px] bg-secondary-200 p-6 dark:bg-charcoal-800">
+    <View className="w-full rounded-[30px] bg-secondary-200 p-6 dark:bg-charcoal-800">
       <Text className="text-xs text-gray-600">
         {dayjs(date).locale(language).format('MMMM D, YYYY')}
       </Text>
-      <Text className="mt-2 font-inter text-xl">
+      <Text className="mt-2 font-primary-nunito text-xl">
         {title || translate('components.ScanReportCard.unnamedReport')}
       </Text>
       <Text className="mt-1 text-sm" numberOfLines={2}>
@@ -31,7 +31,7 @@ const ReportCard = ({ date, title, description, score }: IReportCard) => {
           <Text className="mt-2 text-xs">
             {translate('components.ReportCard.rating')}
           </Text>
-          <Text className="text-xl font-bold">{score || '-'}</Text>
+          <Text className="font-bold-nunito text-xl">{score || '-'}</Text>
         </View>
         <SharePdfActionButtons
           heading={title}

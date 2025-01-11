@@ -34,7 +34,9 @@ const Avatar = ({
       ) : (
         showInitials && (
           <View className={styles.name()}>
-            <Text className={`${textColor} text-lg font-bold`}>{initials}</Text>
+            <Text className={`${textColor} font-bold-nunito text-lg`}>
+              {initials}
+            </Text>
           </View>
         )
       )}
@@ -61,7 +63,7 @@ const avatar = tv({
         name: 'h-12 w-12',
       },
       large: {
-        image: 'h-[75px] w-[75px]',
+        image: 'h-[65px] w-[65px]',
         name: 'h-14 w-14',
       },
     },

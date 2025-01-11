@@ -5,21 +5,25 @@ import Svg, { Path } from 'react-native-svg';
 
 import { isRTL } from '@/core';
 
-export const ArrowRight = ({ color = '#CCC', style, ...props }: SvgProps) => (
+export const ArrowRight = ({ fill = '#CCC', style, ...props }: SvgProps) => (
   <Svg
-    width={14}
-    height={14}
-    viewBox="0 0 16 16"
+    xmlns="http://www.w3.org/2000/svg"
+    width={25}
+    height={25}
     fill="none"
-    {...props}
+    viewBox="0 0 24 24"
     style={StyleSheet.flatten([
       style,
       { transform: [{ scaleX: isRTL ? -1 : 1 }] },
     ])}
+    {...props}
   >
     <Path
-      d="M.872 13.101a.874.874 0 0 0 .621-.253l5.252-5.253a.875.875 0 0 0 0-1.234L1.493 1.11A.875.875 0 0 0 .26 2.343l4.63 4.63-4.63 4.632A.876.876 0 0 0 .872 13.1Z"
-      fill={color}
+      stroke={fill}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="m9.015 5.616 7 7-7 7"
     />
   </Svg>
 );

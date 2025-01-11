@@ -20,7 +20,7 @@ const Rate = () => {
 
   return (
     <View className="flex-1 items-center justify-center bg-gray-100 p-5">
-      <Text className="mb-5 text-center text-lg font-bold">
+      <Text className="mb-5 text-center font-bold-nunito text-lg">
         Do you love using this app?
       </Text>
 

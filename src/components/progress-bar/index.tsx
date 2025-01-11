@@ -28,12 +28,12 @@ const ProgressBar = ({
     <View className="w-[180px] flex-row items-center">
       <View className="h-3 flex-1 overflow-hidden rounded-full">
         <LinearGradient
-          colors={[colors.primary[300], colors.primary[400]]}
+          colors={[colors.primary[900], colors.primary[900]]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
         >
           <Animated.View
-            className="h-full bg-primary-800"
+            className="h-full bg-primary-900"
             style={{
               width: progress.interpolate({
                 inputRange: [0, 100],

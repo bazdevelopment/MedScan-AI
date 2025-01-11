@@ -145,7 +145,7 @@ const FilePreviewScreen = ({
   return (
     <KeyboardStickyView className="flex-1">
       <ScrollView bounces={false}>
-        <View className="bg-primary-300 px-10 pb-14 pt-10 dark:bg-black">
+        <View className="bg-primary-900 px-10 pb-14 pt-10 dark:bg-black">
           <View className="w-full self-center rounded-xl">
             {isVideo ? (
               <VideoPlayer videoSource={collectedData.fileUri as string} />
@@ -175,7 +175,7 @@ const FilePreviewScreen = ({
         <View className="top-[-25px] mt-2 h-full rounded-t-[20px] bg-slate-100 dark:bg-charcoal-900">
           <GradientText
             colors={[colors.lightSkyBlue, colors.primaryPurple]}
-            className="py-2 text-center text-sm font-bold"
+            className="py-2 text-center font-bold-nunito text-sm"
           >
             Great! Now we need more information!
           </GradientText>
@@ -191,7 +191,7 @@ const FilePreviewScreen = ({
             label="Generate report"
             className="bottom-0 mt-4 w-[70%] gap-2 self-center rounded-full bg-white dark:bg-black"
             size="lg"
-            textClassName="text-md font-bold"
+            textClassName="text-md font-bold-nunito"
             onPress={() => {
               setIsModalVisible(true);
               onAnalyze();

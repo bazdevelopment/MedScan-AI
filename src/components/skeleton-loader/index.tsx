@@ -43,7 +43,7 @@ const SkeletonLoader = () => {
 
 const SkeletonItem = ({ hasRecord = false, animatedStyle }) => (
   <View className="px-4 py-3">
-    <Text className="mb-2 text-xl font-semibold text-gray-800">
+    <Text className="mb-2 font-semibold-nunito text-xl text-gray-800">
       <Animated.View
         style={animatedStyle}
         className="h-7 w-[300] rounded-md bg-gray-200"

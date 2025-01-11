@@ -12,12 +12,14 @@ import { useFetchUserNotifications } from '@/api/push-notifications/push-notific
 import { useUser } from '@/api/user/user.hooks';
 import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, Text } from '@/ui';
-import { MailIcon, UploadIcon } from '@/ui/assets/icons';
+import { BellIcon, UploadIcon } from '@/ui/assets/icons';
 
 import Avatar from '../avatar';
+import Branding from '../branding';
+import CardWrapper from '../card-wrapper';
 import IconBadge from '../icon-badge';
 import { type INotificationItem } from '../notifications/notification-item/notification-item.interface';
-import UserInfoCard from '../user-info-card';
+import { SnakeLine, SnakeLineRotated } from '../snake-line';
 import { type IHomeForeground } from './home-forground.interface';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
@@ -54,48 +56,61 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   }, [scrollValue]);
 
   return (
-    <View className="h-[290px] rounded-b-[50px] bg-primary-300 pt-[20px]">
+    <View className="h-[320px] rounded-b-[50px] bg-primary-900 pt-[20px]">
+      <SnakeLine className="absolute right-[150] top-[70]" />
+      <SnakeLine className="absolute right-[50] top-[60]" />
+      <SnakeLineRotated className="absolute left-[100] top-[-20]" />
+      <SnakeLineRotated className="absolute left-[170] top-[-120]" />
+      <SnakeLineRotated className="absolute left-[200] top-[-20]" />
+      <SnakeLineRotated className=" absolute right-[-10] top-[-20]" />
+
       <Animated.View style={foregroundWrapperAnimatedStyle}>
-        <View className="mr-10 mt-5 flex-row justify-end">
+        <View className="mb-2 mt-8 flex-row items-center justify-between px-8">
+          <Branding />
           <TouchableOpacity onPress={() => router.navigate('/notifications')}>
             <IconBadge
-              icon={<MailIcon color={colors.white} />}
+              icon={<BellIcon />}
               badgeValue={unReadMessages}
+              className="h-[48px] w-[48px] items-center justify-center rounded-xl bg-white"
             />
           </TouchableOpacity>
         </View>
-
-        <View className="mt-8 flex-row items-center justify-between px-[35px]">
-          <View>
-            <Text className="text-white">{translate('general.welcome')}</Text>
-            <Text className="text-[24px] font-bold text-white">
-              {userInfo?.userName}
-            </Text>
-            <UserInfoCard
-              remainingScans={userInfo?.scansRemaining}
-              age="24"
-              className="mt-4"
+        <CardWrapper
+          isEntirelyClickable
+          className="mr-12 mt-6"
+          onPress={() => router.navigate('/profile')}
+        >
+          <View className="ml-6 flex-row items-center">
+            <Avatar
+              imageUrl="https://randomuser.me/api/portraits/men/1.jpg"
+              size="large"
+              shape="rounded"
             />
+
+            <View className="ml-4 gap-3">
+              <View className="flex-row items-center gap-1">
+                <Text className="font-semibold-nunito text-2xl text-white">{`${translate('general.welcome')}, ${userInfo?.userName}!`}</Text>
+                <Text className="text-2xl">👋</Text>
+              </View>
+              <Text className="text-sm text-white">
+                {translate('general.viewProfile')}
+              </Text>
+            </View>
           </View>
+        </CardWrapper>
 
-          <Avatar
-            imageUrl="https://randomuser.me/api/portraits/men/1.jpg"
-            size="large"
-          />
-        </View>
-
-        <View className="absolute top-[200px] w-4/5 flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] dark:bg-charcoal-800">
-          <Text className="text-md font-bold">
+        <View className="absolute top-[200px] w-[85%] flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] pb-[40px] dark:bg-charcoal-800">
+          <Text className="font-bold-nunito text-xl">
             {translate('home.homeForeground.heading')}
           </Text>
-          <Text className="mt-4 text-center text-sm">
+          <Text className="mt-4 px-4 text-center font-medium-nunito text-base text-charcoal-600">
             {translate('home.homeForeground.subHeading')}
           </Text>
           <Button
             label={translate('uploadScan.title')}
-            className="mb-0 mt-4 w-[70%] rounded-full"
+            className="absolute top-[130px] mb-0 mt-4 h-[50] w-[55%] rounded-full border-2 border-tertiary-100 bg-primary-900 dark:border-0"
             size="lg"
-            textClassName="text-md"
+            textClassName="text-md font-semibold-nunito"
             onPress={onStartUploadMediaFile}
             icon={
               <UploadIcon

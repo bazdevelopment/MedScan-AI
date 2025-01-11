@@ -37,11 +37,11 @@ const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
 
   return (
     <>
-      <View className="bg-primary-300 dark:bg-charcoal-900">
+      <View className="bg-primary-900 dark:bg-charcoal-900">
         <View className="flex-row justify-center pt-10">
           <UploadFilesIllustration width={300} height={200} />
         </View>
-        <Text className="text-center text-xl font-bold text-white">
+        <Text className="text-center font-bold-nunito text-xl text-white">
           {translate('flows.createReport.uploadFile.title')}
         </Text>
         <Text className="text-center text-sm text-white">
@@ -50,7 +50,7 @@ const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
 
         <Button
           label={translate('flows.createReport.uploadFile.openCamera')}
-          className="top-6 mb-0 mt-4 w-[70%] self-center rounded-full dark:bg-primary-300"
+          className="top-6 mb-0 mt-4 w-[70%] self-center rounded-full dark:bg-primary-900"
           size="lg"
           textClassName="text-md"
           icon={<Camera color={isDark ? colors.black : colors.white} />}
@@ -63,9 +63,9 @@ const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
         className="mx-10 h-20 flex-row items-center justify-center gap-3 rounded-xl border border-slate-100"
         onPress={modal.present}
       >
-        <Gallery color={colors.primary[300]} width={32} height={42} top={1} />
+        <Gallery color={colors.primary[900]} width={32} height={42} top={1} />
         <View>
-          <Text className="font-bold text-primary-300">
+          <Text className="font-bold-nunito text-primary-900">
             {translate('flows.createReport.uploadFile.location')}
           </Text>
           <Text className="-mt-1 text-sm text-gray-400">

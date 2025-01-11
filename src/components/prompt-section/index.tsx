@@ -29,7 +29,7 @@ const PromptSection = ({
 
   return (
     <View className="w-full rounded-lg bg-gray-100 p-4 dark:bg-charcoal-900">
-      <Text className="mb-2 text-lg font-semibold text-gray-700">
+      <Text className="mb-2 font-semibold-nunito text-lg text-gray-700">
         Tell us what you want to know
       </Text>
       <Input
@@ -44,7 +44,7 @@ const PromptSection = ({
         underlineColorAndroid="transparent"
       />
       <View className="mt-4">
-        <Text className="mb-1 text-lg font-semibold text-gray-700">
+        <Text className="mb-1 font-semibold-nunito text-lg text-gray-700">
           Additional information:
         </Text>
         <Input

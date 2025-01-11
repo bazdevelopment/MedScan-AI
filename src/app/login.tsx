@@ -33,7 +33,7 @@ const LoginFrm = () => {
         {isLoginPending && <ActivityIndicator />}
 
         <Text testID="form-title" className="pb-6 text-center text-2xl">
-          {translate('general.welcome')}
+          {`${translate('general.welcome')} 👋`}
         </Text>
 
         <Text className="mb-4 text-center text-gray-600">

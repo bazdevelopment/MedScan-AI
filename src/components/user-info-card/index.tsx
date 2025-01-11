@@ -26,7 +26,7 @@ const UserInfoCard = ({
             // Only render the item if its value exists
             Boolean(item.id) && (
               <View key={index}>
-                <Text className="text-sm font-bold text-white">
+                <Text className="font-bold-nunito text-sm text-white">
                   {item.label}
                 </Text>
                 <Text className="ml-px text-sm text-white">{item.value}</Text>

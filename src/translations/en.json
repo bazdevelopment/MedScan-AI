@@ -4,21 +4,22 @@
   },
   "general": {
     "back": "Back",
-    "welcome": "Welcome",
+    "welcome": "Hi",
     "continue": "Continue",
     "retry": "Retry",
     "close": "Close",
     "gallery": "Gallery",
     "files": "Files",
     "cancel": "Cancel",
-    "openSettings": "Open Settings"
+    "openSettings": "Open Settings",
+    "viewProfile": "View Profile"
   },
   "internet": {
     "noConnectionTitle": "You're offline!",
     "noConnectionMessage": "Turn on mobile data or connect to a Wi-Fi. Or just take a break and go for a walk!"
   },
   "uploadScan": {
-    "title": "Upload scan"
+    "title": "Upload Scan"
   },
   "weekDays": {
     "today": "Today",
@@ -51,6 +52,9 @@
       },
       "rate": {
         "title": "Give us a feedback!"
+      },
+      "profile": {
+        "title": "Profile"
       }
     }
   },
@@ -79,14 +83,14 @@
     "tab": "Home",
     "homeForeground": {
       "maxNumberOfScans": "You reached the maximum number of scan! Please upgrade to premium!",
-      "heading": "Start using X-Ray Analizer",
+      "heading": "Start using X-Ray Analyzer",
       "subHeading": "Get vital insights with MRI, X-Rays, CT scans, PET imaging, ultrasounds, and nuclear medicine"
     },
     "scanCategories": {
-      "heading": "Scan categories"
+      "heading": "Radiology Reel"
     },
     "recentReports": {
-      "heading": "Recent reports",
+      "heading": "Recent Reports",
       "noReports": "No reports yet!"
     }
   },

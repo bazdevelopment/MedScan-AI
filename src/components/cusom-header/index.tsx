@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { twMerge } from 'tailwind-merge';
 
+import { DEVICE_TYPE } from '@/core';
 import { colors, Text } from '@/ui';
 import { ChevronLeftIcon } from '@/ui/assets/icons';
 
@@ -20,6 +21,7 @@ const CustomHeader = ({
       className={twMerge(
         'flex-row items-center bg-slate-50 dark:bg-blackEerie py-3',
         className,
+        DEVICE_TYPE.ANDROID && 'mt-[-20px]',
       )}
     >
       {/* Left/Back Button */}

@@ -1,24 +1,18 @@
 import * as React from 'react';
 import type { SvgProps } from 'react-native-svg';
-import Svg, { ClipPath, Defs, G, Path } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
-import colors from '../../colors';
-
-export const Rate = ({ color = colors.neutral[500], ...props }: SvgProps) => (
-  <Svg width={24} height={24} fill="none" viewBox="0 0 24 24" {...props}>
-    <G clipPath="url(#a)">
-      <Path
-        d="m12.412 17.878 4.725 3c.61.384 1.36-.187 1.181-.89l-1.369-5.382a.816.816 0 0 1 .272-.825l4.238-3.534c.553-.46.271-1.388-.45-1.434l-5.532-.357a.778.778 0 0 1-.684-.506L12.73 2.756a.778.778 0 0 0-1.462 0L9.206 7.95a.778.778 0 0 1-.685.506l-5.531.357c-.722.046-1.003.975-.45 1.434l4.237 3.534a.815.815 0 0 1 .272.825l-1.265 4.988c-.216.843.684 1.528 1.406 1.069l4.397-2.785a.769.769 0 0 1 .825 0v0Z"
-        stroke={color}
-        strokeWidth={1.219}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </G>
-    <Defs>
-      <ClipPath id="a">
-        <Path fill="#fff" d="M0 0h24v24H0z" />
-      </ClipPath>
-    </Defs>
+export const Rate = ({ color, ...props }: SvgProps) => (
+  <Svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={25}
+    height={25}
+    fill="none"
+    {...props}
+  >
+    <Path
+      fill={color || '#18181B'}
+      d="M21.875 9.671a2.65 2.65 0 0 0-2.557-1.855h-3.641L14.57 4.369a2.69 2.69 0 0 0-5.123 0L8.342 7.816H4.701a2.69 2.69 0 0 0-1.584 4.86l2.964 2.168-1.127 3.49a2.649 2.649 0 0 0 .987 3.011 2.648 2.648 0 0 0 3.167-.016l2.901-2.135 2.903 2.133a2.69 2.69 0 0 0 4.153-2.993l-1.127-3.49 2.967-2.167a2.648 2.648 0 0 0 .97-3.006Zm-1.953 1.66-3.454 2.524a.834.834 0 0 0-.302.93l1.313 4.06a1.022 1.022 0 0 1-1.58 1.137l-3.396-2.5a.833.833 0 0 0-.987 0l-3.396 2.5a1.023 1.023 0 0 1-1.584-1.137l1.317-4.06a.834.834 0 0 0-.302-.93l-3.454-2.524a1.023 1.023 0 0 1 .604-1.848h4.25a.833.833 0 0 0 .794-.579l1.292-4.026a1.023 1.023 0 0 1 1.947 0l1.292 4.027a.833.833 0 0 0 .793.578h4.25a1.023 1.023 0 0 1 .604 1.848h-.001Z"
+    />
   </Svg>
 );

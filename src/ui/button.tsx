@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import React, { type ReactElement } from 'react';
 import type { PressableProps } from 'react-native';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
@@ -33,7 +34,8 @@ const button = tv({
         indicator: 'text-black dark:text-neutral-100',
       },
       destructive: {
-        container: 'bg-red-600',
+        container:
+          'rounded-xl border-2 border-red-100 bg-red-500 dark:border-0 dark:bg-red-600',
         label: 'text-white',
         indicator: 'text-white',
       },
@@ -95,6 +97,7 @@ interface Props extends ButtonVariants, Omit<PressableProps, 'disabled'> {
   className?: string;
   textClassName?: string;
   icon?: ReactElement;
+  iconPosition: 'left' | 'right';
   withGradientText?: boolean;
 }
 
@@ -111,6 +114,7 @@ export const Button = React.forwardRef<View, Props>(
       testID,
       textClassName = '',
       withGradientText = false,
+      iconPosition = 'right',
       ...props
     },
     ref,
@@ -132,6 +136,7 @@ export const Button = React.forwardRef<View, Props>(
           props.children
         ) : (
           <>
+            {!!icon && iconPosition == 'left' && <View>{icon}</View>}
             {loading ? (
               <ActivityIndicator
                 size="small"
@@ -160,7 +165,9 @@ export const Button = React.forwardRef<View, Props>(
                   </Text>
                 )}
 
-                {!!icon && <View className="ml-2">{icon}</View>}
+                {!!icon && iconPosition == 'right' && (
+                  <View className="ml-2">{icon}</View>
+                )}
               </>
             )}
           </>

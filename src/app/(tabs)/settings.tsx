@@ -17,9 +17,15 @@ import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
-import { useSelectedLanguage } from '@/core';
-import { colors, ScrollView, View } from '@/ui';
-import { Github, Rate, ShareIcon, Website } from '@/ui/assets/icons';
+import { translate, useSelectedLanguage } from '@/core';
+import { Button, colors, ScrollView, View } from '@/ui';
+import {
+  Github,
+  LogoutIcon,
+  Rate,
+  ShareIcon,
+  Website,
+} from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -27,8 +33,7 @@ export default function Settings() {
   const { data: userInfo } = useUser(language);
 
   const scrollViewRef = useRef(null);
-  const iconColor =
-    colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+  const iconColor = colorScheme === 'dark' ? colors.neutral[50] : colors.black;
 
   const { mutate: onHandleGlobalPushNotifications } =
     useSendGlobalPushNotifications();
@@ -41,11 +46,11 @@ export default function Settings() {
   const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
 
   return (
-    <View className="flex-1">
+    <View className="dark:bg-blackEerie mt-[-15px] flex-1 bg-primary-50">
       {/* <FocusAwareStatusBar /> */}
 
       <ScrollView ref={scrollViewRef}>
-        <View className="mb-20 mt-2 flex-1 px-4">
+        <View className="mb-20 flex-1 px-6">
           <ItemsContainer title="settings.generale">
             <Item
               text="settings.profile"
@@ -98,52 +103,65 @@ export default function Settings() {
             />
           </ItemsContainer>
 
-          <ItemsContainer title="settings.devMode.title">
-            <Item
-              text="settings.devMode.componentsLibrary"
-              onPress={() => router.navigate('/ui-library')}
-            />
-          </ItemsContainer>
+          <Button
+            label={translate('settings.logout')}
+            icon={<LogoutIcon width={30} height={30} />}
+            variant="destructive"
+            className="mt-4 h-[55px] justify-start pl-5"
+            textClassName="font-semibold-nunito text-lg"
+            iconPosition="left"
+            onPress={logout}
+          />
 
-          <View className="my-8">
-            <ItemsContainer>
-              <Item text="settings.logout" onPress={logout} />
-              <Item
-                text="Verify email"
-                onPress={() => router.navigate('/verify-email')}
-              />
+          {__DEV__ && (
+            <>
+              <ItemsContainer title="settings.devMode.title">
+                <Item
+                  text="settings.devMode.componentsLibrary"
+                  onPress={() => router.navigate('/ui-library')}
+                />
+              </ItemsContainer>
 
-              <Item
-                text="Send global push notification"
-                onPress={() =>
-                  onHandleGlobalPushNotifications({
-                    title: 'This is a global notification title',
-                    body: 'This is a global notification body',
-                    language,
-                  })
-                }
-              />
-              <Item
-                text="Send individual push notification"
-                onPress={() =>
-                  onHandleIndividualNotification({
-                    title: 'This is an individual notification title',
-                    body: 'This is an individual notification body',
-                    userId: userInfo.userId,
-                    language,
-                  })
-                }
-              />
-              <Item
-                text="Upload terms of service"
-                onPress={() => onUploadTermsOfService({ language })}
-              />
-              <Item
-                text="Upload privacy policy"
-                onPress={() => onUploadPrivacyPolicy({ language })}
-              />
-            </ItemsContainer>
-          </View>
+              <View>
+                <ItemsContainer title="Utils">
+                  <Item
+                    text="Verify email"
+                    onPress={() => router.navigate('/verify-email')}
+                  />
+
+                  <Item
+                    text="Send global push notification"
+                    onPress={() =>
+                      onHandleGlobalPushNotifications({
+                        title: 'This is a global notification title',
+                        body: 'This is a global notification body',
+                        language,
+                      })
+                    }
+                  />
+                  <Item
+                    text="Send individual push notification"
+                    onPress={() =>
+                      onHandleIndividualNotification({
+                        title: 'This is an individual notification title',
+                        body: 'This is an individual notification body',
+                        userId: userInfo.userId,
+                        language,
+                      })
+                    }
+                  />
+                  <Item
+                    text="Upload terms of service"
+                    onPress={() => onUploadTermsOfService({ language })}
+                  />
+                  <Item
+                    text="Upload privacy policy"
+                    onPress={() => onUploadPrivacyPolicy({ language })}
+                  />
+                </ItemsContainer>
+              </View>
+            </>
+          )}
         </View>
       </ScrollView>
     </View>

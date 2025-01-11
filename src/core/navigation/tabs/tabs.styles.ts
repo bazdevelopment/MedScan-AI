@@ -6,9 +6,9 @@ import { colors } from '@/ui';
 export const getBottomTabBarStyle = (isDark: boolean) =>
   StyleSheet.create({
     tabBarContainer: {
-      paddingTop: DEVICE_TYPE.IOS ? 15 : 0,
+      paddingTop: 10,
       backgroundColor: isDark ? colors.black : colors.white,
-      height: DEVICE_TYPE.IOS ? 100 : 65,
+      height: DEVICE_TYPE.IOS ? 92 : 65,
       width: '100%',
       borderWidth: 0,
       borderTopWidth: 0,

@@ -195,8 +195,8 @@ const ReportsList = ({
           {recentInterpretations?.records?.map(
             (record: IInterpretationResult) => (
               <CardWrapper
-                chevronColor={colors.primary[900]}
                 key={record.id}
+                chevronColor={colors.primary[900]}
                 className="dark:bg-blackBeauty rounded-xl bg-white p-4"
                 onPress={() =>
                   router.push({

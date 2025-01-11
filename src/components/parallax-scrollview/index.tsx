@@ -65,7 +65,7 @@ const ParallaxScrollView = ({
   };
 
   return (
-    <View className="dark:bg-blackEerie flex-1 bg-primary-100">
+    <View className="dark:bg-blackEerie flex-1 bg-primary-50">
       {/* Render Header Bar */}
       <View
         className={`absolute inset-x-0 items-center overflow-hidden ${isHeaderPrio ? 'z-10' : 'z-0'}`}

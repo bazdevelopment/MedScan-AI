@@ -103,7 +103,7 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.scanInterpretation.title')}
-                className="h-[100] pt-16"
+                className="pt-16"
                 titlePosition="left"
                 onGoBack={router.back}
               />

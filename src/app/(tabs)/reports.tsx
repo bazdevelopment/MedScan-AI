@@ -23,7 +23,7 @@ import {
   type IInterpretationRecord,
   type IInterpretationResult,
 } from '@/types/interpretation-report';
-import { Text } from '@/ui';
+import { colors, Text } from '@/ui';
 
 const Reports = () => {
   const scrollViewRef = useRef<FlashList<any>>(null);
@@ -109,23 +109,27 @@ const Reports = () => {
 
   const renderItem = ({ item }) => (
     <View className="mb-2 mt-4">
-      <Text className="mb-2 font-bold-nunito text-xl text-gray-800">
-        {formatDate(item.date, DATE_FORMAT.weekDayMonth, language)}
-      </Text>
+      <View className="dark:bg-blackBeauty flex-row items-center rounded-md bg-slate-100 p-2">
+        <Text className="font-bold-nunito text-xl text-gray-800">
+          {formatDate(item.date, DATE_FORMAT.weekDayMonth, language)}
+        </Text>
+      </View>
 
       {!item.records.length ? (
-        <View className="rounded-lg bg-gray-50 p-4">
-          <Text className="text-base text-gray-500">
+        <View className="dark:bg-blackEerie ml-1 mt-4 rounded-lg bg-gray-50 ">
+          <Text className="text-md text-gray-500">
             {translate('reports.noReportsAvailable')}
           </Text>
         </View>
       ) : (
-        <View className="mt-4">
+        <View className="mt-4 gap-4">
           {Array.isArray(item.records) &&
             item.records.map((record: IInterpretationResult) => {
               return (
                 <CardWrapper
                   key={record.id}
+                  chevronColor={colors.primary[900]}
+                  className="dark:bg-blackBeauty rounded-xl bg-white p-4"
                   isEntirelyClickable
                   onPress={() =>
                     router.push({
@@ -155,9 +159,9 @@ const Reports = () => {
   );
 
   return (
-    <View className="flex-1">
+    <View className="dark:bg-blackEerie flex-1 bg-primary-50">
       <WeekBlock
-        className="mt-6"
+        className="mt-4 px-4"
         reportSections={sections}
         onScrollToIndex={onScrollToIndex}
         weekOffset={weekOffset}

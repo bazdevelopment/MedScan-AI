@@ -87,7 +87,7 @@ export default function TabLayout() {
                   <CustomHeader
                     {...props}
                     title={tab.title}
-                    className="mt-14"
+                    className="pt-16"
                     titlePosition="left"
                   />
                 ),

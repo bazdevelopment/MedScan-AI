@@ -22,11 +22,11 @@ const SegmentedControl = ({
   tabInactiveColor = colors.white,
   borderColor = colors.primary[900],
   withBorder = false,
-  backgroundColor = colors.white,
+  backgroundColor = colors.primary[50],
   spacing = 0,
   checkIsActive,
 }: ISegmentedControl) => {
-  const internalPadding = 10;
+  const internalPadding = 45;
   const segmentedControlWidth =
     DEVICE_DIMENSIONS.DEVICE_WIDTH - spacing * (options.length - 1);
   const itemWidth = (segmentedControlWidth - internalPadding) / options.length;
@@ -77,8 +77,8 @@ const SegmentedControl = ({
               option={option}
               tabInactiveColor={tabInactiveColor}
               tabWidth={itemWidth}
-              borderColor={borderColor}
-              withBorder={withBorder}
+              borderColor={checkIsActive(option.id) ? borderColor : 'none'}
+              withBorder={withBorder && checkIsActive(option.id)}
             />
           );
         })}

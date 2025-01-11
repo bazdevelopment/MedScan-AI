@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 50,
+    height: 80,
   },
   activeBox: {
     position: 'absolute',
-    borderRadius: 10,
+    borderRadius: 20,
     elevation: 3,
     height: '100%',
   },

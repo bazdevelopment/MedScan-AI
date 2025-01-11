@@ -18,7 +18,7 @@ const CustomHeader = ({
   return (
     <View
       className={twMerge(
-        'flex-row items-center bg-white dark:bg-blackEerie py-3',
+        'flex-row items-center bg-slate-50 dark:bg-blackEerie py-3',
         className,
       )}
     >

@@ -69,7 +69,6 @@ const WeekBlock = ({
       >
         <Icon
           icon={<ChevronLeftRounded />}
-          iconContainerStyle="ml-4"
           onPress={() => changeWeekOffset('left')}
           color={isDark ? colors.white : colors.black}
         />
@@ -77,17 +76,18 @@ const WeekBlock = ({
         <View className="flex-1 items-center justify-center">
           <Text className="font-bold-nunito text-lg">{interval}</Text>
 
-          <Text className="font-primary-nunito text-lg">{`${translate('components.WeekBlock.week')} ${weekNumber} - ${currentMonth} ${currentYear}`}</Text>
+          <Text className="mt-1 font-medium-nunito text-base text-gray-600 dark:text-gray-400">{`${translate('components.WeekBlock.week')} ${weekNumber} - ${currentMonth} ${currentYear}`}</Text>
         </View>
 
         <Icon
           icon={<ChevronRightRounded />}
-          iconContainerStyle="mr-4"
           onPress={() => changeWeekOffset('right')}
           color={isDark ? colors.white : colors.black}
         />
       </View>
       <SegmentedControl
+        backgroundColor={isDark ? colors.blackEerie : colors.primary[50]}
+        tabInactiveColor={isDark ? colors.blackBeauty : colors.white}
         options={segmentedDays}
         selectedOption={selectedOption as ISegmentedControlOption}
         onOptionPress={(option) => {
@@ -100,8 +100,8 @@ const WeekBlock = ({
 
           typeof indexToScroll === 'number' && onScrollToIndex(indexToScroll);
         }}
-        withBorder
-        borderColor={colors.primary[900]}
+        withBorder={!isDark}
+        borderColor={colors.primary[300]}
         spacing={8}
         checkIsActive={checkIsActive}
       />

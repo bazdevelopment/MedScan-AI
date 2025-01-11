@@ -180,4 +180,10 @@ export const es: ITranslation = {
     successfullyUploaded: 'Categorías de escaneo subidas con éxito.',
     generalError: 'No se pudieron subir las categorías de escaneo.',
   },
+
+  sendUserNotification: {
+    noTokenFound:
+      'No se encontraron tokens de Expo válidos. No se pueden enviar notificaciones.',
+    generalError: 'No se pudo enviar la notificación.',
+  },
 };

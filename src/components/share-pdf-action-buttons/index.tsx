@@ -14,19 +14,21 @@ const SharePdfActionButtons = ({
   heading,
   date,
   html,
+  position = 'vertical',
 }: IShareActionButtons) => {
   const { shareContent, isSharing } = useSharePdfContent();
   const { convertToPdfAndDownload, isConverting } = usePdfConverter();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-
+  const alignment = position === 'vertical' ? 'flex-col' : 'flex-row';
   return (
-    <View className="flex-row gap-3 self-end">
+    <View className={`right-[-30px] flex-row gap-5 self-center  ${alignment}`}>
       {(isSharing || isConverting) && (
         <ActivityIndicator color={colors.black} />
       )}
       <TouchableOpacity
-        className="mr-2"
+        className="p-1"
+        // className="mr-2 rounded-full bg-white p-1"
         onPress={() =>
           shareContent({
             content: html,
@@ -36,9 +38,15 @@ const SharePdfActionButtons = ({
         }
         disabled={isSharing || isConverting}
       >
-        <ShareIcon color={isDark ? colors.white : colors.darkGray} />
+        <ShareIcon
+          color={isDark ? colors.white : colors.darkGray}
+          width={26}
+          height={26}
+          top={-3}
+        />
       </TouchableOpacity>
       <TouchableOpacity
+        // className="p-1"
         onPress={() =>
           convertToPdfAndDownload({
             html,
@@ -48,7 +56,7 @@ const SharePdfActionButtons = ({
         }
         disabled={isSharing || isConverting}
       >
-        <DownloadIcon color={isDark ? colors.white : colors.darkGray} />
+        <DownloadIcon color={colors.primary[900]} width={28} height={28} />
       </TouchableOpacity>
     </View>
   );

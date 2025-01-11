@@ -17,8 +17,8 @@ import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
 import { ThemeItem } from '@/components/settings/theme-item';
-import { translate, useSelectedLanguage } from '@/core';
-import { colors, FocusAwareStatusBar, ScrollView, Text, View } from '@/ui';
+import { useSelectedLanguage } from '@/core';
+import { colors, ScrollView, View } from '@/ui';
 import { Github, Rate, ShareIcon, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
@@ -41,18 +41,16 @@ export default function Settings() {
   const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
 
   return (
-    <>
-      <FocusAwareStatusBar />
+    <View className="flex-1">
+      {/* <FocusAwareStatusBar /> */}
 
       <ScrollView ref={scrollViewRef}>
-        <View className="mb-20 mt-6 flex-1 px-4">
-          <Text className="text-xl font-bold"></Text>
-          <Text className="text-3xl font-bold">
-            {translate('settings.title')}
-          </Text>
-
+        <View className="mb-20 mt-2 flex-1 px-4">
           <ItemsContainer title="settings.generale">
-            <Item text="settings.profile" onPress={() => {}} />
+            <Item
+              text="settings.profile"
+              onPress={() => router.navigate('/profile')}
+            />
             <LanguageItem />
             <ThemeItem />
           </ItemsContainer>
@@ -148,6 +146,6 @@ export default function Settings() {
           </View>
         </View>
       </ScrollView>
-    </>
+    </View>
   );
 }

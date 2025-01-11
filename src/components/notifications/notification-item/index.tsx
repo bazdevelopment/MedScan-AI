@@ -52,7 +52,7 @@ const NotificationItem = ({
 
         {/* Notification Content */}
         <View className="ml-4 flex-1">
-          <Text className="text-lg font-semibold text-gray-800">
+          <Text className="font-semibold-nunito text-lg text-gray-800">
             {notification.title}
           </Text>
           <Text className="mt-1 text-sm text-gray-600">

@@ -68,7 +68,7 @@ export const FinalReportHeader = ({ scrollValue }: IHomeHeaderBar) => {
         }}
       >
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
-          <Text className="font-bold dark:text-primary-400">
+          <Text className="font-bold-nunito dark:text-primary-900">
             {translate('flows.createReport.finalReportHeader.message')}
           </Text>
         </Animated.View>

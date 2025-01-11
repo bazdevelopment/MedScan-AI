@@ -26,7 +26,7 @@ export const FinalReportForeground = ({ scrollValue }: IHomeForeground) => {
   }, [scrollValue]);
 
   return (
-    <View className="h-[90px] rounded-b-[50px] bg-primary-300">
+    <View className="h-[90px] rounded-b-[50px] bg-primary-900">
       <Animated.View
         style={foregroundWrapperAnimatedStyle}
         className="flex-column"
@@ -43,7 +43,7 @@ export const FinalReportForeground = ({ scrollValue }: IHomeForeground) => {
 
         <View className="mt-2 self-center rounded-full bg-white px-4 py-2">
           {/* <GradientText colors={[colors.lightSkyBlue, colors.primaryPurple]}> */}
-          <Text className="text-center text-base font-bold">
+          <Text className="text-center font-bold-nunito text-base">
             {translate('flows.createReport.finalReportForeground.message')}
           </Text>
           {/* </GradientText> */}

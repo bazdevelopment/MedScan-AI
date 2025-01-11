@@ -72,7 +72,7 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 };
 
 export const CheckboxIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.charcoal[400];
+  const color = checked ? colors.primary[900] : colors.charcoal[400];
   return (
     <MotiView
       style={{
@@ -143,7 +143,7 @@ export const Checkbox = Object.assign(CheckboxBase, {
 });
 
 export const RadioIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.charcoal[400];
+  const color = checked ? colors.primary[900] : colors.charcoal[400];
   return (
     <MotiView
       style={{
@@ -160,7 +160,7 @@ export const RadioIcon = ({ checked = false }: IconProps) => {
     >
       <MotiView
         className={`h-[10px] w-[10px] rounded-[10px] ${
-          checked && 'bg-primary-300'
+          checked && 'bg-primary-900'
         } `}
         from={{ opacity: 0 }}
         animate={{ opacity: checked ? 1 : 0 }}
@@ -205,7 +205,7 @@ export const SwitchIcon = ({ checked = false }: IconProps) => {
     ? THUMB_OFFSET
     : WIDTH - THUMB_WIDTH - THUMB_OFFSET;
 
-  const backgroundColor = checked ? colors.primary[300] : colors.charcoal[400];
+  const backgroundColor = checked ? colors.primary[900] : colors.charcoal[400];
 
   return (
     <View className="w-[50px] justify-center">
@@ -219,7 +219,7 @@ export const SwitchIcon = ({ checked = false }: IconProps) => {
         />
       </View>
       <MotiView
-       style={{
+        style={{
           height: THUMB_HEIGHT,
           width: THUMB_WIDTH,
           position: 'absolute',

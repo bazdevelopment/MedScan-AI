@@ -24,7 +24,6 @@ import {
   type IInterpretationResult,
 } from '@/types/interpretation-report';
 import { Text } from '@/ui';
-import HorizontalLine from '@/ui/horizontal-line';
 
 const Reports = () => {
   const scrollViewRef = useRef<FlashList<any>>(null);
@@ -56,7 +55,7 @@ const Reports = () => {
   const {
     mutate: onUpdateInterpretationFields,
     isPending: isUpdateTitlePending,
-  } = useUpdateInterpretationFields({ weekNumber })();
+  } = useUpdateInterpretationFields()();
   const { panResponder } = useWeekPanSwipe({
     onChangeWeekOffset: changeWeekOffset,
   });
@@ -110,7 +109,7 @@ const Reports = () => {
 
   const renderItem = ({ item }) => (
     <View className="mb-2 mt-4">
-      <Text className="mb-2 text-xl font-bold text-gray-800">
+      <Text className="mb-2 font-bold-nunito text-xl text-gray-800">
         {formatDate(item.date, DATE_FORMAT.weekDayMonth, language)}
       </Text>
 
@@ -124,7 +123,6 @@ const Reports = () => {
         <View className="mt-4">
           {Array.isArray(item.records) &&
             item.records.map((record: IInterpretationResult) => {
-              const areMoreRecords = item.records.length > 1;
               return (
                 <CardWrapper
                   key={record.id}
@@ -138,6 +136,7 @@ const Reports = () => {
                 >
                   <ScanReportCard
                     {...record}
+                    language={language}
                     isUpdateTitlePending={isUpdateTitlePending}
                     onEditTitle={(title, documentId) =>
                       onUpdateInterpretationFields({
@@ -147,7 +146,6 @@ const Reports = () => {
                       })
                     }
                   />
-                  {areMoreRecords && <HorizontalLine className="mb-4" />}
                 </CardWrapper>
               );
             })}
@@ -157,11 +155,9 @@ const Reports = () => {
   );
 
   return (
-    <View className="mt-14 flex-1">
-      <Text className="mb-4 ml-4 text-3xl font-bold">
-        {translate('reports.heading')}
-      </Text>
+    <View className="flex-1">
       <WeekBlock
+        className="mt-6"
         reportSections={sections}
         onScrollToIndex={onScrollToIndex}
         weekOffset={weekOffset}

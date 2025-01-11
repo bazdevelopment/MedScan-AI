@@ -26,7 +26,7 @@ const TermsOfService = () => {
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
-        <Text className="mb-4 text-center text-xl font-bold text-blue-600">
+        <Text className="mb-4 text-center font-bold-nunito text-xl text-blue-600">
           Terms of Service for X-Ray Analyzer
         </Text>
         <Text className="mb-6 text-center text-sm text-gray-500">
@@ -37,7 +37,7 @@ const TermsOfService = () => {
         {data.record.terms.map((section, index) => (
           <View key={index}>
             {/* Section Header */}
-            <Text className="mb-2 text-lg font-semibold text-gray-800">
+            <Text className="mb-2 font-semibold-nunito text-lg text-gray-800">
               {section.section}
             </Text>
 

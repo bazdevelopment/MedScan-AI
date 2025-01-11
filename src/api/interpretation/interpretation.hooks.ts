@@ -32,15 +32,13 @@ export const useInterpretationByDate = (variables: IPayload) =>
     fetcher: () => getInterpretationByDate(variables),
   });
 
-export const useUpdateInterpretationFields = (variables: {
-  weekNumber: number;
-}) =>
+export const useUpdateInterpretationFields = () =>
   createMutation<Response, any, AxiosError>({
-    mutationFn: updateInterpretationFields,
+    mutationFn: (variables) => updateInterpretationFields(variables),
     onSuccess: (data) => {
       Toast.success(data.message);
       queryClient.refetchQueries({
-        queryKey: ['interpretations-by-date', variables.weekNumber],
+        queryKey: ['interpretations-by-date'],
       });
     },
     onError: (error) => {

@@ -15,7 +15,7 @@ const ShareScreen = () => {
       <View className="min-h-screen p-6">
         {/* Header Section */}
         <View className="mb-8 items-center">
-          <Text className="mb-2 text-3xl font-bold text-gray-800">
+          <Text className="mb-2 font-bold-nunito text-3xl text-gray-800">
             Share X-Ray Analyzer
           </Text>
           <Text className="text-center text-base text-gray-600">
@@ -27,7 +27,7 @@ const ShareScreen = () => {
           <QRCode
             value={appLink}
             size={250}
-            color={colors.primary[400]}
+            color={colors.primary[900]}
             backgroundColor={colors.white}
             logo={require('../../assets/icon-transparent.png')}
             logoMargin={5}

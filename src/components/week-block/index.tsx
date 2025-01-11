@@ -28,6 +28,7 @@ const WeekBlock = ({
   interval,
   currentYear,
   segmentedDays,
+  className,
 }: IWeekBlock) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
@@ -63,7 +64,9 @@ const WeekBlock = ({
 
   return (
     <>
-      <View className="mb-4 flex-row items-center justify-between">
+      <View
+        className={`mb-4 flex-row items-center justify-between ${className}`}
+      >
         <Icon
           icon={<ChevronLeftRounded />}
           iconContainerStyle="ml-4"
@@ -72,9 +75,9 @@ const WeekBlock = ({
         />
 
         <View className="flex-1 items-center justify-center">
-          <Text className="text-lg font-bold">{interval}</Text>
+          <Text className="font-bold-nunito text-lg">{interval}</Text>
 
-          <Text className="font-primary text-lg">{`${translate('components.WeekBlock.week')} ${weekNumber} - ${currentMonth} ${currentYear}`}</Text>
+          <Text className="font-primary-nunito text-lg">{`${translate('components.WeekBlock.week')} ${weekNumber} - ${currentMonth} ${currentYear}`}</Text>
         </View>
 
         <Icon
@@ -98,7 +101,7 @@ const WeekBlock = ({
           typeof indexToScroll === 'number' && onScrollToIndex(indexToScroll);
         }}
         withBorder
-        borderColor={colors.primary[300]}
+        borderColor={colors.primary[900]}
         spacing={8}
         checkIsActive={checkIsActive}
       />

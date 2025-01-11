@@ -2,7 +2,6 @@ import { View } from 'react-native';
 
 import { Text } from '@/ui';
 
-import GradientText from '../gradient-text';
 import { type ITabBarIcon } from './tab-bar-icon.interface';
 
 export const TabBarIcon = ({
@@ -12,15 +11,13 @@ export const TabBarIcon = ({
   title,
 }: ITabBarIcon) => {
   return (
-    <View className="flex-col items-center gap-1">
+    <View className="flex-col items-center gap-2">
       {icon}
-      {focused ? (
+      {/* {focused ? (
         <GradientText className={textClassName} colors={['#7CD0FC', '#A935F8']}>
           {title}
-        </GradientText>
-      ) : (
-        <Text className={textClassName}>{title}</Text>
-      )}
+        </GradientText> */}
+      <Text className={textClassName}>{title}</Text>
     </View>
   );
 };

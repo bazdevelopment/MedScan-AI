@@ -103,7 +103,7 @@ const ScanInterpretationDetailsScreen = () => {
         {/* Interpretation Section */}
         <View className="my-6 rounded-2xl bg-white p-5 shadow-md">
           <View className="mb-6">
-            <Text className="mb-2 text-lg font-semibold text-indigo-600">
+            <Text className="mb-2 font-semibold-nunito text-lg text-indigo-600">
               Question
             </Text>
             <View className="rounded-xl bg-gray-50 p-4">
@@ -114,7 +114,7 @@ const ScanInterpretationDetailsScreen = () => {
           </View>
 
           <View>
-            <Text className="mb-2 text-lg font-semibold text-indigo-600">
+            <Text className="mb-2 font-semibold-nunito text-lg text-indigo-600">
               Interpretation
             </Text>
             <View className="rounded-xl bg-gray-50 p-4">

@@ -6,19 +6,21 @@ import { colors } from '@/ui';
 export const getBottomTabBarStyle = (isDark: boolean) =>
   StyleSheet.create({
     tabBarContainer: {
-      paddingTop: DEVICE_TYPE.IOS ? 25 : 0,
-      borderRadius: 40,
-      backgroundColor: isDark ? colors.black : colors.muzli,
-      height: DEVICE_TYPE.IOS ? 70 : 65,
-      width: '90%',
-      position: 'absolute',
-      left: '5%',
-      bottom: 20,
+      paddingTop: DEVICE_TYPE.IOS ? 15 : 0,
+      backgroundColor: isDark ? colors.black : colors.white,
+      height: DEVICE_TYPE.IOS ? 100 : 65,
+      width: '100%',
+      borderWidth: 0,
+      borderTopWidth: 0,
+
+      shadowColor: colors.black, // iOS shadow color
+      shadowOffset: { width: 0, height: 5 }, // iOS shadow offset
+      shadowOpacity: 0.4, // iOS shadow opacity
+      shadowRadius: 10, // iOS shadow radius
+      elevation: 5, // Android shadow
       ...(isDark && {
-        borderColor: colors.charcoal[500],
-        borderTopColor: colors.charcoal[500],
-        borderTopWidth: 1.5,
-        borderWidth: 1.5,
+        borderTopColor: colors.charcoal[700],
+        borderTopWidth: 1,
       }),
     },
     tabBarLabel: {

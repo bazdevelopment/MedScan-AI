@@ -1,32 +1,39 @@
 /* eslint-disable max-lines-per-function */
 import { useScrollToTop } from '@react-navigation/native';
+import { router } from 'expo-router';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
-import { useRecentInterpretations } from '@/api/interpretation/interpretation.hooks';
+import {
+  useRecentInterpretations,
+  useUpdateInterpretationFields,
+} from '@/api/interpretation/interpretation.hooks';
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useScanCategories } from '@/api/scan-categories/scan-categories.hooks';
 import { useUser } from '@/api/user/user.hooks';
+import CardWrapper from '@/components/card-wrapper';
 import EdgeCaseTemplate from '@/components/edge-case-template';
+import FreeTierStatus from '@/components/free-tier-status';
 import { Foreground } from '@/components/home-foreground';
 import { HomeHeaderBar } from '@/components/home-header-bar';
 import ParallaxScrollView from '@/components/parallax-scrollview';
 import PullToRefresh from '@/components/pull-to-refresh';
-import ReportCard from '@/components/report-card';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
+import ScanReportCard from '@/components/scan-report-card';
 import { translate, useSelectedLanguage } from '@/core';
 import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
 } from '@/types/interpretation-report';
-import { ActivityIndicator, colors, ScrollView, Text, View } from '@/ui';
+import { ActivityIndicator, colors, type ScrollView, Text, View } from '@/ui';
+import { UploadIcon } from '@/ui/assets/icons';
 import { NoReports } from '@/ui/assets/illustrations';
 
 const PARALLAX_HEIGHT = 310;
-const HEADER_BAR_HEIGHT = 110;
+const HEADER_BAR_HEIGHT = 180;
 const SNAP_START_THRESHOLD = 70;
 const SNAP_STOP_THRESHOLD = 330;
 
@@ -60,6 +67,11 @@ export default function Home() {
 
   const { data, isPending: areScanCategoriesLoading } =
     useScanCategories(language);
+
+  const {
+    mutate: onUpdateInterpretationFields,
+    isPending: isUpdateTitlePending,
+  } = useUpdateInterpretationFields()();
 
   checkForAppUpdate();
 
@@ -107,22 +119,32 @@ export default function Home() {
         scrollValue={scrollValue}
         scrollViewRef={scrollViewRef}
       >
-        <View className="ml-4 mt-14">
-          <Text className="my-6">
+        <View className="mt-14">
+          <FreeTierStatus
+            className="dark:bg-blackBeauty mx-4 mt-10 rounded-xl bg-white p-4"
+            scansLeft={10}
+            onUpgrade={() => console.log('on upgrade')}
+          />
+
+          <Text className="mx-6 mb-3 mt-6 font-semibold-nunito">
             {translate('home.scanCategories.heading')}
           </Text>
 
           <ScanCategoriesStories
             categories={data?.categories}
             isLoading={areScanCategoriesLoading}
+            className="ml-4"
           />
-          <Text className="my-6">
+          <Text className="mx-6 mb-4 mt-8 font-semibold-nunito">
             {translate('home.recentReports.heading')}
           </Text>
 
-          <ReportsScrollableList
+          <ReportsList
             areRecentReportsLoading={areRecentReportsLoading}
             recentInterpretations={recentInterpretations}
+            onUpdateInterpretationFields={onUpdateInterpretationFields}
+            isUpdateTitlePending={isUpdateTitlePending}
+            className="mx-6"
           />
         </View>
       </ParallaxScrollView>
@@ -130,49 +152,76 @@ export default function Home() {
   );
 }
 
-const ReportsScrollableList = ({
+const ReportsList = ({
   areRecentReportsLoading,
   recentInterpretations,
+  onUpdateInterpretationFields,
+  isUpdateTitlePending,
+  className,
 }: {
   areRecentReportsLoading: boolean;
   recentInterpretations: IInterpretationResultRecords;
+  onUpdateInterpretationFields: ({
+    documentId,
+    fieldsToUpdate,
+    language,
+  }: {
+    documentId: string;
+    fieldsToUpdate: object;
+    language: string;
+  }) => void;
+  isUpdateTitlePending: boolean;
+  className: string;
 }) => {
+  const { language } = useSelectedLanguage();
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      contentContainerClassName="gap-4"
-      snapToInterval={300}
-      snapToAlignment="center"
-      decelerationRate={0}
-    >
+    <View className={`flex-1 ${className}`}>
       {areRecentReportsLoading ? (
         <ReportSkeleton />
       ) : !recentInterpretations?.records?.length ? (
         <EdgeCaseTemplate
-          additionalClassName="mt-4 ml-[-10]"
-          image={
-            <NoReports width={100} height={100} fill={colors.danger[500]} />
-          }
-          title="No reports yet!"
+          additionalClassName="mt-8 ml-[-10]"
+          image={<NoReports width={100} height={100} />}
+          message="No recent reports yet!"
+          primaryAction={{
+            label: 'Upload now',
+            icon: <UploadIcon />,
+            variant: 'default',
+            onPress: () => console.log('ceva'),
+          }}
         />
       ) : (
-        recentInterpretations?.records?.map(
-          ({
-            title,
-            createdAt,
-            interpretationResult,
-            id,
-          }: IInterpretationResult) => (
-            <ReportCard
-              key={id}
-              title={title}
-              date={createdAt}
-              description={interpretationResult}
-            />
-          ),
-        )
+        <View className="gap-4">
+          {recentInterpretations?.records?.map(
+            (record: IInterpretationResult) => (
+              <CardWrapper
+                chevronColor={colors.primary[900]}
+                key={record.id}
+                className="dark:bg-blackBeauty rounded-xl bg-white p-4"
+                onPress={() =>
+                  router.push({
+                    pathname: '/scan-interpretation/[id]',
+                    params: { id: record.docId },
+                  })
+                }
+              >
+                <ScanReportCard
+                  language={language}
+                  {...record}
+                  isUpdateTitlePending={isUpdateTitlePending}
+                  onEditTitle={(title, documentId) =>
+                    onUpdateInterpretationFields({
+                      documentId,
+                      fieldsToUpdate: { title },
+                      language,
+                    })
+                  }
+                />
+              </CardWrapper>
+            ),
+          )}
+        </View>
       )}
-    </ScrollView>
+    </View>
   );
 };

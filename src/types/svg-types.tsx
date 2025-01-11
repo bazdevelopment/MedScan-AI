@@ -6,4 +6,5 @@ export interface ISvgProps extends SvgProps {
   withLinearGradient?: boolean;
   top?: number;
   isRead?: boolean;
+  focused?: boolean;
 }

@@ -7,6 +7,7 @@ import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 
 import { useUser, useUserPreferredLanguage } from '@/api/user/user.hooks';
+import CustomHeader from '@/components/cusom-header';
 import { NoInternetConnectionModal } from '@/components/modals/no-internet-modal';
 import { TabBarIcon } from '@/components/tab-bar-icon';
 import { useSelectedLanguage } from '@/core';
@@ -72,6 +73,7 @@ export default function TabLayout() {
           tabBarStyle: bottomTabBarStyles.tabBarContainer,
           tabBarLabelStyle: bottomTabBarStyles.tabBarLabel,
           tabBarInactiveTintColor: isDark ? colors.white : colors.charcoal[700],
+          tabBarActiveTintColor: colors.primary[900],
         }}
       >
         {tabScreens.map((tab: ITabsNavigationScreen) => (
@@ -80,14 +82,21 @@ export default function TabLayout() {
             name={tab.screenName}
             listeners={{ tabPress: addSelectionHapticEffect }}
             options={{
-              // header: (props) => !!tab.header && tab.header(props),
-              header: () => false,
+              header: (props) =>
+                tab.header && (
+                  <CustomHeader
+                    {...props}
+                    title={tab.title}
+                    className="mt-14"
+                    titlePosition="left"
+                  />
+                ),
               title: tab.title,
               tabBarIcon: ({ color, focused }) => (
                 <TabBarIcon
                   icon={tab.icon(color, focused)}
                   focused={focused}
-                  textClassName={`text-xs  text-[${color}] ${focused ? 'font-bold' : 'font-medium'} `}
+                  textClassName={`text-sm ${focused ? 'font-bold-nunito text-primary-900 dark:text-primary-900' : 'font-medium-nunito'} `}
                   title={tab.title}
                 />
               ),

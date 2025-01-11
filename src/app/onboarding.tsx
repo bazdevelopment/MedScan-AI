@@ -14,7 +14,7 @@ export default function Onboarding() {
         <Cover />
       </View>
       <View className="justify-end ">
-        <Text className="my-3 text-center text-5xl font-bold">
+        <Text className="my-3 text-center font-bold-nunito text-5xl">
           X-Ray Analizer
         </Text>
         <Text className="mb-2 text-center text-lg text-gray-600">

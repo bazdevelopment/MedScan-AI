@@ -1,6 +1,5 @@
 import React from 'react';
 
-import CustomHeader from '@/components/cusom-header';
 import { translate } from '@/core/i18n';
 import { Feed as FeedIcon, ReportIcon, Settings } from '@/ui/assets/icons';
 
@@ -13,9 +12,9 @@ export const tabScreens: ITabsNavigationScreen[] = [
     title: translate('home.tab'),
     tabBarTestID: 'home-tab',
     icon: (color: string, focused: boolean) => (
-      <FeedIcon color={color} withLinearGradient={focused} />
+      <FeedIcon color={color} focused={focused} />
     ),
-    header: null,
+    header: false,
   },
   {
     id: 2,
@@ -23,9 +22,9 @@ export const tabScreens: ITabsNavigationScreen[] = [
     title: translate('reports.tab'),
     tabBarTestID: 'reports-tab',
     icon: (color: string, focused: boolean) => (
-      <ReportIcon color={color} withLinearGradient={focused} />
+      <ReportIcon color={color} focused={focused} />
     ),
-    header: (props) => <CustomHeader {...props} />,
+    header: true,
   },
   {
     id: 3,
@@ -33,8 +32,8 @@ export const tabScreens: ITabsNavigationScreen[] = [
     title: translate('settings.tab'),
     tabBarTestID: 'settings-tab',
     icon: (color: string, focused: boolean) => (
-      <Settings color={color} withLinearGradient={focused} />
+      <Settings color={color} focused={focused} />
     ),
-    header: (props) => <CustomHeader {...props} />,
+    header: true,
   },
 ];

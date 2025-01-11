@@ -32,13 +32,13 @@ const SegmentedControlTab = ({
     >
       <View className="flex-col items-center gap-[-5px]">
         <Text
-          className={`text-sm font-bold ${isActive ? 'text-white' : 'text-black'}`}
+          className={`font-bold-nunito text-sm ${isActive ? 'text-white' : 'text-black'}`}
         >
           {option.title}
         </Text>
         {Boolean(option.subtitle) && (
           <Text
-            className={`text-sm font-bold ${isActive ? 'text-white' : 'text-black'}`}
+            className={`font-bold-nunito text-sm ${isActive ? 'text-white' : 'text-black'}`}
           >
             {option.subtitle}
           </Text>

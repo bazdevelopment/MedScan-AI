@@ -71,11 +71,12 @@
         "message": "This is the report result!"
       },
       "uploadFile": {
-        "title": "You need to upload your X-RAY / CT",
+        "title": "Please upload your medical imaging file",
         "size": "Maximum file size: 10MB",
         "location": "Select from Gallery or Files",
         "fileType": "PNG, JPG, PDF, or MP4",
-        "openCamera": "Open camera & take picture"
+        "openCamera": "Open Camera & Take Photo",
+        "scanType": "X-RAY, CT, MRI, PET"
       }
     }
   },

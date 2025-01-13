@@ -11,9 +11,10 @@ export const CloseIcon = (props: ISvgProps) => (
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth={2}
+    strokeWidth={3}
     viewBox="0 0 24 24"
     className="lucide lucide-x"
+    color={props.fill}
     {...props}
   >
     <Path d="M18 6 6 18M6 6l12 12" />

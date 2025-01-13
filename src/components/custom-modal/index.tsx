@@ -1,9 +1,11 @@
+import { BlurView } from 'expo-blur';
 import React from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, TouchableWithoutFeedback, View } from 'react-native';
 
-import { translate } from '@/core';
-import { Button, colors } from '@/ui';
+import { colors, Text } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
+
+import Icon from '../icon';
 
 interface CustomModalProps {
   visible: boolean;
@@ -16,29 +18,46 @@ const CustomModal: React.FC<CustomModalProps> = ({
   visible,
   onClose,
   children,
+  title,
 }) => {
   return (
     <Modal
       visible={visible}
       transparent
-      animationType="slide"
+      animationType="fade"
       onRequestClose={onClose}
     >
       {/* Modal Overlay */}
-      <View className="flex-1 items-center justify-center bg-black">
-        {/* Modal Content */}
-        <View className="w-11/12 rounded-lg bg-white p-4">
-          {children}
+      <TouchableWithoutFeedback onPress={onClose}>
+        <BlurView
+          intensity={50}
+          className="flex-1"
+          tint="dark"
+          style={{ justifyContent: 'center', alignItems: 'center' }}
+        >
+          <View className=" h-14 w-11/12 flex-row items-center justify-between rounded-t-xl bg-primary-900 px-5">
+            <Text className="font-medium-nunito text-lg text-white">
+              {title || ''}
+            </Text>
 
-          {/* Close Button */}
-          <Button
-            label={translate('general.close')}
-            variant="outline"
-            icon={<CloseIcon color={colors.black} width={20} height={20} />}
-            onPress={onClose}
-          />
-        </View>
-      </View>
+            <View className="flex-row">
+              <Icon
+                icon={<CloseIcon />}
+                color={colors.primary[900]}
+                size={16}
+                containerStyle="bg-white rounded-full p-1"
+                onPress={onClose}
+              />
+            </View>
+          </View>
+          {/* Modal Content,TouchableWithoutFeedback without on press to not trigger dismiss function when pressing on the content  */}
+          <TouchableWithoutFeedback>
+            <View className="w-11/12 rounded-b-xl bg-white p-5 dark:bg-black">
+              {children}
+            </View>
+          </TouchableWithoutFeedback>
+        </BlurView>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };

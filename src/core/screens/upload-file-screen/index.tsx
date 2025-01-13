@@ -1,16 +1,19 @@
+/* eslint-disable max-lines-per-function */
 import {
   type BottomSheetModal,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
+import { Stack } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
+import CustomHeader from '@/components/cusom-header';
+import ProgressBar from '@/components/progress-bar';
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
 import { translate } from '@/core/i18n';
 import { Button, colors, Modal, Text, useModal } from '@/ui';
 import { Camera, Gallery, PaperClip } from '@/ui/assets/icons';
-import { UploadFilesIllustration } from '@/ui/assets/illustrations';
 import HorizontalLine from '@/ui/horizontal-line';
 
 import {
@@ -18,7 +21,12 @@ import {
   type IUploadFileScreen,
 } from './upload-file-screen.interface';
 
-const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
+const UploadFileScreen = ({
+  goToNextScreen,
+  totalSteps,
+  currentScreenIndex,
+  onGoBack,
+}: IUploadFileScreen) => {
   const modal = useModal();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
@@ -37,42 +45,68 @@ const UploadFileScreen = ({ goToNextScreen }: IUploadFileScreen) => {
 
   return (
     <>
-      <View className="bg-primary-900 dark:bg-charcoal-900">
-        <View className="flex-row justify-center pt-10">
-          <UploadFilesIllustration width={300} height={200} />
-        </View>
-        <Text className="text-center font-bold-nunito text-xl text-white">
+      <Stack.Screen
+        options={{
+          header: (props) => (
+            <CustomHeader
+              {...props}
+              title={'Upload Scan'}
+              className="bg-white pt-20"
+              titlePosition="center"
+              onGoBack={onGoBack}
+            />
+          ),
+        }}
+      />
+
+      <ProgressBar
+        currentStep={currentScreenIndex}
+        totalSteps={totalSteps}
+        isTextShown
+        className="mt-8 flex-row self-center"
+      />
+
+      <View className="mt-4">
+        <Text className="mx-8 mb-12 mt-8 font-bold-nunito text-[32px]">
           {translate('flows.createReport.uploadFile.title')}
         </Text>
-        <Text className="text-center text-sm text-white">
-          {translate('flows.createReport.uploadFile.size')}
-        </Text>
 
-        <Button
-          label={translate('flows.createReport.uploadFile.openCamera')}
-          className="top-6 mb-0 mt-4 w-[70%] self-center rounded-full dark:bg-primary-900"
-          size="lg"
-          textClassName="text-md"
-          icon={<Camera color={isDark ? colors.black : colors.white} />}
-          onPress={onTakePhoto}
-        />
+        <TouchableOpacity
+          className="flex-col mx-8 items-center justify-center rounded-3xl border-4 border-primary-900 py-6"
+          onPress={modal.present}
+        >
+          <Gallery color={colors.primary[900]} width={32} height={42} top={1} />
+          <View className="mt-4">
+            <Text className="font-bold-nunito text-primary-900">
+              {translate('flows.createReport.uploadFile.location')}
+            </Text>
+            <Text className="mt-1 text-center text-base text-gray-600">
+              {translate('flows.createReport.uploadFile.size')}
+            </Text>
+            <Text className="mt-2 text-center font-bold-nunito text-sm text-primary-700">
+              {translate('flows.createReport.uploadFile.scanType')}
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
-      <HorizontalLine text="or" className="my-14" />
-      <TouchableOpacity
-        className="mx-10 h-20 flex-row items-center justify-center gap-3 rounded-xl border border-slate-100"
-        onPress={modal.present}
-      >
-        <Gallery color={colors.primary[900]} width={32} height={42} top={1} />
-        <View>
-          <Text className="font-bold-nunito text-primary-900">
-            {translate('flows.createReport.uploadFile.location')}
-          </Text>
-          <Text className="-mt-1 text-sm text-gray-400">
-            {translate('flows.createReport.uploadFile.fileType')}
-          </Text>
-        </View>
-      </TouchableOpacity>
+      <HorizontalLine text="or" className="my-16" />
+
+      <Button
+        label={translate('flows.createReport.uploadFile.openCamera')}
+        className="h-[62px] w-[90%]  gap-5 self-center rounded-full bg-primary-100 dark:bg-primary-900"
+        textClassName="text-lg font-semibold-nunito text-primary-900 dark:text-white"
+        icon={
+          <Camera
+            width={28}
+            height={28}
+            color={isDark ? colors.white : colors.primary[900]}
+          />
+        }
+        onPress={onTakePhoto}
+        iconPosition="left"
+      />
+
       <UploadFileOptionsModal
         options={galleryOptions}
         testID="Upload file options id"

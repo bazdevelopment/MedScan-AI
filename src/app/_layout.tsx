@@ -16,6 +16,7 @@ import * as Notifications from 'expo-notifications';
 import * as QuickActions from 'expo-quick-actions';
 import { useQuickActionRouting } from 'expo-quick-actions/router';
 import { router, SplashScreen, Stack } from 'expo-router';
+import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -24,9 +25,12 @@ import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
 import CustomHeader from '@/components/cusom-header';
+import Icon from '@/components/icon';
 import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
+import { colors } from '@/ui';
+import { CloseIcon } from '@/ui/assets/icons';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -48,6 +52,9 @@ Notifications.setNotificationHandler({
 });
 
 export default function RootLayout() {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   useQuickActionRouting();
 
   useEffect(() => {
@@ -112,11 +119,30 @@ export default function RootLayout() {
         />
 
         <Stack.Screen
-          name="modals-stack"
+          name="generate-report"
           options={{
-            headerShown: false,
-            presentation: 'modal',
-            gestureEnabled: true,
+            gestureEnabled: false,
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title="Report Result"
+                className="bg-white pt-16"
+                titlePosition="center"
+                rightContent={
+                  <Icon
+                    icon={
+                      <Icon
+                        icon={<CloseIcon />}
+                        color={isDark ? colors.primary[900] : colors.white}
+                        size={20}
+                        containerStyle="bg-black dark:bg-white rounded-full p-1 mt-12 mr-6"
+                        onPress={() => router.navigate('/(tabs)')}
+                      />
+                    }
+                  />
+                }
+              />
+            ),
           }}
         />
         <Stack.Screen

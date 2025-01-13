@@ -11,7 +11,11 @@ export const useAnalyzeImage = ({ onSuccessCallback, language }) =>
     mutationFn: (variables) => analyzeImageUsingAi(variables, language),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['recent-interpretations'] });
-      onSuccessCallback({ interpretationResult: data?.interpretationResult });
+      onSuccessCallback({
+        interpretationResult: data.interpretationResult,
+        promptMessage: data.promptMessage,
+        createdDate: data.createdAt,
+      });
     },
     onError: () => {},
   });
@@ -22,6 +26,10 @@ export const useAnalyzeVideo = ({ onSuccessCallback, language }) =>
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['recent-interpretations'] });
 
-      onSuccessCallback({ interpretationResult: data.interpretationResult });
+      onSuccessCallback({
+        interpretationResult: data.interpretationResult,
+        promptMessage: data.promptMessage,
+        createdDate: data.createdAt,
+      });
     },
   });

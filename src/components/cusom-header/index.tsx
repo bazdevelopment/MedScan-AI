@@ -1,3 +1,4 @@
+import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { twMerge } from 'tailwind-merge';
@@ -14,8 +15,10 @@ const CustomHeader = ({
   rightContent,
   className,
   titlePosition = 'center', // Default position is 'center'
-  ...props
 }: ICustomHeader) => {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   return (
     <View
       className={twMerge(
@@ -29,11 +32,11 @@ const CustomHeader = ({
         {!!onGoBack && (
           <TouchableOpacity
             onPress={onGoBack}
-            className="absolute ml-4 rounded-xl border border-slate-300 p-2"
+            className="z-1 absolute ml-4 rounded-xl border border-slate-300 p-2 dark:border-2 "
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
             <ChevronLeftIcon
-              color={colors.charcoal[700]}
+              color={isDark ? colors.white : colors.charcoal[700]}
               width={24}
               height={24}
             />
@@ -54,7 +57,7 @@ const CustomHeader = ({
       {/* Title */}
       <View
         className={twMerge(
-          'w-full',
+          'w-full z-[-1]',
           titlePosition === 'left'
             ? 'items-start'
             : titlePosition === 'right'
@@ -70,7 +73,7 @@ const CustomHeader = ({
       </View>
 
       {/* Right Content */}
-      <View className="w-10">{rightContent}</View>
+      <View className="absolute right-0 border-red-200">{rightContent}</View>
     </View>
   );
 };

@@ -6,21 +6,20 @@ import { type ISvgProps } from '@/types/svg-types';
 export const DownloadIcon = (props: ISvgProps) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={21}
-    height={21}
+    width={props.width || 21}
+    height={props.height || 21}
     fill="none"
     viewBox="0 0 24 24"
-    {...props}
   >
     <Path
-      stroke="#7982FD"
+      stroke={props.fill || '#7982FD'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
       d="M10.602 13.26V3.228M13.032 10.82l-2.43 2.44-2.43-2.44"
     />
     <Path
-      stroke="#7982FD"
+      stroke={props.fill || '#7982FD'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}

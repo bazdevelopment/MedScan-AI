@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Animated,
@@ -19,6 +19,7 @@ const PullToRefresh = ({
   onRefresh,
   children,
   refreshingComponent,
+  shouldRefresh,
   pullThreshold = REFRESH_THRESHOLD,
 }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -94,6 +95,12 @@ const PullToRefresh = ({
   const defaultRefreshingComponent = (
     <ActivityIndicator color={colors.danger[400]} />
   );
+
+  useEffect(() => {
+    if (shouldRefresh) {
+      handleRefresh();
+    }
+  }, [shouldRefresh, handleRefresh]);
 
   return (
     <View style={styles.container}>

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import FlowModal from '@/components/flow-modal';
 import { type IFlowModal } from '@/components/flow-modal/flow-modal.interface';
 import FilePreviewScreen from '@/core/screens/file-preview-screen';
-import GenerateReportScreen from '@/core/screens/generate-report-screen';
 import UploadFileScreen from '@/core/screens/upload-file-screen';
 
 import { type ICollectedData } from './upload-file-flow.interface';
@@ -44,7 +43,6 @@ const UploadFileFlow = ({ onSubmitCollectedData }: IFlowModal) => {
     >
       <UploadFileScreen />
       <FilePreviewScreen />
-      <GenerateReportScreen />
     </FlowModal>
   );
 };

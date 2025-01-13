@@ -1,8 +1,7 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { useRef } from 'react';
 import { Animated, View } from 'react-native';
 
-import { colors, Text } from '@/ui';
+import { Text } from '@/ui';
 
 import { type IProgressBar } from './progress-bar.interface';
 
@@ -13,6 +12,7 @@ const ProgressBar = ({
   currentStep = 1,
   totalSteps = 1,
   isTextShown = false,
+  className = '',
 }: IProgressBar) => {
   const progress = useRef(new Animated.Value(0)).current;
 
@@ -25,13 +25,9 @@ const ProgressBar = ({
   // const labelText = `${currentStep} / ${totalSteps}`;
   const labelText = `${Math.round((currentStep / totalSteps) * 100)}%`;
   return (
-    <View className="w-[180px] flex-row items-center">
+    <View className={`w-[75%] flex-row items-center ${className}`}>
       <View className="h-3 flex-1 overflow-hidden rounded-full">
-        <LinearGradient
-          colors={[colors.primary[900], colors.primary[900]]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-        >
+        <View className="bg-primary-100">
           <Animated.View
             className="h-full bg-primary-900"
             style={{
@@ -41,10 +37,10 @@ const ProgressBar = ({
               }),
             }}
           />
-        </LinearGradient>
+        </View>
       </View>
       {isTextShown && (
-        <Text className="ml-5 text-center text-base font-medium text-white">
+        <Text className="ml-5 text-center font-semibold-nunito text-base text-gray-500">
           {labelText}
         </Text>
       )}

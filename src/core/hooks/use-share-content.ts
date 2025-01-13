@@ -30,7 +30,6 @@ export const useSharePdfContent = () => {
         // const timestamp = dayjs(date).format('YYYY-MM-DD');
         const newFileName = `${title} (${date}).pdf`;
         const newUri = `${FileSystem.documentDirectory}${newFileName}`;
-
         // Copy the file to documents directory
         await FileSystem.copyAsync({
           from: uri,

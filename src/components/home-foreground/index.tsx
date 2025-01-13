@@ -41,7 +41,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
     if (userInfo?.scansRemaining <= 0) {
       return alert(translate('home.homeForeground.maxNumberOfScans'));
     }
-    router.navigate('/modals-stack/upload-file-flow-modal');
+    router.navigate('/upload-file-flow');
   };
 
   const foregroundWrapperAnimatedStyle = useAnimatedStyle(() => {
@@ -99,7 +99,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           </View>
         </CardWrapper>
 
-        <View className="absolute top-[200px] w-[85%] flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] pb-[40px] dark:bg-charcoal-800">
+        <View className="flex-col absolute top-[200px] w-[85%] items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] pb-[40px] dark:bg-charcoal-800">
           <Text className="font-bold-nunito text-xl">
             {translate('home.homeForeground.heading')}
           </Text>

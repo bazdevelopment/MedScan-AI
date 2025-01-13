@@ -6,6 +6,7 @@ import * as functions from 'firebase-functions/v1';
 import { Request } from 'firebase-functions/v1/https';
 import ffmpeg from 'fluent-ffmpeg';
 
+import dayjs from '../dayjs';
 import {
   convertBufferToBase64,
   getBase64ImageFrames,
@@ -160,6 +161,8 @@ export const analyzeImage = async (req: Request, res: any) => {
       success: true,
       message: t.analyzeImage.analysisCompleted,
       interpretationResult: textResult,
+      promptMessage,
+      createdAt: dayjs().toISOString(),
     });
   } catch (error: any) {
     handleOnRequestError({
@@ -299,6 +302,8 @@ export const analyzeVideo = async (req: Request, res: any) => {
       success: true,
       message: t.analyzeVideo.analysisCompleted,
       interpretationResult: textResult,
+      promptMessage,
+      createdAt: dayjs().toISOString(),
     });
   } catch (error) {
     handleOnRequestError({

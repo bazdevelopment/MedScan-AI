@@ -1,12 +1,9 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 
 import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
-import { colors } from '@/ui';
-import { ArrowLeft } from '@/ui/assets/icons';
 
-import ProgressBar from '../progress-bar';
 import { type IFlow } from './flow-modal.interface';
 
 const FlowModal = ({
@@ -18,47 +15,24 @@ const FlowModal = ({
   children,
 }: IFlow) => {
   const totalSteps = React.Children.toArray(children).length;
+
   const isFirstScreenDisplayed = currentScreenIndex === 0;
   const isLastScreenDisplayed = currentScreenIndex === totalSteps - 1;
 
   const goToNextScreen = (data: ICollectedData) => onGoNext(data);
   const currentActiveScreen =
     React.Children.toArray(children)[currentScreenIndex];
-
   const wrappedCurrentChild = React.isValidElement(currentActiveScreen)
     ? React.cloneElement(currentActiveScreen, {
         goToNextScreen,
         collectedData,
-        ...(isLastScreenDisplayed ? onFinish : null),
+        onGoBack: isFirstScreenDisplayed ? router.back : onGoBack,
+        currentScreenIndex: currentScreenIndex + 1,
+        totalSteps,
       })
     : currentActiveScreen;
 
-  return (
-    <View className="flex-1">
-      <View className="bg-primary-900 px-[16px] dark:bg-charcoal-900">
-        <View className="mt-8 flex-row items-center">
-          {!isLastScreenDisplayed && (
-            <>
-              <TouchableOpacity
-                onPress={isFirstScreenDisplayed ? router.back : onGoBack}
-              >
-                <ArrowLeft color={colors.white} width={24} height={24} />
-              </TouchableOpacity>
-
-              <View className="flex-1 flex-row justify-center ">
-                <ProgressBar
-                  currentStep={currentScreenIndex + 1}
-                  totalSteps={totalSteps}
-                  isTextShown
-                />
-              </View>
-            </>
-          )}
-        </View>
-      </View>
-      {wrappedCurrentChild}
-    </View>
-  );
+  return <View className="flex-1">{wrappedCurrentChild}</View>;
 };
 
 export default FlowModal;

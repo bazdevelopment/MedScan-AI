@@ -1,4 +1,5 @@
 /* eslint-disable max-lines-per-function */
+import { useScrollToTop } from '@react-navigation/native';
 import { FlashList } from '@shopify/flash-list';
 import { router } from 'expo-router';
 import React, { useMemo, useRef } from 'react';
@@ -27,7 +28,6 @@ import { colors, Text } from '@/ui';
 
 const Reports = () => {
   const scrollViewRef = useRef<FlashList<any>>(null);
-
   const {
     i18n: { language },
   } = useTranslation();
@@ -59,6 +59,7 @@ const Reports = () => {
   const { panResponder } = useWeekPanSwipe({
     onChangeWeekOffset: changeWeekOffset,
   });
+  useScrollToTop(scrollViewRef);
   const { isRefetching, onRefetch } = useDelayedRefetch(refetch);
 
   // Helper function to transform daily reports
@@ -87,8 +88,6 @@ const Reports = () => {
 
   // Usage
   const sections = getSections(interpretationData);
-
-  // useScrollToTop(scrollViewRef);
 
   const onScrollToIndex = (index: number) => {
     scrollViewRef?.current?.scrollToIndex({ index, animated: true });

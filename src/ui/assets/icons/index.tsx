@@ -11,6 +11,7 @@ export * from './close';
 export * from './document';
 export * from './download';
 export * from './edit';
+export * from './eye';
 export * from './feed';
 export * from './gallery';
 export * from './github';

@@ -1,38 +1,19 @@
 import * as React from 'react';
-import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
 import { type ISvgProps } from '@/types/svg-types';
 
 export const WandSparkle = (props: ISvgProps) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
+    width={25}
+    height={25}
     fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    className="lucide lucide-wand-sparkles"
     {...props}
   >
     <Path
-      stroke={props.withLinearGradient ? 'url(#a)' : '#7CD0FC'}
-      d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72M14 7l3 3M5 6v4M19 14v4M10 2v2M7 8H3M21 16h-4M11 3H9"
+      fill={props.color || '#fff'}
+      d="M14.208 7.55 3.188 18.573a2.562 2.562 0 0 0 3.62 3.621l11.022-11.02-3.622-3.622Zm1.258 3.623-2.162 2.162-1.254-1.258 2.162-2.162 1.254 1.258Zm-9.84 9.84a.909.909 0 0 1-1.254 0 .888.888 0 0 1 0-1.255l6.495-6.495 1.258 1.258-6.499 6.492Zm14.645-5.903 2.23 1.116-2.23 1.118-1.115 2.226-1.114-2.226-2.23-1.119 2.23-1.115 1.114-2.229 1.115 2.23ZM8.01 7.34 5.78 6.224l2.23-1.114 1.114-2.23 1.114 2.23 2.23 1.114-2.23 1.114-1.114 2.23L8.01 7.34Zm10.589-.557-1.95-.976 1.95-.976.975-1.95.976 1.95 1.95.976-1.95.976-.976 1.95-.975-1.95Z"
     />
-    <Defs>
-      <LinearGradient
-        id="a"
-        x1={4.875}
-        x2={25.685}
-        y1={3.25}
-        y2={12.576}
-        gradientUnits="userSpaceOnUse"
-      >
-        <Stop stopColor="#7CD0FC" />
-        <Stop offset={1} stopColor="#A935F8" />
-      </LinearGradient>
-    </Defs>
   </Svg>
 );

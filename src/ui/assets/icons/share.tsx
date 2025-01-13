@@ -10,6 +10,7 @@ export const ShareIcon = (props: ISvgProps) => (
     height={21}
     fill="none"
     viewBox="0 0 24 24"
+    color={props.color || '#18181B'}
     {...props}
   >
     <Path

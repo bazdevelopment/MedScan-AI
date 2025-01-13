@@ -1,5 +1,4 @@
 /* eslint-disable max-lines-per-function */
-import { useScrollToTop } from '@react-navigation/native';
 import { router } from 'expo-router';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
@@ -89,11 +88,13 @@ export default function Home() {
     snapToEdge: true,
   });
 
-  useScrollToTop(scrollViewRef);
+  //! make sure this functionality is tested properly and also add protection when there is no internet connection
+  // const { shouldRefresh } = useCustomScrollToTop(scrollViewRef);
 
   return (
     <PullToRefresh
       onRefresh={onFullSync}
+      // shouldRefresh={false}
       refreshingComponent={
         <View
           style={{
@@ -122,7 +123,7 @@ export default function Home() {
         <View className="mt-14">
           <FreeTierStatus
             className="dark:bg-blackBeauty mx-4 mt-10 rounded-xl bg-white p-4"
-            scansLeft={10}
+            scansLeft={userInfo?.scansRemaining}
             onUpgrade={() => console.log('on upgrade')}
           />
 
@@ -185,9 +186,9 @@ const ReportsList = ({
           message="No recent reports yet!"
           primaryAction={{
             label: 'Upload now',
-            icon: <UploadIcon />,
+            icon: <UploadIcon color={colors.white} />,
             variant: 'default',
-            onPress: () => console.log('ceva'),
+            onPress: () => router.navigate('/upload-file-flow'),
           }}
         />
       ) : (

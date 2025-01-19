@@ -22,12 +22,12 @@ const ScanReportCard = ({
   interpretation,
   mimeType,
   url,
-  promptMessage = translate('components.ScanReportCard.promptMessage'),
   title,
   onEditTitle,
   docId,
   isUpdateTitlePending,
   language,
+  dateFormat = 'MMMM D, YYYY',
 }: IScanReportCard) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editableTitle, setEditableTitle] = useState(title);
@@ -57,11 +57,8 @@ const ScanReportCard = ({
   return (
     <>
       <View className="mb flex-row justify-between">
-        <Text className="font-semibold-nunito text-xs text-primary-900">
-          {dayjs(createdAt)
-            .locale(language)
-            .format('MMMM D, YYYY')
-            .toUpperCase()}
+        <Text className="font-bold-nunito text-xs text-primary-900">
+          {dayjs(createdAt).locale(language).format(dateFormat).toUpperCase()}
         </Text>
 
         <SharePdfActionButtons
@@ -77,11 +74,6 @@ const ScanReportCard = ({
             docId: 'DOC123',
           })}
         />
-        {/* <View className="rounded bg-gray-100">
-            <Text className="text-sm text-gray-600">
-              {mimeType.toUpperCase()}
-            </Text>
-          </View> */}
       </View>
       <View className="mt-2 flex-row items-center">
         {/* Image Section */}
@@ -130,7 +122,6 @@ const ScanReportCard = ({
                 </Text>
               )}
             </View>
-            {/* <TouchableOpacity onPress={handleEditToggle}> */}
             {isEditing && (
               <Icon
                 icon={<TickCircle top={-5} />}
@@ -149,18 +140,7 @@ const ScanReportCard = ({
                 disabled={isUpdateTitlePending}
               />
             )}
-
-            {/* </TouchableOpacity> */}
           </View>
-          {/* Prompt Message */}
-          {/* {!!promptMessage && (
-              <Text
-                className="mb-1 bg-gray-50 text-sm text-gray-600"
-                numberOfLines={1}
-              >
-                {promptMessage}
-              </Text>
-            )} */}
 
           {/* Interpretation */}
           {interpretation && (

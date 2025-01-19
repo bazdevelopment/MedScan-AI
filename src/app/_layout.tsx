@@ -111,7 +111,7 @@ export default function RootLayout() {
                 {...props}
                 title={translate('rootLayout.screens.scanInterpretation.title')}
                 className="pt-16"
-                titlePosition="left"
+                titlePosition="center"
                 onGoBack={router.back}
               />
             ),

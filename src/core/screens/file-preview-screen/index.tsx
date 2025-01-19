@@ -8,16 +8,15 @@ import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
 import { useDecrementScans } from '@/api/user/user.hooks';
+import AttachmentPreview from '@/components/attachment-preview';
 import CustomHeader from '@/components/cusom-header';
-import CustomModal from '@/components/custom-modal';
 import ScanningModal from '@/components/image-scanner-modal';
 import ProgressBar from '@/components/progress-bar';
 import PromptSection from '@/components/prompt-section';
-import VideoPlayer from '@/components/video';
 import { useModal } from '@/core/hooks/use-modal';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
-import { Button, colors, Image, Text } from '@/ui';
+import { Button, colors } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
 
 import { type IFilePreviewScreen } from './file-preview-screen.interface';
@@ -131,6 +130,9 @@ const FilePreviewScreen = ({
 
   const isVideo = checkIsVideo(collectedData.fileExtension!);
 
+  const mediaSource = collectedData.fileBase64
+    ? getBase64ImageUri(collectedData.fileBase64)
+    : (collectedData.fileUri as string);
   const {
     mutate: handleAnalyzeImageUsingAi,
     error: errorAnalyzeImage,
@@ -184,34 +186,16 @@ const FilePreviewScreen = ({
         </View>
 
         <View className="px-6 pt-10 dark:bg-black">
-          <View className=" w-full rounded-[25px] border-4 border-primary-300">
-            {isVideo ? (
-              <VideoPlayer
-                videoSource={collectedData.fileUri as string}
-                onTapToView={openModal}
-              />
-            ) : (
-              <Image
-                className="z-1 h-[200px] w-full rounded-[23px]"
-                source={{
-                  uri: collectedData.fileBase64
-                    ? getBase64ImageUri(collectedData.fileBase64)
-                    : (collectedData.fileUri as string),
-                }}
-                contentFit="cover"
-                onTapToView={openModal}
-              />
-            )}
-
-            <View className="dark:bg-blackEerie top-[-35px] z-[-1] mb-[-35px] flex-row justify-between rounded-[22px] border-primary-700 bg-primary-900 px-4 pb-3 pt-[45px]">
-              <Text className="font-semibold-nunito text-sm text-white">
-                {collectedData.fileExtension}
-              </Text>
-              <Text className="font-semibold-nunito text-sm text-white">
-                Today
-              </Text>
-            </View>
-          </View>
+          <AttachmentPreview
+            filePath={mediaSource}
+            isVideo={isVideo}
+            additionalImageStyles="h-[180px]"
+            additionalVideoStyles={{
+              height: 180,
+              width: '100%',
+              borderRadius: 20,
+            }}
+          />
         </View>
         <View className="mx-4 mt-4 rounded-t-3xl ">
           <PromptSection
@@ -249,26 +233,6 @@ const FilePreviewScreen = ({
             onRetry={onAnalyze}
           />
         )}
-
-        {/* Modal */}
-        <CustomModal visible={isMediaModalVisible} onClose={closeModal}>
-          {isVideo ? (
-            <View className="w-full">
-              <VideoPlayer videoSource={{ uri: collectedData.fileUri }} />
-            </View>
-          ) : (
-            <View className="h-[430px] w-full">
-              <Image
-                source={{
-                  uri: collectedData.fileBase64
-                    ? getBase64ImageUri(collectedData.fileBase64)
-                    : (collectedData.fileUri as string),
-                }}
-                className="h-full w-full rounded-lg"
-              />
-            </View>
-          )}
-        </CustomModal>
       </ScrollView>
     </KeyboardStickyView>
   );

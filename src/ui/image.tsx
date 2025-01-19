@@ -8,6 +8,7 @@ import TapToViewLabel from '@/components/tap-to-view-label';
 export type ImgProps = ImageProps & {
   className?: string;
   onTapToView?: () => void;
+  showAdditionalInfo?: boolean;
 };
 
 cssInterop(NImage, { className: 'style' });
@@ -17,6 +18,7 @@ export const Image = ({
   className,
   placeholder = 'L6PZfSi_.AyE_3t7t7R**0o#DgR4',
   onTapToView,
+  showAdditionalInfo,
   ...props
 }: ImgProps) => {
   return (
@@ -30,7 +32,7 @@ export const Image = ({
       {!!onTapToView && (
         <TapToViewLabel
           onTapToView={onTapToView}
-          className="absolute bottom-16 right-6"
+          className={`absolute ${showAdditionalInfo ? 'bottom-16' : 'bottom-6'} right-6`}
         />
       )}
     </>

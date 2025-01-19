@@ -6,18 +6,14 @@ import { type ISvgProps } from '@/types/svg-types';
 export const DocumentIcon = (props: ISvgProps) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
+    width={25}
+    height={25}
     fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    className="lucide lucide-file-text"
     {...props}
   >
-    <Path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-    <Path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8" />
+    <Path
+      fill="#fff"
+      d="M16.92 14.425a.833.833 0 0 1-.834.833H9.42a.833.833 0 1 1 0-1.667h6.667a.834.834 0 0 1 .833.834Zm-3.334 2.5H9.42a.833.833 0 1 0 0 1.666h4.166a.833.833 0 1 0 0-1.667Zm7.5-5.43v7.096a4.172 4.172 0 0 1-4.166 4.167H8.586A4.172 4.172 0 0 1 4.42 18.59V6.924a4.172 4.172 0 0 1 4.166-4.166h3.763a5.799 5.799 0 0 1 4.125 1.708l2.903 2.905a5.791 5.791 0 0 1 1.71 4.124Zm-5.79-5.85a4.173 4.173 0 0 0-.876-.65V8.59a.833.833 0 0 0 .833.833h3.597a4.157 4.157 0 0 0-.651-.875l-2.903-2.904Zm4.124 5.85c0-.137-.027-.269-.04-.404h-4.127a2.5 2.5 0 0 1-2.5-2.5V4.464c-.135-.013-.267-.04-.404-.04H8.586a2.5 2.5 0 0 0-2.5 2.5v11.667a2.5 2.5 0 0 0 2.5 2.5h8.334a2.5 2.5 0 0 0 2.5-2.5v-7.096Z"
+    />
   </Svg>
 );

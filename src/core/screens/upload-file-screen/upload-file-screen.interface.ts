@@ -10,6 +10,7 @@ export interface IUploadFileOptions {
   options: IGalleryOption[];
   onSelect: (method: string) => void;
   testID: string;
+  heading: string;
 }
 
 export interface IUploadFileScreen {

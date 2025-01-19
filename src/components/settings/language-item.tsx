@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import * as React from 'react';
 
 import { useUserPreferredLanguage } from '@/api/user/user.hooks';
@@ -24,18 +25,66 @@ export const LanguageItem = () => {
 
   const langs = React.useMemo(
     () => [
-      { label: translate('settings.languages.english'), value: 'en' },
-      { label: translate('settings.languages.mandarin_chinese'), value: 'zh' },
-      { label: translate('settings.languages.spanish'), value: 'es' },
-      { label: translate('settings.languages.hindi'), value: 'hi' },
-      { label: translate('settings.languages.arabic'), value: 'ar' },
-      { label: translate('settings.languages.portuguese'), value: 'pt' },
-      { label: translate('settings.languages.russian'), value: 'ru' },
-      { label: translate('settings.languages.japanese'), value: 'ja' },
-      { label: translate('settings.languages.korean'), value: 'ko' },
-      { label: translate('settings.languages.german'), value: 'de' },
-      { label: translate('settings.languages.french'), value: 'fr' },
-      { label: translate('settings.languages.romanian'), value: 'ro' },
+      // English - Most widely used global language, especially in business and internet
+      {
+        label: `${translate('settings.languages.english')} 🇺🇸`,
+        value: 'en',
+      },
+      // Mandarin Chinese - Largest number of native speakers
+      {
+        label: `${translate('settings.languages.mandarin_chinese')} 🇨🇳`,
+        value: 'zh',
+      },
+      // Hindi - Large number of speakers, growing digital presence
+      {
+        label: `${translate('settings.languages.hindi')} 🇮🇳`,
+        value: 'hi',
+      },
+      // Spanish - Widely spoken across multiple continents
+      {
+        label: `${translate('settings.languages.spanish')} 🇪🇸`,
+        value: 'es',
+      },
+      // Arabic - Widely used in multiple countries
+      {
+        label: `${translate('settings.languages.arabic')} 🇸🇦`,
+        value: 'ar',
+      },
+      // French - Major international language
+      {
+        label: `${translate('settings.languages.french')} 🇫🇷`,
+        value: 'fr',
+      },
+      // Portuguese - Significant global presence
+      {
+        label: `${translate('settings.languages.portuguese')} 🇵🇹`,
+        value: 'pt',
+      },
+      // German - Important in business and science
+      {
+        label: `${translate('settings.languages.german')} 🇩🇪`,
+        value: 'de',
+      },
+      // Japanese - Major economic power
+      {
+        label: `${translate('settings.languages.japanese')} 🇯🇵`,
+        value: 'ja',
+      },
+      // Russian - Regional importance
+      {
+        label: `${translate('settings.languages.russian')} 🇷🇺`,
+        value: 'ru',
+      },
+      // Korean - Growing global influence
+      {
+        label: `${translate('settings.languages.korean')} 🇰🇷`,
+        value: 'ko',
+      },
+      // Romanian
+      {
+        label: `${translate('settings.languages.romanian')} 🇷🇴`,
+        value: 'ro',
+      },
     ],
     [],
   );
@@ -57,6 +106,7 @@ export const LanguageItem = () => {
         options={langs}
         onSelect={onSelect}
         value={selectedLanguage?.value}
+        heading={translate('settings.language')}
       />
     </>
   );

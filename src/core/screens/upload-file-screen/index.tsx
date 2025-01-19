@@ -72,7 +72,7 @@ const UploadFileScreen = ({
         </Text>
 
         <TouchableOpacity
-          className="flex-col mx-8 items-center justify-center rounded-3xl border-4 border-primary-900 py-6"
+          className="mx-8 flex-col items-center justify-center rounded-3xl border-4 border-primary-900 py-6"
           onPress={modal.present}
         >
           <Gallery color={colors.primary[900]} width={32} height={42} top={1} />
@@ -112,6 +112,7 @@ const UploadFileScreen = ({
         testID="Upload file options id"
         onSelect={onSelectFileUploadMethod}
         ref={modal.ref}
+        heading="Choose a picture / video"
       />
     </>
   );
@@ -123,20 +124,20 @@ const galleryOptions = [
   {
     label: 'Gallery',
     id: 1,
-    icon: <Gallery width={27} height={27} />,
+    icon: <Gallery width={27} height={27} color={colors.primary[900]} />,
   },
   {
     label: 'Files',
     id: 2,
-    icon: <PaperClip width={27} height={27} />,
+    icon: <PaperClip width={27} height={27} color={colors.primary[900]} />,
   },
 ];
 
 export const UploadFileOptionsModal = React.forwardRef<
   BottomSheetModal,
   IUploadFileOptions
->(({ options, onSelect, testID }, ref) => {
-  const height = 200;
+>(({ options, onSelect, testID, heading }, ref) => {
+  const height = 230;
   const snapPoints = React.useMemo(() => [height], [height]);
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
@@ -146,20 +147,23 @@ export const UploadFileOptionsModal = React.forwardRef<
       <Modal
         ref={ref}
         index={0}
+        title={heading}
         snapPoints={snapPoints}
         backgroundStyle={{
           backgroundColor: isDark ? colors.neutral[800] : colors.white,
         }}
       >
-        <View className="mt-2 flex-row justify-center gap-10" testID={testID}>
+        <View className="mt-4 flex-row justify-center gap-10" testID={testID}>
           {options.map((option) => (
             <TouchableOpacity
               key={option.id}
-              className="h-[100px] w-[120px] items-center justify-center gap-3 rounded-2xl bg-slate-50 dark:bg-black"
+              className="h-[100px] w-[120px] items-center justify-center gap-3 rounded-2xl bg-primary-100 dark:bg-black"
               onPress={() => onSelect(option.label)}
             >
               {option.icon}
-              <Text className="text-center">{option.label} </Text>
+              <Text className="text-center font-semibold-nunito">
+                {option.label}{' '}
+              </Text>
             </TouchableOpacity>
           ))}
         </View>

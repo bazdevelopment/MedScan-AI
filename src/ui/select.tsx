@@ -5,7 +5,8 @@ import {
 } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
 import { useColorScheme } from 'nativewind';
-import * as React from 'react';
+import type { ComponentProps } from 'react';
+import React from 'react';
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import {
@@ -71,6 +72,7 @@ type OptionsProps = {
   onSelect: (option: OptionType) => void;
   value?: string | number;
   testID?: string;
+  heading?: string;
 };
 
 function keyExtractor(item: OptionType) {
@@ -78,20 +80,22 @@ function keyExtractor(item: OptionType) {
 }
 
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
-  ({ options, onSelect, value, isPending, testID }, ref) => {
-    const height = options.length * 70 + 100;
+  ({ options, onSelect, value, isPending, testID, heading }, ref) => {
+    const height =
+      options.length > 3 ? options.length * 70 : options.length * 70 + 150;
     const snapPoints = React.useMemo(() => [height], [height]);
     const { colorScheme } = useColorScheme();
     const isDark = colorScheme === 'dark';
 
     const renderSelectItem = React.useCallback(
       ({ item }: { item: OptionType }) => (
-        <Option
+        <SelectableLabel
           key={`select-item-${item.value}`}
-          label={item.label}
+          title={item.label}
           selected={value === item.value}
           onPress={() => onSelect(item)}
           testID={testID ? `${testID}-item-${item.value}` : undefined}
+          icon={item.icon}
         />
       ),
       [onSelect, value, testID],
@@ -101,13 +105,17 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
       <Modal
         ref={ref}
         index={0}
+        title={heading}
         snapPoints={snapPoints}
         backgroundStyle={{
-          backgroundColor: isDark ? colors.neutral[800] : colors.white,
+          backgroundColor: isDark ? colors.neutral[800] : colors.primary[50],
         }}
       >
         {isPending && <ActivityIndicator size="small" />}
         <List
+          className="mx-4"
+          contentContainerStyle={{ paddingBottom: 100 }}
+          showsVerticalScrollIndicator={false}
           data={options}
           keyExtractor={keyExtractor}
           renderItem={renderSelectItem}
@@ -274,3 +282,57 @@ const Check = ({ ...props }: SvgProps) => (
     />
   </Svg>
 );
+
+interface ISelectableLabel extends ComponentProps<typeof Pressable> {
+  title: string;
+  selected?: boolean;
+  icon?: React.ReactNode;
+  showIndicator?: boolean;
+  onPress?: () => void;
+}
+
+export const SelectableLabel: React.FC<ISelectableLabel> = ({
+  title,
+  selected = false,
+  icon,
+  showIndicator = true,
+  onPress,
+  ...props
+}) => {
+  return (
+    <Pressable
+      className={`
+        mt-5 flex-row items-center justify-between rounded-2xl
+         p-4
+        ${selected ? 'border-[3px] border-primary-500 bg-primary-900' : 'bg-primary-100 dark:bg-gray-700'}
+        active:bg-gray-100 dark:active:bg-gray-600
+      `}
+      onPress={onPress}
+      {...props}
+    >
+      <View className="flex-row items-center gap-3.5">
+        {icon && <View className="items-center justify-center">{icon}</View>}
+        <Text
+          className={`
+            text-base
+            ${selected ? 'font-semibold-nunito text-lg text-white' : 'font-semibold-nunito text-lg'}
+          `}
+        >
+          {title}
+        </Text>
+      </View>
+
+      {showIndicator && (
+        <View
+          className={`
+            h-5 w-5 rounded-full
+            ${selected ? 'border-4 border-white' : ' border border-gray-300 bg-white'}
+            items-center justify-center
+          `}
+        >
+          {selected && <View className="h-2 w-2 rounded-full bg-primary-900" />}
+        </View>
+      )}
+    </Pressable>
+  );
+};

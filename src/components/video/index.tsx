@@ -8,32 +8,35 @@ export default function VideoPlayer({
   videoSource,
   additionalVideoStyles = styles.video,
   onTapToView,
+  showAdditionalInfo,
 }: {
   videoSource: VideoSource;
   additionalVideoStyles?: ViewStyle;
   className?: string;
   onTapToView?: () => void;
+  showAdditionalInfo?: boolean;
 }) {
   const ref = useRef(null);
   // const [isPlaying, setIsPlaying] = useState(true);
   const player = useVideoPlayer(videoSource, (player) => {
     player.loop = true;
-    player.play();
+    // player.play();
   });
 
   return (
-    <View className="justify-center-items-center">
+    <View>
       <VideoView
         ref={ref}
         style={additionalVideoStyles}
         player={player}
         allowsFullscreen
         allowsPictureInPicture
+        contentFit="fill"
       />
       {!!onTapToView && (
         <TapToViewLabel
           onTapToView={onTapToView}
-          className="absolute bottom-10 right-6"
+          className={`absolute ${showAdditionalInfo ? 'bottom-10' : 'bottom-8'} right-6`}
         />
       )}
     </View>

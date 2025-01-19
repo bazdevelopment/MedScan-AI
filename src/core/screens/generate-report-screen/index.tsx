@@ -27,7 +27,7 @@ const GenerateReportScreen = () => {
 
   return (
     <SafeAreaView className="dark:bg-blackEerie flex-1 bg-gray-100">
-      <ScrollView className="flex-1">
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View className="dark:bg-blackEerie m-4 rounded-3xl bg-white p-3">
           {/* Header Section */}
           <GradientText

@@ -108,14 +108,14 @@ const Reports = () => {
 
   const renderItem = ({ item }) => (
     <View className="mb-2 mt-4">
-      <View className="dark:bg-blackBeauty flex-row items-center rounded-md bg-slate-100 p-2">
+      <View className="flex-row items-center rounded-md bg-slate-100 p-2 dark:bg-blackBeauty">
         <Text className="font-bold-nunito text-xl text-gray-800">
           {formatDate(item.date, DATE_FORMAT.weekDayMonth, language)}
         </Text>
       </View>
 
       {!item.records.length ? (
-        <View className="dark:bg-blackEerie ml-1 mt-4 rounded-lg bg-gray-50 ">
+        <View className="ml-1 mt-4 rounded-lg bg-gray-50 dark:bg-blackEerie">
           <Text className="text-md text-gray-500">
             {translate('reports.noReportsAvailable')}
           </Text>
@@ -128,7 +128,7 @@ const Reports = () => {
                 <CardWrapper
                   key={record.id}
                   chevronColor={colors.primary[900]}
-                  className="dark:bg-blackBeauty rounded-xl bg-white p-4"
+                  className="rounded-xl bg-white p-4 dark:bg-blackBeauty"
                   isEntirelyClickable
                   onPress={() =>
                     router.push({
@@ -148,6 +148,7 @@ const Reports = () => {
                         language,
                       })
                     }
+                    dateFormat="hh:mm A"
                   />
                 </CardWrapper>
               );
@@ -158,7 +159,7 @@ const Reports = () => {
   );
 
   return (
-    <View className="dark:bg-blackEerie flex-1 bg-primary-50">
+    <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
       <WeekBlock
         className="mt-4 px-4"
         reportSections={sections}

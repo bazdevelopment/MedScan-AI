@@ -97,7 +97,7 @@ interface Props extends ButtonVariants, Omit<PressableProps, 'disabled'> {
   className?: string;
   textClassName?: string;
   icon?: ReactElement;
-  iconPosition: 'left' | 'right';
+  iconPosition?: 'left' | 'right';
   withGradientText?: boolean;
 }
 

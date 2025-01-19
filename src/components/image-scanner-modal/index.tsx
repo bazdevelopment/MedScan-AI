@@ -30,7 +30,9 @@ const ScanningModal = ({
         <View className="flex-1 items-center justify-center">
           <View>
             {isVideo ? (
-              <VideoPlayer videoSource={filePath as string} />
+              <View className="h-[300px] w-[300px]">
+                <VideoPlayer videoSource={filePath as string} />
+              </View>
             ) : (
               <Image
                 source={{

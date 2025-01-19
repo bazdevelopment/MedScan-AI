@@ -122,7 +122,7 @@ export default function Home() {
       >
         <View className="mt-14">
           <FreeTierStatus
-            className="dark:bg-blackBeauty mx-4 mt-10 rounded-xl bg-white p-4"
+            className="mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty"
             scansLeft={userInfo?.scansRemaining}
             onUpgrade={() => console.log('on upgrade')}
           />
@@ -198,7 +198,7 @@ const ReportsList = ({
               <CardWrapper
                 key={record.id}
                 chevronColor={colors.primary[900]}
-                className="dark:bg-blackBeauty rounded-xl bg-white p-4"
+                className="rounded-xl bg-white p-4 dark:bg-blackBeauty"
                 onPress={() =>
                   router.push({
                     pathname: '/scan-interpretation/[id]',

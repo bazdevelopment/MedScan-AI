@@ -1,22 +1,19 @@
 /* eslint-disable max-lines-per-function */
-import { BlurView } from 'expo-blur';
+import dayjs from 'dayjs';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
 
 import { useInterpretationById } from '@/api/interpretation/interpretation.hooks';
-import CustomModal from '@/components/custom-modal';
+import AttachmentPreview from '@/components/attachment-preview';
 import Icon from '@/components/icon';
-import VideoPlayer from '@/components/video';
 import { useSelectedLanguage } from '@/core';
-import { useModal } from '@/core/hooks/use-modal';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
-import { colors, Image, Text } from '@/ui';
-import { CalendarIcon, DocumentIcon, PlayerIcon } from '@/ui/assets/icons';
+import { colors, Text } from '@/ui';
+import { CalendarIcon, DocumentIcon } from '@/ui/assets/icons';
 
 const ScanInterpretationDetailsScreen = () => {
   const { id: documentId } = useLocalSearchParams();
-  const { isVisible: isMediaModalVisible, openModal, closeModal } = useModal();
   const { language } = useSelectedLanguage();
 
   const { data, isPending } = useInterpretationById({
@@ -27,120 +24,98 @@ const ScanInterpretationDetailsScreen = () => {
   const isVideo = checkIsVideo(data?.record?.mimeType);
   if (isPending) {
     return (
-      <View className="flex-1 items-center justify-center bg-white">
-        <Text className="text-lg text-gray-500">Loading...</Text>
+      <View className="flex-1 items-center justify-center bg-primary-50 dark:bg-blackEerie">
+        <ActivityIndicator />
       </View>
     );
   }
 
-  const renderMediaPreview = () => (
-    <TouchableOpacity
-      onPress={openModal}
-      className="mt-4 overflow-hidden rounded-xl shadow-lg"
-    >
-      {isVideo ? (
-        <View className="h-48 items-center justify-center rounded-xl bg-gray-900">
-          <Icon icon={<PlayerIcon />} size={60} color={colors.danger[400]} />
-          <Text className="mt-2 text-white">Play Video</Text>
-        </View>
-      ) : (
-        <View className="h-48 w-full overflow-hidden rounded-xl">
-          <Image source={{ uri: data.record.url }} className="h-full w-full" />
-          <BlurView intensity={60} className="absolute bottom-0 w-full p-2">
-            <Text className="text-sm">Tap to view full size</Text>
-          </BlurView>
-        </View>
-      )}
-    </TouchableOpacity>
-  );
-
   return (
-    <View className="flex-1 bg-gray-50">
+    <View className="flex-1 bg-slate-50 px-2 pt-8 dark:bg-blackEerie">
       {/* Content */}
-      <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* Media Preview */}
-        {data.record.url && renderMediaPreview()}
-
+        {data.record.url && (
+          <AttachmentPreview
+            showAdditionalInfo={false}
+            filePath={data.record.url}
+            isVideo={isVideo}
+            className="mx-4"
+            additionalImageStyles="h-[180px]"
+            additionalVideoStyles={{
+              height: 180,
+              width: '100%',
+              borderRadius: 20,
+            }}
+          />
+        )}
         {/* Document Info Card */}
-        <View className="mt-6 rounded-2xl bg-white p-5 shadow-md">
-          <View className="mb-4 flex-row items-center justify-between">
+        <View className="mx-4 mt-6 rounded-2xl bg-primary-100 dark:bg-blackBeauty">
+          <View className="flex-row items-center justify-between rounded-t-2xl bg-primary-900 p-4">
             <View className="flex-row items-center">
               <Icon
-                icon={<DocumentIcon color={colors.black} />}
-                size={20}
+                icon={<DocumentIcon color={colors.white} />}
+                size={25}
                 color={colors.white}
               />
-              <Text className="ml-2 text-base font-medium">
+              <Text className="ml-2 font-semibold-nunito text-sm text-white">
                 {data.record.mimeType.toUpperCase()}
               </Text>
             </View>
             <View className="flex-row items-center">
               <Icon
-                icon={<CalendarIcon color={colors.black} />}
-                size={20}
-                color={colors.white}
+                icon={<CalendarIcon color={colors.white} />}
+                size={25}
+                color={colors.transparent}
               />
-              <Text className="ml-2 text-sm text-gray-500">
-                {new Date(data.record.createdAt).toLocaleDateString('ro', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                })}
+              <Text className="ml-2 text-sm text-white">
+                {dayjs(data.record.createdAt)
+                  .locale(language)
+                  .format('MMMM D, YYYY')}
               </Text>
             </View>
           </View>
 
-          <View className="my-4 h-px bg-gray-100" />
-
-          <View className="mb-2">
-            <Text className="text-xltext-gray-500 mb-1">Title</Text>
-            <Text className="mb-4 text-xl">{data?.record?.title}</Text>
-            <Text className="mb-1 text-sm text-gray-500">Document ID</Text>
-            <Text className="font-mono text-base">{documentId}</Text>
+          <View className="p-4">
+            <Text className="mb-1 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
+              Title
+            </Text>
+            <Text className="font-semibold-nunito text-base">
+              {data?.record?.title || 'Unnamed report'}
+            </Text>
           </View>
         </View>
 
         {/* Interpretation Section */}
-        <View className="my-6 rounded-2xl bg-white p-5 shadow-md">
-          <View className="mb-6">
-            <Text className="mb-2 font-semibold-nunito text-lg text-indigo-600">
-              Question
+        <View className="mx-4 my-6 rounded-2xl bg-primary-100 dark:bg-blackBeauty">
+          <View className="rounded-t-2xl bg-primary-900 p-4">
+            <Text className="font-semibold-nunito text-base text-white">
+              Scan details
             </Text>
-            <View className="rounded-xl bg-gray-50 p-4">
-              <Text className="text-base text-gray-700">
-                {data.record.promptMessage || 'No question provided'}
+          </View>
+          <View className="p-4">
+            <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
+              Your input
+            </Text>
+            <View className="rounded-xl">
+              <Text className="text-lg">
+                {data.record.promptMessage || '-'}
               </Text>
             </View>
           </View>
 
-          <View>
-            <Text className="mb-2 font-semibold-nunito text-lg text-indigo-600">
+          <View className="-mt-4 p-4">
+            <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
               Interpretation
             </Text>
-            <View className="rounded-xl bg-gray-50 p-4">
-              <Text className="text-base text-gray-700">
+            <View className="rounded-xl">
+              <Text className="text-lg">
                 {data.record.interpretationResult}
               </Text>
             </View>
           </View>
         </View>
       </ScrollView>
-
-      {/* Modal */}
-      <CustomModal visible={isMediaModalVisible} onClose={closeModal}>
-        {isVideo ? (
-          <View className="h-72 w-full">
-            <VideoPlayer videoSource={{ uri: data.record.url }} />
-          </View>
-        ) : (
-          <View className="h-96 w-full">
-            <Image
-              source={{ uri: data.record.url }}
-              className="h-full w-full rounded-lg"
-            />
-          </View>
-        )}
-      </CustomModal>
     </View>
   );
 };

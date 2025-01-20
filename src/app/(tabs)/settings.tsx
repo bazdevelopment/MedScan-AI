@@ -16,16 +16,11 @@ import { logout } from '@/api/user/user.requests';
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
+import { ShareItem } from '@/components/settings/share-item';
 import { ThemeItem } from '@/components/settings/theme-item';
 import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, ScrollView, View } from '@/ui';
-import {
-  Github,
-  LogoutIcon,
-  Rate,
-  ShareIcon,
-  Website,
-} from '@/ui/assets/icons';
+import { Github, LogoutIcon, Rate, Website } from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -46,7 +41,7 @@ export default function Settings() {
   const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
 
   return (
-    <View className="dark:bg-blackEerie mt-[-15px] flex-1 bg-primary-50">
+    <View className="mt-[-15px] flex-1 bg-primary-50 dark:bg-blackEerie">
       {/* <FocusAwareStatusBar /> */}
 
       <ScrollView ref={scrollViewRef}>
@@ -66,11 +61,7 @@ export default function Settings() {
           </ItemsContainer>
 
           <ItemsContainer title="settings.support_us">
-            <Item
-              text="settings.share"
-              icon={<ShareIcon color={iconColor} />}
-              onPress={() => router.navigate('/share')}
-            />
+            <ShareItem />
             <Item
               text="settings.rate"
               icon={<Rate color={iconColor} />}

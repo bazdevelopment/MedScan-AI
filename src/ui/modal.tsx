@@ -167,7 +167,7 @@ const getDetachedProps = (detached: boolean) => {
 
 const ModalHeader = React.memo(({ title, dismiss }: ModalHeaderProps) => {
   return (
-    <View className="mx-6 mb-2 flex-row items-center justify-between">
+    <View className="flex-row mx-6 -mt-2 mb-4 items-center justify-between">
       {title && (
         <View className="flex-1">
           <Text className="font-semibold-nunito text-lg text-black dark:text-white">
@@ -175,7 +175,7 @@ const ModalHeader = React.memo(({ title, dismiss }: ModalHeaderProps) => {
           </Text>
         </View>
       )}
-      <View className="flex-1 flex-row justify-end">
+      <View className="flex-row flex-1 justify-end">
         <CloseButton close={dismiss} />
       </View>
     </View>

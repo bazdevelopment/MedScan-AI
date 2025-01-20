@@ -166,13 +166,7 @@ export default function RootLayout() {
             headerBackTitle: translate('general.back'),
           }}
         />
-        <Stack.Screen
-          name="share"
-          options={{
-            title: translate('rootLayout.screens.share.title'),
-            headerBackTitle: translate('general.back'),
-          }}
-        />
+
         <Stack.Screen
           name="rate"
           options={{

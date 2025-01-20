@@ -8,6 +8,7 @@ export * from './chevron-left';
 export * from './chevron-left-rounded';
 export * from './chevron-right-rounded';
 export * from './close';
+export * from './copy-link';
 export * from './document';
 export * from './download';
 export * from './edit';

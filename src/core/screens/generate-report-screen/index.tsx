@@ -26,9 +26,9 @@ const GenerateReportScreen = () => {
   const { language } = useSelectedLanguage();
 
   return (
-    <SafeAreaView className="dark:bg-blackEerie flex-1 bg-gray-100">
+    <SafeAreaView className="flex-1 bg-gray-100 dark:bg-blackEerie">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        <View className="dark:bg-blackEerie m-4 rounded-3xl bg-white p-3">
+        <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
           {/* Header Section */}
           <GradientText
             className="mb-10 mt-2 text-center font-bold-nunito text-xl text-primary-900"
@@ -51,7 +51,7 @@ const GenerateReportScreen = () => {
           </Text>
 
           {/* Terms of Service */}
-          <View className="dark:bg-blackBeauty mb-6 rounded-xl bg-primary-50 p-4">
+          <View className="mb-6 rounded-xl bg-primary-50 p-4 dark:bg-blackBeauty">
             <Text className="font-regular-nunito mb-4 text-lg leading-8">
               {interpretationResult}
             </Text>

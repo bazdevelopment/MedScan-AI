@@ -12,7 +12,7 @@ import CustomHeader from '@/components/cusom-header';
 import ProgressBar from '@/components/progress-bar';
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
 import { translate } from '@/core/i18n';
-import { Button, colors, Modal, Text, useModal } from '@/ui';
+import { Button, colors, Modal, RoundedButton, Text, useModal } from '@/ui';
 import { Camera, Gallery, PaperClip } from '@/ui/assets/icons';
 import HorizontalLine from '@/ui/horizontal-line';
 
@@ -155,16 +155,12 @@ export const UploadFileOptionsModal = React.forwardRef<
       >
         <View className="mt-4 flex-row justify-center gap-10" testID={testID}>
           {options.map((option) => (
-            <TouchableOpacity
+            <RoundedButton
+              icon={option.icon}
               key={option.id}
-              className="h-[100px] w-[120px] items-center justify-center gap-3 rounded-2xl bg-primary-100 dark:bg-black"
+              label={option.label}
               onPress={() => onSelect(option.label)}
-            >
-              {option.icon}
-              <Text className="text-center font-semibold-nunito">
-                {option.label}{' '}
-              </Text>
-            </TouchableOpacity>
+            />
           ))}
         </View>
       </Modal>

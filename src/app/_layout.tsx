@@ -174,6 +174,13 @@ export default function RootLayout() {
             headerBackTitle: translate('general.back'),
           }}
         />
+
+        <Stack.Screen
+          name="welcome"
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="profile"
           options={{

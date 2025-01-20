@@ -11,13 +11,14 @@ import {
   useSendIndividualPushNotification,
 } from '@/api/push-notifications/push-notifications.hooks';
 import { useUploadTermsOfService } from '@/api/terms-of-service/terms-of-service.hooks';
-import { useUser } from '@/api/user/user.hooks';
+import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import { logout } from '@/api/user/user.requests';
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
 import { ShareItem } from '@/components/settings/share-item';
 import { ThemeItem } from '@/components/settings/theme-item';
+import Toast from '@/components/toast';
 import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, ScrollView, View } from '@/ui';
 import { Github, LogoutIcon, Rate, Website } from '@/ui/assets/icons';
@@ -27,6 +28,8 @@ export default function Settings() {
   const { language } = useSelectedLanguage();
   const { data: userInfo } = useUser(language);
 
+  const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
+    useUpdateUser();
   const scrollViewRef = useRef(null);
   const iconColor = colorScheme === 'dark' ? colors.neutral[50] : colors.black;
 
@@ -39,6 +42,20 @@ export default function Settings() {
 
   const { mutate: onUploadTermsOfService } = useUploadTermsOfService();
   const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
+
+  const handleLogout = async () => {
+    await onUpdateUser({
+      language,
+      userId: userInfo.userId,
+      fieldsToUpdate: {
+        verificationCode: '',
+        verificationCodeExpiry: '',
+        isOtpVerified: false,
+      },
+    })
+      .then(() => logout())
+      .catch(() => Toast.error('Logout failed. Please try again.'));
+  };
 
   return (
     <View className="mt-[-15px] flex-1 bg-primary-50 dark:bg-blackEerie">
@@ -97,11 +114,12 @@ export default function Settings() {
           <Button
             label={translate('settings.logout')}
             icon={<LogoutIcon width={30} height={30} />}
+            loading={isPendingUpdateUser}
             variant="destructive"
             className="mt-4 h-[55px] justify-start pl-5"
             textClassName="font-semibold-nunito text-lg"
             iconPosition="left"
-            onPress={logout}
+            onPress={handleLogout}
           />
 
           {__DEV__ && (

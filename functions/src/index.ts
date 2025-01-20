@@ -67,6 +67,8 @@ export const updateUserSubscription = euFuntions.https.onCall(
   userFunctions.updateUserSubscription,
 );
 
+export const updateUser = euFuntions.https.onCall(userFunctions.updateUser);
+
 export const sendVerificationCodeViaEmail = euFuntions.https.onCall(
   userFunctions.sendEmailVerification,
 );

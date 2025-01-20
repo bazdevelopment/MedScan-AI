@@ -186,4 +186,10 @@ export const es: ITranslation = {
       'No se encontraron tokens de Expo válidos. No se pueden enviar notificaciones.',
     generalError: 'No se pudo enviar la notificación.',
   },
+
+  updateUser: {
+    successUpdatedUser: 'Usuario actualizado con éxito.',
+    updateUserError:
+      'No se pudo actualizar el registro del usuario. Por favor, inténtelo de nuevo.',
+  },
 };

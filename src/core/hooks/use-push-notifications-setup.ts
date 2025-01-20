@@ -126,7 +126,7 @@ export const usePushNotificationSetup = () => {
 
   useEffect(() => {
     if (appState === 'active') enablePushNotifications();
-  }, [appState]);
+  }, [appState, enablePushNotifications]);
 
   return {
     enablePushNotifications,

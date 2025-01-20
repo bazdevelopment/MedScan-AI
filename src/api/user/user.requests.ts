@@ -131,6 +131,30 @@ export const updateUserPreferredLanguage = async ({
   }
 };
 
+export const updateUserInfo = async ({
+  language,
+  userId,
+  fieldsToUpdate,
+}: {
+  language: string;
+  userId: string;
+  fieldsToUpdate: object;
+}) => {
+  try {
+    const onUpdateUserInfo =
+      firebaseCloudFunctionsInstance.httpsCallable('updateUser');
+    const { data } = await onUpdateUserInfo({
+      userId,
+      language,
+      fieldsToUpdate,
+    });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 /** Get user info  */
 export const getUserInfo = async ({ language }: { language: string }) => {
   try {

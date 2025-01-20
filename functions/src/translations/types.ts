@@ -78,6 +78,10 @@ export interface ITranslation {
     subscribeSuccess: string;
     updateSubscriptionError: string;
   };
+  updateUser: {
+    successUpdatedUser: string;
+    updateUserError: string;
+  };
 
   updateUserLanguage: {
     updateSuccess: string;

@@ -132,6 +132,7 @@ const loginUserViaEmailHandler = async (data: {
           subscribed: false,
           isActive: false,
           isAnonymous: false,
+          isOtpVerified: false,
           userName: truncateEmailAddress(data.email),
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
           userId: userId,
@@ -346,6 +347,7 @@ const verifyAuthenticationCodeHandler = async (
       isAnonymous: false,
       isActive: true,
       email,
+      isOtpVerified: true,
     });
 
     await admin.auth().updateUser(context.auth.uid, {
@@ -468,6 +470,29 @@ const updateUserSubscription = async (data: {
     throw new functions.https.HttpsError(error.code, error.message, {
       message:
         error.message || t?.updateUserSubscription.updateSubscriptionError,
+    });
+  }
+};
+
+const updateUser = async (data: {
+  userId: string;
+  language: string;
+  fieldsToUpdate: object;
+}) => {
+  let t;
+  try {
+    const { userId, language } = data;
+    const userDoc = db.collection('users').doc(userId);
+    t = getTranslation(language);
+
+    await userDoc.update(data.fieldsToUpdate);
+
+    return { message: t.updateUser.successUpdatedUser };
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
+    throw new functions.https.HttpsError(error.code, error.message, {
+      message: error.message || t?.updateUser.updateUserError,
     });
   }
 };
@@ -601,6 +626,7 @@ export {
   incrementUserScans,
   loginUserViaEmailHandler,
   sendEmailVerification,
+  updateUser,
   updateUserSubscription,
   verifyAuthenticationCodeHandler,
 };

@@ -24,7 +24,8 @@ export default function TabLayout() {
   const isDark = colorScheme === 'dark';
   const modal = useModal();
   const { language } = useSelectedLanguage();
-  const { data: userInfo } = useUser(language);
+  const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
+
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
@@ -35,12 +36,9 @@ export default function TabLayout() {
   const { arePushNotificationEnabled, enablePushNotifications } =
     usePushNotificationSetup(); //todo: check if here is the best place to call the hook
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
+
   const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
-
-  if (!isLoggedIn) {
-    return <Redirect href="/login" />;
-  }
 
   useEffect(() => {
     // Guard clause: Skip logic if isConnected is null
@@ -66,6 +64,17 @@ export default function TabLayout() {
     if (userInfoLanguage && userInfoLanguage !== actualLocalLanguage)
       onUpdatePreferredLanguage({ language: actualLocalLanguage });
   }, []);
+
+  if (isPendingUserinfo) return;
+
+  // return <Redirect href={'/welcome'} />;
+  if (!userInfo?.isOtpVerified) {
+    return <Redirect href="/verify-auth-code" />;
+  }
+  if (!isLoggedIn) {
+    return <Redirect href="/login" />;
+  }
+
   return (
     <>
       <Tabs

@@ -1,4 +1,5 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { firebaseAuth } from 'firebase/config';
 import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, View } from 'react-native';
 
@@ -11,6 +12,7 @@ const VerifyAuthCode = () => {
   const [authenticationCode, setAuthenticationCode] = useState('123456');
   const { mutate: onVerifyAuthCode, isPending } = useValidateAuthCode();
   const { language } = useSelectedLanguage();
+
   return (
     <>
       <Stack.Screen
@@ -42,10 +44,18 @@ const VerifyAuthCode = () => {
             onPress={() =>
               onVerifyAuthCode({
                 authenticationCode,
-                email: email as string,
+                email:
+                  (email as string) ||
+                  (firebaseAuth.currentUser?.email as string),
                 language,
               })
             }
+          />
+
+          <Button
+            testID="Back to login"
+            label={'Back to login'}
+            onPress={() => router.navigate('/login')}
           />
         </View>
       </KeyboardAvoidingView>

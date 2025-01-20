@@ -171,4 +171,9 @@ export const en: ITranslation = {
     noTokenFound: 'No valid Expo tokens found. Unable to send notifications',
     generalError: 'Failed to send notification',
   },
+
+  updateUser: {
+    successUpdatedUser: 'User updated successfully.',
+    updateUserError: 'Unable to update the user record. Please try again.',
+  },
 };

@@ -12,6 +12,7 @@ import {
   getUserInfo,
   loginWithEmail,
   sendOtpCodeViaEmail,
+  updateUserInfo,
   updateUserPreferredLanguage,
   validateVerificationCode,
 } from './user.requests';
@@ -86,6 +87,11 @@ export const useValidateAuthCode = createMutation<
   mutationFn: (variables) => validateVerificationCode(variables),
   onSuccess: () => {
     // Toast.success(data.message);
+    // !invalidate query is not working here
+    queryClient.setQueryData(['user-info'], (prevData: object) => ({
+      ...prevData,
+      isOtpVerified: true,
+    }));
     router.navigate('/(tabs)');
   },
   onError: (error) => {
@@ -113,6 +119,18 @@ export const useUserPreferredLanguage = createMutation<
   AxiosError
 >({
   mutationFn: (variables) => updateUserPreferredLanguage(variables),
+  onSuccess: () => {},
+  onError: (error) => {
+    Toast.error(error.message || translate('alerts.preferredLanguageError'));
+  },
+});
+
+export const useUpdateUser = createMutation<
+  Response,
+  { language: string; userId: string; fieldsToUpdate: object },
+  AxiosError
+>({
+  mutationFn: (variables) => updateUserInfo(variables),
   onSuccess: () => {},
   onError: (error) => {
     Toast.error(error.message || translate('alerts.preferredLanguageError'));

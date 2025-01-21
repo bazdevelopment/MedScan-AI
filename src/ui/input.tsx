@@ -11,21 +11,25 @@ import { I18nManager, StyleSheet, View } from 'react-native';
 import { TextInput as NTextInput } from 'react-native';
 import { tv } from 'tailwind-variants';
 
+import Icon from '@/components/icon';
+
+import { MailIcon } from './assets/icons';
 import colors from './colors';
 import { Text } from './text';
 
 const inputTv = tv({
   slots: {
     container: 'mb-2',
-    label: 'text-grey-100 mb-1 text-lg dark:text-neutral-100',
+    label:
+      'mb-2 font-semibold-nunito text-sm text-charcoal-900 dark:text-neutral-100',
     input:
-      'mt-0 rounded-xl border-[0.5px] border-neutral-300 bg-neutral-100 px-4 py-3 font-primary-nunito text-base  font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white',
+      'flex-row relative flex items-center rounded-2xl border-[3px] border-primary-300 bg-white dark:border-primary-900 dark:bg-charcoal-800 ',
   },
 
   variants: {
     focused: {
       true: {
-        input: 'border-neutral-400 dark:border-neutral-300',
+        input: 'border-primary-500 dark:border-primary-900',
       },
     },
     error: {
@@ -97,20 +101,26 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
           {label}
         </Text>
       )}
-      <NTextInput
-        testID={testID}
-        ref={ref}
-        placeholderTextColor={colors.neutral[400]}
-        className={styles.input()}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        {...inputProps}
-        style={StyleSheet.flatten([
-          { writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' },
-          { textAlign: I18nManager.isRTL ? 'right' : 'left' },
-          inputProps.style,
-        ])}
-      />
+      <View className={styles.input()}>
+        <Icon
+          icon={<MailIcon />}
+          containerStyle="ml-4"
+          color={colors.primary[900]}
+        />
+        <NTextInput
+          testID={testID}
+          ref={ref}
+          placeholderTextColor={colors.charcoal[400]}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          {...inputProps}
+          style={StyleSheet.flatten([
+            { writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' },
+            { textAlign: I18nManager.isRTL ? 'right' : 'left' },
+            inputProps.style,
+          ])}
+        />
+      </View>
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}

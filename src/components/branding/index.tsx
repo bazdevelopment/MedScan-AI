@@ -9,13 +9,13 @@ const Branding = ({
 }: {
   isLogoVisible?: boolean;
   className?: string;
-  invertedColors: boolean;
+  invertedColors?: boolean;
 }) => {
   const textColor = invertedColors ? 'text-black' : 'text-white';
   return (
     <View className={`flex-row items-center ${className}`}>
       {isLogoVisible && (
-        <View className="rounded-xl bg-primary-50 p-2">
+        <View className="rounded-xl bg-primary-50 p-2 dark:bg-blackBeauty">
           <Image
             source={require('../../../assets/icon-transparent.png')}
             className="h-[40px] w-[40px]"

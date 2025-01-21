@@ -5,6 +5,7 @@
   "general": {
     "back": "Back",
     "welcome": "Hi",
+    "welcomeBack": "Welcome Back!",
     "continue": "Continue",
     "retry": "Retry",
     "close": "Close",
@@ -29,7 +30,7 @@
     "verifyAuthCode": "Verify authentication code",
     "verifyAuthCodeButton": "Verify code",
     "authCodeHeading": "Authentication code",
-    "loginViaEmailHeading": "Please enter your email to continue",
+    "loginViaEmailHeading": "Let’s get you signed in. Please enter your email to continue.",
     "emailAddress": "Email"
   },
   "rootLayout": {

@@ -9,27 +9,22 @@ export const MailIcon = (props: ISvgProps) => (
     width={24}
     height={24}
     fill="none"
-    {...props}
+    // {...props}
   >
     <Path
-      stroke={props.color || '#000'}
-      strokeLinejoin="round"
-      strokeWidth={1.2}
-      d="M2 19.5h20v-15H2v15Z"
-    />
-    <Path
-      stroke={props.color || '#000'}
+      stroke={props.fill || '#7982FD'}
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth={1.2}
-      d="M2 4.5 12 12l10-7.5"
+      strokeWidth={1.5}
+      d="m17.903 8.851-4.444 3.613c-.84.666-2.02.666-2.86 0L6.12 8.851"
     />
     <Path
-      stroke={props.color || '#000'}
+      stroke={props.fill || '#7982FD'}
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth={1.2}
-      d="M12 4.5H2V12M22 12V4.5H12"
+      strokeWidth={1.5}
+      d="M16.909 21C19.95 21.008 22 18.51 22 15.438V8.57C22 5.499 19.95 3 16.909 3H7.09C4.05 3 2 5.499 2 8.57v6.868C2 18.51 4.05 21.008 7.091 21h9.818Z"
+      clipRule="evenodd"
     />
   </Svg>
 );

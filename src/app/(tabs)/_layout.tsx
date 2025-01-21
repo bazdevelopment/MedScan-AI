@@ -67,13 +67,13 @@ export default function TabLayout() {
 
   if (isPendingUserinfo) return;
 
-  // return <Redirect href={'/welcome'} />;
-  if (!userInfo?.isOtpVerified) {
-    return <Redirect href="/verify-auth-code" />;
-  }
-  if (!isLoggedIn) {
-    return <Redirect href="/login" />;
-  }
+  return <Redirect href={'/welcome'} />;
+  // if (!userInfo?.isOtpVerified) {
+  //   return <Redirect href="/verify-auth-code" />;
+  // }
+  // if (!isLoggedIn) {
+  //   return <Redirect href="/login" />;
+  // }
 
   return (
     <>

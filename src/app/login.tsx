@@ -11,6 +11,7 @@ import Branding from '@/components/branding';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, FocusAwareStatusBar, Input, Text, View } from '@/ui';
+import { MailIcon } from '@/ui/assets/icons';
 
 export default function Login() {
   return (
@@ -35,7 +36,7 @@ const LoginPage = () => {
 
   return (
     <KeyboardStickyView className="flex-1" offset={{ opened: 250 }}>
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ flex: 1, overflow: 'hidden' }}>
         <View className="flex-1 bg-primary-900 px-6 pt-[25%] dark:bg-blackEerie">
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}
@@ -62,9 +63,13 @@ const LoginPage = () => {
             className="absolute right-[-10] top-[-20]"
           />
 
-          {/* <ScrollView keyboardDismissMode="on-drag"> */}
           <Branding isLogoVisible />
-          {isLoginPending && <ActivityIndicator />}
+          {isLoginPending && (
+            <ActivityIndicator
+              size="small"
+              color={isDark ? colors.charcoal[300] : colors.charcoal[700]}
+            />
+          )}
 
           <Text
             testID="form-title"
@@ -90,9 +95,10 @@ const LoginPage = () => {
               autoCorrect={false}
               // autoFocus
               className="flex-1 rounded-xl bg-white px-3.5 py-5 font-primary-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white"
+              icon={<MailIcon />}
             />
 
-            <View className="flex-row mt-1 w-full flex-wrap">
+            <View className="mt-1 w-full flex-row flex-wrap">
               <Text className="text-sm">By continuing, you agree to our </Text>
               <Link
                 href="/terms-of-service"
@@ -116,7 +122,6 @@ const LoginPage = () => {
               disabled={isLoginPending || !email}
             />
           </View>
-          {/* </ScrollView> */}
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute bottom-[-10] z-[-1]"

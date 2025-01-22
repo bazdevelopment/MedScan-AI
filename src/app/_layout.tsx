@@ -101,7 +101,15 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="login"
+          options={{ headerShown: false, gestureEnabled: false }}
+        />
+        <Stack.Screen
+          name="verify-auth-code"
+          options={{ headerShown: false, gestureEnabled: false }}
+        />
+
         <Stack.Screen
           name="scan-interpretation"
           options={{

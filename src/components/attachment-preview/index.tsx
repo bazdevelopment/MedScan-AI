@@ -46,7 +46,7 @@ const AttachmentPreview = ({
       )}
 
       {showAdditionalInfo && (
-        <View className="top-[-35px] z-[-1]  mb-[-35px] flex-row justify-between rounded-[22px] border-primary-700 bg-primary-900 px-4 pb-3 pt-[45px] dark:bg-blackEerie">
+        <View className="flex-row top-[-35px]  z-[-1] mb-[-35px] justify-between rounded-[22px] border-primary-700 bg-primary-900 px-4 pb-3 pt-[45px] dark:bg-blackEerie">
           <Text className="font-semibold-nunito text-sm text-white">
             {'123'}
           </Text>

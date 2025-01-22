@@ -18,6 +18,7 @@ export * from './gallery';
 export * from './github';
 export * from './home';
 export * from './language';
+export * from './login';
 export * from './logout';
 export * from './mail';
 export * from './moon';

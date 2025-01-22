@@ -52,7 +52,7 @@ const button = tv({
       },
       link: {
         container: 'bg-transparent',
-        label: 'text-black',
+        label: 'text-black active:opacity-80',
         indicator: 'text-black',
       },
     },
@@ -74,7 +74,7 @@ const button = tv({
     },
     disabled: {
       true: {
-        container: 'bg-neutral-300 dark:bg-neutral-300',
+        container: 'disabled:border-neutral-200 disabled:bg-primary-600 ',
         label: 'text-neutral-600 dark:text-neutral-600',
         indicator: 'text-neutral-400 dark:text-neutral-400',
       },

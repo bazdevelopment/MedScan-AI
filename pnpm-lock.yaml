@@ -152,6 +152,9 @@ importers:
       i18next:
         specifier: ^23.14.0
         version: 23.16.8
+      input-otp-native:
+        specifier: ^0.4.0
+        version: 0.4.0(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       lodash.memoize:
         specifier: ^4.1.2
         version: 4.1.2
@@ -4856,6 +4859,12 @@ packages:
 
   inline-style-prefixer@6.0.4:
     resolution: {integrity: sha512-FwXmZC2zbeeS7NzGjJ6pAiqRhXR0ugUShSNb6GApMl6da0/XGc4MOJsoWAywia52EEWbXNSy0pzkwz/+Y+swSg==}
+
+  input-otp-native@0.4.0:
+    resolution: {integrity: sha512-zjAckPfXm1QQRbqMcAJ/lVXFJdf7QdpBtz+43GFcJ2lH/bfGgAYDZf/csjAQthbbhKvXISS9hV8PL9jdAkEqQw==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
 
   inquirer-autosubmit-prompt@0.2.0:
     resolution: {integrity: sha512-mzNrusCk5L6kSzlN0Ioddn8yzrhYNLli+Sn2ZxMuLechMYAzakiFCIULxsxlQb5YKzthLGfrFACcWoAvM7p04Q==}
@@ -14380,6 +14389,11 @@ snapshots:
     dependencies:
       css-in-js-utils: 3.1.0
       fast-loops: 1.1.4
+
+  input-otp-native@0.4.0(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0)
 
   inquirer-autosubmit-prompt@0.2.0:
     dependencies:

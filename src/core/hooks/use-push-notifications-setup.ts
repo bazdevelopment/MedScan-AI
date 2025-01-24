@@ -2,7 +2,7 @@
 import Constants from 'expo-constants';
 import * as DeviceInfo from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Alert, Linking, Platform } from 'react-native';
 
 import { storeMobileDeviceToken } from '@/api/push-notifications/push-notifications.requests';
@@ -23,7 +23,7 @@ export const usePushNotificationSetup = () => {
 
   const { language } = useSelectedLanguage();
 
-  const enablePushNotifications = async () => {
+  const enablePushNotifications = useCallback(async () => {
     try {
       const { status: existingStatus } =
         await Notifications.getPermissionsAsync();
@@ -86,7 +86,7 @@ export const usePushNotificationSetup = () => {
     } catch (error) {
       Toast.error(translate('alerts.enableNotificationError'));
     }
-  };
+  }, []);
 
   const disablePushNotifications = async () => {
     try {

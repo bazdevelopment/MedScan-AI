@@ -10,17 +10,19 @@ import { useLoginWithEmail, useValidateAuthCode } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import OTPVerificationInput from '@/components/otp-verification-input';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { translate, useSelectedLanguage } from '@/core';
+import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { Button, colors, Text } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
 
 const VerifyAuthCode = () => {
   const { email } = useLocalSearchParams();
+  const [isFirstTime] = useIsFirstTime();
+
   const {
     mutate: onVerifyAuthCode,
     isPending,
     isError,
-  } = useValidateAuthCode();
+  } = useValidateAuthCode({ isFirstTime })();
   const userEmail = email || firebaseAuth.currentUser?.email;
 
   const { mutate: handleLoginViaEmail, isPending: isResendCodePending } =
@@ -118,7 +120,7 @@ const VerifyAuthCode = () => {
             <Button
               onPress={() => router.navigate('/login')}
               variant="default"
-              label="Back to login"
+              label="Back to Sign In"
               className="m-0 ml-2 mt-4 gap-2 self-start bg-white p-0 active:opacity-60 dark:bg-transparent"
               textClassName="text-primary-900 font-semibold-nunito text-base dark:text-white"
               icon={

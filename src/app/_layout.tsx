@@ -109,6 +109,14 @@ export default function RootLayout() {
           name="verify-auth-code"
           options={{ headerShown: false, gestureEnabled: false }}
         />
+        <Stack.Screen
+          name="paywall"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            presentation: 'formSheet',
+          }}
+        />
 
         <Stack.Screen
           name="scan-interpretation"

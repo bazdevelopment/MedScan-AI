@@ -124,7 +124,7 @@ export default function Home() {
           <FreeTierStatus
             className="mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty"
             scansLeft={userInfo?.scansRemaining}
-            onUpgrade={() => console.log('on upgrade')}
+            onUpgrade={() => router.push('/paywall')}
           />
 
           <Text className="mx-6 mb-3 mt-6 font-semibold-nunito">

@@ -1,5 +1,6 @@
 import { MotiView } from 'moti';
-import React, { useCallback } from 'react';
+import { useColorScheme } from 'nativewind';
+import React, { type ReactElement, useCallback } from 'react';
 import {
   I18nManager,
   Pressable,
@@ -28,6 +29,7 @@ export interface RootProps extends Omit<PressableProps, 'onPress'> {
 
 export type IconProps = {
   checked: boolean;
+  isDark: boolean;
 };
 
 export const Root = ({
@@ -142,35 +144,39 @@ export const Checkbox = Object.assign(CheckboxBase, {
   Label,
 });
 
-export const RadioIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[900] : colors.charcoal[400];
+export const RadioIcon = ({
+  checked = false,
+  isDark,
+}: {
+  checked: boolean;
+  isDark: boolean;
+}) => {
+  const color = checked
+    ? isDark
+      ? colors.white
+      : colors.primary[900]
+    : colors.charcoal[200];
+
   return (
-    <MotiView
-      style={{
-        height: SIZE,
-        width: SIZE,
-        borderColor: color,
-      }}
-      className="items-center justify-center rounded-[20px] border-2 bg-transparent"
-      from={{ borderColor: '#CCCFD6' }}
-      animate={{
-        borderColor: color,
-      }}
-      transition={{ borderColor: { duration: 100, type: 'timing' } }}
+    <View
+      className={`items-center justify-center rounded-[20px] border-2 bg-white  ${checked ? `border-[${color}]` : 'border-charcoal-400 dark:bg-gray-800'}`}
+      style={{ borderColor: color, width: SIZE, height: SIZE }}
     >
-      <MotiView
-        className={`h-[10px] w-[10px] rounded-[10px] ${
-          checked && 'bg-primary-900'
-        } `}
-        from={{ opacity: 0 }}
-        animate={{ opacity: checked ? 1 : 0 }}
-        transition={{ opacity: { duration: 50, type: 'timing' } }}
+      <View
+        className={`h-[10px] w-[10px] rounded-[10px] ${checked ? 'bg-primary-900 opacity-100 dark:bg-primary-900' : 'opacity-0'}`}
       />
-    </MotiView>
+    </View>
   );
 };
 
-const RadioRoot = ({ checked = false, children, ...props }: RootProps) => {
+const RadioRoot = ({
+  checked = false,
+  children,
+  ...props
+}: {
+  checked: boolean;
+  children: ReactElement;
+}) => {
   return (
     <Root checked={checked} accessibilityRole="radio" {...props}>
       {children}
@@ -183,10 +189,18 @@ const RadioBase = ({
   testID,
   label,
   ...props
-}: RootProps & { label?: string }) => {
+}: {
+  label?: string;
+  disabled?: boolean;
+  checked: boolean;
+  testID: string;
+}) => {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   return (
     <RadioRoot checked={checked} testID={testID} {...props}>
-      <RadioIcon checked={checked} />
+      <RadioIcon checked={checked} isDark={isDark} />
       {label ? (
         <Label text={label} testID={testID ? `${testID}-label` : undefined} />
       ) : null}

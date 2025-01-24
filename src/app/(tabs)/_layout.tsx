@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable max-lines-per-function */
 import { useNetInfo } from '@react-native-community/netinfo';
-import { Redirect, Tabs } from 'expo-router';
+import { Redirect, router, Tabs } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect, useRef, useState } from 'react';
@@ -9,7 +9,6 @@ import { ActivityIndicator, Animated, Easing } from 'react-native';
 
 import { useUser, useUserPreferredLanguage } from '@/api/user/user.hooks';
 import CustomHeader from '@/components/cusom-header';
-import { NoInternetConnectionModal } from '@/components/modals/no-internet-modal';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { TabBarIcon } from '@/components/tab-bar-icon';
 import { useIsFirstTime, useSelectedLanguage } from '@/core';
@@ -34,8 +33,6 @@ export default function TabLayout() {
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
-  // const [_, setIsFirstTime] = useIsFirstTime();
-  // setIsFirstTime(true);
 
   const { isConnected } = useNetInfo();
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
@@ -52,7 +49,7 @@ export default function TabLayout() {
     if (isConnected === null) return;
 
     if (!isConnected) {
-      modal.present();
+      router.navigate('/no-internet');
       playSound('error');
       addHeavyHapticEffect?.();
     } else {
@@ -125,7 +122,6 @@ export default function TabLayout() {
           />
         ))}
       </Tabs>
-      <NoInternetConnectionModal ref={modal.ref} />
     </>
   );
 }

@@ -117,6 +117,14 @@ export default function RootLayout() {
             presentation: 'formSheet',
           }}
         />
+        <Stack.Screen
+          name="no-internet"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            presentation: 'fullScreenModal',
+          }}
+        />
 
         <Stack.Screen
           name="scan-interpretation"

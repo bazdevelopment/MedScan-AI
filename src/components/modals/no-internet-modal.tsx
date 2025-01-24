@@ -41,7 +41,6 @@ export const NoInternetConnectionModal = React.forwardRef<BottomSheetModal>(
           message={translate('internet.noConnectionMessage')}
           primaryAction={{
             label: translate('general.retry'),
-
             onPress: () => reloadAppAsync(),
             icon: (
               <RetryIcon

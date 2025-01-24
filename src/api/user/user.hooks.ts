@@ -79,25 +79,30 @@ export const useSendVerificationCode = ({ email }: { email: string }) =>
     },
   });
 
-export const useValidateAuthCode = createMutation<
-  Response,
-  IValidateAuthCode,
-  AxiosError
->({
-  mutationFn: (variables) => validateVerificationCode(variables),
-  onSuccess: () => {
-    // Toast.success(data.message);
-    // !invalidate query is not working here
-    queryClient.setQueryData(['user-info'], (prevData: object) => ({
-      ...prevData,
-      isOtpVerified: true,
-    }));
-    router.navigate('/(tabs)');
-  },
-  onError: (error) => {
-    Toast.error(error.message || translate('alerts.validateAuthCodeError'));
-  },
-});
+export const useValidateAuthCode = ({
+  isFirstTime,
+}: {
+  isFirstTime: boolean;
+}) =>
+  createMutation<Response, IValidateAuthCode, AxiosError>({
+    mutationFn: (variables) => validateVerificationCode(variables),
+    onSuccess: () => {
+      // Toast.success(data.message);
+      // !invalidate query is not working here
+      queryClient.setQueryData(['user-info'], (prevData: object) => ({
+        ...prevData,
+        isOtpVerified: true,
+      }));
+
+      if (isFirstTime) {
+        return router.navigate('/onboarding');
+      }
+      router.navigate('/(tabs)');
+    },
+    onError: (error) => {
+      Toast.error(error.message || translate('alerts.validateAuthCodeError'));
+    },
+  });
 
 export const useDecrementScans = createMutation<
   Response,

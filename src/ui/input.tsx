@@ -25,7 +25,7 @@ const inputTv = tv({
     label:
       'mb-2 font-semibold-nunito text-sm text-charcoal-900 dark:text-neutral-100',
     input:
-      'flex-row relative flex items-center rounded-2xl border-[3px] border-primary-300 bg-white dark:border-primary-900 dark:bg-charcoal-800 ',
+      'relative flex flex-row items-center rounded-2xl border-[3px] border-primary-300 bg-white dark:border-primary-900 dark:bg-charcoal-800 ',
   },
 
   variants: {

@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 
+import { type IOnboardingCollectedData } from '@/app/onboarding';
 import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
 
 export interface IFlowModal {
@@ -8,9 +9,10 @@ export interface IFlowModal {
 
 export interface IFlow {
   currentScreenIndex: number;
-  onGoNext: (data: ICollectedData) => void;
+  onGoNext: (data: ICollectedData | IOnboardingCollectedData) => void;
   onGoBack: () => void;
-  onFinish: () => void;
-  collectedData: ICollectedData;
+  onFinish: (data: ICollectedData | IOnboardingCollectedData) => void;
+  collectedData: ICollectedData | IOnboardingCollectedData;
   children: ReactNode;
+  onSkip: () => void;
 }

@@ -23,6 +23,7 @@ import { tv } from 'tailwind-variants';
 import { CaretDown } from '@/ui/assets/icons';
 import colors from '@/ui/colors';
 
+import { Radio } from './checkbox';
 import type { InputControllerType } from './input';
 import { useModal } from './modal';
 import { Modal } from './modal';
@@ -96,6 +97,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           onPress={() => onSelect(item)}
           testID={testID ? `${testID}-item-${item.value}` : undefined}
           icon={item.icon}
+          additionalClassName={`${value === item.value ? 'bg-primary-900' : ''}`}
         />
       ),
       [onSelect, value, testID],
@@ -289,6 +291,8 @@ interface ISelectableLabel extends ComponentProps<typeof Pressable> {
   icon?: React.ReactNode;
   showIndicator?: boolean;
   onPress?: () => void;
+  subtitle?: string;
+  additionalClassName?: string;
 }
 
 export const SelectableLabel: React.FC<ISelectableLabel> = ({
@@ -296,7 +300,11 @@ export const SelectableLabel: React.FC<ISelectableLabel> = ({
   selected = false,
   icon,
   showIndicator = true,
+  subtitle,
   onPress,
+  additionalClassName,
+  titleClassName,
+  subtitleClassName,
   ...props
 }) => {
   return (
@@ -304,34 +312,47 @@ export const SelectableLabel: React.FC<ISelectableLabel> = ({
       className={`
         mt-5 flex-row items-center justify-between rounded-2xl
          p-4
-        ${selected ? 'border-[3px] border-primary-500 bg-primary-900' : 'bg-primary-100 dark:bg-gray-700'}
-        active:bg-gray-100 dark:active:bg-gray-600
+        ${selected ? 'border-[3px] border-primary-500' : 'bg-primary-100 dark:bg-blackEerie'}
+        active:bg-gray-100 dark:active:bg-primary-700
+        ${additionalClassName}
       `}
       onPress={onPress}
       {...props}
     >
       <View className="flex-row items-center gap-3.5">
         {icon && <View className="items-center justify-center">{icon}</View>}
-        <Text
-          className={`
+        <View className="gap-2">
+          <Text
+            className={`
             text-base
             ${selected ? 'font-semibold-nunito text-lg text-white' : 'font-semibold-nunito text-lg'}
+         ${titleClassName}
           `}
-        >
-          {title}
-        </Text>
+          >
+            {title}
+          </Text>
+
+          {subtitle && (
+            <Text
+              className={`
+            ${selected ? 'font-bold-nunito text-sm text-white' : ' text-sm'}
+            ${subtitleClassName}
+          `}
+            >
+              {subtitle}
+            </Text>
+          )}
+        </View>
       </View>
 
       {showIndicator && (
-        <View
-          className={`
-            h-5 w-5 rounded-full
-            ${selected ? 'border-4 border-white' : ' border border-gray-300 bg-white'}
-            items-center justify-center
-          `}
-        >
-          {selected && <View className="h-2 w-2 rounded-full bg-primary-900" />}
-        </View>
+        <Radio
+          disabled={false}
+          checked={selected}
+          testID="radio"
+          accessibilityLabel="Agree"
+          accessibilityHint="toggle Agree"
+        />
       )}
     </Pressable>
   );

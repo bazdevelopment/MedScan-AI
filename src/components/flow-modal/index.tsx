@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React from 'react';
 import { View } from 'react-native';
 
+import { type IOnboardingCollectedData } from '@/app/onboarding';
 import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
 
 import { type IFlow } from './flow-modal.interface';
@@ -13,13 +14,15 @@ const FlowModal = ({
   onFinish,
   collectedData,
   children,
+  onSkip,
 }: IFlow) => {
   const totalSteps = React.Children.toArray(children).length;
 
   const isFirstScreenDisplayed = currentScreenIndex === 0;
   const isLastScreenDisplayed = currentScreenIndex === totalSteps - 1;
 
-  const goToNextScreen = (data: ICollectedData) => onGoNext(data);
+  const goToNextScreen = (data: ICollectedData | IOnboardingCollectedData) =>
+    onGoNext(data);
   const currentActiveScreen =
     React.Children.toArray(children)[currentScreenIndex];
   const wrappedCurrentChild = React.isValidElement(currentActiveScreen)
@@ -27,8 +30,10 @@ const FlowModal = ({
         goToNextScreen,
         collectedData,
         onGoBack: isFirstScreenDisplayed ? router.back : onGoBack,
-        currentScreenIndex: currentScreenIndex + 1,
+        currentScreenIndex: currentScreenIndex,
         totalSteps,
+        onFinish,
+        onSkip,
       })
     : currentActiveScreen;
 

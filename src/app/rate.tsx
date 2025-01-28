@@ -1,5 +1,9 @@
 import React from 'react';
-import { Linking, Text, TouchableOpacity, View } from 'react-native';
+import { Linking, View } from 'react-native';
+
+import EdgeCaseTemplate from '@/components/edge-case-template';
+import { Button } from '@/ui';
+import { RatingIllustration } from '@/ui/assets/illustrations';
 
 const Rate = () => {
   const handleFeedback = (isPositive: boolean) => {
@@ -19,26 +23,30 @@ const Rate = () => {
   };
 
   return (
-    <View className="flex-1 items-center justify-center bg-gray-100 p-5">
-      <Text className="mb-5 text-center font-bold-nunito text-lg">
-        Do you love using this app?
-      </Text>
+    <View className="flex-1 items-center justify-center bg-white p-6 dark:bg-blackEerie">
+      <EdgeCaseTemplate
+        image={<RatingIllustration />}
+        title="Are you finding the app valuable and engaging?"
+        additionalClassName="top-[-40] px-10"
+      />
 
-      {/* Positive Feedback Button */}
-      <TouchableOpacity
-        className="mb-4 rounded-md bg-blue-500 px-6 py-3"
-        onPress={() => handleFeedback(true)}
-      >
-        <Text className="text-center text-lg text-white">Yes, I love it!</Text>
-      </TouchableOpacity>
+      <View className="bottom-10 mt-auto flex-row gap-4">
+        {/* Positive Feedback Button */}
+        <Button
+          className="dark: h-[62px] w-[160px] rounded-full bg-danger-500 pl-5 active:bg-red-300 dark:bg-danger-500"
+          onPress={() => handleFeedback(true)}
+          textClassName="dark:text-white"
+          label="Not really..."
+        />
 
-      {/* Negative Feedback Button */}
-      <TouchableOpacity
-        className="rounded-md bg-red-500 px-6 py-3"
-        onPress={() => handleFeedback(false)}
-      >
-        <Text className="text-center text-lg text-white">Not really...</Text>
-      </TouchableOpacity>
+        {/* Negative Feedback Button */}
+        <Button
+          className="h-[62px] w-[160px] rounded-full bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
+          onPress={() => handleFeedback(false)}
+          label="Yes, I love it!"
+          textClassName="dark:text-white"
+        />
+      </View>
     </View>
   );
 };

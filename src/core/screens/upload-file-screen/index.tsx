@@ -54,13 +54,14 @@ const UploadFileScreen = ({
               className="bg-white pt-20"
               titlePosition="center"
               onGoBack={onGoBack}
+              backIconColor={colors.blackBeauty}
             />
           ),
         }}
       />
 
       <ProgressBar
-        currentStep={currentScreenIndex}
+        currentStep={currentScreenIndex + 1}
         totalSteps={totalSteps}
         isTextShown
         className="mt-8 flex-row self-center"
@@ -160,6 +161,7 @@ export const UploadFileOptionsModal = React.forwardRef<
               key={option.id}
               label={option.label}
               onPress={() => onSelect(option.label)}
+              textClassName="dark:text-white"
             />
           ))}
         </View>

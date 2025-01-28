@@ -1,16 +1,18 @@
-import { Image } from 'expo-image';
 import React from 'react';
 import { View } from 'react-native';
 import { tv } from 'tailwind-variants';
 
-import { Text } from '@/ui';
+import { Image, Text, useModal } from '@/ui';
+import { Camera } from '@/ui/assets/icons';
 
+import Icon from '../icon';
+import { UploadPictureModal } from '../modals/upload-profile-picture-modal';
 import { type IAvatar } from './avatar.interface';
 
 const Avatar = ({
   size = 'medium',
   shape = 'circle',
-  imageUrl,
+  image,
   altText = '',
   withBorder = false,
   showInitials = false,
@@ -18,19 +20,34 @@ const Avatar = ({
   textColor = 'text-black',
   className = '',
   style = {},
+  isEditable,
 }: IAvatar) => {
+  const modal = useModal();
+
   const styles = React.useMemo(
     () => avatar({ size, shape, withBorder }),
     [size, shape, withBorder],
   );
   return (
     <View className={styles.container({ className })} style={style}>
-      {imageUrl ? (
-        <Image
-          source={{ uri: imageUrl }}
-          className={styles.image()}
-          accessibilityLabel={altText}
-        />
+      {image ? (
+        <>
+          <Image
+            source={image}
+            className={styles.image()}
+            accessibilityLabel={altText}
+          />
+
+          {isEditable && (
+            <Icon
+              containerStyle="bg-primary-900 p-2 items-center justify-center absolute bottom-[-20] rounded-xl"
+              icon={<Camera />}
+              size={20}
+              color="white"
+              onPress={modal.present}
+            />
+          )}
+        </>
       ) : (
         showInitials && (
           <View className={styles.name()}>
@@ -40,6 +57,8 @@ const Avatar = ({
           </View>
         )
       )}
+      {/* TODO: check if you can replace the below modal with the une used for uploading scans */}
+      <UploadPictureModal ref={modal.ref} />
     </View>
   );
 };
@@ -49,7 +68,7 @@ export default Avatar;
 const avatar = tv({
   slots: {
     container: 'items-center justify-center',
-    image: 'h-full w-full',
+    image: 'h-full w-full bg-primary-200 dark:bg-blackBeauty',
     name: 'items-center justify-center',
   },
   variants: {
@@ -66,6 +85,10 @@ const avatar = tv({
         image: 'h-[65px] w-[65px]',
         name: 'h-14 w-14',
       },
+      xl: {
+        image: 'h-[100px] w-[100px]',
+        name: 'h-14 w-14',
+      },
     },
     shape: {
       circle: {
@@ -78,6 +101,10 @@ const avatar = tv({
       },
       square: {
         image: 'rounded-none',
+        name: 'rounded-none',
+      },
+      'rounded-xl': {
+        image: 'rounded-2xl',
         name: 'rounded-none',
       },
     },

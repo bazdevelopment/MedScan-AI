@@ -55,6 +55,7 @@ export const useLoginWithEmail = (variables: { email: string }) =>
       });
     },
     onError: (error) => {
+      console.log('error', error);
       Toast.error(error.message || translate('alerts.emailLoginError'));
     },
   });
@@ -136,7 +137,9 @@ export const useUpdateUser = createMutation<
   AxiosError
 >({
   mutationFn: (variables) => updateUserInfo(variables),
-  onSuccess: () => {},
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['user-info'] });
+  },
   onError: (error) => {
     Toast.error(error.message || translate('alerts.preferredLanguageError'));
   },

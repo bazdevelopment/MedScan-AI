@@ -58,6 +58,7 @@ export interface NInputProps extends TextInputProps {
   disabled?: boolean;
   error?: string;
   icon?: React.ReactElement;
+  textClassName?: string;
 }
 
 type TRule<T extends FieldValues> =
@@ -79,7 +80,7 @@ interface ControlledInputProps<T extends FieldValues>
     InputControllerType<T> {}
 
 export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
-  const { label, error, testID, icon, ...inputProps } = props;
+  const { label, error, testID, icon, textClassName, ...inputProps } = props;
   const [isFocussed, setIsFocussed] = React.useState(false);
   const onBlur = React.useCallback(() => setIsFocussed(false), []);
   const onFocus = React.useCallback(() => setIsFocussed(true), []);
@@ -129,7 +130,7 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}
-          className="text-sm text-danger-400 dark:text-danger-600"
+          className={`text-sm text-danger-400 dark:text-danger-600 ${textClassName}`}
         >
           {error}
         </Text>

@@ -11,6 +11,7 @@ import {
   getRecentReports,
   updateInterpretationFields,
 } from './interpretation.requests';
+
 type IPayload = {
   startDate: string;
   endDate: string;

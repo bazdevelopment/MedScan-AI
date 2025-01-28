@@ -13,8 +13,6 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as Notifications from 'expo-notifications';
-import * as QuickActions from 'expo-quick-actions';
-import { useQuickActionRouting } from 'expo-quick-actions/router';
 import { router, SplashScreen, Stack } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
@@ -54,20 +52,6 @@ Notifications.setNotificationHandler({
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-
-  useQuickActionRouting();
-
-  useEffect(() => {
-    QuickActions.setItems<QuickActions.Action>([
-      {
-        title: translate('deleteApp.title'),
-        subtitle: translate('deleteApp.subtitle'),
-        icon: 'heart_icon',
-        id: '0',
-        params: { href: '/rate' },
-      },
-    ]);
-  }, []);
 
   const [fontsLoaded] = useFonts({
     inter: require('../../assets/fonts/Inter.ttf'),
@@ -208,8 +192,16 @@ export default function RootLayout() {
         <Stack.Screen
           name="profile"
           options={{
-            title: translate('rootLayout.screens.profile.title'),
-            headerBackTitle: translate('general.back'),
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('rootLayout.screens.profile.title')}
+                className="bg-primary-900 pt-16"
+                titlePosition="center"
+                onGoBack={router.back}
+                titleClassName="text-white"
+              />
+            ),
           }}
         />
       </Stack>

@@ -175,6 +175,8 @@ const ReportsList = ({
   className: string;
 }) => {
   const { language } = useSelectedLanguage();
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
   return (
     <View className={`flex-1 ${className}`}>
       {areRecentReportsLoading ? (
@@ -185,8 +187,8 @@ const ReportsList = ({
           image={<NoReports width={100} height={100} />}
           message="No recent reports yet!"
           primaryAction={{
-            label: 'Upload now',
-            icon: <UploadIcon color={colors.white} />,
+            label: 'Scan now',
+            icon: <UploadIcon color={isDark ? colors.black : colors.white} />,
             variant: 'default',
             onPress: () => router.navigate('/upload-file-flow'),
           }}

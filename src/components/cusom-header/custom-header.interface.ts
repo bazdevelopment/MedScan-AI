@@ -4,4 +4,6 @@ export interface ICustomHeader {
   rightContent?: React.ReactNode;
   className?: string;
   titlePosition?: 'left' | 'center' | 'right';
+  titleClassName?: string;
+  backIconColor?: string;
 }

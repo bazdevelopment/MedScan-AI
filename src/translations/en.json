@@ -85,7 +85,7 @@
     "tab": "Home",
     "homeForeground": {
       "maxNumberOfScans": "You reached the maximum number of scan! Please upgrade to premium!",
-      "heading": "Start using X-Ray Analyzer",
+      "heading": "Welcome to X-Ray Analyzer",
       "subHeading": "Get vital insights with MRI, X-Rays, CT scans, PET imaging, ultrasounds, and nuclear medicine"
     },
     "scanCategories": {
@@ -170,7 +170,7 @@
     "errorTakingPicture": "Something went wrong while taking the photo. Please try again.",
     "enableNotifications": {
       "heading": "Enable Notifications",
-      "subHeading": "Notifications are disabled. Please enable them in your device settings."
+      "subHeading": "Notifications are currently turned off. To stay updated, please enable them in your device settings."
     },
     "enableNotificationFailed": "Failed to enable notifications.",
     "enableNotificationError": "An error occurred while enabling notifications",

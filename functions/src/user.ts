@@ -133,6 +133,7 @@ const loginUserViaEmailHandler = async (data: {
           isActive: false,
           isAnonymous: false,
           isOtpVerified: false,
+          isOnboarded: false,
           userName: truncateEmailAddress(data.email),
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
           userId: userId,

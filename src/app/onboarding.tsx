@@ -1,9 +1,12 @@
+/* eslint-disable max-lines-per-function */
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 
+import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import FlowModal from '@/components/flow-modal';
+import Toast from '@/components/toast';
+import { useSelectedLanguage } from '@/core';
 import { useIsFirstTime } from '@/core/hooks';
-import { useIsOnboarded } from '@/core/hooks/use-is-onboarded';
 import FreeTrialPreview from '@/core/screens/free-trial-preview';
 import NamePreferenceScreen from '@/core/screens/name-preference-screen';
 import Paywall from '@/core/screens/paywall';
@@ -15,7 +18,10 @@ interface IOnboardingCollectedData {
 
 export default function Onboarding() {
   const [, setIsFirstTime] = useIsFirstTime();
-  const [, setIsOnboarded] = useIsOnboarded();
+
+  const { language } = useSelectedLanguage();
+  const { data: userInfo } = useUser(language);
+  const { mutateAsync: onUpdateUser } = useUpdateUser();
 
   const router = useRouter();
 
@@ -25,11 +31,26 @@ export default function Onboarding() {
   });
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
 
-  const onSubmitCollectedData = (collectedData: IOnboardingCollectedData) => {
+  const onSubmitCollectedData = async (
+    collectedData: IOnboardingCollectedData,
+  ) => {
     //TODO: add here the logic for submitting the onboarding data to the server/RevenueCat
-    setIsFirstTime(false);
-    setIsOnboarded(true);
-    router.navigate('/(tabs)');
+    // setIsFirstTime(false);
+    // setIsOnboarded(true);
+    // router.navigate('/(tabs)');
+
+    await onUpdateUser({
+      language,
+      userId: userInfo.userId,
+      fieldsToUpdate: {
+        isOnboarded: true,
+      },
+    })
+      .then(() => {
+        setIsFirstTime(false);
+        router.navigate('/(tabs)');
+      })
+      .catch(() => Toast.error('Onboarding failed. Please try again.'));
   };
 
   const handleGoToNextScreen = (newCollectedData: IOnboardingCollectedData) => {

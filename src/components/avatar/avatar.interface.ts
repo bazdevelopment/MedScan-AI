@@ -1,7 +1,7 @@
 export interface IAvatar {
-  size?: 'small' | 'medium' | 'large';
-  shape?: 'circle' | 'rounded' | 'square';
-  imageUrl: string;
+  size?: 'small' | 'medium' | 'large' | 'xl';
+  shape?: 'circle' | 'rounded' | 'square' | 'rounded-xl';
+  image: string;
   altText?: string;
   showInitials?: boolean;
   initials?: string;
@@ -10,4 +10,5 @@ export interface IAvatar {
   textClassName?: string;
   style?: object;
   withBorder?: boolean;
+  isEditable: boolean;
 }

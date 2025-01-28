@@ -78,7 +78,7 @@ export const ShareItem = () => {
               </Text>
             </View>
 
-            <View className="flex-row mt-16 justify-center gap-12">
+            <View className="mt-16 flex-row justify-center gap-12">
               <RoundedButton
                 icon={
                   <ShareIcon

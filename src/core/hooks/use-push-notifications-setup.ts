@@ -27,15 +27,18 @@ export const usePushNotificationSetup = () => {
     try {
       const { status: existingStatus } =
         await Notifications.getPermissionsAsync();
-      let finalStatus = existingStatus;
-
-      // Request permissions if not already granted
-      if (existingStatus !== 'granted') {
-        const { status } = await Notifications.requestPermissionsAsync();
-        finalStatus = status;
+      if (existingStatus === 'granted') {
+        // Notifications already enabled, no further action needed
+        return;
       }
-      if (finalStatus !== 'granted') {
-        return Alert.alert(
+
+      const { status } = await Notifications.requestPermissionsAsync();
+      if (status === 'granted' || status === 'undetermined') {
+        // Notifications successfully enabled
+        return;
+      } else {
+        // Notifications not enabled
+        Alert.alert(
           translate('alerts.enableNotifications.heading'),
           translate('alerts.enableNotifications.subHeading'),
           [

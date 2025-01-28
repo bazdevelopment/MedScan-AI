@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable max-lines-per-function */
 import { useNetInfo } from '@react-native-community/netinfo';
+import * as QuickActions from 'expo-quick-actions';
+import { useQuickActionRouting } from 'expo-quick-actions/router';
 import { Redirect, router, Tabs } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
@@ -8,12 +10,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Animated, Easing } from 'react-native';
 
 import { useUser, useUserPreferredLanguage } from '@/api/user/user.hooks';
+import Branding from '@/components/branding';
 import CustomHeader from '@/components/cusom-header';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { TabBarIcon } from '@/components/tab-bar-icon';
-import { useIsFirstTime, useSelectedLanguage } from '@/core';
+import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { useHaptic } from '@/core/hooks/use-haptics';
-import { useIsOnboarded } from '@/core/hooks/use-is-onboarded';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
@@ -28,12 +30,10 @@ export default function TabLayout() {
   const { language } = useSelectedLanguage();
   const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
   const [isFirstTime] = useIsFirstTime();
-  const [isOnboarded] = useIsOnboarded();
 
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
-
   const { isConnected } = useNetInfo();
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
 
@@ -61,27 +61,51 @@ export default function TabLayout() {
     if (!arePushNotificationEnabled) {
       enablePushNotifications();
     }
-  }, [arePushNotificationEnabled]);
+  }, []);
   // Set an initializing state whilst Firebase connects
 
   useEffect(() => {
     if (userInfoLanguage && userInfoLanguage !== actualLocalLanguage)
       onUpdatePreferredLanguage({ language: actualLocalLanguage });
   }, []);
+  // console.log('isOnboarded', isOnboarded);
+  useQuickActionRouting();
+
+  useEffect(() => {
+    QuickActions.setItems<QuickActions.Action>([
+      {
+        title: translate('deleteApp.title'),
+        subtitle: translate('deleteApp.subtitle'),
+        icon: 'heart_icon',
+        id: '0',
+        params: { href: '/rate' },
+      },
+    ]);
+  }, []);
 
   if (isPendingUserinfo) return <ProgressSpinner />;
 
-  if (isFirstTime) {
-    return <Redirect href={isOnboarded ? '/welcome' : '/onboarding'} />;
+  if (isFirstTime && !isLoggedIn) {
+    return <Redirect href="/welcome" />;
+  }
+
+  if (
+    isFirstTime &&
+    !userInfo?.isOnboarded &&
+    isLoggedIn &&
+    userInfo?.isOtpVerified
+  ) {
+    return <Redirect href="/onboarding" />;
+  }
+
+  if (!userInfo?.isOtpVerified) {
+    return <Redirect href="/verify-auth-code" />;
   }
 
   if (!isLoggedIn) {
     return <Redirect href="/login" />;
   }
 
-  if (!userInfo?.isOtpVerified) {
-    return <Redirect href="/verify-auth-code" />;
-  }
   return (
     <>
       <Tabs
@@ -198,6 +222,7 @@ const ProgressSpinner = () => {
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute right-[-10] top-[-20]"
       />
+      <Branding isLogoVisible className="top-[-25]" />
       {/* Rotating Spinner */}
       <ActivityIndicator
         size="large"

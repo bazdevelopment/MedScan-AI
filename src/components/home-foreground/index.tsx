@@ -82,9 +82,9 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
         >
           <View className="ml-6 flex-row items-center">
             <Avatar
-              imageUrl="https://randomuser.me/api/portraits/men/1.jpg"
+              image={require('../../ui/assets/images/avatar.png')}
               size="large"
-              shape="rounded"
+              shape="circle"
             />
 
             <View className="ml-4 gap-3">
@@ -99,7 +99,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           </View>
         </CardWrapper>
 
-        <View className="flex-col absolute top-[200px] w-[85%] items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] pb-[40px] dark:bg-charcoal-800">
+        <View className="absolute top-[200px] w-[85%] flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] pb-[40px] dark:bg-charcoal-800">
           <Text className="font-bold-nunito text-xl">
             {translate('home.homeForeground.heading')}
           </Text>

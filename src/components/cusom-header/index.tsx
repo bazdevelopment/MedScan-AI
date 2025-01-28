@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
@@ -15,6 +16,8 @@ const CustomHeader = ({
   rightContent,
   className,
   titlePosition = 'center', // Default position is 'center'
+  titleClassName,
+  backIconColor,
 }: ICustomHeader) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
@@ -36,7 +39,7 @@ const CustomHeader = ({
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
             <ChevronLeftIcon
-              color={isDark ? colors.white : colors.charcoal[700]}
+              color={backIconColor || colors.white}
               width={24}
               height={24}
             />
@@ -66,7 +69,9 @@ const CustomHeader = ({
         )}
       >
         {titlePosition !== 'left' && (
-          <Text className="font-bold-nunito text-2xl text-gray-800">
+          <Text
+            className={`font-bold-nunito text-2xl text-gray-800 ${titleClassName}`}
+          >
             {title}
           </Text>
         )}

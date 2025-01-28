@@ -6,33 +6,32 @@ import { type ISvgProps } from '@/types/svg-types';
 export const Camera = (props: ISvgProps) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={25}
-    height={25}
-    viewBox="0 0 25 25"
+    width={21}
+    height={21}
     fill="none"
-    {...props}
+    viewBox="0 0 21 21"
   >
     <Path
-      stroke={props.color || '#7982FD'}
+      stroke={props.fill || '#fff'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
-      d="M15.79 4.932c1.01.402 1.32 1.802 1.732 2.252.413.45 1.004.603 1.331.603A3.147 3.147 0 0 1 22 10.933v5.795a4.22 4.22 0 0 1-4.22 4.22H7.72a4.22 4.22 0 0 1-4.22-4.22v-5.795a3.147 3.147 0 0 1 3.147-3.146c.326 0 .917-.153 1.331-.603.413-.45.721-1.85 1.731-2.252 1.011-.402 5.071-.402 6.081 0Z"
+      d="M13.034 3.798c.841.335 1.099 1.502 1.443 1.877.344.375.837.502 1.11.502A2.622 2.622 0 0 1 18.208 8.8v4.83a3.517 3.517 0 0 1-3.517 3.516H6.309a3.517 3.517 0 0 1-3.517-3.517V8.8a2.622 2.622 0 0 1 2.622-2.622c.272 0 .765-.127 1.11-.502.344-.375.6-1.542 1.442-1.877.843-.335 4.226-.335 5.068 0Z"
       clipRule="evenodd"
     />
     <Path
-      stroke={props.color || '#7982FD'}
+      stroke={props.fill || '#fff'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M18.245 10.38h.01"
+      d="M15.08 8.339h.007"
     />
     <Path
-      stroke={props.color || '#7982FD'}
+      stroke={props.fill || '#fff'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
-      d="M15.929 14.01a3.179 3.179 0 1 0-6.357-.002 3.179 3.179 0 0 0 6.357.001Z"
+      d="M13.15 11.362a2.649 2.649 0 1 0-5.298 0 2.649 2.649 0 0 0 5.297 0Z"
       clipRule="evenodd"
     />
   </Svg>

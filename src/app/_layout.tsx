@@ -156,8 +156,16 @@ export default function RootLayout() {
         <Stack.Screen
           name="notifications"
           options={{
-            title: translate('rootLayout.screens.notifications.title'),
-            headerBackTitle: translate('general.back'),
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('rootLayout.screens.notifications.title')}
+                className="bg-primary-50 pt-16"
+                titlePosition="center"
+                onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.black}
+              />
+            ),
           }}
         />
         <Stack.Screen

@@ -9,17 +9,16 @@ export const CalendarIcon = (props: ISvgProps) => (
     width={25}
     height={25}
     fill="transparent"
-    {...props}
   >
     <Path
-      stroke="#fff"
+      stroke={props.fill || '#fff'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
       d="M3.11 10.162h17.823M16.459 14.068h.01M12.021 14.068h.01M7.575 14.068h.009M16.459 17.954h.01M12.021 17.954h.01M7.575 17.954h.009M16.06 2.758v3.29M7.982 2.758v3.29"
     />
     <Path
-      stroke="#fff"
+      stroke={props.fill || '#fff'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}

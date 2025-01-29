@@ -6,8 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { colors, Modal, Text } from '@/ui';
-import { CalendarIcon, NotificationBell } from '@/ui/assets/icons';
-import HorizontalLine from '@/ui/horizontal-line';
+import { CalendarIcon } from '@/ui/assets/icons';
 
 import dayjs from '../../lib/dayjs';
 import Icon from '../icon';
@@ -43,33 +42,28 @@ export const NotificationDetailsModal = React.forwardRef<
     >
       <View className="flex h-full flex-col">
         {/* Date */}
-        <View className="mb-4 ml-4 flex-row items-center gap-4 space-x-2">
-          <Icon icon={<CalendarIcon isRead />} size={24} color={colors.white} />
-
+        <View className="ml-4 flex-row items-center gap-4 space-x-2">
+          <Icon
+            icon={<CalendarIcon />}
+            size={25}
+            color={isDark ? colors.white : colors.black}
+          />
           <Text className="text-sm font-medium">
-            {dayjs(date).locale(language).format('MMMM D, YYYY • h:mm A')}
+            {dayjs(date).locale(language).format('MMMM D, YYYY | h:mm A')}
           </Text>
         </View>
 
-        {/* Divider */}
-        <HorizontalLine />
-
         {/* Title */}
-        <View className="ml-4 flex-row items-center gap-2 space-x-2">
-          <Icon
-            icon={<NotificationBell isRead />}
-            size={24}
-            color={isDark ? colors.primary[900] : colors.primary[600]}
-          />
-          <Text className="my-4 font-semibold-nunito  text-xl">{title}</Text>
-        </View>
+        <View className="m-6 rounded-xl bg-primary-100 p-4 dark:bg-blackEerie">
+          <View className="flex-row items-center gap-2">
+            <Text className="font-semibold-nunito text-lg">{title}</Text>
+          </View>
 
-        {/* Body */}
-        <View className="ml-4">
+          {/* Body */}
           <Text
             className={`text-base ${
-              isDark ? 'text-gray-300' : 'text-gray-700'
-            } leading-6`}
+              isDark ? 'text-gray-300' : 'text-gray-600'
+            } mt-1`}
           >
             {body}
           </Text>

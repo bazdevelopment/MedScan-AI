@@ -2,7 +2,8 @@
 import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Avatar from '@/components/avatar';
@@ -43,8 +44,8 @@ const Profile = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flex: 1 }} scrollEventThrottle={16}>
-      <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
+    <KeyboardStickyView className="flex-1" offset={{ opened: 250 }}>
+      <View className="flex-1 bg-white dark:bg-blackEerie">
         <View className="h-[150px] rounded-b-[50px]  bg-primary-900 pb-10 pt-12 dark:bg-blackEerie"></View>
         <Avatar
           image={require('../ui/assets/images/avatar.png')}
@@ -114,7 +115,7 @@ const Profile = () => {
           )}
         </View>
       </View>
-    </ScrollView>
+    </KeyboardStickyView>
   );
 };
 

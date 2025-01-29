@@ -3,6 +3,7 @@ export * from './no-ads';
 export * from './no-internet';
 export * from './no-notification';
 export * from './no-reports';
+export * from './rating';
 export * from './scan';
 export * from './upload-files';
 export * from './welcome';

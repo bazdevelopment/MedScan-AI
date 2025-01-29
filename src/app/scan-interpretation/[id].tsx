@@ -63,11 +63,7 @@ const ScanInterpretationDetailsScreen = () => {
               </Text>
             </View>
             <View className="flex-row items-center">
-              <Icon
-                icon={<CalendarIcon color={colors.white} />}
-                size={25}
-                color={colors.transparent}
-              />
+              <Icon icon={<CalendarIcon />} size={25} color={colors.white} />
               <Text className="ml-2 text-sm text-white">
                 {dayjs(data.record.createdAt)
                   .locale(language)

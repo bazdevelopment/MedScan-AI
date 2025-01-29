@@ -1,6 +1,8 @@
+import React from 'react';
 import { View } from 'react-native';
 
 import { Text } from '@/ui';
+import HorizontalLine from '@/ui/horizontal-line';
 
 import NotificationItem from '../notification-item';
 import { type INotificationItem } from '../notification-item/notification-item.interface';
@@ -18,16 +20,21 @@ const NotificationGroup = ({
     notificationId: string;
   }) => void;
 }) => (
-  <View className="px-4">
-    <Text className="mb-2 text-lg font-medium">{date}</Text>
-    <View className="gap-4 rounded-2xl bg-white">
-      {notifications.map((notification: INotificationItem) => {
+  <View className="mt-6 px-6">
+    <Text className="mb-2 font-semibold-nunito text-lg">{date}</Text>
+    <View className="rounded-2xl">
+      {notifications.map((notification: INotificationItem, index: number) => {
+        const isLastRecord = index === notifications.length - 1;
+
         return (
-          <NotificationItem
-            notification={notification}
-            onMarkNotificationAsRead={onMarkNotificationAsRead}
-            key={notification.docId}
-          />
+          <>
+            <NotificationItem
+              notification={notification}
+              onMarkNotificationAsRead={onMarkNotificationAsRead}
+              key={notification.docId}
+            />
+            {!isLastRecord && notification.isRead && <HorizontalLine />}
+          </>
         );
       })}
     </View>

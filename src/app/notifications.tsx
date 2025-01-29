@@ -50,17 +50,15 @@ export default function NotificationsScreen() {
   );
 
   return (
-    <View className="flex-1">
-      <View className="flex-row items-center p-4"></View>
-
+    <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {areUserNotificationsLoading ? (
           <SkeletonLoader />
         ) : !userNotifications?.notifications?.length ? (
           <EdgeCaseTemplate
             image={<NoNotification width={250} height={250} />}
-            title="No notifications yet!"
-            additionalClassName="mt-32"
+            title="No notifications for now — stay tuned for updates!"
+            additionalClassName="mt-[30%] px-16 "
           />
         ) : (
           Object.entries(groupedNotifications)?.map(

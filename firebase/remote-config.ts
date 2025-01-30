@@ -1,4 +1,4 @@
-import remoteConfig from '@react-native-firebase/remote-config';
+import { router } from 'expo-router';
 
 import { Env } from '@/core/env';
 
@@ -9,21 +9,11 @@ import { Env } from '@/core/env';
  * @returns The value of the parameter as a string or null if it fails.
  */
 // Function to check for app update
-export const checkForAppUpdate = async (): Promise<{
-  isUpdateRequired: boolean;
-}> => {
+export const checkForAppUpdate = async (minVersionAllowed: string) => {
   try {
-    // Fetch and activate the latest remote config
-    await remoteConfig().fetchAndActivate();
-
-    // Get all the configuration values
-    const config = remoteConfig().getAll();
-    const minimumVersion =
-      config.MINIMUM_VERSION_ALLOWED.asString() || Env.VERSION;
     // Compare versions to determine if an update is required
-    const isUpdateRequired = compareVersions(minimumVersion, Env.VERSION);
-
-    return { isUpdateRequired };
+    const isUpdateRequired = compareVersions(minVersionAllowed, Env.VERSION);
+    if (isUpdateRequired) return router.navigate('/new-app-version');
   } catch (error) {
     console.error('Error fetching or activating remote config:', error);
     throw new Error(

@@ -109,6 +109,14 @@ export default function RootLayout() {
             presentation: 'fullScreenModal',
           }}
         />
+        <Stack.Screen
+          name="new-app-version"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            presentation: 'fullScreenModal',
+          }}
+        />
 
         <Stack.Screen
           name="scan-interpretation"

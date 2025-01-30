@@ -5,6 +5,7 @@ import * as QuickActions from 'expo-quick-actions';
 import { useQuickActionRouting } from 'expo-quick-actions/router';
 import { Redirect, router, Tabs } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
+import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Animated, Easing } from 'react-native';
@@ -17,6 +18,7 @@ import { TabBarIcon } from '@/components/tab-bar-icon';
 import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
+import useRealtimeConfig from '@/core/hooks/use-real-time-config';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
@@ -70,6 +72,10 @@ export default function TabLayout() {
   }, []);
   // console.log('isOnboarded', isOnboarded);
   useQuickActionRouting();
+
+  const { MINIMUM_VERSION_ALLOWED } = useRealtimeConfig();
+
+  checkForAppUpdate(MINIMUM_VERSION_ALLOWED);
 
   useEffect(() => {
     QuickActions.setItems<QuickActions.Action>([

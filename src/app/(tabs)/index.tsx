@@ -1,6 +1,5 @@
 /* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
-import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
@@ -71,8 +70,6 @@ export default function Home() {
     mutate: onUpdateInterpretationFields,
     isPending: isUpdateTitlePending,
   } = useUpdateInterpretationFields()();
-
-  checkForAppUpdate();
 
   const {
     onMomentumScrollEnd,

@@ -1,7 +1,7 @@
 import remoteConfig from '@react-native-firebase/remote-config';
 import { useEffect, useState } from 'react';
 
-const useRealtimeConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
+const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
   const [configs, setConfigs] = useState({});
 
   const parseConfigValue = (value: any) => {
@@ -40,7 +40,7 @@ const useRealtimeConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
 
   // Initial fetch
   const fetchInitialValues = async () => {
-    await remoteConfig().fetchAndActivate();
+    await remoteConfig().fetchAndActivate(); // Initial fetch and activate
     setConfigs(getConfigValues());
   };
 
@@ -49,8 +49,7 @@ const useRealtimeConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
 
     // Set up real-time listener
     const unsubscribe = remoteConfig().onConfigUpdated(async () => {
-      console.log('intra aici');
-      await remoteConfig().activate();
+      await remoteConfig().activate(); // Only activate for real-time updates
       setConfigs(getConfigValues());
     });
 
@@ -61,4 +60,4 @@ const useRealtimeConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
   return configs as { MINIMUM_VERSION_ALLOWED: string };
 };
 
-export default useRealtimeConfig;
+export default useRemoteConfig;

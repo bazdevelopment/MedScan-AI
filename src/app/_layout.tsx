@@ -129,6 +129,7 @@ export default function RootLayout() {
                 className="pt-16"
                 titlePosition="center"
                 onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.black}
               />
             ),
           }}

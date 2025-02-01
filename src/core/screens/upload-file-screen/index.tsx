@@ -54,7 +54,7 @@ const UploadFileScreen = ({
               className="bg-white pt-20"
               titlePosition="center"
               onGoBack={onGoBack}
-              backIconColor={colors.blackBeauty}
+              backIconColor={isDark ? colors.white : colors.blackBeauty}
             />
           ),
         }}
@@ -101,7 +101,7 @@ const UploadFileScreen = ({
           <Camera
             width={28}
             height={28}
-            color={isDark ? colors.white : colors.primary[900]}
+            fill={isDark ? colors.white : colors.primary[900]}
           />
         }
         onPress={onTakePhoto}

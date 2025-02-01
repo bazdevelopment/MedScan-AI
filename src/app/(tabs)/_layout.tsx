@@ -7,13 +7,11 @@ import { Redirect, router, Tabs } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
-import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, Easing } from 'react-native';
+import React, { useEffect } from 'react';
 
 import { useUser, useUserPreferredLanguage } from '@/api/user/user.hooks';
-import Branding from '@/components/branding';
 import CustomHeader from '@/components/cusom-header';
-import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import InitialLoadSpinner from '@/components/initial-load-spinner.ts';
 import { TabBarIcon } from '@/components/tab-bar-icon';
 import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { useHaptic } from '@/core/hooks/use-haptics';
@@ -23,7 +21,7 @@ import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
 import { playSound } from '@/core/utilities/play-sound';
-import { colors, useModal, View } from '@/ui';
+import { colors, useModal } from '@/ui';
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
@@ -89,7 +87,7 @@ export default function TabLayout() {
     ]);
   }, []);
 
-  if (isPendingUserinfo) return <ProgressSpinner />;
+  if (isPendingUserinfo) return <InitialLoadSpinner />;
 
   if (isFirstTime && !isLoggedIn) {
     return <Redirect href="/welcome" />;
@@ -155,111 +153,3 @@ export default function TabLayout() {
     </>
   );
 }
-
-const ProgressSpinner = () => {
-  const [loadingMessage, setLoadingMessage] = useState(
-    'Loading your personalized experience...',
-  );
-
-  const fadeValue = useRef(new Animated.Value(0)).current;
-
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
-
-  useEffect(() => {
-    // Update the loading message in intervals
-    const messages = [
-      'Synchronizing systems...',
-      'Processing your data...',
-      'Almost ready, just a moment...',
-    ];
-    let messageIndex = 0;
-    const messageInterval = setInterval(() => {
-      messageIndex = (messageIndex + 1) % messages.length;
-      setLoadingMessage(messages[messageIndex]);
-    }, 2000);
-
-    // Fade in and fade out effect
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(fadeValue, {
-          toValue: 1,
-          duration: 1000,
-          easing: Easing.inOut(Easing.quad),
-          useNativeDriver: true,
-        }),
-        Animated.timing(fadeValue, {
-          toValue: 0,
-          duration: 1000,
-          easing: Easing.inOut(Easing.quad),
-          useNativeDriver: true,
-        }),
-      ]),
-    ).start();
-
-    return () => {
-      clearInterval(messageInterval);
-    };
-  }, [fadeValue]);
-
-  return (
-    <View className="flex-1 items-center justify-center gap-3 bg-primary-900 dark:bg-blackEerie">
-      <SnakeLine
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute right-[150] top-[70]"
-      />
-      <SnakeLine
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute right-[50] top-[40]"
-      />
-      <SnakeLineRotated
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute left-[40] top-0"
-      />
-      <SnakeLineRotated
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute left-[170] top-[-120]"
-      />
-      <SnakeLineRotated
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute left-[200] top-[-20]"
-      />
-      <SnakeLineRotated
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute right-[-10] top-[-20]"
-      />
-      <Branding isLogoVisible className="top-[-25]" />
-      {/* Rotating Spinner */}
-      <ActivityIndicator
-        size="large"
-        className=" items-center justify-center"
-        color={isDark ? colors.charcoal[300] : colors.charcoal[100]}
-      />
-
-      {/* Fading Loading Message */}
-      <Animated.Text
-        className="mt-4 font-medium text-white"
-        style={{ opacity: fadeValue }}
-      >
-        {loadingMessage}
-      </Animated.Text>
-      <SnakeLine
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute bottom-[-10] z-[-1]"
-      />
-      <SnakeLine
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute bottom-[-10] left-[-10px] z-[-1]"
-      />
-      <SnakeLine
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute bottom-[120] left-[-50px] z-[-1]"
-      />
-
-      <SnakeLineRotated
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute bottom-0 right-[-10] z-[-1]"
-      />
-    </View>
-  );
-};

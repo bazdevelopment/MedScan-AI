@@ -34,7 +34,7 @@ const PromptSection = ({
         E.g. {FILE_UPLOAD_PROMPT_MESSAGES[currentPrompt]}
       </Text> */}
       <Input
-        className="font-regular-nunito mt-4 min-h-[130] w-full rounded-xl border border-gray-300 bg-white p-3 text-base text-gray-800 dark:border-charcoal-600 dark:bg-charcoal-900 dark:text-white"
+        className="font-regular-nunito  min-h-[130] w-full rounded-xl border border-gray-300 bg-white p-3 text-base text-gray-800 dark:border-charcoal-600 dark:bg-charcoal-900 dark:text-white"
         multiline
         // numberOfLines={3}
         //todo: long placeholder is not completely shown because of min-h-[100px], find the cause

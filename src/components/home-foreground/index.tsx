@@ -56,9 +56,8 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   }, [scrollValue]);
 
   return (
-    <View className="h-[320px] rounded-b-[50px] bg-primary-900 pt-[20px]">
-      <SnakeLine className="absolute right-[150] top-[70]" />
-      <SnakeLine className="absolute right-[50] top-[60]" />
+    <View className="h-[340px] rounded-b-[50px] bg-primary-900 pt-[20px]">
+      <SnakeLine className="absolute right-[150] top-[10]" />
       <SnakeLineRotated className="absolute left-[100] top-[-20]" />
       <SnakeLineRotated className="absolute left-[170] top-[-120]" />
       <SnakeLineRotated className="absolute left-[200] top-[-20]" />
@@ -99,16 +98,34 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           </View>
         </CardWrapper>
 
-        <View className="absolute top-[200px] w-[85%] flex-col items-center self-center rounded-[40px] bg-tertiary-200 p-[20px] pb-[40px] dark:bg-charcoal-800">
-          <Text className="font-bold-nunito text-xl">
+        <View className="absolute top-[200px] w-[85%] flex-col items-center self-center overflow-hidden rounded-[40px] border-[3px] border-primary-600 bg-primary-800  p-[20px]   dark:bg-charcoal-800">
+          <SnakeLine
+            className="absolute bottom-[-20] left-[-60]"
+            color={isDark ? colors.charcoal[600] : colors.primary[700]}
+          />
+          <SnakeLine
+            className="absolute left-[-90] top-[-70]"
+            color={isDark ? colors.charcoal[600] : colors.primary[700]}
+          />
+
+          <SnakeLine
+            className="absolute right-0 top-[130]"
+            color={isDark ? colors.charcoal[600] : colors.primary[700]}
+          />
+          <SnakeLineRotated
+            className="absolute right-[-30] top-[-15]"
+            color={isDark ? colors.charcoal[600] : colors.primary[700]}
+          />
+
+          <Text className="font-bold-nunito text-xl text-white">
             {translate('home.homeForeground.heading')}
           </Text>
-          <Text className="mt-4 px-4 text-center font-medium-nunito text-base text-charcoal-600">
+          <Text className="mt-2 px-0 text-center font-medium-nunito text-base text-white">
             {translate('home.homeForeground.subHeading')}
           </Text>
           <Button
             label={translate('uploadScan.title')}
-            className="absolute top-[130px] mb-0 mt-4 h-[50] w-[55%] rounded-full border-2 border-tertiary-100 bg-primary-900 dark:border-0"
+            className="mb-0 mt-4 h-[50] w-[55%] rounded-full border-2  bg-blackEerie dark:border-0"
             size="lg"
             textClassName="text-md font-semibold-nunito"
             onPress={onStartUploadMediaFile}

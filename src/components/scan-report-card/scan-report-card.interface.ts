@@ -9,4 +9,5 @@ export interface IScanReportCard {
   docId: string;
   language: string;
   dateFormat?: string;
+  promptMessage: string;
 }

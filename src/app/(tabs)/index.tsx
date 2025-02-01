@@ -117,7 +117,7 @@ export default function Home() {
         scrollValue={scrollValue}
         scrollViewRef={scrollViewRef}
       >
-        <View className="mt-14">
+        <View className="mt-16">
           <FreeTierStatus
             className="mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty"
             scansLeft={userInfo?.scansRemaining}
@@ -174,6 +174,7 @@ const ReportsList = ({
   const { language } = useSelectedLanguage();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
   return (
     <View className={`flex-1 ${className}`}>
       {areRecentReportsLoading ? (

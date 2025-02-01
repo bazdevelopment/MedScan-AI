@@ -3,11 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { translate } from '@/core';
-import { generateScanReportPdf } from '@/core/utilities/generate-scan-report-pdf';
 import { Text } from '@/ui';
 
 import dayjs from '../../lib/dayjs';
-import SharePdfActionButtons from '../share-pdf-action-buttons';
 import { type IReportCard } from './report-card.interface';
 
 const ReportCard = ({ date, title, description, score }: IReportCard) => {
@@ -33,18 +31,6 @@ const ReportCard = ({ date, title, description, score }: IReportCard) => {
           </Text>
           <Text className="font-bold-nunito text-xl">{score || '-'}</Text>
         </View>
-        <SharePdfActionButtons
-          heading={title}
-          date={date}
-          html={generateScanReportPdf({
-            createdAt: dayjs(date).locale(language).format('dddd-DD'),
-            interpretation: 'Your interpretation text here...',
-            mimeType: 'application/pdf',
-            promptMessage: 'What is the reason?',
-            title: 'Document Analysis',
-            docId: 'DOC123',
-          })}
-        />
       </View>
     </View>
   );

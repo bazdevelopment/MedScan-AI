@@ -77,10 +77,8 @@ const GenerateReportScreen = () => {
                       .locale(language)
                       .format('dddd-DD'),
                     interpretation: interpretationResult as string,
-                    mimeType: 'application/pdf',
                     promptMessage: promptMessage as string,
-                    title: 'Document Analysis',
-                    docId: '123',
+                    generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
                   }),
                   title: 'Document Analysis',
                 })
@@ -107,10 +105,8 @@ const GenerateReportScreen = () => {
                       .locale(language)
                       .format('dddd-DD'),
                     interpretation: interpretationResult as string,
-                    mimeType: 'application/pdf',
                     promptMessage: promptMessage as string,
-                    title: 'Document Analysis',
-                    docId: '123',
+                    generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
                   }),
                 })
               }

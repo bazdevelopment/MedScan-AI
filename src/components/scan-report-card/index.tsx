@@ -28,6 +28,7 @@ const ScanReportCard = ({
   isUpdateTitlePending,
   language,
   dateFormat = 'MMMM D, YYYY',
+  promptMessage,
 }: IScanReportCard) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editableTitle, setEditableTitle] = useState(title);
@@ -66,12 +67,10 @@ const ScanReportCard = ({
           heading={title}
           date={createdAt}
           html={generateScanReportPdf({
-            createdAt: dayjs(createdAt).locale(language).format('dddd-DD'),
-            interpretation: 'Your interpretation text here...',
-            mimeType: 'application/pdf',
-            promptMessage: 'What is the reason?',
-            title: 'Document Analysis',
-            docId: 'DOC123',
+            createdAt: dayjs(createdAt).locale(language).format('DD/MM/YYYY'),
+            interpretation,
+            promptMessage,
+            generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
           })}
         />
       </View>

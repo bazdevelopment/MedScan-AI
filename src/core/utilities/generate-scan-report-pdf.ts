@@ -1,186 +1,161 @@
 /* eslint-disable max-lines-per-function */
+import { Asset } from 'expo-asset';
+
+import { colors } from '@/ui';
+const logo = Asset.fromModule(
+  require('../../../assets/icon-transparent.png'),
+).uri;
+
+const medicalFrame = Asset.fromModule(
+  require('../../../assets/medical-frame.png'),
+).uri;
 
 interface IGenerateScanReportPdf {
   createdAt: string;
   interpretation: string;
-  mimeType: string;
   promptMessage: string;
-  title: string;
-  docId: string;
+  generatedAt: string;
 }
 
 export const generateScanReportPdf = ({
   createdAt,
   interpretation,
-  mimeType,
   promptMessage,
-  title,
-  docId,
+  generatedAt,
 }: IGenerateScanReportPdf): string => {
-  // Format date for better readability
-  const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-
   return `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>${title}</title>
-        <style>
-          @page {
-            margin: 1cm;
-          }
-        </style>
-      </head>
-      <body style="
-        font-family: 'Helvetica', sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-        line-height: 1.6;
-      ">
-        <!-- Header with App Logo and Name -->
-        <header style="
-          background: linear-gradient(135deg, #2563eb, #1e40af);
-          color: white;
-          padding: 20px;
-          text-align: center;
-          border-radius: 0 0 15px 15px;
-          margin-bottom: 30px;
-        ">
-          <h1 style="
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-          ">X-Ray Analyzer</h1>
-          <p style="
-            margin: 5px 0 0;
-            font-size: 16px;
-            opacity: 0.9;
-          ">Document Analysis Report</p>
-        </header>
-
-        <!-- Main Content -->
-        <div style="padding: 0 40px;">
-          <!-- Document Title Section -->
-          <div style="
-            background-color: #f8fafc;
-            border-radius: 10px;
             padding: 20px;
-            margin-bottom: 25px;
-            border: 1px solid #e2e8f0;
-          ">
-            <h2 style="
-              color: #1e40af;
-              margin: 0 0 10px;
-              font-size: 24px;
-            ">${title}</h2>
-            <p style="
-              margin: 0;
-              color: #64748b;
-              font-size: 14px;
-            ">Document ID: ${docId}</p>
-          </div>
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border:1px solid ${colors.lightGray};
+            border-radius:30px;
+          
+        }
+        .header {
+            text-align: center;
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+          align-items:center;
+            gap:10px;
+        }
+        .branding-text{
+        display:flex;
+        flex-direction:column;
+        margin-top:-20px;
+        }
 
-          <!-- Analysis Details -->
-          <div style="
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-          ">
-            <!-- Creation Time -->
-            <div style="
-              background-color: white;
-              border-radius: 8px;
-              padding: 15px;
-              border: 1px solid #e2e8f0;
-            ">
-              <h3 style="
-                margin: 0 0 8px;
-                color: #334155;
-                font-size: 16px;
-                font-weight: bold;
-              ">📅 Created At</h3>
-              <p style="margin: 0; color: #64748b;">${formattedDate}</p>
-            </div>
+        .background-overlay{
+        position:absolute;
+        left:25%;
+        opacity:0.7;
 
-            <!-- Document Type -->
-            <div style="
-              background-color: white;
-              border-radius: 8px;
-              padding: 15px;
-              border: 1px solid #e2e8f0;
-            ">
-              <h3 style="
-                margin: 0 0 8px;
-                color: #334155;
-                font-size: 16px;
-                font-weight: bold;
-              ">📄 Document Type</h3>
-              <p style="margin: 0; color: #64748b;">${mimeType}</p>
-            </div>
+        }
 
-            <!-- Prompt -->
-            <div style="
-              background-color: white;
-              border-radius: 8px;
-              padding: 15px;
-              border: 1px solid #e2e8f0;
-            ">
-              <h3 style="
-                margin: 0 0 8px;
-                color: #334155;
-                font-size: 16px;
-                font-weight: bold;
-              ">❓ Analysis Prompt</h3>
-              <p style="margin: 0; color: #64748b;">${promptMessage}</p>
-            </div>
-          </div>
+        .logo {
+            width: 70px;
+            height: 70px;
+        }
+        h1 {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #7982FD;
+            margin-bottom: 5px;
+        }
+        .content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .footer {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
 
-          <!-- Interpretation -->
-          <div style="
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid #e2e8f0;
-          ">
-            <h3 style="
-              margin: 0 0 15px;
-              color: #334155;
-              font-size: 20px;
-              font-weight: bold;
-            ">🤖 AI Interpretation</h3>
-            <div style="
-              color: #334155;
-              line-height: 1.8;
-              white-space: pre-wrap;
-            ">${interpretation}</div>
-          </div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src=${logo} alt="X-Ray Analyzer Logo" class="logo">
+            <div class="branding-text">
+            <p style="font-size:40px; line-height:0px; font-weight:800">X-Ray</p>
+            <p style="letter-spacing:4px; line-height:0px; margin-top:3px; font-size:25">ANALYZER</p>
+             </div>
+        </div>
+      <p style="text-align: center; font-size:24px; font-weight:700">Document Analysis Report</p>
+
+
+        <!-- Info -->
+        <div class="info">
+            <div><strong>Created At:</strong> ${generatedAt}</div>
+        </div>
+
+        <!-- Analysis Prompt -->
+        <div>
+            <p class="section-title">Analysis Prompt</p>
+            <p class="content">${promptMessage || '-'}</p>
+        </div>
+
+        <!-- AI Interpretation -->
+        <div style="position:relative">
+            <img class="background-overlay" src=${medicalFrame} />
+
+            <p class="section-title">AI Interpretation</p>
+            <p class="content">
+              ${interpretation}
+                </p>
+
         </div>
 
         <!-- Footer -->
-        <footer style="
+         <footer style="
           text-align: center;
           padding: 20px;
           color: #64748b;
           font-size: 12px;
           border-top: 1px solid #e2e8f0;
-          margin-top: 40px;
+          margin-top: 100px;
+          
         ">
-          <p style="margin: 0;">Generated by X-Ray Analyzer • ${formattedDate}</p>
-          <p style="margin: 0;">The AI-generated results from X-ray Interpreter are intended for informational purposes only and should not be used as a substitute for professional medical advice. Always seek guidance from a qualified healthcare professional for diagnosis and treatment.
+          <p style="margin: 0;">Generated by X-Ray Analyzer • ${createdAt}</p>
+          <p style="margin: 0;">The AI-generated results from X-ray Analyzer are intended for informational purposes only and should not be used as a substitute for professional medical advice. Always seek guidance from a qualified healthcare professional for diagnosis and treatment.
 </p>
 
         </footer>
-      </body>
-    </html>
+
+    </div>
+</body>
+</html>
   `;
 };

@@ -3,4 +3,5 @@ import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-f
 export interface IFilePreviewScreen {
   collectedData: ICollectedData;
   goToNextScreen: () => void;
+  resetFlow: () => void;
 }

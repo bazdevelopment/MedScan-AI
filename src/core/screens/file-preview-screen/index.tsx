@@ -80,6 +80,7 @@ const FilePreviewScreen = ({
   currentScreenIndex,
   totalSteps,
   onGoBack,
+  resetFlow,
 }: IFilePreviewScreen) => {
   const [promptMessage, setPromptMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -105,6 +106,7 @@ const FilePreviewScreen = ({
         pathname: '/generate-report',
         params: { interpretationResult, promptMessage, createdDate },
       });
+    resetFlow();
     setIsModalVisible(false);
     onDecrementScans({ language });
   };
@@ -130,9 +132,9 @@ const FilePreviewScreen = ({
 
   const isVideo = checkIsVideo(collectedData.fileExtension!);
 
-  const mediaSource = collectedData.fileBase64
-    ? getBase64ImageUri(collectedData.fileBase64)
-    : (collectedData.fileUri as string);
+  const mediaSource = Boolean(collectedData.fileBase64)
+    ? getBase64ImageUri(collectedData.fileBase64 as string)
+    : collectedData.fileUri || collectedData.file;
   const {
     mutate: handleAnalyzeImageUsingAi,
     error: errorAnalyzeImage,
@@ -179,7 +181,7 @@ const FilePreviewScreen = ({
       >
         <View className="dark:bg-black">
           <ProgressBar
-            currentStep={currentScreenIndex}
+            currentStep={currentScreenIndex + 1}
             totalSteps={totalSteps}
             isTextShown
             className="mt-8 flex-row self-center"

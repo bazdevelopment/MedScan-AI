@@ -147,13 +147,13 @@ export default function RootLayout() {
                 titlePosition="center"
                 rightContent={
                   <Icon
+                    size={20}
+                    containerStyle="bg-black dark:bg-white rounded-full p-1 mt-12 mr-6"
+                    onPress={() => router.push('/(tabs)/')}
+                    //!keep router.push instead of router.navigate to prevent crash on android
                     icon={
-                      <Icon
-                        icon={<CloseIcon />}
+                      <CloseIcon
                         color={isDark ? colors.primary[900] : colors.white}
-                        size={20}
-                        containerStyle="bg-black dark:bg-white rounded-full p-1 mt-12 mr-6"
-                        onPress={() => router.navigate('/(tabs)')}
                       />
                     }
                   />

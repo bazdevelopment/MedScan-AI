@@ -5,6 +5,7 @@ import { SafeAreaView, View } from 'react-native';
 
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import { Button, colors, Text } from '@/ui';
 import {
   CrownIllustration,
@@ -38,15 +39,12 @@ const FreeTrialPreview = ({
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute left-[170] top-[-120]"
       />
-      <SnakeLineRotated
-        color={isDark ? colors.charcoal[600] : colors.primary[600]}
-        className="absolute left-[200] top-[-20]"
-      />
+
       <SnakeLineRotated
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute right-[-10] top-[-20]"
       />
-      <View className="flex-1 px-6 pt-8">
+      <View className={`flex-1 px-6 pt-8 ${DEVICE_TYPE.ANDROID && 'pt-[70]'}`}>
         <Text className="font-bold-nunito text-[32px]  text-white">
           Enjoy your free trial! 🎉
         </Text>

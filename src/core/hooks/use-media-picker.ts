@@ -119,7 +119,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Launch the camera
       const result = await ImagePicker.launchCameraAsync({
-        allowsEditing: true,
+        allowsEditing: false,
         aspect: [4, 3],
         quality: 1,
       });

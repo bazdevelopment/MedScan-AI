@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { BlurView } from 'expo-blur';
+import { BlurView } from '@react-native-community/blur';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';

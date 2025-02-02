@@ -15,4 +15,5 @@ export interface IFlow {
   collectedData: ICollectedData | IOnboardingCollectedData;
   children: ReactNode;
   onSkip: () => void;
+  resetFlow: () => void;
 }

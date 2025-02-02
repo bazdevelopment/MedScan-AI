@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View } from 'react-native';
 
 import { Text } from '@/ui';
@@ -27,14 +27,13 @@ const NotificationGroup = ({
         const isLastRecord = index === notifications.length - 1;
 
         return (
-          <>
+          <Fragment key={notification.docId}>
             <NotificationItem
               notification={notification}
               onMarkNotificationAsRead={onMarkNotificationAsRead}
-              key={notification.docId}
             />
             {!isLastRecord && notification.isRead && <HorizontalLine />}
-          </>
+          </Fragment>
         );
       })}
     </View>

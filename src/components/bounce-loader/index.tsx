@@ -15,7 +15,7 @@ const BounceLoader = ({
     <View className={className}>
       {/* Fading Loading Message */}
       <Animated.Text
-        className="mt-4 font-medium text-white"
+        className="text-center mt-4 h-14 font-medium text-white"
         style={{ opacity: fadeValue }}
       >
         {loadingMessage}

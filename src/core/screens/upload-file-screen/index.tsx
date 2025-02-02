@@ -5,7 +5,7 @@ import {
 } from '@gorhom/bottom-sheet';
 import { Stack } from 'expo-router';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
 import CustomHeader from '@/components/cusom-header';
@@ -26,6 +26,7 @@ const UploadFileScreen = ({
   totalSteps,
   currentScreenIndex,
   onGoBack,
+  resetFlow,
 }: IUploadFileScreen) => {
   const modal = useModal();
   const { colorScheme } = useColorScheme();
@@ -43,6 +44,9 @@ const UploadFileScreen = ({
     modal.dismiss();
   };
 
+  useEffect(() => {
+    resetFlow();
+  }, []);
   return (
     <>
       <Stack.Screen

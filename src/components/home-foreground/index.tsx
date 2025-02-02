@@ -125,15 +125,15 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           </Text>
           <Button
             label={translate('uploadScan.title')}
-            className="mb-0 mt-4 h-[50] w-[55%] rounded-full border-2  bg-blackEerie active:opacity-90 dark:border-0"
+            className="mb-0 mt-4 h-[50] w-[55%] rounded-full border-2  bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie"
             size="lg"
-            textClassName="text-md font-semibold-nunito"
+            textClassName="text-md font-semibold-nunito dark:text-white"
             onPress={onStartUploadMediaFile}
             icon={
               <UploadIcon
                 width={27}
                 height={27}
-                color={isDark ? colors.black : colors.white}
+                color={isDark ? colors.white : colors.white}
               />
             }
           />

@@ -166,7 +166,7 @@ const FilePreviewScreen = ({
           header: (props) => (
             <CustomHeader
               {...props}
-              title={'Upload Scan'}
+              title="Upload Scan"
               className="bg-white pt-20"
               titlePosition="center"
               onGoBack={onGoBack}
@@ -210,7 +210,7 @@ const FilePreviewScreen = ({
         <Button
           iconPosition="right"
           label="Generate report"
-          className="mt-10 h-[62px] w-[90%] gap-2 self-center rounded-full bg-primary-900 dark:bg-primary-900"
+          className="mt-10 h-[62px] w-[90%] gap-2 self-center rounded-full bg-primary-900 active:bg-primary-700 dark:bg-primary-900"
           textClassName="text-lg font-semibold-nunito text-white dark:text-white"
           size="lg"
           onPress={() => {

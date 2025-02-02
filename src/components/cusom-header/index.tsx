@@ -1,5 +1,4 @@
 /* eslint-disable max-lines-per-function */
-import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { twMerge } from 'tailwind-merge';
@@ -19,9 +18,6 @@ const CustomHeader = ({
   titleClassName,
   backIconColor,
 }: ICustomHeader) => {
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
-
   return (
     <View
       className={twMerge(

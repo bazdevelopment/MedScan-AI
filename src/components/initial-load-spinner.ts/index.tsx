@@ -3,7 +3,7 @@ import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { LOADING_MESSAGES_INITIAL_APP_LOAD } from '@/constants/loading-messages';
-import { colors } from '@/ui';
+import { colors, FocusAwareStatusBar } from '@/ui';
 
 import BounceLoader from '../bounce-loader';
 import Branding from '../branding';
@@ -15,6 +15,7 @@ const InitialLoadSpinner = () => {
 
   return (
     <View className="flex-1 items-center justify-center gap-3 bg-primary-900 dark:bg-blackEerie">
+      <FocusAwareStatusBar hidden />
       <SnakeLine
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute right-[150] top-[70]"

@@ -120,7 +120,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           <Text className="font-bold-nunito text-xl text-white">
             {translate('home.homeForeground.heading')}
           </Text>
-          <Text className="mt-2 px-0 text-center font-medium-nunito text-base text-white">
+          <Text className="text-center mt-2 px-2 font-medium-nunito text-base text-white">
             {translate('home.homeForeground.subHeading')}
           </Text>
           <Button

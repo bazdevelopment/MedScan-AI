@@ -40,7 +40,7 @@ export const ShareItem = () => {
       <Modal
         ref={modal.ref}
         index={0}
-        snapPoints={['80%']}
+        snapPoints={['90%']}
         title="Share"
         backgroundStyle={{
           backgroundColor: isDark ? colors.blackBeauty : colors.primary[50],

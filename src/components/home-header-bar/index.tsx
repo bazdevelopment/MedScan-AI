@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { BlurView } from 'expo-blur';
+import { BlurView } from '@react-native-community/blur';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
@@ -10,8 +10,8 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useUser } from '@/api/user/user.hooks';
-import { translate, useSelectedLanguage } from '@/core';
-import { Button, colors } from '@/ui';
+import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
+import { Button, colors, View } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 
 import Branding from '../branding';
@@ -61,19 +61,23 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
     <>
       <Animated.View
         style={[headerContainerAnimatedStyle]}
-        className="h-[130px] w-full"
+        className={`w-full ${DEVICE_TYPE.IOS ? 'h-[130px]' : 'h-[110px]'}`}
       >
-        <BlurView
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              backgroundColor: isDark
-                ? colors.charcoal[600]
-                : colors.primary[900],
-              opacity: 1,
-            },
-          ]}
-        />
+        {DEVICE_TYPE.IOS ? (
+          <BlurView
+            blurType={isDark ? 'dark' : 'regular'}
+            style={[
+              StyleSheet.absoluteFill,
+
+              {
+                backgroundColor: isDark ? undefined : colors.transparent,
+                opacity: 1,
+              },
+            ]}
+          />
+        ) : (
+          <View className="h-[110px] bg-primary-900 dark:bg-charcoal-500" />
+        )}
       </Animated.View>
 
       <Animated.View
@@ -82,15 +86,11 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
           top: insets.top || DEFAULT_TOP_INSET,
           left: insets.left,
           right: insets.right,
+          marginTop: DEVICE_TYPE.IOS ? -10 : 0,
         }}
       >
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
-          <Branding isLogoVisible />
-          {/* <GradientText colors={[colors.lightSkyBlue, colors.primaryPurple]}>
-            <Text className="font-bold dark:text-primary-900">
-              {`${translate('general.welcome')}, ${userInfo?.userName}!`}
-            </Text>
-          </GradientText> */}
+          <Branding isLogoVisible invertedColors={DEVICE_TYPE.IOS} />
         </Animated.View>
 
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>
@@ -107,21 +107,21 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
             }
           />
           <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            color={isDark ? colors.charcoal[600] : colors.primary[400]}
             className="absolute left-[-180px] top-[-80px] z-[-1]"
           />
 
           <SnakeLine
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            color={isDark ? colors.charcoal[600] : colors.primary[400]}
             className="absolute left-[-120px] top-[-70px] z-[-1]"
           />
 
           <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            color={isDark ? colors.charcoal[600] : colors.primary[400]}
             className="absolute left-[30px] top-[-50px] z-[-1]"
           />
           <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            color={isDark ? colors.charcoal[600] : colors.primary[400]}
             className="absolute left-[150] top-[-50px] z-[-1] "
           />
         </Animated.View>

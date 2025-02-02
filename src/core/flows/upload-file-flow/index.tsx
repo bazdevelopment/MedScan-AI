@@ -18,6 +18,18 @@ const UploadFileFlow = ({ onSubmitCollectedData }: IFlowModal) => {
   });
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
 
+  const resetFlow = () => {
+    setCollectedData({
+      fileBase64: '',
+      fileName: '',
+      fileUri: '',
+      fileMimeType: '',
+      fileExtension: '',
+      interpretationResult: '',
+    });
+    setCurrentScreenIndex(0);
+  };
+
   const handleGoToNextScreen = (newCollectedData: ICollectedData) => {
     setCollectedData((prevCollectedData) => ({
       ...prevCollectedData,
@@ -39,6 +51,7 @@ const UploadFileFlow = ({ onSubmitCollectedData }: IFlowModal) => {
       onGoNext={handleGoToNextScreen}
       onGoBack={handleGoToPreviousScreen}
       onFinish={handleOnFinishFlow}
+      resetFlow={resetFlow}
       collectedData={collectedData}
     >
       <UploadFileScreen />

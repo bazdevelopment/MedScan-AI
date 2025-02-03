@@ -44,7 +44,7 @@ const Profile = () => {
   };
 
   return (
-    <KeyboardStickyView className="flex-1" offset={{ opened: 250 }}>
+    <KeyboardStickyView offset={{ opened: 150 }}>
       <ScrollView className="dark:bg-blackEerie">
         <View className="flex-1 bg-white dark:bg-blackEerie">
           <View className="h-[150px] rounded-b-[50px]  bg-primary-900 pb-10 pt-12 dark:bg-blackEerie"></View>
@@ -81,13 +81,13 @@ const Profile = () => {
               editable={false}
             />
           </View>
-          <View className="flex-column mx-6  mt-40 items-start justify-between">
+          <View className="flex-column mx-6 items-start justify-between">
             {!editModeEnabled && (
               <Button
                 label="Edit Profile"
                 variant="default"
                 icon={<EditIcon fill={colors.white} />}
-                className="absolute mt-6 h-[62px] w-full gap-1 rounded-full border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
+                className="mt-6 h-[62px] w-full gap-1 rounded-full border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
                 textClassName="text-lg text-center text-white dark:text-white"
                 iconPosition="right"
                 onPress={() => setEditModeEnabled(!editModeEnabled)}

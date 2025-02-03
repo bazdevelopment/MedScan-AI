@@ -56,7 +56,7 @@ export default function NotificationsScreen() {
           <SkeletonLoader />
         ) : !userNotifications?.notifications?.length ? (
           <EdgeCaseTemplate
-            image={<NoNotification width={250} height={250} />}
+            image={<NoNotification width={350} height={250} />}
             title="No notifications for now — stay tuned for updates!"
             additionalClassName="mt-[30%] px-16 "
           />

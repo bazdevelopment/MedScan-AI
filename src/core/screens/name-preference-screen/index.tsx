@@ -22,7 +22,7 @@ const NamePreferenceScreen = ({
   return (
     <KeyboardAvoidingView
       className="flex-1"
-      style={{ flex: 1, paddingTop: DEVICE_TYPE.IOS ? 80 : 40 }}
+      style={{ flex: 1, paddingTop: DEVICE_TYPE.IOS ? 80 : 70 }}
       behavior="height"
       keyboardVerticalOffset={-30}
     >

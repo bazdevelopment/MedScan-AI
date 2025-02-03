@@ -44,7 +44,7 @@ const LoginPage = () => {
           : isMediumDevice
             ? DEVICE_TYPE.IOS
               ? 250
-              : 100
+              : 200
             : 250,
       }}
     >

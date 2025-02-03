@@ -11,13 +11,14 @@ import Branding from '@/components/branding';
 import OTPVerificationInput from '@/components/otp-verification-input';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
+import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, Text } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
 
 const VerifyAuthCode = () => {
   const { email } = useLocalSearchParams();
   const [isFirstTime] = useIsFirstTime();
-
+  const { isMediumDevice } = getDeviceSizeCategory();
   const {
     mutate: onVerifyAuthCode,
     isPending,
@@ -40,7 +41,10 @@ const VerifyAuthCode = () => {
   const isDark = colorScheme === 'dark';
 
   return (
-    <KeyboardStickyView className="flex-1" offset={{ opened: 250 }}>
+    <KeyboardStickyView
+      className="flex-1"
+      offset={{ opened: isMediumDevice ? 150 : 250 }}
+    >
       <ScrollView contentContainerStyle={{ flex: 1, overflow: 'hidden' }}>
         <View className="flex-1 bg-primary-900 px-6 pt-[25%] dark:bg-blackEerie">
           <SnakeLine

@@ -68,7 +68,7 @@ export default function TabLayout() {
     if (userInfoLanguage && userInfoLanguage !== actualLocalLanguage)
       onUpdatePreferredLanguage({ language: actualLocalLanguage });
   }, []);
-  // console.log('isOnboarded', isOnboarded);
+
   useQuickActionRouting();
 
   const { MINIMUM_VERSION_ALLOWED } = useRemoteConfig();
@@ -94,10 +94,11 @@ export default function TabLayout() {
   }
 
   if (
-    isFirstTime &&
-    !userInfo?.isOnboarded &&
-    isLoggedIn &&
-    userInfo?.isOtpVerified
+    (isFirstTime &&
+      !userInfo?.isOnboarded &&
+      isLoggedIn &&
+      userInfo?.isOtpVerified) ||
+    (isFirstTime && isLoggedIn && !userInfo?.isOnboarded)
   ) {
     return <Redirect href="/onboarding" />;
   }

@@ -38,3 +38,4 @@ pnpm android
 ## 👨🏼‍🔧 Troubleshooting
 
 -np versions above "^8.0.4" do not support only version param, they require patch | minor | major | prepatch | preminor | premajor | prerelease |
+-expo-blur issue causes a crash in the app: https://github.com/expo/expo/issues/34499, I fixed it by using react-native-community/blur instead

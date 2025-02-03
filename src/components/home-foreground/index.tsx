@@ -11,6 +11,7 @@ import Animated, {
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import { translate, useSelectedLanguage } from '@/core';
+import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, Text } from '@/ui';
 import { BellIcon, UploadIcon } from '@/ui/assets/icons';
 
@@ -26,6 +27,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const { language } = useSelectedLanguage();
+  const { isVerySmallDevice } = getDeviceSizeCategory();
 
   const { data: userInfo } = useUser(language);
   const { data: userNotifications } = useFetchUserNotifications({
@@ -117,15 +119,17 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             color={isDark ? colors.charcoal[600] : colors.primary[700]}
           />
 
-          <Text className="font-bold-nunito text-xl text-white">
+          <Text className="text-center font-bold-nunito text-xl text-white">
             {translate('home.homeForeground.heading')}
           </Text>
-          <Text className="text-center mt-2 px-2 font-medium-nunito text-base text-white">
+          <Text
+            className={`text-center mt-2 px-2 font-medium-nunito text-base text-white ${isVerySmallDevice ? 'px-0' : 'px-2'}`}
+          >
             {translate('home.homeForeground.subHeading')}
           </Text>
           <Button
             label={translate('uploadScan.title')}
-            className="mb-0 mt-4 h-[50] w-[55%] rounded-full border-2  bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie"
+            className={`mb-0 mt-4 h-[50] w-[55%] rounded-full border-2  bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie ${isVerySmallDevice ? 'w-[90%]' : 'w-[55%]'}`}
             size="lg"
             textClassName="text-md font-semibold-nunito dark:text-white"
             onPress={onStartUploadMediaFile}

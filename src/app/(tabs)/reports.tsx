@@ -11,8 +11,8 @@ import {
   useUpdateInterpretationFields,
 } from '@/api/interpretation/interpretation.hooks';
 import CardWrapper from '@/components/card-wrapper';
+import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanReportCard from '@/components/scan-report-card';
-import SkeletonLoader from '@/components/skeleton-loader';
 import WeekBlock from '@/components/week-block';
 import { DATE_FORMAT } from '@/constants/date-format';
 import { translate } from '@/core';
@@ -185,7 +185,14 @@ const Reports = () => {
           paddingBottom: 550,
         }}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={SkeletonLoader}
+        ListEmptyComponent={
+          <>
+            <ReportSkeleton />
+            <ReportSkeleton />
+            <ReportSkeleton />
+            <ReportSkeleton />
+          </>
+        }
         refreshControl={
           <RefreshControl refreshing={isRefetching} onRefresh={onRefetch} />
         }

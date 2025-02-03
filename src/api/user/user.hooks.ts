@@ -55,7 +55,6 @@ export const useLoginWithEmail = (variables: { email: string }) =>
       });
     },
     onError: (error) => {
-      console.log('error', error);
       Toast.error(error.message || translate('alerts.emailLoginError'));
     },
   });

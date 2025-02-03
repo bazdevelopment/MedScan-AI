@@ -54,7 +54,7 @@ const UploadFileScreen = ({
           header: (props) => (
             <CustomHeader
               {...props}
-              title={'Upload Scan'}
+              title="Upload Scan"
               className="bg-white pt-20"
               titlePosition="center"
               onGoBack={onGoBack}
@@ -85,10 +85,10 @@ const UploadFileScreen = ({
             <Text className="font-bold-nunito text-primary-900">
               {translate('flows.createReport.uploadFile.location')}
             </Text>
-            <Text className="mt-1 text-center text-base text-gray-600">
+            <Text className="text-center mt-1 text-base text-gray-600">
               {translate('flows.createReport.uploadFile.size')}
             </Text>
-            <Text className="mt-2 text-center font-bold-nunito text-sm text-primary-700">
+            <Text className="text-center mt-2 font-bold-nunito text-sm text-primary-700">
               {translate('flows.createReport.uploadFile.scanType')}
             </Text>
           </View>

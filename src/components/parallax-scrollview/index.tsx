@@ -71,7 +71,6 @@ const ParallaxScrollView = ({
         className={`absolute inset-x-0 items-center overflow-hidden ${isHeaderPrio ? 'z-10' : 'z-0'}`}
         style={{
           width: windowWidth,
-          height: headerHeight,
         }}
       >
         {cloneElement(HeaderBarComponent, { scrollValue })}

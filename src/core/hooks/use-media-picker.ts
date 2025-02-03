@@ -122,6 +122,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         allowsEditing: false,
         aspect: [4, 3],
         quality: 1,
+        base64: true,
       });
 
       // Check if the user didn't cancel the action and a URI is available
@@ -132,7 +133,11 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Handle the loaded file with the URI
       handleLoadFile(result.assets[0].uri);
       onUploadFinished &&
-        onUploadFinished({ file: result.assets[0].uri } as ICollectedData);
+        onUploadFinished({
+          fileMimeType: result.assets[0].mimeType,
+          fileUri: result.assets[0].uri,
+          fileName: result.assets[0].fileName,
+        } as ICollectedData);
     } catch (error) {
       console.error('Error taking photo:', error);
       alert(translate('alerts.errorTakingPicture'));

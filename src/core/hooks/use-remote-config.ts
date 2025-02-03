@@ -1,5 +1,5 @@
 import remoteConfig from '@react-native-firebase/remote-config';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
   const [configs, setConfigs] = useState({});
@@ -23,7 +23,7 @@ const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
   };
 
   // Helper function to get all config values
-  const getConfigValues = () => {
+  const getConfigValues = useCallback(() => {
     remoteConfig().setConfigSettings({
       minimumFetchIntervalMillis: 0,
     });
@@ -36,13 +36,13 @@ const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
         return [key, parseConfigValue(stringValue)];
       }),
     );
-  };
+  }, []);
 
   // Initial fetch
-  const fetchInitialValues = async () => {
+  const fetchInitialValues = useCallback(async () => {
     await remoteConfig().fetchAndActivate(); // Initial fetch and activate
     setConfigs(getConfigValues());
-  };
+  }, [getConfigValues]);
 
   useEffect(() => {
     fetchInitialValues();
@@ -55,7 +55,7 @@ const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
 
     // Cleanup
     return () => unsubscribe();
-  }, []); // Empty dependency array since we're getting all values
+  }, [fetchInitialValues, getConfigValues]); // Empty dependency array since we're getting all values
 
   return configs as { MINIMUM_VERSION_ALLOWED: string };
 };

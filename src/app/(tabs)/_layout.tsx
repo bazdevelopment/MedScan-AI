@@ -93,6 +93,10 @@ export default function TabLayout() {
     return <Redirect href="/welcome" />;
   }
 
+  if (!userInfo?.isOtpVerified) {
+    return <Redirect href="/verify-auth-code" />;
+  }
+
   if (
     (isFirstTime &&
       !userInfo?.isOnboarded &&
@@ -101,10 +105,6 @@ export default function TabLayout() {
     (isFirstTime && isLoggedIn && !userInfo?.isOnboarded)
   ) {
     return <Redirect href="/onboarding" />;
-  }
-
-  if (!userInfo?.isOtpVerified) {
-    return <Redirect href="/verify-auth-code" />;
   }
 
   if (!isLoggedIn) {

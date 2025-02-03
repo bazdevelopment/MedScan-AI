@@ -10,9 +10,14 @@ import { useLoginWithEmail, useValidateAuthCode } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import OTPVerificationInput from '@/components/otp-verification-input';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
+import {
+  DEVICE_TYPE,
+  translate,
+  useIsFirstTime,
+  useSelectedLanguage,
+} from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
-import { Button, colors, Text } from '@/ui';
+import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
 
 const VerifyAuthCode = () => {
@@ -43,10 +48,11 @@ const VerifyAuthCode = () => {
   return (
     <KeyboardStickyView
       className="flex-1"
-      offset={{ opened: isMediumDevice ? 150 : 250 }}
+      offset={{ opened: isMediumDevice ? (DEVICE_TYPE.IOS ? 250 : 120) : 250 }}
     >
+      <FocusAwareStatusBar hidden />
       <ScrollView contentContainerStyle={{ flex: 1, overflow: 'hidden' }}>
-        <View className="flex-1 bg-primary-900 px-6 pt-[25%] dark:bg-blackEerie">
+        <View className="flex-1 bg-primary-900 px-6 pt-14 dark:bg-blackEerie">
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute right-[150] top-[70]"

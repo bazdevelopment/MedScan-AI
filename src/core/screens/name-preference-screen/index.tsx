@@ -1,10 +1,9 @@
-/* eslint-disable max-lines-per-function */
 import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { KeyboardStickyView } from 'react-native-keyboard-controller';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 
 import ProgressDots from '@/components/progress-dots';
-import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
+import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import { Button, Input, Text } from '@/ui';
 
 interface OnboardingScreenProps {
@@ -20,16 +19,14 @@ const NamePreferenceScreen = ({
 }: OnboardingScreenProps) => {
   const [nickname, setNickname] = useState('');
 
-  const { isVerySmallDevice } = getDeviceSizeCategory();
-
   return (
-    <KeyboardStickyView
-      offset={{ opened: isVerySmallDevice ? 200 : 400 }}
-      style={{ flex: 1 }}
+    <KeyboardAvoidingView
+      className="flex-1"
+      style={{ flex: 1, paddingTop: DEVICE_TYPE.IOS ? 80 : 40 }}
+      behavior="height"
+      keyboardVerticalOffset={-30}
     >
-      <ScrollView
-        contentContainerClassName={`flex-1  ${isVerySmallDevice ? 'pt-10' : 'pt-24'}`}
-      >
+      <ScrollView contentContainerClassName="flex-1">
         <View className="flex-1 px-6">
           <Text className="mb-2 font-bold-nunito text-[32px] text-primary-900">
             Let's make this personal!
@@ -50,9 +47,7 @@ const NamePreferenceScreen = ({
           </View>
 
           {/* Bottom Navigation */}
-          <View
-            className={`mt-auto flex-row items-end justify-between ${isVerySmallDevice ? 'mb-10' : 'mb-16'}`}
-          >
+          <View className="mb-16 mt-auto flex-row items-end justify-between">
             <View className="gap-12">
               <ProgressDots
                 className="ml-2"
@@ -77,7 +72,7 @@ const NamePreferenceScreen = ({
           </View>
         </View>
       </ScrollView>
-    </KeyboardStickyView>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -7,7 +7,7 @@ import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
-import { Button, colors, Text } from '@/ui';
+import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
 import {
   CrownIllustration,
   NoAdsIllustration,
@@ -26,6 +26,7 @@ const FreeTrialPreview = ({
 
   return (
     <SafeAreaView className="flex-1 bg-primary-900 dark:bg-blackEerie">
+      <FocusAwareStatusBar hidden />
       <SnakeLine
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute right-[150] top-[20]"
@@ -48,14 +49,14 @@ const FreeTrialPreview = ({
         className="absolute right-[-10] top-[-20]"
       />
       <View
-        className={`flex-1 px-6 pt-8 ${DEVICE_TYPE.ANDROID && isVerySmallDevice ? 'pt-[10]' : 'pt-[70]'}`}
+        className={`flex-1 px-6 pt-8 ${DEVICE_TYPE.ANDROID && isVerySmallDevice ? 'pt-[10]' : 'pt-[50]'}`}
       >
         <Text className="font-bold-nunito text-[32px]  text-white">
           Enjoy your free trial! 🎉
         </Text>
 
         <Text className="mb-1 mt-2 text-lg text-white">
-          Experience these amazing benefits during your free trial.
+          Experience these amazing benefits during your free trial
         </Text>
 
         <PremiumFeatures />
@@ -97,7 +98,7 @@ const PremiumFeatures = () => {
 
   return (
     <View
-      className={`-mt-12 flex-1 justify-center  p-4 ${isVerySmallDevice ? 'mt-4 gap-8' : 'gap-16'}`}
+      className={` flex-1 justify-center p-4 ${isVerySmallDevice ? 'mt-4 gap-8' : 'gap-16'}`}
     >
       <View
         className={`rotate-3 flex-row items-center justify-center rounded-xl bg-white shadow dark:bg-primary-900 ${isVerySmallDevice ? 'p-3' : 'p-6'}`}

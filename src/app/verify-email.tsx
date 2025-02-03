@@ -39,7 +39,7 @@ const VerifyEmailForm = () => {
       >
         {isPending && <ActivityIndicator />}
         <View className="flex-1 justify-center p-4">
-          <Text testID="form-title" className="pb-6 text-center text-2xl">
+          <Text testID="form-title" className="text-center pb-6 text-2xl">
             Verify email
           </Text>
 

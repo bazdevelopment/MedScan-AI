@@ -9,7 +9,7 @@ import { KeyboardStickyView } from 'react-native-keyboard-controller';
 import { useLoginWithEmail } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { translate, useSelectedLanguage } from '@/core';
+import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 import { MailIcon } from '@/ui/assets/icons';
@@ -38,11 +38,20 @@ const LoginPage = () => {
   return (
     <KeyboardStickyView
       className="flex-1"
-      offset={{ opened: isVerySmallDevice || isMediumDevice ? 0 : 250 }}
+      offset={{
+        opened: isVerySmallDevice
+          ? 0
+          : isMediumDevice
+            ? DEVICE_TYPE.IOS
+              ? 250
+              : 100
+            : 250,
+      }}
     >
+      <FocusAwareStatusBar hidden />
       <ScrollView contentContainerStyle={{ overflow: 'hidden', flex: 1 }}>
         <View
-          className={`flex-1 bg-primary-900 px-6 pt-[25%] dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'}`}
+          className={`flex-1 bg-primary-900 px-6 pt-14 dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'}`}
         >
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}

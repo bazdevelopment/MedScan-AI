@@ -1,10 +1,10 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { type IOnboardingCollectedData } from '@/app/onboarding';
 import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
-import { FocusAwareStatusBar } from '@/ui';
+import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 
 import { type IFlow } from './flow-modal.interface';
 
@@ -18,6 +18,8 @@ const FlowModal = ({
   onSkip,
   resetFlow,
 }: IFlow) => {
+  const { isVerySmallDevice } = getDeviceSizeCategory();
+
   const totalSteps = React.Children.toArray(children).length;
 
   const isFirstScreenDisplayed = currentScreenIndex === 0;
@@ -41,10 +43,12 @@ const FlowModal = ({
     : currentActiveScreen;
 
   return (
-    <View className="flex-1">
-      <FocusAwareStatusBar hidden />
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerClassName={`${isVerySmallDevice ? 'pb-[100]' : undefined}`}
+    >
       {wrappedCurrentChild}
-    </View>
+    </ScrollView>
   );
 };
 

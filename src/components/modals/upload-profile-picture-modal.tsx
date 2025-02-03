@@ -66,7 +66,6 @@ export const UploadPictureModal = React.forwardRef<
       [{ resize: { width: 300, height: 300 } }],
       { compress: 1, format: ImageManipulator.SaveFormat.PNG },
     );
-    console.log('manipulatedImage', manipulatedImage);
     setProfileImage(manipulatedImage.uri);
   };
 

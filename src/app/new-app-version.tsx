@@ -38,10 +38,10 @@ const NewAppVersion = () => {
       />
       <View className="top-[-10%] mt-10 flex-1 items-center justify-center">
         <Icon icon={<MobileIcon />} />
-        <Text className="mt-14 px-6 text-center font-bold-nunito text-[32px] text-white">
+        <Text className="text-center mt-14 px-6 font-bold-nunito text-[32px] text-white">
           A new version of X-Ray Analyzer is available
         </Text>
-        <Text className="mt-8 px-10 text-center text-lg text-white">
+        <Text className="text-center mt-8 px-10 text-lg text-white">
           Please update to the latest version to continue using the app.
         </Text>
       </View>

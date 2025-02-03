@@ -30,29 +30,33 @@ const ReportSkeleton = () => {
   });
 
   return (
-    <View className="mx-4 my-2 h-[150] w-[300] rounded-xl bg-white py-4 shadow-sm">
-      <Animated.View
-        className="h-30  rounded-t-xl bg-gray-300"
-        style={{ opacity }}
-      />
-      <View className="p-4">
-        <Animated.View
-          className="mb-2 h-6 w-3/5 rounded bg-gray-300"
-          style={{ opacity }}
-        />
-        <Animated.View
-          className="mb-4 h-4 w-4/5 rounded bg-gray-300"
-          style={{ opacity }}
-        />
-        <View className="flex-row justify-between">
+    <View className="my-2 w-full rounded-xl bg-white py-2 dark:bg-blackBeauty">
+      <View className="ml-4 flex-row items-center">
+        <View className="flex-2">
           <Animated.View
-            className="h-4 w-1/3 rounded bg-gray-300"
+            className="h-[70] w-[70] rounded-xl bg-gray-300"
             style={{ opacity }}
           />
-          <Animated.View
-            className="h-4 w-1/5 rounded bg-gray-300"
-            style={{ opacity }}
-          />
+        </View>
+        <View className="flex-1">
+          <View className="p-4">
+            <Animated.View
+              className="mb-2 h-4 w-3/5 rounded bg-gray-300"
+              style={{ opacity }}
+            />
+            <Animated.View
+              className="mb-4 h-4 w-4/5 rounded bg-gray-300"
+              style={{ opacity }}
+            />
+            <Animated.View
+              className="w-5/5 h-4 rounded bg-gray-300"
+              style={{ opacity }}
+            />
+            <Animated.View
+              className="mt-2 h-4 w-full rounded bg-gray-300"
+              style={{ opacity }}
+            />
+          </View>
         </View>
       </View>
     </View>

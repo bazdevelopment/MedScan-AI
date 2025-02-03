@@ -77,9 +77,9 @@ const ScanningModal = ({
             loadingMessages={LOADING_MESSAGES_IMAGE_SCANNING}
           />
         )}
-        <View className="mt-10 flex-row justify-center gap-5">
+        <View className="flex-column mt-10 gap-5">
           {!!error && (
-            <>
+            <View className="flex-row justify-center gap-5">
               <Button
                 label={translate('general.retry')}
                 onPress={onRetry}
@@ -97,9 +97,13 @@ const ScanningModal = ({
                 disabled={isPending}
                 icon={<CloseIcon color={colors.white} width={18} height={18} />}
               />
-            </>
+            </View>
           )}
-          {!!error && <Text>{error.toString()}</Text>}
+          {!!error && (
+            <Text className="text-center text-danger-400 dark:text-danger-400">
+              {error.toString()}
+            </Text>
+          )}
         </View>
       </View>
     </Modal>

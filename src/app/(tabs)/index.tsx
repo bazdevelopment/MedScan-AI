@@ -22,6 +22,8 @@ import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
 import ScanReportCard from '@/components/scan-report-card';
 import { translate, useSelectedLanguage } from '@/core';
+import useCustomScrollToTop from '@/core/hooks/use-custom-scroll-to-top';
+import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
@@ -37,6 +39,7 @@ const SNAP_STOP_THRESHOLD = 330;
 
 export default function Home() {
   const { language } = useSelectedLanguage();
+  const { isVerySmallDevice } = getDeviceSizeCategory();
 
   const {
     data: recentInterpretations,
@@ -86,7 +89,7 @@ export default function Home() {
   });
 
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
-  // const { shouldRefresh } = useCustomScrollToTop(scrollViewRef);
+  useCustomScrollToTop(scrollViewRef);
 
   return (
     <PullToRefresh
@@ -119,7 +122,7 @@ export default function Home() {
       >
         <View className="mt-16">
           <FreeTierStatus
-            className="mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty"
+            className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
             scansLeft={userInfo?.scansRemaining}
             onUpgrade={() => router.push('/paywall')}
           />
@@ -178,7 +181,11 @@ const ReportsList = ({
   return (
     <View className={`flex-1 ${className}`}>
       {areRecentReportsLoading ? (
-        <ReportSkeleton />
+        <>
+          <ReportSkeleton />
+          <ReportSkeleton />
+          <ReportSkeleton />
+        </>
       ) : !recentInterpretations?.records?.length ? (
         <EdgeCaseTemplate
           additionalClassName="mt-8 ml-[-10]"

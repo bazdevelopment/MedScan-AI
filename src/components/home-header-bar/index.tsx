@@ -1,5 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { BlurView } from '@react-native-community/blur';
+import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
@@ -33,6 +34,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
         'You reached the maximum number of scan! Please upgrade to premium!',
       );
     }
+    router.navigate('/upload-file-flow');
   };
 
   const headerContainerAnimatedStyle = useAnimatedStyle(() => {

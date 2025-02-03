@@ -10,6 +10,7 @@ import { useLoginWithEmail } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { translate, useSelectedLanguage } from '@/core';
+import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 import { MailIcon } from '@/ui/assets/icons';
 
@@ -25,7 +26,7 @@ export default function Login() {
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const { language } = useSelectedLanguage();
-
+  const { isVerySmallDevice, isMediumDevice } = getDeviceSizeCategory();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
@@ -35,9 +36,14 @@ const LoginPage = () => {
   const handleUpdateEmail = (text: string) => setEmail(text.toLowerCase());
 
   return (
-    <KeyboardStickyView className="flex-1" offset={{ opened: 250 }}>
-      <ScrollView contentContainerStyle={{ flex: 1, overflow: 'hidden' }}>
-        <View className="flex-1 bg-primary-900 px-6 pt-[25%] dark:bg-blackEerie">
+    <KeyboardStickyView
+      className="flex-1"
+      offset={{ opened: isVerySmallDevice || isMediumDevice ? 0 : 250 }}
+    >
+      <ScrollView contentContainerStyle={{ overflow: 'hidden', flex: 1 }}>
+        <View
+          className={`flex-1 bg-primary-900 px-6 pt-[25%] dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'}`}
+        >
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute right-[150] top-[70]"
@@ -73,7 +79,7 @@ const LoginPage = () => {
 
           <Text
             testID="form-title"
-            className="mt-10 font-bold-nunito text-[32px] text-white"
+            className={`mt-10 font-bold-nunito text-[32px] text-white ${isVerySmallDevice && 'mt-4'}`}
           >
             {`${translate('general.welcomeBack')} 👋`}
           </Text>

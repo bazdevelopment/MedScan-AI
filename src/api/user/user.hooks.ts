@@ -49,6 +49,9 @@ export const useLoginWithEmail = (variables: { email: string }) =>
   createMutation<Response, any, AxiosError>({
     mutationFn: (variables) => loginWithEmail(variables),
     onSuccess: () => {
+      Toast.success(
+        "We've sent a verification code to your email. Please check your inbox.",
+      );
       router.navigate({
         pathname: '/verify-auth-code',
         params: { email: variables.email },

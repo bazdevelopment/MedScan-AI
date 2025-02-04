@@ -136,6 +136,22 @@ export default function RootLayout() {
         />
 
         <Stack.Screen
+          name="file-preview"
+          options={{
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title="Upload Scan"
+                className="bg-white pt-20"
+                titlePosition="center"
+                onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.black}
+              />
+            ),
+          }}
+        />
+
+        <Stack.Screen
           name="generate-report"
           options={{
             gestureEnabled: false,

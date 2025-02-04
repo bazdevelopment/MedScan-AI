@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { router, Stack } from 'expo-router';
+import { router } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
@@ -10,7 +10,6 @@ import { KeyboardStickyView } from 'react-native-keyboard-controller';
 import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
 import { useDecrementScans } from '@/api/user/user.hooks';
 import AttachmentPreview from '@/components/attachment-preview';
-import CustomHeader from '@/components/cusom-header';
 import ScanningModal from '@/components/image-scanner-modal';
 import ProgressBar from '@/components/progress-bar';
 import PromptSection from '@/components/prompt-section';
@@ -107,7 +106,7 @@ const FilePreviewScreen = ({
         params: { interpretationResult, promptMessage, createdDate },
       });
 
-    setIsModalVisible(false);
+    // setIsModalVisible(false);
     onDecrementScans({ language });
     resetFlow();
   };
@@ -162,20 +161,6 @@ const FilePreviewScreen = ({
 
   return (
     <KeyboardStickyView offset={{ opened: 100 }}>
-      <Stack.Screen
-        options={{
-          header: (props) => (
-            <CustomHeader
-              {...props}
-              title="Upload Scan"
-              className="bg-white pt-20"
-              titlePosition="center"
-              onGoBack={onGoBack}
-              backIconColor={isDark ? colors.white : colors.black}
-            />
-          ),
-        }}
-      />
       <ScrollView
         contentContainerStyle={{ paddingBottom: 150 }}
         showsVerticalScrollIndicator={false}
@@ -212,7 +197,7 @@ const FilePreviewScreen = ({
           iconPosition="right"
           label="Generate report"
           className="mt-10 h-[62px] w-[90%] gap-2 self-center rounded-full bg-primary-900 active:bg-primary-700 dark:bg-primary-900"
-          textClassName="text-lg font-semibold-nunito text-white dark:text-white"
+          textClassName="text-lg font-sefilmibold-nunito text-white dark:text-white"
           size="lg"
           onPress={() => {
             setIsModalVisible(true);

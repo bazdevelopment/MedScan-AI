@@ -100,13 +100,13 @@ const FilePreviewScreen = ({
     promptMessage: string;
     createdDate: string;
   }) => {
-    interpretationResult &&
-      router.navigate({
-        pathname: '/generate-report',
-        params: { interpretationResult, promptMessage, createdDate },
-      });
+    setIsModalVisible(false);
 
-    // setIsModalVisible(false);
+    router.navigate({
+      pathname: '/generate-report',
+      params: { interpretationResult, promptMessage, createdDate },
+    });
+
     onDecrementScans({ language });
     resetFlow();
   };

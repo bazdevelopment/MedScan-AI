@@ -19,7 +19,11 @@
     <key>CFBundlePackageType</key>
     <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
     <key>CFBundleShortVersionString</key>
+<<<<<<< HEAD
     <string>25.2.8-dev</string>
+=======
+    <string>25.2.9-dev</string>
+>>>>>>> development
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleURLTypes</key>

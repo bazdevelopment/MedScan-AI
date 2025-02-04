@@ -12,8 +12,8 @@ import { usePdfConverter } from '@/core/hooks/use-pdf-converter';
 import { useSharePdfContent } from '@/core/hooks/use-share-content';
 import { useSelectedLanguage } from '@/core/i18n';
 import { generateScanReportPdf } from '@/core/utilities/generate-scan-report-pdf';
-import { colors, Text } from '@/ui';
-import { ArrowLeft, DownloadIcon, ShareIcon } from '@/ui/assets/icons';
+import { Button, colors, Text } from '@/ui';
+import { DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 
 const GenerateReportScreen = () => {
   const { interpretationResult, promptMessage, createdDate } =
@@ -30,12 +30,11 @@ const GenerateReportScreen = () => {
     <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
       <Balloons />
       <View className="flex-1 bg-gray-100 dark:bg-blackEerie">
-        <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
-          <Icon
-            iconContainerStyle="mt-10"
-            icon={<ArrowLeft />}
-            size={18}
-            onPress={() => router.push('/(tabs)/')}
+        <View className="m-4 rounded-3xl bg-white p-3 active:bg-red-200 dark:bg-blackEerie">
+          <Button
+            label="press"
+            className="mt-20"
+            onPress={() => router.push('/(tabs)')}
           />
 
           {/* Header Section */}

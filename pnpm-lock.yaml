@@ -59,6 +59,9 @@ importers:
       '@shopify/flash-list':
         specifier: 1.6.4
         version: 1.6.4(@babel/runtime@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      '@shopify/react-native-skia':
+        specifier: 1.2.3
+        version: 1.2.3(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^5.52.1
         version: 5.66.0(react@18.2.0)
@@ -191,6 +194,9 @@ importers:
       react-native-document-opener:
         specifier: ^1.0.0
         version: 1.0.0(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      react-native-fiesta:
+        specifier: ^0.7.0
+        version: 0.7.0(@shopify/react-native-skia@1.2.3(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       react-native-gesture-handler:
         specifier: ~2.16.2
         version: 2.16.2(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
@@ -2275,6 +2281,19 @@ packages:
       react: '*'
       react-native: '*'
 
+  '@shopify/react-native-skia@1.2.3':
+    resolution: {integrity: sha512-gyUD/HGsMyZ+YAoWxVh24HYN5juwC/dZWINL/0sKP7Ttee/0igCRxWPneH1BbVH28dhyf+tvksQNUwpMM3VWbg==}
+    hasBin: true
+    peerDependencies:
+      react: '>=18.0'
+      react-native: '>=0.64'
+      react-native-reanimated: '>=2.0.0'
+    peerDependenciesMeta:
+      react-native:
+        optional: true
+      react-native-reanimated:
+        optional: true
+
   '@sideway/address@4.1.5':
     resolution: {integrity: sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==}
 
@@ -2584,6 +2603,9 @@ packages:
 
   '@web3-storage/multipart-parser@1.0.0':
     resolution: {integrity: sha512-BEO6al7BYqcnfX15W2cnGR+Q566ACXAT9UQykORCWW80lmkpWsnEob6zJS1ZVBKsSJC8+7vJkHwlp+lXG1UCdw==}
+
+  '@webgpu/types@0.1.21':
+    resolution: {integrity: sha512-pUrWq3V5PiSGFLeLxoGqReTZmiiXwY3jRkIG5sLLKjyqNxrwm/04b4nw7LSmGWJcKk59XOM/YRTUwOzo4MMlow==}
 
   '@xmldom/xmldom@0.7.13':
     resolution: {integrity: sha512-lm2GW5PkosIzccsaZIz7tp8cPADSIlIHWDFTR1N0SzfinhhYgeIQjFMz4rYzanCScr3DqQLeomUDArp6MWKm+g==}
@@ -3103,6 +3125,9 @@ packages:
 
   caniuse-lite@1.0.30001696:
     resolution: {integrity: sha512-pDCPkvzfa39ehJtJ+OwGT/2yvT2SbjfHhiIW2LWOAcMQ7BzwxT/XuyUp4OTOd0XFWA6BKw0JalnBHgSi5DGJBQ==}
+
+  canvaskit-wasm@0.39.1:
+    resolution: {integrity: sha512-Gy3lCmhUdKq+8bvDrs9t8+qf7RvcjuQn+we7vTVVyqgOVO1UVfHpsnBxkTZw+R4ApEJ3D5fKySl9TU11hmjl/A==}
 
   centra@2.7.0:
     resolution: {integrity: sha512-PbFMgMSrmgx6uxCdm57RUos9Tc3fclMvhLSATYN39XsDV29B89zZ3KA89jmY0vwSGazyU+uerqwa6t+KaodPcg==}
@@ -6893,6 +6918,14 @@ packages:
       react: '*'
       react-native: '*'
 
+  react-native-fiesta@0.7.0:
+    resolution: {integrity: sha512-+LtTjjbJ7qGKnlwUpZbzPh42v3CLHqY5ZyckECU8SBDTjHBEDWy/qaL9Q1y7KIeLxMMsuiHARBFUuGwbkn0UEw==}
+    peerDependencies:
+      '@shopify/react-native-skia': '*'
+      react: '*'
+      react-native: '*'
+      react-native-reanimated: '*'
+
   react-native-gesture-handler@2.16.2:
     resolution: {integrity: sha512-vGFlrDKlmyI+BT+FemqVxmvO7nqxU33cgXVsn6IKAFishvlG3oV2Ds67D5nPkHMea8T+s1IcuMm0bF8ntZtAyg==}
     peerDependencies:
@@ -6993,6 +7026,12 @@ packages:
     peerDependenciesMeta:
       '@tanstack/react-query':
         optional: true
+
+  react-reconciler@0.27.0:
+    resolution: {integrity: sha512-HmMDKciQjYmBRGuuhIaKA1ba/7a+UsM5FzOZsMO2JYHt9Jh8reCb7j1eDC95NOyUlKM9KRyvdx0flBuDvYSBoA==}
+    engines: {node: '>=0.10.0'}
+    peerDependencies:
+      react: ^18.0.0
 
   react-refresh@0.14.2:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
@@ -7280,6 +7319,9 @@ packages:
   saxes@6.0.0:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
+
+  scheduler@0.21.0:
+    resolution: {integrity: sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==}
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
@@ -11410,6 +11452,15 @@ snapshots:
       recyclerlistview: 4.2.0(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       tslib: 2.4.0
 
+  '@shopify/react-native-skia@1.2.3(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      canvaskit-wasm: 0.39.1
+      react: 18.2.0
+      react-reconciler: 0.27.0(react@18.2.0)
+    optionalDependencies:
+      react-native: 0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0)
+      react-native-reanimated: 3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+
   '@sideway/address@4.1.5':
     dependencies:
       '@hapi/hoek': 9.3.0
@@ -11785,6 +11836,8 @@ snapshots:
       wonka: 4.0.15
 
   '@web3-storage/multipart-parser@1.0.0': {}
+
+  '@webgpu/types@0.1.21': {}
 
   '@xmldom/xmldom@0.7.13': {}
 
@@ -12400,6 +12453,10 @@ snapshots:
   camelcase@7.0.1: {}
 
   caniuse-lite@1.0.30001696: {}
+
+  canvaskit-wasm@0.39.1:
+    dependencies:
+      '@webgpu/types': 0.1.21
 
   centra@2.7.0:
     dependencies:
@@ -16826,6 +16883,13 @@ snapshots:
       react: 18.2.0
       react-native: 0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0)
 
+  react-native-fiesta@0.7.0(@shopify/react-native-skia@1.2.3(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0):
+    dependencies:
+      '@shopify/react-native-skia': 1.2.3(react-native-reanimated@3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0)
+      react-native-reanimated: 3.10.1(@babel/core@7.26.7)(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+
   react-native-gesture-handler@2.16.2(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0):
     dependencies:
       '@egjs/hammerjs': 2.0.17
@@ -16984,6 +17048,12 @@ snapshots:
   react-query-kit@3.3.1(@tanstack/react-query@5.66.0(react@18.2.0)):
     optionalDependencies:
       '@tanstack/react-query': 5.66.0(react@18.2.0)
+
+  react-reconciler@0.27.0(react@18.2.0):
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.2.0
+      scheduler: 0.21.0
 
   react-refresh@0.14.2: {}
 
@@ -17297,6 +17367,10 @@ snapshots:
   saxes@6.0.0:
     dependencies:
       xmlchars: 2.2.0
+
+  scheduler@0.21.0:
+    dependencies:
+      loose-envify: 1.4.0
 
   scheduler@0.23.2:
     dependencies:

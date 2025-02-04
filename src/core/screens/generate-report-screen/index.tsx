@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { Balloons } from 'react-native-fiesta';
 
 import GradientText from '@/components/gradient-text';
 import Icon from '@/components/icon';
@@ -27,6 +28,7 @@ const GenerateReportScreen = () => {
 
   return (
     <View className="flex-1 bg-gray-100 dark:bg-blackEerie">
+      <Balloons />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
           {/* Header Section */}

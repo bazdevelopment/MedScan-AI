@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import dayjs from 'dayjs';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
@@ -12,7 +12,7 @@ import { useSharePdfContent } from '@/core/hooks/use-share-content';
 import { useSelectedLanguage } from '@/core/i18n';
 import { generateScanReportPdf } from '@/core/utilities/generate-scan-report-pdf';
 import { colors, Text } from '@/ui';
-import { DownloadIcon, ShareIcon } from '@/ui/assets/icons';
+import { ArrowLeft, DownloadIcon, ShareIcon } from '@/ui/assets/icons';
 
 const GenerateReportScreen = () => {
   const { interpretationResult, promptMessage, createdDate } =
@@ -26,9 +26,15 @@ const GenerateReportScreen = () => {
   const { language } = useSelectedLanguage();
 
   return (
-    <View className="flex-1 bg-gray-100 dark:bg-blackEerie">
-      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+    <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+      <View className="flex-1 bg-gray-100 dark:bg-blackEerie">
         <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
+          <Icon
+            icon={<ArrowLeft />}
+            size={18}
+            onPress={() => router.push('/(tabs)/')}
+          />
+
           {/* Header Section */}
           <GradientText
             className="text-center mb-10 mt-2 font-bold-nunito text-xl text-primary-900"
@@ -123,8 +129,8 @@ const GenerateReportScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 

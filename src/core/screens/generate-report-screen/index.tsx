@@ -31,7 +31,7 @@ const GenerateReportScreen = () => {
         <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
           {/* Header Section */}
           <GradientText
-            className="mb-10 mt-2 text-center font-bold-nunito text-xl text-primary-900"
+            className="text-center mb-10 mt-2 font-bold-nunito text-xl text-primary-900"
             colors={['#7CD0FC', '#A935F8']}
           >
             Thank you for your patience!

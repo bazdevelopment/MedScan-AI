@@ -2,7 +2,7 @@
 import { Link } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Keyboard } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
@@ -49,7 +49,10 @@ const LoginPage = () => {
       }}
     >
       <FocusAwareStatusBar hidden />
-      <ScrollView contentContainerStyle={{ overflow: 'hidden', flex: 1 }}>
+      <ScrollView
+        contentContainerStyle={{ overflow: 'hidden', flex: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
         <View
           className={`flex-1 bg-primary-900 px-6 pt-14 dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'}`}
         >
@@ -133,7 +136,10 @@ const LoginPage = () => {
               className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 dark:bg-primary-900"
               textClassName="text-lg text-center text-white dark:text-white"
               iconPosition="left"
-              onPress={() => handleLoginViaEmail({ email, language })}
+              onPress={() => {
+                handleLoginViaEmail({ email, language });
+                Keyboard.dismiss();
+              }}
               disabled={isLoginPending || !email}
             />
           </View>

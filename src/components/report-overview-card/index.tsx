@@ -1,6 +1,6 @@
+import { router } from 'expo-router';
 import React, { Fragment } from 'react';
 import { View } from 'react-native';
-import { router } from 'react-query-kit';
 
 import { colors, Text } from '@/ui';
 import { ArrowRight } from '@/ui/assets/icons';
@@ -34,7 +34,7 @@ const ReportOverviewCard = ({
             color={colors.danger[200]}
             size={24}
             onPress={() =>
-              router.push({
+              router.navigate({
                 pathname: 'report-details-screen',
                 params: {
                   day: report.day,

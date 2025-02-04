@@ -124,7 +124,7 @@ export default function Home() {
           <FreeTierStatus
             className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
             scansLeft={userInfo?.scansRemaining}
-            onUpgrade={() => router.push('/paywall')}
+            onUpgrade={() => router.navigate('/paywall')}
           />
 
           <Text className="mx-6 mb-3 mt-6 font-semibold-nunito">
@@ -207,7 +207,7 @@ const ReportsList = ({
                 chevronColor={colors.primary[900]}
                 className="rounded-xl bg-white p-4 dark:bg-blackBeauty"
                 onPress={() =>
-                  router.push({
+                  router.navigate({
                     pathname: '/scan-interpretation/[id]',
                     params: { id: record.docId },
                   })

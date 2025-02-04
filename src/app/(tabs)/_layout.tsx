@@ -92,6 +92,9 @@ export default function TabLayout() {
   if (isFirstTime && !isLoggedIn) {
     return <Redirect href="/welcome" />;
   }
+  if (!isFirstTime && !isLoggedIn) {
+    return <Redirect href="/login" />;
+  }
 
   if (!userInfo?.isOtpVerified) {
     return <Redirect href="/verify-auth-code" />;

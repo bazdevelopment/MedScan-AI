@@ -131,7 +131,7 @@ const Reports = () => {
                   className="rounded-xl bg-white p-4 dark:bg-blackBeauty"
                   isEntirelyClickable
                   onPress={() =>
-                    router.push({
+                    router.navigate({
                       pathname: '/scan-interpretation/[id]',
                       params: { id: record.docId },
                     })

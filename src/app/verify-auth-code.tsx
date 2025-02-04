@@ -48,10 +48,13 @@ const VerifyAuthCode = () => {
   return (
     <KeyboardStickyView
       className="flex-1"
-      offset={{ opened: isMediumDevice ? (DEVICE_TYPE.IOS ? 250 : 120) : 250 }}
+      offset={{ opened: isMediumDevice ? (DEVICE_TYPE.IOS ? 250 : 150) : 250 }}
     >
       <FocusAwareStatusBar hidden />
-      <ScrollView contentContainerStyle={{ flex: 1, overflow: 'hidden' }}>
+      <ScrollView
+        contentContainerStyle={{ flex: 1, overflow: 'hidden' }}
+        keyboardShouldPersistTaps="handled"
+      >
         <View className="flex-1 bg-primary-900 px-6 pt-14 dark:bg-blackEerie">
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}

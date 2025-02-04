@@ -102,13 +102,14 @@ const FilePreviewScreen = ({
     createdDate: string;
   }) => {
     interpretationResult &&
-      router.push({
+      router.navigate({
         pathname: '/generate-report',
         params: { interpretationResult, promptMessage, createdDate },
       });
-    resetFlow();
+
     setIsModalVisible(false);
     onDecrementScans({ language });
+    resetFlow();
   };
 
   //todo: to be changed in the future with useUser hook

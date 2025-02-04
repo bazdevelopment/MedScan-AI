@@ -49,7 +49,7 @@ export const useLoginWithEmail = (variables: { email: string }) =>
   createMutation<Response, any, AxiosError>({
     mutationFn: (variables) => loginWithEmail(variables),
     onSuccess: () => {
-      router.push({
+      router.navigate({
         pathname: '/verify-auth-code',
         params: { email: variables.email },
       });
@@ -70,7 +70,7 @@ export const useSendVerificationCode = ({ email }: { email: string }) =>
     mutationFn: (variables) => sendOtpCodeViaEmail(variables),
     onSuccess: (data) => {
       Toast.success(data.message);
-      router.push({ pathname: '/verify-auth-code', params: { email } });
+      router.navigate({ pathname: '/verify-auth-code', params: { email } });
     },
     onError: (error) => {
       Toast.error(

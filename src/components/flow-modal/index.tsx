@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import { type IOnboardingCollectedData } from '@/app/onboarding';
 import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
@@ -16,6 +16,7 @@ const FlowModal = ({
   children,
   onSkip,
   resetFlow,
+  onPending,
 }: IFlow) => {
   const totalSteps = React.Children.toArray(children).length;
 
@@ -39,7 +40,21 @@ const FlowModal = ({
       })
     : currentActiveScreen;
 
-  return <View className="flex-1">{wrappedCurrentChild}</View>;
+  return (
+    <View className="flex-1">
+      {onPending && (
+        <ActivityIndicator
+          size="large"
+          style={{
+            top: '45%',
+            left: '45%',
+            position: 'absolute',
+          }}
+        />
+      )}
+      {wrappedCurrentChild}
+    </View>
+  );
 };
 
 export default FlowModal;

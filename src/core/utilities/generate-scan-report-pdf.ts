@@ -2,13 +2,11 @@
 import { Asset } from 'expo-asset';
 
 import { colors } from '@/ui';
-const logo = Asset.fromModule(
-  require('../../../assets/icon_transparent.png'),
-).uri;
+const logo = Asset.fromModule(require('../../../assets/icon_transparent.png'));
 
 const medicalFrame = Asset.fromModule(
   require('../../../assets/medical_frame.png'),
-).uri;
+);
 
 interface IGenerateScanReportPdf {
   createdAt: string;
@@ -107,7 +105,7 @@ export const generateScanReportPdf = ({
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src=${logo} alt="X-Ray Analyzer Logo" class="logo">
+            <img src=${logo.localUri ?? logo.uri} alt="X-Ray Analyzer Logo" class="logo">
             <div class="branding-text">
             <p style="font-size:40px; line-height:0px; font-weight:800">X-Ray</p>
             <p style="letter-spacing:4px; line-height:0px; margin-top:3px; font-size:25">ANALYZER</p>
@@ -129,7 +127,7 @@ export const generateScanReportPdf = ({
 
         <!-- AI Interpretation -->
         <div style="position:relative">
-            <img class="background-overlay" src=${medicalFrame} />
+            <img class="background-overlay" src=${medicalFrame.localUri ?? medicalFrame.uri} />
 
             <p class="section-title">AI Interpretation</p>
             <p class="content">

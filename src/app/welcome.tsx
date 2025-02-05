@@ -5,7 +5,7 @@ import { ScrollView, View } from 'react-native';
 import Branding from '@/components/branding';
 import { DEVICE_TYPE } from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
-import { Button, FocusAwareStatusBar, SafeAreaView, Text } from '@/ui';
+import { Button, SafeAreaView, Text } from '@/ui';
 import { WelcomeIllustration } from '@/ui/assets/illustrations';
 
 const Welcome = () => {
@@ -14,10 +14,8 @@ const Welcome = () => {
     <ScrollView
       contentContainerClassName={`bg-primary-50 dark:bg-blackEerie ${DEVICE_TYPE.IOS && 'flex-1'}`}
     >
-      <FocusAwareStatusBar hidden />
-
       <SafeAreaView>
-        <View className="items-center justify-center px-6 pb-10 pt-14 dark:bg-blackEerie">
+        <View className="items-center justify-center px-6 pb-32 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />
           <Text className="text-center my-10 font-bold-nunito text-[32px] text-primary-900">
             Welcome to X-Ray Analyzer

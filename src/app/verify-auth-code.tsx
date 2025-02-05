@@ -10,9 +10,14 @@ import { useLoginWithEmail, useValidateAuthCode } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import OTPVerificationInput from '@/components/otp-verification-input';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
+import {
+  DEVICE_TYPE,
+  translate,
+  useIsFirstTime,
+  useSelectedLanguage,
+} from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
-import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
+import { Button, colors, Text } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
 
 const VerifyAuthCode = () => {
@@ -38,13 +43,13 @@ const VerifyAuthCode = () => {
   const { language } = useSelectedLanguage();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const [isFirstTime] = useIsFirstTime();
 
   return (
     <KeyboardStickyView
       className="flex-1"
       offset={{ opened: isMediumDevice ? (DEVICE_TYPE.IOS ? 250 : 150) : 250 }}
     >
-      <FocusAwareStatusBar hidden />
       <ScrollView
         contentContainerStyle={{ flex: 1, overflow: 'hidden' }}
         keyboardShouldPersistTaps="handled"
@@ -81,7 +86,7 @@ const VerifyAuthCode = () => {
             testID="form-title"
             className="mt-10 font-bold-nunito text-[32px] text-white"
           >
-            {`${translate('general.welcomeBack')} 👋`}
+            {`${isFirstTime ? translate('general.welcomeMessage') : translate('general.welcomeBack')} 👋`}
           </Text>
 
           <Text className="my-4 text-lg text-white">

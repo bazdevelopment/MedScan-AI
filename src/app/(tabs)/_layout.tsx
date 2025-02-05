@@ -30,7 +30,6 @@ export default function TabLayout() {
   const { language } = useSelectedLanguage();
   const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
   const [isFirstTime] = useIsFirstTime();
-
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
@@ -101,6 +100,7 @@ export default function TabLayout() {
   }
 
   if (
+    !userInfo?.isOnboarded ||
     (isFirstTime &&
       !userInfo?.isOnboarded &&
       isLoggedIn &&
@@ -135,7 +135,6 @@ export default function TabLayout() {
                   <CustomHeader
                     {...props}
                     title={tab.title}
-                    className="pt-16"
                     titlePosition="left"
                   />
                 ),

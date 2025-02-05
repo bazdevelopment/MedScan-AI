@@ -11,6 +11,7 @@ export const usePdfConverter = () => {
   const {
     i18n: { language },
   } = useTranslation();
+
   const convertToPdfAndDownload = async ({
     html,
     title,

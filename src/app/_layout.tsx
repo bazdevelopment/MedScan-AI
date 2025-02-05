@@ -23,10 +23,12 @@ import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
 import CustomHeader from '@/components/cusom-header';
+import Icon from '@/components/icon';
 import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
+import { CloseIcon } from '@/ui/assets/icons';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -153,11 +155,8 @@ export default function RootLayout() {
           name="generate-report"
           options={{
             gestureEnabled: false,
-            header: () => null,
-          }}
-        />
 
-        {/* header: (props) => (
+            header: (props) => (
               <CustomHeader
                 {...props}
                 title="Report Result"
@@ -177,7 +176,10 @@ export default function RootLayout() {
                   />
                 }
               />
-            ), */}
+            ),
+          }}
+        />
+
         <Stack.Screen
           name="notifications"
           options={{

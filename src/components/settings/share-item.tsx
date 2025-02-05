@@ -53,7 +53,7 @@ export const ShareItem = () => {
               <Text className="mb-2 font-bold-nunito text-3xl text-gray-800">
                 Share X-Ray Analyzer App
               </Text>
-              <Text className="mx-10 text-center text-base text-gray-600">
+              <Text className="text-center mx-10 text-base text-gray-600">
                 Help others discover the power of AI-driven X-ray analysis
               </Text>
             </View>
@@ -63,17 +63,17 @@ export const ShareItem = () => {
                 value={appLink}
                 size={225}
                 color={colors.primary[900]}
-                logo={require('../../../assets/icon-transparent.png')}
+                logo={require('../../../assets/icon_transparent.png')}
                 logoMargin={5}
                 logoSize={35}
                 logoBorderRadius={10}
                 backgroundColor={isDark ? colors.blackBeauty : colors.white}
                 logoBackgroundColor="transparent"
               />
-              <Text className="mt-10 text-center font-bold-nunito text-gray-700">
+              <Text className="text-center mt-10 font-bold-nunito text-gray-700">
                 Scan to download the app
               </Text>
-              <Text className="mt-2 text-center text-sm text-gray-600">
+              <Text className="text-center mt-2 text-sm text-gray-600">
                 or share via your favorite platform
               </Text>
             </View>

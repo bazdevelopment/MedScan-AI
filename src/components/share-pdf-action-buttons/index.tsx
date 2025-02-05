@@ -24,11 +24,10 @@ const SharePdfActionButtons = ({
   return (
     <View className={`right-[-30px] flex-row gap-5 self-center  ${alignment}`}>
       {(isSharing || isConverting) && (
-        <ActivityIndicator color={colors.black} />
+        <ActivityIndicator color={isDark ? colors.white : colors.black} />
       )}
       <TouchableOpacity
         className="p-1"
-        // className="mr-2 rounded-full bg-white p-1"
         onPress={() =>
           shareContent({
             content: html,

@@ -158,7 +158,7 @@ const ScanReportCard = ({
         {isVideo ? (
           <VideoPlayer videoSource={{ uri: url }} />
         ) : (
-          <Image source={{ uri: url }} className="h-96 w-96" />
+          <Image source={{ uri: url }} className="h-96 w-96 self-center" />
         )}
       </CustomModal>
     </>

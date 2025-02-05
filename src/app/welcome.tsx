@@ -20,7 +20,7 @@ const Welcome = () => {
         <View className="items-center justify-center px-6 pb-10 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />
           <Text className="text-center my-10 font-bold-nunito text-[32px] text-primary-900">
-            Welcome to X-Ray Analyzer App
+            Welcome to X-Ray Analyzer
           </Text>
 
           <WelcomeIllustration

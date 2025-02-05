@@ -2,6 +2,7 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 
+import { queryClient } from '@/api';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import FlowModal from '@/components/flow-modal';
 import Toast from '@/components/toast';
@@ -21,7 +22,8 @@ export default function Onboarding() {
 
   const { language } = useSelectedLanguage();
   const { data: userInfo } = useUser(language);
-  const { mutateAsync: onUpdateUser } = useUpdateUser();
+  const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
+    useUpdateUser();
 
   const router = useRouter();
 
@@ -35,18 +37,24 @@ export default function Onboarding() {
     collectedData: IOnboardingCollectedData,
   ) => {
     //TODO: add here the logic for submitting the onboarding data to the server/RevenueCat
-    // setIsFirstTime(false);
-    // setIsOnboarded(true);
-    // router.navigate('/(tabs)');
+    console.log('collectedData', collectedData);
 
     await onUpdateUser({
       language,
       userId: userInfo.userId,
       fieldsToUpdate: {
         isOnboarded: true,
+        ...(!!collectedData.preferredName && {
+          userName: collectedData.preferredName,
+        }),
       },
     })
       .then(() => {
+        queryClient.setQueryData(['user-info'], (oldData) => ({
+          ...oldData,
+          isOnboarded: true,
+        })); //invalidate quey is not working here
+
         setIsFirstTime(false);
         router.navigate('/(tabs)');
       })
@@ -85,6 +93,7 @@ export default function Onboarding() {
       onGoBack={handleGoToPreviousScreen}
       collectedData={collectedData}
       onSkip={onSkip}
+      onPending={isPendingUpdateUser}
     >
       <NamePreferenceScreen />
       <FreeTrialPreview />

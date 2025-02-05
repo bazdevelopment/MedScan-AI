@@ -9,7 +9,12 @@ import { KeyboardStickyView } from 'react-native-keyboard-controller';
 import { useLoginWithEmail } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
+import {
+  DEVICE_TYPE,
+  translate,
+  useIsFirstTime,
+  useSelectedLanguage,
+} from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 import { MailIcon } from '@/ui/assets/icons';
@@ -29,6 +34,7 @@ const LoginPage = () => {
   const { isVerySmallDevice, isMediumDevice } = getDeviceSizeCategory();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const [isFirstTime] = useIsFirstTime();
 
   const { mutate: handleLoginViaEmail, isPending: isLoginPending } =
     useLoginWithEmail({ email })();
@@ -48,9 +54,11 @@ const LoginPage = () => {
             : 250,
       }}
     >
-      <FocusAwareStatusBar hidden />
       <ScrollView
-        contentContainerStyle={{ overflow: 'hidden', flex: 1 }}
+        contentContainerStyle={{
+          overflow: 'hidden',
+          flex: 1,
+        }}
         keyboardShouldPersistTaps="handled"
       >
         <View
@@ -93,7 +101,7 @@ const LoginPage = () => {
             testID="form-title"
             className={`mt-10 font-bold-nunito text-[32px] text-white ${isVerySmallDevice && 'mt-4'}`}
           >
-            {`${translate('general.welcomeBack')} 👋`}
+            {`${isFirstTime ? translate('general.welcomeMessage') : translate('general.welcomeBack')} 👋`}
           </Text>
 
           <Text className="my-4 text-lg text-white">

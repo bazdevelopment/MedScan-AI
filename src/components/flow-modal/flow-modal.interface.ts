@@ -16,4 +16,5 @@ export interface IFlow {
   children: ReactNode;
   onSkip: () => void;
   resetFlow: () => void;
+  onPending: boolean;
 }

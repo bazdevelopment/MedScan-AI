@@ -1,4 +1,4 @@
-export const privacyPolicy = {
+export const PRIVACY_POLICY = {
   last_updated: '2023-12-23',
   sections: [
     {

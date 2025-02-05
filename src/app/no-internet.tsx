@@ -8,9 +8,7 @@ const NoInternet = () => {
   return (
     <View className="flex-1  items-center dark:bg-blackEerie">
       <View className="top-[-10] mt-10 flex-1 items-center justify-center">
-        <Text>
-          <NoInternetIllustration />
-        </Text>
+        <NoInternetIllustration />
       </View>
 
       <View className="bottom-10 w-full self-start px-6">

@@ -25,6 +25,7 @@ import { APIProvider } from '@/api';
 import CustomHeader from '@/components/cusom-header';
 import Icon from '@/components/icon';
 import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
+import useImagesAssets from '@/core/hooks/use-images-assets';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
@@ -64,6 +65,8 @@ export default function RootLayout() {
   });
 
   useNotificationListeners();
+
+  const { _assetsLoaded } = useImagesAssets();
 
   useEffect(() => {
     if (fontsLoaded) {
@@ -126,7 +129,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.scanInterpretation.title')}
-                className="pt-16"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
@@ -160,7 +162,7 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title="Report Result"
-                className="bg-white pt-16"
+                className="bg-white"
                 titlePosition="center"
                 rightContent={
                   <Icon
@@ -187,7 +189,7 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.notifications.title')}
-                className="bg-primary-50 pt-16"
+                className="bg-primary-50"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
@@ -198,15 +200,31 @@ export default function RootLayout() {
         <Stack.Screen
           name="terms-of-service"
           options={{
-            title: translate('rootLayout.screens.termsOfService.title'),
-            headerBackTitle: translate('general.back'),
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('rootLayout.screens.termsOfService.title')}
+                className="bg-primary-50"
+                titlePosition="center"
+                onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.black}
+              />
+            ),
           }}
         />
         <Stack.Screen
           name="privacy-policy"
           options={{
-            title: translate('rootLayout.screens.privacyPolicy.title'),
-            headerBackTitle: translate('general.back'),
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('rootLayout.screens.privacyPolicy.title')}
+                className="bg-primary-50"
+                titlePosition="center"
+                onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.black}
+              />
+            ),
           }}
         />
 
@@ -217,7 +235,7 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.rate.title')}
-                className="bg-white pt-16"
+                className="bg-white"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
@@ -239,7 +257,7 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.profile.title')}
-                className="bg-primary-900 pt-16"
+                className="bg-primary-900"
                 titlePosition="center"
                 onGoBack={router.back}
                 titleClassName="text-white"

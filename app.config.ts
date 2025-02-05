@@ -56,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-notifications',
       {
-        icon: './assets/icon-transparent.png',
+        icon: './assets/icon_transparent.png',
         color: '#523BF5',
         defaultChannel: 'default',
       },
@@ -120,6 +120,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         iosIcons: {
           heart_icon: './assets/heart-icon-ios.png',
         },
+      },
+    ],
+    [
+      'expo-asset',
+      {
+        assets: ['./assets/icon_transparent.png', './assets/medical_frame.png'],
       },
     ],
   ],

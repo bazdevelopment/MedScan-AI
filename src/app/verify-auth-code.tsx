@@ -10,25 +10,19 @@ import { useLoginWithEmail, useValidateAuthCode } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import OTPVerificationInput from '@/components/otp-verification-input';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import {
-  DEVICE_TYPE,
-  translate,
-  useIsFirstTime,
-  useSelectedLanguage,
-} from '@/core';
+import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
 import { ArrowLeft } from '@/ui/assets/icons';
 
 const VerifyAuthCode = () => {
   const { email } = useLocalSearchParams();
-  const [isFirstTime] = useIsFirstTime();
   const { isMediumDevice } = getDeviceSizeCategory();
   const {
     mutate: onVerifyAuthCode,
     isPending,
     isError,
-  } = useValidateAuthCode({ isFirstTime })();
+  } = useValidateAuthCode()();
   const userEmail = email || firebaseAuth.currentUser?.email;
 
   const { mutate: handleLoginViaEmail, isPending: isResendCodePending } =

@@ -3,11 +3,11 @@ import { Asset } from 'expo-asset';
 
 import { colors } from '@/ui';
 const logo = Asset.fromModule(
-  require('../../../assets/icon-transparent.png'),
+  require('../../../assets/icon_transparent.png'),
 ).uri;
 
 const medicalFrame = Asset.fromModule(
-  require('../../../assets/medical-frame.png'),
+  require('../../../assets/medical_frame.png'),
 ).uri;
 
 interface IGenerateScanReportPdf {

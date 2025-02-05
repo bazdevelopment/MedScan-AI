@@ -17,7 +17,7 @@ const Branding = ({
       {isLogoVisible && (
         <View className="rounded-xl bg-primary-50 p-2 dark:bg-blackBeauty">
           <Image
-            source={require('../../../assets/icon-transparent.png')}
+            source={require('../../../assets/icon_transparent.png')}
             className="h-[40px] w-[40px]"
           />
         </View>

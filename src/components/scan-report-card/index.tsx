@@ -29,6 +29,8 @@ const ScanReportCard = ({
   language,
   dateFormat = 'MMMM D, YYYY',
   promptMessage,
+  logoBase64,
+  medicalFrameBase64,
 }: IScanReportCard) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editableTitle, setEditableTitle] = useState(title);
@@ -71,6 +73,8 @@ const ScanReportCard = ({
             interpretation,
             promptMessage,
             generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
+            logoBase64,
+            medicalFrameBase64,
           })}
         />
       </View>

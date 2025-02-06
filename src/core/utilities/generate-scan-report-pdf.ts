@@ -12,6 +12,9 @@ const isAndroidRelease = Platform.OS === 'android' && !__DEV__;
 const medicalFrameImg = Image.resolveAssetSource(
   require('assets/medical_frame.png'),
 );
+const iconAsset = Image.resolveAssetSource(
+  require('assets/icon_transparent.png'),
+);
 
 const medicalImageUrl = isAndroidRelease
   ? getAndroidReleaseImageURI(medicalFrameImg.uri)
@@ -22,7 +25,9 @@ const medicalImageUrlV2 = isAndroidRelease
 const medicalImageUrlV3 = isAndroidRelease
   ? 'file:///android_res/drawable/medical_frame.png'
   : medicalFrameImg.uri;
-
+const logo = isAndroidRelease
+  ? 'file:///android_res/drawable/icon_transparent.png'
+  : iconAsset.uri;
 interface IGenerateScanReportPdf {
   createdAt: string;
   interpretation: string;
@@ -40,8 +45,8 @@ export const generateScanReportPdf = ({
   logoBase64,
   medicalFrameBase64,
 }: IGenerateScanReportPdf) => {
-  const logo = `data:image/jpeg;base64,${logoBase64}`;
-  const medicalFrame = `data:image/jpeg;base64,${medicalFrameBase64}`;
+  // const logo = `data:image/jpeg;base64,${logoBase64}`;
+  // const medicalFrame = `data:image/jpeg;base64,${medicalFrameBase64}`;
 
   return `
    <!DOCTYPE html>
@@ -149,12 +154,7 @@ export const generateScanReportPdf = ({
 
         <!-- AI Interpretation -->
         <div style="position:relative">
-            <img class="background-overlay" src=${medicalImageUrl} />
-            <img class="background-overlay" src=${medicalImageUrlV2} />
             <img class="background-overlay" src=${medicalImageUrlV3} />
-
-
-
             <p class="section-title">AI Interpretation</p>
             <p class="content">
               ${interpretation}

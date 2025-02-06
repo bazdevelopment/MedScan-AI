@@ -1,18 +1,14 @@
 /* eslint-disable max-lines-per-function */
-import { Asset } from 'expo-asset';
 
 import { colors } from '@/ui';
-const logo = Asset.fromModule(require('../../../assets/icon_transparent.png'));
-
-const medicalFrame = Asset.fromModule(
-  require('../../../assets/medical_frame.png'),
-);
 
 interface IGenerateScanReportPdf {
   createdAt: string;
   interpretation: string;
   promptMessage: string;
   generatedAt: string;
+  logoBase64: string;
+  medicalFrameBase64: string;
 }
 
 export const generateScanReportPdf = ({
@@ -20,7 +16,12 @@ export const generateScanReportPdf = ({
   interpretation,
   promptMessage,
   generatedAt,
-}: IGenerateScanReportPdf): string => {
+  logoBase64,
+  medicalFrameBase64,
+}: IGenerateScanReportPdf) => {
+  const logo = `data:image/jpeg;base64,${logoBase64}`;
+  const medicalFrame = `data:image/jpeg;base64,${medicalFrameBase64}`;
+
   return `
    <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +106,7 @@ export const generateScanReportPdf = ({
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src=${logo.localUri ?? logo.uri} alt="X-Ray Analyzer Logo" class="logo">
+            <img src=${logo} alt="X-Ray Analyzer Logo" class="logo">
             <div class="branding-text">
             <p style="font-size:40px; line-height:0px; font-weight:800">X-Ray</p>
             <p style="letter-spacing:4px; line-height:0px; margin-top:3px; font-size:25">ANALYZER</p>
@@ -127,7 +128,7 @@ export const generateScanReportPdf = ({
 
         <!-- AI Interpretation -->
         <div style="position:relative">
-            <img class="background-overlay" src=${medicalFrame.localUri ?? medicalFrame.uri} />
+            <img class="background-overlay" src=${medicalFrame} />
 
             <p class="section-title">AI Interpretation</p>
             <p class="content">

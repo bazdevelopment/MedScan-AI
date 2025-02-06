@@ -37,7 +37,6 @@ export default function Onboarding() {
     collectedData: IOnboardingCollectedData,
   ) => {
     //TODO: add here the logic for submitting the onboarding data to the server/RevenueCat
-    console.log('collectedData', collectedData);
 
     await onUpdateUser({
       language,

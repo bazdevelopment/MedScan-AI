@@ -110,7 +110,7 @@ const Paywall = () => {
             className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
             textClassName="text-lg text-center text-white dark:text-white"
             iconPosition="left"
-            onPress={() => console.log('ceva')}
+            onPress={() => console.log('Handle the selected plan')}
           />
         </View>
       </View>

@@ -1,12 +1,28 @@
 /* eslint-disable max-lines-per-function */
 
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 
 import { colors } from '@/ui';
 
+const androidDrawableResPath = `file:///android_res/drawable`;
+const getAndroidReleaseImageURI = (sourceURI: string) =>
+  `${androidDrawableResPath}/${sourceURI}`;
+const isAndroidRelease = Platform.OS === 'android' && !__DEV__;
+
 const medicalFrameImg = Image.resolveAssetSource(
   require('assets/medical_frame.png'),
-).uri;
+);
+
+const medicalImageUrl = isAndroidRelease
+  ? getAndroidReleaseImageURI(medicalFrameImg.uri)
+  : medicalFrameImg.uri;
+const medicalImageUrlV2 = isAndroidRelease
+  ? 'file:///android_asset/medical_frame.png'
+  : medicalFrameImg.uri;
+const medicalImageUrlV3 = isAndroidRelease
+  ? 'file:///android_res/drawable/medical_frame.png'
+  : medicalFrameImg.uri;
+
 interface IGenerateScanReportPdf {
   createdAt: string;
   interpretation: string;
@@ -133,7 +149,11 @@ export const generateScanReportPdf = ({
 
         <!-- AI Interpretation -->
         <div style="position:relative">
-            <img class="background-overlay" src=${medicalFrameImg} />
+            <img class="background-overlay" src=${medicalImageUrl} />
+            <img class="background-overlay" src=${medicalImageUrlV2} />
+            <img class="background-overlay" src=${medicalImageUrlV3} />
+
+
 
             <p class="section-title">AI Interpretation</p>
             <p class="content">

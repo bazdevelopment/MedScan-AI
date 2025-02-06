@@ -1393,7 +1393,7 @@ PODS:
     - ExpoModulesCore
   - ExpoHead (3.5.24):
     - ExpoModulesCore
-  - ExpoImage (1.12.15):
+  - ExpoImage (1.13.0):
     - ExpoModulesCore
     - libavif/libdav1d
     - SDWebImage (~> 5.19.1)
@@ -1404,7 +1404,7 @@ PODS:
     - EXImageLoader
     - ExpoModulesCore
     - SDWebImageWebPCoder
-  - ExpoImagePicker (15.0.7):
+  - ExpoImagePicker (15.1.0):
     - ExpoModulesCore
   - ExpoKeepAwake (13.0.2):
     - ExpoModulesCore
@@ -1443,7 +1443,7 @@ PODS:
     - ExpoModulesCore
   - ExpoVideo (1.2.7):
     - ExpoModulesCore
-  - EXSplashScreen (0.27.5):
+  - EXSplashScreen (0.27.7):
     - DoubleConversion
     - ExpoModulesCore
     - glog
@@ -3577,9 +3577,9 @@ SPEC CHECKSUMS:
   ExpoFont: 00756e6c796d8f7ee8d211e29c8b619e75cbf238
   ExpoHaptics: 5a3a88971af384255baf2504f38b41189cec6984
   ExpoHead: a79e263b73039b41940c220dd67b83572e7cac09
-  ExpoImage: f77df382153d716f332f974438a803c4527f60b0
+  ExpoImage: 42162e3d264ce07a62766d6bd26bd299fe4c6faa
   ExpoImageManipulator: aea99205c66043a00a0af90e345395637b9902fa
-  ExpoImagePicker: 12a420923383ae38dccb069847218f27a3b87816
+  ExpoImagePicker: 1e696c26a3e5c01a0ab1b99897db3da59c04a141
   ExpoKeepAwake: 3b8815d9dd1d419ee474df004021c69fdd316d08
   ExpoLinearGradient: 8cec4a09426d8934c433e83cb36262d72c667fce
   ExpoLocalization: f04eeec2e35bed01ab61c72ee1768ec04d093d01
@@ -3588,7 +3588,7 @@ SPEC CHECKSUMS:
   ExpoQuickActions: 64fa5626dc168f892b38ec353218b8d10d1f02f7
   ExpoSharing: 8db05dd85081219f75989a3db2c92fe5e9741033
   ExpoVideo: 9bf68ae981f3cb64b4fd2fc9f5a5337e55716b5b
-  EXSplashScreen: d8b3c547b9b18a41d80c6f6b274c4c26664febd4
+  EXSplashScreen: e9758d6c15f77f8f358cb98513f1f9e32eca388c
   EXUpdatesInterface: 996527fd7d1a5d271eb523258d603f8f92038f24
   FBLazyVector: ac12dc084d1c8ec4cc4d7b3cf1b0ebda6dab85af
   Firebase: a64bf6a8546e6eab54f1c715cd6151f39d2329f4

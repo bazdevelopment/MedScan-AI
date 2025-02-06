@@ -19,6 +19,7 @@ import { LanguageItem } from '@/components/settings/language-item';
 import { ShareItem } from '@/components/settings/share-item';
 import { ThemeItem } from '@/components/settings/theme-item';
 import Toast from '@/components/toast';
+import UpgradeBanner from '@/components/upgrade-banner';
 import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, ScrollView, View } from '@/ui';
 import { Github, LogoutIcon, Rate, Website } from '@/ui/assets/icons';
@@ -60,7 +61,10 @@ export default function Settings() {
   return (
     <View className="mt-[-15px] flex-1 bg-primary-50 dark:bg-blackEerie">
       {/* <FocusAwareStatusBar /> */}
-
+      <UpgradeBanner
+        className="mx-4 mt-4"
+        onUpgradePress={() => router.navigate('/paywall')}
+      />
       <ScrollView ref={scrollViewRef}>
         <View className="mb-20 flex-1 px-6">
           <ItemsContainer title="settings.generale">

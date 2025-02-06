@@ -98,15 +98,10 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>
           <Button
             label={translate('uploadScan.title')}
-            className="rounded-full"
+            className="h-[50] rounded-full border-[3px] border-primary-600 dark:bg-blackEerie"
+            textClassName="dark:text-white"
             onPress={onStartUploadMediaFile}
-            icon={
-              <UploadIcon
-                width={26}
-                height={26}
-                color={isDark ? colors.black : colors.white}
-              />
-            }
+            icon={<UploadIcon width={26} height={26} color={colors.white} />}
           />
           <SnakeLineRotated
             color={isDark ? colors.charcoal[600] : colors.primary[400]}

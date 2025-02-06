@@ -1,7 +1,12 @@
 /* eslint-disable max-lines-per-function */
 
+import { Image } from 'react-native';
+
 import { colors } from '@/ui';
 
+const medicalFrameImg = Image.resolveAssetSource(
+  require('assets/medical_frame.png'),
+).uri;
 interface IGenerateScanReportPdf {
   createdAt: string;
   interpretation: string;
@@ -128,7 +133,7 @@ export const generateScanReportPdf = ({
 
         <!-- AI Interpretation -->
         <div style="position:relative">
-            <img class="background-overlay" src=${medicalFrame} />
+            <img class="background-overlay" src=${medicalFrameImg} />
 
             <p class="section-title">AI Interpretation</p>
             <p class="content">

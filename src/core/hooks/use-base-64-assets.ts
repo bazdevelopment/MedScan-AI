@@ -12,8 +12,8 @@ export const useBase64Assets = () => {
     const loadImages = async () => {
       try {
         const imageFiles = [
-          require('../../../assets/icon_transparent.png'),
-          require('../../../assets/medical_frame.png'),
+          require('assets/icon_transparent.png'),
+          require('assets/medical_frame.png'),
         ];
 
         // Load images as Base64

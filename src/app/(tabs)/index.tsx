@@ -186,7 +186,6 @@ const ReportsList = ({
   const { language } = useSelectedLanguage();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-
   return (
     <View className={`flex-1 ${className}`}>
       {areRecentReportsLoading ? (

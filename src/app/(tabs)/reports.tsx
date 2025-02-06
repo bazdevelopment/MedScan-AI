@@ -13,6 +13,7 @@ import {
 import CardWrapper from '@/components/card-wrapper';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanReportCard from '@/components/scan-report-card';
+import UpgradeBanner from '@/components/upgrade-banner';
 import WeekBlock from '@/components/week-block';
 import { DATE_FORMAT } from '@/constants/date-format';
 import { translate } from '@/core';
@@ -172,6 +173,11 @@ const Reports = () => {
         interval={interval}
         currentYear={currentYear}
         segmentedDays={segmentedDays}
+      />
+
+      <UpgradeBanner
+        className="mx-4 mt-6"
+        onUpgradePress={() => router.navigate('/paywall')}
       />
       <FlashList
         {...panResponder.panHandlers}

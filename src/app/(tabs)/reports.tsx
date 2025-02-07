@@ -11,6 +11,7 @@ import {
   useUpdateInterpretationFields,
 } from '@/api/interpretation/interpretation.hooks';
 import CardWrapper from '@/components/card-wrapper';
+import { EndScrollPlaceholder } from '@/components/end-scroll-placeholder';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanReportCard from '@/components/scan-report-card';
 import UpgradeBanner from '@/components/upgrade-banner';
@@ -61,6 +62,14 @@ const Reports = () => {
     onChangeWeekOffset: changeWeekOffset,
   });
   useScrollToTop(scrollViewRef);
+
+  const scrollToTop = () => {
+    scrollViewRef.current?.scrollToIndex({
+      index: 0,
+      animated: true,
+    });
+  };
+
   const { isRefetching, onRefetch } = useDelayedRefetch(refetch);
 
   // Helper function to transform daily reports
@@ -162,7 +171,7 @@ const Reports = () => {
   return (
     <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
       <WeekBlock
-        className="mt-4 px-4"
+        className="px-4"
         reportSections={sections}
         onScrollToIndex={onScrollToIndex}
         weekOffset={weekOffset}
@@ -186,9 +195,14 @@ const Reports = () => {
         renderItem={renderItem}
         estimatedItemSize={150}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={
+          <EndScrollPlaceholder
+            className="mt-[550]"
+            onScrollToTop={scrollToTop}
+          />
+        }
         contentContainerStyle={{
           paddingHorizontal: 16,
-          paddingBottom: 550,
         }}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={

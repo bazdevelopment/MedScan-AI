@@ -4,37 +4,14 @@ import { Image, Platform } from 'react-native';
 
 import { colors } from '@/ui';
 
-const androidDrawableResPath = `file:///android_res/drawable`;
-const getAndroidReleaseImageURI = (sourceURI: string) =>
-  `${androidDrawableResPath}/${sourceURI}`;
-const isAndroidRelease = Platform.OS === 'android' && !__DEV__;
+const getAndroidReleaseImageURI = (assetName: string) =>
+  `file:///android_res/drawable/${assetName}`;
 
-const medicalFrameImg = Image.resolveAssetSource(
-  require('assets/medical_frame.png'),
-);
-const iconAsset = Image.resolveAssetSource(
-  require('assets/icon_transparent.png'),
-);
-
-const medicalImageUrl = isAndroidRelease
-  ? getAndroidReleaseImageURI(medicalFrameImg.uri)
-  : medicalFrameImg.uri;
-const medicalImageUrlV2 = isAndroidRelease
-  ? 'file:///android_asset/medical_frame.png'
-  : medicalFrameImg.uri;
-const medicalImageUrlV3 = isAndroidRelease
-  ? 'file:///android_res/drawable/medical_frame.png'
-  : medicalFrameImg.uri;
-const logo = isAndroidRelease
-  ? 'file:///android_res/drawable/icon_transparent.png'
-  : iconAsset.uri;
 interface IGenerateScanReportPdf {
   createdAt: string;
   interpretation: string;
   promptMessage: string;
   generatedAt: string;
-  logoBase64: string;
-  medicalFrameBase64: string;
 }
 
 export const generateScanReportPdf = ({
@@ -42,11 +19,16 @@ export const generateScanReportPdf = ({
   interpretation,
   promptMessage,
   generatedAt,
-  logoBase64,
-  medicalFrameBase64,
 }: IGenerateScanReportPdf) => {
-  // const logo = `data:image/jpeg;base64,${logoBase64}`;
-  // const medicalFrame = `data:image/jpeg;base64,${medicalFrameBase64}`;
+  const logo = Platform.select({
+    ios: Image.resolveAssetSource(require('assets/icon_transparent.png')).uri,
+    android: getAndroidReleaseImageURI('icon_transparent.png'),
+  });
+
+  const medicalFrame = Platform.select({
+    ios: Image.resolveAssetSource(require('assets/medical_frame.png')).uri,
+    android: getAndroidReleaseImageURI('medical_frame.png'),
+  });
 
   return `
    <!DOCTYPE html>
@@ -154,7 +136,7 @@ export const generateScanReportPdf = ({
 
         <!-- AI Interpretation -->
         <div style="position:relative">
-            <img class="background-overlay" src=${medicalImageUrlV3} />
+            <img class="background-overlay" src=${medicalFrame} />
             <p class="section-title">AI Interpretation</p>
             <p class="content">
               ${interpretation}

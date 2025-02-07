@@ -10,6 +10,4 @@ export interface IScanReportCard {
   language: string;
   dateFormat?: string;
   promptMessage: string;
-  logoBase64: string;
-  medicalFrameBase64: string;
 }

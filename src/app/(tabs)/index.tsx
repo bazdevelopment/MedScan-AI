@@ -22,7 +22,6 @@ import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
 import ScanReportCard from '@/components/scan-report-card';
 import { translate, useSelectedLanguage } from '@/core';
-import { useBase64Assets } from '@/core/hooks/use-base-64-assets';
 import useCustomScrollToTop from '@/core/hooks/use-custom-scroll-to-top';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import {
@@ -52,8 +51,6 @@ export default function Home() {
   })();
 
   const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
-
-  const { base64Images } = useBase64Assets();
 
   const { refetch: refetchUserNotifications } = useFetchUserNotifications({
     userId: userInfo?.userId,
@@ -149,8 +146,6 @@ export default function Home() {
             onUpdateInterpretationFields={onUpdateInterpretationFields}
             isUpdateTitlePending={isUpdateTitlePending}
             className="mx-6"
-            logoBase64={base64Images.logo}
-            medicalFrameBase64={base64Images.medicalFrame}
           />
         </View>
       </ParallaxScrollView>
@@ -164,8 +159,6 @@ const ReportsList = ({
   onUpdateInterpretationFields,
   isUpdateTitlePending,
   className,
-  logoBase64,
-  medicalFrameBase64,
 }: {
   areRecentReportsLoading: boolean;
   recentInterpretations: IInterpretationResultRecords;
@@ -180,8 +173,6 @@ const ReportsList = ({
   }) => void;
   isUpdateTitlePending: boolean;
   className: string;
-  logoBase64: string;
-  medicalFrameBase64: string;
 }) => {
   const { language } = useSelectedLanguage();
   const { colorScheme } = useColorScheme();
@@ -223,8 +214,6 @@ const ReportsList = ({
               >
                 <ScanReportCard
                   language={language}
-                  logoBase64={logoBase64}
-                  medicalFrameBase64={medicalFrameBase64}
                   {...record}
                   isUpdateTitlePending={isUpdateTitlePending}
                   onEditTitle={(title, documentId) =>

@@ -10,9 +10,10 @@ import { type IEndScrollPlaceholder } from './end-scroll-placeholder.interface';
 
 export const EndScrollPlaceholder = ({
   onScrollToTop,
+  className,
 }: IEndScrollPlaceholder) => {
   return (
-    <View className=" items-center justify-center">
+    <View className={`items-center justify-center ${className}`}>
       <TouchableOpacity onPress={onScrollToTop}>
         <LottieView
           source={require('assets/lottie/scroll-top-animation.json')}

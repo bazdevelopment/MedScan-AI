@@ -25,7 +25,6 @@ import { APIProvider } from '@/api';
 import CustomHeader from '@/components/cusom-header';
 import Icon from '@/components/icon';
 import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
-import useImagesAssets from '@/core/hooks/use-images-assets';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
@@ -65,8 +64,6 @@ export default function RootLayout() {
   });
 
   useNotificationListeners();
-
-  const { _assetsLoaded } = useImagesAssets();
 
   useEffect(() => {
     if (fontsLoaded) {
@@ -167,7 +164,7 @@ export default function RootLayout() {
                 rightContent={
                   <Icon
                     size={20}
-                    containerStyle="bg-black dark:bg-white rounded-full p-1 mt-12 mr-6"
+                    containerStyle="bg-black dark:bg-white rounded-full p-1 mt-4 mr-6"
                     onPress={() => router.push('/(tabs)/')}
                     //!keep router.push instead of router.navigate to prevent crash on android
                     icon={

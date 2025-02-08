@@ -45,7 +45,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#2E3C4B',
     },
-
+    intentFilters: [
+      {
+        action: 'VIEW',
+        data: [
+          {
+            scheme: Env.SCHEME,
+          },
+        ],
+        category: ['BROWSABLE', 'DEFAULT'],
+      },
+    ],
     package: Env.PACKAGE,
   },
   web: {

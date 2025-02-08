@@ -69,21 +69,27 @@ const Paywall = () => {
           <Branding isLogoVisible className="justify-center" />
 
           <View className="gap-4 px-8 pt-8">
-            <Text className="text-center mb-4 font-bold-nunito  text-[24px] text-white">
-              Unlock Premium Features Today! 🎉
+            <Text className="mb-4 text-center font-bold-nunito  text-[24px] text-white">
+              {translate(
+                'rootLayout.screens.paywallOnboarding.freeTierOfferings.title',
+              )}
             </Text>
 
             <View className="max-w-[90%] flex-row items-center gap-4">
               <CrownIllustration width={35} height={35} />
               <Text className="font-bold-nunito text-lg text-white">
-                Access All Premium Features
+                {translate(
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.firstOffering',
+                )}
               </Text>
             </View>
 
             <View className="flex-row items-center gap-4">
               <NoAdsIllustration width={35} height={35} />
               <Text className="font-bold-nunito text-lg text-white">
-                Ad-Free Experience
+                {translate(
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering',
+                )}
               </Text>
             </View>
           </View>

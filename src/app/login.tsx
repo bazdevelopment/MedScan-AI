@@ -124,17 +124,19 @@ const LoginPage = () => {
               icon={<MailIcon />}
             />
 
-            <View className="mt-1 w-full flex-row flex-wrap">
-              <Text className="text-sm">By continuing, you agree to our </Text>
+            <View className="mt-1 w-full flex-row flex-wrap items-center">
+              <Text className="text-sm">
+                {translate('rootLayout.screens.login.agreeingMessage')}{' '}
+              </Text>
               <Link
                 href="/terms-of-service"
                 className="text-sm text-primary-900"
               >
-                Terms & Conditions
+                {translate('rootLayout.screens.login.termsAndConditions')}
               </Link>
-              <Text className="text-sm"> and </Text>
+              <Text className="text-sm"> {translate('general.and')} </Text>
               <Link href="/privacy-policy" className="text-sm text-primary-900">
-                Privacy Policy
+                {translate('rootLayout.screens.login.privacyPolicy')}
               </Link>
             </View>
 

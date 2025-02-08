@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { firebaseAuth, firebaseCloudFunctionsInstance } from 'firebase/config';
 
 import Toast from '@/components/toast';
+import { translate } from '@/core';
 
 /** Create anonymous account */
 export const createAnonymousAccount = async ({
@@ -171,5 +172,5 @@ export const logout = async () => {
   // await firebaseAuth.currentUser?.delete();
   await firebaseAuth.signOut();
   router.navigate('/login');
-  Toast.success('Successfully logged out!');
+  Toast.success(translate('alerts.loggedOutSuccess'));
 };

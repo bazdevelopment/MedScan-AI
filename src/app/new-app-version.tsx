@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import Icon from '@/components/icon';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import { translate } from '@/core';
 import { Button, colors, Text } from '@/ui';
 import { MobileIcon } from '@/ui/assets/icons/mobile-icon';
 
@@ -38,16 +39,16 @@ const NewAppVersion = () => {
       />
       <View className="top-[-10%] mt-10 flex-1 items-center justify-center">
         <Icon icon={<MobileIcon />} />
-        <Text className="text-center mt-14 px-6 font-bold-nunito text-[32px] text-white">
-          A new version of X-Ray Analyzer is available
+        <Text className="mt-14 px-6 text-center font-bold-nunito text-[32px] text-white">
+          {translate('rootLayout.screens.newAppVersionScreen.heading')}
         </Text>
-        <Text className="text-center mt-8 px-10 text-lg text-white">
-          Please update to the latest version to continue using the app.
+        <Text className="mt-8 px-10 text-center text-lg text-white">
+          {translate('rootLayout.screens.newAppVersionScreen.subheading')}
         </Text>
       </View>
 
       <Button
-        label="Get it now"
+        label={translate('rootLayout.screens.newAppVersionScreen.action')}
         variant="default"
         className="bottom-14 mt-6 h-[56px] w-[90%] rounded-xl border-2 border-primary-900 bg-white pl-5 active:bg-primary-700 dark:bg-primary-900"
         textClassName="text-lg text-center text-primary-900 dark:text-white"

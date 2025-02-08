@@ -16,7 +16,7 @@ import {
 } from './parallax-scrollview.interface';
 
 const ParallaxScrollView = ({
-  headerHeight = 110,
+  _headerHeight = 110,
   ForegroundComponent,
   HeaderBarComponent,
   children,
@@ -75,7 +75,6 @@ const ParallaxScrollView = ({
       >
         {cloneElement(HeaderBarComponent, { scrollValue })}
       </View>
-      {/* <ScrollView contentContainerStyle={{ flexGrow: 1, height: '400' }}> */}
       <StickyHeaderScrollView
         ref={scrollViewRef}
         bounces
@@ -95,7 +94,6 @@ const ParallaxScrollView = ({
           <EndScrollPlaceholder onScrollToTop={scrollToTop} />
         )}
       </StickyHeaderScrollView>
-      {/* </ScrollView> */}
     </View>
   );
 };

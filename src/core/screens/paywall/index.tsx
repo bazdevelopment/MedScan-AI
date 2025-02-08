@@ -15,21 +15,34 @@ import {
   Text,
 } from '@/ui';
 
+//todo: to be change with the ones from revenueCat
 const plans = [
   {
     id: 1,
-    title: 'Start Free Trial',
-    subtitle: 'Enjoy 10 free scans - no commitments',
+    title: translate(
+      'rootLayout.screens.paywallUpgradeScreen.firstOffering.title',
+    ),
+    subtitle: translate(
+      'rootLayout.screens.paywallUpgradeScreen.firstOffering.subtitle',
+    ),
   },
   {
     id: 2,
-    title: 'Monthly Plan',
-    subtitle: '$49.99 / month',
+    title: translate(
+      'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
+    ),
+    subtitle: translate(
+      'rootLayout.screens.paywallUpgradeScreen.secondOffering.subtitle',
+    ),
   },
   {
     id: 3,
-    title: 'Yearly Plan',
-    subtitle: 'Best deal: $99.99/year – save more!',
+    title: translate(
+      'rootLayout.screens.paywallUpgradeScreen.thirdOffering.title',
+    ),
+    subtitle: translate(
+      'rootLayout.screens.paywallUpgradeScreen.thirdOffering.subtitle',
+    ),
   },
 ];
 
@@ -78,8 +91,8 @@ const Paywall = ({
 
       <View className="flex-1">
         <View className="mt-10  px-6">
-          <Text className="text-center mb-2 font-bold-nunito  text-[28px]">
-            Unlock Premium Features Today! 🎉
+          <Text className="mb-2 text-center font-bold-nunito  text-[28px]">
+            {translate('rootLayout.screens.paywallUpgradeScreen.heading')}
           </Text>
         </View>
 

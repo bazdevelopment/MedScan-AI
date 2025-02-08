@@ -55,12 +55,11 @@ export default function Settings() {
       },
     })
       .then(() => logout())
-      .catch(() => Toast.error('Logout failed. Please try again.'));
+      .catch(() => Toast.error(translate('alerts.logoutUnsuccessful')));
   };
 
   return (
     <View className="mt-[-15px] flex-1 bg-primary-50 dark:bg-blackEerie">
-      {/* <FocusAwareStatusBar /> */}
       <UpgradeBanner
         className="mx-4 mt-4"
         onUpgradePress={() => router.navigate('/paywall')}

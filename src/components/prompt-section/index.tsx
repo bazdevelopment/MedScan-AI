@@ -2,6 +2,7 @@ import { FILE_UPLOAD_PROMPT_MESSAGES } from '__mocks__/prompt-messages';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
+import { translate } from '@/core';
 import { colors, Input, Text } from '@/ui';
 
 import { type IPromptSection } from './prompt-section.interface';
@@ -28,7 +29,7 @@ const PromptSection = ({
   return (
     <View className="mt-2 w-full px-2 ">
       <Text className="mb-2 ml-1 font-bold-nunito text-2xl text-primary-900">
-        Awesome, now what would you like to find out?
+        {translate('components.PromptSection.message')}
       </Text>
       {/* <Text className="my-2 h-14 font-semibold-nunito text-base text-gray-700">
         E.g. {FILE_UPLOAD_PROMPT_MESSAGES[currentPrompt]}

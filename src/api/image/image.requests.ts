@@ -38,8 +38,8 @@ export const analyzeVideoUsingAi = async (
         },
       },
     );
-    return response.data; // With axios, the response data is directly accessible as `response.data`
+    return response.data;
   } catch (error) {
-    throw new Error(error.response?.data?.message || error.message); // Catch error messages from axios
+    throw new Error(error.response?.data?.message || error.message);
   }
 };

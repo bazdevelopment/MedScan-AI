@@ -2,6 +2,7 @@ import { type AxiosError } from 'axios';
 import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
+import { translate } from '@/core';
 
 import { queryClient } from '../common';
 import {
@@ -42,7 +43,7 @@ export const useSendGlobalPushNotifications = createMutation<
 >({
   mutationFn: (variables) => sendGlobalPushNotifications(variables),
   onSuccess: () => {
-    Toast.success('Successfully sent global push notifications!');
+    Toast.success(translate('alerts.globalPushNotificationSuccess'));
   },
   onError: (error) => {
     Toast.error(error.message);
@@ -55,8 +56,8 @@ export const useSendIndividualPushNotification = createMutation<
   AxiosError
 >({
   mutationFn: (variables) => sendIndividualPushNotification(variables),
-  onSuccess: (data) => {
-    Toast.success('Successfully sent individual push notifications!');
+  onSuccess: () => {
+    Toast.success(translate('alerts.individualPushNotificationSuccess'));
   },
   onError: (error) => {
     Toast.error(error.message);

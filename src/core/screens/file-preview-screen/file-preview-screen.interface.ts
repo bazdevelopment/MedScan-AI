@@ -4,4 +4,6 @@ export interface IFilePreviewScreen {
   collectedData: ICollectedData;
   goToNextScreen: () => void;
   resetFlow: () => void;
+  currentScreenIndex: number;
+  totalSteps: number;
 }

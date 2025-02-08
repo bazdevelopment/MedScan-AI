@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React, { Fragment } from 'react';
 import { View } from 'react-native';
 
+import { translate } from '@/core';
 import { colors, Text } from '@/ui';
 import { ArrowRight } from '@/ui/assets/icons';
 
@@ -28,7 +29,6 @@ const ReportOverviewCard = ({
       <View className="my-4 flex-1">
         <View className="flex-row justify-between">
           <Text>{dayjs(report.createdAt).format('dddd-DD')}</Text>
-          {/* <View className=""> */}
           <Icon
             icon={<ArrowRight />}
             color={colors.danger[200]}
@@ -42,7 +42,6 @@ const ReportOverviewCard = ({
               })
             }
           />
-          {/* </View> */}
         </View>
         <View className="w-[90%] flex-col">
           {hasReports ? (
@@ -52,7 +51,9 @@ const ReportOverviewCard = ({
               </Fragment>
             ))
           ) : (
-            <Text className="font-bold-nunito">No reports yet!</Text>
+            <Text className="font-bold-nunito">
+              {translate('home.recentReports.noReports')}
+            </Text>
           )}
         </View>
       </View>

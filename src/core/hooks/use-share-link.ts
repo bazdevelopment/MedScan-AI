@@ -1,6 +1,10 @@
 import * as Sharing from 'expo-sharing';
 import { useState } from 'react';
 
+import Toast from '@/components/toast';
+
+import { translate } from '../i18n';
+
 interface ShareLinkOptions {
   url: string;
   title?: string;
@@ -17,7 +21,7 @@ export const useShareLink = () => {
 
       if (isAvailable) {
         await Sharing.shareAsync(url, {
-          dialogTitle: title || 'Share Link',
+          dialogTitle: title || translate('general.shareLink'),
           mimeType: 'text/plain',
           UTI: 'public.plain-text',
         });
@@ -30,11 +34,11 @@ export const useShareLink = () => {
             url,
           });
         } else {
-          throw new Error('Sharing is not available on this platform');
+          Toast.error(translate('alerts.sharingNotAvailable'));
         }
       }
     } catch (error) {
-      console.error('Error sharing link:', error);
+      Toast.error(translate('alerts.sharingLinkError'));
       throw error;
     } finally {
       setIsSharing(false);

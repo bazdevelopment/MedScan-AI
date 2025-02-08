@@ -1,14 +1,19 @@
+/* eslint-disable max-lines-per-function */
 import React, { useState } from 'react';
 import { Keyboard, ScrollView, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 
 import ProgressDots from '@/components/progress-dots';
+import { translate } from '@/core/i18n';
 import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import { Button, Input, Text } from '@/ui';
 
 interface OnboardingScreenProps {
   onNext: (nickname: string) => void;
-  onSkip: () => void;
+  onSkip: (collectedData: object) => void;
+  goToNextScreen: () => void;
+  totalSteps: number;
+  currentScreenIndex: number;
 }
 
 const NamePreferenceScreen = ({
@@ -32,17 +37,21 @@ const NamePreferenceScreen = ({
       >
         <View className="flex-1 px-6">
           <Text className="mb-2 font-bold-nunito text-[32px] text-primary-900">
-            Let's make this personal!
+            {translate('rootLayout.screens.namePreferenceScreen.heading')}
           </Text>
 
           <Text className="mb-4 mt-2 text-lg text-gray-600">
-            What should we call you?
+            {translate(
+              'rootLayout.screens.namePreferenceScreen.preferredNameQuestion',
+            )}
           </Text>
 
           <View className="mt-2">
             <Input
               className="flex-1 rounded-xl bg-white px-3.5 py-5 font-primary-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white"
-              placeholder="E.g., Captain Cool, Queen Bee, or just Alex!"
+              placeholder={translate(
+                'rootLayout.screens.namePreferenceScreen.placeholderPreferredName',
+              )}
               value={nickname}
               onChangeText={setNickname}
               label="Nickname"
@@ -60,7 +69,7 @@ const NamePreferenceScreen = ({
 
               <Button
                 onPress={onSkip}
-                label="Skip"
+                label={translate('general.skip')}
                 className="bg-transparent active:opacity-60 dark:bg-transparent"
                 textClassName="text-black text-bold-nunito text-lg dark:text-white"
               />
@@ -71,7 +80,7 @@ const NamePreferenceScreen = ({
                 goToNextScreen({ preferredName: nickname });
                 Keyboard.dismiss();
               }}
-              label="Next"
+              label={translate('general.next')}
               className="bottom-[-10px] mt-6 h-[56px] w-[150px] rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 dark:bg-primary-900"
               textClassName="text-lg text-white dark:text-white"
             />

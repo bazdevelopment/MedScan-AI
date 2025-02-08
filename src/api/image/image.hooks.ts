@@ -6,7 +6,23 @@ import { analyzeImageUsingAi, analyzeVideoUsingAi } from './image.requests';
 
 type Response = any;
 
-export const useAnalyzeImage = ({ onSuccessCallback, language }) =>
+interface IAnalyzeImageParams {
+  interpretationResult: string;
+  promptMessage: string;
+  createdDate: string;
+}
+
+export const useAnalyzeImage = ({
+  onSuccessCallback,
+  language,
+}: {
+  onSuccessCallback: ({
+    interpretationResult,
+    promptMessage,
+    createdDate,
+  }: IAnalyzeImageParams) => void;
+  language: string;
+}) =>
   useMutation<Response, AxiosError, FormData>({
     mutationFn: (variables) => analyzeImageUsingAi(variables, language),
     onSuccess: (data) => {
@@ -17,10 +33,19 @@ export const useAnalyzeImage = ({ onSuccessCallback, language }) =>
         createdDate: data.createdAt,
       });
     },
-    onError: () => {},
   });
 
-export const useAnalyzeVideo = ({ onSuccessCallback, language }) =>
+export const useAnalyzeVideo = ({
+  onSuccessCallback,
+  language,
+}: {
+  language: string;
+  onSuccessCallback: ({
+    interpretationResult,
+    promptMessage,
+    createdDate,
+  }: IAnalyzeImageParams) => void;
+}) =>
   useMutation<Response, AxiosError, FormData>({
     mutationFn: (variables) => analyzeVideoUsingAi(variables, language),
     onSuccess: (data) => {

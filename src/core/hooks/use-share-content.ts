@@ -3,6 +3,10 @@ import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { useState } from 'react';
 
+import Toast from '@/components/toast';
+
+import { translate } from '../i18n';
+
 export const useSharePdfContent = () => {
   const [isSharing, setIsSharing] = useState(false);
 
@@ -43,10 +47,10 @@ export const useSharePdfContent = () => {
         await Sharing.shareAsync(newUri, {
           UTI: '.pdf',
           mimeType: 'application/pdf',
-          dialogTitle: 'Share',
+          dialogTitle: translate('general.share'),
         });
       } else {
-        throw new Error('Sharing is not available on this platform');
+        Toast.error(translate('alerts.sharingNotAvailable'));
       }
     } catch (error) {
       console.error('Error sharing content:', error);

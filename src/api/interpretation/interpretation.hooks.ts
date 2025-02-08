@@ -2,6 +2,7 @@ import { type AxiosError } from 'axios';
 import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
+import { translate } from '@/core';
 import { type IInterpretationRecord } from '@/types/interpretation-report';
 
 import { queryClient } from '../common';
@@ -44,7 +45,7 @@ export const useUpdateInterpretationFields = () =>
     },
     onError: (error) => {
       Toast.error(
-        error.message || 'Error when updating interpretation fields!',
+        error.message || translate('alerts.interpretationFieldsUpdateFail'),
       );
     },
   });

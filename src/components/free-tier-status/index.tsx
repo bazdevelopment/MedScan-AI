@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, View } from 'react-native';
 
+import { translate } from '@/core';
 import { Text } from '@/ui';
 import { CornerTopRight } from '@/ui/assets/vectors';
 import { CornerBottomLeft } from '@/ui/assets/vectors/corner-bottom-left';
@@ -33,9 +34,11 @@ const FreeTierStatus = ({
         </View>
 
         <View className="ml-4 mr-2 w-full flex-1 flex-col gap-1">
-          <Text className="font-semibold-nunito text-2xl">Free scans</Text>
+          <Text className="font-semibold-nunito text-2xl">
+            {translate('components.FreeTierStatus.heading')}
+          </Text>
           <Text className="text-sm text-gray-600">
-            Get unlimited access with our Pro plan
+            {translate('components.FreeTierStatus.subheading')}
           </Text>
         </View>
       </View>
@@ -45,7 +48,7 @@ const FreeTierStatus = ({
         className="rounded-full border-[3px] border-primary-500 bg-gray-900 p-4 dark:border-2 dark:border-primary-900 dark:shadow-sm"
       >
         <Text className="font-semibold-nunito text-base text-white">
-          Upgrade Plan
+          {translate('components.FreeTierStatus.action')}
         </Text>
       </Pressable>
     </View>

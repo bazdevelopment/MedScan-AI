@@ -1,7 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
-import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
@@ -78,14 +77,11 @@ const FilePreviewScreen = ({
   collectedData,
   currentScreenIndex,
   totalSteps,
-  onGoBack,
   resetFlow,
 }: IFilePreviewScreen) => {
   const [promptMessage, setPromptMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
   const { mutate: onDecrementScans } = useDecrementScans();
   const {
     i18n: { language },

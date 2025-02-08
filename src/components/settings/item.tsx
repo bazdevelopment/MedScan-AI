@@ -17,7 +17,7 @@ export const Item = ({ text, value, icon, onPress }: ItemProps) => {
     <Pressable
       onPress={onPress}
       pointerEvents={isPressable ? 'auto' : 'none'}
-      className="dark:bg-blackBeauty flex-1 flex-row items-center justify-between rounded-xl bg-primary-100 p-4"
+      className="flex-1 flex-row items-center justify-between rounded-xl bg-primary-100 p-4 dark:bg-blackBeauty"
     >
       <View className="ml-1 flex-row items-center">
         {icon && <View className="pr-2">{icon}</View>}

@@ -30,9 +30,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
 
   const onStartUploadMediaFile = () => {
     if (userInfo?.scansRemaining <= 0) {
-      alert(
-        'You reached the maximum number of scan! Please upgrade to premium!',
-      );
+      alert(translate('home.homeForeground.maxNumberOfScans'));
     }
     router.navigate('/upload-file-flow');
   };

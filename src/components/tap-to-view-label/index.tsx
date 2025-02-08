@@ -1,6 +1,8 @@
 import React from 'react';
+import { TouchableOpacity, View } from 'react-native';
 
-import { Text, TouchableOpacity, View } from '@/ui';
+import { translate } from '@/core';
+import { Text } from '@/ui';
 import { EyeIcon } from '@/ui/assets/icons';
 
 import Icon from '../icon';
@@ -20,6 +22,7 @@ const TabToViewLabel = ({
       <View className="">
         <Text className="right-[-12px] overflow-hidden rounded-2xl bg-primary-900 py-[4px] pl-4 pr-5 font-semibold-nunito text-sm text-white">
           Tap To View
+          {translate('components.TapToViewLabel.label')}
         </Text>
       </View>
       <Icon

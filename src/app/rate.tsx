@@ -2,6 +2,7 @@ import React from 'react';
 import { Linking, View } from 'react-native';
 
 import EdgeCaseTemplate from '@/components/edge-case-template';
+import { translate } from '@/core';
 import { Button } from '@/ui';
 import { RatingIllustration } from '@/ui/assets/illustrations';
 
@@ -26,7 +27,7 @@ const Rate = () => {
     <View className="flex-1 items-center justify-center bg-white p-6 dark:bg-blackEerie">
       <EdgeCaseTemplate
         image={<RatingIllustration />}
-        title="Are you finding the app valuable and engaging?"
+        title={translate('rootLayout.screens.rateAppScreen.heading')}
         additionalClassName="top-[-40] px-10"
       />
 
@@ -36,14 +37,14 @@ const Rate = () => {
           className="dark: h-[62px] w-[160px] rounded-full bg-danger-500 pl-5 active:bg-red-300 dark:bg-danger-500"
           onPress={() => handleFeedback(true)}
           textClassName="dark:text-white"
-          label="Not really..."
+          label={translate('rootLayout.screens.rateAppScreen.dislike')}
         />
 
         {/* Negative Feedback Button */}
         <Button
           className="h-[62px] w-[160px] rounded-full bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
           onPress={() => handleFeedback(false)}
-          label="Yes, I love it!"
+          label={translate('rootLayout.screens.rateAppScreen.like')}
           textClassName="dark:text-white"
         />
       </View>

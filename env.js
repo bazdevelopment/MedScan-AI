@@ -82,7 +82,9 @@ const client = z.object({
 
   GOOGLE_SERVICES_JSON_PATH:z.string().optional(), // optional for CI
   GOOGLE_SERVICES_PLIST_PATH:z.string().optional(), // optional for CI
-  ANTHROPIC_API_KEY:z.string().optional() // optional for CI
+  ANTHROPIC_API_KEY:z.string().optional(), // optional for CI
+  RESEND_API_KEY:z.string().optional(), // optional for CI
+  RESEND_SENDER_EMAIL:z.string().optional() // optional for CI
 });
 
 const buildTime = z.object({
@@ -107,7 +109,9 @@ const _clientEnv = {
 
   GOOGLE_SERVICES_JSON_PATH:process.env.GOOGLE_SERVICES_JSON_PATH,
   GOOGLE_SERVICES_PLIST_PATH:process.env.GOOGLE_SERVICES_PLIST_PATH,
-  ANTHROPIC_API_KEY:process.env.ANTHROPIC_API_KEY
+  ANTHROPIC_API_KEY:process.env.ANTHROPIC_API_KEY,
+  RESEND_API_KEY:process.env.RESEND_API_KEY,
+  RESEND_SENDER_EMAIL:process.env.RESEND_SENDER_EMAIL
 };
 
 /**

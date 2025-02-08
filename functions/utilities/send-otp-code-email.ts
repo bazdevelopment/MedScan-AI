@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions/v1';
 import { Resend } from 'resend';
 
-const resend = new Resend('re_dCGra4pY_4wP31qMcxkRK1ZmdAz4ZTRNc');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOtpCodeViaEmail = async ({
   receiverEmail,
@@ -14,7 +14,7 @@ export const sendOtpCodeViaEmail = async ({
 }) => {
   try {
     return await resend.emails.send({
-      from: 'onboarding@resend.dev', // ! change this email with you email domain
+      from: process.env.RESEND_SENDER_EMAIL as string,
       to: receiverEmail,
       subject,
       html: htmlTemplate,

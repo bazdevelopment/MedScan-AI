@@ -8,6 +8,7 @@ import { Balloons } from 'react-native-fiesta';
 
 import GradientText from '@/components/gradient-text';
 import Icon from '@/components/icon';
+import { translate } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import { usePdfConverter } from '@/core/hooks/use-pdf-converter';
 import { useSharePdfContent } from '@/core/hooks/use-share-content';
@@ -28,14 +29,21 @@ const GenerateReportScreen = () => {
   const { language } = useSelectedLanguage();
 
   useBackHandler(() => {
-    Alert.alert('Hold on!', 'Are you sure you want to go back?', [
-      {
-        text: 'Cancel',
-        onPress: () => null,
-        style: 'cancel',
-      },
-      { text: 'YES', onPress: () => router.push('/(tabs)') }, //! important to use router.push here
-    ]);
+    Alert.alert(
+      translate('backHandler.holdOn'),
+      translate('backHandler.goBackMessage'),
+      [
+        {
+          text: translate('general.cancel'),
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {
+          text: translate('general.yes'),
+          onPress: () => router.push('/(tabs)'),
+        }, //! important to use router.push here
+      ],
+    );
     return true; // Prevent default behavior
   });
 
@@ -46,14 +54,14 @@ const GenerateReportScreen = () => {
         <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
           {/* Header Section */}
           <GradientText
-            className="text-center mb-10 mt-2 font-bold-nunito text-xl text-primary-900"
+            className="mb-10 mt-2 text-center font-bold-nunito text-xl text-primary-900"
             colors={['#7CD0FC', '#A935F8']}
           >
-            Thank you for your patience!
+            {translate('rootLayout.screens.generateReportScreen.title')}
           </GradientText>
           <View className="mb-4">
             <Text className="mb-4 font-bold-nunito text-lg text-primary-900 dark:text-primary-700">
-              Your input
+              {translate('rootLayout.screens.generateReportScreen.userInput')}
             </Text>
             <Text className="text-lg font-semibold">
               {promptMessage || '-'}
@@ -62,7 +70,7 @@ const GenerateReportScreen = () => {
 
           {/* Thank You Message */}
           <Text className="my-4 font-bold-nunito text-lg text-primary-900 dark:text-primary-700">
-            AI medical report
+            {translate('rootLayout.screens.generateReportScreen.report')}
           </Text>
 
           {/* Terms of Service */}
@@ -95,7 +103,9 @@ const GenerateReportScreen = () => {
                     promptMessage: promptMessage as string,
                     generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
                   }),
-                  title: 'Document Analysis',
+                  title: translate(
+                    'rootLayout.screens.generateReportScreen.report',
+                  ),
                 })
               }
               className="mx-2 flex-1 flex-row items-center justify-center rounded-xl border border-gray-200 py-3"
@@ -107,14 +117,18 @@ const GenerateReportScreen = () => {
                 size={22}
               />
 
-              <Text className="ml-2 text-gray-600">Share</Text>
+              <Text className="ml-2 text-gray-600">
+                {translate('general.share')}
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() =>
                 convertToPdfAndDownload({
                   date: createdDate,
-                  title: 'Document Analysis',
+                  title: translate(
+                    'rootLayout.screens.generateReportScreen.report',
+                  ),
                   html: generateScanReportPdf({
                     createdAt: dayjs(createdDate)
                       .locale(language)
@@ -133,7 +147,9 @@ const GenerateReportScreen = () => {
                 color={isDark ? colors.white : colors.black}
               />
 
-              <Text className="ml-2 text-gray-600">Download</Text>
+              <Text className="ml-2 text-gray-600">
+                {translate('general.download')}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

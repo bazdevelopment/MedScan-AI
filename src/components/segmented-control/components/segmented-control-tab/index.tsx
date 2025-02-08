@@ -33,7 +33,7 @@ const SegmentedControlTab = ({
     >
       <View className="flex-col items-center gap-1">
         <Text
-          className={` text-base text-gray-700  ${isActive ? 'text-white' : 'text-gray-600'}`}
+          className={`text-base text-gray-700  ${isActive ? 'text-white' : 'text-gray-600'}`}
         >
           {option.title}
         </Text>

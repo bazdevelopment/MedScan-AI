@@ -22,7 +22,7 @@ const SharePdfActionButtons = ({
   const isDark = colorScheme === 'dark';
   const alignment = position === 'vertical' ? 'flex-col' : 'flex-row';
   return (
-    <View className={`right-[-30px] flex-row gap-5 self-center  ${alignment}`}>
+    <View className={`right-[-30px] flex-row gap-5 self-center ${alignment}`}>
       {(isSharing || isConverting) && (
         <ActivityIndicator color={isDark ? colors.white : colors.black} />
       )}
@@ -45,7 +45,6 @@ const SharePdfActionButtons = ({
         />
       </TouchableOpacity>
       <TouchableOpacity
-        // className="p-1"
         onPress={() =>
           convertToPdfAndDownload({
             html,

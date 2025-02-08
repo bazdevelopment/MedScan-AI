@@ -191,7 +191,7 @@ const ReportsList = ({
           image={<NoReports width={100} height={100} />}
           message="No recent reports yet!"
           primaryAction={{
-            label: 'Scan now',
+            label: translate('uploadScan.scanNow'),
             icon: <UploadIcon color={isDark ? colors.black : colors.white} />,
             variant: 'default',
             onPress: () => router.navigate('/upload-file-flow'),

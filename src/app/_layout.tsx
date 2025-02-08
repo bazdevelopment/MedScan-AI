@@ -24,7 +24,7 @@ import { Toaster } from 'sonner-native';
 import { APIProvider } from '@/api';
 import CustomHeader from '@/components/cusom-header';
 import Icon from '@/components/icon';
-import { hydrateAuth, loadSelectedTheme, translate } from '@/core';
+import { loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
@@ -36,7 +36,6 @@ export const unstable_settings = {
   initialRouteName: '(tabs)',
 };
 
-hydrateAuth();
 loadSelectedTheme();
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

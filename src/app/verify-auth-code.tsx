@@ -90,13 +90,16 @@ const VerifyAuthCode = () => {
           </Text>
 
           <Text className="my-4 text-lg text-white">
-            Enter your verification code sent via email. Please note, the code
-            will expire in 5 minutes.
+            {translate(
+              'rootLayout.screens.verifyAuthCode.verificationCodeHeading',
+            )}
           </Text>
 
           <View className="mt-4 rounded-3xl bg-white p-6 dark:bg-blackBeauty">
             <Text className="text-center text-base">
-              We have sent the verification code to
+              {translate(
+                'rootLayout.screens.verifyAuthCode.verificationCodeSent',
+              )}
             </Text>
             <Text className="text-center font-semibold-nunito text-base text-primary-900 dark:text-primary-700">
               {userEmail}
@@ -116,14 +119,18 @@ const VerifyAuthCode = () => {
             />
             <View className="mt-3 flex-row items-center justify-center">
               <Text className="text-center font-semibold-nunito">
-                Didn't get the code?
+                {translate(
+                  'rootLayout.screens.verifyAuthCode.verificationCodeMissing',
+                )}
               </Text>
               <Button
                 onPress={() =>
                   handleLoginViaEmail({ email: userEmail, language })
                 }
                 variant="default"
-                label="Resend code"
+                label={translate(
+                  'rootLayout.screens.verifyAuthCode.resendCode',
+                )}
                 className="m-0 ml-2 bg-white p-0 active:opacity-60 dark:bg-transparent"
                 textClassName="text-primary-900 font-semibold-nunito text-base dark:text-primary-700"
               />
@@ -132,7 +139,7 @@ const VerifyAuthCode = () => {
             <Button
               onPress={() => router.navigate('/login')}
               variant="default"
-              label="Back to Sign In"
+              label={translate('rootLayout.screens.verifyAuthCode.backToLogin')}
               className="m-0 ml-2 mt-4 gap-2 self-start bg-white p-0 active:opacity-60 dark:bg-transparent"
               textClassName="text-primary-900 font-semibold-nunito text-base dark:text-white"
               icon={

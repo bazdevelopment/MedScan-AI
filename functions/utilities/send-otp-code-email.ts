@@ -1,8 +1,6 @@
 import * as functions from 'firebase-functions/v1';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export const sendOtpCodeViaEmail = async ({
   receiverEmail,
   subject,
@@ -13,6 +11,8 @@ export const sendOtpCodeViaEmail = async ({
   htmlTemplate: string;
 }) => {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     return await resend.emails.send({
       from: process.env.RESEND_SENDER_EMAIL as string,
       to: receiverEmail,
@@ -21,8 +21,8 @@ export const sendOtpCodeViaEmail = async ({
     });
   } catch (error) {
     throw new functions.https.HttpsError(
-      'cancelled',
-      'The verification code cannot be sent via your email!',
+      'internal',
+      '[Resend] The verification code cannot be sent via your email!',
     );
   }
 };

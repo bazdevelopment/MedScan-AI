@@ -44,6 +44,19 @@ const UploadFileScreen = ({
     modal.dismiss();
   };
 
+  const galleryOptions = [
+    {
+      label: translate('general.gallery'),
+      id: 1,
+      icon: <Gallery width={27} height={27} color={colors.primary[900]} />,
+    },
+    {
+      label: translate('general.files'),
+      id: 2,
+      icon: <PaperClip width={27} height={27} color={colors.primary[900]} />,
+    },
+  ];
+
   useEffect(() => {
     resetFlow();
   }, []);
@@ -54,7 +67,7 @@ const UploadFileScreen = ({
           header: (props) => (
             <CustomHeader
               {...props}
-              title="Upload Scan"
+              title={translate('uploadScan.title')}
               className="bg-white pt-20"
               titlePosition="center"
               onGoBack={onGoBack}
@@ -85,10 +98,10 @@ const UploadFileScreen = ({
             <Text className="font-bold-nunito text-primary-900">
               {translate('flows.createReport.uploadFile.location')}
             </Text>
-            <Text className="text-center mt-1 text-base text-gray-600">
+            <Text className="mt-1 text-center text-base text-gray-600">
               {translate('flows.createReport.uploadFile.size')}
             </Text>
-            <Text className="text-center mt-2 font-bold-nunito text-sm text-primary-700">
+            <Text className="mt-2 text-center font-bold-nunito text-sm text-primary-700">
               {translate('flows.createReport.uploadFile.scanType')}
             </Text>
           </View>
@@ -99,7 +112,7 @@ const UploadFileScreen = ({
 
       <Button
         label={translate('flows.createReport.uploadFile.openCamera')}
-        className="h-[62px] w-[90%]  gap-5 self-center rounded-full bg-primary-100 dark:bg-primary-900"
+        className="h-[62px] w-[90%] gap-5 self-center rounded-full bg-primary-100 dark:bg-primary-900"
         textClassName="text-lg font-semibold-nunito text-primary-900 dark:text-white"
         icon={
           <Camera
@@ -117,26 +130,13 @@ const UploadFileScreen = ({
         testID="Upload file options id"
         onSelect={onSelectFileUploadMethod}
         ref={modal.ref}
-        heading="Choose a picture / video"
+        heading={translate('components.UploadFileOptionsModal.heading')}
       />
     </>
   );
 };
 
 export default UploadFileScreen;
-
-const galleryOptions = [
-  {
-    label: 'Gallery',
-    id: 1,
-    icon: <Gallery width={27} height={27} color={colors.primary[900]} />,
-  },
-  {
-    label: 'Files',
-    id: 2,
-    icon: <PaperClip width={27} height={27} color={colors.primary[900]} />,
-  },
-];
 
 export const UploadFileOptionsModal = React.forwardRef<
   BottomSheetModal,

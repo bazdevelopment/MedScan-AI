@@ -12,7 +12,7 @@
     "seed-scan-categories": "curl -X POST https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/uploadScanCategories"
   },
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "main": "lib/src/index.js",
   "dependencies": {

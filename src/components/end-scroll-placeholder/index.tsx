@@ -21,7 +21,7 @@ export const EndScrollPlaceholder = ({
           loop
           style={endScrollPlaceholderStyle.scrollTopAnimation}
         />
-        <Text className="text-center top-[-30] text-sm">
+        <Text className="top-[-30] text-center text-sm">
           {translate('components.EndScrollPlaceholder.scrollToTop')}
         </Text>
       </TouchableOpacity>

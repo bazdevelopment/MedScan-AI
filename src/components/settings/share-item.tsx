@@ -3,6 +3,7 @@ import { useColorScheme } from 'nativewind';
 import React from 'react';
 import QRCode from 'react-native-qrcode-svg';
 
+import { translate } from '@/core';
 import { useClipboard } from '@/core/hooks/use-clipboard';
 import { useShareLink } from '@/core/hooks/use-share-link';
 import {
@@ -41,7 +42,7 @@ export const ShareItem = () => {
         ref={modal.ref}
         index={0}
         snapPoints={['90%']}
-        title="Share"
+        title={translate('general.share')}
         backgroundStyle={{
           backgroundColor: isDark ? colors.blackBeauty : colors.primary[50],
         }}
@@ -51,10 +52,10 @@ export const ShareItem = () => {
             {/* Header Section */}
             <View className="mb-8 mt-2 items-center">
               <Text className="mb-2 font-bold-nunito text-3xl text-gray-800">
-                Share X-Ray Analyzer App
+                {translate('rootLayout.screens.share.heading')}
               </Text>
-              <Text className="text-center mx-10 text-base text-gray-600">
-                Help others discover the power of AI-driven X-ray analysis
+              <Text className="mx-10 text-center text-base text-gray-600">
+                {translate('rootLayout.screens.share.subheading')}
               </Text>
             </View>
             {/* QR Code Section */}
@@ -70,11 +71,11 @@ export const ShareItem = () => {
                 backgroundColor={isDark ? colors.blackBeauty : colors.white}
                 logoBackgroundColor="transparent"
               />
-              <Text className="text-center mt-10 font-bold-nunito text-gray-700">
-                Scan to download the app
+              <Text className="mt-10 text-center font-bold-nunito text-gray-700">
+                {translate('rootLayout.screens.share.scanMessage')}
               </Text>
-              <Text className="text-center mt-2 text-sm text-gray-600">
-                or share via your favorite platform
+              <Text className="mt-2 text-center text-sm text-gray-600">
+                {translate('rootLayout.screens.share.shareMessage')}
               </Text>
             </View>
 
@@ -87,9 +88,12 @@ export const ShareItem = () => {
                     color={isDark ? colors.white : colors.black}
                   />
                 }
-                label="Share"
+                label={translate('rootLayout.screens.share.title')}
                 onPress={() =>
-                  shareLink({ url: appLink, title: 'Share X-Ray Analyzer App' })
+                  shareLink({
+                    url: appLink,
+                    title: translate('rootLayout.screens.share.heading'),
+                  })
                 }
                 className="border-4 border-gray-300 bg-slate-100 dark:border-gray-500 dark:bg-blackBeauty"
                 textClassName="text-sm dark:text-white"
@@ -105,10 +109,10 @@ export const ShareItem = () => {
                 }
                 label={
                   isLoading
-                    ? 'Copying...'
+                    ? translate('general.copyText.loading')
                     : error
                       ? `Error: ${error.message}`
-                      : `${copiedText ? 'Copied!' : 'Copy Link'}`
+                      : `${copiedText ? translate('general.copyText.copied') : translate('general.copyText.copy')}`
                 }
                 onPress={() => copyToClipboard(appLink)}
                 className="border-4 border-gray-300 bg-slate-100 dark:border-gray-500 dark:bg-blackBeauty"

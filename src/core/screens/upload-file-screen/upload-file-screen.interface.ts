@@ -15,4 +15,8 @@ export interface IUploadFileOptions {
 
 export interface IUploadFileScreen {
   goToNextScreen: () => void;
+  totalSteps: number;
+  currentScreenIndex: number;
+  onGoBack: () => void;
+  resetFlow: () => void;
 }

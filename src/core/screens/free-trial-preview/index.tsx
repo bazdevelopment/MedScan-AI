@@ -3,16 +3,13 @@ import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 
+import PremiumFeaturesOverview from '@/components/premium-features-overivew';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import { translate } from '@/core/i18n';
 import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
-import {
-  CrownIllustration,
-  NoAdsIllustration,
-  ScanIllustration,
-} from '@/ui/assets/illustrations';
 
 const FreeTrialPreview = ({
   totalSteps,
@@ -52,14 +49,14 @@ const FreeTrialPreview = ({
         className={`flex-1 px-6 pt-8 ${DEVICE_TYPE.ANDROID && isVerySmallDevice ? 'pt-[10]' : 'pt-[50]'}`}
       >
         <Text className="font-bold-nunito text-[32px]  text-white">
-          Enjoy your free trial! 🎉
+          {translate('rootLayout.screens.freeTrialPreview.heading')}
         </Text>
 
         <Text className="mb-1 mt-2 text-lg text-white">
-          Experience these amazing benefits during your free trial
+          {translate('rootLayout.screens.freeTrialPreview.subheading')}
         </Text>
 
-        <PremiumFeatures />
+        <PremiumFeaturesOverview />
 
         {/* Bottom Navigation */}
         <View
@@ -75,7 +72,7 @@ const FreeTrialPreview = ({
 
             <Button
               onPress={onSkip}
-              label="Skip"
+              label={translate('general.skip')}
               className="bg-transparent active:opacity-60 dark:bg-transparent"
               textClassName="text-bold-nunito text-lg text-white dark:text-white"
             />
@@ -83,72 +80,13 @@ const FreeTrialPreview = ({
 
           <Button
             onPress={() => goToNextScreen({})}
-            label="Next"
+            label={translate('general.next')}
             className="bottom-[-10px] mt-6 h-[56px] w-[150px] rounded-xl border-2 border-primary-900 bg-white pl-5 dark:bg-primary-900"
             textClassName="text-lg text-primary-900 dark:text-white"
           />
         </View>
       </View>
     </SafeAreaView>
-  );
-};
-
-const PremiumFeatures = () => {
-  const { isVerySmallDevice } = getDeviceSizeCategory();
-
-  return (
-    <View
-      className={` flex-1 justify-center p-4 ${isVerySmallDevice ? 'mt-4 gap-8' : 'gap-16'}`}
-    >
-      <View
-        className={`rotate-3 flex-row items-center justify-center rounded-xl bg-white shadow dark:bg-primary-900 ${isVerySmallDevice ? 'p-3' : 'p-6'}`}
-      >
-        <View className="mr-3  items-center justify-center rounded-full border bg-primary-100">
-          <ScanIllustration
-            fill={colors.neutral[500]}
-            width={isVerySmallDevice ? 30 : 52}
-            height={isVerySmallDevice ? 30 : 52}
-          />
-        </View>
-        <Text
-          className={`font-bold-nunito text-lg text-primary-900 ${isVerySmallDevice ? 'text-xs' : 'text-lg'}`}
-        >
-          Get 10 Free Scans
-        </Text>
-      </View>
-
-      <View
-        className={`-rotate-3 flex-row items-center justify-center rounded-xl bg-white shadow dark:bg-primary-900 ${isVerySmallDevice ? 'p-3' : 'p-6'}`}
-      >
-        <View className="mr-3  items-center justify-center rounded-full">
-          <CrownIllustration
-            width={isVerySmallDevice ? 30 : 45}
-            height={isVerySmallDevice ? 30 : 45}
-          />
-        </View>
-        <Text
-          className={`font-bold-nunito text-lg text-primary-900 ${isVerySmallDevice ? 'text-xs' : 'text-lg'}`}
-        >
-          Access to all premium features
-        </Text>
-      </View>
-
-      <View
-        className={`rotate-3 flex-row items-center justify-center rounded-xl bg-white shadow dark:bg-primary-900 ${isVerySmallDevice ? 'p-3' : 'p-6'}`}
-      >
-        <View className="mr-3  items-center justify-center rounded-full bg-red-100">
-          <NoAdsIllustration
-            width={isVerySmallDevice ? 30 : 52}
-            height={isVerySmallDevice ? 30 : 52}
-          />
-        </View>
-        <Text
-          className={`font-bold-nunito text-lg text-primary-900 ${isVerySmallDevice ? 'text-xs' : 'text-lg'}`}
-        >
-          No ads
-        </Text>
-      </View>
-    </View>
   );
 };
 

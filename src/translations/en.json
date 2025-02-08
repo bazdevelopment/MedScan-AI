@@ -1,6 +1,6 @@
 {
   "onboarding": {
-    "message": "Welcome to X-Ray analyzer"
+    "message": "Welcome to X-Ray Analyzer"
   },
   "general": {
     "back": "Back",
@@ -13,15 +13,48 @@
     "gallery": "Gallery",
     "files": "Files",
     "cancel": "Cancel",
+    "yes": "Yes",
     "openSettings": "Open Settings",
-    "viewProfile": "View Profile"
+    "viewProfile": "View Profile",
+    "upgradePlan": "Upgrade Plan",
+    "download": "Download",
+    "share": "Share",
+    "shareLink": "Share Link",
+    "skip": "Skip",
+    "next": "Next",
+    "tryAgain": "Try again",
+    "and": "and",
+    "copyText": {
+      "loading": "Copying...",
+      "copied": "Copied!",
+      "copy": "Copy Link"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Loading your personalized experience...",
+        "second": "Synchronizing systems...",
+        "third": "Processing your data...",
+        "fourth": "Almost ready, just a moment..."
+      },
+      "imageScanningLoading": {
+        "first": "Scanning your medical imaging, please hold tight...",
+        "second": "Analyzing details, this may take a moment...",
+        "third": "Enhancing accuracy for the best results...",
+        "fourth": "Almost there, finalizing the scan..."
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Hold on!",
+    "goBackMessage": "Are you sure you want to go back?"
   },
   "internet": {
     "noConnectionTitle": "You're offline!",
     "noConnectionMessage": "Turn on mobile data or connect to a Wi-Fi. Or just take a break and go for a walk!"
   },
   "uploadScan": {
-    "title": "Upload Scan"
+    "title": "Upload Scan",
+    "scanNow": "Scan now',"
   },
   "weekDays": {
     "today": "Today",
@@ -36,9 +69,66 @@
   },
   "rootLayout": {
     "screens": {
+      "login": {
+        "agreeingMessage": "By continuing, you agree to our",
+        "termsAndConditions": "Terms & Conditions",
+        "privacyPolicy": "Privacy Policy"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Enter your verification code sent via email. Please note, the code will expire in 5 minutes.",
+        "verificationCodeSent": "We have sent the verification code to",
+        "verificationCodeMissing": "Didn't get the code?",
+        "resendCode": "Resend code",
+        "backToLogin": "Back to Sign In"
+      },
+      "namePreferenceScreen": {
+        "heading": "Let's make this personal!",
+        "preferredNameQuestion": "What should we call you?",
+        "placeholderPreferredName": "E.g., Captain Cool, Queen Bee, or just Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Enjoy your free trial! 🎉",
+        "subheading": "Experience these amazing benefits during your free trial"
+      },
       "scanInterpretation": {
         "title": "Interpretation result",
         "headerBackTitle": "Reports"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "title": "Unlock Premium Features Today! 🎉",
+          "firstOffering": "Access All Premium Features",
+          "secondOffering": "Ad-Free Experience"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Unlock Premium Features Today! 🎉",
+        "firstOffering": {
+          "title": "Start Free Trial",
+          "subtitle": "Enjoy 10 free scans – no payment"
+        },
+        "secondOffering": {
+          "title": "Monthly Plan",
+          "subtitle": "$49.99 / month"
+        },
+        "thirdOffering": {
+          "title": "Yearly Plan",
+          "subtitle": "Best deal: $99.99/year – save more!"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "A new version of X-Ray Analyzer is available",
+        "subheading": "Please update to the latest version to continue using the app",
+        "action": "Get it now!"
+      },
+      "rateAppScreen": {
+        "heading": "Are you finding the app valuable and engaging?",
+        "like": "Yes, I love it!",
+        "dislike": "Not really..."
+      },
+      "noInternetScreen": {
+        "heading": "You are offline",
+        "subheading": "Your connection seems to be unstable. Please verify your network status"
       },
       "notifications": {
         "title": "Notifications"
@@ -50,13 +140,22 @@
         "title": "Privacy Policy"
       },
       "share": {
-        "title": "Share"
+        "title": "Share",
+        "heading": " Share X-Ray Analyzer App",
+        "subheading": "Help others discover the power of AI-driven X-ray analysis",
+        "scanMessage": "Scan to download the app",
+        "shareMessage": "or share via your favorite platform"
       },
       "rate": {
         "title": "Give us a feedback!"
       },
       "profile": {
         "title": "Profile"
+      },
+      "generateReportScreen": {
+        "title": "We appreciate your patience! Here’s your AI report. 🚀",
+        "userInput": "Your Submission",
+        "report": "AI-Generated Medical Report"
       }
     }
   },
@@ -64,6 +163,7 @@
     "title": "Wait! Don't delete me!",
     "subtitle": "Send a feedback instead"
   },
+
   "flows": {
     "createReport": {
       "finalReportForeground": {
@@ -85,7 +185,7 @@
   "home": {
     "tab": "Home",
     "homeForeground": {
-      "maxNumberOfScans": "You reached the maximum number of scan! Please upgrade to premium!",
+      "maxNumberOfScans": "You've reached your scan limit! Upgrade your plan now to unlock more scans. 🚀",
       "heading": "Welcome to X-Ray Analyzer",
       "subHeading": "Get vital insights with MRI, X-Rays, CT scans, PET imaging, ultrasounds, and nuclear medicine"
     },
@@ -162,6 +262,35 @@
     },
     "EndScrollPlaceholder": {
       "scrollToTop": "Scroll to Top"
+    },
+    "FreeTierStatus": {
+      "heading": "Free scans",
+      "subheading": "Get unlimited access with our Pro plan",
+      "action": "Upgrade Plan"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Choose a picture / video"
+    },
+    "TapToViewLabel": {
+      "label": "Tap To View"
+    },
+    "UpgradeBanner": {
+      "heading": "Upgrade Now",
+      "subheading": "Enjoy Premium Features!"
+    },
+    "PromptSection": {
+      "message": "Your scan is ready! Now, what would you like to find out?",
+      "prompts": {
+        "first": "Describe any abnormalities present in the lung fields",
+        "second": "Evaluate the cardiac silhouette and mediastinum",
+        "third": "Evaluate the bone structures for any lesions or fractures",
+        "fourth": "Comment on the presence or absence of pleural effusions"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Get 10 Free Scans",
+      "second": "Access to all premium features",
+      "third": "No ads"
     }
   },
   "alerts": {
@@ -183,10 +312,18 @@
     "imageSizeLarge": "Image is too large! File size is {{fileSize}} MB, but the limit is {{imageLimit}} MB.",
     "videoSizeLarge": "Video is too large! File size is {{fileSize}} MB, but the limit is {{videoLimit}} MB.",
     "loggedInSuccess": "Successfully logged in",
+    "loggedOutSuccess": "You have logged out successfully!",
     "sendVerificationCodeError": "Error when sending verification code",
     "validateAuthCodeError": "Error when validating auth code",
     "anonymousSignInError": "Error signing in anonymously",
     "emailLoginError": "Error when signing in",
-    "preferredLanguageError": "Error when updating user's preferred language"
+    "preferredLanguageError": "Error when updating user's preferred language",
+    "sharingNotAvailable": "Sharing is currently unavailable on your device",
+    "sharingLinkError": "Failed to share link.",
+    "individualPushNotificationSuccess": "Individual push notifications sent successfully!",
+    "globalPushNotificationSuccess": "Global push notifications sent successfully! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Failed to update interpretation fields! ❌",
+    "onboardingUnsuccessful": "Onboarding unsuccessful. Please try again",
+    "logoutUnsuccessful": "Logout unsuccessful. Please try again"
   }
 }

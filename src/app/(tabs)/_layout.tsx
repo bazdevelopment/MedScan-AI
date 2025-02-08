@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable max-lines-per-function */
 import { useNetInfo } from '@react-native-community/netinfo';
 import * as QuickActions from 'expo-quick-actions';

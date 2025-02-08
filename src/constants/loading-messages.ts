@@ -1,13 +1,15 @@
+import { translate } from '@/core';
+
 export const LOADING_MESSAGES_INITIAL_APP_LOAD = [
-  'Loading your personalized experience...',
-  'Synchronizing systems...',
-  'Processing your data...',
-  'Almost ready, just a moment...',
+  translate('general.loadingMessages.initialAppLoad.first'),
+  translate('general.loadingMessages.initialAppLoad.second'),
+  translate('general.loadingMessages.initialAppLoad.third'),
+  translate('general.loadingMessages.initialAppLoad.fourth'),
 ];
 
 export const LOADING_MESSAGES_IMAGE_SCANNING = [
-  'Scanning your medical imaging, please hold tight...',
-  'Analyzing details, this may take a moment...',
-  'Enhancing accuracy for the best results...',
-  'Almost there, finalizing the scan...',
+  translate('general.loadingMessages.imageScanningLoading.first'),
+  translate('general.loadingMessages.imageScanningLoading.second'),
+  translate('general.loadingMessages.imageScanningLoading.third'),
+  translate('general.loadingMessages.imageScanningLoading.fourth'),
 ];

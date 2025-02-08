@@ -5,7 +5,7 @@ import { View } from 'react-native';
 
 import CardWrapper from '@/components/card-wrapper';
 import { NotificationDetailsModal } from '@/components/modals/notification-details-modal';
-import { useSelectedLanguage } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { Button, colors, Text, useModal } from '@/ui';
 
 import { type INotificationItem } from './notification-item.interface';
@@ -64,7 +64,7 @@ const NotificationItem = ({
             {!notification.isRead && (
               <View className="ml-4 flex-[0.2]">
                 <Button
-                  label="New"
+                  label={translate('general.new')}
                   variant="default"
                   className="h-[24] w-[41] bg-primary-900 px-0 dark:bg-blackBeauty"
                   textClassName="text-xs dark:text-white"

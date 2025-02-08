@@ -328,19 +328,19 @@ const verifyAuthenticationCodeHandler = async (
     }
 
     const authenticationCodeMatches = verificationCode === authenticationCode;
-    const isOtpExpired = new Date() > new Date(verificationCodeExpiry);
-
-    if (!authenticationCodeMatches) {
-      throw new functions.https.HttpsError(
-        'not-found',
-        t.verifyAuthenticationCode.invalidAuthCode,
-      );
-    }
+    const isOtpExpired =
+      new Date() > new Date(verificationCodeExpiry.toDate().toISOString());
 
     if (isOtpExpired) {
       throw new functions.https.HttpsError(
         'not-found',
         t.verifyAuthenticationCode.authCodeExpired,
+      );
+    }
+    if (!authenticationCodeMatches) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        t.verifyAuthenticationCode.invalidAuthCode,
       );
     }
 

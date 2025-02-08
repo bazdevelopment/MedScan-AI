@@ -1,25 +1,62 @@
 {
   "onboarding": {
-    "message": "Bienvenido a la aplicación de análisis de rayos X"
+    "message": "Bienvenido a X-Ray Analyzer"
   },
   "general": {
     "back": "Atrás",
-    "welcome": "Bienvenido",
+    "welcome": "Hola",
     "welcomeBack": "¡Bienvenido de nuevo!",
+    "welcomeMessage": "¡Bienvenido!",
     "continue": "Continuar",
     "retry": "Reintentar",
     "close": "Cerrar",
     "gallery": "Galería",
     "files": "Archivos",
     "cancel": "Cancelar",
-    "openSettings": "Abrir configuración"
+    "new": "Nuevo",
+    "yes": "Sí",
+    "openSettings": "Abrir configuración",
+    "viewProfile": "Ver perfil",
+    "upgradePlan": "Actualizar plan",
+    "download": "Descargar",
+    "share": "Compartir",
+    "shareLink": "Compartir enlace",
+    "skip": "Saltar",
+    "next": "Siguiente",
+    "update": "Actualizar",
+    "tryAgain": "Intentar de nuevo",
+    "and": "y",
+    "copyText": {
+      "loading": "Copiando...",
+      "copied": "¡Copiado!",
+      "copy": "Copiar enlace"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Cargando tu experiencia personalizada...",
+        "second": "Sincronizando sistemas...",
+        "third": "Procesando tus datos...",
+        "fourth": "Casi listo, solo un momento..."
+      },
+      "imageScanningLoading": {
+        "first": "Escaneando tus imágenes médicas, por favor espera...",
+        "second": "Analizando detalles, esto puede tomar un momento...",
+        "third": "Mejorando la precisión para obtener los mejores resultados...",
+        "fourth": "Casi listo, finalizando el escaneo..."
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "¡Espera!",
+    "goBackMessage": "¿Estás seguro de que quieres volver?"
   },
   "internet": {
-    "noConnectionTitle": "¡Estás desconectado!",
-    "noConnectionMessage": "Activa los datos móviles o conéctate a una red Wi-Fi. ¡O simplemente toma un descanso y da un paseo!"
+    "noConnectionTitle": "¡Estás sin conexión!",
+    "noConnectionMessage": "Activa los datos móviles o conéctate a Wi-Fi. ¡O simplemente toma un descanso y sal a caminar!"
   },
   "uploadScan": {
-    "title": "Subir escaneo"
+    "title": "Subir escaneo",
+    "scanNow": "Escanear ahora"
   },
   "weekDays": {
     "today": "Hoy",
@@ -29,35 +66,119 @@
     "verifyAuthCode": "Verificar código de autenticación",
     "verifyAuthCodeButton": "Verificar código",
     "authCodeHeading": "Código de autenticación",
-    "loginViaEmailHeading": "Por favor, ingresa tu correo electrónico para continuar",
+    "loginViaEmailHeading": "Iniciemos tu sesión. Por favor, ingresa tu correo electrónico para continuar.",
     "emailAddress": "Correo electrónico"
   },
   "rootLayout": {
     "screens": {
+      "welcome": {
+        "heading": "Bienvenido a X-Ray Analyzer",
+        "startButton": "¡Comencemos!",
+        "accountButton": "Ya tengo una cuenta"
+      },
+      "login": {
+        "agreeingMessage": "Al continuar, aceptas nuestros",
+        "termsAndConditions": "Términos y Condiciones",
+        "privacyPolicy": "Política de Privacidad"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Ingresa tu código de verificación enviado por correo electrónico. Ten en cuenta que el código expirará en 5 minutos.",
+        "verificationCodeSent": "Hemos enviado el código de verificación a",
+        "verificationCodeMissing": "¿No recibiste el código?",
+        "resendCode": "Reenviar código",
+        "backToLogin": "Volver a Iniciar Sesión"
+      },
+      "namePreferenceScreen": {
+        "heading": "¡Hagamos esto personal!",
+        "preferredNameQuestion": "¿Cómo deberíamos llamarte?",
+        "placeholderPreferredName": "Ej.: Capitán Cool, Reina Abeja, o simplemente Alex."
+      },
+      "freeTrialPreview": {
+        "heading": "¡Disfruta tu prueba gratuita! 🎉",
+        "subheading": "Experimenta estos increíbles beneficios durante tu prueba gratuita"
+      },
       "scanInterpretation": {
         "title": "Resultado de la interpretación",
         "headerBackTitle": "Informes"
       },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "title": "¡Desbloquea funciones premium hoy! 🎉",
+          "firstOffering": "Acceso a todas las funciones premium",
+          "secondOffering": "Experiencia sin anuncios",
+          "thirdOffering": "Número ilimitado de escaneos"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "¡Desbloquea funciones premium hoy! 🎉",
+        "firstOffering": {
+          "title": "Comenzar prueba gratuita",
+          "subtitle": "Disfruta de 10 escaneos gratis – sin pago"
+        },
+        "secondOffering": {
+          "title": "Plan mensual",
+          "subtitle": "$49.99 / mes"
+        },
+        "thirdOffering": {
+          "title": "Plan anual",
+          "subtitle": "Mejor oferta: $99.99/año – ¡ahorra más!"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Hay una nueva versión de X-Ray Analyzer disponible",
+        "subheading": "Actualiza a la última versión para seguir usando la aplicación",
+        "action": "¡Consíguela ahora!"
+      },
+      "rateAppScreen": {
+        "heading": "¿Te parece útil y atractiva la aplicación?",
+        "like": "¡Sí, me encanta!",
+        "dislike": "No realmente..."
+      },
+      "noInternetScreen": {
+        "heading": "Estás sin conexión",
+        "subheading": "Tu conexión parece inestable. Por favor, verifica el estado de tu red"
+      },
       "notifications": {
-        "title": "Notificaciones"
+        "title": "Notificaciones",
+        "noNotifications": "No hay notificaciones por ahora – ¡mantente atento a las actualizaciones!"
       },
       "termsOfService": {
-        "title": "Términos de servicio"
+        "title": "Términos de Servicio"
       },
       "privacyPolicy": {
-        "title": "Política de privacidad"
+        "title": "Política de Privacidad"
       },
       "share": {
-        "title": "Compartir"
+        "title": "Compartir",
+        "heading": "Comparte la aplicación X-Ray Analyzer",
+        "subheading": "Ayuda a otros a descubrir el poder del análisis de rayos X con IA",
+        "scanMessage": "Escanear para descargar la aplicación",
+        "shareMessage": "o comparte a través de tu plataforma favorita"
       },
       "rate": {
         "title": "¡Danos tu opinión!"
+      },
+      "profile": {
+        "title": "Perfil",
+        "edit": "Editar perfil",
+        "placeholderPreferredName": "Ej.: Capitán Cool, Reina Abeja, o simplemente Alex."
+      },
+      "generateReportScreen": {
+        "title": "¡Agradecemos tu paciencia! Aquí está tu informe generado por IA. 🚀",
+        "userInput": "Tu envío",
+        "report": "Informe médico generado por IA"
+      },
+      "verifyEmail": {
+        "heading": "Verificar correo electrónico"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Generar informe"
       }
     }
   },
   "deleteApp": {
     "title": "¡Espera! ¡No me elimines!",
-    "subtitle": "Envíanos tu opinión en su lugar"
+    "subtitle": "Envía un comentario en su lugar"
   },
   "flows": {
     "createReport": {
@@ -68,23 +189,24 @@
         "message": "¡Este es el resultado del informe!"
       },
       "uploadFile": {
-        "title": "Necesitas subir tu RAYOS X / CT",
+        "title": "Por favor, sube tu archivo de imágenes médicas",
         "size": "Tamaño máximo del archivo: 10MB",
-        "location": "Selecciona desde la Galería o Archivos",
+        "location": "Seleccionar desde Galería o Archivos",
         "fileType": "PNG, JPG, PDF o MP4",
-        "openCamera": "Abra la cámara y tome una fotografía."
+        "openCamera": "Abrir cámara y tomar foto",
+        "scanType": "RAYOS X, TAC, RMN, PET"
       }
     }
   },
   "home": {
     "tab": "Inicio",
     "homeForeground": {
-      "maxNumberOfScans": "¡Has alcanzado el número máximo de escaneos! Por favor, actualiza a premium.",
-      "heading": "Comienza a usar Analizador de Rayos X",
-      "subHeading": "Obtén información vital con MRI, rayos X, tomografías, imágenes PET, ultrasonidos y medicina nuclear"
+      "maxNumberOfScans": "¡Has alcanzado tu límite de escaneos! Actualiza tu plan ahora para desbloquear más escaneos. 🚀",
+      "heading": "Bienvenido a X-Ray Analyzer",
+      "subHeading": "Obtén información vital con resonancias magnéticas, rayos X, TAC, imágenes PET, ultrasonidos y medicina nuclear"
     },
     "scanCategories": {
-      "heading": "Categorías de escaneo"
+      "heading": "Reel de Radiología"
     },
     "recentReports": {
       "heading": "Informes recientes",
@@ -104,7 +226,7 @@
     "languages": {
       "arabic": "Árabe",
       "english": "Inglés",
-      "mandarin_chinese": "Chino",
+      "mandarin_chinese": "Chino mandarín",
       "spanish": "Español",
       "hindi": "Hindi",
       "portuguese": "Portugués",
@@ -121,13 +243,13 @@
     "links": "Enlaces",
     "logout": "Cerrar sesión",
     "more": "Más",
-    "privacy": "Política de privacidad",
+    "privacy": "Política de Privacidad",
     "faq": "Preguntas frecuentes",
     "rate": "Calificar",
     "share": "Compartir",
     "support": "Soporte",
     "support_us": "Apóyanos",
-    "terms": "Términos de servicio",
+    "terms": "Términos de Servicio",
     "theme": {
       "dark": "Oscuro",
       "light": "Claro",
@@ -139,7 +261,7 @@
     "website": "Sitio web",
     "devMode": {
       "title": "Modo desarrollador",
-      "componentsLibrary": "Biblioteca UI"
+      "componentsLibrary": "Biblioteca de UI"
     }
   },
   "components": {
@@ -149,13 +271,49 @@
     "ScanReportCard": {
       "promptMessage": "¿Cuál es la razón?",
       "unnamedReport": "Informe sin nombre",
-      "reportTitlePlaceholder": "Agregar un título"
+      "reportTitlePlaceholder": "Añadir un título"
     },
     "WeekBlock": {
       "week": "Semana"
     },
     "EndScrollPlaceholder": {
-      "scrollToTop": "Desplazar hacia arriba"
+      "scrollToTop": "Desplazarse hacia arriba"
+    },
+    "FreeTierStatus": {
+      "heading": "Escaneos gratuitos",
+      "subheading": "Desbloquea escaneos ilimitados actualizando tu plan",
+      "action": "Actualizar plan"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Elige una imagen / video"
+    },
+    "TapToViewLabel": {
+      "label": "Toca para ver"
+    },
+    "UpgradeBanner": {
+      "heading": "Actualiza ahora",
+      "subheading": "Desbloquea escaneos ilimitados actualizando tu plan"
+    },
+    "PromptSection": {
+      "message": "¡Tu escaneo está listo! Ahora, ¿qué te gustaría saber?",
+      "prompts": {
+        "first": "Describe cualquier anomalía presente en los campos pulmonares",
+        "second": "Evalúa la silueta cardíaca y el mediastino",
+        "third": "Evalúa las estructuras óseas en busca de lesiones o fracturas",
+        "fourth": "Comenta la presencia o ausencia de derrames pleurales"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Obtén 10 escaneos gratis",
+      "second": "Acceso a todas las funciones premium",
+      "third": "Sin anuncios"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Apodo",
+        "email": "Correo electrónico",
+        "emailVerification": "Verificación de correo electrónico"
+      }
     }
   },
   "alerts": {
@@ -164,22 +322,31 @@
     "errorSelectingDocumentPicker": "Algo salió mal al seleccionar el documento. Por favor, inténtalo de nuevo.",
     "errorTakingPicture": "Algo salió mal al tomar la foto. Por favor, inténtalo de nuevo.",
     "enableNotifications": {
-      "heading": "Habilitar notificaciones",
-      "subHeading": "Las notificaciones están deshabilitadas. Por favor, habilítalas en la configuración de tu dispositivo."
+      "heading": "Activar notificaciones",
+      "subHeading": "Las notificaciones están desactivadas. Para mantenerte actualizado, por favor actívalas en la configuración de tu dispositivo."
     },
-    "enableNotificationFailed": "No se pudieron habilitar las notificaciones.",
-    "enableNotificationError": "Ocurrió un error al habilitar las notificaciones.",
-    "notificationDisabledSuccess": "Notificaciones deshabilitadas con éxito.",
-    "notificationDisabledRegisterError": "Error al anular el registro del dispositivo para las notificaciones.",
-    "notificationDisabledError": "Ocurrió un error al deshabilitar las notificaciones.",
+    "enableNotificationFailed": "Error al activar las notificaciones.",
+    "enableNotificationError": "Ocurrió un error al activar las notificaciones.",
+    "notificationDisabledSuccess": "Notificaciones desactivadas correctamente.",
+    "notificationDisabledRegisterError": "Error al desregistrar el dispositivo para notificaciones.",
+    "notificationDisabledError": "Ocurrió un error al desactivar las notificaciones.",
     "checkNotificationStatusError": "Error al verificar el estado de las notificaciones.",
     "projectIdNotFound": "ID del proyecto de notificaciones no encontrado.",
     "imageSizeLarge": "¡La imagen es demasiado grande! El tamaño del archivo es {{fileSize}} MB, pero el límite es {{imageLimit}} MB.",
     "videoSizeLarge": "¡El video es demasiado grande! El tamaño del archivo es {{fileSize}} MB, pero el límite es {{videoLimit}} MB.",
     "loggedInSuccess": "Inicio de sesión exitoso",
+    "loggedOutSuccess": "¡Has cerrado sesión correctamente!",
     "sendVerificationCodeError": "Error al enviar el código de verificación",
     "validateAuthCodeError": "Error al validar el código de autenticación",
     "anonymousSignInError": "Error al iniciar sesión de forma anónima",
-    "emailLoginError": "Error al iniciar sesión con correo electrónico"
+    "emailLoginError": "Error al iniciar sesión",
+    "preferredLanguageError": "Error al actualizar el idioma preferido del usuario",
+    "sharingNotAvailable": "Compartir no está disponible en tu dispositivo actualmente",
+    "sharingLinkError": "Error al compartir el enlace.",
+    "individualPushNotificationSuccess": "¡Notificaciones push individuales enviadas correctamente!",
+    "globalPushNotificationSuccess": "¡Notificaciones push globales enviadas correctamente! 🌍🚀",
+    "interpretationFieldsUpdateFail": "¡Error al actualizar los campos de interpretación! ❌",
+    "onboardingUnsuccessful": "Error en el proceso de incorporación. Por favor, inténtalo de nuevo.",
+    "logoutUnsuccessful": "Error al cerrar sesión. Por favor, inténtalo de nuevo."
   }
 }

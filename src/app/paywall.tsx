@@ -13,18 +13,27 @@ import { CloseIcon } from '@/ui/assets/icons';
 import {
   CrownIllustration,
   NoAdsIllustration,
+  ScanIllustration,
 } from '@/ui/assets/illustrations';
 
 const plans = [
   {
     id: 1,
-    title: 'Monthly Plan',
-    subtitle: '$49.99 / month',
+    title: translate(
+      'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
+    ),
+    subtitle: translate(
+      'rootLayout.screens.paywallUpgradeScreen.secondOffering.subtitle',
+    ),
   },
   {
     id: 2,
-    title: 'Yearly Plan',
-    subtitle: 'Best deal: $99.99/year – save more!',
+    title: translate(
+      'rootLayout.screens.paywallUpgradeScreen.thirdOffering.title',
+    ),
+    subtitle: translate(
+      'rootLayout.screens.paywallUpgradeScreen.thirdOffering.subtitle',
+    ),
   },
 ];
 
@@ -44,7 +53,7 @@ const Paywall = () => {
       }}
     >
       <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
-        <View className=" rounded-b-[50px]  bg-primary-900 pb-10 pt-12 dark:bg-blackBeauty">
+        <View className="rounded-b-[50px]  bg-primary-900 pb-6 pt-12 dark:bg-blackBeauty">
           <Icon
             icon={<CloseIcon />}
             color={colors.white}
@@ -85,6 +94,19 @@ const Paywall = () => {
             </View>
 
             <View className="flex-row items-center gap-4">
+              <ScanIllustration
+                width={35}
+                height={35}
+                fill={isDark ? colors.white : colors.black}
+              />
+              <Text className="font-bold-nunito text-lg text-white">
+                {translate(
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.thirdOffering',
+                )}
+              </Text>
+            </View>
+
+            <View className="flex-row items-center gap-4">
               <NoAdsIllustration width={35} height={35} />
               <Text className="font-bold-nunito text-lg text-white">
                 {translate(
@@ -95,7 +117,7 @@ const Paywall = () => {
           </View>
         </View>
 
-        <View className="mt-8 px-6">
+        <View className="mt-4 px-6">
           {plans.map((plan) => (
             <SelectableLabel
               key={plan.id}

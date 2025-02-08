@@ -86,6 +86,11 @@ export const useValidateAuthCode = () =>
   createMutation<Response, IValidateAuthCode, AxiosError>({
     mutationFn: (variables) => validateVerificationCode(variables),
     onSuccess: () => {
+      queryClient.setQueryData(['user-info'], (oldData) => ({
+        ...oldData,
+        isOtpVerified: true,
+      })); //invalidate quey is not working here901152
+
       router.navigate('/(tabs)');
     },
     onError: (error) => {

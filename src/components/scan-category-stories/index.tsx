@@ -70,6 +70,8 @@ const ScanCategoriesStories: React.FC<{
         ]}
         backgroundColor={isDark ? colors.black : colors.white}
         showName
+        progressContainerStyle={{ marginTop: -12 }}
+        statusBarTranslucent
         storyAvatarSize={40}
         nameTextStyle={{
           ...scanCategoryStyles.nameText,

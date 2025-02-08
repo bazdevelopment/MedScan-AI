@@ -55,7 +55,7 @@ export const en: ITranslation = {
     invalidAuthCode:
       'Oops! This is not a valid authentication code. Please check and try again!',
     authCodeExpired:
-      'Oops! Your code has expired. Please reattempt login with your email address.',
+      "Oops! Your code has expired. Please reattempt login with your email address or click on 'Resend code'",
     authCodeVerified: 'The user has been successfully verified.',
     generalError: 'Oops! We encountered an error while verifying your code.',
   },

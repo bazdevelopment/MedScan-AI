@@ -57,8 +57,10 @@ export default function NotificationsScreen() {
         ) : !userNotifications?.notifications?.length ? (
           <EdgeCaseTemplate
             image={<NoNotification width={350} height={250} />}
-            title="No notifications for now — stay tuned for updates!"
-            additionalClassName="mt-[30%] px-16 "
+            title={translate(
+              'rootLayout.screens.notifications.noNotifications',
+            )}
+            additionalClassName="mt-[30%] px-16"
           />
         ) : (
           Object.entries(groupedNotifications)?.map(

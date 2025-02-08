@@ -21,7 +21,6 @@ const TabToViewLabel = ({
     >
       <View className="">
         <Text className="right-[-12px] overflow-hidden rounded-2xl bg-primary-900 py-[4px] pl-4 pr-5 font-semibold-nunito text-sm text-white">
-          Tap To View
           {translate('components.TapToViewLabel.label')}
         </Text>
       </View>

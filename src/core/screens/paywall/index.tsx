@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Branding from '@/components/branding';
@@ -58,6 +58,7 @@ const Paywall = ({
   const [selectedPlan, setSelectedPlan] = React.useState(2);
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const onSelect = (planId: number) => setSelectedPlan(planId);
 
@@ -123,7 +124,11 @@ const Paywall = ({
             className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
             textClassName="text-lg text-center text-white dark:text-white"
             iconPosition="left"
-            onPress={() => onFinish({ selectedPackage: selectedPlan })}
+            onPress={() => {
+              setIsSubmit(!isSubmit);
+              onFinish({ selectedPackage: selectedPlan });
+            }}
+            loading={isSubmit}
           />
         </View>
       </View>

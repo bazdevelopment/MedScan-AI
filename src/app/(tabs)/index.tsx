@@ -1,5 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
+import { useRouteInfo } from 'expo-router/build/hooks';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
@@ -57,7 +58,7 @@ export default function Home() {
     userId: userInfo?.userId,
     language,
   })();
-
+  const { pathname } = useRouteInfo();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
@@ -92,7 +93,7 @@ export default function Home() {
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
   useCustomScrollToTop(scrollViewRef);
 
-  useBackHandler(() => true); // Prevent default behavior and navigating back tot the onboarding
+  useBackHandler(() => (pathname === '/' ? true : false)); // Prevent default behavior and navigating back tot the onboarding
 
   return (
     <PullToRefresh

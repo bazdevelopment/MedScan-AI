@@ -1,0 +1,354 @@
+{
+  "onboarding": {
+    "message": "欢迎使用X射线分析器"
+  },
+  "general": {
+    "back": "返回",
+    "welcome": "你好",
+    "welcomeBack": "欢迎回来！",
+    "welcomeMessage": "欢迎！",
+    "continue": "继续",
+    "retry": "重试",
+    "close": "关闭",
+    "gallery": "相册",
+    "files": "文件",
+    "cancel": "取消",
+    "new": "新建",
+    "yes": "是",
+    "openSettings": "打开设置",
+    "viewProfile": "查看个人资料",
+    "upgradePlan": "升级方案",
+    "download": "下载",
+    "share": "分享",
+    "shareLink": "分享链接",
+    "skip": "跳过",
+    "next": "下一步",
+    "update": "更新",
+    "tryAgain": "重试",
+    "and": "和",
+    "copyText": {
+      "loading": "正在复制...",
+      "copied": "已复制！",
+      "copy": "复制链接"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "正在加载您的个性化体验...",
+        "second": "正在同步系统...",
+        "third": "正在处理您的数据...",
+        "fourth": "即将就绪，请稍候..."
+      },
+      "imageScanningLoading": {
+        "first": "正在扫描您的医学影像，请稍候...",
+        "second": "正在分析细节，可能需要一点时间...",
+        "third": "正在提高准确度以获得最佳结果...",
+        "fourth": "即将完成，正在完成扫描..."
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "稍等！",
+    "goBackMessage": "您确定要返回吗？"
+  },
+  "internet": {
+    "noConnectionTitle": "您已离线！",
+    "noConnectionMessage": "请开启移动数据或连接Wi-Fi。或者休息一下，出去散散步！"
+  },
+  "uploadScan": {
+    "title": "上传扫描",
+    "scanNow": "立即扫描"
+  },
+  "weekDays": {
+    "today": "今天",
+    "yesterday": "昨天"
+  },
+  "auth": {
+    "verifyAuthCode": "验证认证码",
+    "verifyAuthCodeButton": "验证码",
+    "authCodeHeading": "认证码",
+    "loginViaEmailHeading": "让我们帮您登录。请输入您的邮箱以继续。",
+    "emailAddress": "电子邮箱"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "欢迎使用X射线分析器",
+        "startButton": "让我们开始吧！",
+        "accountButton": "我已有账号"
+      },
+      "login": {
+        "agreeingMessage": "继续即表示您同意我们的",
+        "termsAndConditions": "条款和条件",
+        "privacyPolicy": "隐私政策"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "请输入通过电子邮件发送的验证码。请注意，验证码将在5分钟后过期。",
+        "verificationCodeSent": "我们已将验证码发送至",
+        "verificationCodeMissing": "没有收到验证码？",
+        "resendCode": "重新发送验证码",
+        "backToLogin": "返回登录"
+      },
+      "namePreferenceScreen": {
+        "heading": "让我们个性化一下！",
+        "preferredNameQuestion": "我们该如何称呼您？",
+        "placeholderPreferredName": "例如：酷队长、蜂后、或者就叫小明！"
+      },
+      "freeTrialPreview": {
+        "heading": "享受您的免费试用！🎉",
+        "subheading": "在免费试用期间体验这些精彩功能"
+      },
+      "scanInterpretation": {
+        "title": "解读结果",
+        "headerBackTitle": "报告"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "title": "立即解锁高级功能！🎉",
+          "firstOffering": "使用所有高级功能",
+          "secondOffering": "无广告体验",
+          "thirdOffering": "无限次扫描"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "立即解锁高级功能！🎉",
+        "firstOffering": {
+          "title": "开始免费试用",
+          "subtitle": "享受10次免费扫描 – 无需付款"
+        },
+        "secondOffering": {
+          "title": "月度计划",
+          "subtitle": "$49.99/月"
+        },
+        "thirdOffering": {
+          "title": "年度计划",
+          "subtitle": "最优惠：$99.99/年 – 省钱更多！"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "X射线分析器有新版本可用",
+        "subheading": "请更新到最新版本以继续使用应用",
+        "action": "立即获取！"
+      },
+      "rateAppScreen": {
+        "heading": "您觉得这个应用有价值且引人入胜吗？",
+        "like": "是的，我很喜欢！",
+        "dislike": "不太喜欢..."
+      },
+      "noInternetScreen": {
+        "heading": "您已离线",
+        "subheading": "您的连接似乎不稳定。请检查您的网络状态"
+      },
+      "notifications": {
+        "title": "通知",
+        "noNotifications": "暂时没有通知 — 请继续关注更新！"
+      },
+      "termsOfService": {
+        "title": "服务条款"
+      },
+      "privacyPolicy": {
+        "title": "隐私政策"
+      },
+      "share": {
+        "title": "分享",
+        "heading": "分享X射线分析器应用",
+        "subheading": "帮助他人发现AI驱动的X射线分析的力量",
+        "scanMessage": "扫描下载应用",
+        "shareMessage": "或通过您喜欢的平台分享"
+      },
+      "rate": {
+        "title": "给我们反馈！"
+      },
+      "profile": {
+        "title": "个人资料",
+        "edit": "编辑个人资料",
+        "placeholderPreferredName": "例如：酷队长、蜂后、或者就叫小明！"
+      },
+      "generateReportScreen": {
+        "title": "感谢您的耐心等待！这是您的AI报告。",
+        "userInput": "您的提交",
+        "medicalReport": "医疗报告",
+        "report": "AI生成的医疗报告",
+        "reportName": "报告名称"
+      },
+      "verifyEmail": {
+        "heading": "验证邮箱"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "生成报告"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "等等！别删除我！",
+    "subtitle": "不如给我们反馈"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "感谢您的耐心等待！"
+      },
+      "finalReportHeader": {
+        "message": "这是报告结果！"
+      },
+      "uploadFile": {
+        "title": "请上传您的医学影像文件",
+        "size": "最大文件大小：10MB",
+        "location": "从相册或文件中选择",
+        "fileType": "PNG、JPG、PDF或MP4",
+        "openCamera": "打开相机拍照",
+        "scanType": "X射线、CT、核磁共振、PET"
+      }
+    }
+  },
+  "home": {
+    "tab": "首页",
+    "homeForeground": {
+      "maxNumberOfScans": "您已达到扫描限制！立即升级计划解锁更多扫描。🚀",
+      "heading": "欢迎使用X射线分析器",
+      "subHeading": "通过核磁共振、X射线、CT扫描、PET成像、超声波和核医学获取重要见解"
+    },
+    "scanCategories": {
+      "heading": "放射影像集"
+    },
+    "recentReports": {
+      "heading": "最近报告",
+      "noReports": "暂无报告！"
+    }
+  },
+  "reports": {
+    "tab": "报告",
+    "noReportsAvailable": "该日期暂无报告",
+    "heading": "报告"
+  },
+  "settings": {
+    "tab": "设置",
+    "profile": "个人资料",
+    "about": "关于",
+    "app_name": "应用名称",
+    "languages": {
+      "arabic": "阿拉伯语",
+      "english": "英语",
+      "mandarin_chinese": "中文",
+      "spanish": "西班牙语",
+      "hindi": "印地语",
+      "portuguese": "葡萄牙语",
+      "russian": "俄语",
+      "japanese": "日语",
+      "korean": "韩语",
+      "german": "德语",
+      "french": "法语",
+      "romanian": "罗马尼亚语"
+    },
+    "generale": "通用",
+    "github": "Github",
+    "language": "语言",
+    "links": "链接",
+    "logout": "退出登录",
+    "more": "更多",
+    "privacy": "隐私政策",
+    "faq": "常见问题",
+    "rate": "评分",
+    "share": "分享",
+    "support": "支持",
+    "support_us": "支持我们",
+    "terms": "服务条款",
+    "theme": {
+      "dark": "深色",
+      "light": "浅色",
+      "system": "跟随系统",
+      "title": "主题"
+    },
+    "title": "设置",
+    "version": "版本",
+    "website": "网站",
+    "devMode": {
+      "title": "开发者模式",
+      "componentsLibrary": "UI组件库"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "评分"
+    },
+    "ScanReportCard": {
+      "promptMessage": "原因是什么？",
+      "unnamedReport": "未命名报告",
+      "reportTitlePlaceholder": "添加标题"
+    },
+    "WeekBlock": {
+      "week": "周"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "回到顶部"
+    },
+    "FreeTierStatus": {
+      "heading": "免费扫描",
+      "subheading": "升级您的计划以解锁无限扫描",
+      "action": "升级计划"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "选择图片/视频"
+    },
+    "TapToViewLabel": {
+      "label": "点击查看"
+    },
+    "UpgradeBanner": {
+      "heading": "立即升级",
+      "subheading": "升级您的计划以解锁无限扫描"
+    },
+    "PromptSection": {
+      "message": "您的扫描已就绪！现在，您想了解什么？",
+      "prompts": {
+        "first": "描述肺部区域存在的任何异常",
+        "second": "评估心脏轮廓和纵隔",
+        "third": "评估骨骼结构是否有病变或骨折",
+        "fourth": "评论是否存在胸腔积液"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "获得10次免费扫描",
+      "second": "使用所有高级功能",
+      "third": "无广告"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "昵称",
+        "email": "电子邮箱",
+        "emailVerification": "邮箱验证"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "抱歉，我们需要相机权限才能使用此功能！",
+    "errorSelectingImagePicker": "选择图片时出现错误。请重试。",
+    "errorSelectingDocumentPicker": "选择文档时出现错误。请重试。",
+    "errorTakingPicture": "拍照时出现错误。请重试。",
+    "enableNotifications": {
+      "heading": "启用通知",
+      "subHeading": "通知当前已关闭。要保持更新，请在设备设置中启用通知。"
+    },
+    "enableNotificationFailed": "推送通知已禁用。请在设置中启用它们以接收重要更新。",
+    "enableNotificationError": "启用通知时发生错误",
+    "notificationDisabledSuccess": "通知已成功禁用。",
+    "notificationDisabledRegisterError": "取消注册设备通知失败。",
+    "notificationDisabledError": "禁用通知时发生错误。",
+    "checkNotificationStatusError": "检查通知状态时出错。",
+    "projectIdNotFound": "未找到通知项目ID。",
+    "imageSizeLarge": "图片太大！文件大小为{{fileSize}}MB，但限制为{{imageLimit}}MB。",
+    "videoSizeLarge": "视频太大！文件大小为{{fileSize}}MB，但限制为{{videoLimit}}MB。",
+    "loggedInSuccess": "登录成功",
+    "loggedOutSuccess": "您已成功退出登录！",
+    "sendVerificationCodeError": "发送验证码时出错",
+    "validateAuthCodeError": "验证认证码时出错",
+    "anonymousSignInError": "匿名登录时出错",
+    "emailLoginError": "登录时出错",
+    "preferredLanguageError": "更新用户首选语言时出错",
+    "sharingNotAvailable": "您的设备当前无法共享",
+    "sharingLinkError": "分享链接失败",
+    "individualPushNotificationSuccess": "个别推送通知发送成功！",
+    "globalPushNotificationSuccess": "全局推送通知发送成功！🌍🚀",
+    "interpretationFieldsUpdateFail": "更新解释字段失败！❌",
+    "onboardingUnsuccessful": "引导过程未成功，请重试",
+    "logoutUnsuccessful": "退出登录未成功，请重试"
+  }
+}

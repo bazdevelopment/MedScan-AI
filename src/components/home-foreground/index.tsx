@@ -123,7 +123,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             {translate('home.homeForeground.heading')}
           </Text>
           <Text
-            className={`text-center mt-2 px-2 font-medium-nunito text-base text-white ${isVerySmallDevice ? 'px-0' : 'px-2'}`}
+            className={`mt-2 px-2 text-center font-medium-nunito text-base text-white ${isVerySmallDevice ? 'px-0' : 'px-2'}`}
           >
             {translate('home.homeForeground.subHeading')}
           </Text>
@@ -131,7 +131,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             label={translate('uploadScan.title')}
             className={`mb-0 mt-4 h-[52] w-[55%] rounded-full   border-[3px]  border-primary-600 bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie ${isVerySmallDevice ? 'w-[90%]' : 'w-[55%]'}`}
             size="lg"
-            textClassName="text-md font-semibold-nunito dark:text-white"
+            textClassName="text-md font-semibold-nunito dark:text-white text-center"
             onPress={onStartUploadMediaFile}
             icon={
               <UploadIcon

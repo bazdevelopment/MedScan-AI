@@ -195,7 +195,7 @@ const FilePreviewScreen = ({
             'rootLayout.screens.filePreviewScreen.generateReportButton',
           )}
           className="mt-10 h-[62px] w-[90%] gap-2 self-center rounded-full bg-primary-900 active:bg-primary-700 dark:bg-primary-900"
-          textClassName="text-lg font-sefilmibold-nunito text-white dark:text-white"
+          textClassName="text-lg font-semibold-nunito text-white dark:text-white"
           size="lg"
           onPress={() => {
             setIsModalVisible(true);

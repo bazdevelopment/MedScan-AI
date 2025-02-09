@@ -164,9 +164,11 @@
         "placeholderPreferredName": "Ej.: Capitán Cool, Reina Abeja, o simplemente Alex."
       },
       "generateReportScreen": {
-        "title": "¡Agradecemos tu paciencia! Aquí está tu informe generado por IA. 🚀",
+        "title": "¡Agradecemos tu paciencia! Aquí está tu informe generado por IA. ",
         "userInput": "Tu envío",
-        "report": "Informe médico generado por IA"
+        "medicalReport": "Informe médico",
+        "report": "Informe médico generado por IA",
+        "reportName": "Nombre del informe"
       },
       "verifyEmail": {
         "heading": "Verificar correo electrónico"
@@ -325,7 +327,7 @@
       "heading": "Activar notificaciones",
       "subHeading": "Las notificaciones están desactivadas. Para mantenerte actualizado, por favor actívalas en la configuración de tu dispositivo."
     },
-    "enableNotificationFailed": "Error al activar las notificaciones.",
+    "enableNotificationFailed": "Las notificaciones push no están activadas. Habilítalas en configuración para recibir actualizaciones importantes.",
     "enableNotificationError": "Ocurrió un error al activar las notificaciones.",
     "notificationDisabledSuccess": "Notificaciones desactivadas correctamente.",
     "notificationDisabledRegisterError": "Error al desregistrar el dispositivo para notificaciones.",

@@ -171,7 +171,7 @@ export const Button = React.forwardRef<View, Props>(
                   </Text>
                 )}
 
-                {!!icon && iconPosition == 'right' && (
+                {!!icon && iconPosition === 'right' && (
                   <View className="ml-2">{icon}</View>
                 )}
               </>

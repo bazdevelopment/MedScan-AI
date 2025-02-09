@@ -1,0 +1,354 @@
+{
+  "onboarding": {
+    "message": "Bine ați venit la X-Ray Analyzer"
+  },
+  "general": {
+    "back": "Înapoi",
+    "welcome": "Bună",
+    "welcomeBack": "Bine ai revenit!",
+    "welcomeMessage": "Bine ai venit!",
+    "continue": "Continuă",
+    "retry": "Reîncearcă",
+    "close": "Închide",
+    "gallery": "Galerie",
+    "files": "Fișiere",
+    "cancel": "Anulează",
+    "new": "Nou",
+    "yes": "Da",
+    "openSettings": "Deschide Setări",
+    "viewProfile": "Vezi Profilul",
+    "upgradePlan": "Actualizează Planul",
+    "download": "Descarcă",
+    "share": "Partajează",
+    "shareLink": "Partajează Link",
+    "skip": "Sari peste",
+    "next": "Următorul",
+    "update": "Actualizează",
+    "tryAgain": "Încearcă din nou",
+    "and": "și",
+    "copyText": {
+      "loading": "Se copiază...",
+      "copied": "Copiat!",
+      "copy": "Copiază Link"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Se încarcă experiența ta personalizată...",
+        "second": "Se sincronizează sistemele...",
+        "third": "Se procesează datele tale...",
+        "fourth": "Aproape gata, mai un moment..."
+      },
+      "imageScanningLoading": {
+        "first": "Se scanează imaginile medicale, te rugăm să aștepți...",
+        "second": "Se analizează detaliile, acest lucru poate dura un moment...",
+        "third": "Se îmbunătățește acuratețea pentru cele mai bune rezultate...",
+        "fourth": "Aproape gata, se finalizează scanarea..."
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Stai puțin!",
+    "goBackMessage": "Sigur vrei să te întorci?"
+  },
+  "internet": {
+    "noConnectionTitle": "Ești offline!",
+    "noConnectionMessage": "Activează datele mobile sau conectează-te la Wi-Fi. Sau ia-o puțin mai ușor și fă o plimbare!"
+  },
+  "uploadScan": {
+    "title": "Încarcă Scanare",
+    "scanNow": "Scanează acum"
+  },
+  "weekDays": {
+    "today": "Astăzi",
+    "yesterday": "Ieri"
+  },
+  "auth": {
+    "verifyAuthCode": "Verifică codul de autentificare",
+    "verifyAuthCodeButton": "Verifică codul",
+    "authCodeHeading": "Cod de autentificare",
+    "loginViaEmailHeading": "Hai să te conectăm. Te rugăm să introduci adresa de email pentru a continua.",
+    "emailAddress": "Email"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Bine ați venit la X-Ray Analyzer",
+        "startButton": "Să începem!",
+        "accountButton": "Am deja un cont"
+      },
+      "login": {
+        "agreeingMessage": "Continuând, ești de acord cu",
+        "termsAndConditions": "Termeni și Condiții",
+        "privacyPolicy": "Politica de Confidențialitate"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Introdu codul de verificare trimis prin email. Te rugăm să reții că codul va expira în 5 minute.",
+        "verificationCodeSent": "Am trimis codul de verificare la",
+        "verificationCodeMissing": "Nu ai primit codul?",
+        "resendCode": "Retrimite codul",
+        "backToLogin": "Înapoi la Autentificare"
+      },
+      "namePreferenceScreen": {
+        "heading": "Hai să personalizăm!",
+        "preferredNameQuestion": "Cum să te numim?",
+        "placeholderPreferredName": "De exemplu, Căpitanul Cool, Regina Albinelor sau doar Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Bucură-te de perioada de probă gratuită! 🎉",
+        "subheading": "Experimentează aceste beneficii uimitoare în timpul perioadei tale de probă"
+      },
+      "scanInterpretation": {
+        "title": "Rezultatul interpretării",
+        "headerBackTitle": "Rapoarte"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "title": "Deblochează Funcționalitățile Premium Astăzi! 🎉",
+          "firstOffering": "Acces la toate funcționalitățile premium",
+          "secondOffering": "Experiență fără reclame",
+          "thirdOffering": "Număr nelimitat de scanări"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Deblochează Funcționalitățile Premium Astăzi! 🎉",
+        "firstOffering": {
+          "title": "Începe Perioada de Probă",
+          "subtitle": "Bucură-te de 10 scanări gratuite – fără plată"
+        },
+        "secondOffering": {
+          "title": "Plan Lunar",
+          "subtitle": "49,99 $ / lună"
+        },
+        "thirdOffering": {
+          "title": "Plan Anual",
+          "subtitle": "Cea mai bună ofertă: 99,99 $ / an – economisește mai mult!"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "O nouă versiune a X-Ray Analyzer este disponibilă",
+        "subheading": "Te rugăm să actualizezi la cea mai recentă versiune pentru a continua să folosești aplicația",
+        "action": "Obține-o acum!"
+      },
+      "rateAppScreen": {
+        "heading": "Sunteți mulțumit de aplicația X-Ray Analyzer?",
+        "like": "Da, o iubesc!",
+        "dislike": "Nu prea..."
+      },
+      "noInternetScreen": {
+        "heading": "Ești offline",
+        "subheading": "Conexiunea ta pare să fie instabilă. Te rugăm să verifici starea rețelei"
+      },
+      "notifications": {
+        "title": "Notificări",
+        "noNotifications": "Nicio notificare momentan – rămâi conectat pentru actualizări!"
+      },
+      "termsOfService": {
+        "title": "Termeni și Condiții"
+      },
+      "privacyPolicy": {
+        "title": "Politica de Confidențialitate"
+      },
+      "share": {
+        "title": "Partajează",
+        "heading": "Partajează Aplicația X-Ray Analyzer",
+        "subheading": "Ajută-i pe alții să descopere puterea analizei AI a razelor X",
+        "scanMessage": "Scanează pentru a descărca aplicația",
+        "shareMessage": "sau partajează pe platforma ta preferată"
+      },
+      "rate": {
+        "title": "Lasă-ne un feedback!"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Editează Profilul",
+        "placeholderPreferredName": "De exemplu, Căpitanul Cool, Regina Albinelor sau doar Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Îți mulțumim pentru răbdare! Iată raportul tău generat de AI.",
+        "userInput": "Contribuția Ta",
+        "medicalReport": "Raport Medical",
+        "report": "Raport Medical Generat de AI",
+        "reportName": "Numele raportului"
+      },
+      "verifyEmail": {
+        "heading": "Verifică Email"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Generează raport"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Stai! Nu mă șterge!",
+    "subtitle": "Trimite un feedback în schimb"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Îți mulțumim pentru răbdare!"
+      },
+      "finalReportHeader": {
+        "message": "Acesta este rezultatul raportului!"
+      },
+      "uploadFile": {
+        "title": "Te rugăm să încarci fișierul tău de imagistică medicală",
+        "size": "Dimensiunea maximă a fișierului: 10MB",
+        "location": "Selectează din Galerie sau Fișiere",
+        "fileType": "PNG, JPG, PDF sau MP4",
+        "openCamera": "Deschide Camera și Fă o Fotografie",
+        "scanType": "X-RAY, CT, MRI, PET"
+      }
+    }
+  },
+  "home": {
+    "tab": "Acasă",
+    "homeForeground": {
+      "maxNumberOfScans": "Ai atins limita de scanări! Actualizează planul tău pentru a debloca mai multe scanări. 🚀",
+      "heading": "Bine ați venit la X-Ray Analyzer",
+      "subHeading": "Obține informații vitale cu RMN, Raze X, scanări CT, imagistică PET, ecografii și medicină nucleară"
+    },
+    "scanCategories": {
+      "heading": "Radiologie"
+    },
+    "recentReports": {
+      "heading": "Rapoarte Recente",
+      "noReports": "Niciun raport încă!"
+    }
+  },
+  "reports": {
+    "tab": "Rapoarte",
+    "noReportsAvailable": "Niciun raport disponibil pentru această dată",
+    "heading": "Rapoarte"
+  },
+  "settings": {
+    "tab": "Setări",
+    "profile": "Profil",
+    "about": "Despre",
+    "app_name": "Numele Aplicației",
+    "languages": {
+      "arabic": "Arabă",
+      "english": "Engleză",
+      "mandarin_chinese": "Chineză",
+      "spanish": "Spaniolă",
+      "hindi": "Hindi",
+      "portuguese": "Portugheză",
+      "russian": "Rusă",
+      "japanese": "Japoneză",
+      "korean": "Coreeană",
+      "german": "Germană",
+      "french": "Franceză",
+      "romanian": "Română"
+    },
+    "generale": "General",
+    "github": "Github",
+    "language": "Limba",
+    "links": "Link-uri",
+    "logout": "Deconectare",
+    "more": "Mai mult",
+    "privacy": "Politica de Confidențialitate",
+    "faq": "Întrebări Frecvente",
+    "rate": "Evaluează",
+    "share": "Partajează",
+    "support": "Suport",
+    "support_us": "Susține-ne",
+    "terms": "Termeni și Condiții",
+    "theme": {
+      "dark": "Întunecat",
+      "light": "Luminos",
+      "system": "Sistem",
+      "title": "Temă"
+    },
+    "title": "Setări",
+    "version": "Versiune",
+    "website": "Website",
+    "devMode": {
+      "title": "Mod Dezvoltator",
+      "componentsLibrary": "Bibliotecă UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Evaluare"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Care este motivul?",
+      "unnamedReport": "Raport fără nume",
+      "reportTitlePlaceholder": "Adaugă un titlu"
+    },
+    "WeekBlock": {
+      "week": "Săptămâna"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Derulează în sus"
+    },
+    "FreeTierStatus": {
+      "heading": "Scanări gratuite",
+      "subheading": "Deblochează scanări nelimitate actualizând planul tău",
+      "action": "Actualizează Planul"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Alege o imagine / videoclip"
+    },
+    "TapToViewLabel": {
+      "label": "Atinge pentru a vizualiza"
+    },
+    "UpgradeBanner": {
+      "heading": "Actualizează acum",
+      "subheading": "Deblochează scanări nelimitate actualizând planul tău"
+    },
+    "PromptSection": {
+      "message": "Scanarea ta este gata! Acum, ce ai vrea să afli?",
+      "prompts": {
+        "first": "Descrie orice anomalii prezente în câmpurile pulmonare",
+        "second": "Evaluează silueta cardiacă și mediastinul",
+        "third": "Evaluează structurile osoase pentru leziuni sau fracturi",
+        "fourth": "Comentează prezența sau absența efuziilor pleurale"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Obține 10 Scanări Gratuite",
+      "second": "Acces la toate funcționalitățile premium",
+      "third": "Fără reclame"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Nume",
+        "email": "Email",
+        "emailVerification": "Verificare Email"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Ne pare rău, avem nevoie de permisiuni pentru cameră pentru a funcționa!",
+    "errorSelectingImagePicker": "Ceva nu a funcționat la selectarea imaginii. Te rugăm să încerci din nou.",
+    "errorSelectingDocumentPicker": "Ceva nu a funcționat la selectarea documentului. Te rugăm să încerci din nou.",
+    "errorTakingPicture": "Ceva nu a funcționat la realizarea fotografiei. Te rugăm să încerci din nou.",
+    "enableNotifications": {
+      "heading": "Activează Notificările",
+      "subHeading": "Notificările sunt în prezent dezactivate. Pentru a rămâne la curent, te rugăm să le activezi în setările dispozitivului."
+    },
+    "enableNotificationFailed": "Notificările push sunt dezactivate. Activează-le în setări pentru a primi informații importante.",
+    "enableNotificationError": "A apărut o eroare la activarea notificărilor",
+    "notificationDisabledSuccess": "Notificările au fost dezactivate cu succes.",
+    "notificationDisabledRegisterError": "Dezregistrarea dispozitivului pentru notificări a eșuat.",
+    "notificationDisabledError": "A apărut o eroare la dezactivarea notificărilor.",
+    "checkNotificationStatusError": "Eroare la verificarea stării notificărilor.",
+    "projectIdNotFound": "ID-ul proiectului de notificări nu a fost găsit.",
+    "imageSizeLarge": "Imaginea este prea mare! Dimensiunea fișierului este {{fileSize}} MB, dar limita este {{imageLimit}} MB.",
+    "videoSizeLarge": "Videoclipul este prea mare! Dimensiunea fișierului este {{fileSize}} MB, dar limita este {{videoLimit}} MB.",
+    "loggedInSuccess": "Conectare reușită",
+    "loggedOutSuccess": "Te-ai deconectat cu succes!",
+    "sendVerificationCodeError": "Eroare la trimiterea codului de verificare",
+    "validateAuthCodeError": "Eroare la validarea codului de autentificare",
+    "anonymousSignInError": "Eroare la conectarea anonimă",
+    "emailLoginError": "Eroare la conectare",
+    "preferredLanguageError": "Eroare la actualizarea limbii preferate a utilizatorului",
+    "sharingNotAvailable": "Partajarea nu este disponibilă momentan pe dispozitivul tău",
+    "sharingLinkError": "Partajarea link-ului a eșuat.",
+    "individualPushNotificationSuccess": "Notificările push individuale au fost trimise cu succes!",
+    "globalPushNotificationSuccess": "Notificările push globale au fost trimise cu succes! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Actualizarea câmpurilor de interpretare a eșuat! ❌",
+    "onboardingUnsuccessful": "Onboarding nereușit. Te rugăm să încerci din nou",
+    "logoutUnsuccessful": "Deconectare nereușită. Vă rugăm să încercați din nou"
+  }
+}

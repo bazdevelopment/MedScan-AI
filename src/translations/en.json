@@ -164,9 +164,11 @@
         "placeholderPreferredName": "E.g., Captain Cool, Queen Bee, or just Alex!"
       },
       "generateReportScreen": {
-        "title": "We appreciate your patience! Here’s your AI report. 🚀",
+        "title": "We appreciate your patience! Here’s your AI report. ",
         "userInput": "Your Submission",
-        "report": "AI-Generated Medical Report"
+        "medicalReport": "Medical Report",
+        "report": "AI-Generated Medical Report",
+        "reportName": "Report name"
       },
       "verifyEmail": {
         "heading": "Verify email"
@@ -327,7 +329,7 @@
       "heading": "Enable Notifications",
       "subHeading": "Notifications are currently turned off. To stay updated, please enable them in your device settings."
     },
-    "enableNotificationFailed": "Failed to enable notifications.",
+    "enableNotificationFailed": "Push notifications are disabled. Enable them in settings to receive important updates!",
     "enableNotificationError": "An error occurred while enabling notifications",
     "notificationDisabledSuccess": "Notifications disabled successfully.",
     "notificationDisabledRegisterError": "Failed to unregister device for notifications.",

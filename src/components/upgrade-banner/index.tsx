@@ -26,8 +26,8 @@ const UpgradeBanner = ({ onUpgradePress, className }: IUpgradeBanner) => {
       <View className="flex-1">
         <Button
           label={translate('general.upgradePlan')}
-          className="h-[52] rounded-full border-[3px] border-primary-700 px-6 dark:bg-blackEerie"
-          textClassName="dark:text-white"
+          className="h-[54] rounded-full border-[3px] border-primary-700 px-6 dark:bg-blackEerie"
+          textClassName="dark:text-white text-center"
           onPress={onUpgradePress}
         />
       </View>

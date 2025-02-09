@@ -157,7 +157,7 @@ const loginUserViaEmailHandler = async (data: {
 
     await sendOtpCodeViaEmail({
       receiverEmail: data.email,
-      subject: 'X-Ray Analyzer app verification code',
+      subject: 'Your X-Ray Analyzer Verification Code',
       htmlTemplate: generateOptCodeTemplate(
         truncateEmailAddress(data.email),
         verificationCode,

@@ -1,0 +1,354 @@
+{
+  "onboarding": {
+    "message": "Bienvenue dans X-Ray Analyzer"
+  },
+  "general": {
+    "back": "Retour",
+    "welcome": "Bonjour",
+    "welcomeBack": "Content de vous revoir !",
+    "welcomeMessage": "Bienvenue !",
+    "continue": "Continuer",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "gallery": "Galerie",
+    "files": "Fichiers",
+    "cancel": "Annuler",
+    "new": "Nouveau",
+    "yes": "Oui",
+    "openSettings": "Ouvrir les paramètres",
+    "viewProfile": "Voir le profil",
+    "upgradePlan": "Améliorer l'abonnement",
+    "download": "Télécharger",
+    "share": "Partager",
+    "shareLink": "Partager le lien",
+    "skip": "Passer",
+    "next": "Suivant",
+    "update": "Mettre à jour",
+    "tryAgain": "Réessayer",
+    "and": "et",
+    "copyText": {
+      "loading": "Copie en cours...",
+      "copied": "Copié !",
+      "copy": "Copier le lien"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Chargement de votre expérience personnalisée...",
+        "second": "Synchronisation des systèmes...",
+        "third": "Traitement de vos données...",
+        "fourth": "Presque prêt, encore un instant..."
+      },
+      "imageScanningLoading": {
+        "first": "Analyse de vos images médicales, veuillez patienter...",
+        "second": "Analyse des détails, cela peut prendre un moment...",
+        "third": "Amélioration de la précision pour des résultats optimaux...",
+        "fourth": "Presque terminé, finalisation de l'analyse..."
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Attendez !",
+    "goBackMessage": "Êtes-vous sûr de vouloir revenir en arrière ?"
+  },
+  "internet": {
+    "noConnectionTitle": "Vous êtes hors ligne !",
+    "noConnectionMessage": "Activez les données mobiles ou connectez-vous à un Wi-Fi. Ou faites une pause et allez vous promener !"
+  },
+  "uploadScan": {
+    "title": "Téléverser une analyse",
+    "scanNow": "Analyser maintenant"
+  },
+  "weekDays": {
+    "today": "Aujourd'hui",
+    "yesterday": "Hier"
+  },
+  "auth": {
+    "verifyAuthCode": "Vérifier le code d'authentification",
+    "verifyAuthCodeButton": "Vérifier le code",
+    "authCodeHeading": "Code d'authentification",
+    "loginViaEmailHeading": "Connectez-vous. Veuillez entrer votre adresse e-mail pour continuer.",
+    "emailAddress": "Adresse e-mail"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Bienvenue dans X-Ray Analyzer",
+        "startButton": "Commençons !",
+        "accountButton": "J'ai déjà un compte"
+      },
+      "login": {
+        "agreeingMessage": "En continuant, vous acceptez nos",
+        "termsAndConditions": "Conditions générales",
+        "privacyPolicy": "Politique de confidentialité"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Entrez votre code de vérification envoyé par e-mail. Notez que le code expirera dans 5 minutes.",
+        "verificationCodeSent": "Nous avons envoyé le code de vérification à",
+        "verificationCodeMissing": "Vous n'avez pas reçu le code ?",
+        "resendCode": "Renvoyer le code",
+        "backToLogin": "Retour à la connexion"
+      },
+      "namePreferenceScreen": {
+        "heading": "Personnalisons cela !",
+        "preferredNameQuestion": "Comment devrions-nous vous appeler ?",
+        "placeholderPreferredName": "Par exemple, Capitaine Cool, Queen Bee, ou simplement Alex !"
+      },
+      "freeTrialPreview": {
+        "heading": "Profitez de votre essai gratuit ! 🎉",
+        "subheading": "Découvrez ces avantages incroyables pendant votre essai gratuit"
+      },
+      "scanInterpretation": {
+        "title": "Résultat de l'interprétation",
+        "headerBackTitle": "Rapports"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "title": "Débloquez les fonctionnalités premium dès aujourd'hui ! 🎉",
+          "firstOffering": "Accédez à toutes les fonctionnalités premium",
+          "secondOffering": "Expérience sans publicité",
+          "thirdOffering": "Nombre illimité d'analyses"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Débloquez les fonctionnalités premium dès aujourd'hui ! 🎉",
+        "firstOffering": {
+          "title": "Commencer l'essai gratuit",
+          "subtitle": "Profitez de 10 analyses gratuites – aucun paiement requis"
+        },
+        "secondOffering": {
+          "title": "Abonnement mensuel",
+          "subtitle": "49,99 $ / mois"
+        },
+        "thirdOffering": {
+          "title": "Abonnement annuel",
+          "subtitle": "Meilleure offre : 99,99 $ / an – économisez plus !"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Une nouvelle version de X-Ray Analyzer est disponible",
+        "subheading": "Veuillez mettre à jour vers la dernière version pour continuer à utiliser l'application",
+        "action": "Obtenez-la maintenant !"
+      },
+      "rateAppScreen": {
+        "heading": "Trouvez-vous l'application utile et engageante ?",
+        "like": "Oui, j'adore !",
+        "dislike": "Pas vraiment..."
+      },
+      "noInternetScreen": {
+        "heading": "Vous êtes hors ligne",
+        "subheading": "Votre connexion semble instable. Veuillez vérifier votre réseau"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "noNotifications": "Aucune notification pour le moment – restez à l'écoute !"
+      },
+      "termsOfService": {
+        "title": "Conditions d'utilisation"
+      },
+      "privacyPolicy": {
+        "title": "Politique de confidentialité"
+      },
+      "share": {
+        "title": "Partager",
+        "heading": "Partager l'application X-Ray Analyzer",
+        "subheading": "Aidez les autres à découvrir la puissance de l'analyse radiographique par IA",
+        "scanMessage": "Scannez pour télécharger l'application",
+        "shareMessage": "ou partagez via votre plateforme préférée"
+      },
+      "rate": {
+        "title": "Donnez-nous votre avis !"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Modifier le profil",
+        "placeholderPreferredName": "Par exemple, Capitaine Cool, Queen Bee, ou simplement Alex !"
+      },
+      "generateReportScreen": {
+        "title": "Nous apprécions votre patience ! Voici votre rapport IA.",
+        "userInput": "Votre soumission",
+        "medicalReport": "Rapport médical",
+        "report": "Rapport médical généré par IA",
+        "reportName": "Nom du rapport"
+      },
+      "verifyEmail": {
+        "heading": "Vérifier l'e-mail"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Générer un rapport"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Attendez ! Ne me supprimez pas !",
+    "subtitle": "Envoyez plutôt un commentaire"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Merci pour votre patience !"
+      },
+      "finalReportHeader": {
+        "message": "Voici le résultat du rapport !"
+      },
+      "uploadFile": {
+        "title": "Veuillez téléverser votre fichier d'imagerie médicale",
+        "size": "Taille maximale du fichier : 10 Mo",
+        "location": "Sélectionnez dans la galerie ou les fichiers",
+        "fileType": "PNG, JPG, PDF ou MP4",
+        "openCamera": "Ouvrir l'appareil photo et prendre une photo",
+        "scanType": "Radiographie, scanner, IRM, TEP"
+      }
+    }
+  },
+  "home": {
+    "tab": "Accueil",
+    "homeForeground": {
+      "maxNumberOfScans": "Vous avez atteint votre limite d'analyses ! Améliorez votre abonnement pour débloquer plus d'analyses. 🚀",
+      "heading": "Bienvenue dans X-Ray Analyzer",
+      "subHeading": "Obtenez des informations vitales avec les IRM, radiographies, scanners, imagerie TEP, échographies et médecine nucléaire"
+    },
+    "scanCategories": {
+      "heading": "Répertoire radiologique"
+    },
+    "recentReports": {
+      "heading": "Rapports récents",
+      "noReports": "Aucun rapport pour le moment !"
+    }
+  },
+  "reports": {
+    "tab": "Rapports",
+    "noReportsAvailable": "Aucun rapport disponible pour cette date",
+    "heading": "Rapports"
+  },
+  "settings": {
+    "tab": "Paramètres",
+    "profile": "Profil",
+    "about": "À propos",
+    "app_name": "Nom de l'application",
+    "languages": {
+      "arabic": "Arabe",
+      "english": "Anglais",
+      "mandarin_chinese": "Chinois",
+      "spanish": "Espagnol",
+      "hindi": "Hindi",
+      "portuguese": "Portugais",
+      "russian": "Russe",
+      "japanese": "Japonais",
+      "korean": "Coréen",
+      "german": "Allemand",
+      "french": "Français",
+      "romanian": "Roumain"
+    },
+    "generale": "Général",
+    "github": "Github",
+    "language": "Langue",
+    "links": "Liens",
+    "logout": "Déconnexion",
+    "more": "Plus",
+    "privacy": "Politique de confidentialité",
+    "faq": "FAQ",
+    "rate": "Noter",
+    "share": "Partager",
+    "support": "Support",
+    "support_us": "Nous soutenir",
+    "terms": "Conditions d'utilisation",
+    "theme": {
+      "dark": "Sombre",
+      "light": "Clair",
+      "system": "Système",
+      "title": "Thème"
+    },
+    "title": "Paramètres",
+    "version": "Version",
+    "website": "Site web",
+    "devMode": {
+      "title": "Mode développeur",
+      "componentsLibrary": "Bibliothèque d'interface"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Note"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Quelle est la raison ?",
+      "unnamedReport": "Rapport sans nom",
+      "reportTitlePlaceholder": "Ajouter un titre"
+    },
+    "WeekBlock": {
+      "week": "Semaine"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Remonter en haut"
+    },
+    "FreeTierStatus": {
+      "heading": "Analyses gratuites",
+      "subheading": "Débloquez des analyses illimitées en améliorant votre abonnement",
+      "action": "Améliorer l'abonnement"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Choisir une image / vidéo"
+    },
+    "TapToViewLabel": {
+      "label": "Appuyez pour voir"
+    },
+    "UpgradeBanner": {
+      "heading": "Améliorez maintenant",
+      "subheading": "Débloquez des analyses illimitées en améliorant votre abonnement"
+    },
+    "PromptSection": {
+      "message": "Votre analyse est prête ! Que souhaitez-vous savoir ?",
+      "prompts": {
+        "first": "Décrivez les anomalies présentes dans les champs pulmonaires",
+        "second": "Évaluez la silhouette cardiaque et le médiastin",
+        "third": "Évaluez les structures osseuses pour détecter des lésions ou fractures",
+        "fourth": "Commentez la présence ou l'absence d'épanchements pleuraux"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Obtenez 10 analyses gratuites",
+      "second": "Accédez à toutes les fonctionnalités premium",
+      "third": "Pas de publicité"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Surnom",
+        "email": "E-mail",
+        "emailVerification": "Vérification de l'e-mail"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Désolé, nous avons besoin des permissions de l'appareil photo pour que cela fonctionne !",
+    "errorSelectingImagePicker": "Quelque chose s'est mal passé lors de la sélection de l'image. Veuillez réessayer.",
+    "errorSelectingDocumentPicker": "Quelque chose s'est mal passé lors de la sélection du document. Veuillez réessayer.",
+    "errorTakingPicture": "Quelque chose s'est mal passé lors de la prise de photo. Veuillez réessayer.",
+    "enableNotifications": {
+      "heading": "Activer les notifications",
+      "subHeading": "Les notifications sont actuellement désactivées. Pour rester informé, veuillez les activer dans les paramètres de votre appareil."
+    },
+    "enableNotificationFailed": "Les notifications push ne sont pas activées. Activez-les dans les paramètres pour recevoir des mises à jour importantes.",
+    "enableNotificationError": "Une erreur s'est produite lors de l'activation des notifications",
+    "notificationDisabledSuccess": "Notifications désactivées avec succès.",
+    "notificationDisabledRegisterError": "Échec de la désinscription de l'appareil pour les notifications.",
+    "notificationDisabledError": "Une erreur s'est produite lors de la désactivation des notifications.",
+    "checkNotificationStatusError": "Erreur lors de la vérification du statut des notifications.",
+    "projectIdNotFound": "ID du projet de notification introuvable.",
+    "imageSizeLarge": "L'image est trop grande ! La taille du fichier est de {{fileSize}} Mo, mais la limite est de {{imageLimit}} Mo.",
+    "videoSizeLarge": "La vidéo est trop grande ! La taille du fichier est de {{fileSize}} Mo, mais la limite est de {{videoLimit}} Mo.",
+    "loggedInSuccess": "Connexion réussie",
+    "loggedOutSuccess": "Vous avez été déconnecté avec succès !",
+    "sendVerificationCodeError": "Erreur lors de l'envoi du code de vérification",
+    "validateAuthCodeError": "Erreur lors de la validation du code d'authentification",
+    "anonymousSignInError": "Erreur lors de la connexion anonyme",
+    "emailLoginError": "Erreur lors de la connexion",
+    "preferredLanguageError": "Erreur lors de la mise à jour de la langue préférée de l'utilisateur",
+    "sharingNotAvailable": "Le partage n'est pas disponible sur votre appareil",
+    "sharingLinkError": "Échec du partage du lien.",
+    "individualPushNotificationSuccess": "Notifications push individuelles envoyées avec succès !",
+    "globalPushNotificationSuccess": "Notifications push globales envoyées avec succès ! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Échec de la mise à jour des champs d'interprétation ! ❌",
+    "onboardingUnsuccessful": "Échec de l'intégration. Veuillez réessayer",
+    "logoutUnsuccessful": "Échec de la déconnexion. Veuillez réessayer"
+  }
+}

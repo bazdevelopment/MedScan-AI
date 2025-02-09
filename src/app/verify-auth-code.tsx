@@ -23,6 +23,8 @@ import { ArrowLeft } from '@/ui/assets/icons';
 const VerifyAuthCode = () => {
   const { email } = useLocalSearchParams();
   const { isMediumDevice } = getDeviceSizeCategory();
+  const { language } = useSelectedLanguage();
+
   const {
     mutate: onVerifyAuthCode,
     isPending,
@@ -40,7 +42,6 @@ const VerifyAuthCode = () => {
       language,
     });
 
-  const { language } = useSelectedLanguage();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const [isFirstTime] = useIsFirstTime();

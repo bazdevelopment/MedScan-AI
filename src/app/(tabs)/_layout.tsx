@@ -63,7 +63,11 @@ export default function TabLayout() {
   // Set an initializing state whilst Firebase connects
 
   useEffect(() => {
-    if (userInfoLanguage && userInfoLanguage !== actualLocalLanguage)
+    if (
+      userInfoLanguage &&
+      userInfoLanguage !== actualLocalLanguage &&
+      isLoggedIn
+    )
       onUpdatePreferredLanguage({ language: actualLocalLanguage });
   }, []);
 

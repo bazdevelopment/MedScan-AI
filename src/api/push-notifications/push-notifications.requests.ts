@@ -114,7 +114,6 @@ export const getUserNotifications = async (variables: {
       'fetchUserNotifications',
     );
     const { data } = await onGetUserNotifications(variables);
-
     return data;
   } catch (error: any) {
     throw new Error(error.message); // Catch error messages from axios

@@ -54,7 +54,7 @@ const NamePreferenceScreen = ({
               )}
               value={nickname}
               onChangeText={setNickname}
-              label="Nickname"
+              label={translate('components.Input.labels.nickname')}
             />
           </View>
 

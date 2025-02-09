@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 
 import { useSendVerificationCode } from '@/api/user/user.hooks';
-import { useSelectedLanguage } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { Button, FocusAwareStatusBar, Input, Text, View } from '@/ui';
 
 export default function Login() {
@@ -39,20 +39,20 @@ const VerifyEmailForm = () => {
       >
         {isPending && <ActivityIndicator />}
         <View className="flex-1 justify-center p-4">
-          <Text testID="form-title" className="text-center pb-6 text-2xl">
-            Verify email
+          <Text testID="form-title" className="pb-6 text-center text-2xl">
+            {translate('rootLayout.screens.verifyEmail.heading')}
           </Text>
 
           <Input
             testID="email"
-            label="Email"
+            label={translate('components.Input.labels.email')}
             value={email}
             onChangeText={handleUpdateEmail}
           />
 
           <Button
             testID="email-verification"
-            label="Email verification"
+            label={translate('components.Input.labels.emailVerification')}
             onPress={() => handleSubmitEmail({ email, language })}
           />
         </View>

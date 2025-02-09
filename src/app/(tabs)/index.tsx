@@ -1,5 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
+import { useRouteInfo } from 'expo-router/build/hooks';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
@@ -22,6 +23,7 @@ import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
 import ScanReportCard from '@/components/scan-report-card';
 import { translate, useSelectedLanguage } from '@/core';
+import useBackHandler from '@/core/hooks/use-back-handler';
 import useCustomScrollToTop from '@/core/hooks/use-custom-scroll-to-top';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import {
@@ -56,7 +58,7 @@ export default function Home() {
     userId: userInfo?.userId,
     language,
   })();
-
+  const { pathname } = useRouteInfo();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
@@ -90,6 +92,8 @@ export default function Home() {
 
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
   useCustomScrollToTop(scrollViewRef);
+
+  useBackHandler(() => (pathname === '/' ? true : false)); // Prevent default behavior and navigating back tot the onboarding
 
   return (
     <PullToRefresh
@@ -127,7 +131,7 @@ export default function Home() {
             onUpgrade={() => router.navigate('/paywall')}
           />
 
-          <Text className="mx-6 mb-3 mt-6 font-semibold-nunito">
+          <Text className="mx-6 mb-3 mt-8 font-semibold-nunito">
             {translate('home.scanCategories.heading')}
           </Text>
 

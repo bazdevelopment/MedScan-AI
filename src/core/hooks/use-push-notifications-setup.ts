@@ -10,42 +10,87 @@ import Toast from '@/components/toast';
 
 import { Env } from '../env';
 import { translate, useSelectedLanguage } from '../i18n';
-import { storage } from '../storage';
 import { getUniqueDeviceIdentifier } from '../utilities/get-unique-device-identifier';
-import useAppState from './use-app-state';
 
 export const usePushNotificationSetup = () => {
   const [arePushNotificationEnabled, setArePushNotificationsEnabled] =
     useState(false);
   const [deviceToken, setDeviceToken] = useState('');
 
-  const { appState } = useAppState();
-
   const { language } = useSelectedLanguage();
 
-  const enablePushNotifications = useCallback(async () => {
-    try {
-      const { status: existingStatus } =
-        await Notifications.getPermissionsAsync();
-      if (existingStatus === 'granted') {
-        // Notifications already enabled, no further action needed
-        return;
-      }
+  const enablePushNotifications = useCallback(
+    async (showAlert: boolean = false) => {
+      try {
+        // Check existing notification permissions
+        const { status: existingStatus } =
+          await Notifications.getPermissionsAsync();
 
-      const { status } = await Notifications.requestPermissionsAsync();
-      if (status === 'granted' || status === 'undetermined') {
-        // Notifications successfully enabled
-        return;
-      } else {
-        // Notifications not enabled
-        Alert.alert(
-          translate('alerts.enableNotifications.heading'),
-          translate('alerts.enableNotifications.subHeading'),
-          [
-            { text: translate('general.cancel'), style: 'cancel' },
-            {
-              text: translate('general.openSettings'),
-              onPress: () => {
+        // if (existingStatus === 'denied') return;
+        if (existingStatus !== 'granted') {
+          // Request notification permissions if not already granted
+          const { status } = await Notifications.requestPermissionsAsync();
+
+          if ((status === 'undetermined' || status === 'denied') && showAlert) {
+            // Notifications not enabled, show alert to guide the user
+            Alert.alert(
+              translate('alerts.enableNotifications.heading'),
+              translate('alerts.enableNotifications.subHeading'),
+              [
+                { text: translate('general.cancel'), style: 'cancel' },
+                {
+                  text: translate('general.openSettings'),
+                  onPress: () => {
+                    if (Platform.OS === 'ios') {
+                      Linking.openURL('app-settings:');
+                    } else {
+                      Linking.openSettings();
+                    }
+                  },
+                },
+              ],
+              { cancelable: false },
+            );
+            return; // Exit if permissions are not granted
+          }
+        }
+
+        // This block will always execute, regardless of permission status
+        // Get the project ID for Expo push notifications
+        const projectId = Constants.expoConfig?.extra?.eas.projectId;
+        if (!projectId) {
+          Toast.error(translate('alerts.projectIdNotFound'));
+          return;
+        }
+
+        // Fetch the Expo push token
+        const { data: token } = await Notifications.getExpoPushTokenAsync({
+          projectId,
+        });
+        setDeviceToken(token);
+
+        // Store the device token on the server
+        const response = await storeMobileDeviceToken({
+          deviceToken: token,
+          platform: Platform.OS,
+          version: Env.VERSION,
+          deviceName: DeviceInfo.deviceName || '',
+          deviceModel: DeviceInfo.modelName || '',
+          deviceBrand: DeviceInfo.brand || '',
+          deviceUniqueId: getUniqueDeviceIdentifier(),
+          language,
+        });
+
+        if (response.success && existingStatus === 'granted') {
+          // Update state to reflect that notifications are enabled
+          setArePushNotificationsEnabled(true);
+          console.log('Push notifications enabled successfully');
+        } else {
+          //todo add a crashlytics log maybe
+          Toast.warning(translate('alerts.enableNotificationFailed'), {
+            action: {
+              label: translate('general.openSettings'),
+              onClick: () => {
                 if (Platform.OS === 'ios') {
                   Linking.openURL('app-settings:');
                 } else {
@@ -53,52 +98,22 @@ export const usePushNotificationSetup = () => {
                 }
               },
             },
-          ],
-          { cancelable: false },
-        );
+          });
+        }
+      } catch (error) {
+        // console.error('Error enabling push notifications:', error);
+        Toast.error(translate('alerts.enableNotificationError'));
       }
-
-      const projectId = Constants.expoConfig?.extra?.eas.projectId;
-
-      if (!projectId) {
-        return Toast.error(translate('alerts.projectIdNotFound'));
-      }
-      const { data: token } = await Notifications.getExpoPushTokenAsync({
-        projectId,
-      });
-      setDeviceToken(token);
-
-      const response = await storeMobileDeviceToken({
-        deviceToken: token,
-        platform: Platform.OS,
-        version: Env.VERSION,
-        deviceName: DeviceInfo.deviceName || '',
-        deviceModel: DeviceInfo.modelName || '',
-        deviceBrand: DeviceInfo.brand || '',
-        deviceUniqueId: getUniqueDeviceIdentifier(),
-        language,
-      });
-      if (response.success) {
-        // Update state and storage
-        setArePushNotificationsEnabled(true);
-        // await AsyncStorage.setItem('notificationsEnabled', 'true');
-        // storage.set('notificationsEnabled', true);
-      } else {
-        Toast.error(translate('alerts.enableNotificationFailed'));
-      }
-    } catch (error) {
-      Toast.error(translate('alerts.enableNotificationError'));
-    }
-  }, []);
+    },
+    [language],
+  );
 
   const disablePushNotifications = async () => {
     try {
       const response = await storeMobileDeviceToken('');
 
       if (response.success) {
-        // Update state and storage
         setArePushNotificationsEnabled(false);
-        // storage.set('notificationsEnabled', false);
         Toast.success(translate('alerts.notificationDisabledSuccess'));
       } else {
         Toast.success(translate('alerts.notificationDisabledRegisterError'));
@@ -110,13 +125,11 @@ export const usePushNotificationSetup = () => {
 
   const checkIfNotificationsEnabled = async (): Promise<void> => {
     try {
-      const enabled = storage.getBoolean('notificationsEnabled');
-      if (enabled) {
+      const { status } = await Notifications.getPermissionsAsync();
+      if (status === 'granted') {
         setArePushNotificationsEnabled(true);
-        // storage.set('notificationsEnabled', true);
       } else {
         setArePushNotificationsEnabled(false);
-        // storage.set('notificationsEnabled', false);
       }
     } catch (error) {
       Toast.success(translate('alerts.checkNotificationStatusError'));
@@ -126,10 +139,6 @@ export const usePushNotificationSetup = () => {
   useEffect(() => {
     checkIfNotificationsEnabled();
   }, []);
-
-  useEffect(() => {
-    if (appState === 'active') enablePushNotifications();
-  }, [appState, enablePushNotifications]);
 
   return {
     enablePushNotifications,

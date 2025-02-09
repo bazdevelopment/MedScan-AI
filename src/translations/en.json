@@ -13,6 +13,7 @@
     "gallery": "Gallery",
     "files": "Files",
     "cancel": "Cancel",
+    "new": "New",
     "yes": "Yes",
     "openSettings": "Open Settings",
     "viewProfile": "View Profile",
@@ -22,6 +23,7 @@
     "shareLink": "Share Link",
     "skip": "Skip",
     "next": "Next",
+    "update": "Update",
     "tryAgain": "Try again",
     "and": "and",
     "copyText": {
@@ -54,7 +56,7 @@
   },
   "uploadScan": {
     "title": "Upload Scan",
-    "scanNow": "Scan now',"
+    "scanNow": "Scan now"
   },
   "weekDays": {
     "today": "Today",
@@ -69,6 +71,11 @@
   },
   "rootLayout": {
     "screens": {
+      "welcome": {
+        "heading": " Welcome to X-Ray Analyzer",
+        "startButton": "Let's get started!",
+        "accountButton": "I already have an account"
+      },
       "login": {
         "agreeingMessage": "By continuing, you agree to our",
         "termsAndConditions": "Terms & Conditions",
@@ -98,7 +105,8 @@
         "freeTierOfferings": {
           "title": "Unlock Premium Features Today! 🎉",
           "firstOffering": "Access All Premium Features",
-          "secondOffering": "Ad-Free Experience"
+          "secondOffering": "Ad-Free Experience",
+          "thirdOffering": "Unlimited number of scans"
         }
       },
       "paywallUpgradeScreen": {
@@ -131,7 +139,8 @@
         "subheading": "Your connection seems to be unstable. Please verify your network status"
       },
       "notifications": {
-        "title": "Notifications"
+        "title": "Notifications",
+        "noNotifications": "No notifications for now — stay tuned for updates!"
       },
       "termsOfService": {
         "title": "Terms of Service"
@@ -150,12 +159,22 @@
         "title": "Give us a feedback!"
       },
       "profile": {
-        "title": "Profile"
+        "title": "Profile",
+        "edit": "Edit Profile",
+        "placeholderPreferredName": "E.g., Captain Cool, Queen Bee, or just Alex!"
       },
       "generateReportScreen": {
-        "title": "We appreciate your patience! Here’s your AI report. 🚀",
+        "title": "We appreciate your patience! Here’s your AI report. ",
         "userInput": "Your Submission",
-        "report": "AI-Generated Medical Report"
+        "medicalReport": "Medical Report",
+        "report": "AI-Generated Medical Report",
+        "reportName": "Report name"
+      },
+      "verifyEmail": {
+        "heading": "Verify email"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Generate report"
       }
     }
   },
@@ -265,7 +284,7 @@
     },
     "FreeTierStatus": {
       "heading": "Free scans",
-      "subheading": "Get unlimited access with our Pro plan",
+      "subheading": "Unlock unlimited scans by upgrading your plan",
       "action": "Upgrade Plan"
     },
     "UploadFileOptionsModal": {
@@ -276,7 +295,7 @@
     },
     "UpgradeBanner": {
       "heading": "Upgrade Now",
-      "subheading": "Enjoy Premium Features!"
+      "subheading": "Unlock unlimited scans by upgrading your plan"
     },
     "PromptSection": {
       "message": "Your scan is ready! Now, what would you like to find out?",
@@ -291,6 +310,14 @@
       "first": "Get 10 Free Scans",
       "second": "Access to all premium features",
       "third": "No ads"
+    },
+
+    "Input": {
+      "labels": {
+        "nickname": "Nickname",
+        "email": "Email",
+        "emailVerification": "Email Verification"
+      }
     }
   },
   "alerts": {
@@ -302,7 +329,7 @@
       "heading": "Enable Notifications",
       "subHeading": "Notifications are currently turned off. To stay updated, please enable them in your device settings."
     },
-    "enableNotificationFailed": "Failed to enable notifications.",
+    "enableNotificationFailed": "Push notifications are disabled. Enable them in settings to receive important updates!",
     "enableNotificationError": "An error occurred while enabling notifications",
     "notificationDisabledSuccess": "Notifications disabled successfully.",
     "notificationDisabledRegisterError": "Failed to unregister device for notifications.",

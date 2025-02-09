@@ -12,6 +12,7 @@ import AttachmentPreview from '@/components/attachment-preview';
 import ScanningModal from '@/components/image-scanner-modal';
 import ProgressBar from '@/components/progress-bar';
 import PromptSection from '@/components/prompt-section';
+import { translate } from '@/core/i18n';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
 import { Button, colors } from '@/ui';
@@ -190,9 +191,11 @@ const FilePreviewScreen = ({
 
         <Button
           iconPosition="right"
-          label="Generate report"
+          label={translate(
+            'rootLayout.screens.filePreviewScreen.generateReportButton',
+          )}
           className="mt-10 h-[62px] w-[90%] gap-2 self-center rounded-full bg-primary-900 active:bg-primary-700 dark:bg-primary-900"
-          textClassName="text-lg font-sefilmibold-nunito text-white dark:text-white"
+          textClassName="text-lg font-semibold-nunito text-white dark:text-white"
           size="lg"
           onPress={() => {
             setIsModalVisible(true);

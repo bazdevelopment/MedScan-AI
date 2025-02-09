@@ -7,7 +7,7 @@ import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useInterpretationById } from '@/api/interpretation/interpretation.hooks';
 import AttachmentPreview from '@/components/attachment-preview';
 import Icon from '@/components/icon';
-import { useSelectedLanguage } from '@/core';
+import { translate, useSelectedLanguage } from '@/core';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { colors, Text } from '@/ui';
 import { CalendarIcon, DocumentIcon } from '@/ui/assets/icons';
@@ -74,10 +74,11 @@ const ScanInterpretationDetailsScreen = () => {
 
           <View className="p-4">
             <Text className="mb-1 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
-              Title
+              {translate('rootLayout.screens.generateReportScreen.reportName')}
             </Text>
             <Text className="font-semibold-nunito text-base">
-              {data?.record?.title || 'Unnamed report'}
+              {data?.record?.title ||
+                translate('components.ScanReportCard.unnamedReport')}
             </Text>
           </View>
         </View>
@@ -86,12 +87,14 @@ const ScanInterpretationDetailsScreen = () => {
         <View className="mx-4 my-6 rounded-2xl bg-primary-100 dark:bg-blackBeauty">
           <View className="rounded-t-2xl bg-primary-900 p-4">
             <Text className="font-semibold-nunito text-base text-white">
-              Scan details
+              {translate(
+                'rootLayout.screens.generateReportScreen.medicalReport',
+              )}
             </Text>
           </View>
           <View className="p-4">
             <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
-              Your input
+              {translate('rootLayout.screens.generateReportScreen.userInput')}
             </Text>
             <View className="rounded-xl">
               <Text className="text-lg">
@@ -102,7 +105,7 @@ const ScanInterpretationDetailsScreen = () => {
 
           <View className="-mt-4 p-4">
             <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
-              Interpretation
+              {translate('rootLayout.screens.generateReportScreen.report')}
             </Text>
             <View className="rounded-xl">
               <Text className="text-lg">

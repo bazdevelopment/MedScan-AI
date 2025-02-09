@@ -1,0 +1,354 @@
+{
+  "onboarding": {
+    "message": "X-Ray Analyzerへようこそ"
+  },
+  "general": {
+    "back": "戻る",
+    "welcome": "こんにちは",
+    "welcomeBack": "おかえりなさい！",
+    "welcomeMessage": "ようこそ！",
+    "continue": "続ける",
+    "retry": "再試行",
+    "close": "閉じる",
+    "gallery": "ギャラリー",
+    "files": "ファイル",
+    "cancel": "キャンセル",
+    "new": "新規",
+    "yes": "はい",
+    "openSettings": "設定を開く",
+    "viewProfile": "プロフィールを表示",
+    "upgradePlan": "プランをアップグレード",
+    "download": "ダウンロード",
+    "share": "共有",
+    "shareLink": "リンクを共有",
+    "skip": "スキップ",
+    "next": "次へ",
+    "update": "更新",
+    "tryAgain": "もう一度試す",
+    "and": "および",
+    "copyText": {
+      "loading": "コピー中...",
+      "copied": "コピーしました！",
+      "copy": "リンクをコピー"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "パーソナライズされた体験を読み込んでいます...",
+        "second": "システムを同期中...",
+        "third": "データを処理中...",
+        "fourth": "もう少しお待ちください..."
+      },
+      "imageScanningLoading": {
+        "first": "医療画像をスキャン中です。しばらくお待ちください...",
+        "second": "詳細を分析中です。しばらく時間がかかることがあります...",
+        "third": "最高の結果を得るために精度を向上させています...",
+        "fourth": "もう少しで完了です。スキャンを最終確認中..."
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "ちょっと待って！",
+    "goBackMessage": "本当に戻りますか？"
+  },
+  "internet": {
+    "noConnectionTitle": "オフラインです！",
+    "noConnectionMessage": "モバイルデータをオンにするか、Wi-Fiに接続してください。または、少し休んで散歩に出かけましょう！"
+  },
+  "uploadScan": {
+    "title": "スキャンをアップロード",
+    "scanNow": "今すぐスキャン"
+  },
+  "weekDays": {
+    "today": "今日",
+    "yesterday": "昨日"
+  },
+  "auth": {
+    "verifyAuthCode": "認証コードを確認",
+    "verifyAuthCodeButton": "コードを確認",
+    "authCodeHeading": "認証コード",
+    "loginViaEmailHeading": "サインインしてください。続行するにはメールアドレスを入力してください。",
+    "emailAddress": "メールアドレス"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "X-Ray Analyzerへようこそ",
+        "startButton": "始めましょう！",
+        "accountButton": "既にアカウントを持っています"
+      },
+      "login": {
+        "agreeingMessage": "続行することで、以下の内容に同意したものとみなされます：",
+        "termsAndConditions": "利用規約",
+        "privacyPolicy": "プライバシーポリシー"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "メールで送信された確認コードを入力してください。コードは5分で失効します。",
+        "verificationCodeSent": "確認コードを以下に送信しました：",
+        "verificationCodeMissing": "コードが届きませんでしたか？",
+        "resendCode": "コードを再送信",
+        "backToLogin": "サインインに戻る"
+      },
+      "namePreferenceScreen": {
+        "heading": "パーソナライズしましょう！",
+        "preferredNameQuestion": "どのように呼べばよいですか？",
+        "placeholderPreferredName": "例：キャプテン・クール、クイーン・ビー、またはアレックス！"
+      },
+      "freeTrialPreview": {
+        "heading": "無料トライアルをお楽しみください！🎉",
+        "subheading": "無料トライアル中にこれらの素晴らしい特典を体験してください"
+      },
+      "scanInterpretation": {
+        "title": "解析結果",
+        "headerBackTitle": "レポート"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "title": "プレミアム機能を今すぐアンロック！🎉",
+          "firstOffering": "すべてのプレミアム機能にアクセス",
+          "secondOffering": "広告なしの体験",
+          "thirdOffering": "無制限のスキャン回数"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "プレミアム機能を今すぐアンロック！🎉",
+        "firstOffering": {
+          "title": "無料トライアルを開始",
+          "subtitle": "10回の無料スキャンを楽しむ – 支払い不要"
+        },
+        "secondOffering": {
+          "title": "月額プラン",
+          "subtitle": "¥5,500 / 月"
+        },
+        "thirdOffering": {
+          "title": "年間プラン",
+          "subtitle": "お得なプラン：¥11,000 / 年 – さらに節約！"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "X-Ray Analyzerの新しいバージョンが利用可能です",
+        "subheading": "アプリを引き続きご利用いただくには、最新バージョンに更新してください",
+        "action": "今すぐ入手！"
+      },
+      "rateAppScreen": {
+        "heading": "このアプリは役に立っていますか？",
+        "like": "はい、気に入っています！",
+        "dislike": "あまり気に入っていません..."
+      },
+      "noInternetScreen": {
+        "heading": "オフラインです",
+        "subheading": "接続が不安定です。ネットワーク状態を確認してください"
+      },
+      "notifications": {
+        "title": "通知",
+        "noNotifications": "現在、通知はありません – 更新をお待ちください！"
+      },
+      "termsOfService": {
+        "title": "利用規約"
+      },
+      "privacyPolicy": {
+        "title": "プライバシーポリシー"
+      },
+      "share": {
+        "title": "共有",
+        "heading": "X-Ray Analyzerアプリを共有",
+        "subheading": "AI駆動のX線解析の力を他の人にも知らせましょう",
+        "scanMessage": "アプリをダウンロードするためにスキャン",
+        "shareMessage": "またはお気に入りのプラットフォームで共有"
+      },
+      "rate": {
+        "title": "フィードバックをお願いします！"
+      },
+      "profile": {
+        "title": "プロフィール",
+        "edit": "プロフィールを編集",
+        "placeholderPreferredName": "例：キャプテン・クール、クイーン・ビー、またはアレックス！"
+      },
+      "generateReportScreen": {
+        "title": "お待たせしました！こちらがAIレポートです。",
+        "userInput": "あなたの提出内容",
+        "medicalReport": "医療レポート",
+        "report": "AI生成医療レポート",
+        "reportName": "レポート名"
+      },
+      "verifyEmail": {
+        "heading": "メールを確認"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "レポートを生成"
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "待って！削除しないで！",
+    "subtitle": "代わりにフィードバックを送信してください"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "お待たせしました！"
+      },
+      "finalReportHeader": {
+        "message": "こちらがレポート結果です！"
+      },
+      "uploadFile": {
+        "title": "医療画像ファイルをアップロードしてください",
+        "size": "最大ファイルサイズ：10MB",
+        "location": "ギャラリーまたはファイルから選択",
+        "fileType": "PNG、JPG、PDF、またはMP4",
+        "openCamera": "カメラを開いて写真を撮る",
+        "scanType": "X線、CT、MRI、PET"
+      }
+    }
+  },
+  "home": {
+    "tab": "ホーム",
+    "homeForeground": {
+      "maxNumberOfScans": "スキャン回数の上限に達しました！プランをアップグレードして、さらにスキャンを利用しましょう。🚀",
+      "heading": "X-Ray Analyzerへようこそ",
+      "subHeading": "MRI、X線、CTスキャン、PET画像、超音波、核医学による重要な洞察を得ましょう"
+    },
+    "scanCategories": {
+      "heading": "放射線画像"
+    },
+    "recentReports": {
+      "heading": "最近のレポート",
+      "noReports": "まだレポートはありません！"
+    }
+  },
+  "reports": {
+    "tab": "レポート",
+    "noReportsAvailable": "この日付のレポートはありません",
+    "heading": "レポート"
+  },
+  "settings": {
+    "tab": "設定",
+    "profile": "プロフィール",
+    "about": "について",
+    "app_name": "アプリ名",
+    "languages": {
+      "arabic": "アラビア語",
+      "english": "英語",
+      "mandarin_chinese": "中国語",
+      "spanish": "スペイン語",
+      "hindi": "ヒンディー語",
+      "portuguese": "ポルトガル語",
+      "russian": "ロシア語",
+      "japanese": "日本語",
+      "korean": "韓国語",
+      "german": "ドイツ語",
+      "french": "フランス語",
+      "romanian": "ルーマニア語"
+    },
+    "generale": "一般",
+    "github": "Github",
+    "language": "言語",
+    "links": "リンク",
+    "logout": "ログアウト",
+    "more": "その他",
+    "privacy": "プライバシーポリシー",
+    "faq": "FAQ",
+    "rate": "評価",
+    "share": "共有",
+    "support": "サポート",
+    "support_us": "私たちをサポート",
+    "terms": "利用規約",
+    "theme": {
+      "dark": "ダーク",
+      "light": "ライト",
+      "system": "システム",
+      "title": "テーマ"
+    },
+    "title": "設定",
+    "version": "バージョン",
+    "website": "ウェブサイト",
+    "devMode": {
+      "title": "開発者モード",
+      "componentsLibrary": "UIライブラリ"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "評価"
+    },
+    "ScanReportCard": {
+      "promptMessage": "理由は何ですか？",
+      "unnamedReport": "無題のレポート",
+      "reportTitlePlaceholder": "タイトルを追加"
+    },
+    "WeekBlock": {
+      "week": "週"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "トップにスクロール"
+    },
+    "FreeTierStatus": {
+      "heading": "無料スキャン",
+      "subheading": "プランをアップグレードして無制限のスキャンをアンロック",
+      "action": "プランをアップグレード"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "画像/動画を選択"
+    },
+    "TapToViewLabel": {
+      "label": "タップして表示"
+    },
+    "UpgradeBanner": {
+      "heading": "今すぐアップグレード",
+      "subheading": "プランをアップグレードして無制限のスキャンをアンロック"
+    },
+    "PromptSection": {
+      "message": "スキャンが完了しました！次に何を知りたいですか？",
+      "prompts": {
+        "first": "肺野に異常があるかどうかを説明してください",
+        "second": "心臓の輪郭と縦隔を評価してください",
+        "third": "骨構造に病変や骨折がないか評価してください",
+        "fourth": "胸水の有無についてコメントしてください"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "10回の無料スキャンを取得",
+      "second": "すべてのプレミアム機能にアクセス",
+      "third": "広告なし"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "ニックネーム",
+        "email": "メールアドレス",
+        "emailVerification": "メール確認"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "申し訳ありませんが、カメラの許可が必要です！",
+    "errorSelectingImagePicker": "画像の選択中にエラーが発生しました。もう一度お試しください。",
+    "errorSelectingDocumentPicker": "ドキュメントの選択中にエラーが発生しました。もう一度お試しください。",
+    "errorTakingPicture": "写真の撮影中にエラーが発生しました。もう一度お試しください。",
+    "enableNotifications": {
+      "heading": "通知を有効にする",
+      "subHeading": "通知が現在オフになっています。最新情報を受け取るには、デバイスの設定で有効にしてください。"
+    },
+    "enableNotificationFailed": "プッシュ通知が無効になっています。重要な更新を受け取るには設定で有効にしてください。",
+    "enableNotificationError": "通知の有効化中にエラーが発生しました",
+    "notificationDisabledSuccess": "通知が無効化されました。",
+    "notificationDisabledRegisterError": "通知の登録解除に失敗しました。",
+    "notificationDisabledError": "通知の無効化中にエラーが発生しました。",
+    "checkNotificationStatusError": "通知ステータスの確認中にエラーが発生しました。",
+    "projectIdNotFound": "通知プロジェクトIDが見つかりません。",
+    "imageSizeLarge": "画像が大きすぎます！ファイルサイズは{{fileSize}} MBですが、制限は{{imageLimit}} MBです。",
+    "videoSizeLarge": "動画が大きすぎます！ファイルサイズは{{fileSize}} MBですが、制限は{{videoLimit}} MBです。",
+    "loggedInSuccess": "ログインに成功しました",
+    "loggedOutSuccess": "ログアウトに成功しました！",
+    "sendVerificationCodeError": "確認コードの送信中にエラーが発生しました",
+    "validateAuthCodeError": "認証コードの検証中にエラーが発生しました",
+    "anonymousSignInError": "匿名サインイン中にエラーが発生しました",
+    "emailLoginError": "サインイン中にエラーが発生しました",
+    "preferredLanguageError": "ユーザーの優先言語の更新中にエラーが発生しました",
+    "sharingNotAvailable": "お使いのデバイスでは共有機能が利用できません",
+    "sharingLinkError": "リンクの共有に失敗しました。",
+    "individualPushNotificationSuccess": "個別プッシュ通知が正常に送信されました！",
+    "globalPushNotificationSuccess": "グローバルプッシュ通知が正常に送信されました！🌍🚀",
+    "interpretationFieldsUpdateFail": "解析フィールドの更新に失敗しました！❌",
+    "onboardingUnsuccessful": "オンボーディングに失敗しました。もう一度お試しください",
+    "logoutUnsuccessful": "ログアウトに失敗しました。もう一度お試しください"
+  }
+}

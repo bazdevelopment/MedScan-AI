@@ -6,190 +6,167 @@ export const es: ITranslation = {
     error: 'Ocurrió un error',
     loading: 'Cargando...',
     noUserFound:
-      'No estás autorizado para realizar esta solicitud. Por favor, inicia sesión.',
+      'No estás autorizado para realizar esta solicitud. Por favor, inicia sesión',
     userIdMissing:
-      'Parece que falta el ID de usuario. Por favor, proporciónalo para continuar.',
+      'Parece que falta el ID de usuario. Por favor, proporciónalo para continuar',
     scanLimitReached:
-      'Has alcanzado el número máximo de escaneos permitidos. Por favor, mejora tu plan para seguir usando el servicio.',
-    mandatoryLanguage: 'El código de idioma es obligatorio.',
+      'Has alcanzado el número máximo de escaneos permitidos. Actualiza tu plan para seguir utilizando el servicio',
+    mandatoryLanguage: 'El código de idioma es obligatorio',
   },
   auth: {
-    signIn: 'Iniciar sesión',
+    signIn: 'Iniciar Sesión',
     signUp: 'Registrarse',
-    forgotPassword: '¿Olvidaste tu contraseña?',
   },
-
   loginUserViaEmail: {
     mandatoryEmail:
-      'Por favor, proporciona tu dirección de correo electrónico para continuar.',
+      'Por favor, proporciona tu dirección de correo electrónico para continuar',
     invalidEmail:
-      'La dirección de correo electrónico ingresada no es válida. Por favor, verifícala e inténtalo de nuevo.',
+      'La dirección de correo electrónico ingresada no es válida. Por favor, verifícala e intenta nuevamente',
     accountCreated:
-      '¡Tu cuenta ha sido creada con éxito! Por favor, revisa tu correo electrónico para obtener el código de verificación.',
+      '¡Tu cuenta ha sido creada con éxito! Por favor, revisa tu correo electrónico para obtener el código de verificación',
     verificationCodeSent:
-      'Hemos enviado un código de verificación a tu correo electrónico. Por favor, revisa tu bandeja de entrada.',
+      'Hemos enviado un código de verificación a tu correo electrónico. Por favor, revisa tu bandeja de entrada',
     internalError:
-      'Hubo un error al procesar tu autenticación por correo electrónico. Por favor, inténtalo de nuevo.',
+      'Hubo un error al procesar tu autenticación por correo electrónico. Por favor, intenta nuevamente',
   },
-
   sendEmailVerification: {
     emailMandatory:
-      'Se requiere una dirección de correo electrónico para continuar.',
+      'Se requiere una dirección de correo electrónico para continuar',
     emailUsed:
-      'Esta dirección de correo electrónico ya está en uso. Por favor, utiliza otra diferente.',
+      'Esta dirección de correo electrónico ya está en uso. Por favor, utiliza una diferente',
     userNotFound:
-      'No pudimos encontrar al usuario especificado. Por favor, verifica tus datos e inténtalo de nuevo.',
+      'No pudimos encontrar el usuario especificado. Por favor, verifica tus detalles e intenta nuevamente',
     verificationCodeSent:
-      'El código de verificación se ha enviado exitosamente a tu correo electrónico.',
+      'El código de verificación ha sido enviado con éxito a tu correo electrónico',
     generalError:
-      'Ocurrió un error al iniciar la verificación por correo electrónico.',
+      'Ocurrió un error al iniciar la verificación por correo electrónico',
   },
-
   getInterpretationByDate: {
-    startEndDateRequired: 'Se requieren las fechas de inicio y fin.',
+    startEndDateRequired: 'Se requieren la fecha de inicio y la fecha de fin.',
     startDatePriority:
       'La fecha de inicio no puede ser posterior a la fecha de fin.',
     generalError: 'No se pudieron recuperar los análisis.',
   },
-
   verifyAuthenticationCode: {
     authCodeMandatory:
-      'Es obligatorio proporcionar un código de autenticación para continuar.',
+      'Un código de autenticación es obligatorio para continuar',
     emailAddressMandatory:
-      'Es obligatorio proporcionar una dirección de correo electrónico para continuar.',
+      'La dirección de correo electrónico es obligatoria para continuar',
     userNotFound:
-      'No se pudo encontrar al usuario especificado. Por favor, verifica tus datos e inténtalo de nuevo.',
+      'No se pudo encontrar el usuario especificado. Por favor, verifica tus detalles e intenta nuevamente',
     invalidAuthCode:
-      '¡Vaya! Este no es un código de autenticación válido. ¡Por favor, verifícalo e inténtalo de nuevo!',
+      '¡Oops! Este no es un código de autenticación válido. Por favor, verifícalo e intenta nuevamente',
     authCodeExpired:
-      '¡Vaya! Tu código ha expirado. Por favor, vuelve a intentar iniciar sesión con tu dirección de correo electrónico.',
-    authCodeVerified: 'El usuario ha sido verificado con éxito.',
-    generalError: '¡Vaya! Encontramos un error al verificar tu código.',
+      "¡Oops! Tu código ha expirado. Por favor, intenta iniciar sesión nuevamente con tu correo electrónico o haz clic en 'Reenviar código'",
+    authCodeVerified: 'El usuario ha sido verificado con éxito',
+    generalError: '¡Oops! Ocurrió un error al verificar tu código',
   },
-
   analyzeImage: {
     scanLimitReached:
-      'Has alcanzado el número máximo de escaneos permitidos. Por favor, mejora tu plan para seguir usando el servicio.',
+      'Has alcanzado el número máximo de escaneos permitidos. Actualiza tu plan para seguir utilizando el servicio',
     imageMissing:
-      'Falta la imagen. Por favor, selecciona y sube una imagen para continuar.',
+      'Falta la imagen. Por favor, selecciona y sube una imagen para continuar',
     uploadImageStorageError:
-      'Encontramos un error al subir tu imagen. Por favor, verifica tu conexión e inténtalo de nuevo.',
+      'Ocurrió un error al subir tu imagen. Por favor, verifica tu conexión e intenta nuevamente',
     interpretationNotSaved:
-      'No se pudo guardar el resultado del análisis. Por favor, verifica tu conexión e inténtalo de nuevo.',
-    analysisCompleted: '¡El análisis de la imagen se completó con éxito!',
+      'No se pudo guardar el resultado del análisis. Por favor, verifica tu conexión e intenta nuevamente',
+    analysisCompleted: '¡Análisis de imagen completado con éxito!',
   },
   analyzeVideo: {
     noVideoFound:
-      'Falta el archivo de video. Por favor, selecciona y sube un video para continuar.',
+      'Falta el archivo de video. Por favor, selecciona y sube un video para continuar',
     uploadVideoStorageError:
-      'Encontramos un error al subir tu video. Por favor, verifica tu conexión e inténtalo de nuevo.',
+      'Ocurrió un error al subir tu video. Por favor, verifica tu conexión e intenta nuevamente',
     interpretationNotSaved:
-      'No se pudo guardar el resultado del análisis. Por favor, verifica tu conexión e inténtalo de nuevo.',
-    analysisCompleted: '¡El análisis del video se completó con éxito!',
+      'No se pudo guardar el resultado del análisis. Por favor, verifica tu conexión e intenta nuevamente',
+    analysisCompleted: '¡Análisis de video completado con éxito!',
   },
-
   incrementUsersScans: {
-    incrementSuccessScan: 'Se ha usado un escaneo más.',
-    generalError: '¡No se pudo incrementar el número de escaneos!',
+    incrementSuccessScan: 'Se ha utilizado un escaneo más',
+    generalError: 'No se pudo decrementar el número de escaneos',
   },
   decrementUserScans: {
-    decrementSuccessScan: 'Se ha descontado un escaneo.',
+    decrementSuccessScan: 'Se ha decrementado un escaneo',
     decrementErrorScan:
-      'Hubo un problema al actualizar el número de escaneos. Por favor, inténtalo de nuevo más tarde.',
-    generalError: '¡No se pudo descontar el número de escaneos!',
+      'Hubo un problema al actualizar el número de escaneos. Por favor, intenta nuevamente más tarde',
+    generalError: 'No se pudo decrementar el número de escaneos',
   },
   updateUserSubscription: {
-    subscribeSuccess: '¡Suscripción realizada con éxito!',
-    updateSubscriptionError:
-      '¡No se pudo actualizar la suscripción del usuario!',
+    subscribeSuccess: '¡Suscripción exitosa!',
+    updateSubscriptionError: 'No se pudo actualizar la suscripción del usuario',
   },
   updateUserLanguage: {
-    updateSuccess: '¡El idioma se actualizó con éxito!',
+    updateSuccess: '¡Idioma actualizado con éxito!',
     updateError:
-      'Ocurrió un error inesperado al actualizar el idioma. Por favor, inténtalo de nuevo más tarde.',
+      'Ocurrió un error inesperado al actualizar el idioma. Por favor, intenta nuevamente más tarde',
   },
-
   getUserInfo: {
-    successGetInfo: 'Datos de usuario obtenidos exitosamente.',
+    successGetInfo: 'Datos de userInfo obtenidos con éxito',
     errorGetInfo:
-      'Ocurrió un error inesperado al obtener la información del usuario. Por favor, inténtalo de nuevo más tarde.',
+      'Ocurrió un error inesperado al obtener la información del usuario. Por favor, intenta nuevamente más tarde',
   },
   getUserInfoById: {
     noUserInfoData:
-      'El documento del usuario existe, pero no hay datos disponibles.',
-    getUserFetchError:
-      'Ocurrió un error al obtener la información del usuario.',
+      'El documento del usuario existe, pero no hay datos disponibles',
+    getUserFetchError: 'Ocurrió un error al obtener la información del usuario',
   },
-
   updateScanInterpretation: {
-    success:
-      '¡El registro de interpretación del escaneo se actualizó con éxito!',
+    success: '¡Registro de interpretación de escaneo actualizado con éxito!',
     generalError:
-      'Ocurrió un error al actualizar la interpretación del escaneo.',
-    paramsRequired: "'documentId' y 'fieldsToUpdate' son ambos obligatorios.",
+      'Ocurrió un error al actualizar la interpretación del escaneo',
+    paramsRequired: "Se requieren 'documentId' y 'fieldsToUpdate'",
   },
-
   getInterpretationByDocumentId: {
-    paramsRequired: "'DocumentId' es obligatorio.",
-    noDocIdFound: 'No se encontró ningún documento con el ID proporcionado.',
-    success: 'Documento obtenido con éxito.',
+    paramsRequired: "Se requiere 'DocumentId'",
+    noDocIdFound: 'No se encontró ningún documento con el ID proporcionado',
+    success: 'Documento obtenido con éxito',
     generalError:
-      'Ocurrió un error al obtener la interpretación para el ID de documento proporcionado.',
+      'Ocurrió un error al obtener la interpretación para el ID de documento proporcionado',
   },
-
   getRecentInterpretation: {
-    limitRequired: 'El límite debe ser un número entre 1 y 100.',
-    noInterpretationFound: 'No se encontraron interpretaciones.',
+    limitRequired: 'El límite debe ser un número entre 1 y 100',
+    noInterpretationFound: 'No se encontraron interpretaciones',
     success: '¡Interpretaciones recientes obtenidas con éxito!',
-    generalError: 'Ocurrió un error al obtener las interpretaciones recientes.',
-    generalErrorAdditional: 'Ocurrió un error interno del servidor.',
+    generalError: 'Ocurrió un error al obtener las interpretaciones recientes',
+    generalErrorAdditional: 'Ocurrió un error interno del servidor',
   },
-
   storeDeviceToken: {
-    deviceTokenRequired: 'Es obligatorio proporcionar un token de dispositivo.',
-    generalError: 'Error al almacenar el token del dispositivo.',
+    deviceTokenRequired: 'Proporcionar un token de dispositivo es obligatorio.',
+    generalError: 'Error al almacenar el token del dispositivo',
   },
-
   sendGlobalPushNotifications: {
     requiredParams:
       'El título y el cuerpo de la notificación son obligatorios.',
-    generalError: 'Ocurrió un error al procesar las notificaciones.',
-    generalErrorAdditional: 'No se pudo enviar la notificación global.',
+    generalError: 'Ocurrió un error al procesar las notificaciones',
+    generalErrorAdditional: 'No se pudo enviar la notificación global',
   },
-
   checkDeviceUniqueIdentifier: {
-    deviceMandatory: 'El ID del dispositivo es obligatorio.',
-    languageMandatory: 'El idioma es obligatorio.',
-    deviceIdentified: 'Tu dispositivo ha sido identificado con éxito.',
-    generalError:
-      'Ocurrió un error al verificar el identificador único del dispositivo.',
+    deviceMandatory: 'El ID del dispositivo es obligatorio',
+    languageMandatory: 'El idioma es obligatorio',
+    deviceIdentified: 'Tu dispositivo ha sido identificado con éxito',
+    generalError: 'Ocurrió un error al verificar el dispositivo',
   },
-
   getUserNotification: {
-    generalError: 'No se pudieron obtener las notificaciones del usuario.',
+    generalError: 'No se pudieron obtener las notificaciones del usuario',
     generalErrorAdditional:
-      'Ocurrió un error al obtener las notificaciones del usuario.',
+      'Ocurrió un error al obtener las notificaciones del usuario',
   },
-
   getScanCategories: {
-    noCategoryFound: 'No se encontraron categorías.',
-    generalError: 'Ocurrió un error al recuperar las categorías de escaneo.',
+    noCategoryFound: 'No se encontraron categorías',
+    generalError: 'Ocurrió un error al obtener las categorías de escaneo',
   },
-
   uploadScanCategories: {
-    successfullyUploaded: 'Categorías de escaneo subidas con éxito.',
-    generalError: 'No se pudieron subir las categorías de escaneo.',
+    successfullyUploaded: 'Categorías de escaneo subidas con éxito',
+    generalError: 'No se pudieron subir las categorías de escaneo',
   },
-
   sendUserNotification: {
     noTokenFound:
-      'No se encontraron tokens de Expo válidos. No se pueden enviar notificaciones.',
-    generalError: 'No se pudo enviar la notificación.',
+      'No se encontraron tokens válidos de Expo. No se pueden enviar notificaciones',
+    generalError: 'No se pudo enviar la notificación',
   },
-
   updateUser: {
-    successUpdatedUser: 'Usuario actualizado con éxito.',
+    successUpdatedUser: 'Usuario actualizado con éxito',
     updateUserError:
-      'No se pudo actualizar el registro del usuario. Por favor, inténtelo de nuevo.',
+      'No se pudo actualizar el registro del usuario. Por favor, intenta nuevamente.',
   },
 };

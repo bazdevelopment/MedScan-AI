@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 
 import { type IOnboardingCollectedData } from '@/app/onboarding';
 import { type ICollectedData } from '@/core/flows/upload-file-flow/upload-file-flow.interface';
@@ -42,7 +42,7 @@ const FlowModal = ({
 
   return (
     <View className="flex-1">
-      {onPending && (
+      {/* {onPending && (
         <ActivityIndicator
           size="large"
           style={{
@@ -51,7 +51,7 @@ const FlowModal = ({
             position: 'absolute',
           }}
         />
-      )}
+      )} */}
       {wrappedCurrentChild}
     </View>
   );

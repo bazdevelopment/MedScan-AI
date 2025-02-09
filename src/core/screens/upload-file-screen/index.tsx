@@ -95,7 +95,7 @@ const UploadFileScreen = ({
         >
           <Gallery color={colors.primary[900]} width={32} height={42} top={1} />
           <View className="mt-4">
-            <Text className="font-bold-nunito text-primary-900">
+            <Text className="text-center font-bold-nunito text-primary-900">
               {translate('flows.createReport.uploadFile.location')}
             </Text>
             <Text className="mt-1 text-center text-base text-gray-600">

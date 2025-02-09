@@ -44,7 +44,7 @@ const ScanningModal = ({
         ]}
         blurType="dark"
       />
-      <View className="flex-1 items-center justify-center  px-10">
+      <View className="flex-1 items-center justify-center px-10">
         <View>
           {isVideo ? (
             <View className="h-[300px] w-[300px]">

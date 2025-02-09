@@ -11,7 +11,6 @@ export interface ITranslation {
   auth: {
     signIn: string;
     signUp: string;
-    forgotPassword: string;
   };
   loginUserViaEmail: {
     mandatoryEmail: string;

@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 import { queryClient } from '@/api';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import FlowModal from '@/components/flow-modal';
-import Toast from '@/components/toast';
-import { translate, useSelectedLanguage } from '@/core';
+import { useSelectedLanguage } from '@/core';
 import { useIsFirstTime } from '@/core/hooks';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import FreeTrialPreview from '@/core/screens/free-trial-preview';
 import NamePreferenceScreen from '@/core/screens/name-preference-screen';
 import Paywall from '@/core/screens/paywall';
@@ -24,6 +24,7 @@ export default function Onboarding() {
   const { data: userInfo } = useUser(language);
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
+  const { logEvent, recordError } = useCrashlytics();
 
   const router = useRouter();
 
@@ -52,12 +53,22 @@ export default function Onboarding() {
         queryClient.setQueryData(['user-info'], (oldData) => ({
           ...oldData,
           isOnboarded: true,
-        })); //invalidate quey is not working here
+        }));
 
         setIsFirstTime(false);
         router.navigate('/(tabs)');
+        logEvent(
+          `User ${userInfo.userId} has been onboarded successfully and he selected ${collectedData.selectedPackage} plan and he is redirected to home screen`,
+        );
       })
-      .catch(() => Toast.error(translate('alerts.onboardingUnsuccessful')));
+      .catch(
+        (error) =>
+          recordError(
+            error,
+            'Failure on completing onboarding (but it can be false - known issue)',
+          ),
+        // Toast.error(translate('alerts.onboardingUnsuccessful'))
+      );
   };
 
   const handleGoToNextScreen = (newCollectedData: IOnboardingCollectedData) => {

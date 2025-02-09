@@ -1,6 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 import { type AxiosError } from 'axios';
 
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
+
 import { queryClient } from '../common';
 import { analyzeImageUsingAi, analyzeVideoUsingAi } from './image.requests';
 
@@ -22,18 +24,26 @@ export const useAnalyzeImage = ({
     createdDate,
   }: IAnalyzeImageParams) => void;
   language: string;
-}) =>
-  useMutation<Response, AxiosError, FormData>({
+}) => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return useMutation<Response, AxiosError, FormData>({
     mutationFn: (variables) => analyzeImageUsingAi(variables, language),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['recent-interpretations'] });
+      logEvent('Medical image has been analyzed successfully');
       onSuccessCallback({
         interpretationResult: data.interpretationResult,
         promptMessage: data.promptMessage,
         createdDate: data.createdAt,
       });
     },
+    onError: (error) => {
+      logEvent('Failure when analyzing medical image', 'error');
+      recordError(error, 'Failure when analyzing medical image');
+    },
   });
+};
 
 export const useAnalyzeVideo = ({
   onSuccessCallback,
@@ -45,16 +55,22 @@ export const useAnalyzeVideo = ({
     promptMessage,
     createdDate,
   }: IAnalyzeImageParams) => void;
-}) =>
-  useMutation<Response, AxiosError, FormData>({
+}) => {
+  const { logEvent, recordError } = useCrashlytics();
+  return useMutation<Response, AxiosError, FormData>({
     mutationFn: (variables) => analyzeVideoUsingAi(variables, language),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['recent-interpretations'] });
-
       onSuccessCallback({
         interpretationResult: data.interpretationResult,
         promptMessage: data.promptMessage,
         createdDate: data.createdAt,
       });
+      logEvent('Medical video has been analyzed successfully');
+    },
+    onError: (error) => {
+      logEvent('Failure when analyzing medical vide', 'error');
+      recordError(error, 'Failure when analyzing medical video');
     },
   });
+};

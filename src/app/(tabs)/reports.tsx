@@ -57,7 +57,8 @@ const Reports = () => {
   const {
     mutate: onUpdateInterpretationFields,
     isPending: isUpdateTitlePending,
-  } = useUpdateInterpretationFields()();
+  } = useUpdateInterpretationFields();
+
   const { panResponder } = useWeekPanSwipe({
     onChangeWeekOffset: changeWeekOffset,
   });

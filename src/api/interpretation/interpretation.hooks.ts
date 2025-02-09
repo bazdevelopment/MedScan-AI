@@ -3,6 +3,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
 import { translate } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { type IInterpretationRecord } from '@/types/interpretation-report';
 
 import { queryClient } from '../common';
@@ -34,21 +35,28 @@ export const useInterpretationByDate = (variables: IPayload) =>
     fetcher: () => getInterpretationByDate(variables),
   });
 
-export const useUpdateInterpretationFields = () =>
-  createMutation<Response, any, AxiosError>({
+export const useUpdateInterpretationFields = () => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<Response, any, AxiosError>({
     mutationFn: (variables) => updateInterpretationFields(variables),
     onSuccess: (data) => {
       Toast.success(data.message);
       queryClient.refetchQueries({
         queryKey: ['interpretations-by-date'],
       });
+
+      logEvent('Successfully updated interpretation fields');
     },
     onError: (error) => {
       Toast.error(
         error.message || translate('alerts.interpretationFieldsUpdateFail'),
       );
+      logEvent('Failure when updating interpretation fields', 'error');
+      recordError(error, 'Failure when updating interpretation fields');
     },
-  });
+  })();
+};
 
 export const useInterpretationById = (variables: IInterpretationById) =>
   createQuery<any, IInterpretationById, AxiosError>({

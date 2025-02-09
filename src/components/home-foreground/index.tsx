@@ -11,6 +11,7 @@ import Animated, {
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import { translate, useSelectedLanguage } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, Text } from '@/ui';
 import { BellIcon, UploadIcon } from '@/ui/assets/icons';
@@ -30,10 +31,12 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { isVerySmallDevice } = getDeviceSizeCategory();
 
   const { data: userInfo } = useUser(language);
+
   const { data: userNotifications } = useFetchUserNotifications({
     userId: userInfo?.userId,
     language,
   })();
+  const { logEvent } = useCrashlytics();
 
   const unReadMessages = userNotifications?.notifications.filter(
     (notification: INotificationItem) => !notification.isRead,
@@ -41,9 +44,16 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
 
   const onStartUploadMediaFile = () => {
     if (userInfo?.scansRemaining <= 0) {
+      logEvent(
+        `Alert informing user - ${userInfo.userId} that there are no scans available is displayed`,
+      );
       return alert(translate('home.homeForeground.maxNumberOfScans'));
     }
+
     router.navigate('/upload-file-flow');
+    logEvent(
+      `User - ${userInfo.userId} pressed the 'Upload scan' button from home screen and he is redirected to the upload file flow`,
+    );
   };
 
   const foregroundWrapperAnimatedStyle = useAnimatedStyle(() => {

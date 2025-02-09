@@ -26,7 +26,6 @@ export const usePushNotificationSetup = () => {
         const { status: existingStatus } =
           await Notifications.getPermissionsAsync();
 
-        // if (existingStatus === 'denied') return;
         if (existingStatus !== 'granted') {
           // Request notification permissions if not already granted
           const { status } = await Notifications.requestPermissionsAsync();
@@ -82,11 +81,12 @@ export const usePushNotificationSetup = () => {
         });
 
         if (response.success && existingStatus === 'granted') {
-          // Update state to reflect that notifications are enabled
+          // Update state and MMKV storage to reflect that notifications are enabled
           setArePushNotificationsEnabled(true);
+          // storage.set('arePushNotificationsEnabled', 'true');
           console.log('Push notifications enabled successfully');
         } else {
-          //todo add a crashlytics log maybe
+          // Log failure and show a warning toast
           Toast.warning(translate('alerts.enableNotificationFailed'), {
             action: {
               label: translate('general.openSettings'),
@@ -101,7 +101,6 @@ export const usePushNotificationSetup = () => {
           });
         }
       } catch (error) {
-        // console.error('Error enabling push notifications:', error);
         Toast.error(translate('alerts.enableNotificationError'));
       }
     },
@@ -113,7 +112,9 @@ export const usePushNotificationSetup = () => {
       const response = await storeMobileDeviceToken('');
 
       if (response.success) {
+        // Update state and MMKV storage to reflect that notifications are disabled
         setArePushNotificationsEnabled(false);
+        // storage.set('arePushNotificationsEnabled', 'false');
         Toast.success(translate('alerts.notificationDisabledSuccess'));
       } else {
         Toast.success(translate('alerts.notificationDisabledRegisterError'));
@@ -126,6 +127,11 @@ export const usePushNotificationSetup = () => {
   const checkIfNotificationsEnabled = async (): Promise<void> => {
     try {
       const { status } = await Notifications.getPermissionsAsync();
+
+      // Check MMKV storage for the notification preference
+      // const areNotificationsEnabled =
+      //   storage.getString('arePushNotificationsEnabled') === 'true';
+      // console.log('areNotificationsEnabled', areNotificationsEnabled);
       if (status === 'granted') {
         setArePushNotificationsEnabled(true);
       } else {

@@ -1,12 +1,15 @@
 /* eslint-disable max-lines-per-function */
 import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
+import { useUser } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { DEVICE_TYPE, translate } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import {
   Button,
   colors,
@@ -58,7 +61,12 @@ const Paywall = ({
   const [selectedPlan, setSelectedPlan] = React.useState(2);
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const {
+    i18n: { language },
+  } = useTranslation();
+  const { data: userInfo } = useUser(language);
   const [isSubmit, setIsSubmit] = useState(false);
+  const { logEvent } = useCrashlytics();
 
   const onSelect = (planId: number) => setSelectedPlan(planId);
 
@@ -127,6 +135,9 @@ const Paywall = ({
             onPress={() => {
               setIsSubmit(!isSubmit);
               onFinish({ selectedPackage: selectedPlan });
+              logEvent(
+                `User ${userInfo.userId} selected ${selectedPlan} plan in paywall`,
+              );
             }}
             loading={isSubmit}
           />

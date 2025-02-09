@@ -22,7 +22,7 @@ const VerifyEmailForm = () => {
 
   const { mutate: handleSubmitEmail, isPending } = useSendVerificationCode({
     email,
-  })();
+  });
 
   return (
     <>

@@ -29,11 +29,11 @@ const VerifyAuthCode = () => {
     mutate: onVerifyAuthCode,
     isPending,
     isError,
-  } = useValidateAuthCode()();
+  } = useValidateAuthCode();
   const userEmail = email || firebaseAuth.currentUser?.email;
 
   const { mutate: handleLoginViaEmail, isPending: isResendCodePending } =
-    useLoginWithEmail({ email: userEmail })();
+    useLoginWithEmail({ email: userEmail as string })();
 
   const handleVerifyAuthCode = (authenticationCode: string) =>
     onVerifyAuthCode({

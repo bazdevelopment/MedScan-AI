@@ -3,6 +3,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
 import { translate } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 
 import { queryClient } from '../common';
 import {
@@ -36,33 +37,43 @@ type TUniqueIdentifierPayload = {
   language: string;
 };
 
-export const useSendGlobalPushNotifications = createMutation<
-  IGlobalNotificationsResponse,
-  TVariables,
-  AxiosError
->({
-  mutationFn: (variables) => sendGlobalPushNotifications(variables),
-  onSuccess: () => {
-    Toast.success(translate('alerts.globalPushNotificationSuccess'));
-  },
-  onError: (error) => {
-    Toast.error(error.message);
-  },
-});
+export const useSendGlobalPushNotifications = () => {
+  const { logEvent, recordError } = useCrashlytics();
 
-export const useSendIndividualPushNotification = createMutation<
-  IGlobalNotificationsResponse,
-  TVariablesIndividualNotification,
-  AxiosError
->({
-  mutationFn: (variables) => sendIndividualPushNotification(variables),
-  onSuccess: () => {
-    Toast.success(translate('alerts.individualPushNotificationSuccess'));
-  },
-  onError: (error) => {
-    Toast.error(error.message);
-  },
-});
+  return createMutation<IGlobalNotificationsResponse, TVariables, AxiosError>({
+    mutationFn: (variables) => sendGlobalPushNotifications(variables),
+    onSuccess: () => {
+      Toast.success(translate('alerts.globalPushNotificationSuccess'));
+      logEvent('Successfully sent global push notification');
+    },
+    onError: (error) => {
+      Toast.error(error.message);
+      logEvent('Failure when sending global push notification', 'error');
+      recordError(error, 'Failure when sending global push notification');
+    },
+  })();
+};
+
+export const useSendIndividualPushNotification = () => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<
+    IGlobalNotificationsResponse,
+    TVariablesIndividualNotification,
+    AxiosError
+  >({
+    mutationFn: (variables) => sendIndividualPushNotification(variables),
+    onSuccess: () => {
+      Toast.success(translate('alerts.individualPushNotificationSuccess'));
+      logEvent('Successfully sent individual push notification');
+    },
+    onError: (error) => {
+      Toast.error(error.message);
+      logEvent('Failure when sending individual push notification', 'error');
+      recordError(error, 'Failure when sending individual push notification');
+    },
+  })();
+};
 
 export const useFetchUserNotifications = (variables: {
   userId: string;
@@ -86,18 +97,25 @@ export const useDeviceInfoByUniqueIdentifier = (
       ),
   });
 
-export const useMarkNotificationAsRead = createMutation<
-  IMarkNotificationAsReadResponse,
-  TMarkNotificationAsRead,
-  AxiosError
->({
-  mutationFn: (variables) => markNotificationAsRead(variables),
-  onSuccess: () => {
-    queryClient.invalidateQueries({
-      queryKey: ['individual-user-notifications'],
-    });
-  },
-  onError: (error) => {
-    Toast.error(error.message);
-  },
-});
+export const useMarkNotificationAsRead = () => {
+  const { logEvent, recordError } = useCrashlytics();
+  return createMutation<
+    IMarkNotificationAsReadResponse,
+    TMarkNotificationAsRead,
+    AxiosError
+  >({
+    mutationFn: (variables) => markNotificationAsRead(variables),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['individual-user-notifications'],
+      });
+
+      logEvent('Notification has been marked as read successfully');
+    },
+    onError: (error) => {
+      Toast.error(error.message);
+      logEvent('Failure when notification is mark as read', 'error');
+      recordError(error, 'Failure when notification is mark as read');
+    },
+  })();
+};

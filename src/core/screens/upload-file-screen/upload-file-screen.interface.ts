@@ -4,6 +4,7 @@ export interface IGalleryOption {
   label: string;
   id: number;
   icon: ReactElement;
+  title: string;
 }
 
 export interface IUploadFileOptions {

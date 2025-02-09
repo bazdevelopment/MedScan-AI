@@ -10,6 +10,7 @@ import { TouchableOpacity, View } from 'react-native';
 
 import CustomHeader from '@/components/cusom-header';
 import ProgressBar from '@/components/progress-bar';
+import { MEDIA_PICKER } from '@/constants/media-picker';
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
 import { translate } from '@/core/i18n';
 import { Button, colors, Modal, RoundedButton, Text, useModal } from '@/ui';
@@ -36,7 +37,7 @@ const UploadFileScreen = ({
     useMediaPiker({ onUploadFinished: goToNextScreen });
 
   const onSelectFileUploadMethod = (method: string) => {
-    if (method.includes('Gallery')) {
+    if (method.includes(MEDIA_PICKER.GALLERY)) {
       onChooseImageFromGallery();
     } else {
       onChooseFromFiles();
@@ -46,12 +47,14 @@ const UploadFileScreen = ({
 
   const galleryOptions = [
     {
-      label: translate('general.gallery'),
+      label: MEDIA_PICKER.GALLERY, //do not translate this,
+      title: translate('general.gallery'),
       id: 1,
       icon: <Gallery width={27} height={27} color={colors.primary[900]} />,
     },
     {
-      label: translate('general.files'),
+      label: MEDIA_PICKER.FILES, //do not translate this
+      title: translate('general.files'),
       id: 2,
       icon: <PaperClip width={27} height={27} color={colors.primary[900]} />,
     },
@@ -163,7 +166,7 @@ export const UploadFileOptionsModal = React.forwardRef<
             <RoundedButton
               icon={option.icon}
               key={option.id}
-              label={option.label}
+              label={option.title}
               onPress={() => onSelect(option.label)}
               textClassName="dark:text-white"
             />

@@ -5,8 +5,7 @@ import React, { useState } from 'react';
 import { queryClient } from '@/api';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import FlowModal from '@/components/flow-modal';
-import Toast from '@/components/toast';
-import { translate, useSelectedLanguage } from '@/core';
+import { useSelectedLanguage } from '@/core';
 import { useIsFirstTime } from '@/core/hooks';
 import FreeTrialPreview from '@/core/screens/free-trial-preview';
 import NamePreferenceScreen from '@/core/screens/name-preference-screen';
@@ -47,17 +46,16 @@ export default function Onboarding() {
           userName: collectedData.preferredName,
         }),
       },
-    })
-      .then(() => {
-        queryClient.setQueryData(['user-info'], (oldData) => ({
-          ...oldData,
-          isOnboarded: true,
-        })); //invalidate quey is not working here
+    }).then(() => {
+      queryClient.setQueryData(['user-info'], (oldData) => ({
+        ...oldData,
+        isOnboarded: true,
+      })); //invalidate quey is not working here
 
-        setIsFirstTime(false);
-        router.navigate('/(tabs)');
-      })
-      .catch(() => Toast.error(translate('alerts.onboardingUnsuccessful')));
+      setIsFirstTime(false);
+      router.navigate('/(tabs)');
+    });
+    // .catch(() => Toast.error(translate('alerts.onboardingUnsuccessful')));
   };
 
   const handleGoToNextScreen = (newCollectedData: IOnboardingCollectedData) => {

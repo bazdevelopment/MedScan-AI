@@ -74,7 +74,7 @@ export default function Home() {
   const {
     mutate: onUpdateInterpretationFields,
     isPending: isUpdateTitlePending,
-  } = useUpdateInterpretationFields()();
+  } = useUpdateInterpretationFields();
 
   const {
     onMomentumScrollEnd,

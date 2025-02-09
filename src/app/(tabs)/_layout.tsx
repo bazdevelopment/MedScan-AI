@@ -13,6 +13,7 @@ import CustomHeader from '@/components/cusom-header';
 import InitialLoadSpinner from '@/components/initial-load-spinner.ts';
 import { TabBarIcon } from '@/components/tab-bar-icon';
 import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
@@ -28,12 +29,14 @@ export default function TabLayout() {
   const modal = useModal();
   const { language } = useSelectedLanguage();
   const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
+
   const [isFirstTime] = useIsFirstTime();
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
   const { isConnected } = useNetInfo();
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
+  const { logEvent } = useCrashlytics();
 
   const { arePushNotificationEnabled, enablePushNotifications } =
     usePushNotificationSetup(); //todo: check if here is the best place to call the hook
@@ -92,13 +95,18 @@ export default function TabLayout() {
   if (isPendingUserinfo) return <InitialLoadSpinner />;
 
   if (isFirstTime && !isLoggedIn) {
+    logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);
     return <Redirect href="/welcome" />;
   }
   if (!isFirstTime && !isLoggedIn) {
+    logEvent(`User ${userInfo?.userId} is redirected to login screen`);
     return <Redirect href="/login" />;
   }
 
   if (!userInfo?.isOtpVerified) {
+    logEvent(
+      `User ${userInfo?.userId} is redirected to verify auth code screen`,
+    );
     return <Redirect href="/verify-auth-code" />;
   }
 
@@ -110,10 +118,12 @@ export default function TabLayout() {
       userInfo?.isOtpVerified) ||
     (isFirstTime && isLoggedIn && !userInfo?.isOnboarded)
   ) {
+    logEvent(`User ${userInfo?.userId} is redirected to onboarding screen`);
     return <Redirect href="/onboarding" />;
   }
 
   if (!isLoggedIn) {
+    logEvent(`User ${userInfo?.userId} is redirected to login screen`);
     return <Redirect href="/login" />;
   }
 
@@ -131,7 +141,14 @@ export default function TabLayout() {
           <Tabs.Screen
             key={tab.id}
             name={tab.screenName}
-            listeners={{ tabPress: addSelectionHapticEffect }}
+            listeners={{
+              tabPress: () => {
+                addSelectionHapticEffect?.();
+                logEvent(
+                  `User ${userInfo.userId} navigated to ${tab.screenName}`,
+                );
+              },
+            }}
             options={{
               header: (props) =>
                 tab.header && (

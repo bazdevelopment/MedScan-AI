@@ -4,6 +4,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
 import { translate } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 
 import { queryClient } from '../common';
 import {
@@ -45,22 +46,37 @@ export const useCreateAnonymousAccount = createMutation<
   },
 });
 
-export const useLoginWithEmail = (variables: { email: string }) =>
-  createMutation<Response, any, AxiosError>({
+export const useLoginWithEmail = (variables: { email: string }) => {
+  const { setUser, logEvent, recordError } = useCrashlytics();
+
+  return createMutation<Response, any, AxiosError>({
     mutationFn: (variables) => loginWithEmail(variables),
-    onSuccess: () => {
-      Toast.success(
-        "We've sent a verification code to your email. Please check your inbox.",
+    onSuccess: (data) => {
+      logEvent(
+        'Login with email successful and user is redirected to the auth verification screen',
       );
+
+      Toast.success(
+        `${translate(`rootLayout.screens.verifyAuthCode.verificationCodeSent`)} ${variables.email}`,
+      );
+
+      // Set the user in Crashlytics (if you have a userId in the response)
+      if (data.user.uid) {
+        setUser(data.user.uid);
+      }
       router.navigate({
         pathname: '/verify-auth-code',
         params: { email: variables.email },
       });
     },
+
     onError: (error) => {
+      logEvent('Login with email failed', 'error');
+      recordError(error, 'Login with email failed');
       Toast.error(error.message || translate('alerts.emailLoginError'));
     },
   });
+};
 
 export const useUser = (language: string) =>
   createQuery<Response, any, AxiosError>({
@@ -68,72 +84,96 @@ export const useUser = (language: string) =>
     fetcher: () => getUserInfo({ language }), // Pass variables to the fetcher function
   })();
 
-export const useSendVerificationCode = ({ email }: { email: string }) =>
-  createMutation<Response, ISendOtpCodeVariables, AxiosError>({
+export const useSendVerificationCode = ({ email }: { email: string }) => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<Response, ISendOtpCodeVariables, AxiosError>({
     mutationFn: (variables) => sendOtpCodeViaEmail(variables),
     onSuccess: (data) => {
       Toast.success(data.message);
       router.navigate({ pathname: '/verify-auth-code', params: { email } });
+      logEvent(
+        'Verification code has been send successfully and user redirected to the verify auth screen',
+      );
     },
     onError: (error) => {
       Toast.error(
         error.message || translate('alerts.sendVerificationCodeError'),
       );
+      logEvent('Sending verification failed', 'error');
+      recordError(error, 'Sending verification failed');
     },
-  });
+  })();
+};
 
-export const useValidateAuthCode = () =>
-  createMutation<Response, IValidateAuthCode, AxiosError>({
+export const useValidateAuthCode = () => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<Response, IValidateAuthCode, AxiosError>({
     mutationFn: (variables) => validateVerificationCode(variables),
     onSuccess: () => {
-      queryClient.setQueryData(['user-info'], (oldData) => ({
-        ...oldData,
-        isOtpVerified: true,
-      })); //invalidate quey is not working here901152
-
       router.navigate('/(tabs)');
+      logEvent(
+        'Authentication code has been validated and user is redirected to home or onboarding',
+      );
     },
     onError: (error) => {
       Toast.error(error.message || translate('alerts.validateAuthCodeError'));
+      logEvent('Validating authentication code failed', 'error');
+      recordError(error, 'Validating authentication code failed');
     },
-  });
+  })();
+};
 
-export const useDecrementScans = createMutation<
-  Response,
-  { language: string },
-  AxiosError
->({
-  mutationFn: (variables) => decrementNumberOfScans(variables),
-  onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['user-info'] });
-  },
-  onError: (error) => {
-    Toast.error(error.message || translate('alerts.validateAuthCodeError'));
-  },
-});
+export const useDecrementScans = () => {
+  const { logEvent, recordError } = useCrashlytics();
 
-export const useUserPreferredLanguage = createMutation<
-  Response,
-  { language: string },
-  AxiosError
->({
-  mutationFn: (variables) => updateUserPreferredLanguage(variables),
-  onSuccess: () => {},
-  onError: (error) => {
-    Toast.error(error.message || translate('alerts.preferredLanguageError'));
-  },
-});
+  return createMutation<Response, { language: string }, AxiosError>({
+    mutationFn: (variables) => decrementNumberOfScans(variables),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user-info'] });
+      logEvent('The number of scans has been decremented');
+    },
+    onError: (error) => {
+      Toast.error(error.message || translate('alerts.validateAuthCodeError'));
+      logEvent('Failed to decrement the number of scans, "error');
+      recordError(error, 'Failed to decrement the number of scans');
+    },
+  })();
+};
 
-export const useUpdateUser = createMutation<
-  Response,
-  { language: string; userId: string; fieldsToUpdate: object },
-  AxiosError
->({
-  mutationFn: (variables) => updateUserInfo(variables),
-  onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['user-info'] });
-  },
-  onError: (error) => {
-    Toast.error(error.message || translate('alerts.preferredLanguageError'));
-  },
-});
+export const useUserPreferredLanguage = () => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<Response, { language: string }, AxiosError>({
+    mutationFn: (variables) => updateUserPreferredLanguage(variables),
+    onSuccess: () => {
+      logEvent('Preferred language saved successfully');
+    },
+    onError: (error) => {
+      Toast.error(error.message || translate('alerts.preferredLanguageError'));
+      recordError(error, 'Error on saving the preferred user language');
+    },
+  })();
+};
+
+export const useUpdateUser = () => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<
+    Response,
+    { language: string; userId: string; fieldsToUpdate: object },
+    AxiosError
+  >({
+    mutationFn: (variables) => updateUserInfo(variables),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user-info'] });
+      logEvent(`Successfully updated user with the new fields`, 'info');
+    },
+    onError: (error) => {
+      Toast.error(error.message || translate('alerts.preferredLanguageError'));
+      logEvent(`Error when the user is updated with new fields`, 'error');
+      recordError(error, 'Error when the user is updated with new fields');
+    },
+  })();
+};

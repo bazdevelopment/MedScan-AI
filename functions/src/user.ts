@@ -351,10 +351,13 @@ const verifyAuthenticationCodeHandler = async (
       isOtpVerified: true,
     });
 
-    await admin.auth().updateUser(context.auth.uid, {
-      email,
-      emailVerified: true,
-    });
+    /* 
+    !the line below is causing issue on android (500 when trying to fetch user info for the first time in tabs layout, second time or after a app refresh it works)
+    */
+    // await admin.auth().updateUser(context.auth.uid, {
+    //   email,
+    //   emailVerified: true,
+    // });
 
     return {
       success: true,
@@ -550,7 +553,6 @@ const getUserInfo = async (data: { language: string }, context: any) => {
 
     const userId = context.auth?.uid;
     const userInfoData = await getUserInfoById(userId, data.language);
-
     return {
       ...userInfoData,
       verificationCodeExpiry: userInfoData?.verificationCodeExpiry
@@ -562,7 +564,6 @@ const getUserInfo = async (data: { language: string }, context: any) => {
     };
   } catch (error: any) {
     t = t || getTranslation('en');
-
     throw new functions.https.HttpsError(
       'internal',
       t.getUserInfo.errorGetInfo,

@@ -12,6 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useUser } from '@/api/user/user.hooks';
 import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
+import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { Button, colors, View } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 
@@ -26,13 +27,21 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const { language } = useSelectedLanguage();
+  const { logEvent } = useCrashlytics();
+
   const { data: userInfo } = useUser(language);
 
   const onStartUploadMediaFile = () => {
     if (userInfo?.scansRemaining <= 0) {
+      logEvent(
+        `Alert informing user - ${userInfo.userId} that there are no scans available is displayed in home header bar`,
+      );
       alert(translate('home.homeForeground.maxNumberOfScans'));
     }
     router.navigate('/upload-file-flow');
+    logEvent(
+      `User - ${userInfo.userId} pressed the 'Upload scan' button from home header bar and he is redirected to the upload file flow`,
+    );
   };
 
   const headerContainerAnimatedStyle = useAnimatedStyle(() => {

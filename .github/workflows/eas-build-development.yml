@@ -61,6 +61,7 @@ jobs:
           echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
           echo "RESEND_API_KEY=${{secrets.RESEND_API_KEY}}" >> $ENV_FILE
           echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
+          echo "RESEND_SENDER_EMAIL=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
 
       - name: 🧑‍💻 Decode google services
         run: |

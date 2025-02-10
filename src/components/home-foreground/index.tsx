@@ -99,8 +99,10 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             />
 
             <View className="ml-4 gap-3">
-              <View className="flex-row items-center gap-1">
-                <Text className="font-semibold-nunito text-2xl text-white">{`${translate('general.welcome')}, ${userInfo?.userName}!`}</Text>
+              <View className="max-w-[220] flex-row items-center gap-1">
+                <Text className="font-semibold-nunito text-2xl text-white">
+                  {`${translate('general.welcome')}, ${userInfo?.userName}!`}
+                </Text>
                 <Text className="text-2xl">👋</Text>
               </View>
               <Text className="text-sm text-white">

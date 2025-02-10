@@ -10,5 +10,5 @@ export interface IAvatar {
   textClassName?: string;
   style?: object;
   withBorder?: boolean;
-  isEditable: boolean;
+  isEditable?: boolean;
 }

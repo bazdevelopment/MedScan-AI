@@ -60,6 +60,7 @@ const ScanCategoriesStories: React.FC<{
         ref={ref}
         stories={stories}
         avatarSize={65}
+        containerStyle={{ marginTop: -20 }}
         avatarListContainerStyle={{
           paddingRight: 16,
         }}

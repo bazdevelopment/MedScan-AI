@@ -80,11 +80,12 @@ const client = z.object({
 
   // ADD YOUR CLIENT ENV VARS HERE
 
-  GOOGLE_SERVICES_JSON_PATH:z.string().optional(), // optional for CI
-  GOOGLE_SERVICES_PLIST_PATH:z.string().optional(), // optional for CI
-  ANTHROPIC_API_KEY:z.string().optional(), // optional for CI
-  RESEND_API_KEY:z.string().optional(), // optional for CI
-  RESEND_SENDER_EMAIL:z.string().optional() // optional for CI
+  GOOGLE_SERVICES_JSON_PATH:z.string().optional(), 
+  GOOGLE_SERVICES_PLIST_PATH:z.string().optional(),
+  ANTHROPIC_API_KEY:z.string().optional(),
+  RESEND_API_KEY:z.string().optional(),
+  RESEND_SENDER_EMAIL:z.string().optional(),
+  TEST_ACCOUNT:z.string().optional() 
 });
 
 const buildTime = z.object({
@@ -111,7 +112,8 @@ const _clientEnv = {
   GOOGLE_SERVICES_PLIST_PATH:process.env.GOOGLE_SERVICES_PLIST_PATH,
   ANTHROPIC_API_KEY:process.env.ANTHROPIC_API_KEY,
   RESEND_API_KEY:process.env.RESEND_API_KEY,
-  RESEND_SENDER_EMAIL:process.env.RESEND_SENDER_EMAIL
+  RESEND_SENDER_EMAIL:process.env.RESEND_SENDER_EMAIL,
+  TEST_ACCOUNT:process.env.RESEND_SENDER_EMAIL
 };
 
 /**

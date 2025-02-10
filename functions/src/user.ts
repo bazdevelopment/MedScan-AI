@@ -152,17 +152,18 @@ const loginUserViaEmailHandler = async (data: {
     }
     const customToken = await admin.auth().createCustomToken(userId);
 
-    // Here you would typically send the verification code via email
-    // await sendVerificationEmail(data.email, verificationCode);
-
-    await sendOtpCodeViaEmail({
-      receiverEmail: data.email,
-      subject: 'Your X-Ray Analyzer Verification Code',
-      htmlTemplate: generateOptCodeTemplate(
-        truncateEmailAddress(data.email),
-        verificationCode,
-      ),
-    });
+    // Check if the email is the special email to avoid sending the verification code
+    // test account is needed for apple so sending code via email is not needed
+    if (data.email !== process.env.TEST_ACCOUNT) {
+      await sendOtpCodeViaEmail({
+        receiverEmail: data.email,
+        subject: 'Your X-Ray Analyzer Verification Code',
+        htmlTemplate: generateOptCodeTemplate(
+          truncateEmailAddress(data.email),
+          verificationCode,
+        ),
+      });
+    }
 
     return {
       userId,

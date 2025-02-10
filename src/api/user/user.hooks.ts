@@ -4,6 +4,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
 import { translate } from '@/core';
+import { Env } from '@/core/env';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 
 import { queryClient } from '../common';
@@ -65,7 +66,10 @@ export const useLoginWithEmail = (variables: { email: string }) => {
         setUser(data.user.uid);
       }
       router.navigate({
-        pathname: '/verify-auth-code',
+        pathname:
+          variables.email === Env.TEST_ACCOUNT
+            ? '/(tabs)/'
+            : '/verify-auth-code',
         params: { email: variables.email },
       });
     },

@@ -20,7 +20,7 @@ const NotificationGroup = ({
     notificationId: string;
   }) => void;
 }) => (
-  <View className="mt-6 px-6">
+  <View className="mt-6 px-4">
     <Text className="mb-2 font-semibold-nunito text-lg">{date}</Text>
     <View className="rounded-2xl">
       {notifications.map((notification: INotificationItem, index: number) => {

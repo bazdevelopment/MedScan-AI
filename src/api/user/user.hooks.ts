@@ -65,6 +65,7 @@ export const useLoginWithEmail = (variables: { email: string }) => {
       if (data.user.uid) {
         setUser(data.user.uid);
       }
+
       router.navigate({
         pathname:
           variables.email === Env.TEST_ACCOUNT

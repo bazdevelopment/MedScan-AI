@@ -59,6 +59,7 @@ export interface NInputProps extends TextInputProps {
   error?: string;
   icon?: React.ReactElement;
   textClassName?: string;
+  containerClassName?: string;
 }
 
 type TRule<T extends FieldValues> =
@@ -80,7 +81,15 @@ interface ControlledInputProps<T extends FieldValues>
     InputControllerType<T> {}
 
 export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
-  const { label, error, testID, icon, textClassName, ...inputProps } = props;
+  const {
+    label,
+    error,
+    testID,
+    icon,
+    textClassName,
+    containerClassName,
+    ...inputProps
+  } = props;
   const [isFocussed, setIsFocussed] = React.useState(false);
   const onBlur = React.useCallback(() => setIsFocussed(false), []);
   const onFocus = React.useCallback(() => setIsFocussed(true), []);
@@ -105,7 +114,7 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
           {label}
         </Text>
       )}
-      <View className={styles.input()}>
+      <View className={`${styles.input()} ${containerClassName}`}>
         {!!icon && (
           <Icon
             icon={<MailIcon />}

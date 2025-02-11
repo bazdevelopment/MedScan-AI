@@ -132,6 +132,22 @@ export default function RootLayout() {
             ),
           }}
         />
+        <Stack.Screen
+          name="upload-file-flow"
+          options={{
+            headerTitle: () => null,
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('uploadScan.title')}
+                className="bg-white"
+                titlePosition="center"
+                onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.blackBeauty}
+              />
+            ),
+          }}
+        />
 
         <Stack.Screen
           name="file-preview"

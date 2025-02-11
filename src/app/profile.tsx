@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
@@ -53,8 +53,6 @@ const Profile = () => {
             isEditable={false} //!todo: for now upload picture should be disabled due to privacy politics
           />
 
-          {isPendingUpdateUser && <ActivityIndicator />}
-
           <Text className="top-[-30] text-center font-semibold-nunito text-2xl">
             {userInfo.userName}
           </Text>
@@ -101,7 +99,7 @@ const Profile = () => {
                   label={translate('general.close')}
                   variant="default"
                   icon={<CloseIcon fill={colors.white} />}
-                  className="mt-6 h-[62px] flex-1 gap-1 rounded-xl bg-black pl-5 active:bg-primary-700 dark:bg-primary-900"
+                  className="mt-6 h-[62px] flex-1 gap-1 rounded-xl bg-black pl-5 active:bg-primary-700 dark:bg-charcoal-600 dark:active:bg-charcoal-400"
                   textClassName="text-lg text-center text-white dark:text-white"
                   iconPosition="right"
                   onPress={() => setEditModeEnabled(!editModeEnabled)}
@@ -114,6 +112,8 @@ const Profile = () => {
                   textClassName="text-lg text-center text-white dark:text-white"
                   iconPosition="right"
                   onPress={handleSubmit}
+                  loading={isPendingUpdateUser}
+                  disabled={profileInfo.userName === userInfo.userName}
                 />
               </View>
             )}

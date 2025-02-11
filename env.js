@@ -113,7 +113,7 @@ const _clientEnv = {
   ANTHROPIC_API_KEY:process.env.ANTHROPIC_API_KEY,
   RESEND_API_KEY:process.env.RESEND_API_KEY,
   RESEND_SENDER_EMAIL:process.env.RESEND_SENDER_EMAIL,
-  TEST_ACCOUNT:process.env.RESEND_SENDER_EMAIL
+  TEST_ACCOUNT:process.env.TEST_ACCOUNT
 };
 
 /**

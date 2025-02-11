@@ -172,7 +172,8 @@ const FilePreviewScreen = ({
 
         <View className="px-6 pt-10 dark:bg-black">
           <AttachmentPreview
-            filePath={mediaSource}
+            filePath={mediaSource as string}
+            fileMimeType={collectedData.fileMimeType as string}
             isVideo={isVideo}
             additionalImageStyles="h-[180px]"
             additionalVideoStyles={{

@@ -149,6 +149,10 @@ export const analyzeImage = async (req: Request, res: any) => {
         promptMessage,
         title: '',
       });
+
+      await userDoc.update({
+        completedScans: admin.firestore.FieldValue.increment(1),
+      });
     } catch (error) {
       console.error('Error saving analysis metadata to Firestore:', error);
       return res.status(500).json({
@@ -186,6 +190,8 @@ export const analyzeVideo = async (req: Request, res: any) => {
 
     const { files, fields } = await processUploadedFile(req);
     const { userId, promptMessage } = fields;
+
+    const userDoc = db.collection('users').doc(userId);
 
     const languageAbbreviation = req.headers['accept-language'];
     const preferredLanguage =
@@ -290,6 +296,10 @@ export const analyzeVideo = async (req: Request, res: any) => {
         mimeType: videoFile.mimeType,
         promptMessage,
         title: '',
+      });
+
+      await userDoc.update({
+        completedScans: admin.firestore.FieldValue.increment(1),
       });
     } catch (error) {
       console.error('Error saving analysis metadata to Firestore:', error);

@@ -131,7 +131,7 @@ export default function Home() {
             onUpgrade={() => router.navigate('/paywall')}
           />
 
-          <Text className="mx-6 mb-3 mt-8 font-semibold-nunito">
+          <Text className="mx-4 mb-3 mt-8 font-semibold-nunito">
             {translate('home.scanCategories.heading')}
           </Text>
 
@@ -149,7 +149,7 @@ export default function Home() {
             recentInterpretations={recentInterpretations}
             onUpdateInterpretationFields={onUpdateInterpretationFields}
             isUpdateTitlePending={isUpdateTitlePending}
-            className="mx-6"
+            className="mx-4"
           />
         </View>
       </ParallaxScrollView>

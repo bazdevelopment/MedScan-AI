@@ -25,6 +25,7 @@
     "next": "Next",
     "update": "Update",
     "tryAgain": "Try again",
+    "createdAt": "Created At",
     "and": "and",
     "copyText": {
       "loading": "Copying...",
@@ -181,6 +182,10 @@
   "deleteApp": {
     "title": "Wait! Don't delete me!",
     "subtitle": "Send a feedback instead"
+  },
+
+  "pdfPreview": {
+    "noEditorInstalled": "To preview the PDF, ensure you have a PDF viewer installed, like Adobe Acrobat Reader or Google PDF Viewer"
   },
 
   "flows": {

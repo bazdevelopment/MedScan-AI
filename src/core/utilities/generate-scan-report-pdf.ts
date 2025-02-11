@@ -4,6 +4,8 @@ import { Image, Platform } from 'react-native';
 
 import { colors } from '@/ui';
 
+import { translate } from '../i18n';
+
 const getAndroidReleaseImageURI = (assetName: string) =>
   `file:///android_res/drawable/${assetName}`;
 
@@ -39,7 +41,7 @@ export const generateScanReportPdf = ({
     <title>Document Analysis Report</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Nunito-Sans, sans-serif;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -63,7 +65,8 @@ export const generateScanReportPdf = ({
         .branding-text{
         display:flex;
         flex-direction:column;
-        margin-top:-20px;
+        margin-top:-10px;
+        margin-left:5px;
         }
 
         .background-overlay{
@@ -116,28 +119,30 @@ export const generateScanReportPdf = ({
         <div class="header">
             <img src=${logo} alt="X-Ray Analyzer Logo" class="logo">
             <div class="branding-text">
-            <p style="font-size:40px; line-height:0px; font-weight:800">X-Ray</p>
-            <p style="letter-spacing:4px; line-height:0px; margin-top:3px; font-size:25">ANALYZER</p>
+            <p style="font-size:40px; line-height:0px; font-weight:800; letter-spacing:1px">X-Ray</p>
+            <p style="letter-spacing:4px; line-height:0px; margin-top:-5px; font-size:28">ANALYZER</p>
              </div>
         </div>
-      <p style="text-align: center; font-size:24px; font-weight:700">Document Analysis Report</p>
+      <p style="text-align: center; font-size:24px; font-weight:700">${translate('rootLayout.screens.generateReportScreen.medicalReport')}</p>
 
 
         <!-- Info -->
         <div class="info">
-            <div><strong>Created At:</strong> ${generatedAt}</div>
+            <div><strong>${translate('general.createdAt')}:</strong> ${generatedAt}</div>
         </div>
 
         <!-- Analysis Prompt -->
         <div>
-            <p class="section-title">Analysis Prompt</p>
+            <p class="section-title">${translate('rootLayout.screens.generateReportScreen.userInput')}</p>
             <p class="content">${promptMessage || '-'}</p>
         </div>
 
         <!-- AI Interpretation -->
         <div style="position:relative">
             <img class="background-overlay" src=${medicalFrame} />
-            <p class="section-title">AI Interpretation</p>
+            <p class="section-title">${translate(
+              'rootLayout.screens.generateReportScreen.report',
+            )}</p>
             <p class="content">
               ${interpretation}
                 </p>

@@ -4,9 +4,15 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as DocumentOpener from 'react-native-document-opener';
 
+import Toast from '@/components/toast';
+
 import dayjs from '../../lib/dayjs';
+import { translate } from '../i18n';
+import { useCrashlytics } from './use-crashlytics';
 
 export const usePdfConverter = () => {
+  const { recordError } = useCrashlytics();
+
   const [isConverting, setIsConverting] = useState(false);
   const {
     i18n: { language },
@@ -47,6 +53,8 @@ export const usePdfConverter = () => {
         await DocumentOpener.openAsync(newUri);
       }
     } catch (error) {
+      Toast.error(translate('pdfPreview.noEditorInstalled'));
+      recordError(error, 'Unable to generate the PDF file');
       console.error('Error converting to PDF:', error);
       throw error;
     } finally {

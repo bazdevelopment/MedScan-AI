@@ -25,6 +25,7 @@
     "next": "Próximo",
     "update": "Atualizar",
     "tryAgain": "Tentar novamente",
+    "createdAt": "Criado Em",
     "and": "e",
     "copyText": {
       "loading": "Copiando...",
@@ -182,6 +183,11 @@
     "title": "Espere! Não me exclua!",
     "subtitle": "Envie um feedback em vez disso"
   },
+
+  "pdfPreview": {
+    "noEditorInstalled": "Para visualizar o PDF, certifique-se de ter um visualizador de PDF instalado, como Adobe Acrobat Reader ou Google PDF Viewer."
+  },
+
   "flows": {
     "createReport": {
       "finalReportForeground": {

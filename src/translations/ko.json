@@ -25,6 +25,7 @@
     "next": "다음",
     "update": "업데이트",
     "tryAgain": "다시 시도",
+    "createdAt": "생성일",
     "and": "및",
     "copyText": {
       "loading": "복사 중...",
@@ -181,6 +182,9 @@
   "deleteApp": {
     "title": "잠깐만요! 앱을 삭제하지 마세요!",
     "subtitle": "대신 피드백을 보내주세요"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "PDF를 미리 보려면 Adobe Acrobat Reader 또는 Google PDF Viewer와 같은 PDF 뷰어가 설치되어 있는지 확인하세요."
   },
   "flows": {
     "createReport": {

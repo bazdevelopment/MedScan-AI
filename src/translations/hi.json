@@ -25,6 +25,7 @@
     "next": "अगला",
     "update": "अपडेट करें",
     "tryAgain": "फिर से कोशिश करें",
+    "createdAt": "बनाया गया",
     "and": "और",
     "copyText": {
       "loading": "कॉपी हो रहा है...",
@@ -181,6 +182,9 @@
   "deleteApp": {
     "title": "रुकिए! मुझे मत हटाइए!",
     "subtitle": "इसके बजाय एक प्रतिक्रिया भेजें"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "PDF पूर्वावलोकन करने के लिए, सुनिश्चित करें कि आपके पास Adobe Acrobat Reader या Google PDF Viewer जैसा कोई PDF व्यूअर इंस्टॉल हो।"
   },
   "flows": {
     "createReport": {

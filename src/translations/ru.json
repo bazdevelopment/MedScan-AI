@@ -25,6 +25,7 @@
     "next": "Далее",
     "update": "Обновить",
     "tryAgain": "Попробовать снова",
+    "createdAt": "Создано",
     "and": "и",
     "copyText": {
       "loading": "Копирование...",
@@ -181,6 +182,9 @@
   "deleteApp": {
     "title": "Подождите! Не удаляйте меня!",
     "subtitle": "Лучше оставьте отзыв"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "Чтобы просмотреть PDF, убедитесь, что у вас установлен просмотрщик PDF, например Adobe Acrobat Reader или Google PDF Viewer"
   },
   "flows": {
     "createReport": {

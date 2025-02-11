@@ -25,6 +25,7 @@
     "next": "Suivant",
     "update": "Mettre à jour",
     "tryAgain": "Réessayer",
+    "createdAt": "Créé Le",
     "and": "et",
     "copyText": {
       "loading": "Copie en cours...",
@@ -181,6 +182,9 @@
   "deleteApp": {
     "title": "Attendez ! Ne me supprimez pas !",
     "subtitle": "Envoyez plutôt un commentaire"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "Pour prévisualiser le PDF, assurez-vous d'avoir un lecteur PDF installé, comme Adobe Acrobat Reader ou Google PDF Viewer"
   },
   "flows": {
     "createReport": {

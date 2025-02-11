@@ -25,6 +25,7 @@
     "next": "التالي",
     "update": "تحديث",
     "tryAgain": "حاول مرة أخرى",
+    "createdAt": "تم الإنشاء في",
     "and": "و",
     "copyText": {
       "loading": "جاري النسخ...",
@@ -181,6 +182,9 @@
   "deleteApp": {
     "title": "انتظر! لا تحذفني!",
     "subtitle": "أرسل ملاحظاتك بدلًا من ذلك"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "لمعاينة ملف PDF، تأكد من تثبيت عارض PDF مثل Adobe Acrobat Reader أو Google PDF Viewer"
   },
   "flows": {
     "createReport": {

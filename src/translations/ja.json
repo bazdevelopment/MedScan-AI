@@ -25,6 +25,7 @@
     "next": "次へ",
     "update": "更新",
     "tryAgain": "もう一度試す",
+    "createdAt": "作成日",
     "and": "および",
     "copyText": {
       "loading": "コピー中...",
@@ -181,6 +182,9 @@
   "deleteApp": {
     "title": "待って！削除しないで！",
     "subtitle": "代わりにフィードバックを送信してください"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "PDF をプレビューするには、Adobe Acrobat Reader や Google PDF Viewer などの PDF ビューアーがインストールされていることを確認してください。"
   },
   "flows": {
     "createReport": {

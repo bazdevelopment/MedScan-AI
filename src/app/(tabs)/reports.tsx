@@ -10,6 +10,7 @@ import {
   useInterpretationByDate,
   useUpdateInterpretationFields,
 } from '@/api/interpretation/interpretation.hooks';
+import { useUser } from '@/api/user/user.hooks';
 import CardWrapper from '@/components/card-wrapper';
 import { EndScrollPlaceholder } from '@/components/end-scroll-placeholder';
 import ReportSkeleton from '@/components/report-card-skeleton';
@@ -53,6 +54,8 @@ const Reports = () => {
     weekNumber,
     language,
   })();
+
+  const { data: userInfo } = useUser(language);
 
   const {
     mutate: onUpdateInterpretationFields,
@@ -185,10 +188,13 @@ const Reports = () => {
         segmentedDays={segmentedDays}
       />
 
-      <UpgradeBanner
-        className="mx-4 mt-6"
-        onUpgradePress={() => router.navigate('/paywall')}
-      />
+      {userInfo.scansRemaining <= 0 && (
+        <UpgradeBanner
+          className="mx-4 mt-6"
+          onUpgradePress={() => router.navigate('/paywall')}
+        />
+      )}
+
       <FlashList
         {...panResponder.panHandlers}
         ref={scrollViewRef}

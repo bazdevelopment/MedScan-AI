@@ -4,6 +4,8 @@ import { firebaseAuth, firebaseCloudFunctionsInstance } from 'firebase/config';
 import Toast from '@/components/toast';
 import { translate } from '@/core';
 
+import { queryClient } from '../common';
+
 /** Create anonymous account */
 export const createAnonymousAccount = async ({
   userName,
@@ -172,5 +174,6 @@ export const logout = async () => {
   // await firebaseAuth.currentUser?.delete();
   await firebaseAuth.signOut();
   router.navigate('/login');
+  queryClient.clear(); // Clears all cached queries & mutations
   Toast.success(translate('alerts.loggedOutSuccess'));
 };

@@ -28,6 +28,7 @@
     "utilities/privacy-policy-structure.ts",
     "utilities/languages.ts",
     "utilities/language.ts",
+    "utilities/add-fields-to-collection.ts",
     "dayjs/index.ts"
   ]
 }

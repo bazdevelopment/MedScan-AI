@@ -10,6 +10,7 @@
 import * as logger from 'firebase-functions/logger';
 import * as functions from 'firebase-functions/v1';
 
+import { addFieldsToCollectionHandler } from '../utilities/add-fields-to-collection';
 import * as imageFunctions from './image';
 import {
   getInterpretationByDateHandler,
@@ -145,4 +146,8 @@ export const uploadPrivacyPolicy = euFuntions.https.onCall(
 
 export const getPrivacyPolicy = euFuntions.https.onCall(
   getPrivacyPolicyHandler,
+);
+
+export const addFieldsToCollection = euFuntions.https.onCall(
+  addFieldsToCollectionHandler,
 );

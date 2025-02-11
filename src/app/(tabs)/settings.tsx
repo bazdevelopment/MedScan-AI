@@ -10,6 +10,7 @@ import {
   useSendGlobalPushNotifications,
   useSendIndividualPushNotification,
 } from '@/api/push-notifications/push-notifications.hooks';
+import { useAddFieldsToCollection } from '@/api/services/services.hooks';
 import { useUploadTermsOfService } from '@/api/terms-of-service/terms-of-service.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import { logout } from '@/api/user/user.requests';
@@ -37,6 +38,8 @@ export default function Settings() {
   const { mutate: onHandleGlobalPushNotifications } =
     useSendGlobalPushNotifications();
 
+  const { mutate: onAddFieldsToCollection } = useAddFieldsToCollection();
+
   const { mutate: onHandleIndividualNotification } =
     useSendIndividualPushNotification();
   useScrollToTop(scrollViewRef);
@@ -51,7 +54,7 @@ export default function Settings() {
       fieldsToUpdate: {
         verificationCode: '',
         verificationCodeExpiry: '',
-        isOtpVerified: false,
+        isOtpVerified: userInfo.email === Env.TEST_ACCOUNT ? true : false,
       },
     })
       .then(() => logout())
@@ -60,10 +63,12 @@ export default function Settings() {
 
   return (
     <View className="mt-[-15px] flex-1 bg-primary-50 dark:bg-blackEerie">
-      <UpgradeBanner
-        className="mx-4 mt-4"
-        onUpgradePress={() => router.navigate('/paywall')}
-      />
+      {userInfo.scansRemaining <= 0 && (
+        <UpgradeBanner
+          className="mx-4 mt-4"
+          onUpgradePress={() => router.navigate('/paywall')}
+        />
+      )}
       <ScrollView ref={scrollViewRef}>
         <View className="mb-20 flex-1 px-6">
           <ItemsContainer title="settings.generale">
@@ -169,6 +174,19 @@ export default function Settings() {
                   <Item
                     text="Upload privacy policy"
                     onPress={() => onUploadPrivacyPolicy({ language })}
+                  />
+                  <Item
+                    text="Add completedScans field to userInfo"
+                    //! be careful with the below functions
+                    onPress={() =>
+                      onAddFieldsToCollection({
+                        fields: {
+                          //add fields here
+                          // completedScans: 0,
+                        },
+                        collectionName: 'users',
+                      })
+                    }
                   />
                 </ItemsContainer>
               </View>

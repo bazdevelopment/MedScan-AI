@@ -140,6 +140,7 @@ const loginUserViaEmailHandler = async (data: {
           verificationCode,
           verificationCodeExpiry: verificationExpiry,
           preferredLanguage: data.language || 'en',
+          completedScans: 0,
         });
     } else {
       // Update existing user with new verification code

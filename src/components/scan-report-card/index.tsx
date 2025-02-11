@@ -107,8 +107,9 @@ const ScanReportCard = ({
                   onSubmitEditing={() => handleTitleSubmit(docId)}
                   onBlur={() => handleTitleSubmit(docId)} // Save the title on blur
                   autoFocus
-                  className="mr-2 flex-1 rounded-md border border-gray-300 px-2 py-1 text-sm dark:border-0 dark:bg-charcoal-700 dark:text-white"
+                  className="rounded-lg  border-gray-300 px-2 py-1 text-sm dark:border-0 dark:bg-charcoal-700 dark:text-white"
                   multiline
+                  containerClassName="rounded-lg dark:border-0"
                   style={{ width: 180 }}
                 />
               ) : (
@@ -127,6 +128,7 @@ const ScanReportCard = ({
                 size={24}
                 onPress={() => handleEdit(docId)}
                 disabled={isUpdateTitlePending}
+                containerStyle="ml-6"
               />
             )}
 

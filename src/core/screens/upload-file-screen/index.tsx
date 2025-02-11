@@ -3,12 +3,10 @@ import {
   type BottomSheetModal,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
-import { Stack } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
-import CustomHeader from '@/components/cusom-header';
 import ProgressBar from '@/components/progress-bar';
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
 import { translate } from '@/core/i18n';
@@ -47,12 +45,14 @@ const UploadFileScreen = ({
   const galleryOptions = [
     {
       label: translate('general.gallery'),
+      location: 'Gallery',
       id: 1,
       icon: <Gallery width={27} height={27} color={colors.primary[900]} />,
     },
     {
       label: translate('general.files'),
       id: 2,
+      location: 'Files',
       icon: <PaperClip width={27} height={27} color={colors.primary[900]} />,
     },
   ];
@@ -62,7 +62,7 @@ const UploadFileScreen = ({
   }, []);
   return (
     <>
-      <Stack.Screen
+      {/* <Stack.Screen
         options={{
           header: (props) => (
             <CustomHeader
@@ -75,7 +75,7 @@ const UploadFileScreen = ({
             />
           ),
         }}
-      />
+      /> */}
 
       <ProgressBar
         currentStep={currentScreenIndex + 1}
@@ -164,7 +164,7 @@ export const UploadFileOptionsModal = React.forwardRef<
               icon={option.icon}
               key={option.id}
               label={option.label}
-              onPress={() => onSelect(option.label)}
+              onPress={() => onSelect(option.location)}
               textClassName="dark:text-white"
             />
           ))}

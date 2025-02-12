@@ -23,8 +23,9 @@ import { ThemeItem } from '@/components/settings/theme-item';
 import Toast from '@/components/toast';
 import UpgradeBanner from '@/components/upgrade-banner';
 import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
+import useRemoteConfig from '@/core/hooks/use-remote-config';
 import { Button, colors, ScrollView, View } from '@/ui';
-import { Github, LogoutIcon, Rate, Website } from '@/ui/assets/icons';
+import { LogoutIcon, Rate } from '@/ui/assets/icons';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -33,6 +34,10 @@ export default function Settings() {
 
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
+
+  const { SHOW_FAQ_SCREEN, SHOW_RATE_SCREEN, SHOW_ADMIN_SCREENS } =
+    useRemoteConfig();
+
   const scrollViewRef = useRef(null);
   const iconColor = colorScheme === 'dark' ? colors.neutral[50] : colors.black;
 
@@ -89,14 +94,16 @@ export default function Settings() {
             <Item text="settings.version" value={Env.VERSION} />
           </ItemsContainer>
 
-          <ItemsContainer title="settings.support_us">
-            <ShareItem />
-            <Item
-              text="settings.rate"
-              icon={<Rate color={iconColor} />}
-              onPress={() => router.navigate('/rate')}
-            />
-          </ItemsContainer>
+          {SHOW_RATE_SCREEN && (
+            <ItemsContainer title="settings.support_us">
+              <ShareItem />
+              <Item
+                text="settings.rate"
+                icon={<Rate color={iconColor} />}
+                onPress={() => router.navigate('/rate')}
+              />
+            </ItemsContainer>
+          )}
 
           <ItemsContainer title="settings.links">
             <Item
@@ -107,20 +114,12 @@ export default function Settings() {
               text="settings.terms"
               onPress={() => router.navigate('/terms-of-service')}
             />
-            <Item
-              text="settings.faq"
-              onPress={() => console.log('go to faq screen')}
-            />
-            <Item
-              text="settings.github"
-              icon={<Github color={iconColor} />}
-              onPress={() => {}}
-            />
-            <Item
-              text="settings.website"
-              icon={<Website color={iconColor} />}
-              onPress={() => {}}
-            />
+            {SHOW_FAQ_SCREEN && (
+              <Item
+                text="settings.faq"
+                onPress={() => console.log('go to faq screen')}
+              />
+            )}
           </ItemsContainer>
 
           <Button
@@ -134,68 +133,69 @@ export default function Settings() {
             onPress={handleLogout}
           />
 
-          {__DEV__ && (
-            <>
-              <ItemsContainer title="settings.devMode.title">
-                <Item
-                  text="settings.devMode.componentsLibrary"
-                  onPress={() => router.navigate('/ui-library')}
-                />
-              </ItemsContainer>
-
-              <View>
-                <ItemsContainer title="Utils">
+          {__DEV__ &&
+            SHOW_ADMIN_SCREENS && ( //change the condition here so this will be available in dev/prod only for an admin account
+              <>
+                <ItemsContainer title="settings.devMode.title">
                   <Item
-                    text="Verify email"
-                    onPress={() => router.navigate('/verify-email')}
-                  />
-
-                  <Item
-                    text="Send global push notification"
-                    onPress={() =>
-                      onHandleGlobalPushNotifications({
-                        title: 'This is a global notification title',
-                        body: 'This is a global notification body',
-                        language,
-                      })
-                    }
-                  />
-                  <Item
-                    text="Send individual push notification"
-                    onPress={() =>
-                      onHandleIndividualNotification({
-                        title: 'This is an individual notification title',
-                        body: 'This is an individual notification body',
-                        userId: userInfo.userId,
-                        language,
-                      })
-                    }
-                  />
-                  <Item
-                    text="Upload terms of service"
-                    onPress={() => onUploadTermsOfService({ language })}
-                  />
-                  <Item
-                    text="Upload privacy policy"
-                    onPress={() => onUploadPrivacyPolicy({ language })}
-                  />
-                  <Item
-                    text="Add completedScans field to userInfo"
-                    //! be careful with the below functions
-                    onPress={() =>
-                      onAddFieldsToCollection({
-                        fields: {
-                          //add fields here
-                          // completedScans: 0,
-                        },
-                        collectionName: 'users',
-                      })
-                    }
+                    text="settings.devMode.componentsLibrary"
+                    onPress={() => router.navigate('/ui-library')}
                   />
                 </ItemsContainer>
-              </View>
-            </>
-          )}
+
+                <View>
+                  <ItemsContainer title="Utils">
+                    <Item
+                      text="Verify email"
+                      onPress={() => router.navigate('/verify-email')}
+                    />
+
+                    <Item
+                      text="Send global push notification"
+                      onPress={() =>
+                        onHandleGlobalPushNotifications({
+                          title: 'This is a global notification title',
+                          body: 'This is a global notification body',
+                          language,
+                        })
+                      }
+                    />
+                    <Item
+                      text="Send individual push notification"
+                      onPress={() =>
+                        onHandleIndividualNotification({
+                          title: 'This is an individual notification title',
+                          body: 'This is an individual notification body',
+                          userId: userInfo.userId,
+                          language,
+                        })
+                      }
+                    />
+                    <Item
+                      text="Upload terms of service"
+                      onPress={() => onUploadTermsOfService({ language })}
+                    />
+                    <Item
+                      text="Upload privacy policy"
+                      onPress={() => onUploadPrivacyPolicy({ language })}
+                    />
+                    <Item
+                      text="Add completedScans field to userInfo"
+                      //! be careful with the below functions
+                      onPress={() =>
+                        onAddFieldsToCollection({
+                          fields: {
+                            //add fields here
+                            // completedScans: 0,
+                          },
+                          collectionName: 'users',
+                        })
+                      }
+                    />
+                  </ItemsContainer>
+                </View>
+              </>
+            )}
         </View>
       </ScrollView>
     </View>

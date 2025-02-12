@@ -9,7 +9,7 @@
     "start": "pnpm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "seed-scan-categories": "curl -X POST https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/uploadScanCategories"
+    "seed-scan-categories": "curl -X POST https://us-central1-x-ray-analizer-dev.cloudfunctions.net/uploadScanCategories"
   },
   "engines": {
     "node": "20"

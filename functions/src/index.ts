@@ -34,11 +34,10 @@ import {
 } from './terms-of-service';
 import * as userFunctions from './user';
 
-const euFuntions = functions.region('europe-west1');
+const usCentralFunctions = functions.region('us-central1');
 
-export const getHelloWorld = functions
-  .region('europe-west1') // Specify the region here
-  .https.onCall((data, context) => {
+export const getHelloWorld = usCentralFunctions.https.onCall(
+  (data, context) => {
     logger.info('Hello logs!', { structuredData: true });
     const req = context.rawRequest;
     const authorizationHeader = req.get('Authorization');
@@ -49,111 +48,116 @@ export const getHelloWorld = functions
       );
     }
     return { message: data }; // Return a JSON response
-  });
+  },
+);
 
-export const loginUserViaEmail = euFuntions.https.onCall(
+export const loginUserViaEmail = usCentralFunctions.https.onCall(
   userFunctions.loginUserViaEmailHandler,
 );
-
-export const decrementUserScans = euFuntions.https.onCall(
+export const decrementUserScans = usCentralFunctions.https.onCall(
   userFunctions.decrementUserScans,
 );
-export const updateUserSubscription = euFuntions.https.onCall(
+export const updateUserSubscription = usCentralFunctions.https.onCall(
   userFunctions.updateUserSubscription,
 );
 
-export const updateUser = euFuntions.https.onCall(userFunctions.updateUser);
+export const updateUser = usCentralFunctions.https.onCall(
+  userFunctions.updateUser,
+);
 
-export const sendVerificationCodeViaEmail = euFuntions.https.onCall(
+export const sendVerificationCodeViaEmail = usCentralFunctions.https.onCall(
   userFunctions.sendEmailVerification,
 );
 
-export const verifyAuthenticationCode = euFuntions.https.onCall(
+export const verifyAuthenticationCode = usCentralFunctions.https.onCall(
   userFunctions.verifyAuthenticationCodeHandler,
 );
 
-export const getUserInfo = euFuntions.https.onCall(userFunctions.getUserInfo);
+export const getUserInfo = usCentralFunctions.https.onCall(
+  userFunctions.getUserInfo,
+);
 
-export const updatePreferredLanguage = euFuntions.https.onCall(
+export const updatePreferredLanguage = usCentralFunctions.https.onCall(
   userFunctions.handleUpdateUserLanguage,
 );
 
-export const storeDeviceToken = euFuntions.https.onCall(
+export const storeDeviceToken = usCentralFunctions.https.onCall(
   pushNotificationsFunctions.storeDeviceToken,
 );
 
-export const getDeviceInfoByUniqueIdentifier = euFuntions.https.onRequest(
-  pushNotificationsFunctions.checkDeviceUniqueIdentifier,
-);
+export const getDeviceInfoByUniqueIdentifier =
+  usCentralFunctions.https.onRequest(
+    pushNotificationsFunctions.checkDeviceUniqueIdentifier,
+  );
 
-export const sendGlobalPushNotifications = euFuntions.https.onCall(
+export const sendGlobalPushNotifications = usCentralFunctions.https.onCall(
   pushNotificationsFunctions.handleSendGlobalPushNotifications,
 );
-export const sendIndividualPushNotification = euFuntions.https.onCall(
+export const sendIndividualPushNotification = usCentralFunctions.https.onCall(
   pushNotificationsFunctions.sendUserPushNotification,
 );
 
-export const fetchUserNotifications = euFuntions.https.onCall(
+export const fetchUserNotifications = usCentralFunctions.https.onCall(
   pushNotificationsFunctions.handleGetUserNotification,
 );
 
-export const markNotificationAsRead = euFuntions.https.onCall(
+export const markNotificationAsRead = usCentralFunctions.https.onCall(
   pushNotificationsFunctions.handleMarkNotificationAsRead,
 );
-export const analyzeImage = euFuntions.https.onRequest(
+export const analyzeImage = usCentralFunctions.https.onRequest(
   imageFunctions.analyzeImage,
 );
 /** Make sure you use onRequest instead of onCall for analyzeVideo function because onCall do not support FormData */
-export const analyzeVideo = euFuntions.https.onRequest(
+export const analyzeVideo = usCentralFunctions.https.onRequest(
   imageFunctions.analyzeVideo,
 );
 /** Get scan categories together with images*/
-export const getScanCategories = euFuntions.https.onCall(
+export const getScanCategories = usCentralFunctions.https.onCall(
   getScanCategoriesHandler,
 );
 /** Get scan categories together with images*/
-export const uploadScanCategories = euFuntions.https.onRequest(
+export const uploadScanCategories = usCentralFunctions.https.onRequest(
   handleUploadScanCategories,
 );
 
 /** Get interpretations by date for logged in user */
-export const getInterpretationByDate = euFuntions.https.onCall(
+export const getInterpretationByDate = usCentralFunctions.https.onCall(
   getInterpretationByDateHandler,
 );
 
 /** Delete scan report by document id */
-export const deleteScanReportById = euFuntions.https.onCall(
+export const deleteScanReportById = usCentralFunctions.https.onCall(
   deleteScanInterpretationById,
 );
 
-export const updateInterpretation = euFuntions.https.onCall(
+export const updateInterpretation = usCentralFunctions.https.onCall(
   updateScanInterpretation,
 );
 
-export const getInterpretationById = euFuntions.https.onCall(
+export const getInterpretationById = usCentralFunctions.https.onCall(
   getInterpretationByDocumentId,
 );
 
-export const getRecentInterpretations = euFuntions.https.onCall(
+export const getRecentInterpretations = usCentralFunctions.https.onCall(
   getRecentInterpretationHandler,
 );
 
-export const uploadTermsOfService = euFuntions.https.onCall(
+export const uploadTermsOfService = usCentralFunctions.https.onCall(
   uploadTermsOfServiceHandler,
 );
 
-export const getTermsOfService = euFuntions.https.onCall(
+export const getTermsOfService = usCentralFunctions.https.onCall(
   getTermsOfServiceHandler,
 );
 
-export const uploadPrivacyPolicy = euFuntions.https.onCall(
+export const uploadPrivacyPolicy = usCentralFunctions.https.onCall(
   uploadPrivacyPolicyHandler,
 );
 
-export const getPrivacyPolicy = euFuntions.https.onCall(
+export const getPrivacyPolicy = usCentralFunctions.https.onCall(
   getPrivacyPolicyHandler,
 );
 
-export const addFieldsToCollection = euFuntions.https.onCall(
+export const addFieldsToCollection = usCentralFunctions.https.onCall(
   addFieldsToCollectionHandler,
 );

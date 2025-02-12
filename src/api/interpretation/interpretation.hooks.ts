@@ -5,6 +5,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 import Toast from '@/components/toast';
 import { translate } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
+import { wait } from '@/core/utilities/wait';
 import { type IInterpretationRecord } from '@/types/interpretation-report';
 
 import { queryClient } from '../common';
@@ -78,7 +79,8 @@ export const useDeleteScanReportById = () => {
         queryKey: ['recent-interpretations'],
       });
 
-      router.back();
+      //!important for ios otherwise the Toast wont be displayed because the screens are changing fast
+      wait(1500).then(() => router.back());
 
       logEvent('Successfully deleted scan report by documentId');
     },

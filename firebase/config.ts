@@ -21,7 +21,7 @@ const firebaseAnalytics = analytics();
 const getCloudFunctionInstance = (
   isEmulatorEnabled: boolean = false,
 ): FirebaseFunctionsTypes.Module => {
-  const wrapper = firebase.app().functions('europe-west1');
+  const wrapper = firebase.app().functions('us-central1');
   if (__DEV__ && isEmulatorEnabled) {
     /*
     Use the emulator if in development mode

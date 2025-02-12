@@ -45,7 +45,7 @@ const FreeTierStatus = ({
 
       <Pressable
         onPress={onUpgrade}
-        className="rounded-full border-[3px] border-primary-500 bg-gray-900 p-4 dark:border-2 dark:border-primary-900 dark:shadow-sm"
+        className="active:opacity-85 rounded-full border-[3px] border-primary-500 bg-gray-900 p-4 dark:border-2 dark:border-primary-900 dark:shadow-sm"
       >
         <Text className="font-semibold-nunito text-base text-white">
           {translate('components.FreeTierStatus.action')}

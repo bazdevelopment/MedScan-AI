@@ -1,5 +1,5 @@
 export const TERMS_AND_CONDITIONS = {
-  lastUpdated: '2024-12-27',
+  lastUpdated: '2025-02-12',
   terms: [
     {
       section: '1. Acceptance of Terms',
@@ -36,7 +36,7 @@ export const TERMS_AND_CONDITIONS = {
     {
       section: '6. Subscription and Payments',
       content:
-        'Payment Processing: We use RevenueCat for payment processing and subscription management. Payments can be made on a monthly or annual basis according to our published pricing plans.',
+        'Payment Processing: We use Stripe for payment processing and subscription management. Payments can be made on a monthly or annual basis according to our published pricing plans.',
     },
     {
       section: 'Subscription Terms',
@@ -50,7 +50,7 @@ export const TERMS_AND_CONDITIONS = {
     {
       section: 'Refund Policy',
       content:
-        "All payments are final and non-refundable. However, if you believe you've been charged in error, please contact our support team for review.",
+        'All payments are final and non-refundable. All payments are final and non-refundable, as each interpretation request incurs immediate computational costs. However, we prioritize fairness and customer satisfaction. If you suspect an error, please contact our support team.',
     },
     {
       section: 'Automatic Renewal',
@@ -75,7 +75,27 @@ export const TERMS_AND_CONDITIONS = {
     {
       section: '10. Contact',
       content:
-        'If you have any questions or concerns about these Terms or the application, please contact us at support@xrayanalyzer.com.',
+        'If you have any questions or concerns about these Terms or the application, please contact us at xrayanalyzerai@gmail.com.',
+    },
+    {
+      section: 'Links to Other Websites',
+      content:
+        'Our Service may contain links to third-party web sites or services that are not owned or controlled by the Company. The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services. We strongly advise You to read the terms and conditions and privacy policies of any third-party web sites or services that You visit.',
+    },
+    {
+      section: 'Termination',
+      content:
+        'We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions. Upon termination, Your right to use the Service will cease immediately.',
+    },
+    {
+      section: 'Translation Interpretation',
+      content:
+        'These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.',
+    },
+    {
+      section: 'Changes to These Terms and Conditions',
+      content:
+        "We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material, We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion. By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the Service.",
     },
   ],
 };

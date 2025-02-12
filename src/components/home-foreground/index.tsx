@@ -19,9 +19,11 @@ import { BellIcon, UploadIcon } from '@/ui/assets/icons';
 import Avatar from '../avatar';
 import Branding from '../branding';
 import CardWrapper from '../card-wrapper';
+import CustomAlert from '../custom-alert';
 import IconBadge from '../icon-badge';
 import { type INotificationItem } from '../notifications/notification-item/notification-item.interface';
 import { SnakeLine, SnakeLineRotated } from '../snake-line';
+import Toast from '../toast';
 import { type IHomeForeground } from './home-forground.interface';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
@@ -47,7 +49,26 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
       logEvent(
         `Alert informing user - ${userInfo.userId} that there are no scans available is displayed`,
       );
-      return alert(translate('home.homeForeground.maxNumberOfScans'));
+      return Toast.showCustomToast(
+        <CustomAlert
+          title={translate('general.attention')}
+          subtitle={translate('home.homeForeground.maxNumberOfScans')}
+          buttons={[
+            {
+              label: translate('components.UpgradeBanner.heading'),
+              variant: 'default',
+              onPress: () => router.navigate('/paywall'),
+              buttonTextClassName: 'dark:text-white',
+              className:
+                'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+            },
+          ]}
+        />,
+        {
+          position: 'middle', // Place the alert in the middle of the screen
+          duration: Infinity, // Keep the alert visible until dismissed
+        },
+      );
     }
 
     router.navigate('/upload-file-flow');

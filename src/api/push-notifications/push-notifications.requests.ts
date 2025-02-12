@@ -97,7 +97,7 @@ export const getDeviceInfoByUniqueIdentifier = async (
 ): Promise<any> => {
   try {
     const response = await axios.get(
-      `https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/getDeviceInfoByUniqueIdentifier?deviceUniqueId=${deviceUniqueId}&language=${language}`,
+      `https://us-central1-x-ray-analizer-dev.cloudfunctions.net/getDeviceInfoByUniqueIdentifier?deviceUniqueId=${deviceUniqueId}&language=${language}`,
     );
     return response.data.data; // With axios, the response data is directly accessible as `response.data`
   } catch (error: any) {

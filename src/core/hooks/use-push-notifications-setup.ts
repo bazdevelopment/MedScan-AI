@@ -67,7 +67,6 @@ export const usePushNotificationSetup = () => {
           projectId,
         });
         setDeviceToken(token);
-
         // Store the device token on the server
         const response = await storeMobileDeviceToken({
           deviceToken: token,
@@ -131,7 +130,6 @@ export const usePushNotificationSetup = () => {
       // Check MMKV storage for the notification preference
       // const areNotificationsEnabled =
       //   storage.getString('arePushNotificationsEnabled') === 'true';
-      // console.log('areNotificationsEnabled', areNotificationsEnabled);
       if (status === 'granted') {
         setArePushNotificationsEnabled(true);
       } else {

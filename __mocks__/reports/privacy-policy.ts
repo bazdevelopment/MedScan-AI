@@ -1,72 +1,110 @@
 export const PRIVACY_POLICY = {
-  last_updated: '2023-12-23',
+  last_updated: '2025-02-12',
   sections: [
     {
-      title: 'Information We Collect',
+      title: 'Introduction',
       content: [
         {
-          title: 'Personal Information',
           description:
-            'This includes details such as your name, email address, and contact information if provided.',
+            'This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.\n\nWe use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.',
+        },
+      ],
+    },
+    {
+      title: 'Interpretation and Definitions',
+      content: [
+        {
+          title: 'Interpretation',
+          description:
+            'The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.',
+        },
+        {
+          title: 'Definitions',
+          description:
+            '• Account: A unique account created for You to access our Service\n\n• Affiliate: An entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares\n\n• Application: X-Ray Analyzer, the software program provided by the Company\n\n• Company: Refers to X-Ray Analyzer\n\n• Country: Refers to Romania\n\n• Device: Any device that can access the Service\n\n• Personal Data: Information relating to an identified or identifiable individual\n\n• Service: Refers to the Application\n\n• Service Provider: Any person who processes data on behalf of the Company\n\n• Usage Data: Data collected automatically during use of the Service\n\n• You: The individual or entity using the Service',
+        },
+      ],
+    },
+    {
+      title: 'Types of Data Collected',
+      content: [
+        {
+          title: 'Personal Data',
+          description:
+            'While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You, including:\n\n• Email address\n• First name and last name\n• Usage Data',
         },
         {
           title: 'Usage Data',
           description:
-            'Information about how you use the app, including your device’s IP address, browser type, or version.',
+            "Usage Data is collected automatically when using the Service. This may include information such as Your Device's Internet Protocol address, browser type, browser version, pages visited, visit timestamps, time spent on pages, unique device identifiers and other diagnostic data.\n\nWhen using a mobile device, we may collect additional information such as device type, unique ID, IP address, operating system, and browser type.",
         },
         {
-          title: 'X-ray Images',
+          title: 'Device Permissions',
           description:
-            'Images that you upload for analysis and interpretation.',
-        },
-      ],
-    },
-    {
-      title: 'Image Storage and User Control',
-      content: [
-        {
-          description:
-            'Your uploaded X-ray images are securely stored on our servers for future access. These images are private and can only be viewed by you. You have full control over your images and can delete them at any time through your account settings.',
+            "Our Application may request permission to access:\n\n• Pictures and other information from your Device's camera and photo library\n\nThis information is used to provide and improve Our Service features. Data may be uploaded to our servers, Service Provider servers, or stored locally on Your device. You can manage these permissions through Your Device settings.",
         },
       ],
     },
     {
-      title: 'Cookies',
+      title: 'Use of Your Personal Data',
       content: [
         {
           description:
-            'We use cookies to improve your experience while using the app. Cookies are small files with data, which may include an anonymous unique identifier, sent to your device. You can configure your browser to reject cookies or alert you when they’re being sent.',
+            'We may use Your Personal Data for:\n\n• Service provision and maintenance\n• Account management\n• Contract fulfillment\n• Communications about updates and services\n• Marketing of similar products and services\n• Request management\n• Business transfers\n• Analysis and service improvement',
         },
       ],
     },
     {
-      title: 'Third-Party Services & Payment Processing',
+      title: 'Data Retention and Security',
       content: [
         {
           description:
-            'We may work with third-party service providers to support our app and analyze usage. These third parties may access your personal information but are strictly prohibited from using it for any other purpose.',
-        },
-        {
-          description:
-            'We partner with RevenueCat for secure payment processing. When you make a purchase, they may collect your name, payment card details, and transaction amount. However, LemonSqueezy is committed to keeping your data secure and will not disclose or use your information for anything other than processing your payment.',
+            'We retain Personal Data only as long as necessary for the stated purposes, legal obligations, dispute resolution, and policy enforcement. Usage Data may be kept for shorter periods unless needed for security, functionality, or legal requirements.\n\nWhile we implement commercially acceptable security measures, no Internet transmission or storage method is 100% secure.',
         },
       ],
     },
     {
-      title: 'Security',
+      title: 'Your Data Rights',
       content: [
         {
           description:
-            'While we prioritize your security, please note that no method of transmission over the internet is completely secure. We strive to protect your personal data, but we cannot guarantee absolute security.',
+            'You can update, delete, or request deletion of Your Personal Data through Your Account settings or by contacting Us. We may retain certain information for legal purposes.\n\nYour data may be transferred to computers outside Your jurisdiction. Your use of the Service constitutes agreement to such transfers, which will be conducted with appropriate security measures.',
         },
       ],
     },
     {
-      title: 'Changes to This Policy',
+      title: 'Data Disclosure',
       content: [
         {
           description:
-            "We may update this Privacy Policy from time to time. When we make changes, we will post the new policy here and update the 'last updated' date.",
+            'We may disclose Your Personal Data for:\n\n• Legal compliance\n• Company rights protection\n• Fraud prevention\n• User safety\n• Business transactions (mergers, sales, etc.)\n\nWe will notify You if Your data becomes subject to a different Privacy Policy.',
+        },
+      ],
+    },
+    {
+      title: "Children's Privacy",
+      content: [
+        {
+          description:
+            'Our Service does not address anyone under age 13. We do not knowingly collect data from children under 13. Parents who believe their child has provided us data should contact us. We will remove such data if discovered. Parental consent will be required where applicable by law.',
+        },
+      ],
+    },
+    {
+      title: 'Third-Party Links',
+      content: [
+        {
+          description:
+            "Our Service may link to external sites we don't operate. We recommend reviewing their Privacy Policies. We have no control over and assume no responsibility for third-party content, policies, or practices.",
+        },
+      ],
+    },
+    {
+      title: 'Policy Updates',
+      content: [
+        {
+          description:
+            "We may update this Privacy Policy periodically. Changes will be posted here with an updated date. We'll notify You of significant changes via email or Service notification. Continued use after changes indicates acceptance of the updated policy.",
         },
       ],
     },
@@ -75,7 +113,7 @@ export const PRIVACY_POLICY = {
       content: [
         {
           description:
-            'If you have any questions about this Privacy Policy, please reach out to us at xrayanalyzer@gmail.com.',
+            'For questions about this Privacy Policy, contact us at: xrayanalyzerai@gmail.com',
         },
       ],
     },

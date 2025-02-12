@@ -24,19 +24,19 @@ interface ButtonConfig {
 }
 
 interface CustomAlertProps {
-  visible: boolean;
+  visible?: boolean;
   title?: string; // Optional title (bold)
   subtitle?: string; // Optional subtitle (normal weight)
   buttons: ButtonConfig[]; // Array of buttons (max 3)
 }
 
 // eslint-disable-next-line max-lines-per-function
-const CustomAlert: React.FC<CustomAlertProps> = ({
+const CustomAlert = ({
   visible = true,
   title,
   subtitle,
   buttons,
-}) => {
+}: CustomAlertProps) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   // Validate the number of buttons

@@ -6,7 +6,7 @@ export const analyzeImageUsingAi = async (
 ) => {
   try {
     const response = await axios.post(
-      'https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/analyzeImage',
+      'https://us-central1-x-ray-analizer-dev.cloudfunctions.net/analyzeImage',
       payload,
       {
         headers: {
@@ -28,7 +28,7 @@ export const analyzeVideoUsingAi = async (
 ) => {
   try {
     const response = await axios.post(
-      'https://europe-west1-x-ray-analizer-dev.cloudfunctions.net/analyzeVideo',
+      'https://us-central1-x-ray-analizer-dev.cloudfunctions.net/analyzeVideo',
       payload,
       {
         headers: {

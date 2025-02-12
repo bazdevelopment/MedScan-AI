@@ -1,7 +1,12 @@
 import remoteConfig from '@react-native-firebase/remote-config';
 import { useCallback, useEffect, useState } from 'react';
 
-const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
+const useRemoteConfig = (): {
+  MINIMUM_VERSION_ALLOWED: string;
+  SHOW_FAQ_SCREEN: string;
+  SHOW_RATE_SCREEN: string;
+  SHOW_ADMIN_SCREENS: string;
+} => {
   const [configs, setConfigs] = useState({});
 
   const parseConfigValue = (value: any) => {
@@ -57,7 +62,12 @@ const useRemoteConfig = (): { MINIMUM_VERSION_ALLOWED: string } => {
     return () => unsubscribe();
   }, [fetchInitialValues, getConfigValues]); // Empty dependency array since we're getting all values
 
-  return configs as { MINIMUM_VERSION_ALLOWED: string };
+  return configs as {
+    MINIMUM_VERSION_ALLOWED: string;
+    SHOW_FAQ_SCREEN: string;
+    SHOW_RATE_SCREEN: string;
+    SHOW_ADMIN_SCREENS: string;
+  };
 };
 
 export default useRemoteConfig;

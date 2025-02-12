@@ -13,6 +13,8 @@
     "gallery": "Galerie",
     "files": "Fișiere",
     "cancel": "Anulează",
+    "delete": "Șterge",
+    "attention": "Atenție!",
     "new": "Nou",
     "yes": "Da",
     "openSettings": "Deschide Setări",
@@ -353,7 +355,9 @@
     "individualPushNotificationSuccess": "Notificările push individuale au fost trimise cu succes!",
     "globalPushNotificationSuccess": "Notificările push globale au fost trimise cu succes! 🌍🚀",
     "interpretationFieldsUpdateFail": "Actualizarea câmpurilor de interpretare a eșuat! ❌",
+    "deleteScanReportFail": "Nu s-a putut șterge raportul de scanare. Vă rugăm să încercați din nou",
     "onboardingUnsuccessful": "Onboarding nereușit. Te rugăm să încerci din nou",
-    "logoutUnsuccessful": "Deconectare nereușită. Vă rugăm să încercați din nou"
+    "logoutUnsuccessful": "Deconectare nereușită. Vă rugăm să încercați din nou",
+    "deleteScanReportQuestion": "Sigur doriți să ștergeți definitiv acest raport?"
   }
 }

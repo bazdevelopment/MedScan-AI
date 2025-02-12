@@ -13,6 +13,8 @@
     "gallery": "Galería",
     "files": "Archivos",
     "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "attention": "¡Atención!",
     "new": "Nuevo",
     "yes": "Sí",
     "openSettings": "Abrir configuración",
@@ -353,7 +355,9 @@
     "individualPushNotificationSuccess": "¡Notificaciones push individuales enviadas correctamente!",
     "globalPushNotificationSuccess": "¡Notificaciones push globales enviadas correctamente! 🌍🚀",
     "interpretationFieldsUpdateFail": "¡Error al actualizar los campos de interpretación! ❌",
+    "deleteScanReportFail": "No se pudo eliminar el informe de escaneo. Por favor, inténtelo de nuevo",
     "onboardingUnsuccessful": "Error en el proceso de incorporación. Por favor, inténtalo de nuevo.",
-    "logoutUnsuccessful": "Error al cerrar sesión. Por favor, inténtalo de nuevo."
+    "logoutUnsuccessful": "Error al cerrar sesión. Por favor, inténtalo de nuevo.",
+    "deleteScanReportQuestion": "¿Estás seguro de que deseas eliminar este informe permanentemente?"
   }
 }

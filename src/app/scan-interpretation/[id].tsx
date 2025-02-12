@@ -1,13 +1,15 @@
 /* eslint-disable max-lines-per-function */
 import dayjs from 'dayjs';
 import { useLocalSearchParams } from 'expo-router';
+import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { Toaster } from 'sonner-native';
 
 import { useInterpretationById } from '@/api/interpretation/interpretation.hooks';
 import AttachmentPreview from '@/components/attachment-preview';
 import Icon from '@/components/icon';
-import { translate, useSelectedLanguage } from '@/core';
+import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { colors, Text } from '@/ui';
 import { CalendarIcon, DocumentIcon } from '@/ui/assets/icons';
@@ -21,6 +23,9 @@ const ScanInterpretationDetailsScreen = () => {
     language,
   })();
 
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   const isVideo = checkIsVideo(data?.record?.mimeType);
   if (isPending) {
     return (
@@ -32,6 +37,9 @@ const ScanInterpretationDetailsScreen = () => {
 
   return (
     <View className="flex-1 bg-slate-50 px-2 pt-8 dark:bg-blackEerie">
+      {DEVICE_TYPE.IOS && (
+        <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+      )}
       {/* Content */}
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Media Preview */}

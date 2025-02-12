@@ -115,6 +115,12 @@ export const ro: ITranslation = {
     generalError: 'A apărut o eroare la actualizarea interpretării scanării',
     paramsRequired: "'documentId' și 'fieldsToUpdate' sunt ambele obligatorii",
   },
+  deleteScanInterpretation: {
+    success: 'Raportul a fost șters cu succes!',
+    documentIdRequired: "'DocumentId' este necesar pentru a continua.",
+    generalError:
+      'Ceva a mers greșit la ștergerea raportului. Vă rugăm să încercați din nou.',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: "'DocumentId' este obligatoriu",
     noDocIdFound: 'Nu a fost găsit niciun document cu ID-ul furnizat',

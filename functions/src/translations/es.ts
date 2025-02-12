@@ -91,6 +91,12 @@ export const es: ITranslation = {
       'Hubo un problema al actualizar el número de escaneos. Por favor, intenta nuevamente más tarde',
     generalError: 'No se pudo decrementar el número de escaneos',
   },
+  deleteScanInterpretation: {
+    success: '¡El informe se ha eliminado correctamente!',
+    documentIdRequired: "Se requiere 'DocumentId' para continuar.",
+    generalError:
+      'Algo salió mal al eliminar el informe. Por favor, inténtelo de nuevo.',
+  },
   updateUserSubscription: {
     subscribeSuccess: '¡Suscripción exitosa!',
     updateSubscriptionError: 'No se pudo actualizar la suscripción del usuario',

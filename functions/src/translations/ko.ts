@@ -106,6 +106,11 @@ export const ko: ITranslation = {
     generalError: '스캔 해석 업데이트 중 오류가 발생했습니다',
     paramsRequired: "'documentId'와 'fieldsToUpdate' 모두 필요합니다",
   },
+  deleteScanInterpretation: {
+    success: '보고서가 성공적으로 삭제되었습니다!',
+    documentIdRequired: "진행하려면 'DocumentId'가 필요합니다.",
+    generalError: '보고서 삭제 중 문제가 발생했습니다. 다시 시도해 주세요.',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: "'DocumentId'가 필요합니다",
     noDocIdFound: '제공된 ID로 문서를 찾을 수 없습니다',

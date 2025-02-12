@@ -93,6 +93,12 @@ export interface ITranslation {
     paramsRequired: string;
   };
 
+  deleteScanInterpretation: {
+    success: string;
+    documentIdRequired: string;
+    generalError: string;
+  };
+
   getInterpretationByDate: {
     startEndDateRequired: string;
     startDatePriority: string;

@@ -4,6 +4,7 @@ import { useScrollToTop } from '@react-navigation/native';
 import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useRef } from 'react';
+import { Toaster } from 'sonner-native';
 
 import { useUploadPrivacyPolicy } from '@/api/privacy-policy/privacy-policy.hooks';
 import {
@@ -21,7 +22,7 @@ import { ShareItem } from '@/components/settings/share-item';
 import { ThemeItem } from '@/components/settings/theme-item';
 import Toast from '@/components/toast';
 import UpgradeBanner from '@/components/upgrade-banner';
-import { translate, useSelectedLanguage } from '@/core';
+import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import { Button, colors, ScrollView, View } from '@/ui';
 import { Github, LogoutIcon, Rate, Website } from '@/ui/assets/icons';
 
@@ -63,6 +64,9 @@ export default function Settings() {
 
   return (
     <View className="mt-[-15px] flex-1 bg-primary-50 dark:bg-blackEerie">
+      {DEVICE_TYPE.IOS && (
+        <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+      )}
       {userInfo.scansRemaining <= 0 && (
         <UpgradeBanner
           className="mx-4 mt-4"

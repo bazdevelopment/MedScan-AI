@@ -1,4 +1,5 @@
 import { type AxiosError } from 'axios';
+import { router } from 'expo-router';
 import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
@@ -8,6 +9,7 @@ import { type IInterpretationRecord } from '@/types/interpretation-report';
 
 import { queryClient } from '../common';
 import {
+  deleteReportById,
   getInterpretationByDate,
   getInterpretationByDocumentId,
   getRecentReports,
@@ -42,7 +44,7 @@ export const useUpdateInterpretationFields = () => {
     mutationFn: (variables) => updateInterpretationFields(variables),
     onSuccess: (data) => {
       Toast.success(data.message);
-      queryClient.refetchQueries({
+      queryClient.invalidateQueries({
         queryKey: ['interpretations-by-date'],
       });
 
@@ -54,6 +56,36 @@ export const useUpdateInterpretationFields = () => {
       );
       logEvent('Failure when updating interpretation fields', 'error');
       recordError(error, 'Failure when updating interpretation fields');
+    },
+  })();
+};
+
+export const useDeleteScanReportById = () => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return createMutation<
+    { success: boolean; message: string },
+    { documentId: string; language: string },
+    AxiosError
+  >({
+    mutationFn: (variables) => deleteReportById(variables),
+    onSuccess: (data) => {
+      Toast.success(data.message);
+      queryClient.invalidateQueries({
+        queryKey: ['interpretations-by-date'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['recent-interpretations'],
+      });
+
+      router.back();
+
+      logEvent('Successfully deleted scan report by documentId');
+    },
+    onError: (error) => {
+      Toast.error(error.message || translate('alerts.deleteScanReportFail'));
+      logEvent('Failure when deleting scan report by documentId', 'error');
+      recordError(error, 'Failure when deleting scan report by documentId');
     },
   })();
 };

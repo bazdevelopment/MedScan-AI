@@ -62,21 +62,6 @@ const UploadFileScreen = ({
   }, []);
   return (
     <>
-      {/* <Stack.Screen
-        options={{
-          header: (props) => (
-            <CustomHeader
-              {...props}
-              title={translate('uploadScan.title')}
-              className="bg-white pt-20"
-              titlePosition="center"
-              onGoBack={onGoBack}
-              backIconColor={isDark ? colors.white : colors.blackBeauty}
-            />
-          ),
-        }}
-      /> */}
-
       <ProgressBar
         currentStep={currentScreenIndex + 1}
         totalSteps={totalSteps}

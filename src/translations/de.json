@@ -13,6 +13,8 @@
     "gallery": "Galerie",
     "files": "Dateien",
     "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "attention": "Achtung!",
     "new": "Neu",
     "yes": "Ja",
     "openSettings": "Einstellungen öffnen",
@@ -353,7 +355,9 @@
     "individualPushNotificationSuccess": "Einzelne Push-Benachrichtigungen erfolgreich gesendet!",
     "globalPushNotificationSuccess": "Globale Push-Benachrichtigungen erfolgreich gesendet! 🌍🚀",
     "interpretationFieldsUpdateFail": "Aktualisierung der Interpretationsfelder fehlgeschlagen! ❌",
+    "deleteScanReportFail": "Der Scan-Bericht konnte nicht gelöscht werden. Bitte versuchen Sie es erneut",
     "onboardingUnsuccessful": "Onboarding nicht erfolgreich. Bitte versuche es erneut",
-    "logoutUnsuccessful": "Abmeldung nicht erfolgreich. Bitte versuche es erneut"
+    "logoutUnsuccessful": "Abmeldung nicht erfolgreich. Bitte versuche es erneut",
+    "deleteScanReportQuestion": "Sind Sie sicher, dass Sie diesen Bericht dauerhaft löschen möchten?"
   }
 }

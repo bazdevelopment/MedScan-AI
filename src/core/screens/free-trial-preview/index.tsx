@@ -74,7 +74,7 @@ const FreeTrialPreview = ({
               onPress={onSkip}
               label={translate('general.skip')}
               className="bg-transparent active:opacity-60 dark:bg-transparent"
-              textClassName="text-bold-nunito text-lg text-white dark:text-white"
+              textClassName="font-bold-nunito text-lg text-white dark:text-white"
             />
           </View>
 

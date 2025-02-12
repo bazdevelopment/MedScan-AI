@@ -105,6 +105,12 @@ export const ja: ITranslation = {
     generalError: 'スキャン解釈の更新中にエラーが発生しました',
     paramsRequired: "'documentId'と'fieldsToUpdate'の両方が必要です",
   },
+  deleteScanInterpretation: {
+    success: 'レポートが正常に削除されました！',
+    documentIdRequired: "続行するには 'DocumentId' が必要です。",
+    generalError:
+      'レポートの削除中に問題が発生しました。もう一度お試しください。',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: "'DocumentId'は必須です",
     noDocIdFound: '指定されたIDのドキュメントは見つかりませんでした',

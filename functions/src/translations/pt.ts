@@ -113,6 +113,12 @@ export const pt: ITranslation = {
       'Ocorreu um erro ao atualizar a interpretação da digitalização',
     paramsRequired: "'documentId' e 'fieldsToUpdate' são ambos obrigatórios",
   },
+  deleteScanInterpretation: {
+    success: 'O relatório foi excluído com sucesso!',
+    documentIdRequired: "'DocumentId' é necessário para prosseguir.",
+    generalError:
+      'Algo deu errado ao excluir o relatório. Por favor, tente novamente.',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: "'DocumentId' é obrigatório",
     noDocIdFound: 'Nenhum documento foi encontrado com o ID fornecido',

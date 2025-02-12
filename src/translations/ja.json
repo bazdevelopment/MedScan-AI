@@ -13,6 +13,8 @@
     "gallery": "ギャラリー",
     "files": "ファイル",
     "cancel": "キャンセル",
+    "delete": "削除",
+    "attention": "注意！",
     "new": "新規",
     "yes": "はい",
     "openSettings": "設定を開く",
@@ -354,6 +356,8 @@
     "globalPushNotificationSuccess": "グローバルプッシュ通知が正常に送信されました！🌍🚀",
     "interpretationFieldsUpdateFail": "解析フィールドの更新に失敗しました！❌",
     "onboardingUnsuccessful": "オンボーディングに失敗しました。もう一度お試しください",
-    "logoutUnsuccessful": "ログアウトに失敗しました。もう一度お試しください"
+    "deleteScanReportFail": "スキャンレポートを削除できませんでした。もう一度お試しください",
+    "logoutUnsuccessful": "ログアウトに失敗しました。もう一度お試しください",
+    "deleteScanReportQuestion": "このレポートを完全に削除してもよろしいですか？"
   }
 }

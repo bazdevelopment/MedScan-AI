@@ -13,6 +13,8 @@
     "gallery": "Gallery",
     "files": "Files",
     "cancel": "Cancel",
+    "delete": "Delete",
+    "attention": "Attention!",
     "new": "New",
     "yes": "Yes",
     "openSettings": "Open Settings",
@@ -356,7 +358,9 @@
     "individualPushNotificationSuccess": "Individual push notifications sent successfully!",
     "globalPushNotificationSuccess": "Global push notifications sent successfully! 🌍🚀",
     "interpretationFieldsUpdateFail": "Failed to update interpretation fields! ❌",
+    "deleteScanReportFail": "Unable to delete the scan report. Please try again",
     "onboardingUnsuccessful": "Onboarding unsuccessful. Please try again",
-    "logoutUnsuccessful": "Logout unsuccessful. Please try again"
+    "logoutUnsuccessful": "Logout unsuccessful. Please try again",
+    "deleteScanReportQuestion": "Are you sure you want to permanently delete this report?"
   }
 }

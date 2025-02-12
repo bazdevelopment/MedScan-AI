@@ -103,6 +103,11 @@ export const ar: ITranslation = {
     generalError: 'حدث خطأ أثناء تحديث تفسير المسح',
     paramsRequired: 'كل من "معرف المستند" و"الحقول المراد تحديثها" مطلوبة',
   },
+  deleteScanInterpretation: {
+    success: 'تم حذف التقرير بنجاح!',
+    documentIdRequired: "مطلوب 'DocumentId' للمتابعة.",
+    generalError: 'حدث خطأ ما أثناء حذف التقرير. يرجى المحاولة مرة أخرى.',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: 'معرف المستند مطلوب',
     noDocIdFound: 'لم يتم العثور على مستند بالمعرف المقدم',

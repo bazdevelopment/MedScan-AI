@@ -36,6 +36,7 @@ export * from './style';
 export * from './sun';
 export * from './support';
 export * from './tick-circle';
+export * from './trash';
 export * from './upload';
 export * from './wand-sparkle';
 export * from './website';

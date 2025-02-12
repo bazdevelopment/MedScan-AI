@@ -89,6 +89,11 @@ export const hi: ITranslation = {
     subscribeSuccess: 'सफलतापूर्वक सदस्यता ली गई!',
     updateSubscriptionError: 'उपयोगकर्ता की सदस्यता अपडेट करने में असमर्थ!',
   },
+  deleteScanInterpretation: {
+    success: 'रिपोर्ट सफलतापूर्वक हटा दी गई है!',
+    documentIdRequired: "आगे बढ़ने के लिए 'DocumentId' आवश्यक है।",
+    generalError: 'रिपोर्ट हटाते समय कुछ गलत हो गया। कृपया पुनः प्रयास करें।',
+  },
   updateUserLanguage: {
     updateSuccess: 'भाषा सफलतापूर्वक अपडेट की गई!',
     updateError:

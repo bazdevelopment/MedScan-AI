@@ -88,6 +88,11 @@ export const zh: ITranslation = {
     generalError: '更新扫描解释时发生错误',
     paramsRequired: "'documentId' 和 'fieldsToUpdate' 都是必需的",
   },
+  deleteScanInterpretation: {
+    success: '报告已成功删除！',
+    documentIdRequired: "需要 'DocumentId' 才能继续。",
+    generalError: '删除报告时出了点问题。请再试一次。',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: "'DocumentId' 是必需的",
     noDocIdFound: '未找到提供的ID对应的文档',

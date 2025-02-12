@@ -13,6 +13,7 @@ import * as functions from 'firebase-functions/v1';
 import { addFieldsToCollectionHandler } from '../utilities/add-fields-to-collection';
 import * as imageFunctions from './image';
 import {
+  deleteScanInterpretationById,
   getInterpretationByDateHandler,
   getInterpretationByDocumentId,
   getRecentInterpretationHandler,
@@ -118,6 +119,11 @@ export const uploadScanCategories = euFuntions.https.onRequest(
 /** Get interpretations by date for logged in user */
 export const getInterpretationByDate = euFuntions.https.onCall(
   getInterpretationByDateHandler,
+);
+
+/** Delete scan report by document id */
+export const deleteScanReportById = euFuntions.https.onCall(
+  deleteScanInterpretationById,
 );
 
 export const updateInterpretation = euFuntions.https.onCall(

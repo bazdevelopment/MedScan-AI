@@ -111,6 +111,12 @@ export const ru: ITranslation = {
     generalError: 'Произошла ошибка при обновлении интерпретации сканирования',
     paramsRequired: "Требуется указать 'documentId' и 'fieldsToUpdate'",
   },
+  deleteScanInterpretation: {
+    success: 'Отчет успешно удален!',
+    documentIdRequired: "Для продолжения требуется 'DocumentId'.",
+    generalError:
+      'Что-то пошло не так при удалении отчета. Пожалуйста, попробуйте еще раз.',
+  },
   getInterpretationByDocumentId: {
     paramsRequired: "Требуется указать 'DocumentId'",
     noDocIdFound: 'Документ с указанным идентификатором не найден',

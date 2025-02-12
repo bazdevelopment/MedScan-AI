@@ -13,6 +13,8 @@
     "gallery": "相册",
     "files": "文件",
     "cancel": "取消",
+    "delete": "删除",
+    "attention": "注意！",
     "new": "新建",
     "yes": "是",
     "openSettings": "打开设置",
@@ -354,6 +356,8 @@
     "globalPushNotificationSuccess": "全局推送通知发送成功！🌍🚀",
     "interpretationFieldsUpdateFail": "更新解释字段失败！❌",
     "onboardingUnsuccessful": "引导过程未成功，请重试",
-    "logoutUnsuccessful": "退出登录未成功，请重试"
+    "deleteScanReportFail": "无法删除扫描报告。请再试一次",
+    "logoutUnsuccessful": "退出登录未成功，请重试",
+    "deleteScanReportQuestion": "您确定要永久删除此报告吗"
   }
 }

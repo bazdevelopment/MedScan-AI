@@ -153,6 +153,12 @@ export const de: ITranslation = {
     generalErrorAdditional:
       'Beim Abrufen der Benutzerbenachrichtigungen ist ein Fehler aufgetreten',
   },
+  deleteScanInterpretation: {
+    success: 'Der Bericht wurde erfolgreich gelöscht!',
+    documentIdRequired: "'DocumentId' ist erforderlich, um fortzufahren.",
+    generalError:
+      'Beim Löschen des Berichts ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.',
+  },
   getScanCategories: {
     noCategoryFound: 'Keine Kategorien gefunden',
     generalError: 'Beim Abrufen der Scan-Kategorien ist ein Fehler aufgetreten',

@@ -179,6 +179,56 @@ export const updateScanInterpretation = async (
   }
 };
 
+export const deleteScanInterpretationById = async (
+  data: { language: string; documentId: string },
+  context: any,
+) => {
+  let t;
+  try {
+    t = getTranslation(data.language);
+
+    // Ensure the user is authenticated
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        t.common.noUserFound,
+      );
+    }
+
+    // Extract the `documentId` from the request data
+    const { documentId } = data;
+
+    // Validate input
+    if (!documentId) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        t.deleteScanInterpretation.documentIdRequired,
+      );
+    }
+
+    const uid = context.auth?.uid;
+    // Check if the user is detected
+    await getUserInfoById(uid, data.language);
+
+    // Firestore collection where your records are stored
+    const collectionName = 'interpretations'; // Replace with your actual collection name
+
+    // Delete the document with the provided documentId
+    await db.collection(collectionName).doc(documentId).delete();
+
+    return {
+      success: true,
+      message: t.deleteScanInterpretation.success,
+    };
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
+    throw new functions.https.HttpsError(error.code, error.message, {
+      message: error.message || t.deleteScanInterpretation.generalError,
+    });
+  }
+};
+
 export const getInterpretationByDocumentId = async (
   data: { language: string; documentId: string },
   context: any,

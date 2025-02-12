@@ -39,6 +39,21 @@ export const updateInterpretationFields = async (fields: any) => {
   }
 };
 
+export const deleteReportById = async (fields: {
+  language: string;
+  documentId: string;
+}) => {
+  try {
+    const onUpdateInterpretationFields =
+      firebaseCloudFunctionsInstance.httpsCallable('deleteScanReportById');
+    const { data } = await onUpdateInterpretationFields(fields);
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getInterpretationByDocumentId = async (
   documentId: string,
   language: string,

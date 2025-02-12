@@ -114,6 +114,12 @@ export const en: ITranslation = {
     generalError: 'An error occurred while updating the scan interpretation',
     paramsRequired: "'documentId' and 'fieldsToUpdate' are both required",
   },
+  deleteScanInterpretation: {
+    success: 'The report has been deleted successfully!',
+    documentIdRequired: "'DocumentId' is required to proceed.",
+    generalError:
+      'Something went wrong while deleting the report. Please try again.',
+  },
 
   getInterpretationByDocumentId: {
     paramsRequired: "'DocumentId' is required",

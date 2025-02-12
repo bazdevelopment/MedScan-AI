@@ -13,6 +13,8 @@
     "gallery": "Galeria",
     "files": "Arquivos",
     "cancel": "Cancelar",
+    "delete": "Excluir",
+    "attention": "Atenção!",
     "new": "Novo",
     "yes": "Sim",
     "openSettings": "Abrir Configurações",
@@ -355,7 +357,9 @@
     "individualPushNotificationSuccess": "Notificações push individuais enviadas com sucesso!",
     "globalPushNotificationSuccess": "Notificações push globais enviadas com sucesso! 🌍🚀",
     "interpretationFieldsUpdateFail": "Falha ao atualizar os campos de interpretação! ❌",
+    "deleteScanReportFail": "Não foi possível excluir o relatório de varredura. Por favor, tente novamente",
     "onboardingUnsuccessful": "Onboarding malsucedido. Por favor, tente novamente",
-    "logoutUnsuccessful": "Logout malsucedido. Por favor, tente novamente"
+    "logoutUnsuccessful": "Logout malsucedido. Por favor, tente novamente",
+    "deleteScanReportQuestion": "Tem certeza de que deseja excluir este relatório permanentemente?"
   }
 }

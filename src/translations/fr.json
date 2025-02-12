@@ -13,6 +13,8 @@
     "gallery": "Galerie",
     "files": "Fichiers",
     "cancel": "Annuler",
+    "delete": "Supprimer",
+    "attention": "Attention!",
     "new": "Nouveau",
     "yes": "Oui",
     "openSettings": "Ouvrir les paramètres",
@@ -353,7 +355,9 @@
     "individualPushNotificationSuccess": "Notifications push individuelles envoyées avec succès !",
     "globalPushNotificationSuccess": "Notifications push globales envoyées avec succès ! 🌍🚀",
     "interpretationFieldsUpdateFail": "Échec de la mise à jour des champs d'interprétation ! ❌",
+    "deleteScanReportFail": "Impossible de supprimer le rapport d'analyse. Veuillez réessayer",
     "onboardingUnsuccessful": "Échec de l'intégration. Veuillez réessayer",
-    "logoutUnsuccessful": "Échec de la déconnexion. Veuillez réessayer"
+    "logoutUnsuccessful": "Échec de la déconnexion. Veuillez réessayer",
+    "deleteScanReportQuestion": "Êtes-vous sûr de vouloir supprimer définitivement ce rapport ?"
   }
 }

@@ -22,13 +22,15 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
+import DeleteReportAlert from '@/components/alerts/delete-report';
 import CustomHeader from '@/components/cusom-header';
 import Icon from '@/components/icon';
-import { loadSelectedTheme, translate } from '@/core';
+import Toast from '@/components/toast';
+import { DEVICE_TYPE, loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
-import { CloseIcon } from '@/ui/assets/icons';
+import { CloseIcon, TrashIcon } from '@/ui/assets/icons';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -74,6 +76,12 @@ export default function RootLayout() {
     return null;
   }
 
+  const showCustomAlert = () => {
+    Toast.showCustomToast(<DeleteReportAlert />, {
+      position: 'middle', // Place the alert in the middle of the screen
+      duration: Infinity, // Keep the alert visible until dismissed
+    });
+  };
   return (
     <Providers>
       <Stack>
@@ -120,7 +128,6 @@ export default function RootLayout() {
         <Stack.Screen
           name="scan-interpretation"
           options={{
-            headerTitle: () => null,
             header: (props) => (
               <CustomHeader
                 {...props}
@@ -128,6 +135,15 @@ export default function RootLayout() {
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
+                rightContent={
+                  <Icon
+                    size={26}
+                    containerStyle={`p-1 mr-6 ${DEVICE_TYPE.IOS ? 'mt-8' : 'mt-2'}`}
+                    onPress={showCustomAlert}
+                    icon={<TrashIcon />}
+                    color={colors.danger[500]}
+                  />
+                }
               />
             ),
           }}
@@ -284,7 +300,6 @@ export default function RootLayout() {
 
 function Providers({ children }: { children: React.ReactNode }) {
   const theme = useThemeConfig();
-
   return (
     <GestureHandlerRootView
       style={styles.container}
@@ -295,7 +310,10 @@ function Providers({ children }: { children: React.ReactNode }) {
           <APIProvider>
             <BottomSheetModalProvider>
               {children}
-              <Toaster autoWiggleOnUpdate="toast-change" />
+              <Toaster
+                autoWiggleOnUpdate="toast-change"
+                pauseWhenPageIsHidden
+              />
             </BottomSheetModalProvider>
           </APIProvider>
         </ThemeProvider>

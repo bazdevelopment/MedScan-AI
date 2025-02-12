@@ -125,6 +125,12 @@ export const fr: ITranslation = {
     generalError:
       "Une erreur s'est produite lors de la récupération de l'interprétation pour l'identifiant de document fourni",
   },
+  deleteScanInterpretation: {
+    success: 'Le rapport a été supprimé avec succès !',
+    documentIdRequired: "'DocumentId' est requis pour continuer.",
+    generalError:
+      "Quelque chose s'est mal passé lors de la suppression du rapport. Veuillez réessayer.",
+  },
   getRecentInterpretation: {
     limitRequired: 'La limite doit être un nombre entre 1 et 100',
     noInterpretationFound: 'Aucune interprétation trouvée',

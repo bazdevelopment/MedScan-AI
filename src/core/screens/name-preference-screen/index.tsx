@@ -71,7 +71,7 @@ const NamePreferenceScreen = ({
                 onPress={onSkip}
                 label={translate('general.skip')}
                 className="bg-transparent active:opacity-60 dark:bg-transparent"
-                textClassName="text-black text-bold-nunito text-lg dark:text-white"
+                textClassName="text-black font-bold-nunito text-lg dark:text-white"
               />
             </View>
 

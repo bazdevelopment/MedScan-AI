@@ -48,7 +48,10 @@ const ScanningModal = ({
         <View>
           {isVideo ? (
             <View className="h-[300px] w-[300px]">
-              <VideoPlayer videoSource={filePath as string} />
+              <VideoPlayer
+                videoSource={filePath as string}
+                additionalVideoStyles={{ width: 300, height: 300 }}
+              />
             </View>
           ) : (
             <Image

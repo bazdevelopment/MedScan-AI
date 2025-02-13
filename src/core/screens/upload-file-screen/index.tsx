@@ -6,10 +6,12 @@ import {
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { Toaster } from 'sonner-native';
 
 import ProgressBar from '@/components/progress-bar';
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
 import { translate } from '@/core/i18n';
+import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import { Button, colors, Modal, RoundedButton, Text, useModal } from '@/ui';
 import { Camera, Gallery, PaperClip } from '@/ui/assets/icons';
 import HorizontalLine from '@/ui/horizontal-line';
@@ -62,13 +64,15 @@ const UploadFileScreen = ({
   }, []);
   return (
     <>
+      {DEVICE_TYPE.IOS && (
+        <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+      )}
       <ProgressBar
         currentStep={currentScreenIndex + 1}
         totalSteps={totalSteps}
         isTextShown
         className="mt-8 flex-row self-center"
       />
-
       <View className="mt-4">
         <Text className="mx-8 mb-12 mt-8 font-bold-nunito text-[32px]">
           {translate('flows.createReport.uploadFile.title')}
@@ -92,9 +96,7 @@ const UploadFileScreen = ({
           </View>
         </TouchableOpacity>
       </View>
-
-      <HorizontalLine text="or" className="my-16" />
-
+      <HorizontalLine text={translate('general.or')} className="my-16" />
       <Button
         label={translate('flows.createReport.uploadFile.openCamera')}
         className="h-[62px] w-[90%] gap-5 self-center rounded-full bg-primary-100 dark:bg-primary-900"
@@ -109,7 +111,6 @@ const UploadFileScreen = ({
         onPress={onTakePhoto}
         iconPosition="left"
       />
-
       <UploadFileOptionsModal
         options={galleryOptions}
         testID="Upload file options id"

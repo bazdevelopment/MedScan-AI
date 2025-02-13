@@ -1,9 +1,9 @@
 /* eslint-disable max-lines-per-function */
 import dayjs from 'dayjs';
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
-import { Alert, ScrollView, TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { Balloons } from 'react-native-fiesta';
 
 import GradientText from '@/components/gradient-text';
@@ -29,21 +29,6 @@ const GenerateReportScreen = () => {
   const { language } = useSelectedLanguage();
 
   useBackHandler(() => {
-    Alert.alert(
-      translate('backHandler.holdOn'),
-      translate('backHandler.goBackMessage'),
-      [
-        {
-          text: translate('general.cancel'),
-          onPress: () => null,
-          style: 'cancel',
-        },
-        {
-          text: translate('general.yes'),
-          onPress: () => router.push('/(tabs)'),
-        }, //! important to use router.push here
-      ],
-    );
     return true; // Prevent default behavior
   });
 

@@ -15,6 +15,7 @@ import PromptSection from '@/components/prompt-section';
 import { translate } from '@/core/i18n';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { getBase64ImageUri } from '@/core/utilities/get-base64-uri';
+import { wait } from '@/core/utilities/wait';
 import { Button, colors } from '@/ui';
 import { WandSparkle } from '@/ui/assets/icons';
 
@@ -102,9 +103,8 @@ const FilePreviewScreen = ({
       params: { interpretationResult, promptMessage, createdDate },
     });
     setIsModalVisible(false);
-
     onDecrementScans({ language });
-    resetFlow();
+    wait(1000).then(() => resetFlow());
   };
 
   //todo: to be changed in the future with useUser hook

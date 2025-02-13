@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import * as DeviceInfo from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { useCallback, useEffect, useState } from 'react';
-import { Alert, Linking, Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 
 import { storeMobileDeviceToken } from '@/api/push-notifications/push-notifications.requests';
 import Toast from '@/components/toast';
@@ -32,24 +32,20 @@ export const usePushNotificationSetup = () => {
 
           if ((status === 'undetermined' || status === 'denied') && showAlert) {
             // Notifications not enabled, show alert to guide the user
-            Alert.alert(
-              translate('alerts.enableNotifications.heading'),
-              translate('alerts.enableNotifications.subHeading'),
-              [
-                { text: translate('general.cancel'), style: 'cancel' },
-                {
-                  text: translate('general.openSettings'),
-                  onPress: () => {
-                    if (Platform.OS === 'ios') {
-                      Linking.openURL('app-settings:');
-                    } else {
-                      Linking.openSettings();
-                    }
-                  },
+
+            Toast.warning(translate('alerts.enableNotifications.subHeading'), {
+              action: {
+                label: translate('general.openSettings'),
+                onClick: () => {
+                  if (Platform.OS === 'ios') {
+                    Linking.openURL('app-settings:');
+                  } else {
+                    Linking.openSettings();
+                  }
                 },
-              ],
-              { cancelable: false },
-            );
+              },
+            });
+
             return; // Exit if permissions are not granted
           }
         }

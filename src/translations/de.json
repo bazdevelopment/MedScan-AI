@@ -17,6 +17,7 @@
     "attention": "Achtung!",
     "new": "Neu",
     "yes": "Ja",
+    "or": "oder",
     "openSettings": "Einstellungen öffnen",
     "seeNotifications": "Benachrichtigungen anzeigen",
     "viewProfile": "Profil anzeigen",
@@ -212,7 +213,7 @@
     "homeForeground": {
       "maxNumberOfScans": "Du hast dein Scan-Limit erreicht! Upgrade jetzt deinen Plan, um mehr Scans freizuschalten. 🚀",
       "heading": "Willkommen bei X-Ray Analyzer",
-      "subHeading": "Erhalte wichtige Einblicke mit MRT, Röntgen, CT-Scans, PET-Bildgebung, Ultraschall und Nuklearmedizin"
+      "subHeading": "Erhalten Sie wichtige Einblicke über MRT, Röntgen, CT-Scans, PET-Bildgebung, Ultraschall und Nuklearmedizin mittels KI-gestützter Analyse"
     },
     "scanCategories": {
       "heading": "Radiologie-Reel"
@@ -291,7 +292,7 @@
     "FreeTierStatus": {
       "heading": "Kostenlose Scans",
       "subheading": "Schalte unbegrenzte Scans frei durch ein Plan-Upgrade",
-      "action": "Plan upgraden"
+      "action": "Upgrade"
     },
     "UploadFileOptionsModal": {
       "heading": "Wähle ein Bild / Video"
@@ -358,6 +359,7 @@
     "deleteScanReportFail": "Der Scan-Bericht konnte nicht gelöscht werden. Bitte versuchen Sie es erneut",
     "onboardingUnsuccessful": "Onboarding nicht erfolgreich. Bitte versuche es erneut",
     "logoutUnsuccessful": "Abmeldung nicht erfolgreich. Bitte versuche es erneut",
-    "deleteScanReportQuestion": "Sind Sie sicher, dass Sie diesen Bericht dauerhaft löschen möchten?"
+    "deleteScanReportQuestion": "Sind Sie sicher, dass Sie diesen Bericht dauerhaft löschen möchten?",
+    "videoLimitExceeds": "Ihr Video überschreitet das 15-Sekunden-Limit. Bitte kürzen Sie es und laden Sie es erneut hoch"
   }
 }

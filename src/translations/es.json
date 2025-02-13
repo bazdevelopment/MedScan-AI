@@ -17,6 +17,7 @@
     "attention": "¡Atención!",
     "new": "Nuevo",
     "yes": "Sí",
+    "or": "o",
     "openSettings": "Abrir configuración",
     "seeNotifications": "Ver notificaciones",
     "viewProfile": "Ver perfil",
@@ -212,7 +213,7 @@
     "homeForeground": {
       "maxNumberOfScans": "¡Has alcanzado tu límite de escaneos! Actualiza tu plan ahora para desbloquear más escaneos. 🚀",
       "heading": "Bienvenido a X-Ray Analyzer",
-      "subHeading": "Obtén información vital con resonancias magnéticas, rayos X, TAC, imágenes PET, ultrasonidos y medicina nuclear"
+      "subHeading": "Obtén información vital sobre resonancias magnéticas, radiografías, tomografías, imágenes PET, ultrasonidos y medicina nuclear mediante análisis potenciado por IA"
     },
     "scanCategories": {
       "heading": "Reel de Radiología"
@@ -291,7 +292,7 @@
     "FreeTierStatus": {
       "heading": "Escaneos gratuitos",
       "subheading": "Desbloquea escaneos ilimitados actualizando tu plan",
-      "action": "Actualizar plan"
+      "action": "Actualizar"
     },
     "UploadFileOptionsModal": {
       "heading": "Elige una imagen / video"
@@ -358,6 +359,7 @@
     "deleteScanReportFail": "No se pudo eliminar el informe de escaneo. Por favor, inténtelo de nuevo",
     "onboardingUnsuccessful": "Error en el proceso de incorporación. Por favor, inténtalo de nuevo.",
     "logoutUnsuccessful": "Error al cerrar sesión. Por favor, inténtalo de nuevo.",
-    "deleteScanReportQuestion": "¿Estás seguro de que deseas eliminar este informe permanentemente?"
+    "deleteScanReportQuestion": "¿Estás seguro de que deseas eliminar este informe permanentemente?",
+    "videoLimitExceeds": "Tu video excede el límite de 15 segundos. Por favor, recórtalo y vuelve a subirlo"
   }
 }

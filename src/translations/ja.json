@@ -17,6 +17,7 @@
     "attention": "注意！",
     "new": "新規",
     "yes": "はい",
+    "or": "または",
     "openSettings": "設定を開く",
     "seeNotifications": "通知を見る",
     "viewProfile": "プロフィールを表示",
@@ -212,7 +213,7 @@
     "homeForeground": {
       "maxNumberOfScans": "スキャン回数の上限に達しました！プランをアップグレードして、さらにスキャンを利用しましょう。🚀",
       "heading": "X-Ray Analyzerへようこそ",
-      "subHeading": "MRI、X線、CTスキャン、PET画像、超音波、核医学による重要な洞察を得ましょう"
+      "subHeading": "AIを活用した分析により、MRI、X線、CTスキャン、PETイメージング、超音波、核医学に関する重要な知見を得る"
     },
     "scanCategories": {
       "heading": "放射線画像"
@@ -291,7 +292,7 @@
     "FreeTierStatus": {
       "heading": "無料スキャン",
       "subheading": "プランをアップグレードして無制限のスキャンをアンロック",
-      "action": "プランをアップグレード"
+      "action": "アップグレード"
     },
     "UploadFileOptionsModal": {
       "heading": "画像/動画を選択"
@@ -358,6 +359,7 @@
     "onboardingUnsuccessful": "オンボーディングに失敗しました。もう一度お試しください",
     "deleteScanReportFail": "スキャンレポートを削除できませんでした。もう一度お試しください",
     "logoutUnsuccessful": "ログアウトに失敗しました。もう一度お試しください",
-    "deleteScanReportQuestion": "このレポートを完全に削除してもよろしいですか？"
+    "deleteScanReportQuestion": "このレポートを完全に削除してもよろしいですか？",
+    "videoLimitExceeds": "動画が15秒の制限を超えています。トリミングして再アップロードしてください"
   }
 }

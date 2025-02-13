@@ -87,7 +87,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         microphonePermission: false,
       },
     ],
-    ['expo-document-picker'],
+    [
+      'expo-document-picker',
+      {
+        iCloudContainerEnvironment: 'Production',
+      },
+    ],
     'expo-router',
     [
       'app-icon-badge',

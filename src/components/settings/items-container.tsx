@@ -10,14 +10,14 @@ type Props = {
 
 export const ItemsContainer = ({ children, title }: Props) => {
   return (
-    <>
+    <View className="flex-1">
       {title && (
         <Text
           className="mb-2 mt-8 pb-2 font-semibold-nunito text-lg"
           tx={title}
         />
       )}
-      {<View className="gap-3">{children}</View>}
-    </>
+      <View className="gap-3">{children}</View>
+    </View>
   );
 };

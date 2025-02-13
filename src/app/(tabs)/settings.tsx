@@ -79,7 +79,7 @@ export default function Settings() {
         />
       )}
       <ScrollView ref={scrollViewRef}>
-        <View className="mb-20 flex-1 px-6">
+        <View className="mb-20 px-6">
           <ItemsContainer title="settings.generale">
             <Item
               text="settings.profile"
@@ -94,16 +94,17 @@ export default function Settings() {
             <Item text="settings.version" value={Env.VERSION} />
           </ItemsContainer>
 
-          {SHOW_RATE_SCREEN && (
-            <ItemsContainer title="settings.support_us">
-              <ShareItem />
+          <ItemsContainer title="settings.support_us">
+            <ShareItem />
+
+            {SHOW_RATE_SCREEN && (
               <Item
                 text="settings.rate"
                 icon={<Rate color={iconColor} />}
                 onPress={() => router.navigate('/rate')}
               />
-            </ItemsContainer>
-          )}
+            )}
+          </ItemsContainer>
 
           <ItemsContainer title="settings.links">
             <Item

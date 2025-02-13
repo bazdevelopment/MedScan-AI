@@ -50,11 +50,11 @@ export const ShareItem = () => {
         <ScrollView className="flex-1 bg-gray-50 dark:bg-blackEerie">
           <View className="p-6">
             {/* Header Section */}
-            <View className="mb-8 mt-2 items-center">
-              <Text className="mb-2 font-bold-nunito text-3xl text-gray-800">
+            <View className="mb-8 mt-4 items-center">
+              <Text className="mb-2 text-center font-bold-nunito text-3xl text-gray-800">
                 {translate('rootLayout.screens.share.heading')}
               </Text>
-              <Text className="mx-10 text-center text-base text-gray-600">
+              <Text className="mx-10 mt-2 text-center text-base text-gray-600">
                 {translate('rootLayout.screens.share.subheading')}
               </Text>
             </View>
@@ -79,7 +79,7 @@ export const ShareItem = () => {
               </Text>
             </View>
 
-            <View className="mt-16 flex-row justify-center gap-12">
+            <View className="mt-12 flex-row justify-center gap-12">
               <RoundedButton
                 icon={
                   <ShareIcon

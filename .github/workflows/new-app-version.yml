@@ -142,17 +142,14 @@ jobs:
       - name: 🏃‍♂️ Align native code with version changes by running prebuild
         run: |
           if [ "${{ inputs.environment }}" = "development" ]; then
-          echo "Running prebuild-push:development for the ${{
-           inputs.environment }} environment"
-          pnpm prebuild-push:development
+            echo "Running prebuild-push:development for the ${{ inputs.environment }} environment"
+            pnpm prebuild-push:development
           elif [ "${{ inputs.environment }}" = "production" ]; then
-          echo "Running prebuild-push:production for the ${{
-           inputs.environment }} environment"
-          pnpm prebuild-push:production
+            echo "Running prebuild-push:production for the ${{ inputs.environment }} environment"
+            pnpm prebuild-push:production
           elif [ "${{ inputs.environment }}" = "staging" ]; then
-          echo "Running prebuild-push:production for the ${{
-           inputs.environment }} environment"
-          pnpm prebuild-push:staging
+            echo "Running prebuild-push:staging for the ${{ inputs.environment }} environment"
+            pnpm prebuild-push:staging
           else
-          echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
+            echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
           fi

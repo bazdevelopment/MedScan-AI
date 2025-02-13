@@ -119,37 +119,24 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.release-type }}" ]; then
             echo "Running app-release with release type: ${{ github.event.inputs.release-type }}"
-            pnpm app-release  --branch=$(
-            if [[ "${{ inputs.environment }}" == "production" ]]; then
-              echo "master";
-            elif [[ "${{ inputs.environment }}" == "development" ]]; then
-              echo "development";
-            fi
-          ) ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
+            pnpm app-release --branch=$(
+              if [[ "${{ inputs.environment }}" == "production" ]]; then
+                echo "master"
+              elif [[ "${{ inputs.environment }}" == "development" ]]; then
+                echo "development"
+              elif [[ "${{ inputs.environment }}" == "staging" ]]; then
+                echo "staging"
+              fi
+            ) ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment == 'staging' && 'production' || inputs.environment  }}
           else
             echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
-            pnpm app-release  --branch=$(
-            if [[ "${{ inputs.environment }}" == "production" ]]; then
-              echo "master";
-            elif [[ "${{ inputs.environment }}" == "development" ]]; then
-              echo "development";
-            elif [[ "${{ inputs.environment }}" == "staging" ]]; then
-              echo "staging";
-            fi
-          ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment == 'staging' && 'production' || inputs.environment }}
-          fi
-
-      - name: 🏃‍♂️ Align native code with version changes by running prebuild
-        run: |
-          if [ "${{ inputs.environment }}" = "development" ]; then
-            echo "Running prebuild-push:development for the ${{ inputs.environment }} environment"
-            pnpm prebuild-push:development
-          elif [ "${{ inputs.environment }}" = "production" ]; then
-            echo "Running prebuild-push:production for the ${{ inputs.environment }} environment"
-            pnpm prebuild-push:production
-          elif [ "${{ inputs.environment }}" = "staging" ]; then
-            echo "Running prebuild-push:staging for the ${{ inputs.environment }} environment"
-            pnpm prebuild-push:staging
-          else
-            echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
+            pnpm app-release --branch=$(
+              if [[ "${{ inputs.environment }}" == "production" ]]; then
+                echo "master"
+              elif [[ "${{ inputs.environment }}" == "development" ]]; then
+                echo "development"
+              elif [[ "${{ inputs.environment }}" == "staging" ]]; then
+                echo "staging"
+              fi
+            ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment == 'staging' && 'production' || inputs.environment }}
           fi

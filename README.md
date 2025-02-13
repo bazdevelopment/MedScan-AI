@@ -40,3 +40,7 @@ pnpm android
 -np versions above "^8.0.4" do not support only version param, they require patch | minor | major | prepatch | preminor | premajor | prerelease |
 -expo-blur issue causes a crash in the app: https://github.com/expo/expo/issues/34499, I fixed it by using react-native-community/blur instead
 -images from assets should be added in the app.config file+ run pnpm prebuild and they can pe used with import (like Image source="icon_transparent"/>). Ref: https://docs.expo.dev/develop/user-interface/assets/
+-splash screen sometimes got stuck on both platforms, I've noticed that resolutions from package.json triggered that behavior. I completely removed resolutions to fix that (probably it has to do with loading assets in the root layout)
+"resolutions": {
+"@react-native/assets-registry": "0.76.1"
+},

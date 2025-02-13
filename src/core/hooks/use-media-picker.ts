@@ -2,12 +2,17 @@
 import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
+import { Linking, Platform } from 'react-native';
+
+import Toast from '@/components/toast';
 
 import { type ICollectedData } from '../flows/upload-file-flow/upload-file-flow.interface';
 import { translate } from '../i18n';
 import { checkFileSize } from '../utilities/check-file-size';
 import { getFileSizeInMB } from '../utilities/get-file-size-in-mb';
 import { getImageExtension } from '../utilities/get-image-extension';
+import { getVideoDuration } from '../utilities/get-video-duration';
+import { isVideoDurationLong } from '../utilities/is-video-duration-long';
 
 interface IMediaPicker {
   onUploadFinished: (data: ICollectedData) => void;
@@ -28,15 +33,28 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Check if the permission is granted
       if (status !== 'granted') {
-        alert(translate('alerts.mediaPickerPermissions'));
+        Toast.warning(translate('alerts.mediaPickerPermissions'), {
+          duration: Infinity,
+          action: {
+            label: translate('general.openSettings'),
+            onClick: () => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL('app-settings:');
+              } else {
+                Linking.openSettings();
+              }
+            },
+          },
+        });
+
         return;
       }
 
       // Launch the image library picker
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
-        // allowsEditing: true, //todo: make sure in the future that you want to allow editing
-        aspect: [4, 3],
+        allowsEditing: true, //todo: make sure in the future that you want to allow editing
+        // aspect: [4, 3],
         quality: 1,
         base64: true,
       });
@@ -47,11 +65,23 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       }
 
       const sizeInMb = getFileSizeInMB(result.assets[0].fileSize as number);
+      const isLongVideo = isVideoDurationLong(
+        result.assets[0].duration as number,
+      );
+
       const { isLimitReached } = checkFileSize(
         Number(sizeInMb),
         result.assets[0].type,
       );
-      if (!isLimitReached) {
+
+      if (isLongVideo) {
+        Toast.error(translate('alerts.videoLimitExceeds'), {
+          closeButton: true,
+          duration: Infinity,
+        });
+      }
+
+      if (!isLimitReached && !isLongVideo) {
         // Handle the loaded file with the URI
         handleLoadFile(result.assets[0].uri);
         onUploadFinished &&
@@ -65,14 +95,18 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
           });
       }
     } catch (error) {
-      alert(translate('alerts.errorSelectingImagePicker'));
+      Toast.error(translate('alerts.errorSelectingImagePicker'), {
+        closeButton: true,
+        duration: Infinity,
+      });
     }
   };
   const handleChooseFromFiles = async () => {
     try {
       // Launch the document picker for selecting an image file
       const result = await DocumentPicker.getDocumentAsync({
-        type: ['image/*', 'video/*'], // Accepts only images and videos
+        type: ['image/*', 'video/*'], // Accepts only images and videos,
+        multiple: false,
       });
 
       // Check if the user canceled the action or if the URI is missing
@@ -84,6 +118,20 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         : result.assets[0].mimeType?.startsWith('video')
           ? 'video'
           : 'image';
+
+      if (fileType === 'video') {
+        const videoDuration = await getVideoDuration(result?.assets[0].uri);
+        const isLongVideo = isVideoDurationLong(videoDuration as number);
+        if (videoDuration && isLongVideo) {
+          return Toast.error(
+            'Video should have maximum 10 seconds, please crop it and upload it again',
+            {
+              closeButton: true,
+              duration: Infinity,
+            },
+          );
+        }
+      }
 
       const sizeInMb = getFileSizeInMB(result.assets[0].size as number);
       const { isLimitReached } = checkFileSize(Number(sizeInMb), fileType);
@@ -99,7 +147,10 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         });
       }
     } catch (error) {
-      alert(translate('alerts.errorSelectingDocumentPicker'));
+      Toast.error(translate('alerts.errorSelectingDocumentPicker'), {
+        closeButton: true,
+        duration: Infinity,
+      });
     }
   };
 
@@ -113,14 +164,27 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Check if the permission is granted
       if (status !== 'granted') {
-        alert(translate('alerts.mediaPickerPermissions'));
+        Toast.error(translate('alerts.mediaPickerPermissions'), {
+          closeButton: true,
+          duration: Infinity,
+          action: {
+            label: translate('general.openSettings'),
+            onClick: () => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL('app-settings:');
+              } else {
+                Linking.openSettings();
+              }
+            },
+          },
+        });
         return;
       }
 
       // Launch the camera
       const result = await ImagePicker.launchCameraAsync({
-        allowsEditing: false,
-        aspect: [4, 3],
+        allowsEditing: true,
+        // aspect: [4, 3],
         quality: 1,
         base64: true,
       });
@@ -139,8 +203,10 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
           fileName: result.assets[0].fileName,
         } as ICollectedData);
     } catch (error) {
-      console.error('Error taking photo:', error);
-      alert(translate('alerts.errorTakingPicture'));
+      Toast.error(translate('alerts.errorTakingPicture'), {
+        closeButton: true,
+        duration: Infinity,
+      });
     }
   };
 

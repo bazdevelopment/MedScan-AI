@@ -17,6 +17,7 @@
     "attention": "Atenção!",
     "new": "Novo",
     "yes": "Sim",
+    "or": "ou",
     "openSettings": "Abrir Configurações",
     "seeNotifications": "Ver notificações",
     "viewProfile": "Ver Perfil",
@@ -214,7 +215,7 @@
     "homeForeground": {
       "maxNumberOfScans": "Você atingiu seu limite de exames! Atualize seu plano agora para desbloquear mais exames. 🚀",
       "heading": "Bem-vindo ao X-Ray Analyzer",
-      "subHeading": "Obtenha insights vitais com RM, Raio-X, TC, PET, ultrassom e medicina nuclear"
+      "subHeading": "Obtenha insights vitais sobre ressonâncias magnéticas, raios-X, tomografias, imagens PET, ultrassons e medicina nuclear por meio de análises impulsionadas por IA"
     },
     "scanCategories": {
       "heading": "Carrossel de Radiologia"
@@ -293,7 +294,7 @@
     "FreeTierStatus": {
       "heading": "Exames gratuitos",
       "subheading": "Desbloqueie exames ilimitados atualizando seu plano",
-      "action": "Atualizar Plano"
+      "action": "Atualizar"
     },
     "UploadFileOptionsModal": {
       "heading": "Escolha uma imagem / vídeo"
@@ -360,6 +361,7 @@
     "deleteScanReportFail": "Não foi possível excluir o relatório de varredura. Por favor, tente novamente",
     "onboardingUnsuccessful": "Onboarding malsucedido. Por favor, tente novamente",
     "logoutUnsuccessful": "Logout malsucedido. Por favor, tente novamente",
-    "deleteScanReportQuestion": "Tem certeza de que deseja excluir este relatório permanentemente?"
+    "deleteScanReportQuestion": "Tem certeza de que deseja excluir este relatório permanentemente?",
+    "videoLimitExceeds": "Seu vídeo excede o limite de 15 segundos. Por favor, corte-o e recarregue"
   }
 }

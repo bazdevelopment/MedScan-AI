@@ -13,6 +13,7 @@ import { useUser } from '@/api/user/user.hooks';
 import { translate, useSelectedLanguage } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
+import { wait } from '@/core/utilities/wait';
 import { Button, colors, Text } from '@/ui';
 import { BellIcon, UploadIcon } from '@/ui/assets/icons';
 
@@ -57,7 +58,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             {
               label: translate('components.UpgradeBanner.heading'),
               variant: 'default',
-              onPress: () => router.navigate('/paywall'),
+              onPress: () => wait(500).then(() => router.navigate('/paywall')), // a small delay in mandatory for Toast, not sure why
               buttonTextClassName: 'dark:text-white',
               className:
                 'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
@@ -155,14 +156,12 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           <Text className="text-center font-bold-nunito text-xl text-white">
             {translate('home.homeForeground.heading')}
           </Text>
-          <Text
-            className={`mt-2 px-2 text-center font-medium-nunito text-base text-white ${isVerySmallDevice ? 'px-0' : 'px-2'}`}
-          >
+          <Text className="mt-2 text-center text-sm text-white">
             {translate('home.homeForeground.subHeading')}
           </Text>
           <Button
             label={translate('uploadScan.title')}
-            className={`mb-0 mt-4 h-[52] w-[55%] rounded-full   border-[3px]  border-primary-600 bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie ${isVerySmallDevice ? 'w-[90%]' : 'w-[55%]'}`}
+            className={`mb-0 mt-4 h-[52]  rounded-full  border-[3px]  border-primary-600 bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie`}
             size="lg"
             textClassName="text-md font-semibold-nunito dark:text-white text-center"
             onPress={onStartUploadMediaFile}

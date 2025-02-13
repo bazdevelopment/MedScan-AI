@@ -38,7 +38,9 @@ export const analyzeImage = async (req: Request, res: any) => {
     const t = getTranslation(languageAbbreviation as string);
     const { userId, promptMessage } = fields;
     const [imageFile] = files;
-
+    const userPromptInput = promptMessage.length
+      ? `This is some additional information from the user regarding his request or expectations for this analysis:${promptMessage}`
+      : '';
     const userDoc = db.collection('users').doc(userId);
     const userInfoSnapshot = await userDoc.get();
     const storage = admin.storage();
@@ -97,7 +99,7 @@ export const analyzeImage = async (req: Request, res: any) => {
             },
             {
               type: 'text',
-              text: `${process.env.IMAGE_ANALYZE_PROMPT}.${additionalLngPrompt}`,
+              text: `${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.${additionalLngPrompt}`,
             },
           ],
         },
@@ -197,6 +199,9 @@ export const analyzeVideo = async (req: Request, res: any) => {
     const preferredLanguage =
       LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
     const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
+    const userPromptInput = promptMessage.length
+      ? `This is some additional information from the user regarding his request or expectations for this analysis:${promptMessage}`
+      : '';
     const t = getTranslation(languageAbbreviation as string);
     // Assuming we process the first video file
     const videoFile = files[0];
@@ -226,7 +231,7 @@ export const analyzeVideo = async (req: Request, res: any) => {
       ]),
       {
         type: 'text',
-        text: `${process.env.IMAGE_ANALYZE_PROMPT}.${additionalLngPrompt}`,
+        text: `${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.${additionalLngPrompt}`,
       } as TextBlockParam,
     ];
 

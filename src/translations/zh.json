@@ -17,6 +17,7 @@
     "attention": "注意！",
     "new": "新建",
     "yes": "是",
+    "or": "或",
     "openSettings": "打开设置",
     "seeNotifications": "查看通知",
     "viewProfile": "查看个人资料",
@@ -212,7 +213,7 @@
     "homeForeground": {
       "maxNumberOfScans": "您已达到扫描限制！立即升级计划解锁更多扫描。🚀",
       "heading": "欢迎使用X射线分析器",
-      "subHeading": "通过核磁共振、X射线、CT扫描、PET成像、超声波和核医学获取重要见解"
+      "subHeading": "通过AI驱动的分析，获取有关MRI、X光、CT扫描、PET成像、超声波和核医学的重要见解"
     },
     "scanCategories": {
       "heading": "放射影像集"
@@ -291,7 +292,7 @@
     "FreeTierStatus": {
       "heading": "免费扫描",
       "subheading": "升级您的计划以解锁无限扫描",
-      "action": "升级计划"
+      "action": "升级"
     },
     "UploadFileOptionsModal": {
       "heading": "选择图片/视频"
@@ -358,6 +359,7 @@
     "onboardingUnsuccessful": "引导过程未成功，请重试",
     "deleteScanReportFail": "无法删除扫描报告。请再试一次",
     "logoutUnsuccessful": "退出登录未成功，请重试",
-    "deleteScanReportQuestion": "您确定要永久删除此报告吗"
+    "deleteScanReportQuestion": "您确定要永久删除此报告吗",
+    "videoLimitExceeds": "您的视频超过了15秒限制。请修剪并重新上传"
   }
 }

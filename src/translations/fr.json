@@ -17,6 +17,7 @@
     "attention": "Attention!",
     "new": "Nouveau",
     "yes": "Oui",
+    "or": "ou",
     "openSettings": "Ouvrir les paramètres",
     "seeNotifications": "Voir les notifications",
     "viewProfile": "Voir le profil",
@@ -212,7 +213,7 @@
     "homeForeground": {
       "maxNumberOfScans": "Vous avez atteint votre limite d'analyses ! Améliorez votre abonnement pour débloquer plus d'analyses. 🚀",
       "heading": "Bienvenue dans X-Ray Analyzer",
-      "subHeading": "Obtenez des informations vitales avec les IRM, radiographies, scanners, imagerie TEP, échographies et médecine nucléaire"
+      "subHeading": "Obtenez des informations vitales sur l'IRM, les rayons X, les scanners, l'imagerie PET, les ultrasons et la médecine nucléaire via une analyse alimentée par l'IA"
     },
     "scanCategories": {
       "heading": "Répertoire radiologique"
@@ -291,7 +292,7 @@
     "FreeTierStatus": {
       "heading": "Analyses gratuites",
       "subheading": "Débloquez des analyses illimitées en améliorant votre abonnement",
-      "action": "Améliorer l'abonnement"
+      "action": "Mettre à niveau"
     },
     "UploadFileOptionsModal": {
       "heading": "Choisir une image / vidéo"
@@ -358,6 +359,7 @@
     "deleteScanReportFail": "Impossible de supprimer le rapport d'analyse. Veuillez réessayer",
     "onboardingUnsuccessful": "Échec de l'intégration. Veuillez réessayer",
     "logoutUnsuccessful": "Échec de la déconnexion. Veuillez réessayer",
-    "deleteScanReportQuestion": "Êtes-vous sûr de vouloir supprimer définitivement ce rapport ?"
+    "deleteScanReportQuestion": "Êtes-vous sûr de vouloir supprimer définitivement ce rapport ?",
+    "videoLimitExceeds": "Votre vidéo dépasse la limite de 15 secondes. Veuillez la couper et la téléverser à nouveau"
   }
 }

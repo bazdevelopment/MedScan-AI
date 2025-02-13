@@ -8,7 +8,7 @@ import path from 'path';
 export const extractFrames = (
   videoPath: string,
   outputPath: string,
-  frameRate = 1,
+  frameRate = 2, // initially was 1 frame per second, check whats the best in terms of costs
 ) => {
   return new Promise((resolve, reject) => {
     ffmpeg(videoPath)
@@ -33,7 +33,7 @@ export const getBase64ImageFrames = async (
     fs.mkdirSync(framesDir);
   }
 
-  await extractFrames(tempVideoPath, framesDir, 1);
+  await extractFrames(tempVideoPath, framesDir, 2);
 
   // Convert frames to base64
   const base64Frames = fs

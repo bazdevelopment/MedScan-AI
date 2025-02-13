@@ -1,4 +1,4 @@
-package com.xrayanalizer.development
+package com.xrayanalizer
 
 import android.os.Build
 import android.os.Bundle

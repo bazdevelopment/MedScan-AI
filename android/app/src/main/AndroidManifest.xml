@@ -34,6 +34,7 @@
         <data android:scheme="x-ray-analizer"/>
         <data android:scheme="com.xrayanalizer.development"/>
         <data android:scheme="exp+x-ray-analyzer"/>
+        <data android:scheme="com.xrayanalizer"/>
       </intent-filter>
       <intent-filter data-generated="true">
         <action android:name="android.intent.action.VIEW"/>

@@ -134,9 +134,9 @@ jobs:
             elif [[ "${{ inputs.environment }}" == "development" ]]; then
               echo "development";
             elif [[ "${{ inputs.environment }}" == "staging" ]]; then
-              echo "staging";
+              echo "production";
             fi
-          ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
+          ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment == 'staging' && 'production' || inputs.environment }}
           fi
 
       - name: 🏃‍♂️ Align native code with version changes by running prebuild

@@ -149,7 +149,7 @@ jobs:
           echo "Running prebuild-push:production for the ${{
            inputs.environment }} environment"
           pnpm prebuild-push:production
-          elif [ "${{ inputs.environment }}" = "production" ]; then
+          elif [ "${{ inputs.environment }}" = "staging" ]; then
           echo "Running prebuild-push:production for the ${{
            inputs.environment }} environment"
           pnpm prebuild-push:staging

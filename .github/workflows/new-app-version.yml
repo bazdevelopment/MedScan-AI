@@ -36,8 +36,8 @@ on:
         description: |
           **Rules:**
 
-          Production build => 24.10.2 (Ensure that the version is unique and does not contain any suffixes); 
-          Staging build (not enabled yet) -> e.g. 24.10.1-staging."
+          Production build => 24.10.2 (Ensure that the version is unique and does not contain any suffixes, this cannot be uploaded to Firebase App Distribution); 
+          Staging build -> e.g. 24.10.1-staging."
           Development build -> e.g. 24.10.1-dev;
 
         required: false
@@ -51,6 +51,7 @@ on:
         options:
           - development
           - production
+          - staging
 
       should_submit:
         type: choice
@@ -132,6 +133,8 @@ jobs:
               echo "master";
             elif [[ "${{ inputs.environment }}" == "development" ]]; then
               echo "development";
+            elif [[ "${{ inputs.environment }}" == "staging" ]]; then
+              echo "staging";
             fi
           ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
           fi
@@ -146,6 +149,10 @@ jobs:
           echo "Running prebuild-push:production for the ${{
            inputs.environment }} environment"
           pnpm prebuild-push:production
+          elif [ "${{ inputs.environment }}" = "production" ]; then
+          echo "Running prebuild-push:production for the ${{
+           inputs.environment }} environment"
+          pnpm prebuild-push:staging
           else
           echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
           fi

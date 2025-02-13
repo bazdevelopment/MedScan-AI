@@ -2,7 +2,7 @@
 import { Link } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
-import { ActivityIndicator, Keyboard } from 'react-native';
+import { Keyboard } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
@@ -35,7 +35,6 @@ const LoginPage = () => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const [isFirstTime] = useIsFirstTime();
-
   const { mutate: handleLoginViaEmail, isPending: isLoginPending } =
     useLoginWithEmail({ email })();
 
@@ -90,12 +89,12 @@ const LoginPage = () => {
           />
 
           <Branding isLogoVisible />
-          {isLoginPending && (
+          {/* {isLoginPending && (
             <ActivityIndicator
               size="small"
               color={isDark ? colors.charcoal[300] : colors.charcoal[700]}
             />
-          )}
+          )} */}
 
           <Text
             testID="form-title"
@@ -150,7 +149,8 @@ const LoginPage = () => {
                 handleLoginViaEmail({ email, language });
                 Keyboard.dismiss();
               }}
-              disabled={isLoginPending || !email}
+              disabled={!email}
+              loading={isLoginPending}
             />
           </View>
           <SnakeLine

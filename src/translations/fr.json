@@ -204,7 +204,7 @@
         "location": "Sélectionnez dans la galerie ou les fichiers",
         "fileType": "PNG, JPG, PDF ou MP4",
         "openCamera": "Ouvrir l'appareil photo et prendre une photo",
-        "scanType": "Radiographie, scanner, IRM, TEP"
+        "scanType": "Seuls les rayons X, les scanners, les IRM, les PET ou autres imageries médicales sont autorisés"
       }
     }
   },

@@ -202,11 +202,11 @@
       },
       "uploadFile": {
         "title": "Please upload your medical imaging file",
-        "size": "Maximum file size: 10MB",
+        "size": "Max: {{imageLimit}}MB (images), {{videoLimit}}MB (videos)",
         "location": "Select from Gallery or Files",
         "fileType": "PNG, JPG, PDF, or MP4",
         "openCamera": "Open Camera & Take Photo",
-        "scanType": "X-RAY, CT, MRI, PET"
+        "scanType": "Only X-Rays, CT, MRI, PET, or other medical imaging allowed"
       }
     }
   },

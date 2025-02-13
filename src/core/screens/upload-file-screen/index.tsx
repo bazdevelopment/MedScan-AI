@@ -9,6 +9,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { Toaster } from 'sonner-native';
 
 import ProgressBar from '@/components/progress-bar';
+import { IMAGE_SIZE_LIMIT_MB, VIDEO_SIZE_LIMIT_MB } from '@/constants/limits';
 import { useMediaPiker } from '@/core/hooks/use-media-picker';
 import { translate } from '@/core/i18n';
 import { DEVICE_TYPE } from '@/core/utilities/device-type';
@@ -88,9 +89,12 @@ const UploadFileScreen = ({
               {translate('flows.createReport.uploadFile.location')}
             </Text>
             <Text className="mt-1 text-center text-base text-gray-600">
-              {translate('flows.createReport.uploadFile.size')}
+              {translate('flows.createReport.uploadFile.size', {
+                imageLimit: IMAGE_SIZE_LIMIT_MB,
+                videoLimit: VIDEO_SIZE_LIMIT_MB,
+              })}
             </Text>
-            <Text className="mt-2 text-center font-bold-nunito text-sm text-primary-700">
+            <Text className="mt-2 text-center font-bold-nunito text-xs text-primary-700">
               {translate('flows.createReport.uploadFile.scanType')}
             </Text>
           </View>

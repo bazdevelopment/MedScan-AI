@@ -204,7 +204,7 @@
         "location": "从相册或文件中选择",
         "fileType": "PNG、JPG、PDF或MP4",
         "openCamera": "打开相机拍照",
-        "scanType": "X射线、CT、核磁共振、PET"
+        "scanType": "仅允许X光、CT、MRI、PET或其他医学影像"
       }
     }
   },

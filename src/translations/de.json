@@ -204,7 +204,7 @@
         "location": "Aus Galerie oder Dateien auswählen",
         "fileType": "PNG, JPG, PDF oder MP4",
         "openCamera": "Kamera öffnen & Foto aufnehmen",
-        "scanType": "Röntgen, CT, MRT, PET"
+        "scanType": "Nur Röntgen, CT, MRT, PET oder andere medizinische Bildgebung erlaubt"
       }
     }
   },

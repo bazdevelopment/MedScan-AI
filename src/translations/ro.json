@@ -204,7 +204,7 @@
         "location": "Selectează din Galerie sau Fișiere",
         "fileType": "PNG, JPG, PDF sau MP4",
         "openCamera": "Deschide Camera și Fă o Fotografie",
-        "scanType": "X-RAY, CT, MRI, PET"
+        "scanType": "Sunt permise doar raze X, tomografii computerizate, RMN, PET sau alte imagistici medicale"
       }
     }
   },

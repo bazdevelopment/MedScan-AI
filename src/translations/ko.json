@@ -204,7 +204,7 @@
         "location": "갤러리 또는 파일에서 선택",
         "fileType": "PNG, JPG, PDF 또는 MP4",
         "openCamera": "카메라 열기 및 사진 찍기",
-        "scanType": "X선, CT, MRI, PET"
+        "scanType": "X-Ray, CT, MRI, PET 또는 기타 의료 영상만 허용됩니다"
       }
     }
   },

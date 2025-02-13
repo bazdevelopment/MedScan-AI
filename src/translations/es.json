@@ -204,7 +204,7 @@
         "location": "Seleccionar desde Galería o Archivos",
         "fileType": "PNG, JPG, PDF o MP4",
         "openCamera": "Abrir cámara y tomar foto",
-        "scanType": "RAYOS X, TAC, RMN, PET"
+        "scanType": "Solo se permiten radiografías, tomografías, resonancias magnéticas, PET u otras imágenes médicas"
       }
     }
   },

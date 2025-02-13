@@ -204,7 +204,7 @@
         "location": "ギャラリーまたはファイルから選択",
         "fileType": "PNG、JPG、PDF、またはMP4",
         "openCamera": "カメラを開いて写真を撮る",
-        "scanType": "X線、CT、MRI、PET"
+        "scanType": "X線、CT、MRI、PET、またはその他の医療画像のみ許可されています"
       }
     }
   },

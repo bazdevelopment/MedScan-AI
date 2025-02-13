@@ -34,7 +34,7 @@
     "version": "pnpm run eas-build-pre-install && git add .",
     "prebuild-push:development": "pnpm run prebuild:development && git add . && git commit -m 'merged changes for development' --no-verify && git push",
     "prebuild-push:production": "pnpm run prebuild:production && git add . && git commit -m 'prebuild ran for production' --no-verify && git push",
-    "prebuild-push:staging": "git commit -m 'prebuild ran for staging after version changed' && pnpm run prebuild:staging && git add . && git commit -m 'prebuild ran for staging' --no-verify && git push",
+    "prebuild-push:staging": "pnpm run prebuild:staging && git add . && git commit -m 'prebuild ran for staging' --no-verify && git push",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "type-check": "tsc  --noemit",
     "lint:translations": "eslint ./src/translations/ --fix --ext .json  ",

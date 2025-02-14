@@ -68,8 +68,11 @@ export default function Home() {
     refetchUserNotifications();
   };
 
-  const { data, isPending: areScanCategoriesLoading } =
-    useScanCategories(language);
+  const {
+    data,
+    isPending: areScanCategoriesLoading,
+    isError: areErrorsOnScanCategories,
+  } = useScanCategories(language);
 
   const {
     mutate: onUpdateInterpretationFields,
@@ -131,15 +134,19 @@ export default function Home() {
             onUpgrade={() => router.navigate('/paywall')}
           />
 
-          <Text className="mx-4 mb-3 mt-8 font-semibold-nunito">
-            {translate('home.scanCategories.heading')}
-          </Text>
+          {!areErrorsOnScanCategories && (
+            <>
+              <Text className="mx-4 mb-3 mt-8 font-semibold-nunito">
+                {translate('home.scanCategories.heading')}
+              </Text>
 
-          <ScanCategoriesStories
-            categories={data?.categories}
-            isLoading={areScanCategoriesLoading}
-            className="ml-4"
-          />
+              <ScanCategoriesStories
+                categories={data?.categories}
+                isLoading={areScanCategoriesLoading}
+                className="ml-4"
+              />
+            </>
+          )}
           <Text className="mx-6 mb-4 mt-8 font-semibold-nunito">
             {translate('home.recentReports.heading')}
           </Text>

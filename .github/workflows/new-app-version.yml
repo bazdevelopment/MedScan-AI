@@ -101,7 +101,7 @@ jobs:
       - name: 'Load environment variables'
         run: |
           # Define the environment file name based on the input environment
-          ENV_FILE: ".env.${{ inputs.environment == 'staging' && 'production' || inputs.environment }}"
+          ENV_FILE=".env.${{ inputs.environment == 'staging' && 'production' || inputs.environment }}"
 
           # Create the environment file (use $ENV_FILE variable)
           touch $ENV_FILE

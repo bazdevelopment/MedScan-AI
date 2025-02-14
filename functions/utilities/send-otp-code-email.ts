@@ -20,6 +20,7 @@ export const sendOtpCodeViaEmail = async ({
       html: htmlTemplate,
     });
   } catch (error) {
+    console.log('error', error);
     throw new functions.https.HttpsError(
       'internal',
       '[Resend] The verification code cannot be sent via your email!',

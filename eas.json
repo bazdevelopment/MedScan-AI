@@ -39,7 +39,7 @@
         "image": "latest"
       },
       "env": {
-        "APP_ENV": "production",
+        "APP_ENV": "production", // !don't change it to staging for now otherwise eas build will request a .env.staging file
         "EXPO_NO_DOTENV": "1",
         "FLIPPER_DISABLE": "1"
       },

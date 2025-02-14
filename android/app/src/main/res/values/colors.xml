@@ -3,6 +3,6 @@
   <color name="iconBackground">#FFFFFF</color>
   <color name="colorPrimary">#023c69</color>
   <color name="colorPrimaryDark">#060047</color>
-  <color name="notification_icon_color">#FFFFFF</color>
   <color name="heart_icon_background_color">#FFFFFF</color>
+  <color name="notification_icon_color">#FFFFFF</color>
 </resources>

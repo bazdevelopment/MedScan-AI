@@ -66,7 +66,7 @@ jobs:
   release:
     name: Create New Version and push new tag
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.environment == 'staging' && 'production' || inputs.environment }}
     permissions:
       contents: write
     steps:
@@ -102,13 +102,13 @@ jobs:
         run: |
           # Define the environment file name based on the input environment
           if [ "${{ inputs.environment }}" == "staging" ]; then
-           ENV_FILE=".env.production"
-           else
-          ENV_FILE=".env.${{ inputs.environment }}"
+            ENV_FILE=".env.production"
+          else
+            ENV_FILE=".env.${{ inputs.environment }}"
           fi
 
-           # Create the environment file (use $ENV_FILE variable)
-           touch $ENV_FILE
+          # Create the environment file (use $ENV_FILE variable)
+          touch $ENV_FILE
 
            # Export Google Services JSON secrets to the GitHub environment
            echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV

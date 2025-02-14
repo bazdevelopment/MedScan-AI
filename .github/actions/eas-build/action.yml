@@ -76,7 +76,12 @@ runs:
         token: ${{ inputs.EXPO_TOKEN }}
 
     - name: ⚙️ Run Prebuild
-      run: pnpm prebuild:${{ inputs.APP_ENV }}
+      run: |
+        if [[ "${{ inputs.APP_ENV }}" == "staging" ]]; then
+        pnpm prebuild:production
+        else
+        pnpm prebuild:${{ inputs.APP_ENV }}
+        fi
       shell: bash
 
     - name: 📱 Run Android Build

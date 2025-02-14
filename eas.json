@@ -39,7 +39,7 @@
         "image": "latest"
       },
       "env": {
-        "APP_ENV": "staging",
+        "APP_ENV": "production",
         "EXPO_NO_DOTENV": "1",
         "FLIPPER_DISABLE": "1"
       },

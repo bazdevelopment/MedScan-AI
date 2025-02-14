@@ -19,7 +19,7 @@
 	<key>PROJECT_ID</key>
 	<string>x-ray-analizer-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>x-ray-analizer-prod.firebasestorage.app</string>
+	<string>x-ray-analizer-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>

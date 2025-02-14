@@ -127,7 +127,7 @@ jobs:
               elif [[ "${{ inputs.environment }}" == "staging" ]]; then
                 echo "staging"
               fi
-            ) ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
+            ) ${{ github.event.inputs.release-type }} 
           else
             echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
             pnpm app-release --branch=$(
@@ -138,7 +138,7 @@ jobs:
               elif [[ "${{ inputs.environment }}" == "staging" ]]; then
                 echo "staging"
               fi
-            ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
+            ) ${{ github.event.inputs.new-app-version }}
           fi
 
       - name: 🏃‍♂️ Align native code with version changes by running prebuild

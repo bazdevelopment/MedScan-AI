@@ -7,15 +7,16 @@
 #         - EXPO_TOKEN: Expo token to authenticate with EAS
 #         - You can get it from https://expo.dev/settings/access-tokens
 
-name: EAS Production Build (Android & IOS) (EAS)
+name: EAS Staging Build (Android & IOS) (EAS)
 
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+' # Matches tags like v1.0.0, 2.5.3, etc. (no suffixes like -dev, -staging)
+      - 'v[0-9]+.[0-9]+.[0-9]+-staging' # Matches staging tags like v1.0.0-staging, 2.5.3-staging, etc.
+
 jobs:
   Build:
-    name: EAS Production Build (Android & IOS) (EAS)
+    name: EAS Staging Build (Android & IOS) (EAS)
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -44,7 +45,8 @@ jobs:
       - name: 'Load environment variables'
         run: |
           # Define the environment file name based on the input environment
-          APP_ENV="production"
+          #For now keep APP_ENV production even if the workflow is for staging
+          APP_ENV="production" 
           ENV_FILE=".env.${APP_ENV}"
 
            echo "APP_ENV: ${APP_ENV}"
@@ -82,7 +84,7 @@ jobs:
       - name: ⏱️ EAS Build
         uses: ./.github/actions/eas-build
         with:
-          APP_ENV: production
+          APP_ENV: staging
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
           VERSION: ${{ env.PACKAGE_VERSION }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}

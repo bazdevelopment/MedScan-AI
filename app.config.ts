@@ -22,7 +22,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   splash: {
     image: './assets/splash.png',
     resizeMode: 'cover',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -42,8 +42,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     googleServicesFile: ClientEnv.GOOGLE_SERVICES_JSON_PATH,
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#2E3C4B',
+      foregroundImage: './assets/icon.png',
+      backgroundColor: '#FFFFFF',
     },
     intentFilters: [
       {
@@ -66,8 +66,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-notifications',
       {
-        icon: './assets/icon_transparent.png',
-        color: '#523BF5',
+        icon: './assets/icon_notification_96x96.png',
+        color: '#FFFFFF',
         defaultChannel: 'default',
       },
     ],

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { Storage } from 'firebase-admin/lib/storage/storage';
 import * as functions from 'firebase-functions/v1';
 
@@ -23,6 +24,8 @@ export const getScanCategoriesHandler = async (
     const storage = admin.storage();
     const categoriesSnapshot = await db.collection('scan_categories').get();
 
+    console.log('categoriesSnapshot.docs', categoriesSnapshot.docs);
+
     if (categoriesSnapshot.empty) {
       throw new functions.https.HttpsError(
         'not-found',
@@ -36,7 +39,7 @@ export const getScanCategoriesHandler = async (
     for (const categoryDoc of categoriesSnapshot.docs) {
       const categoryData = categoryDoc.data();
       const categoryId = categoryData.id;
-
+      console.log('categoryDoc.data();', categoryDoc.data());
       const examplesSnapshot = await categoryDoc.ref
         .collection('category_examples')
         .get();
@@ -44,6 +47,8 @@ export const getScanCategoriesHandler = async (
       const examples = [];
       for (const exampleDoc of examplesSnapshot.docs) {
         const exampleData = exampleDoc.data();
+
+        console.log('exampleData', exampleData);
 
         // Get the image URL from Firebase Storage
         const imageUrl = await getImageUrl(exampleData.image, storage);
@@ -62,6 +67,7 @@ export const getScanCategoriesHandler = async (
         examples: examples,
       });
     }
+    console.log('categories final', categories);
     return { success: true, categories };
   } catch (error: any) {
     t = t || getTranslation('en');

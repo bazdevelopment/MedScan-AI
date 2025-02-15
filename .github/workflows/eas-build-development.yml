@@ -58,6 +58,12 @@ jobs:
             echo "RUN_ANDROID=true" >> $GITHUB_ENV
             echo "SHOULD_SUBMIT=false" >> $GITHUB_ENV
           fi
+      - name: Debug Output
+        run: |
+          echo "RUN_IOS: ${{ env.RUN_IOS }}"
+          echo "RUN_ANDROID: ${{ env.RUN_ANDROID }}"
+          echo "SHOULD_SUBMIT: ${{ env.SHOULD_SUBMIT }}"
+          echo "PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}"
 
   ios_build:
     needs: setup

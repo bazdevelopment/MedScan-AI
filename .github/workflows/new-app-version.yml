@@ -184,6 +184,9 @@ jobs:
   create_github_release:
     needs: release
     uses: ./.github/workflows/new-github-release.yml
+    permissions:
+      contents: write # Add permissions here
+    secrets: inherit
 
   build:
     needs: ['create_github_release', 'release']

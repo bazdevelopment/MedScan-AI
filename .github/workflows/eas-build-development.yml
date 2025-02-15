@@ -79,7 +79,7 @@ jobs:
 
   ios_build:
     needs: setup
-    if: needs.setup.outputs.run_ios == 'true'
+    if: inputs.run_ios == 'true'
     name: iOS Build
     runs-on: ubuntu-latest
     environment: development
@@ -122,11 +122,11 @@ jobs:
           CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
           ANDROID: false
           IOS: true
-          SHOULD_SUBMIT: ${{ needs.setup.outputs.should_submit }}
+          SHOULD_SUBMIT: ${{ inputs.should_submit }}
 
   android_build:
     needs: setup
-    if: needs.setup.outputs.run_android == 'true'
+    if: inputs.run_android == 'true'
     name: Android Build
     runs-on: ubuntu-latest
     environment: development
@@ -174,7 +174,7 @@ jobs:
           CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
           ANDROID: true
           IOS: false
-          SHOULD_SUBMIT: ${{ needs.setup.outputs.should_submit }}
+          SHOULD_SUBMIT: ${{ inputs.should_submit }}
 
   # Build:
   #   name: EAS Development Build (Android & IOS) (EAS)

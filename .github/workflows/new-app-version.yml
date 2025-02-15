@@ -183,13 +183,18 @@ jobs:
 
       - name: Trigger EAS Build Workflow
         if: success()
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3 # Update to v3
         with:
           token: ${{ secrets.GH_TOKEN }}
+          # Add repository if it's not the same repo
+          repository: ${{ github.repository }}
           event-type: trigger-eas-build-workflow-dev
-          client-payload: '{
-            "should_submit": "${{ inputs.should_submit }}",
-            "environment": "${{ inputs.environment }}",
-            "run_ios": "${{ inputs.run_ios }}",
-            "run_android": "${{ inputs.run_android }}"
-            }'
+          client-payload: >-
+            {
+              "ref": "${{ github.ref }}",
+              "sha": "${{ github.sha }}",
+              "should_submit": "${{ inputs.should_submit }}",
+              "environment": "${{ inputs.environment }}",
+              "run_ios": "${{ inputs.run_ios }}",
+              "run_android": "${{ inputs.run_android }}"
+            }

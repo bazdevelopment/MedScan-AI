@@ -186,7 +186,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GH_TOKEN }}
-          event-type: trigger-eas-build-workflow
+          event-type: trigger-eas-build-workflow-dev
           client-payload: '{
             "should_submit": "${{ inputs.should_submit }}",
             "environment": "${{ inputs.environment }}",

@@ -11,10 +11,10 @@ name: EAS Development Build (Android & IOS) (EAS)
 
 on:
   repository_dispatch:
-    types: [trigger-eas-build-workflow]
-  push:
-    tags:
-      - '*-dev' # Matches tags ending with '-dev'
+    types: [trigger-eas-build-workflow-dev]
+  # push:
+  #   tags:
+  #     - '*-dev' # Matches tags ending with '-dev'
 
 jobs:
   setup:

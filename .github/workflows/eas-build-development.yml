@@ -60,6 +60,10 @@ jobs:
           fi
       - name: Debug Output
         run: |
+          echo "Event Details:"
+          echo "  Event name: ${{ github.event_name }}"
+          echo "  Event action: ${{ github.event.action }}"
+          echo "  Client payload: ${{ toJSON(github.event.client_payload) }}"
           echo "RUN_IOS: ${{ env.RUN_IOS }}"
           echo "RUN_ANDROID: ${{ env.RUN_ANDROID }}"
           echo "SHOULD_SUBMIT: ${{ env.SHOULD_SUBMIT }}"

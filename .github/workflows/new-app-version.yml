@@ -184,13 +184,9 @@ jobs:
   create_github_release:
     needs: release
     uses: ./.github/workflows/new-github-release.yml
-    with:
-      environment: ${{ inputs.environment }}
-      version: ${{ inputs.new-app-version }}
-    secrets: inherit
 
   build:
-    needs: release
+    needs: ['create_github_release', 'release']
     uses: ./.github/workflows/eas-build-development.yml
     with:
       environment: ${{ inputs.environment }}

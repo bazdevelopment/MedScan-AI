@@ -67,7 +67,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-notifications',
       {
         icon: './assets/icon_notification_96x96.png',
-        color: '#FFFFFF',
+        color: '#7982FD',
         defaultChannel: 'default',
       },
     ],

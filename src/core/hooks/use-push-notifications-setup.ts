@@ -1,23 +1,16 @@
 /* eslint-disable max-lines-per-function */
-import Constants from 'expo-constants';
-import * as DeviceInfo from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Linking, Platform } from 'react-native';
 
 import { storeMobileDeviceToken } from '@/api/push-notifications/push-notifications.requests';
 import Toast from '@/components/toast';
 
-import { Env } from '../env';
-import { translate, useSelectedLanguage } from '../i18n';
-import { getUniqueDeviceIdentifier } from '../utilities/get-unique-device-identifier';
+import { translate } from '../i18n';
 
 export const usePushNotificationSetup = () => {
   const [arePushNotificationEnabled, setArePushNotificationsEnabled] =
     useState(false);
-  const [deviceToken, setDeviceToken] = useState('');
-
-  const { language } = useSelectedLanguage();
 
   const enablePushNotifications = useCallback(
     async (showAlert: boolean = false) => {
@@ -50,32 +43,7 @@ export const usePushNotificationSetup = () => {
           }
         }
 
-        // This block will always execute, regardless of permission status
-        // Get the project ID for Expo push notifications
-        const projectId = Constants.expoConfig?.extra?.eas.projectId;
-        if (!projectId) {
-          Toast.error(translate('alerts.projectIdNotFound'));
-          return;
-        }
-
-        // Fetch the Expo push token
-        const { data: token } = await Notifications.getExpoPushTokenAsync({
-          projectId,
-        });
-        setDeviceToken(token);
-        // Store the device token on the server
-        const response = await storeMobileDeviceToken({
-          deviceToken: token,
-          platform: Platform.OS,
-          version: Env.VERSION,
-          deviceName: DeviceInfo.deviceName || '',
-          deviceModel: DeviceInfo.modelName || '',
-          deviceBrand: DeviceInfo.brand || '',
-          deviceUniqueId: getUniqueDeviceIdentifier(),
-          language,
-        });
-
-        if (response.success && existingStatus === 'granted') {
+        if (existingStatus === 'granted') {
           // Update state and MMKV storage to reflect that notifications are enabled
           setArePushNotificationsEnabled(true);
           // storage.set('arePushNotificationsEnabled', 'true');
@@ -99,7 +67,7 @@ export const usePushNotificationSetup = () => {
         Toast.error(translate('alerts.enableNotificationError'));
       }
     },
-    [language],
+    [],
   );
 
   const disablePushNotifications = async () => {
@@ -136,15 +104,10 @@ export const usePushNotificationSetup = () => {
     }
   };
 
-  useEffect(() => {
-    checkIfNotificationsEnabled();
-  }, []);
-
   return {
     enablePushNotifications,
     checkIfNotificationsEnabled,
     arePushNotificationEnabled,
-    deviceToken,
     disablePushNotifications,
   };
 };

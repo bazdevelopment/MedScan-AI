@@ -213,7 +213,7 @@
     "homeForeground": {
       "maxNumberOfScans": "Ai atins limita de scanări! Actualizează planul tău pentru a debloca mai multe scanări. 🚀",
       "heading": "Bine ați venit la X-Ray Analyzer!",
-      "subHeading": "Obțineți informații esențiale despre RMN, raze X, tomografie computerizată, imagistică PET, ecografii și medicină nucleară prin analiză bazată pe inteligență artificială"
+      "subHeading": "Obțineți informații esențiale despre raze X, RMN, tomografie computerizată, imagistică PET, ecografii și medicină nucleară prin analiză bazată pe inteligență artificială"
     },
     "scanCategories": {
       "heading": "Radiologie"

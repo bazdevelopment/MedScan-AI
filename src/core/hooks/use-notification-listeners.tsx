@@ -21,7 +21,7 @@ export const useNotificationListeners = () => {
         // You can update state, show a custom UI, etc.
         addSuccessHapticEffect?.();
         playSound('success');
-        Toast.warning(notification.request.content.title as string, {
+        Toast.info(notification.request.content.title as string, {
           action: {
             label: translate('general.seeNotifications'),
             onClick: () => {

@@ -189,3 +189,4 @@ jobs:
       run_ios: ${{ inputs.run_ios == 'true' }}
       run_android: ${{ inputs.run_android == 'true' }}
       should_submit: ${{ inputs.should_submit == 'true' }}
+    secrets: inherit

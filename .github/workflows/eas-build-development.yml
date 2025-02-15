@@ -72,7 +72,9 @@ jobs:
       #     fi
       - name: Debug Output
         run: |
-
+          echo "Event Details:"
+          echo "  Event name: ${{ github.event_name }}"
+          echo "  Event action: ${{ github.event.action }}"
           echo "  Client payload: ${{ toJSON(inputs) }}"
 
   ios_build:

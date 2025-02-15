@@ -79,7 +79,7 @@ jobs:
 
   ios_build:
     needs: setup
-    if: inputs.run_ios == 'true'
+    if: ${{ inputs.run_ios }}
     name: iOS Build
     runs-on: ubuntu-latest
     environment: development
@@ -126,7 +126,7 @@ jobs:
 
   android_build:
     needs: setup
-    if: inputs.run_android == 'true'
+    if: ${{ inputs.run_android }}
     name: Android Build
     runs-on: ubuntu-latest
     environment: development

@@ -8,6 +8,11 @@ name: New GitHub Release
 
 on:
   workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+        description: 'Version will be added as tag'
 
 jobs:
   release:
@@ -29,6 +34,7 @@ jobs:
         with:
           generateReleaseNotes: true
           draft: false
+          tag: ${{ inputs.version }}
 
       # Step 3: Log success
       - name: 🎉 Success

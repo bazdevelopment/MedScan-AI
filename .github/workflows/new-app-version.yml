@@ -184,6 +184,8 @@ jobs:
   create_github_release:
     needs: release
     uses: ./.github/workflows/new-github-release.yml
+    with:
+      version: ${{ inputs.new-app-version }} # Pass the version
     permissions:
       contents: write # Add permissions here
     secrets: inherit

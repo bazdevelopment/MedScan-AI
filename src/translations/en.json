@@ -215,7 +215,7 @@
     "homeForeground": {
       "maxNumberOfScans": "You've reached your scan limit! Upgrade your plan now to unlock more scans. 🚀",
       "heading": "Welcome to X-Ray Analyzer!",
-      "subHeading": "Get vital insights about MRI, X-Rays, CT scans, PET imaging, ultrasounds, and nuclear medicine through AI-powered analysis"
+      "subHeading": "Get vital insights about X-Rays, MRI, CT scans, PET imaging, ultrasounds, and nuclear medicine through AI-powered analysis"
     },
     "scanCategories": {
       "heading": "Radiology Reel"

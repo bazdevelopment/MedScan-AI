@@ -53,6 +53,24 @@ on:
           - production
           - staging
 
+      run_ios:
+        type: choice
+        description: Run IOS build?
+        required: true
+        default: 'true'
+        options:
+          - true
+          - false
+
+      run_android:
+        type: choice
+        description: Run Android build?
+        required: true
+        default: 'true'
+        options:
+          - true
+          - false
+
       should_submit:
         type: choice
         description: Whether to perform the EAS submit step
@@ -162,3 +180,16 @@ jobs:
           else
           echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
           fi
+
+      - name: Trigger EAS Build Workflow
+        if: success()
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          event-type: trigger-eas-build-workflow
+          client-payload: '{
+            "should_submit": "${{ inputs.should_submit }}",
+            "environment": "${{ inputs.environment }}",
+            "run_ios": "${{ inputs.run_ios }}",
+            "run_android": "${{ inputs.run_android }}"
+            }'

@@ -1,15 +1,13 @@
+name: New GitHub Release
+
 # ✍️ Description:
-# This workflow will be triggered automatically after the new app version workflow has been executed successfully.
-# It will create a new GitHub release with the new app version and the release notes.
+# This workflow is triggered automatically after the new app version workflow succeeds.
+# It creates a new GitHub release with the new app version and auto-generated release notes.
 
 # 🚨 GITHUB SECRETS REQUIRED: None
 
-name: New GitHub Release
-
 on:
-  push:
-    tags:
-      - '*'
+  workflow_call:
 
 jobs:
   release:
@@ -18,13 +16,22 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: 📦 Checkout project repo
+      # Step 1: Checkout the repository
+      - name: 📦 Checkout project repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: 🏃‍♂️Create A Draft Github Release
+      # Step 2: Create a GitHub release
+      - name: 🏷️ Create GitHub Release
+        id: create_release
         uses: ncipollo/release-action@v1
         with:
           generateReleaseNotes: true
           draft: false
+
+      # Step 3: Log success
+      - name: 🎉 Success
+        if: ${{ success() }}
+        run: |
+          echo "GitHub release created successfully!"

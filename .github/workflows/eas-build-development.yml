@@ -51,25 +51,6 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      # - name: Set Build Variables
-      #   id: set_build_vars
-      #   run: |
-      #     if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-      #       echo "RUN_IOS=${{ github.event.client_payload.run_ios }}" >> $GITHUB_ENV
-      #       echo "RUN_ANDROID=${{ github.event.client_payload.run_android }}" >> $GITHUB_ENV
-      #       echo "SHOULD_SUBMIT=${{ github.event.client_payload.should_submit }}" >> $GITHUB_ENV
-      #     else
-      #       echo "RUN_IOS=false" >> $GITHUB_ENV
-      #       echo "RUN_ANDROID=true" >> $GITHUB_ENV
-      #       echo "SHOULD_SUBMIT=false" >> $GITHUB_ENV
-      #     fi
-      - name: Debug Output
-        run: |
-          echo "Event Details:"
-          echo "  Event name: ${{ github.event_name }}"
-          echo "  Event action: ${{ github.event.action }}"
-          echo "  Client payload: ${{ toJSON(inputs) }}"
-
   ios_build:
     needs: setup
     if: ${{ inputs.run_ios }}

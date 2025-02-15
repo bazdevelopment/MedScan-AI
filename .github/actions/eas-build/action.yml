@@ -57,6 +57,10 @@ inputs:
   CREDENTIAL_FILE_CONTENT_GOOGLE_KEY:
     description: 'CREDENTIAL_FILE_CONTENT_GOOGLE_KEY'
     required: true
+  SHOULD_SUBMIT:
+    description: 'Enable EAS Submit step'
+    required: true
+    default: 'false'
 
 runs:
   using: 'composite'
@@ -88,9 +92,21 @@ runs:
     - name: 📱 Run IOS Build
       if: ${{ inputs.IOS == 'true' }}
       run: pnpm build:${{ inputs.APP_ENV }}:ios  --local --non-interactive --output=${{ github.workspace }}/${{ inputs.VERSION }}.ipa  --no-wait --message "Build ${{ inputs.APP_ENV }} ${{ inputs.VERSION }}"
+      shell:
+        bash
+
+        # New EAS Submit steps
+    - name: 🚀 Submit Android to Play Store
+      if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
+      run: eas submit --platform android --path ${{ github.workspace }}/${{ inputs.VERSION }}.apk --non-interactive
       shell: bash
 
-    - name: 🏁 Upload APK artifact IOS
+    - name: 🚀 Submit iOS to App Store
+      if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
+      run: eas submit --platform ios --path ${{ github.workspace }}/${{ inputs.VERSION }}.ipa --non-interactive
+      shell: bash
+
+    - name: 🏁 Upload IPA artifact IOS
       if: ${{ inputs.IOS == 'true' }}
       uses: actions/upload-artifact@v4
       with:
@@ -105,7 +121,7 @@ runs:
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.apk
 
     - name: Deploy to Firebase - APK
-      if: ${{ inputs.ANDROID == 'true' }}
+      if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT != 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
         PATH: /home/runner/work/x-ray-analizer/x-ray-analizer
@@ -114,7 +130,7 @@ runs:
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}
 
     - name: Deploy to Firebase - IPA
-      if: ${{ inputs.IOS == 'true' }}
+      if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT != 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
         PATH: /home/runner/work/x-ray-analizer/x-ray-analizer

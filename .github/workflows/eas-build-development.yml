@@ -27,16 +27,15 @@ on:
         required: false
         type: boolean
         default: false
+      version:
+        required: false
+        type: string
 
 jobs:
   setup:
     name: Setup Common Resources
     runs-on: ubuntu-latest
-    outputs:
-      package_version: ${{ env.PACKAGE_VERSION }}
-      run_ios: ${{ env.RUN_IOS }}
-      run_android: ${{ env.RUN_ANDROID }}
-      should_submit: ${{ env.SHOULD_SUBMIT }}
+
     steps:
       - name: Check for EXPO_TOKEN
         run: |
@@ -51,12 +50,6 @@ jobs:
 
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
-
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
 
       # - name: Set Build Variables
       #   id: set_build_vars
@@ -116,7 +109,7 @@ jobs:
         with:
           APP_ENV: development
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
-          VERSION: ${{ env.PACKAGE_VERSION }}
+          VERSION: ${{ inputs.version }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
           FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
@@ -168,7 +161,7 @@ jobs:
         with:
           APP_ENV: development
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
-          VERSION: ${{ env.PACKAGE_VERSION }}
+          VERSION: ${{ inputs.version }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
           FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}

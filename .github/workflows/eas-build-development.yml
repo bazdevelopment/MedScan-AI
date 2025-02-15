@@ -10,11 +10,23 @@
 name: EAS Development Build (Android & IOS) (EAS)
 
 on:
-  repository_dispatch:
-    types: [trigger-eas-build-workflow-dev]
-  # push:
-  #   tags:
-  #     - '*-dev' # Matches tags ending with '-dev'
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      run_ios:
+        required: false
+        type: boolean
+        default: false
+      run_android:
+        required: false
+        type: boolean
+        default: true
+      should_submit:
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   setup:
@@ -46,28 +58,22 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Set Build Variables
-        id: set_build_vars
-        run: |
-          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-            echo "RUN_IOS=${{ github.event.client_payload.run_ios }}" >> $GITHUB_ENV
-            echo "RUN_ANDROID=${{ github.event.client_payload.run_android }}" >> $GITHUB_ENV
-            echo "SHOULD_SUBMIT=${{ github.event.client_payload.should_submit }}" >> $GITHUB_ENV
-          else
-            echo "RUN_IOS=false" >> $GITHUB_ENV
-            echo "RUN_ANDROID=true" >> $GITHUB_ENV
-            echo "SHOULD_SUBMIT=false" >> $GITHUB_ENV
-          fi
+      # - name: Set Build Variables
+      #   id: set_build_vars
+      #   run: |
+      #     if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+      #       echo "RUN_IOS=${{ github.event.client_payload.run_ios }}" >> $GITHUB_ENV
+      #       echo "RUN_ANDROID=${{ github.event.client_payload.run_android }}" >> $GITHUB_ENV
+      #       echo "SHOULD_SUBMIT=${{ github.event.client_payload.should_submit }}" >> $GITHUB_ENV
+      #     else
+      #       echo "RUN_IOS=false" >> $GITHUB_ENV
+      #       echo "RUN_ANDROID=true" >> $GITHUB_ENV
+      #       echo "SHOULD_SUBMIT=false" >> $GITHUB_ENV
+      #     fi
       - name: Debug Output
         run: |
-          echo "Event Details:"
-          echo "  Event name: ${{ github.event_name }}"
-          echo "  Event action: ${{ github.event.action }}"
-          echo "  Client payload: ${{ toJSON(github.event.client_payload) }}"
-          echo "RUN_IOS: ${{ env.RUN_IOS }}"
-          echo "RUN_ANDROID: ${{ env.RUN_ANDROID }}"
-          echo "SHOULD_SUBMIT: ${{ env.SHOULD_SUBMIT }}"
-          echo "PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}"
+
+          echo "  Client payload: ${{ toJSON(inputs) }}"
 
   ios_build:
     needs: setup

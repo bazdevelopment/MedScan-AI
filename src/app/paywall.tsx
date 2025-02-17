@@ -97,7 +97,7 @@ const Paywall = () => {
               <ScanIllustration
                 width={35}
                 height={35}
-                fill={isDark ? colors.white : colors.black}
+                fill={isDark ? colors.white : colors.blackBeauty}
               />
               <Text className="font-bold-nunito text-lg text-white">
                 {translate(

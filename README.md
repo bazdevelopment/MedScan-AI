@@ -1,6 +1,6 @@
 <h1 align="center">
-  <img alt="logo" src="./assets/icon.png" width="124px" style="border-radius:10px"/><br/>
-X-Ray Analizer </h1>
+  <img alt="logo" src="./assets/icon_transparent.png" width="124px" style="border-radius:10px"/><br/>
+MedScan AI</h1>
 
 ## Requirements
 

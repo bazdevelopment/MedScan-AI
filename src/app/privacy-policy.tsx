@@ -13,10 +13,10 @@ const PrivacyPolicy = () => {
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
-        <Text className="text-center mb-4 font-bold-nunito text-xl text-blue-600">
-          Privacy Policy for X-Ray Analyzer
+        <Text className="mb-4 text-center font-bold-nunito text-xl text-blue-600">
+          Privacy Policy for MedScan AI
         </Text>
-        <Text className="text-center mb-6 text-sm text-gray-500">
+        <Text className="mb-6 text-center text-sm text-gray-500">
           Last Updated: {PRIVACY_POLICY.last_updated}
         </Text>
 

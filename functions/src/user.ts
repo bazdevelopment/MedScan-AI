@@ -158,7 +158,7 @@ const loginUserViaEmailHandler = async (data: {
     if (data.email !== process.env.TEST_ACCOUNT) {
       await sendOtpCodeViaEmail({
         receiverEmail: data.email,
-        subject: 'Your X-Ray Analyzer Verification Code',
+        subject: 'MedScan AI Verification Code – Complete Your Login',
         htmlTemplate: generateOptCodeTemplate(
           truncateEmailAddress(data.email),
           verificationCode,
@@ -260,7 +260,7 @@ const sendEmailVerification = async (
 
     await sendOtpCodeViaEmail({
       receiverEmail: email,
-      subject: 'X-Ray Analyzer verification code',
+      subject: 'MedScan AI verification code',
       htmlTemplate: generateOptCodeTemplate(
         userInfoData?.userName,
         verificationCode,

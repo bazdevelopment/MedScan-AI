@@ -75,7 +75,7 @@ export const privacyPolicy = {
       content: [
         {
           description:
-            'If you have any questions about this Privacy Policy, please reach out to us at xrayanalyzer@gmail.com.',
+            'If you have any questions about this Privacy Policy, please reach out to us at medscanaiapp@gmail.com.',
         },
       ],
     },

@@ -1,6 +1,6 @@
 {
   "onboarding": {
-    "message": "Bem-vindo ao X-Ray Analyzer"
+    "message": "Bem-vindo ao MedScan AI"
   },
   "general": {
     "back": "Voltar",
@@ -77,7 +77,7 @@
   "rootLayout": {
     "screens": {
       "welcome": {
-        "heading": "Bem-vindo ao X-Ray Analyzer",
+        "heading": "Bem-vindo ao MedScan AI",
         "startButton": "Vamos começar!",
         "accountButton": "Já tenho uma conta"
       },
@@ -130,7 +130,7 @@
         }
       },
       "newAppVersionScreen": {
-        "heading": "Uma nova versão do X-Ray Analyzer está disponível",
+        "heading": "Uma nova versão do MedScan AI está disponível",
         "subheading": "Por favor, atualize para a versão mais recente para continuar usando o aplicativo",
         "action": "Baixar agora!"
       },
@@ -155,7 +155,7 @@
       },
       "share": {
         "title": "Compartilhar",
-        "heading": "Compartilhar App X-Ray Analyzer",
+        "heading": "Compartilhar App MedScan AI",
         "subheading": "Ajude outros a descobrirem o poder da análise de raio-x com IA",
         "scanMessage": "Escaneie para baixar o aplicativo",
         "shareMessage": "ou compartilhe através da sua plataforma favorita"
@@ -214,7 +214,7 @@
     "tab": "Início",
     "homeForeground": {
       "maxNumberOfScans": "Você atingiu seu limite de exames! Atualize seu plano agora para desbloquear mais exames. 🚀",
-      "heading": "Bem-vindo ao X-Ray Analyzer",
+      "heading": "Bem-vindo ao MedScan AI",
       "subHeading": "Obtenha insights vitais sobre ressonâncias magnéticas, raios-X, tomografias, imagens PET, ultrassons e medicina nuclear por meio de análises impulsionadas por IA"
     },
     "scanCategories": {

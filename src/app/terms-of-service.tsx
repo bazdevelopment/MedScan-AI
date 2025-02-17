@@ -2,13 +2,9 @@ import { TERMS_AND_CONDITIONS } from '__mocks__/reports/terms-and-conditions';
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 
-import { useSelectedLanguage } from '@/core';
 import { Text } from '@/ui';
 
 const TermsOfService = () => {
-  const { language } = useSelectedLanguage();
-  // const { data, isPending } = useTermsOfService(language);
-
   return (
     <View className="flex-1 bg-white p-4 dark:bg-blackEerie">
       <ScrollView
@@ -16,10 +12,10 @@ const TermsOfService = () => {
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
-        <Text className="text-center mb-4 font-bold-nunito text-xl text-blue-600">
-          Terms and condition for X-Ray Analyzer App
+        <Text className="mb-4 text-center font-bold-nunito text-xl text-blue-600">
+          Terms and condition for MedScan AI App
         </Text>
-        <Text className="text-center mb-6 text-sm text-gray-500">
+        <Text className="mb-6 text-center text-sm text-gray-500">
           Last Updated: {TERMS_AND_CONDITIONS.lastUpdated}
         </Text>
 

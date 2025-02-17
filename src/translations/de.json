@@ -1,6 +1,6 @@
 {
   "onboarding": {
-    "message": "Willkommen bei X-Ray Analyzer"
+    "message": "Willkommen bei MedScan AI!"
   },
   "general": {
     "back": "Zurück",
@@ -77,7 +77,7 @@
   "rootLayout": {
     "screens": {
       "welcome": {
-        "heading": "Willkommen bei X-Ray Analyzer",
+        "heading": "Willkommen bei MedScan AI!",
         "startButton": "Los geht's!",
         "accountButton": "Ich habe bereits ein Konto"
       },
@@ -130,7 +130,7 @@
         }
       },
       "newAppVersionScreen": {
-        "heading": "Eine neue Version von X-Ray Analyzer ist verfügbar",
+        "heading": "Eine neue Version von MedScan AI ist verfügbar",
         "subheading": "Bitte aktualisiere auf die neueste Version, um die App weiter zu nutzen",
         "action": "Jetzt herunterladen!"
       },
@@ -155,7 +155,7 @@
       },
       "share": {
         "title": "Teilen",
-        "heading": "X-Ray Analyzer App teilen",
+        "heading": "MedScan AI App teilen",
         "subheading": "Hilf anderen, die Kraft der KI-gestützten Röntgenanalyse zu entdecken",
         "scanMessage": "Scannen, um die App herunterzuladen",
         "shareMessage": "oder teile über deine bevorzugte Plattform"
@@ -212,7 +212,7 @@
     "tab": "Start",
     "homeForeground": {
       "maxNumberOfScans": "Du hast dein Scan-Limit erreicht! Upgrade jetzt deinen Plan, um mehr Scans freizuschalten. 🚀",
-      "heading": "Willkommen bei X-Ray Analyzer",
+      "heading": "Willkommen bei MedScan AI",
       "subHeading": "Erhalten Sie wichtige Einblicke über MRT, Röntgen, CT-Scans, PET-Bildgebung, Ultraschall und Nuklearmedizin mittels KI-gestützter Analyse"
     },
     "scanCategories": {

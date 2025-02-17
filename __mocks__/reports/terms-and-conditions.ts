@@ -4,12 +4,12 @@ export const TERMS_AND_CONDITIONS = {
     {
       section: '1. Acceptance of Terms',
       content:
-        'By accessing and using X-Ray Analyzer, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this application.',
+        'By accessing and using MedScan AI, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this application.',
     },
     {
       section: '2. Medical Disclaimer',
       content:
-        'The interpretations provided by X-Ray Analyzer are based on automated algorithms and should not be used as a replacement for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider regarding any medical conditions or concerns.',
+        'The interpretations provided by MedScan AI are based on automated algorithms and should not be used as a replacement for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider regarding any medical conditions or concerns.',
     },
     {
       section: '3. Use License',
@@ -26,12 +26,12 @@ export const TERMS_AND_CONDITIONS = {
     {
       section: '4. Limitations',
       content:
-        'In no event shall X-Ray Analyzer or its suppliers be liable for any damages arising from the use or inability to use the application, even if X-Ray Analyzer or an authorized representative has been informed of the possibility of such damage.',
+        'In no event shall MedScan AI or its suppliers be liable for any damages arising from the use or inability to use the application, even if MedScan AI or an authorized representative has been informed of the possibility of such damage.',
     },
     {
       section: '5. Revisions & Errata',
       content:
-        'The materials in the application may include technical, typographical, or photographic errors. X-Ray Analyzer does not warrant that any of the materials are accurate, complete, or current.',
+        'The materials in the application may include technical, typographical, or photographic errors. MedScan AI does not warrant that any of the materials are accurate, complete, or current.',
     },
     {
       section: '6. Subscription and Payments',
@@ -70,12 +70,12 @@ export const TERMS_AND_CONDITIONS = {
     {
       section: '9. Modifications',
       content:
-        'X-Ray Analyzer may revise these terms of service at any time. You will be notified of any material changes. Continued use of the application after such modifications constitutes acceptance of the updated terms.',
+        'MedScan AI may revise these terms of service at any time. You will be notified of any material changes. Continued use of the application after such modifications constitutes acceptance of the updated terms.',
     },
     {
       section: '10. Contact',
       content:
-        'If you have any questions or concerns about these Terms or the application, please contact us at xrayanalyzerai@gmail.com.',
+        'If you have any questions or concerns about these Terms or the application, please contact us at medscanaiapp@gmail.com.',
     },
     {
       section: 'Links to Other Websites',

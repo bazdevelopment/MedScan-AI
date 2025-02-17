@@ -1,6 +1,6 @@
 {
   "onboarding": {
-    "message": "Bienvenue dans X-Ray Analyzer"
+    "message": "Bienvenue dans MedScan AI"
   },
   "general": {
     "back": "Retour",
@@ -77,7 +77,7 @@
   "rootLayout": {
     "screens": {
       "welcome": {
-        "heading": "Bienvenue dans X-Ray Analyzer",
+        "heading": "Bienvenue dans MedScan AI",
         "startButton": "Commençons !",
         "accountButton": "J'ai déjà un compte"
       },
@@ -130,7 +130,7 @@
         }
       },
       "newAppVersionScreen": {
-        "heading": "Une nouvelle version de X-Ray Analyzer est disponible",
+        "heading": "Une nouvelle version de MedScan AI est disponible",
         "subheading": "Veuillez mettre à jour vers la dernière version pour continuer à utiliser l'application",
         "action": "Obtenez-la maintenant !"
       },
@@ -155,7 +155,7 @@
       },
       "share": {
         "title": "Partager",
-        "heading": "Partager l'application X-Ray Analyzer",
+        "heading": "Partager l'application MedScan AI",
         "subheading": "Aidez les autres à découvrir la puissance de l'analyse radiographique par IA",
         "scanMessage": "Scannez pour télécharger l'application",
         "shareMessage": "ou partagez via votre plateforme préférée"
@@ -212,7 +212,7 @@
     "tab": "Accueil",
     "homeForeground": {
       "maxNumberOfScans": "Vous avez atteint votre limite d'analyses ! Améliorez votre abonnement pour débloquer plus d'analyses. 🚀",
-      "heading": "Bienvenue dans X-Ray Analyzer",
+      "heading": "Bienvenue dans MedScan AI",
       "subHeading": "Obtenez des informations vitales sur l'IRM, les rayons X, les scanners, l'imagerie PET, les ultrasons et la médecine nucléaire via une analyse alimentée par l'IA"
     },
     "scanCategories": {

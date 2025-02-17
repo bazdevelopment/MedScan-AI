@@ -34,7 +34,7 @@ require('dotenv').config({
 
 const BUNDLE_ID = 'com.x-ray-analizer'; // ios bundle id
 const PACKAGE = 'com.xrayanalizer'; // android package name
-const NAME = 'X-Ray Analyzer'; // app name
+const NAME = 'MedScan AI'; // app name
 const EXPO_ACCOUNT_OWNER = 'bazdevelopment'; // expo account owner
 const EAS_PROJECT_ID = 'ca05aaac-9ba7-494f-b6a6-1ab6cf0ff301'; // eas project id
 const SCHEME = 'x-ray-analizer'; // app scheme

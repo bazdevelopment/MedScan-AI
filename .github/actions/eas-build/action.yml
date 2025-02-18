@@ -92,18 +92,6 @@ runs:
     - name: 📱 Run IOS Build
       if: ${{ inputs.IOS == 'true' }}
       run: pnpm build:${{ inputs.APP_ENV }}:ios  --local --non-interactive --output=${{ github.workspace }}/${{ inputs.VERSION }}.ipa  --no-wait --message "Build ${{ inputs.APP_ENV }} ${{ inputs.VERSION }}"
-      shell:
-        bash
-
-        # New EAS Submit steps
-    - name: 🚀 Submit Android to Play Store
-      if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
-      run: eas submit --platform android --path ${{ github.workspace }}/${{ inputs.VERSION }}.apk --non-interactive
-      shell: bash
-
-    - name: 🚀 Submit iOS to App Store
-      if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
-      run: eas submit --platform ios --path ${{ github.workspace }}/${{ inputs.VERSION }}.ipa --non-interactive
       shell: bash
 
     - name: 🏁 Upload IPA artifact IOS
@@ -120,11 +108,22 @@ runs:
         name: ${{ inputs.VERSION }}
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.apk
 
+        # New EAS Submit steps
+    - name: 🚀 Submit Android to Play Store
+      if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
+      run: eas submit --platform android --path ${{ github.workspace }}/${{ inputs.VERSION }}.apk --non-interactive
+      shell: bash
+
+    - name: 🚀 Submit iOS to App Store
+      if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
+      run: eas submit --platform ios --path ${{ github.workspace }}/${{ inputs.VERSION }}.ipa --non-interactive
+      shell: bash
+
     - name: Deploy to Firebase - APK
       if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT != 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
-        PATH: /home/runner/work/x-ray-analizer/x-ray-analizer
+        PATH: /home/runner/work/MedScan-AI/MedScan-AI
         VERSION: ${{ inputs.VERSION }}
         FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_ANDROID }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}
@@ -133,7 +132,7 @@ runs:
       if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT != 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
-        PATH: /home/runner/work/x-ray-analizer/x-ray-analizer
+        PATH: /home/runner/work/MedScan-AI/MedScan-AI
         VERSION: ${{ inputs.VERSION }}
         FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_IOS }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}

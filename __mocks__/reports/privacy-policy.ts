@@ -21,7 +21,7 @@ export const PRIVACY_POLICY = {
         {
           title: 'Definitions',
           description:
-            '• Account: A unique account created for You to access our Service\n\n• Affiliate: An entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares\n\n• Application: X-Ray Analyzer, the software program provided by the Company\n\n• Company: Refers to X-Ray Analyzer\n\n• Country: Refers to Romania\n\n• Device: Any device that can access the Service\n\n• Personal Data: Information relating to an identified or identifiable individual\n\n• Service: Refers to the Application\n\n• Service Provider: Any person who processes data on behalf of the Company\n\n• Usage Data: Data collected automatically during use of the Service\n\n• You: The individual or entity using the Service',
+            '• Account: A unique account created for You to access our Service\n\n• Affiliate: An entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares\n\n• Application: MedScan AI, the software program provided by the Company\n\n• Company: Refers to MedScan AI\n\n• Country: Refers to Romania\n\n• Device: Any device that can access the Service\n\n• Personal Data: Information relating to an identified or identifiable individual\n\n• Service: Refers to the Application\n\n• Service Provider: Any person who processes data on behalf of the Company\n\n• Usage Data: Data collected automatically during use of the Service\n\n• You: The individual or entity using the Service',
         },
       ],
     },
@@ -113,7 +113,7 @@ export const PRIVACY_POLICY = {
       content: [
         {
           description:
-            'For questions about this Privacy Policy, contact us at: xrayanalyzerai@gmail.com',
+            'For questions about this Privacy Policy, contact us at: medscanaiapp@gmail.com',
         },
       ],
     },

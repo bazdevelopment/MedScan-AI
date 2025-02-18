@@ -4,7 +4,7 @@ tags:
 ---
 - runFlow:
     when:
-      visible: 'X-Ray Analizer'
+      visible: 'MedScan AI'
     file: onboarding.yaml
 - runFlow:
     when:

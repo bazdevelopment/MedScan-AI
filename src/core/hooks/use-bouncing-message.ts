@@ -3,40 +3,45 @@ import { Animated, Easing } from 'react-native';
 
 export const useBouncingMessage = (messages: string[]) => {
   const [loadingMessage, setLoadingMessage] = useState(messages[0]);
-
-  const fadeValue = useRef(new Animated.Value(0)).current;
+  const fadeValue = useRef(new Animated.Value(1)).current;
+  const messageIndex = useRef(0);
 
   useEffect(() => {
-    // Update the loading message in intervals
+    if (messages.length === 0) return;
 
-    let messageIndex = 0;
-    const messageInterval = setInterval(() => {
-      messageIndex = (messageIndex + 1) % messages.length;
-      setLoadingMessage(messages[messageIndex]);
-    }, 2000);
+    const animateNextMessage = () => {
+      // Fade out
+      Animated.timing(fadeValue, {
+        toValue: 0,
+        duration: 1000,
+        easing: Easing.inOut(Easing.quad),
+        useNativeDriver: true,
+      }).start(() => {
+        // Update message when fully faded out
+        messageIndex.current = (messageIndex.current + 1) % messages.length;
+        setLoadingMessage(messages[messageIndex.current]);
 
-    // Fade in and fade out effect
-    Animated.loop(
-      Animated.sequence([
+        // Fade in
         Animated.timing(fadeValue, {
           toValue: 1,
           duration: 1000,
           easing: Easing.inOut(Easing.quad),
           useNativeDriver: true,
-        }),
-        Animated.timing(fadeValue, {
-          toValue: 0,
-          duration: 1000,
-          easing: Easing.inOut(Easing.quad),
-          useNativeDriver: true,
-        }),
-      ]),
-    ).start();
+        }).start(() => {
+          // Wait before starting next cycle
+          setTimeout(animateNextMessage, 2000);
+        });
+      });
+    };
+
+    // Initial delay before starting animations
+    const initialTimeout = setTimeout(animateNextMessage, 2000);
 
     return () => {
-      clearInterval(messageInterval);
+      clearTimeout(initialTimeout);
+      fadeValue.stopAnimation();
     };
-  }, [fadeValue]);
+  }, [messages]);
 
   return { loadingMessage, fadeValue };
 };

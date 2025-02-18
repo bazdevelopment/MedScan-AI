@@ -89,12 +89,6 @@ const LoginPage = () => {
           />
 
           <Branding isLogoVisible />
-          {/* {isLoginPending && (
-            <ActivityIndicator
-              size="small"
-              color={isDark ? colors.charcoal[300] : colors.charcoal[700]}
-            />
-          )} */}
 
           <Text
             testID="form-title"

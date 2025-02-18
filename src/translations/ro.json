@@ -1,6 +1,6 @@
 {
   "onboarding": {
-    "message": "Bine ați venit la X-Ray Analyzer!"
+    "message": "Bine ați venit la MedScan AI!"
   },
   "general": {
     "back": "Înapoi",
@@ -77,7 +77,7 @@
   "rootLayout": {
     "screens": {
       "welcome": {
-        "heading": "Bine ați venit la X-Ray Analyzer!",
+        "heading": "Bine ați venit la MedScan AI!",
         "startButton": "Să începem!",
         "accountButton": "Am deja un cont"
       },
@@ -130,12 +130,12 @@
         }
       },
       "newAppVersionScreen": {
-        "heading": "O nouă versiune a X-Ray Analyzer este disponibilă",
+        "heading": "O nouă versiune a MedScan AI este disponibilă",
         "subheading": "Te rugăm să actualizezi la cea mai recentă versiune pentru a continua să folosești aplicația",
         "action": "Obține-o acum!"
       },
       "rateAppScreen": {
-        "heading": "Sunteți mulțumit de aplicația X-Ray Analyzer?",
+        "heading": "Sunteți mulțumit de aplicația MedScan AI?",
         "like": "Da, o iubesc!",
         "dislike": "Nu prea..."
       },
@@ -155,7 +155,7 @@
       },
       "share": {
         "title": "Partajează",
-        "heading": "Partajează Aplicația X-Ray Analyzer",
+        "heading": "Partajează Aplicația MedScan AI",
         "subheading": "Ajută-i pe alții să descopere puterea analizei AI a razelor X",
         "scanMessage": "Scanează pentru a descărca aplicația",
         "shareMessage": "sau partajează pe platforma ta preferată"
@@ -212,8 +212,8 @@
     "tab": "Acasă",
     "homeForeground": {
       "maxNumberOfScans": "Ai atins limita de scanări! Actualizează planul tău pentru a debloca mai multe scanări. 🚀",
-      "heading": "Bine ați venit la X-Ray Analyzer!",
-      "subHeading": "Obțineți informații esențiale despre RMN, raze X, tomografie computerizată, imagistică PET, ecografii și medicină nucleară prin analiză bazată pe inteligență artificială"
+      "heading": "Bine ați venit la MedScan AI!",
+      "subHeading": "Obțineți informații esențiale despre raze X, RMN, tomografie computerizată, imagistică PET, ecografii și medicină nucleară prin analiză bazată pe inteligență artificială"
     },
     "scanCategories": {
       "heading": "Radiologie"

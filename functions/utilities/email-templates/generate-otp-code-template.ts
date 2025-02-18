@@ -16,7 +16,7 @@ export const generateOptCodeTemplate = (
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>X-Ray Analyzer - Verification Code</title>
+  <title>MedScan AI - Verification Code</title>
   <style>
     body {
       font-family: 'Nunito', sans-serif;
@@ -27,26 +27,43 @@ export const generateOptCodeTemplate = (
     }
     .email-container {
       max-width: 600px;
-      margin: 20px auto;
+      margin: 10px auto;
       background-color: #FFFFFF;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     .header {
-      background-color: #7982FD; /* primary[900] */
-      padding: 20px;
-      text-align: center;
+      background-color: #7982FD;
+      padding: 10px;
+      text-align: center; /* Center header content */
     }
-    .header img {
-      width: 80px;
-      height: 80px;
+
+    .logo-container {
+      display: inline-flex; /* Changed to inline-flex */
+      align-items: center; /* Center items vertically */
+      gap: 10px; /* Space between logo and text */
+      background-color: white;
+      border-radius: 15px; /* Increased border radius */
+      margin-top:25px;
     }
+     .logo-wrapper {
+      width: 45px;
+      height: 45px;
+      padding:7px;
+    }
+   .header img {
+      width: 45px; /* Slightly smaller than container */
+      height: 45px;
+      object-fit: contain;
+    }
+
     .header h1 {
-      color: #FFFFFF;
-      font-size: 24px;
-      margin: 10px 0 0;
+      color:white; /* Changed to match header background */
+      font-size: 20px;
+      margin-top:15px;
     }
+    
     .content {
       padding: 20px;
       text-align: center;
@@ -106,25 +123,30 @@ export const generateOptCodeTemplate = (
 <body>
   <div class="email-container">
     <!-- Header Section -->
-    <div class="header">
-      <img src="https://firebasestorage.googleapis.com/v0/b/x-ray-analizer-dev.firebasestorage.app/o/assets%2Ficon_transparent.png?alt=media&token=968f8335-f92e-48e7-8276-778961a34dc7" alt="X-Ray Analyzer Logo">
-      <h1>X-Ray Analyzer</h1>
+  <div class="header">
+  <div class="logo-container">
+    <div class="logo-wrapper">
+      <img src="https://firebasestorage.googleapis.com/v0/b/x-ray-analizer-dev.firebasestorage.app/o/assets%2Ficon_transparent.png?alt=media&token=968f8335-f92e-48e7-8276-778961a34dc7" alt="MedScan AI Logo">
     </div>
+    </div>
+    <h1>MedScan AI</h1>
+
+</div>
 
     <!-- Content Section -->
     <div class="content">
       <h2>Your Verification Code</h2>
       <p>Hi <strong>${userName}</strong>,</p>
-      <p>Thank you for using <strong>X-Ray Analyzer</strong>. To complete your verification, please use the following 6-digit code:</p>
+      <p>Thank you for using <strong>MedScan AI</strong>. To complete your verification, please use the following 6-digit code:</p>
       <div class="verification-code">${otpCode}</div>
-      <p>This code will expire in <strong>5 minutes</strong>. Please do not share it with anyone.</p>
-      <p>If you did not request this code, please ignore this email or contact our support team immediately.</p>
+      <p>This code will expire in <strong>15 minutes</strong>. Please do not share it with anyone.</p>
+      <p>If you did not request this code, please ignore this email.</p>
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
-      <p>If you have any questions, feel free to <a href="mailto:xrayanalyzer@gmail.com">contact us</a>.</p>
-      <p>&copy; 2025 X-Ray Analyzer. All rights reserved.</p>
+      <p>If you have any questions, feel free to <a href="mailto:medscanaiapp@gmail.com">contact us</a>.</p>
+      <p>&copy; 2025 MedScan AI. All rights reserved.</p>
     </div>
   </div>
 </body>

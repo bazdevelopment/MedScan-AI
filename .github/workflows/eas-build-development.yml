@@ -10,15 +10,32 @@
 name: EAS Development Build (Android & IOS) (EAS)
 
 on:
-  push:
-    tags:
-      - '*-dev' # Matches tags ending with '-dev'
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      run_ios:
+        required: false
+        type: boolean
+        default: false
+      run_android:
+        required: false
+        type: boolean
+        default: true
+      should_submit:
+        required: false
+        type: boolean
+        default: false
+      version:
+        required: false
+        type: string
 
 jobs:
-  Build:
-    name: EAS Development Build (Android & IOS) (EAS)
+  setup:
+    name: Setup Common Resources
     runs-on: ubuntu-latest
-    environment: development
+
     steps:
       - name: Check for EXPO_TOKEN
         run: |
@@ -34,13 +51,15 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          # Use Node.js to extract the version
-          VERSION=$(node -p "require('./package.json').version")
-          # Set the version as an environment variable for later steps
-          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+  ios_build:
+    needs: setup
+    if: ${{ inputs.run_ios }}
+    name: iOS Build
+    runs-on: macos-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node-pnpm-install
 
       - name: 'Load environment variables'
         run: |
@@ -61,26 +80,155 @@ jobs:
           echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
           echo "RESEND_API_KEY=${{secrets.RESEND_API_KEY}}" >> $ENV_FILE
           echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
-          echo "RESEND_SENDER_EMAIL=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+          echo "TEST_ACCOUNT=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+          echo "REVENUE_CAT_API_KEYS_GOOGLE=${{secrets.REVENUE_CAT_API_KEYS_GOOGLE}}" >> $ENV_FILE
 
       - name: 🧑‍💻 Decode google services
+        run: pnpm run decode-google-services
+
+      - name: ⏱️ EAS Build iOS
+        uses: ./.github/actions/eas-build
+        with:
+          APP_ENV: development
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
+          VERSION: ${{ inputs.version }}
+          FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
+          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
+          ANDROID: false
+          IOS: true
+          SHOULD_SUBMIT: ${{ inputs.should_submit }}
+
+  android_build:
+    needs: setup
+    if: ${{ inputs.run_android }}
+    name: Android Build
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node-pnpm-install
+
+      - name: 'Load environment variables'
         run: |
-          echo "Run decode services command"
-          pnpm run decode-google-services
+          # Define the environment file name based on the input environment
+          APP_ENV="development"
+          ENV_FILE=".env.${APP_ENV}"
+
+          # Create the environment file (use $ENV_FILE variable)
+          touch $ENV_FILE
+
+          # Export Google Services JSON secrets to the GitHub environment
+          echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
+          echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
+
+          # Append environment variables to the defined env file
+          echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
+          echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+          echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
+          echo "RESEND_API_KEY=${{secrets.RESEND_API_KEY}}" >> $ENV_FILE
+          echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
+          echo "TEST_ACCOUNT=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+          echo "REVENUE_CAT_API_KEYS_GOOGLE=${{secrets.REVENUE_CAT_API_KEYS_GOOGLE}}" >> $ENV_FILE
+      - name: 🧑‍💻 Decode google services
+        run: pnpm run decode-google-services
 
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk
         with:
           APP_ENV: development
 
-      - name: ⏱️ EAS Build
+      - name: ⏱️ EAS Build Android
         uses: ./.github/actions/eas-build
         with:
           APP_ENV: development
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
-          VERSION: ${{ env.PACKAGE_VERSION }}
+          VERSION: ${{ inputs.version }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
           FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
           CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
-          IOS: false # TODO: set as true when IOS account is ready
+          ANDROID: true
+          IOS: false
+          SHOULD_SUBMIT: ${{ inputs.should_submit }}
 
+  # Build:
+  #   name: EAS Development Build (Android & IOS) (EAS)
+  #   runs-on: ubuntu-latest
+  #   environment: development
+  #   steps:
+  #     - name: Check for EXPO_TOKEN
+  #       run: |
+  #         if [ -z "${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}" ]; then
+  #           echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+  #           exit 1
+  #         fi
+  #     - name: 📦 Checkout project repo
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: 📦 Setup Node + PNPM + install deps
+  #       uses: ./.github/actions/setup-node-pnpm-install
+
+  #     - name: Get version from package.json
+  #       id: get_version
+  #       run: |
+  #         # Use Node.js to extract the version
+  #         VERSION=$(node -p "require('./package.json').version")
+  #         # Set the version as an environment variable for later steps
+  #         echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+
+  #     - name: Set Build Variables
+  #       id: set_build_vars
+  #       run: |
+  #         if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+  #           echo "RUN_IOS=${{ github.event.client_payload.run_ios }}" >> $GITHUB_ENV
+  #           echo "RUN_ANDROID=${{ github.event.client_payload.run_android }}" >> $GITHUB_ENV
+  #           echo "SHOULD_SUBMIT=${{ github.event.client_payload.should_submit }}" >> $GITHUB_ENV
+  #         else
+  #           echo "RUN_IOS=false" >> $GITHUB_ENV
+  #           echo "RUN_ANDROID=true" >> $GITHUB_ENV
+  #           echo "SHOULD_SUBMIT=false" >> $GITHUB_ENV
+  #         fi
+
+  #     - name: 'Load environment variables'
+  #       run: |
+  #         # Define the environment file name based on the input environment
+  #         APP_ENV="development"
+  #         ENV_FILE=".env.${APP_ENV}"
+
+  #         # Create the environment file (use $ENV_FILE variable)
+  #         touch $ENV_FILE
+
+  #         # Export Google Services JSON secrets to the GitHub environment
+  #         echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
+  #         echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
+
+  #         # Append environment variables to the defined env file
+  #         echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
+  #         echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+  #         echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
+  #         echo "RESEND_API_KEY=${{secrets.RESEND_API_KEY}}" >> $ENV_FILE
+  #         echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
+  #         echo "RESEND_SENDER_EMAIL=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+
+  #     - name: 🧑‍💻 Decode google services
+  #       run: |
+  #         echo "Run decode services command"
+  #         pnpm run decode-google-services
+
+  #     - name: 📦 Set Up JDK
+  #       uses: ./.github/actions/setup-jdk-generate-apk
+  #       with:
+  #         APP_ENV: development
+
+  #     - name: ⏱️ EAS Build
+  #       uses: ./.github/actions/eas-build
+  #       with:
+  #         APP_ENV: development
+  #         EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
+  #         VERSION: ${{ env.PACKAGE_VERSION }}
+  #         FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
+  #         FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
+  #         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
+  #         IOS: false # TODO: set as true when IOS account is ready

@@ -30,7 +30,9 @@ const AttachmentPreview = ({
   const { language } = useSelectedLanguage();
 
   return (
-    <View className={`rounded-[25px] border-4 border-primary-300 ${className}`}>
+    <View
+      className={`rounded-[25px] border-4 border-primary-300 ${className} overflow-hidden`}
+    >
       {isVideo ? (
         <VideoPlayer
           videoSource={filePath}

@@ -15,7 +15,7 @@ const Branding = ({
   return (
     <View className={`flex-row items-center ${className}`}>
       {isLogoVisible && (
-        <View className="rounded-xl bg-primary-50 p-2 dark:bg-blackBeauty">
+        <View className="rounded-xl bg-primary-50 p-2 dark:bg-blackEerie dark:p-0">
           <Image
             source={require('../../../assets/icon_transparent.png')}
             className="h-[40px] w-[40px]"
@@ -25,15 +25,15 @@ const Branding = ({
 
       <View className={`${isLogoVisible ? 'ml-3' : ''}`}>
         <Text
-          className={`text-center font-extra-bold-nunito text-3xl tracking-[2px] ${textColor}`}
+          className={`text-center font-bold-nunito text-2xl tracking-[2px] ${textColor}`}
         >
-          X-Ray
+          MedScan AI
         </Text>
-        <Text
+        {/* <Text
           className={`text-center font-medium-nunito text-sm tracking-[3px] ${textColor}`}
         >
           ANALYZER
-        </Text>
+        </Text> */}
       </View>
     </View>
   );

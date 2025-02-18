@@ -44,7 +44,7 @@ if (getRNMinorVersion() >= 75) {
   }
 }
 
-rootProject.name = 'X-Ray Analyzer'
+rootProject.name = 'MedScan AI'
 
 dependencyResolutionManagement {
   versionCatalogs {

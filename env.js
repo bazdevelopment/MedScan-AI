@@ -34,7 +34,7 @@ require('dotenv').config({
 
 const BUNDLE_ID = 'com.x-ray-analizer'; // ios bundle id
 const PACKAGE = 'com.xrayanalizer'; // android package name
-const NAME = 'X-Ray Analyzer'; // app name
+const NAME = 'MedScan AI'; // app name
 const EXPO_ACCOUNT_OWNER = 'bazdevelopment'; // expo account owner
 const EAS_PROJECT_ID = 'ca05aaac-9ba7-494f-b6a6-1ab6cf0ff301'; // eas project id
 const SCHEME = 'x-ray-analizer'; // app scheme
@@ -85,7 +85,8 @@ const client = z.object({
   ANTHROPIC_API_KEY:z.string().optional(),
   RESEND_API_KEY:z.string().optional(),
   RESEND_SENDER_EMAIL:z.string().optional(),
-  TEST_ACCOUNT:z.string().optional() 
+  TEST_ACCOUNT:z.string().optional(),
+  REVENUE_CAT_API_KEYS_GOOGLE:z.string().optional(),
 });
 
 const buildTime = z.object({
@@ -113,7 +114,8 @@ const _clientEnv = {
   ANTHROPIC_API_KEY:process.env.ANTHROPIC_API_KEY,
   RESEND_API_KEY:process.env.RESEND_API_KEY,
   RESEND_SENDER_EMAIL:process.env.RESEND_SENDER_EMAIL,
-  TEST_ACCOUNT:process.env.TEST_ACCOUNT
+  TEST_ACCOUNT:process.env.TEST_ACCOUNT,
+  REVENUE_CAT_API_KEYS_GOOGLE:process.env.REVENUE_CAT_API_KEYS_GOOGLE,
 };
 
 /**

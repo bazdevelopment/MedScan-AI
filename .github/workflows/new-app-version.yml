@@ -53,6 +53,24 @@ on:
           - production
           - staging
 
+      run_ios:
+        type: choice
+        description: Run IOS build?
+        required: true
+        default: 'true'
+        options:
+          - true
+          - false
+
+      run_android:
+        type: choice
+        description: Run Android build?
+        required: true
+        default: 'true'
+        options:
+          - true
+          - false
+
       should_submit:
         type: choice
         description: Whether to perform the EAS submit step
@@ -162,3 +180,48 @@ jobs:
           else
           echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
           fi
+
+  create_github_release:
+    needs: release
+    uses: ./.github/workflows/new-github-release.yml
+    with:
+      version: ${{ inputs.new-app-version }} # Pass the version
+    permissions:
+      contents: write # Add permissions here
+    secrets: inherit
+
+  build:
+    needs: ['create_github_release', 'release']
+    if: ${{ inputs.environment == 'production' }}
+    uses: ./.github/workflows/eas-build-production.yml
+    with:
+      environment: ${{ inputs.environment }}
+      run_ios: ${{ inputs.run_ios == 'true' }}
+      run_android: ${{ inputs.run_android == 'true' }}
+      should_submit: ${{ inputs.should_submit == 'true' }}
+      version: ${{ inputs.new-app-version }}
+    secrets: inherit
+
+  build_staging:
+    needs: ['create_github_release', 'release']
+    if: ${{ inputs.environment == 'staging' }}
+    uses: ./.github/workflows/eas-build-staging.yml
+    with:
+      environment: ${{ inputs.environment }}
+      run_ios: ${{ inputs.run_ios == 'true' }}
+      run_android: ${{ inputs.run_android == 'true' }}
+      should_submit: ${{ inputs.should_submit == 'true' }}
+      version: ${{ inputs.new-app-version }}
+    secrets: inherit
+
+  build_development:
+    needs: ['create_github_release', 'release']
+    if: ${{ inputs.environment == 'development' }}
+    uses: ./.github/workflows/eas-build-development.yml
+    with:
+      environment: ${{ inputs.environment }}
+      run_ios: ${{ inputs.run_ios == 'true' }}
+      run_android: ${{ inputs.run_android == 'true' }}
+      should_submit: ${{ inputs.should_submit == 'true' }}
+      version: ${{ inputs.new-app-version }}
+    secrets: inherit

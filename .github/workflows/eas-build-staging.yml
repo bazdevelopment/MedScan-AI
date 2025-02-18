@@ -10,15 +10,33 @@
 name: EAS Staging Build (Android & IOS) (EAS)
 
 on:
-  push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+-staging' # Matches staging tags like v1.0.0-staging, 2.5.3-staging, etc.
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      run_ios:
+        required: false
+        type: boolean
+        default: false
+      run_android:
+        required: false
+        type: boolean
+        default: true
+      should_submit:
+        required: false
+        type: boolean
+        default: false
+      version:
+        required: false
+        type: string
 
 jobs:
-  Build:
-    name: EAS Staging Build (Android & IOS) (EAS)
+  setup:
+    name: Setup Common Resources
     runs-on: ubuntu-latest
     environment: production
+
     steps:
       - name: Check for EXPO_TOKEN
         run: |
@@ -34,27 +52,21 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          # Use Node.js to extract the version
-          VERSION=$(node -p "require('./package.json').version")
-          # Set the version as an environment variable for later steps
-          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+  ios_build:
+    needs: setup
+    if: ${{ inputs.run_ios }}
+    name: iOS Build
+    runs-on: macos-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node-pnpm-install
 
       - name: 'Load environment variables'
         run: |
           # Define the environment file name based on the input environment
-          #For now keep APP_ENV production even if the workflow is for staging
-          APP_ENV="production" 
+          APP_ENV="production"
           ENV_FILE=".env.${APP_ENV}"
-
-           echo "APP_ENV: ${APP_ENV}"
-           echo "ENV_FILE: ${ENV_FILE}"
-           echo "Secrets : ${{toJson(secrets)}}"
-           echo "Vars : ${{toJson(vars)}}"
-           echo "Input : ${{toJson(inputs)}}"
-           echo "Env : ${{toJson(env)}}"
 
           # Create the environment file (use $ENV_FILE variable)
           touch $ENV_FILE
@@ -70,11 +82,59 @@ jobs:
           echo "RESEND_API_KEY=${{secrets.RESEND_API_KEY}}" >> $ENV_FILE
           echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
           echo "RESEND_SENDER_EMAIL=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+          echo "TEST_ACCOUNT=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+          echo "REVENUE_CAT_API_KEYS_GOOGLE=${{secrets.REVENUE_CAT_API_KEYS_GOOGLE}}" >> $ENV_FILE
 
       - name: 🧑‍💻 Decode google services
+        run: pnpm run decode-google-services
+
+      - name: ⏱️ EAS Build iOS
+        uses: ./.github/actions/eas-build
+        with:
+          APP_ENV: production
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
+          VERSION: ${{ inputs.version }}
+          FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
+          FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
+          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
+          ANDROID: false
+          IOS: true
+          SHOULD_SUBMIT: ${{ inputs.should_submit }}
+
+  android_build:
+    needs: setup
+    if: ${{ inputs.run_android }}
+    name: Android Build
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-node-pnpm-install
+
+      - name: 'Load environment variables'
         run: |
-          echo "Run decode services command"
-          pnpm run decode-google-services
+          # Define the environment file name based on the input environment
+          APP_ENV="production"
+          ENV_FILE=".env.${APP_ENV}"
+
+          # Create the environment file (use $ENV_FILE variable)
+          touch $ENV_FILE
+
+          # Export Google Services JSON secrets to the GitHub environment
+          echo "GOOGLE_SERVICES_JSON_ANDROID_BASE64=${{ secrets.GOOGLE_SERVICES_JSON_ANDROID_BASE64 }}" >> $GITHUB_ENV
+          echo "GOOGLE_SERVICES_PLIST_IOS_BASE64=${{ secrets.GOOGLE_SERVICES_PLIST_IOS_BASE64 }}" >> $GITHUB_ENV
+
+          # Append environment variables to the defined env file
+          echo "GOOGLE_SERVICES_JSON_PATH=${{ vars.GOOGLE_SERVICES_JSON_PATH }}" >> $ENV_FILE
+          echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
+          echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
+          echo "RESEND_API_KEY=${{secrets.RESEND_API_KEY}}" >> $ENV_FILE
+          echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
+          echo "TEST_ACCOUNT=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
+          echo "REVENUE_CAT_API_KEYS_GOOGLE=${{secrets.REVENUE_CAT_API_KEYS_GOOGLE}}" >> $ENV_FILE
+
+      - name: 🧑‍💻 Decode google services
+        run: pnpm run decode-google-services
 
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk
@@ -86,9 +146,10 @@ jobs:
         with:
           APP_ENV: staging
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
-          VERSION: ${{ env.PACKAGE_VERSION }}
+          VERSION: ${{ inputs.version }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}
           FIREBASE_APP_ID_ANDROID: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
-          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT }}
-          IOS: false # TODO: set as true when IOS account is ready
-
+          CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ secrets.FIREBASE_DISTRIBUTION_CREDENTIAL_FILE_CONTENT}}
+          ANDROID: true
+          IOS: false
+          SHOULD_SUBMIT: ${{ inputs.should_submit }}

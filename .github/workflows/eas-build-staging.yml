@@ -91,7 +91,7 @@ jobs:
       - name: ⏱️ EAS Build iOS
         uses: ./.github/actions/eas-build
         with:
-          APP_ENV: production
+          APP_ENV: staging
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN_XRAY_ANALYZER }}
           VERSION: ${{ inputs.version }}
           FIREBASE_APP_ID_IOS: ${{ secrets.FIREBASE_APP_ID_IOS }}

@@ -18,6 +18,7 @@ import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationToken } from '@/core/hooks/use-push-notification-token';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
+import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
@@ -97,6 +98,8 @@ export default function TabLayout() {
       },
     ]);
   }, []);
+
+  useRevenueCat();
 
   if (isPendingUserinfo) return <InitialLoadSpinner />;
 

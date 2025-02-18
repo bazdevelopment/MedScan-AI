@@ -16,7 +16,7 @@ const Rate = () => {
       );
     } else {
       // Redirect unhappy users to a Google Form
-      const googleFormUrl = 'https://forms.gle/YOUR_GOOGLE_FORM_ID'; // Replace with your Google Form URL
+      const googleFormUrl = 'https://forms.gle/3QfS27ykxEKAPofR7';
       Linking.openURL(googleFormUrl).catch((err) =>
         console.error('Error opening URL', err),
       );
@@ -32,18 +32,18 @@ const Rate = () => {
       />
 
       <View className="bottom-10 mt-auto flex-row gap-4">
-        {/* Positive Feedback Button */}
+        {/* Negative Feedback Button */}
         <Button
           className="dark: h-[62px] w-[160px] rounded-full bg-danger-500 pl-5 active:bg-red-300 dark:bg-danger-500"
-          onPress={() => handleFeedback(true)}
+          onPress={() => handleFeedback(false)}
           textClassName="dark:text-white"
           label={translate('rootLayout.screens.rateAppScreen.dislike')}
         />
 
-        {/* Negative Feedback Button */}
+        {/* Positive Feedback Button */}
         <Button
           className="h-[62px] w-[160px] rounded-full bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
-          onPress={() => handleFeedback(false)}
+          onPress={() => handleFeedback(true)}
           label={translate('rootLayout.screens.rateAppScreen.like')}
           textClassName="dark:text-white"
         />

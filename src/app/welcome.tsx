@@ -3,7 +3,7 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Branding from '@/components/branding';
-import { DEVICE_TYPE, translate } from '@/core';
+import { translate } from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, SafeAreaView, Text } from '@/ui';
 import { WelcomeIllustration } from '@/ui/assets/illustrations';
@@ -11,9 +11,7 @@ import { WelcomeIllustration } from '@/ui/assets/illustrations';
 const Welcome = () => {
   const { isVerySmallDevice } = getDeviceSizeCategory();
   return (
-    <ScrollView
-      contentContainerClassName={`bg-primary-50 dark:bg-blackEerie ${DEVICE_TYPE.IOS && 'flex-1'}`}
-    >
+    <ScrollView contentContainerClassName="bg-primary-50 dark:bg-blackEerie">
       <SafeAreaView>
         <View className="items-center justify-center px-6 pb-32 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />
@@ -25,7 +23,7 @@ const Welcome = () => {
             width={isVerySmallDevice ? 180 : 261}
             height={isVerySmallDevice ? 175 : 268}
           />
-          <View className="mt-10 w-full">
+          <View className="mt-14 w-full">
             <Button
               label={translate('rootLayout.screens.welcome.startButton')}
               variant="default"

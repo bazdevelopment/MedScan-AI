@@ -117,7 +117,6 @@ export function useRevenueCat(): UseRevenueCatHook {
           (pkg: PurchasesPackage) =>
             pkg.product.identifier === packageIdentifier,
         );
-        console.log('selectedPackage here', selectedPackage);
         if (selectedPackage) {
           const { customerInfo } =
             await Purchases.purchasePackage(selectedPackage);

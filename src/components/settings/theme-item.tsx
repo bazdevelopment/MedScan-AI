@@ -25,17 +25,17 @@ export const ThemeItem = () => {
       {
         label: `${translate('settings.theme.light')}`,
         value: 'light',
-        icon: <SunIcon />,
+        icon: <SunIcon right={10} />,
       },
       {
         label: `${translate('settings.theme.dark')}`,
         value: 'dark',
-        icon: <MoonIcon />,
+        icon: <MoonIcon right={10} />,
       },
       {
         label: `${translate('settings.theme.system')}`,
         value: 'system',
-        icon: <PhoneIcon />,
+        icon: <PhoneIcon right={10} />,
       },
     ],
     [],

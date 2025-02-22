@@ -19,6 +19,7 @@ import { usePushNotificationToken } from '@/core/hooks/use-push-notification-tok
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
 import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
+import { useUpdateUserSubscription } from '@/core/hooks/use-update-user-subscription';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
 import { getBottomTabBarStyle } from '@/core/navigation/tabs/tabs.styles';
@@ -47,6 +48,9 @@ export default function TabLayout() {
 
   const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
+
+  const { customerInfo } = useRevenueCat();
+  useUpdateUserSubscription(customerInfo);
 
   useEffect(() => {
     // Guard clause: Skip logic if isConnected is null
@@ -99,7 +103,7 @@ export default function TabLayout() {
     ]);
   }, []);
 
-  useRevenueCat();
+  // if (isPendingUserinfo || !customerInfo) return <InitialLoadSpinner />; //ADD THIS CONDITION WHEN IOS REVENUE CAT SETUP IS
 
   if (isPendingUserinfo) return <InitialLoadSpinner />;
 

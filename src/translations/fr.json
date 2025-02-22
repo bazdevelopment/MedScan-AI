@@ -121,12 +121,12 @@
           "subtitle": "Profitez de 10 analyses gratuites – aucun paiement requis"
         },
         "secondOffering": {
-          "title": "Abonnement mensuel",
-          "subtitle": "49,99 $ / mois"
+          "title": "Mensuel",
+          "subtitle": "{{ price }} / mois"
         },
         "thirdOffering": {
-          "title": "Abonnement annuel",
-          "subtitle": "Meilleure offre : 99,99 $ / an – économisez plus !"
+          "title": "Annuel",
+          "subtitle": "Meilleure offre : {{ price }} / an – économisez plus !"
         }
       },
       "newAppVersionScreen": {

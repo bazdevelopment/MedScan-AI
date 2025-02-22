@@ -200,7 +200,7 @@ const ReportsList = ({
         <EdgeCaseTemplate
           additionalClassName="mt-8 ml-[-10]"
           image={<NoReports width={100} height={100} />}
-          message="No recent reports yet!"
+          message={translate('home.recentReports.noReports')}
           primaryAction={{
             label: translate('uploadScan.scanNow'),
             icon: <UploadIcon color={isDark ? colors.black : colors.white} />,

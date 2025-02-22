@@ -16,6 +16,7 @@ import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
+import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { type CrashlyticsLogLevel } from '@/crashlytics/crashlytics.types';
 import { type IUserInfo } from '@/types/general-types';
@@ -60,6 +61,16 @@ const PaywallOnboarding = ({
 
   const { offerings, purchaseSubscription, customerInfo } = useRevenueCat();
   const formattedOfferings = formatPaywallOnboardingData(offerings);
+
+  const pricePerMonth = formattedOfferings.find(
+    (item) => item.id === 'med_scan_ai_1month_subscription:monthly-subsription',
+  )?.priceNumber;
+
+  const pricePerYear = formattedOfferings.find(
+    (item) => item.id === 'med_scan_ai_1year_subscription:yearly-subscription',
+  )?.priceNumber;
+
+  const discount = calculateAnnualDiscount(pricePerMonth, pricePerYear);
 
   const onSelect = (planId: string) => setSelectedPlan(planId);
 
@@ -193,6 +204,11 @@ const PaywallOnboarding = ({
               subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
               indicatorPosition="left"
               indicatorType="checkbox"
+              extraInfo={
+                discount &&
+                plan.type === 'ANNUAL' &&
+                `${translate('general.saveDiscount')} ${discount}`
+              }
             />
           ))}
         </View>
@@ -233,6 +249,7 @@ const formatPaywallOnboardingData = (offerings: any) => {
         'rootLayout.screens.paywallUpgradeScreen.firstOffering.subtitle',
       ),
       price: 'Free',
+      priceNumber: '',
       currency: '',
       type: 'FREE_RIAL',
     },
@@ -251,6 +268,7 @@ const formatPaywallOnboardingData = (offerings: any) => {
         },
       ),
       price: offerings.monthly.product.priceString,
+      priceNumber: offerings.monthly.product.price,
       currency: offerings.monthly.product.currencyCode,
       type: 'MONTHLY',
     });
@@ -268,6 +286,7 @@ const formatPaywallOnboardingData = (offerings: any) => {
         { price: offerings.annual.product.priceString },
       ),
       price: offerings.annual.product.priceString,
+      priceNumber: offerings.annual.product.price,
       currency: offerings.annual.product.currencyCode,
       type: 'ANNUAL',
     });
@@ -307,17 +326,22 @@ const updateUserAndNavigate = async ({
     collectedData,
     customerInfo,
     onUpdateUser,
-  });
-  queryClient.setQueryData(['user-info'], (oldData: IUserInfo) => ({
-    ...oldData,
-    isOnboarded: true,
-  }));
+  })
+    .then(() => {
+      queryClient.setQueryData(['user-info'], (oldData: IUserInfo) => ({
+        ...oldData,
+        isOnboarded: true,
+      }));
 
-  setIsFirstTime(false);
-  router.navigate('/(tabs)');
-  logEvent(
-    `User ${userId} has been onboarded successfully and selected ${collectedData.selectedPackage} plan and is redirected to home screen`,
-  );
+      setIsFirstTime(false);
+      router.navigate('/(tabs)');
+      logEvent(
+        `User ${userId} has been onboarded successfully and selected ${collectedData.selectedPackage} plan and is redirected to home screen`,
+      );
+    })
+    .catch(() => {
+      // !updateUserAfterSelectingPlan will throw an error if the google modal for subscription is shown and the user close the modal (without paying)
+    });
 };
 
 export const updateUserAfterSelectingPlan = async ({
@@ -358,13 +382,14 @@ export const updateUserAfterSelectingPlan = async ({
       firstSeenRevenue: customerInfo.firstSeen,
     }),
   };
-  if (customerInfo) {
-    console.log('ajuge aici', fieldsToUpdate);
 
+  if (customerInfo) {
     await onUpdateUser({
       language,
       userId,
       fieldsToUpdate,
     });
+  } else {
+    throw new Error('Error');
   }
 };

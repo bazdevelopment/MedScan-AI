@@ -297,6 +297,7 @@ interface ISelectableLabel extends ComponentProps<typeof Pressable> {
   subtitleClassName: string;
   indicatorPosition: 'left' | 'right';
   indicatorType: 'radio' | 'checkbox';
+  extraInfo: string | boolean;
 }
 
 const indicatorsType = {
@@ -315,6 +316,7 @@ export const SelectableLabel = ({
   subtitleClassName,
   indicatorPosition = 'right',
   indicatorType = 'radio',
+  extraInfo,
   ...props
 }: ISelectableLabel) => {
   const Indicator = indicatorsType[indicatorType];
@@ -322,7 +324,7 @@ export const SelectableLabel = ({
     <Pressable
       className={`
         mt-5 flex-row items-center gap-4 rounded-2xl
-         p-4
+         p-6
         ${selected ? 'border-[3px] border-primary-500' : 'bg-primary-100 dark:bg-blackEerie'}
         active:bg-gray-100 dark:active:bg-primary-700
         ${additionalClassName}
@@ -355,7 +357,7 @@ export const SelectableLabel = ({
           {subtitle && (
             <Text
               className={`
-            ${selected ? 'font-bold-nunito text-sm text-white' : ' text-sm'}
+            ${selected ? 'text-md font-bold-nunito text-white' : ' text-md'}
             ${subtitleClassName}
           `}
             >
@@ -364,6 +366,13 @@ export const SelectableLabel = ({
           )}
         </View>
       </View>
+      {!!extraInfo && (
+        <View
+          className={`absolute right-2 top-[10px] flex-row items-center gap-2 rounded-xl bg-primary-500 px-5 py-1 ${selected ? 'dark:bg-blackEerie' : 'dark:border dark:border-primary-800 dark:bg-blackEerie'}`}
+        >
+          <Text className="font-bold-nunito">{extraInfo}</Text>
+        </View>
+      )}
 
       {showIndicator && indicatorPosition === 'right' && (
         <Indicator

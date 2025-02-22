@@ -13,6 +13,7 @@ import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { DEVICE_TYPE, translate } from '@/core';
 import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
 import { updateUserAfterSelectingPlan } from '@/core/screens/paywall-onboarding';
+import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, SelectableLabel } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
@@ -40,6 +41,7 @@ const formatPaywallData = (offerings: any) => {
         },
       ),
       price: offerings.monthly.product.priceString,
+      priceNumber: offerings.monthly.product.price,
       currency: offerings.monthly.product.currencyCode,
       type: 'MONTHLY',
     });
@@ -58,6 +60,7 @@ const formatPaywallData = (offerings: any) => {
         },
       ),
       price: offerings.annual.product.priceString,
+      priceNumber: offerings.annual.product.price,
       currency: offerings.annual.product.currencyCode,
       type: 'ANNUAL',
     });
@@ -87,6 +90,15 @@ const Paywall = () => {
   const { offerings, purchaseSubscription } = useRevenueCat();
   const formattedOfferings = formatPaywallData(offerings);
 
+  const pricePerMonth = formattedOfferings.find(
+    (item) => item.id === 'med_scan_ai_1month_subscription:monthly-subsription',
+  )?.priceNumber;
+
+  const pricePerYear = formattedOfferings.find(
+    (item) => item.id === 'med_scan_ai_1year_subscription:yearly-subscription',
+  )?.priceNumber;
+
+  const discount = calculateAnnualDiscount(pricePerMonth, pricePerYear);
   const onSelect = (planId: string) => setSelectedPlan(planId);
 
   const handlePurchase = async () => {
@@ -210,6 +222,11 @@ const Paywall = () => {
               subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
               indicatorPosition="left"
               indicatorType="checkbox"
+              extraInfo={
+                discount &&
+                plan.type === 'ANNUAL' &&
+                `${translate('general.saveDiscount')} ${discount}`
+              }
             />
           ))}
         </View>

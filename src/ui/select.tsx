@@ -23,7 +23,7 @@ import { tv } from 'tailwind-variants';
 import { CaretDown } from '@/ui/assets/icons';
 import colors from '@/ui/colors';
 
-import { Radio } from './checkbox';
+import { Checkbox, Radio } from './checkbox';
 import type { InputControllerType } from './input';
 import { useModal } from './modal';
 import { Modal } from './modal';
@@ -293,9 +293,17 @@ interface ISelectableLabel extends ComponentProps<typeof Pressable> {
   onPress?: () => void;
   subtitle?: string;
   additionalClassName?: string;
+  titleClassName: string;
+  subtitleClassName: string;
+  indicatorPosition: 'left' | 'right';
+  indicatorType: 'radio' | 'checkbox';
 }
 
-export const SelectableLabel: React.FC<ISelectableLabel> = ({
+const indicatorsType = {
+  checkbox: Checkbox,
+  radio: Radio,
+};
+export const SelectableLabel = ({
   title,
   selected = false,
   icon,
@@ -305,12 +313,15 @@ export const SelectableLabel: React.FC<ISelectableLabel> = ({
   additionalClassName,
   titleClassName,
   subtitleClassName,
+  indicatorPosition = 'right',
+  indicatorType = 'radio',
   ...props
-}) => {
+}: ISelectableLabel) => {
+  const Indicator = indicatorsType[indicatorType];
   return (
     <Pressable
       className={`
-        mt-5 flex-row items-center justify-between rounded-2xl
+        mt-5 flex-row items-center gap-4 rounded-2xl
          p-4
         ${selected ? 'border-[3px] border-primary-500' : 'bg-primary-100 dark:bg-blackEerie'}
         active:bg-gray-100 dark:active:bg-primary-700
@@ -319,13 +330,22 @@ export const SelectableLabel: React.FC<ISelectableLabel> = ({
       onPress={onPress}
       {...props}
     >
-      <View className="flex-row items-center gap-3.5">
+      {showIndicator && indicatorPosition === 'left' && (
+        <Indicator
+          disabled={false}
+          checked={selected}
+          testID="radio"
+          accessibilityLabel="Agree"
+          accessibilityHint="toggle Agree"
+        />
+      )}
+      <View className="flex-1 flex-row items-center">
         {icon && <View className="items-center justify-center">{icon}</View>}
         <View className="gap-2">
           <Text
             className={`
             text-base
-            ${selected ? 'font-semibold-nunito text-lg text-white' : 'font-semibold-nunito text-lg'}
+            ${selected ? 'font-semibold-nunito text-lg text-white' : 'font-bold-nunito text-lg'}
          ${titleClassName}
           `}
           >
@@ -345,8 +365,8 @@ export const SelectableLabel: React.FC<ISelectableLabel> = ({
         </View>
       </View>
 
-      {showIndicator && (
-        <Radio
+      {showIndicator && indicatorPosition === 'right' && (
+        <Indicator
           disabled={false}
           checked={selected}
           testID="radio"

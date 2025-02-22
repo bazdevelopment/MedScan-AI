@@ -121,12 +121,12 @@
           "subtitle": "Disfruta de 10 escaneos gratis – sin pago"
         },
         "secondOffering": {
-          "title": "Plan mensual",
-          "subtitle": "$49.99 / mes"
+          "title": "Mensual",
+          "subtitle": "{{ price }} / mes"
         },
         "thirdOffering": {
-          "title": "Plan anual",
-          "subtitle": "Mejor oferta: $99.99/año – ¡ahorra más!"
+          "title": "Anual",
+          "subtitle": "Mejor oferta: {{ price }}/año – ¡ahorra más!"
         }
       },
       "newAppVersionScreen": {

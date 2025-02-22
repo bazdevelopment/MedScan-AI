@@ -121,12 +121,12 @@
           "subtitle": "Genieße 10 kostenlose Scans – keine Zahlung"
         },
         "secondOffering": {
-          "title": "Monatlicher Plan",
-          "subtitle": "49,99 € / Monat"
+          "title": "Monatlich",
+          "subtitle": "{{ price }} / Monat"
         },
         "thirdOffering": {
-          "title": "Jahresplan",
-          "subtitle": "Bestes Angebot: 99,99 €/Jahr – spare mehr!"
+          "title": "Jährlich",
+          "subtitle": "Bestes Angebot: {{ price }}/Jahr – spare mehr!"
         }
       },
       "newAppVersionScreen": {

@@ -121,12 +121,12 @@
           "subtitle": "10 मुफ्त स्कैन का आनंद लें – कोई भुगतान नहीं"
         },
         "secondOffering": {
-          "title": "मासिक प्लान",
-          "subtitle": "$49.99 / माह"
+          "title": "महीने के",
+          "subtitle": "{{ price }} / माह"
         },
         "thirdOffering": {
-          "title": "वार्षिक प्लान",
-          "subtitle": "सर्वोत्तम डील: $99.99/वर्ष – अधिक बचत करें!"
+          "title": "सालाना",
+          "subtitle": "सर्वोत्तम डील: {{ price }}/वर्ष – अधिक बचत करें!"
         }
       },
       "newAppVersionScreen": {

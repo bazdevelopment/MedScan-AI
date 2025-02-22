@@ -121,12 +121,12 @@
           "subtitle": "10회 무료 스캔 – 결제 불필요"
         },
         "secondOffering": {
-          "title": "월간 플랜",
-          "subtitle": "₩49,990 / 월"
+          "title": "월간 간행물",
+          "subtitle": "{{ price }} / 월"
         },
         "thirdOffering": {
-          "title": "연간 플랜",
-          "subtitle": "가장 합리적인 가격: ₩99,990 / 년 – 더 많이 절약하세요!"
+          "title": "매년",
+          "subtitle": "가장 합리적인 가격: {{ price }} / 년 – 더 많이 절약하세요!"
         }
       },
       "newAppVersionScreen": {

@@ -121,12 +121,12 @@
           "subtitle": "Aproveite 10 exames gratuitos – sem pagamento"
         },
         "secondOffering": {
-          "title": "Plano Mensal",
-          "subtitle": "R$ 49,99 / mês"
+          "title": "Mensal",
+          "subtitle": "{{ price }} / mês"
         },
         "thirdOffering": {
-          "title": "Plano Anual",
-          "subtitle": "Melhor oferta: R$ 99,99/ano – economize mais!"
+          "title": "Anual",
+          "subtitle": "Melhor oferta: {{ price }}/ano – economize mais!"
         }
       },
       "newAppVersionScreen": {

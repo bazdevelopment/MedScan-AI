@@ -121,12 +121,12 @@
           "subtitle": "استمتع بـ 10 فحوصات مجانية – بدون دفع"
         },
         "secondOffering": {
-          "title": "الخطة الشهرية",
-          "subtitle": "49.99 دولارًا / شهر"
+          "title": "شهريا",
+          "subtitle": "{{ price }}/شهر"
         },
         "thirdOffering": {
-          "title": "الخطة السنوية",
-          "subtitle": "أفضل صفقة: 99.99 دولارًا / سنة – وفر أكثر!"
+          "title": "سنوي",
+          "subtitle": "أفضل عرض: {{ price }}/سنة – وفر أكثر!"
         }
       },
       "newAppVersionScreen": {

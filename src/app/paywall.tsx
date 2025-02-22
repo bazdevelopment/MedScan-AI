@@ -10,7 +10,7 @@ import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import Icon from '@/components/icon';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { translate } from '@/core';
+import { DEVICE_TYPE, translate } from '@/core';
 import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
 import { updateUserAfterSelectingPlan } from '@/core/screens/paywall-onboarding';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
@@ -131,12 +131,14 @@ const Paywall = () => {
       </View>
 
       <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
-        <View className="rounded-b-[50px]  bg-primary-900 pb-6 pt-12 dark:bg-blackBeauty">
+        <View
+          className={`rounded-b-[50px]  bg-primary-900 pb-6  dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-12' : 'pt-16'}`}
+        >
           <Icon
             icon={<CloseIcon />}
             color={colors.white}
-            size={25}
-            containerStyle="absolute left-6 z-2 rounded-full  top-6 mr-6"
+            size={30}
+            containerStyle="absolute left-6 z-2 rounded-full  top-10 mr-6"
             onPress={router.back}
           />
           <SnakeLine
@@ -195,7 +197,7 @@ const Paywall = () => {
           </View>
         </View>
 
-        <View className="mt-4 px-6">
+        <View className="mt-4 gap-2 px-6">
           {formattedOfferings.map((plan) => (
             <SelectableLabel
               key={plan.id}
@@ -205,7 +207,9 @@ const Paywall = () => {
               onPress={() => onSelect(plan.id)}
               additionalClassName={`${selectedPlan === plan.id ? 'px-6 border-primary-900 bg-primary-300 dark:bg-primary-900 dark:border-primary-500' : 'px-6 bg-white border border-gray-300'}`}
               titleClassName={`${selectedPlan === plan.id ? 'text-black text-lg font-bold-nunito' : 'text-gray-900'}`}
-              subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-regular-nunito' : 'text-gray-900'}`}
+              subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
+              indicatorPosition="left"
+              indicatorType="checkbox"
             />
           ))}
         </View>

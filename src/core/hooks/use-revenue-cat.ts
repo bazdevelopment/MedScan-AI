@@ -6,6 +6,7 @@ import Purchases, {
   type CustomerInfo,
   LOG_LEVEL,
   type PurchasesOffering,
+  type PurchasesPackage,
 } from 'react-native-purchases';
 
 interface UseRevenueCatHook {
@@ -15,12 +16,16 @@ interface UseRevenueCatHook {
   error: string | null;
   getProducts: () => Promise<void>;
   getCustomerInfo: () => Promise<void>;
-  purchaseSubscription: () => Promise<void>;
+  purchaseSubscription: (packageIdentifier: string) => Promise<void>;
 }
 
 export function useRevenueCat(): UseRevenueCatHook {
   const [offerings, setOfferings] = useState<PurchasesOffering | null>(null);
   const [customerInfo, setCustomerInfo] = useState<CustomerInfo | null>(null);
+  const off = [
+    ...(offerings?.annual ? [offerings.annual] : []),
+    ...(offerings?.monthly ? [offerings.monthly] : []),
+  ];
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -73,7 +78,6 @@ export function useRevenueCat(): UseRevenueCatHook {
     try {
       const offerings = await Purchases.getOfferings();
       setOfferings(offerings.current);
-      alert(JSON.stringify(offerings.current));
     } catch (e) {
       console.log(e);
       setError('Failed to fetch products');
@@ -95,29 +99,48 @@ export function useRevenueCat(): UseRevenueCatHook {
     }
   }, []);
 
-  const purchaseSubscription = useCallback(async () => {
-    setLoading(true);
-    try {
-      if (!offerings) {
-        await getProducts();
+  const purchaseSubscription = useCallback(
+    async (packageIdentifier: string): Promise<CustomerInfo | undefined> => {
+      // Find the selected package by identifier
+
+      setLoading(true);
+      try {
+        if (!offerings) {
+          await getProducts();
+        }
+
+        // Log in the user to associate the userId with the subscription
+        // await Purchases.logIn(userId);
+
+        // Find the selected package by identifier
+        const selectedPackage = off.find(
+          (pkg: PurchasesPackage) =>
+            pkg.product.identifier === packageIdentifier,
+        );
+        console.log('selectedPackage here', selectedPackage);
+        if (selectedPackage) {
+          const { customerInfo } =
+            await Purchases.purchasePackage(selectedPackage);
+          setCustomerInfo(customerInfo);
+
+          return customerInfo;
+        } else {
+          throw new Error('Selected package not found');
+        }
+      } catch (e: any) {
+        if (e.userCancelled) {
+          alert('Transaction cancelled!');
+        } else {
+          alert('Something went wrong...');
+          console.log(e);
+          setError('Purchase failed');
+        }
+      } finally {
+        setLoading(false);
       }
-      const pack = offerings?.availablePackages[0];
-      if (pack) {
-        const { customerInfo } = await Purchases.purchasePackage(pack);
-        setCustomerInfo(customerInfo);
-      }
-    } catch (e: any) {
-      if (e.userCancelled) {
-        alert('Transaction cancelled!');
-      } else {
-        alert('Something went wrong...');
-        console.log(e);
-        setError('Purchase failed');
-      }
-    } finally {
-      setLoading(false);
-    }
-  }, [offerings, getProducts]);
+    },
+    [offerings, getProducts],
+  );
 
   return {
     offerings,

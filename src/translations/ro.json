@@ -121,12 +121,12 @@
           "subtitle": "Bucură-te de 10 scanări gratuite – fără plată"
         },
         "secondOffering": {
-          "title": "Plan Lunar",
-          "subtitle": "49,99 $ / lună"
+          "title": "Lunar",
+          "subtitle": "{{ price }}/lună"
         },
         "thirdOffering": {
-          "title": "Plan Anual",
-          "subtitle": "Cea mai bună ofertă: 99,99 $ / an – economisește mai mult!"
+          "title": "Anual",
+          "subtitle": "Cea mai bună ofertă: {{ price }}/an – economisește mai mult!"
         }
       },
       "newAppVersionScreen": {

@@ -16,7 +16,6 @@ const FlowModal = ({
   children,
   onSkip,
   resetFlow,
-  onPending,
 }: IFlow) => {
   const totalSteps = React.Children.toArray(children).length;
 
@@ -40,21 +39,7 @@ const FlowModal = ({
       })
     : currentActiveScreen;
 
-  return (
-    <View className="flex-1">
-      {/* {onPending && (
-        <ActivityIndicator
-          size="large"
-          style={{
-            top: '45%',
-            left: '45%',
-            position: 'absolute',
-          }}
-        />
-      )} */}
-      {wrappedCurrentChild}
-    </View>
-  );
+  return <View className="flex-1">{wrappedCurrentChild}</View>;
 };
 
 export default FlowModal;

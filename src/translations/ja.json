@@ -121,12 +121,12 @@
           "subtitle": "10回の無料スキャンを楽しむ – 支払い不要"
         },
         "secondOffering": {
-          "title": "月額プラン",
-          "subtitle": "¥5,500 / 月"
+          "title": "月次",
+          "subtitle": "{{ price }} / 月"
         },
         "thirdOffering": {
-          "title": "年間プラン",
-          "subtitle": "お得なプラン：¥11,000 / 年 – さらに節約！"
+          "title": "年間",
+          "subtitle": "お得なプラン：{{ price }} / 年 – さらに節約！"
         }
       },
       "newAppVersionScreen": {

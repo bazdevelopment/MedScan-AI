@@ -121,12 +121,12 @@
           "subtitle": "Enjoy 10 free scans – no payment"
         },
         "secondOffering": {
-          "title": "Monthly Plan",
-          "subtitle": "$49.99 / month"
+          "title": "Monthly",
+          "subtitle": "{{ price }}/month"
         },
         "thirdOffering": {
-          "title": "Yearly Plan",
-          "subtitle": "Best deal: $99.99/year – save more!"
+          "title": "Yearly",
+          "subtitle": "Best deal: {{ price }}/year – save more!"
         }
       },
       "newAppVersionScreen": {

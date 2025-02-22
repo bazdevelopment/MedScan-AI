@@ -121,12 +121,12 @@
           "subtitle": "享受10次免费扫描 – 无需付款"
         },
         "secondOffering": {
-          "title": "月度计划",
-          "subtitle": "$49.99/月"
+          "title": "每月",
+          "subtitle": "{{ price }}/月"
         },
         "thirdOffering": {
-          "title": "年度计划",
-          "subtitle": "最优惠：$99.99/年 – 省钱更多！"
+          "title": "每年",
+          "subtitle": "最优惠：{{ price }}/年 – 省钱更多！"
         }
       },
       "newAppVersionScreen": {

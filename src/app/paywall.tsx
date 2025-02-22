@@ -1,12 +1,18 @@
 import { router } from 'expo-router';
+import LottieView from 'lottie-react-native';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, Text, View } from 'react-native';
+import { type CustomerInfo } from 'react-native-purchases';
 
+import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import Icon from '@/components/icon';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { translate } from '@/core';
+import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
+import { updateUserAfterSelectingPlan } from '@/core/screens/paywall-onboarding';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, SelectableLabel } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
@@ -16,26 +22,49 @@ import {
   ScanIllustration,
 } from '@/ui/assets/illustrations';
 
-const plans = [
-  {
-    id: 1,
-    title: translate(
-      'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
-    ),
-    subtitle: translate(
-      'rootLayout.screens.paywallUpgradeScreen.secondOffering.subtitle',
-    ),
-  },
-  {
-    id: 2,
-    title: translate(
-      'rootLayout.screens.paywallUpgradeScreen.thirdOffering.title',
-    ),
-    subtitle: translate(
-      'rootLayout.screens.paywallUpgradeScreen.thirdOffering.subtitle',
-    ),
-  },
-];
+const formatPaywallData = (offerings: any) => {
+  if (!offerings) return [];
+
+  const paywallData = [];
+
+  if (offerings?.monthly?.product) {
+    paywallData.push({
+      id: offerings.monthly.product.identifier,
+      title: translate(
+        'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
+      ),
+      subtitle: translate(
+        'rootLayout.screens.paywallUpgradeScreen.secondOffering.subtitle',
+        {
+          price: offerings.monthly.product.priceString,
+        },
+      ),
+      price: offerings.monthly.product.priceString,
+      currency: offerings.monthly.product.currencyCode,
+      type: 'MONTHLY',
+    });
+  }
+
+  if (offerings?.annual?.product) {
+    paywallData.push({
+      id: offerings.annual.product.identifier,
+      title: translate(
+        'rootLayout.screens.paywallUpgradeScreen.thirdOffering.title',
+      ),
+      subtitle: translate(
+        'rootLayout.screens.paywallUpgradeScreen.thirdOffering.subtitle',
+        {
+          price: offerings.annual.product.priceString,
+        },
+      ),
+      price: offerings.annual.product.priceString,
+      currency: offerings.annual.product.currencyCode,
+      type: 'ANNUAL',
+    });
+  }
+
+  return paywallData;
+};
 
 // eslint-disable-next-line max-lines-per-function
 const Paywall = () => {
@@ -43,15 +72,64 @@ const Paywall = () => {
   const isDark = colorScheme === 'dark';
   const { isVerySmallDevice } = getDeviceSizeCategory();
 
-  const [selectedPlan, setSelectedPlan] = React.useState(2);
+  const {
+    i18n: { language },
+  } = useTranslation();
+  const { data: userInfo } = useUser(language);
 
-  const onSelect = (planId: number) => setSelectedPlan(planId);
+  const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
+    useUpdateUser();
+
+  const [selectedPlan, setSelectedPlan] = React.useState(
+    'med_scan_ai_1month_subscription:monthly-subsription',
+  );
+
+  const { offerings, purchaseSubscription } = useRevenueCat();
+  const formattedOfferings = formatPaywallData(offerings);
+
+  const onSelect = (planId: string) => setSelectedPlan(planId);
+
+  const handlePurchase = async () => {
+    const customerInfoAfterPurchase: CustomerInfo =
+      await purchaseSubscription(selectedPlan);
+
+    await updateUserAfterSelectingPlan({
+      language,
+      userId: userInfo.userId,
+      collectedData: { preferredName: userInfo.userName },
+      customerInfo: customerInfoAfterPurchase,
+      onUpdateUser,
+    });
+
+    customerInfoAfterPurchase && router.back();
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{
         flex: isVerySmallDevice ? 0 : 1,
       }}
     >
+      <View
+        style={{
+          position: 'absolute',
+          zIndex: 1,
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <LottieView
+          source={require('assets/lottie/confetti-animation.json')}
+          autoPlay
+          loop={false}
+          renderMode="SOFTWARE"
+          style={{ flex: 1 }}
+        />
+      </View>
+
       <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
         <View className="rounded-b-[50px]  bg-primary-900 pb-6 pt-12 dark:bg-blackBeauty">
           <Icon
@@ -118,7 +196,7 @@ const Paywall = () => {
         </View>
 
         <View className="mt-4 px-6">
-          {plans.map((plan) => (
+          {formattedOfferings.map((plan) => (
             <SelectableLabel
               key={plan.id}
               title={plan.title}
@@ -138,7 +216,8 @@ const Paywall = () => {
             className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
             textClassName="text-lg text-center text-white dark:text-white"
             iconPosition="left"
-            onPress={() => console.log('Handle the selected plan')}
+            onPress={handlePurchase}
+            loading={isPendingUpdateUser}
           />
         </View>
       </View>

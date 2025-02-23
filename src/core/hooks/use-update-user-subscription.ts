@@ -3,10 +3,13 @@ import { useEffect } from 'react';
 import { type CustomerInfo } from 'react-native-purchases';
 
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
+import { type Nullable } from '@/types/general-types';
 
 import { useSelectedLanguage } from '../i18n';
 
-export const useUpdateUserSubscription = (customerInfo: CustomerInfo) => {
+export const useUpdateUserSubscription = (
+  customerInfo: Nullable<CustomerInfo>,
+) => {
   const { language } = useSelectedLanguage();
   const { data: userInfo } = useUser(language);
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =

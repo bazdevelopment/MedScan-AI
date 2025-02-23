@@ -72,7 +72,8 @@ export default function Settings() {
       {DEVICE_TYPE.IOS && (
         <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
       )}
-      {userInfo.scansRemaining <= 0 && (
+
+      {userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing && (
         <UpgradeBanner
           className="mx-4 mt-4"
           onUpgradePress={() => router.navigate('/paywall')}

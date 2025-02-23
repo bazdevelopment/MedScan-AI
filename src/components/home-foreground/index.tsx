@@ -46,7 +46,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   ).length;
 
   const onStartUploadMediaFile = () => {
-    if (userInfo?.scansRemaining <= 0) {
+    if (userInfo?.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
       logEvent(
         `Alert informing user - ${userInfo.userId} that there are no scans available is displayed`,
       );

@@ -32,7 +32,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
   const { data: userInfo } = useUser(language);
 
   const onStartUploadMediaFile = () => {
-    if (userInfo?.scansRemaining <= 0) {
+    if (userInfo?.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
       logEvent(
         `Alert informing user - ${userInfo.userId} that there are no scans available is displayed in home header bar`,
       );

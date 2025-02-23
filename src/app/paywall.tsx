@@ -1,17 +1,21 @@
 import { router } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, Text, View } from 'react-native';
 import { type CustomerInfo } from 'react-native-purchases';
 
+import {
+  useGetOfferings,
+  usePurchaseSubscription,
+} from '@/api/subscription/subscription.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
 import Icon from '@/components/icon';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import { SUBSCRIPTIONS_PLANS } from '@/constants/subscriptions';
 import { DEVICE_TYPE, translate } from '@/core';
-import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
 import { updateUserAfterSelectingPlan } from '@/core/screens/paywall-onboarding';
 import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
@@ -83,37 +87,39 @@ const Paywall = () => {
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
 
-  const [selectedPlan, setSelectedPlan] = React.useState(
-    'med_scan_ai_1month_subscription:monthly-subsription',
-  );
+  const [selectedPlan, setSelectedPlan] = useState(SUBSCRIPTIONS_PLANS.YEARLY);
 
-  const { offerings, purchaseSubscription } = useRevenueCat();
+  const { mutateAsync: purchaseSubscription } = usePurchaseSubscription();
+  const { data: offerings } = useGetOfferings();
   const formattedOfferings = formatPaywallData(offerings);
 
   const pricePerMonth = formattedOfferings.find(
-    (item) => item.id === 'med_scan_ai_1month_subscription:monthly-subsription',
+    (item) => item.id === SUBSCRIPTIONS_PLANS.MONTHLY,
   )?.priceNumber;
 
   const pricePerYear = formattedOfferings.find(
-    (item) => item.id === 'med_scan_ai_1year_subscription:yearly-subscription',
+    (item) => item.id === SUBSCRIPTIONS_PLANS.YEARLY,
   )?.priceNumber;
 
   const discount = calculateAnnualDiscount(pricePerMonth, pricePerYear);
   const onSelect = (planId: string) => setSelectedPlan(planId);
 
   const handlePurchase = async () => {
-    const customerInfoAfterPurchase: CustomerInfo =
-      await purchaseSubscription(selectedPlan);
+    const customerInfoAfterPurchase = await purchaseSubscription({
+      packageIdentifier: selectedPlan,
+    });
 
     await updateUserAfterSelectingPlan({
       language,
       userId: userInfo.userId,
       collectedData: { preferredName: userInfo.userName },
-      customerInfo: customerInfoAfterPurchase,
+      customerInfo: customerInfoAfterPurchase as CustomerInfo,
       onUpdateUser,
     });
 
-    customerInfoAfterPurchase && router.back();
+    if (customerInfoAfterPurchase) {
+      router.back();
+    }
   };
 
   return (
@@ -137,20 +143,19 @@ const Paywall = () => {
           source={require('assets/lottie/confetti-animation.json')}
           autoPlay
           loop={false}
-          renderMode="SOFTWARE"
           style={{ flex: 1 }}
         />
       </View>
 
       <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
         <View
-          className={`rounded-b-[50px]  bg-primary-900 pb-6  dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-12' : 'pt-16'}`}
+          className={`rounded-b-[50px]  bg-primary-900 pb-6  dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-10' : 'pt-16'}`}
         >
           <Icon
             icon={<CloseIcon />}
             color={colors.white}
             size={30}
-            containerStyle="absolute left-6 z-2 rounded-full  top-10 mr-6"
+            containerStyle={`absolute left-6 z-2 rounded-full ${DEVICE_TYPE.IOS ? 'top-6' : 'top-10'} mr-6`}
             onPress={router.back}
           />
           <SnakeLine

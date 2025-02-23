@@ -2,20 +2,25 @@
 import { router } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { type CustomerInfo } from 'react-native-purchases';
 
 import { queryClient } from '@/api';
+import {
+  useGetCustomerInfo,
+  useGetOfferings,
+  usePurchaseSubscription,
+} from '@/api/subscription/subscription.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import { type IOnboardingCollectedData } from '@/app/onboarding';
 import Branding from '@/components/branding';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import { SUBSCRIPTIONS_PLANS } from '@/constants/subscriptions';
 import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
-import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
 import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { type CrashlyticsLogLevel } from '@/crashlytics/crashlytics.types';
@@ -42,9 +47,7 @@ const PaywallOnboarding = ({
   currentScreenIndex: number;
   collectedData;
 }) => {
-  const [selectedPlan, setSelectedPlan] = React.useState(
-    'med_scan_ai_1month_subscription:monthly-subsription',
-  );
+  const [selectedPlan, setSelectedPlan] = useState(SUBSCRIPTIONS_PLANS.YEARLY);
   const [, setIsFirstTime] = useIsFirstTime();
   const { colorScheme } = useColorScheme();
   const { isVerySmallDevice } = getDeviceSizeCategory();
@@ -59,15 +62,21 @@ const PaywallOnboarding = ({
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
 
-  const { offerings, purchaseSubscription, customerInfo } = useRevenueCat();
+  const {
+    mutateAsync: purchaseSubscription,
+    isPending: isLoadingPurchaseSubscription,
+  } = usePurchaseSubscription();
+  const { data: offerings } = useGetOfferings();
+  const { data: customerInfo } = useGetCustomerInfo();
+
   const formattedOfferings = formatPaywallOnboardingData(offerings);
 
   const pricePerMonth = formattedOfferings.find(
-    (item) => item.id === 'med_scan_ai_1month_subscription:monthly-subsription',
+    (item) => item.id === SUBSCRIPTIONS_PLANS.MONTHLY,
   )?.priceNumber;
 
   const pricePerYear = formattedOfferings.find(
-    (item) => item.id === 'med_scan_ai_1year_subscription:yearly-subscription',
+    (item) => item.id === SUBSCRIPTIONS_PLANS.YEARLY,
   )?.priceNumber;
 
   const discount = calculateAnnualDiscount(pricePerMonth, pricePerYear);
@@ -81,7 +90,7 @@ const PaywallOnboarding = ({
           userId: userInfo.userId,
           language,
           collectedData,
-          customerInfo,
+          customerInfo: customerInfo as CustomerInfo,
           onUpdateUser,
           logEvent,
           setIsFirstTime,
@@ -90,14 +99,15 @@ const PaywallOnboarding = ({
         return;
       }
 
-      const customerInfoUpdated: CustomerInfo =
-        await purchaseSubscription(selectedPlan);
+      const customerInfoUpdated = await purchaseSubscription({
+        packageIdentifier: selectedPlan,
+      });
 
       await updateUserAndNavigate({
         userId: userInfo.userId,
         language,
         collectedData,
-        customerInfo: customerInfoUpdated,
+        customerInfo: customerInfoUpdated as CustomerInfo,
         onUpdateUser,
         logEvent,
         setIsFirstTime,
@@ -226,7 +236,7 @@ const PaywallOnboarding = ({
             textClassName="text-lg text-center text-white dark:text-white"
             iconPosition="left"
             onPress={handleSubscription}
-            loading={isPendingUpdateUser}
+            loading={isPendingUpdateUser || isLoadingPurchaseSubscription}
           />
         </View>
       </View>
@@ -389,7 +399,5 @@ export const updateUserAfterSelectingPlan = async ({
       userId,
       fieldsToUpdate,
     });
-  } else {
-    throw new Error('Error');
   }
 };

@@ -118,3 +118,19 @@ export const useInitializeRevenueCat = (userId: string) =>
       return true; // Indicate successful initialization
     },
   })();
+
+// Mutation to restore purchases
+export const useRestorePurchases = createMutation<CustomerInfo, void, Error>({
+  mutationFn: async () => {
+    const customerInfo = await Purchases.restorePurchases();
+    return customerInfo;
+  },
+  onSuccess: (customerInfo) => {
+    console.log('Purchases restored successfully:', customerInfo);
+    // Optionally, you can update the customer info in your app state here
+  },
+  onError: (error) => {
+    console.error('Failed to restore purchases:', error);
+    // Handle the error (e.g., show a toast or alert)
+  },
+});

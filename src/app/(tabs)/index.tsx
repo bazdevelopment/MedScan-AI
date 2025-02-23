@@ -14,6 +14,7 @@ import { useScanCategories } from '@/api/scan-categories/scan-categories.hooks';
 import { useGetCustomerInfo } from '@/api/subscription/subscription.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import CardWrapper from '@/components/card-wrapper';
+import CustomAlert from '@/components/custom-alert';
 import EdgeCaseTemplate from '@/components/edge-case-template';
 import FreeTierStatus from '@/components/free-tier-status';
 import { Foreground } from '@/components/home-foreground';
@@ -23,10 +24,12 @@ import PullToRefresh from '@/components/pull-to-refresh';
 import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
 import ScanReportCard from '@/components/scan-report-card';
+import Toast from '@/components/toast';
 import { translate, useSelectedLanguage } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import useCustomScrollToTop from '@/core/hooks/use-custom-scroll-to-top';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
+import { wait } from '@/core/utilities/wait';
 import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
@@ -54,7 +57,8 @@ export default function Home() {
   })();
 
   const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
-  const { data: customerInfo } = useGetCustomerInfo();
+  const { data: customerInfo, refetch: refetchCustomerInfo } =
+    useGetCustomerInfo();
 
   const { refetch: refetchUserNotifications } = useFetchUserNotifications({
     userId: userInfo?.userId,
@@ -65,12 +69,14 @@ export default function Home() {
   const isDark = colorScheme === 'dark';
 
   const isUserSubscriptionActive =
-    !userInfo.isFreeTrialOngoing && !!customerInfo?.activeSubscriptions?.length;
+    !userInfo?.isFreeTrialOngoing &&
+    !!customerInfo?.activeSubscriptions?.length;
 
   const onFullSync = () => {
     refetchRecentReports();
     refetchUserInfo();
     refetchUserNotifications();
+    refetchCustomerInfo();
   };
 
   const {
@@ -192,6 +198,7 @@ const ReportsList = ({
   className: string;
 }) => {
   const { language } = useSelectedLanguage();
+  const { data: userInfo } = useUser(language);
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   return (
@@ -211,7 +218,36 @@ const ReportsList = ({
             label: translate('uploadScan.scanNow'),
             icon: <UploadIcon color={isDark ? colors.black : colors.white} />,
             variant: 'default',
-            onPress: () => router.navigate('/upload-file-flow'),
+            onPress: () => {
+              if (
+                userInfo?.scansRemaining <= 0 &&
+                userInfo.isFreeTrialOngoing
+              ) {
+                return Toast.showCustomToast(
+                  <CustomAlert
+                    title={translate('general.attention')}
+                    subtitle={translate('home.homeForeground.maxNumberOfScans')}
+                    buttons={[
+                      {
+                        label: translate('components.UpgradeBanner.heading'),
+                        variant: 'default',
+                        onPress: () =>
+                          wait(500).then(() => router.navigate('/paywall')), // a small delay in mandatory for Toast, not sure why
+                        buttonTextClassName: 'dark:text-white',
+                        className:
+                          'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+                      },
+                    ]}
+                  />,
+                  {
+                    position: 'middle', // Place the alert in the middle of the screen
+                    duration: Infinity, // Keep the alert visible until dismissed
+                  },
+                );
+              }
+
+              router.navigate('/upload-file-flow');
+            },
           }}
         />
       ) : (

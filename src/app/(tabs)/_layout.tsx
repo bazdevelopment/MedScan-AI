@@ -8,6 +8,10 @@ import { checkForAppUpdate } from 'firebase/remote-config';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
 
+import {
+  useGetCustomerInfo,
+  useInitializeRevenueCat,
+} from '@/api/subscription/subscription.hooks';
 import { useUser, useUserPreferredLanguage } from '@/api/user/user.hooks';
 import CustomHeader from '@/components/cusom-header';
 import InitialLoadSpinner from '@/components/initial-load-spinner.ts';
@@ -18,7 +22,6 @@ import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationToken } from '@/core/hooks/use-push-notification-token';
 import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
-import { useRevenueCat } from '@/core/hooks/use-revenue-cat';
 import { useUpdateUserSubscription } from '@/core/hooks/use-update-user-subscription';
 import { tabScreens } from '@/core/navigation/tabs';
 import { type ITabsNavigationScreen } from '@/core/navigation/tabs/tabs.interface';
@@ -48,8 +51,10 @@ export default function TabLayout() {
 
   const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
-
-  const { customerInfo } = useRevenueCat();
+  const { isPending: isPendingRevenueCatSdkInit } = useInitializeRevenueCat(
+    firebaseAuth.currentUser?.uid as string,
+  );
+  const { data: customerInfo } = useGetCustomerInfo();
   useUpdateUserSubscription(customerInfo);
 
   useEffect(() => {
@@ -102,10 +107,12 @@ export default function TabLayout() {
       },
     ]);
   }, []);
-
   // if (isPendingUserinfo || !customerInfo) return <InitialLoadSpinner />; //ADD THIS CONDITION WHEN IOS REVENUE CAT SETUP IS
 
-  if (isPendingUserinfo) return <InitialLoadSpinner />;
+  if (isPendingUserinfo || isPendingRevenueCatSdkInit)
+    return <InitialLoadSpinner />;
+
+  // if (true) return <Redirect href="/onboarding" />;
 
   if (isFirstTime && !isLoggedIn) {
     logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);

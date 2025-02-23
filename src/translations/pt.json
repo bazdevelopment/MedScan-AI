@@ -363,6 +363,9 @@
     "onboardingUnsuccessful": "Onboarding malsucedido. Por favor, tente novamente",
     "logoutUnsuccessful": "Logout malsucedido. Por favor, tente novamente",
     "deleteScanReportQuestion": "Tem certeza de que deseja excluir este relatório permanentemente?",
-    "videoLimitExceeds": "Seu vídeo excede o limite de 15 segundos. Por favor, corte-o e recarregue"
+    "videoLimitExceeds": "Seu vídeo excede o limite de 15 segundos. Por favor, corte-o e recarregue",
+    "subscriptionActivated": "Sua assinatura foi ativada com sucesso! Aproveite seus benefícios exclusivos!",
+    "subscriptionCancelledByUser": "Você cancelou a transação. Sinta-se à vontade para tentar novamente!",
+    "subscriptionActivationFailed": "Falha ao ativar sua assinatura. Por favor, tente novamente!"
   }
 }

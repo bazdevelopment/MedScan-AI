@@ -11,6 +11,7 @@ import {
 } from '@/api/interpretation/interpretation.hooks';
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useScanCategories } from '@/api/scan-categories/scan-categories.hooks';
+import { useGetCustomerInfo } from '@/api/subscription/subscription.hooks';
 import { useUser } from '@/api/user/user.hooks';
 import CardWrapper from '@/components/card-wrapper';
 import EdgeCaseTemplate from '@/components/edge-case-template';
@@ -53,6 +54,7 @@ export default function Home() {
   })();
 
   const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
+  const { data: customerInfo } = useGetCustomerInfo();
 
   const { refetch: refetchUserNotifications } = useFetchUserNotifications({
     userId: userInfo?.userId,
@@ -61,6 +63,9 @@ export default function Home() {
   const { pathname } = useRouteInfo();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
+  const isUserSubscriptionActive =
+    !userInfo.isFreeTrialOngoing && !!customerInfo?.activeSubscriptions?.length;
 
   const onFullSync = () => {
     refetchRecentReports();
@@ -128,12 +133,13 @@ export default function Home() {
         scrollViewRef={scrollViewRef}
       >
         <View className="mt-16">
-          <FreeTierStatus
-            className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
-            scansLeft={userInfo?.scansRemaining}
-            onUpgrade={() => router.navigate('/paywall')}
-          />
-
+          {!isUserSubscriptionActive && (
+            <FreeTierStatus
+              className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
+              scansLeft={userInfo?.scansRemaining}
+              onUpgrade={() => router.navigate('/paywall')}
+            />
+          )}
           {!areErrorsOnScanCategories && (
             <>
               <Text className="mx-4 mb-3 mt-8 font-semibold-nunito">

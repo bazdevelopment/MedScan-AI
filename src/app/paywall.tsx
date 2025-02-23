@@ -93,7 +93,7 @@ const Paywall = () => {
   const { mutateAsync: purchaseSubscription } = usePurchaseSubscription();
   const { data: offerings } = useGetOfferings();
   const formattedOfferings = formatPaywallData(offerings);
-  const { mutate: _restorePurchase, isPending: _isPendingRestorePurchase } =
+  const { mutate: restorePurchase, isPending: isPendingRestorePurchase } =
     useRestorePurchases();
 
   const pricePerMonth = formattedOfferings.find(
@@ -248,15 +248,13 @@ const Paywall = () => {
             onPress={handlePurchase}
             loading={isPendingUpdateUser}
           />
-
-          {/* Do not display restore purchase button now
           <Button
-            label={'Restore purchase'}
+            label={translate('general.restorePurchase')}
             variant="ghost"
             className="self-center active:opacity-70"
             onPress={restorePurchase}
             loading={isPendingRestorePurchase}
-          /> */}
+          />
         </View>
       </View>
     </ScrollView>

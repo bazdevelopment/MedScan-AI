@@ -32,6 +32,7 @@
     "createdAt": "作成日",
     "and": "および",
     "saveDiscount": "お得",
+    "restorePurchase": "購入を復元",
     "copyText": {
       "loading": "コピー中...",
       "copied": "コピーしました！",

@@ -32,6 +32,7 @@
     "createdAt": "Created At",
     "and": "and",
     "saveDiscount": "SAVE",
+    "restorePurchase": "Restore purchase",
     "copyText": {
       "loading": "Copying...",
       "copied": "Copied!",

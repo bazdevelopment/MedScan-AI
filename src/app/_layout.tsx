@@ -54,8 +54,9 @@ export default function RootLayout() {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
+  useNotificationListeners();
+
   const [fontsLoaded] = useFonts({
-    inter: require('../../assets/fonts/Inter.ttf'),
     'Font-Regular': NunitoSans_400Regular,
     'Font-SemiBold': NunitoSans_600SemiBold,
     'Font-Light': NunitoSans_300Light,
@@ -64,7 +65,12 @@ export default function RootLayout() {
     'Font-Extra-Bold': NunitoSans_800ExtraBold,
   });
 
-  useNotificationListeners();
+  const showCustomAlert = () => {
+    Toast.showCustomToast(<DeleteReportAlert />, {
+      position: 'middle', // Place the alert in the middle of the screen
+      duration: Infinity, // Keep the alert visible until dismissed
+    });
+  };
 
   useEffect(() => {
     if (fontsLoaded) {
@@ -76,12 +82,6 @@ export default function RootLayout() {
     return null;
   }
 
-  const showCustomAlert = () => {
-    Toast.showCustomToast(<DeleteReportAlert />, {
-      position: 'middle', // Place the alert in the middle of the screen
-      duration: Infinity, // Keep the alert visible until dismissed
-    });
-  };
   return (
     <Providers>
       <Stack>

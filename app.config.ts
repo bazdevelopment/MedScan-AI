@@ -45,6 +45,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
     },
+    blockedPermissions: ['FOREGROUND_SERVICE_MEDIA_PLAYBACK'], // Android review didn't pass (permission used by expo-av)You
     intentFilters: [
       {
         action: 'VIEW',

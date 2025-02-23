@@ -124,7 +124,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         const isLongVideo = isVideoDurationLong(videoDuration as number);
         if (videoDuration && isLongVideo) {
           return Toast.error(
-            'Video should have maximum 10 seconds, please crop it and upload it again',
+            'Video should have maximum 15 seconds, please crop it and upload it again',
             {
               closeButton: true,
               duration: Infinity,

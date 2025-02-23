@@ -99,7 +99,7 @@ export const useInitializeRevenueCat = (userId: string) =>
     Error // Error type
   >({
     queryKey: ['initializeRevenueCat'],
-    enabled: !!userId,
+    // enabled: !!userId,
     fetcher: async () => {
       if (Platform.OS === 'android') {
         await Purchases.configure({
@@ -126,6 +126,8 @@ export const useRestorePurchases = createMutation<CustomerInfo, void, Error>({
     return customerInfo;
   },
   onSuccess: (customerInfo) => {
+    queryClient.invalidateQueries({ queryKey: ['subscription-customerInfo'] });
+
     console.log('Purchases restored successfully:', customerInfo);
     // Optionally, you can update the customer info in your app state here
   },

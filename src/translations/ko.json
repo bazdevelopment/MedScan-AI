@@ -32,6 +32,7 @@
     "createdAt": "생성일",
     "and": "및",
     "saveDiscount": "절약",
+    "restorePurchase": "구매 복원",
     "copyText": {
       "loading": "복사 중...",
       "copied": "복사되었습니다!",

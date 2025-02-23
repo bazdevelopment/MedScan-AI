@@ -32,6 +32,7 @@
     "createdAt": "Создано",
     "and": "и",
     "saveDiscount": "СЭКОНОМЬТЕ",
+    "restorePurchase": "Восстановить покупку",
     "copyText": {
       "loading": "Копирование...",
       "copied": "Скопировано!",

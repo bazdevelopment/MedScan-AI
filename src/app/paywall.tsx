@@ -9,6 +9,7 @@ import { type CustomerInfo } from 'react-native-purchases';
 import {
   useGetOfferings,
   usePurchaseSubscription,
+  useRestorePurchases,
 } from '@/api/subscription/subscription.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
@@ -92,6 +93,8 @@ const Paywall = () => {
   const { mutateAsync: purchaseSubscription } = usePurchaseSubscription();
   const { data: offerings } = useGetOfferings();
   const formattedOfferings = formatPaywallData(offerings);
+  const { mutate: _restorePurchase, isPending: _isPendingRestorePurchase } =
+    useRestorePurchases();
 
   const pricePerMonth = formattedOfferings.find(
     (item) => item.id === SUBSCRIPTIONS_PLANS.MONTHLY,
@@ -245,6 +248,15 @@ const Paywall = () => {
             onPress={handlePurchase}
             loading={isPendingUpdateUser}
           />
+
+          {/* Do not display restore purchase button now
+          <Button
+            label={'Restore purchase'}
+            variant="ghost"
+            className="self-center active:opacity-70"
+            onPress={restorePurchase}
+            loading={isPendingRestorePurchase}
+          /> */}
         </View>
       </View>
     </ScrollView>

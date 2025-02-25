@@ -51,17 +51,7 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-  fetch_latest_code:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📦 Checkout latest code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
   ios_build:
-    needs: fetch_latest_code
     if: ${{ inputs.run_ios }}
     name: iOS Build
     runs-on: macos-latest
@@ -109,7 +99,6 @@ jobs:
           SHOULD_SUBMIT: ${{ inputs.should_submit }}
 
   android_build:
-    needs: fetch_latest_code
     if: ${{ inputs.run_android }}
     name: Android Build
     runs-on: ubuntu-latest

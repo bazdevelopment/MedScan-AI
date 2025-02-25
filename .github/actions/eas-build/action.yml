@@ -79,6 +79,11 @@ runs:
         eas-version: latest
         token: ${{ inputs.EXPO_TOKEN }}
 
+    - name: 📦 Checkout latest code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
     - name: ⚙️ Run Prebuild
       run: |
         pnpm prebuild:${{ inputs.APP_ENV }}
@@ -108,7 +113,7 @@ runs:
         name: ${{ inputs.VERSION }}-ANDROID
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.apk
 
-        # New EAS Submit steps
+    # New EAS Submit steps
     - name: 🚀 Submit Android to Play Store
       if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
       run: eas submit --platform android --path ${{ github.workspace }}/${{ inputs.VERSION }}.apk --non-interactive

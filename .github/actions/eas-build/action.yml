@@ -79,11 +79,6 @@ runs:
         eas-version: latest
         token: ${{ inputs.EXPO_TOKEN }}
 
-    - name: 📦 Checkout latest code
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-
     - name: ⚙️ Run Prebuild
       run: |
         pnpm prebuild:${{ inputs.APP_ENV }}

@@ -181,14 +181,6 @@ jobs:
           echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
           fi
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          # Use Node.js to extract the version
-          VERSION=$(node -p "require('./package.json').version")
-          # Set the version as an environment variable for later steps
-          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
-
   create_github_release:
     needs: release
     uses: ./.github/workflows/new-github-release.yml

@@ -137,7 +137,7 @@ runs:
       if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT != 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
-        PATH: /home/runner/work/MedScan-AI/MedScan-AI
+        PATH: /Users/runner/work/MedScan-AI/MedScan-AI
         VERSION: ${{ inputs.VERSION }}
         FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_IOS }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}

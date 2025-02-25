@@ -95,7 +95,9 @@
         "track": "internal",
         "releaseStatus": "draft"
       },
-      "ios": {}
+      "ios": {
+        "ascAppId": "6742465790" //Apple ID from app information tab in app store connect, move to env file in the future if it's possible
+      }
     }
   }
 }

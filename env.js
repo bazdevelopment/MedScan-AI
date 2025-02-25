@@ -32,7 +32,7 @@ require('dotenv').config({
  * for example: if the APP_ENV is development, the bundle id will be com.x-ray-analizer.develpoment
  */
 
-const BUNDLE_ID = 'com.x-ray-analizer'; // ios bundle id
+const BUNDLE_ID = 'com.xrayanalizer'; // ios bundle id
 const PACKAGE = 'com.xrayanalizer'; // android package name
 const NAME = 'MedScan AI'; // app name
 const EXPO_ACCOUNT_OWNER = 'bazdevelopment'; // expo account owner

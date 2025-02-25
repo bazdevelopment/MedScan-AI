@@ -98,17 +98,17 @@ runs:
       if: ${{ inputs.IOS == 'true' }}
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.VERSION }}
+        name: ${{ inputs.VERSION }}-IOS
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.ipa
 
     - name: 🏁 Upload APK artifact ANDROID
       if: ${{ inputs.ANDROID == 'true' }}
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.VERSION }}
+        name: ${{ inputs.VERSION }}-ANDROID
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.apk
 
-        # New EAS Submit steps
+    # New EAS Submit steps
     - name: 🚀 Submit Android to Play Store
       if: ${{ inputs.ANDROID == 'true' && inputs.SHOULD_SUBMIT == 'true' }}
       run: eas submit --platform android --path ${{ github.workspace }}/${{ inputs.VERSION }}.apk --non-interactive
@@ -132,7 +132,7 @@ runs:
       if: ${{ inputs.IOS == 'true' && inputs.SHOULD_SUBMIT != 'true' }}
       uses: ./.github/actions/deploy-to-firebase
       with:
-        PATH: /home/runner/work/MedScan-AI/MedScan-AI
+        PATH: /Users/runner/work/MedScan-AI/MedScan-AI
         VERSION: ${{ inputs.VERSION }}
         FIREBASE_APP_ID: ${{ inputs.FIREBASE_APP_ID_IOS }}
         CREDENTIAL_FILE_CONTENT_GOOGLE_KEY: ${{ inputs.CREDENTIAL_FILE_CONTENT_GOOGLE_KEY }}

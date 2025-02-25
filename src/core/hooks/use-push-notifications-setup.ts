@@ -50,6 +50,8 @@ export const usePushNotificationSetup = () => {
           console.log('Push notifications enabled successfully');
         } else {
           // Log failure and show a warning toast
+          //do not display the warning first time when the user opens the app because there is a delay in the response push notif permissions
+          //users can experience the banner informing that they didn't enable push notif. even if they did it
           Toast.warning(translate('alerts.enableNotificationFailed'), {
             action: {
               label: translate('general.openSettings'),

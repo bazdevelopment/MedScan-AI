@@ -10,9 +10,8 @@ import Animated, {
 
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
-import { translate, useSelectedLanguage } from '@/core';
+import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
-import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { wait } from '@/core/utilities/wait';
 import { Button, colors, Text } from '@/ui';
 import { BellIcon, UploadIcon } from '@/ui/assets/icons';
@@ -29,9 +28,10 @@ import { type IHomeForeground } from './home-forground.interface';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { colorScheme } = useColorScheme();
+  const [isFirstTime, setIsFirstTime] = useIsFirstTime();
+
   const isDark = colorScheme === 'dark';
   const { language } = useSelectedLanguage();
-  const { isVerySmallDevice } = getDeviceSizeCategory();
 
   const { data: userInfo } = useUser(language);
 
@@ -46,6 +46,12 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   ).length;
 
   const onStartUploadMediaFile = () => {
+    /**
+     * isFirstTime is used to check if the user installs the app for the first time
+     * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
+     * thats why we need to set it to false based on an action instead of creating another useEffect in layout
+     *  */
+    isFirstTime && setIsFirstTime(false);
     if (userInfo?.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
       logEvent(
         `Alert informing user - ${userInfo.userId} that there are no scans available is displayed`,

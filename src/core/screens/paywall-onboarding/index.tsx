@@ -68,7 +68,6 @@ const PaywallOnboarding = ({
   } = usePurchaseSubscription();
   const { data: offerings } = useGetOfferings();
   const { data: customerInfo } = useGetCustomerInfo();
-
   const formattedOfferings = formatPaywallOnboardingData(offerings);
 
   const pricePerMonth = formattedOfferings.find(
@@ -236,6 +235,7 @@ const PaywallOnboarding = ({
             textClassName="text-lg text-center text-white dark:text-white"
             iconPosition="left"
             onPress={handleSubscription}
+            disabled={!selectedPlan}
             loading={isPendingUpdateUser || isLoadingPurchaseSubscription}
           />
         </View>
@@ -247,8 +247,6 @@ const PaywallOnboarding = ({
 export default PaywallOnboarding;
 
 const formatPaywallOnboardingData = (offerings: any) => {
-  if (!offerings) return [];
-
   const paywallData = [
     {
       id: 'free_trial',
@@ -264,6 +262,7 @@ const formatPaywallOnboardingData = (offerings: any) => {
       type: 'FREE_RIAL',
     },
   ];
+  if (!offerings) return paywallData;
 
   if (offerings?.monthly?.product) {
     paywallData.push({
@@ -301,7 +300,6 @@ const formatPaywallOnboardingData = (offerings: any) => {
       type: 'ANNUAL',
     });
   }
-
   return paywallData;
 };
 

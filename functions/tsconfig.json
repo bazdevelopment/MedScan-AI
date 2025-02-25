@@ -29,6 +29,7 @@
     "utilities/languages.ts",
     "utilities/language.ts",
     "utilities/add-fields-to-collection.ts",
+    "utilities/ai-models.ts",
     "dayjs/index.ts"
   ]
 }

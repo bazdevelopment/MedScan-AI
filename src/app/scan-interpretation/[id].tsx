@@ -1,7 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import dayjs from 'dayjs';
 import { useLocalSearchParams } from 'expo-router';
-import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { Toaster } from 'sonner-native';
@@ -22,9 +21,6 @@ const ScanInterpretationDetailsScreen = () => {
     documentId: documentId as string,
     language,
   })();
-
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
 
   const isVideo = checkIsVideo(data?.record?.mimeType);
   if (isPending) {

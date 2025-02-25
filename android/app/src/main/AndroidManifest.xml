@@ -36,6 +36,8 @@
         <data android:scheme="com.xrayanalizer.development"/>
         <data android:scheme="exp+x-ray-analyzer"/>
         <data android:scheme="com.xrayanalizer"/>
+        <data android:scheme="med-scan-ai"/>
+        <data android:scheme="exp+medscan-ai"/>
       </intent-filter>
       <intent-filter data-generated="true">
         <action android:name="android.intent.action.VIEW"/>

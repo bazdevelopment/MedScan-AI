@@ -98,14 +98,14 @@ runs:
       if: ${{ inputs.IOS == 'true' }}
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.VERSION }}
+        name: ${{ inputs.VERSION }}-IOS
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.ipa
 
     - name: 🏁 Upload APK artifact ANDROID
       if: ${{ inputs.ANDROID == 'true' }}
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.VERSION }}
+        name: ${{ inputs.VERSION }}-ANDROID
         path: ${{ github.workspace }}/${{ inputs.VERSION }}.apk
 
         # New EAS Submit steps

@@ -7,6 +7,7 @@ import { Request } from 'firebase-functions/v1/https';
 import ffmpeg from 'fluent-ffmpeg';
 
 import dayjs from '../dayjs';
+import { AI_MODELS } from '../utilities/ai-models';
 import {
   convertBufferToBase64,
   getBase64ImageFrames,
@@ -83,7 +84,7 @@ export const analyzeImage = async (req: Request, res: any) => {
     const base64String = convertBufferToBase64(imageFile.buf);
 
     const message = await anthropic.messages.create({
-      model: 'claude-3-haiku-20240307',
+      model: AI_MODELS.CLAUDE_35_HAIKU,
       max_tokens: 1024,
       messages: [
         {
@@ -241,9 +242,8 @@ export const analyzeVideo = async (req: Request, res: any) => {
     });
 
     const message = await anthropic.messages.create({
-      model: 'claude-3-haiku-20240307',
+      model: AI_MODELS.CLAUDE_35_HAIKU,
       max_tokens: 1024,
-      // system:"Respond in english",
       messages: [
         {
           role: 'user',

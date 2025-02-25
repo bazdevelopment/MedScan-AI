@@ -1,12 +1,14 @@
 import axios from 'axios';
 
+import { Env } from '@/core/env';
+
 export const analyzeImageUsingAi = async (
   payload: FormData,
   language: string,
 ) => {
   try {
     const response = await axios.post(
-      'https://us-central1-x-ray-analizer-dev.cloudfunctions.net/analyzeImage',
+      Env.ANALYZE_IMAGE_ENDPOINT as string,
       payload,
       {
         headers: {
@@ -28,7 +30,7 @@ export const analyzeVideoUsingAi = async (
 ) => {
   try {
     const response = await axios.post(
-      'https://us-central1-x-ray-analizer-dev.cloudfunctions.net/analyzeVideo',
+      Env.ANALYZE_VIDEO_ENDPOINT as string,
       payload,
       {
         headers: {

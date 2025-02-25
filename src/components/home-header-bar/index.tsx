@@ -11,13 +11,21 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useUser } from '@/api/user/user.hooks';
-import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
+import {
+  DEVICE_TYPE,
+  translate,
+  useIsFirstTime,
+  useSelectedLanguage,
+} from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
+import { wait } from '@/core/utilities/wait';
 import { Button, colors, View } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 
 import Branding from '../branding';
+import CustomAlert from '../custom-alert';
 import { SnakeLine, SnakeLineRotated } from '../snake-line';
+import Toast from '../toast';
 import { type IHomeHeaderBar } from './home-header-bar.interface';
 
 const DEFAULT_TOP_INSET = 30;
@@ -25,6 +33,8 @@ const DEFAULT_TOP_INSET = 30;
 export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
   const insets = useSafeAreaInsets();
   const { colorScheme } = useColorScheme();
+  const [isFirstTime, setIsFirstTime] = useIsFirstTime();
+
   const isDark = colorScheme === 'dark';
   const { language } = useSelectedLanguage();
   const { logEvent } = useCrashlytics();
@@ -32,11 +42,37 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
   const { data: userInfo } = useUser(language);
 
   const onStartUploadMediaFile = () => {
+    /**
+     * isFirstTime is used to check if the user installs the app for the first time
+     * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
+     * thats why we need to set it to false based on an action instead of creating another useEffect in layout
+     *  */
+    isFirstTime && setIsFirstTime(false);
+
     if (userInfo?.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
       logEvent(
         `Alert informing user - ${userInfo.userId} that there are no scans available is displayed in home header bar`,
       );
-      alert(translate('home.homeForeground.maxNumberOfScans'));
+      return Toast.showCustomToast(
+        <CustomAlert
+          title={translate('general.attention')}
+          subtitle={translate('home.homeForeground.maxNumberOfScans')}
+          buttons={[
+            {
+              label: translate('components.UpgradeBanner.heading'),
+              variant: 'default',
+              onPress: () => wait(500).then(() => router.navigate('/paywall')), // a small delay in mandatory for Toast, not sure why
+              buttonTextClassName: 'dark:text-white',
+              className:
+                'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+            },
+          ]}
+        />,
+        {
+          position: 'middle', // Place the alert in the middle of the screen
+          duration: Infinity, // Keep the alert visible until dismissed
+        },
+      );
     }
     router.navigate('/upload-file-flow');
     logEvent(

@@ -5,7 +5,7 @@ import {
 } from '@gorhom/bottom-sheet';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { Toaster } from 'sonner-native';
 
 import ProgressBar from '@/components/progress-bar';
@@ -63,8 +63,9 @@ const UploadFileScreen = ({
   useEffect(() => {
     resetFlow();
   }, []);
+
   return (
-    <>
+    <ScrollView>
       {DEVICE_TYPE.IOS && (
         <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
       )}
@@ -122,7 +123,7 @@ const UploadFileScreen = ({
         ref={modal.ref}
         heading={translate('components.UploadFileOptionsModal.heading')}
       />
-    </>
+    </ScrollView>
   );
 };
 

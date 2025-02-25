@@ -25,7 +25,7 @@ import ReportSkeleton from '@/components/report-card-skeleton';
 import ScanCategoriesStories from '@/components/scan-category-stories';
 import ScanReportCard from '@/components/scan-report-card';
 import Toast from '@/components/toast';
-import { translate, useSelectedLanguage } from '@/core';
+import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import useCustomScrollToTop from '@/core/hooks/use-custom-scroll-to-top';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
@@ -199,6 +199,8 @@ const ReportsList = ({
 }) => {
   const { language } = useSelectedLanguage();
   const { data: userInfo } = useUser(language);
+  const [isFirstTime, setIsFirstTime] = useIsFirstTime();
+
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   return (
@@ -223,6 +225,13 @@ const ReportsList = ({
                 userInfo?.scansRemaining <= 0 &&
                 userInfo.isFreeTrialOngoing
               ) {
+                /**
+                 * isFirstTime is used to check if the user installs the app for the first time
+                 * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
+                 * thats why we need to set it to false based on an action instead of creating another useEffect in layout
+                 *  */
+                isFirstTime && setIsFirstTime(false);
+
                 return Toast.showCustomToast(
                   <CustomAlert
                     title={translate('general.attention')}

@@ -87,6 +87,8 @@ const client = z.object({
   RESEND_SENDER_EMAIL:z.string().optional(),
   TEST_ACCOUNT:z.string().optional(),
   REVENUE_CAT_API_KEYS_GOOGLE:z.string().optional(),
+  ANALYZE_IMAGE_ENDPOINT:z.string().optional(),
+  ANALYZE_VIDEO_ENDPOINT:z.string().optional(),
 });
 
 const buildTime = z.object({
@@ -116,6 +118,8 @@ const _clientEnv = {
   RESEND_SENDER_EMAIL:process.env.RESEND_SENDER_EMAIL,
   TEST_ACCOUNT:process.env.TEST_ACCOUNT,
   REVENUE_CAT_API_KEYS_GOOGLE:process.env.REVENUE_CAT_API_KEYS_GOOGLE,
+  ANALYZE_IMAGE_ENDPOINT:process.env.ANALYZE_IMAGE_ENDPOINT,
+  ANALYZE_VIDEO_ENDPOINT:process.env.ANALYZE_VIDEO_ENDPOINT
 };
 
 /**

@@ -44,3 +44,4 @@ pnpm android
 "resolutions": {
 "@react-native/assets-registry": "0.76.1"
 },
+-if the users do not see the offerings make sure the have google play/app store and they are logged in

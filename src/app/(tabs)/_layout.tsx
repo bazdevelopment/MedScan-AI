@@ -20,7 +20,7 @@ import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { useHaptic } from '@/core/hooks/use-haptics';
 import { usePushNotificationToken } from '@/core/hooks/use-push-notification-token';
-import { usePushNotificationSetup } from '@/core/hooks/use-push-notifications-setup';
+import usePushNotifications from '@/core/hooks/use-push-notifications';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
 import { useUpdateUserSubscription } from '@/core/hooks/use-update-user-subscription';
 import { tabScreens } from '@/core/navigation/tabs';
@@ -43,14 +43,14 @@ export default function TabLayout() {
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
   const { logEvent } = useCrashlytics();
 
-  const { arePushNotificationEnabled, enablePushNotifications } =
-    usePushNotificationSetup(); //todo: check if here is the best place to call the hook
+  usePushNotifications(); // push notifications popup
   const { storeDeviceInfo } = usePushNotificationToken();
 
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
 
   const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
+
   const { isPending: isPendingRevenueCatSdkInit } = useInitializeRevenueCat(
     firebaseAuth.currentUser?.uid as string,
   );
@@ -73,13 +73,6 @@ export default function TabLayout() {
   useEffect(() => {
     storeDeviceInfo();
   }, []);
-
-  useEffect(() => {
-    if (!arePushNotificationEnabled && isLoggedIn) {
-      enablePushNotifications();
-    }
-  }, [isLoggedIn, arePushNotificationEnabled]);
-  // Set an initializing state whilst Firebase connects
 
   useEffect(() => {
     if (
@@ -107,12 +100,9 @@ export default function TabLayout() {
       },
     ]);
   }, []);
-  // if (isPendingUserinfo || !customerInfo) return <InitialLoadSpinner />; //ADD THIS CONDITION WHEN IOS REVENUE CAT SETUP IS
 
   if (isPendingUserinfo || isPendingRevenueCatSdkInit)
     return <InitialLoadSpinner />;
-
-  // if (true) return <Redirect href="/onboarding" />;
 
   if (isFirstTime && !isLoggedIn) {
     logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);

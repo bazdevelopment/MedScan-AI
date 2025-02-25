@@ -116,6 +116,15 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Update package.json version
+        run: |
+          VERSION=${{ inputs.version }}
+          jq --arg version "$VERSION" '.version = $version' package.json > temp.json && mv temp.json package.json
+          cat package.json
+
       - name: 'Load environment variables'
         run: |
           # Define the environment file name based on the input environment
@@ -137,31 +146,31 @@ jobs:
            echo "GOOGLE_SERVICES_PLIST_PATH=${{ vars.GOOGLE_SERVICES_PLIST_PATH }}" >> $ENV_FILE
            echo "ANTHROPIC_API_KEY=${{secrets.ANTHROPIC_API_KEY}}" >> $ENV_FILE
 
-      # - name: 🏃‍♂️ Run App release
-      #   run: |
-      #     if [ -n "${{ github.event.inputs.release-type }}" ]; then
-      #       echo "Running app-release with release type: ${{ github.event.inputs.release-type }}"
-      #       pnpm app-release --branch=$(
-      #         if [[ "${{ inputs.environment }}" == "production" ]]; then
-      #           echo "master"
-      #         elif [[ "${{ inputs.environment }}" == "development" ]]; then
-      #           echo "development"
-      #         elif [[ "${{ inputs.environment }}" == "staging" ]]; then
-      #           echo "master"
-      #         fi
-      #       ) ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
-      #     else
-      #       echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
-      #       pnpm app-release --branch=$(
-      #         if [[ "${{ inputs.environment }}" == "production" ]]; then
-      #           echo "master"
-      #         elif [[ "${{ inputs.environment }}" == "development" ]]; then
-      #           echo "development"
-      #         elif [[ "${{ inputs.environment }}" == "staging" ]]; then
-      #           echo "master"
-      #         fi
-      #       ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
-      #     fi
+      - name: 🏃‍♂️ Run App release
+        run: |
+          if [ -n "${{ github.event.inputs.release-type }}" ]; then
+            echo "Running app-release with release type: ${{ github.event.inputs.release-type }}"
+            pnpm app-release --branch=$(
+              if [[ "${{ inputs.environment }}" == "production" ]]; then
+                echo "master"
+              elif [[ "${{ inputs.environment }}" == "development" ]]; then
+                echo "development"
+              elif [[ "${{ inputs.environment }}" == "staging" ]]; then
+                echo "master"
+              fi
+            ) ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
+          else
+            echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
+            pnpm app-release --branch=$(
+              if [[ "${{ inputs.environment }}" == "production" ]]; then
+                echo "master"
+              elif [[ "${{ inputs.environment }}" == "development" ]]; then
+                echo "development"
+              elif [[ "${{ inputs.environment }}" == "staging" ]]; then
+                echo "master"
+              fi
+            ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
+          fi
 
       - name: 🏃‍♂️ Align native code with version changes by running prebuild
         run: |

@@ -116,15 +116,6 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
-
-      - name: Update package.json version
-        run: |
-          VERSION=${{ inputs.version }}
-          jq --arg version "$VERSION" '.version = $version' package.json > temp.json && mv temp.json package.json
-          cat package.json
-
       - name: 'Load environment variables'
         run: |
           # Define the environment file name based on the input environment
@@ -189,6 +180,14 @@ jobs:
           else
           echo "Unknown environment: ${{ inputs.environment }}. No prebuild-push executed."
           fi
+
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          # Use Node.js to extract the version
+          VERSION=$(node -p "require('./package.json').version")
+          # Set the version as an environment variable for later steps
+          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
 
   create_github_release:
     needs: release

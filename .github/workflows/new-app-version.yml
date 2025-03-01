@@ -84,7 +84,7 @@ jobs:
   release:
     name: Create New Version and push new tag
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment == 'staging' && 'production' || inputs.environment }}
+    environment: ${{ fromJSON('{"staging":"production"}')[inputs.environment] || inputs.environment }}
     permissions:
       contents: write
     steps:
@@ -143,6 +143,10 @@ jobs:
            echo "REVENUE_CAT_API_KEYS_APPLE=${{secrets.REVENUE_CAT_API_KEYS_APPLE}}" >> $ENV_FILE
            echo "ANALYZE_IMAGE_ENDPOINT=${{secrets.ANALYZE_IMAGE_ENDPOINT}}" >> $ENV_FILE
            echo "ANALYZE_VIDEO_ENDPOINT=${{secrets.ANALYZE_VIDEO_ENDPOINT}}" >> $ENV_FILE
+
+           # Log the contents of the .env file for debugging
+           echo "Contents of $ENV_FILE:"
+           cat $ENV_FILE
 
       # - name: 🏃‍♂️ Run App release
       #   run: |

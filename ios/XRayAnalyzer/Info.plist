@@ -19,7 +19,7 @@
     <key>CFBundlePackageType</key>
     <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
     <key>CFBundleShortVersionString</key>
-    <string>25.2.92-staging</string>
+    <string>25.2.93-staging</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleURLTypes</key>
@@ -28,13 +28,13 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>x-ray-analizer</string>
-          <string>com.xrayanalizer</string>
+          <string>com.xrayanalizer.development</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.googleusercontent.apps.152612175524-2mccf10tti1f6tqsm39e00hl2o87f1vc</string>
+          <string>com.googleusercontent.apps.951069774280-at2kafhams81a6uc4bidi81var2rfhi4</string>
         </array>
       </dict>
       <dict>
@@ -61,6 +61,7 @@
     <string>Allow $(PRODUCT_NAME) to access your photo</string>
     <key>NSUserActivityTypes</key>
     <array>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>

@@ -365,7 +365,7 @@
     "onboardingUnsuccessful": "Onboarding unsuccessful. Please try again",
     "logoutUnsuccessful": "Logout unsuccessful. Please try again",
     "deleteScanReportQuestion": "Are you sure you want to permanently delete this report?",
-    "videoLimitExceeds": "Your video exceeds the 15-seconds limit. Please trim it and re-upload",
+    "videoLimitExceeds": "Your video exceeds the {{videoSecondsLimit}}-seconds limit. Please trim it and re-upload",
     "subscriptionActivated": "Your subscription has been successfully activated! Enjoy your exclusive benefits!",
     "subscriptionCancelledByUser": "You've canceled the transaction. Feel free to try again!",
     "subscriptionActivationFailed": "Failed to activate your subscription. Please try again",

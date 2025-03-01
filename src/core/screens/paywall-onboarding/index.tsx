@@ -409,11 +409,11 @@ export const updateUserAfterSelectingPlan = async ({
     }),
   };
 
-  if (customerInfo) {
-    await onUpdateUser({
-      language,
-      userId,
-      fieldsToUpdate,
-    });
-  }
+  // if (customerInfo) {
+  await onUpdateUser({
+    language,
+    userId,
+    fieldsToUpdate,
+  });
+  // }
 };

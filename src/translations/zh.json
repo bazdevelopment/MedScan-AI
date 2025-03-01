@@ -362,7 +362,7 @@
     "deleteScanReportFail": "无法删除扫描报告。请再试一次",
     "logoutUnsuccessful": "退出登录未成功，请重试",
     "deleteScanReportQuestion": "您确定要永久删除此报告吗",
-    "videoLimitExceeds": "您的视频超过了15秒限制。请修剪并重新上传",
+    "videoLimitExceeds": "您的视频超过了{{videoSecondsLimit}}秒限制。请修剪并重新上传",
     "subscriptionActivated": "您的订阅已成功激活！享受您的独家福利！",
     "subscriptionCancelledByUser": "您已取消交易。请随时再试一次！",
     "subscriptionActivationFailed": "订阅激活失败。请再试一次！",

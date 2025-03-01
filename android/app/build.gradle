@@ -109,13 +109,13 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.xrayanalizer.development'
+    namespace 'com.xrayanalizer'
     defaultConfig {
-        applicationId 'com.xrayanalizer.development'
+        applicationId 'com.xrayanalizer'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "25.2.86"
+        versionName "25.2.87-staging"
     }
     signingConfigs {
         debug {

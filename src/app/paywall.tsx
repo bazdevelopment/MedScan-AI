@@ -127,144 +127,147 @@ const Paywall = () => {
   };
 
   return (
-    <ScrollView
-      contentContainerStyle={{
-        flex: isVerySmallDevice ? 0 : 1,
-      }}
-    >
-      <View
-        style={{
-          position: 'absolute',
-          zIndex: 1,
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          pointerEvents: 'none',
+    <>
+      <ScrollView
+        contentContainerStyle={{
+          overflow: 'hidden',
+          paddingBottom: 200,
         }}
       >
-        <LottieView
-          source={require('assets/lottie/confetti-animation.json')}
-          autoPlay
-          loop={false}
-          style={{ flex: 1 }}
-        />
-      </View>
-
-      <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
         <View
-          className={`rounded-b-[50px]  bg-primary-900 pb-6  dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-10' : 'pt-16'}`}
+          style={{
+            position: 'absolute',
+            zIndex: 1,
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            pointerEvents: 'none',
+          }}
         >
-          <Button
-            icon={
-              <CloseIcon
-                width={30}
-                height={30}
-                fill={colors.white}
-                right={18}
-              />
-            }
-            onPress={router.back}
-            className="left-6 top-[-10] h-[30] w-[30] justify-center bg-transparent dark:bg-transparent"
+          <LottieView
+            source={require('assets/lottie/confetti-animation.json')}
+            autoPlay
+            loop={false}
+            style={{ flex: 1 }}
           />
+        </View>
 
-          <SnakeLine
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
-            className={`absolute right-[100] top-[-20] ${isVerySmallDevice ? 'right-[10] top-[20]' : 'right[-100]'}`}
-          />
+        <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
+          <View
+            className={`rounded-b-[50px]  bg-primary-900 dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-6' : 'pt-16'}`}
+          >
+            <Button
+              icon={
+                <CloseIcon
+                  width={30}
+                  height={30}
+                  fill={colors.white}
+                  right={18}
+                />
+              }
+              onPress={router.back}
+              className="left-6 top-[-10] h-[30] w-[30] justify-center bg-transparent dark:bg-transparent"
+            />
 
-          <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
-            className="absolute left-[80] top-[5]"
-          />
+            <SnakeLine
+              color={isDark ? colors.charcoal[600] : colors.primary[600]}
+              className={`absolute right-[100] top-[-20] ${isVerySmallDevice ? 'right-[10] top-[20]' : 'right[-100]'}`}
+            />
 
-          <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[600]}
-            className="absolute right-[-10] top-[-40]"
-          />
-          <Branding isLogoVisible className="justify-center" />
+            <SnakeLineRotated
+              color={isDark ? colors.charcoal[600] : colors.primary[600]}
+              className="absolute left-[80] top-[5]"
+            />
 
-          <View className="gap-4 px-8 pt-8">
-            <Text className="mb-4 text-center font-bold-nunito  text-[24px] text-white">
-              {translate(
-                'rootLayout.screens.paywallOnboarding.freeTierOfferings.title',
-              )}
-            </Text>
+            <SnakeLineRotated
+              color={isDark ? colors.charcoal[600] : colors.primary[600]}
+              className="absolute right-[-10] top-[-40]"
+            />
+            <Branding isLogoVisible className="mt-[-20] justify-center" />
 
-            <View className="max-w-[90%] flex-row items-center gap-4">
-              <CrownIllustration width={35} height={35} />
-              <Text className="font-bold-nunito text-lg text-white">
+            <View className="gap-4 px-8 pb-4 pt-8">
+              <Text className="mb-2 text-center font-bold-nunito text-[24px] text-white">
                 {translate(
-                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.firstOffering',
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.title',
                 )}
               </Text>
-            </View>
 
-            <View className="flex-row items-center gap-4">
-              <ScanIllustration
-                width={35}
-                height={35}
-                fill={isDark ? colors.white : colors.blackBeauty}
-              />
-              <Text className="font-bold-nunito text-lg text-white">
-                {translate(
-                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.thirdOffering',
-                )}
-              </Text>
-            </View>
+              <View className="max-w-[90%] flex-row items-center gap-4">
+                <CrownIllustration width={35} height={35} />
+                <Text className="font-bold-nunito text-lg text-white">
+                  {translate(
+                    'rootLayout.screens.paywallOnboarding.freeTierOfferings.firstOffering',
+                  )}
+                </Text>
+              </View>
 
-            <View className="flex-row items-center gap-4">
-              <NoAdsIllustration width={35} height={35} />
-              <Text className="font-bold-nunito text-lg text-white">
-                {translate(
-                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering',
-                )}
-              </Text>
+              <View className="flex-row items-center gap-4">
+                <ScanIllustration
+                  width={35}
+                  height={35}
+                  fill={isDark ? colors.white : colors.blackBeauty}
+                />
+                <Text className="font-bold-nunito text-lg text-white">
+                  {translate(
+                    'rootLayout.screens.paywallOnboarding.freeTierOfferings.thirdOffering',
+                  )}
+                </Text>
+              </View>
+
+              <View className="flex-row items-center gap-4">
+                <NoAdsIllustration width={35} height={35} />
+                <Text className="font-bold-nunito text-lg text-white">
+                  {translate(
+                    'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering',
+                  )}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
 
-        <View className="mt-4 gap-2 px-6">
-          {formattedOfferings.map((plan) => (
-            <SelectableLabel
-              key={plan.id}
-              title={plan.title}
-              subtitle={plan.subtitle}
-              selected={selectedPlan === plan.id}
-              onPress={() => onSelect(plan.id)}
-              additionalClassName={`${selectedPlan === plan.id ? 'px-6 border-primary-900 bg-primary-300 dark:bg-primary-900 dark:border-primary-500' : 'px-6 bg-white border border-gray-300'}`}
-              titleClassName={`${selectedPlan === plan.id ? 'text-black text-lg font-bold-nunito' : 'text-gray-900'}`}
-              subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
-              indicatorPosition="left"
-              indicatorType="checkbox"
-              extraInfo={
-                discount &&
-                plan.type === 'ANNUAL' &&
-                `${translate('general.saveDiscount')} ${discount}`
-              }
-            />
-          ))}
+          <View className="mt-2 px-6">
+            {formattedOfferings.map((plan) => (
+              <SelectableLabel
+                key={plan.id}
+                title={plan.title}
+                subtitle={plan.subtitle}
+                selected={selectedPlan === plan.id}
+                onPress={() => onSelect(plan.id)}
+                additionalClassName={`${selectedPlan === plan.id ? 'px-6 border-primary-900 bg-primary-300 dark:bg-primary-900 dark:border-primary-500' : 'px-6 bg-white border border-gray-300'}`}
+                titleClassName={`${selectedPlan === plan.id ? 'text-black text-lg font-bold-nunito' : 'text-gray-900'}`}
+                subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
+                indicatorPosition="left"
+                indicatorType="checkbox"
+                extraInfo={
+                  discount &&
+                  plan.type === 'ANNUAL' &&
+                  `${translate('general.saveDiscount')} ${discount}`
+                }
+              />
+            ))}
+          </View>
         </View>
-        <View className="flex-column mx-6 mb-16 mt-auto items-start justify-between">
-          <Button
-            label={translate('general.continue')}
-            variant="default"
-            className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
-            textClassName="text-lg text-center text-white dark:text-white"
-            iconPosition="left"
-            onPress={handlePurchase}
-            loading={isPendingUpdateUser}
-          />
-          <Button
-            label={translate('general.restorePurchase')}
-            variant="ghost"
-            className="self-center active:opacity-70"
-            onPress={restorePurchase}
-            loading={isPendingRestorePurchase}
-          />
-        </View>
+      </ScrollView>
+      <View className="flex-column absolute bottom-0 mx-6 w-full items-start justify-between self-center overflow-hidden px-6 pb-4 dark:bg-blackEerie">
+        <Button
+          label={translate('general.continue')}
+          variant="default"
+          className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
+          textClassName="text-lg text-center text-white dark:text-white"
+          iconPosition="left"
+          onPress={handlePurchase}
+          loading={isPendingUpdateUser}
+        />
+        <Button
+          label={translate('general.restorePurchase')}
+          variant="ghost"
+          className="self-center active:opacity-70"
+          onPress={restorePurchase}
+          loading={isPendingRestorePurchase}
+        />
       </View>
-    </ScrollView>
+    </>
   );
 };
 

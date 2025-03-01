@@ -365,6 +365,7 @@
     "videoLimitExceeds": "Videoclipul tău depășește limita de 15 secunde. Te rog micşorează-l și încarcă din nou",
     "subscriptionActivated": "Abonamentul dumneavoastră a fost activat cu succes! Bucurați-vă de beneficiile exclusive!",
     "subscriptionCancelledByUser": "Ați anulat tranzacția. Nu ezitați să încercați din nou!",
-    "subscriptionActivationFailed": "Activarea abonamentului a eșuat. Vă rugăm să încercați din nou!"
+    "subscriptionActivationFailed": "Activarea abonamentului a eșuat. Vă rugăm să încercați din nou!",
+    "logoutQuestion": "Sigur doriți să vă deconectați?"
   }
 }

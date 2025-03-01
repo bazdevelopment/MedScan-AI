@@ -18,12 +18,9 @@ import { queryClient } from '../common';
 export const useGetOfferings = createQuery<PurchasesOffering | null, Error>({
   queryKey: ['subscription-offerings'],
   fetcher: async () => {
-    if (Platform.OS === 'ios') {
-      // throw new Error('RevenueCat is not supported on iOS'); //not implemented yet
-      return null;
-    }
-
+    // const offerings = await Purchases.getOfferings();
     const offerings = await Purchases.getOfferings();
+
     return offerings.current;
   },
 });
@@ -109,7 +106,7 @@ export const useInitializeRevenueCat = (userId: string) =>
       } else {
         await Purchases.configure({
           appUserID: userId,
-          apiKey: '',
+          apiKey: process.env.REVENUE_CAT_API_KEYS_APPLE as string,
         });
       }
 

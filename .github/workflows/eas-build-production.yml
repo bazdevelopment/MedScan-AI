@@ -83,6 +83,7 @@ jobs:
           echo "RESEND_SENDER_EMAIL=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
           echo "TEST_ACCOUNT=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
           echo "REVENUE_CAT_API_KEYS_GOOGLE=${{secrets.REVENUE_CAT_API_KEYS_GOOGLE}}" >> $ENV_FILE
+          echo "REVENUE_CAT_API_KEYS_APPLE=${{secrets.REVENUE_CAT_API_KEYS_APPLE}}" >> $ENV_FILE
           echo "ANALYZE_IMAGE_ENDPOINT=${{secrets.ANALYZE_IMAGE_ENDPOINT}}" >> $ENV_FILE
           echo "ANALYZE_VIDEO_ENDPOINT=${{secrets.ANALYZE_VIDEO_ENDPOINT}}" >> $ENV_FILE
 
@@ -133,6 +134,7 @@ jobs:
           echo "RESEND_SENDER_EMAIL=${{secrets.RESEND_SENDER_EMAIL}}" >> $ENV_FILE
           echo "TEST_ACCOUNT=${{secrets.TEST_ACCOUNT}}" >> $ENV_FILE
           echo "REVENUE_CAT_API_KEYS_GOOGLE=${{secrets.REVENUE_CAT_API_KEYS_GOOGLE}}" >> $ENV_FILE
+          echo "REVENUE_CAT_API_KEYS_APPLE=${{secrets.REVENUE_CAT_API_KEYS_APPLE}}" >> $ENV_FILE
           echo "ANALYZE_IMAGE_ENDPOINT=${{secrets.ANALYZE_IMAGE_ENDPOINT}}" >> $ENV_FILE
           echo "ANALYZE_VIDEO_ENDPOINT=${{secrets.ANALYZE_VIDEO_ENDPOINT}}" >> $ENV_FILE
 

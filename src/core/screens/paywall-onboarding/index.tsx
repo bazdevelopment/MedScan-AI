@@ -18,7 +18,7 @@ import { type IOnboardingCollectedData } from '@/app/onboarding';
 import Branding from '@/components/branding';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { SUBSCRIPTIONS_PLANS } from '@/constants/subscriptions';
+import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
 import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
@@ -47,7 +47,9 @@ const PaywallOnboarding = ({
   currentScreenIndex: number;
   collectedData;
 }) => {
-  const [selectedPlan, setSelectedPlan] = useState(SUBSCRIPTIONS_PLANS.YEARLY);
+  const [selectedPlan, setSelectedPlan] = useState(
+    SUBSCRIPTION_PLANS_PER_PLATFORM?.YEARLY,
+  );
   const [, setIsFirstTime] = useIsFirstTime();
   const { colorScheme } = useColorScheme();
   const { isVerySmallDevice } = getDeviceSizeCategory();
@@ -71,11 +73,11 @@ const PaywallOnboarding = ({
   const formattedOfferings = formatPaywallOnboardingData(offerings);
 
   const pricePerMonth = formattedOfferings.find(
-    (item) => item.id === SUBSCRIPTIONS_PLANS.MONTHLY,
+    (item) => item.id === SUBSCRIPTION_PLANS_PER_PLATFORM?.MONTHLY,
   )?.priceNumber;
 
   const pricePerYear = formattedOfferings.find(
-    (item) => item.id === SUBSCRIPTIONS_PLANS.YEARLY,
+    (item) => item.id === SUBSCRIPTION_PLANS_PER_PLATFORM?.YEARLY,
   )?.priceNumber;
 
   const discount = calculateAnnualDiscount(pricePerMonth, pricePerYear);

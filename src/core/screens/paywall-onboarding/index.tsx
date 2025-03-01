@@ -12,6 +12,7 @@ import {
   useGetCustomerInfo,
   useGetOfferings,
   usePurchaseSubscription,
+  useRestorePurchases,
 } from '@/api/subscription/subscription.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import { type IOnboardingCollectedData } from '@/app/onboarding';
@@ -19,7 +20,7 @@ import Branding from '@/components/branding';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
-import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
+import { translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
@@ -63,6 +64,8 @@ const PaywallOnboarding = ({
 
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
+  const { mutate: restorePurchase, isPending: isPendingRestorePurchase } =
+    useRestorePurchases();
 
   const {
     mutateAsync: purchaseSubscription,
@@ -122,127 +125,140 @@ const PaywallOnboarding = ({
   };
 
   return (
-    <ScrollView contentContainerClassName={`${DEVICE_TYPE.IOS && 'flex-1'}`}>
-      <FocusAwareStatusBar hidden />
-      <View
-        style={{
-          position: 'absolute',
-          zIndex: 1,
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          pointerEvents: 'none',
+    <>
+      <ScrollView
+        contentContainerStyle={{
+          overflow: 'hidden',
+          paddingBottom: 200,
         }}
       >
-        <LottieView
-          source={require('assets/lottie/confetti-animation.json')}
-          autoPlay
-          loop={false}
-          renderMode="SOFTWARE"
-          style={{ flex: 1 }}
-        />
-      </View>
-
-      <View className="rounded-b-[50px]  bg-primary-900 pb-6 pt-20 dark:bg-blackBeauty">
-        <SnakeLine
-          color={isDark ? colors.charcoal[600] : colors.primary[600]}
-          className={`absolute right-[100] top-[-20] ${isVerySmallDevice ? 'right-[10] top-[20]' : 'right[-100]'}`}
-        />
-
-        <SnakeLineRotated
-          color={isDark ? colors.charcoal[600] : colors.primary[600]}
-          className="absolute left-[80] top-[5]"
-        />
-
-        <SnakeLineRotated
-          color={isDark ? colors.charcoal[600] : colors.primary[600]}
-          className="absolute right-[-10] top-[-40]"
-        />
-        <Branding isLogoVisible className="justify-center" />
-
-        <View className="gap-4 px-8 pt-8">
-          <Text className="mb-4 text-center font-bold-nunito  text-[24px] text-white">
-            {translate(
-              'rootLayout.screens.paywallOnboarding.freeTierOfferings.title',
-            )}
-          </Text>
-
-          <View className="max-w-[90%] flex-row items-center gap-4">
-            <CrownIllustration width={35} height={35} />
-            <Text className="font-bold-nunito text-lg text-white">
-              {translate(
-                'rootLayout.screens.paywallOnboarding.freeTierOfferings.firstOffering',
-              )}
-            </Text>
-          </View>
-
-          <View className="flex-row items-center gap-4">
-            <ScanIllustration
-              width={35}
-              height={35}
-              fill={isDark ? colors.white : colors.blackBeauty}
-            />
-            <Text className="font-bold-nunito text-lg text-white">
-              {translate(
-                'rootLayout.screens.paywallOnboarding.freeTierOfferings.thirdOffering',
-              )}
-            </Text>
-          </View>
-
-          <View className="flex-row items-center gap-4">
-            <NoAdsIllustration width={35} height={35} />
-            <Text className="font-bold-nunito text-lg text-white">
-              {translate(
-                'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering',
-              )}
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      <View className="flex-1">
-        <View className="mt-8 px-6">
-          {formattedOfferings.map((plan) => (
-            <SelectableLabel
-              key={plan.id}
-              title={plan.title}
-              subtitle={plan.subtitle}
-              selected={selectedPlan === plan.id}
-              onPress={() => onSelect(plan.id)}
-              additionalClassName={`${selectedPlan === plan.id ? 'px-6 border-primary-900 bg-primary-100 dark:bg-primary-900 dark:border-primary-500' : 'px-6 bg-white border border-gray-300'}`}
-              titleClassName={`${selectedPlan === plan.id ? 'text-black text-lg font-bold-nunito' : 'text-gray-900'}`}
-              subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
-              indicatorPosition="left"
-              indicatorType="checkbox"
-              extraInfo={
-                discount &&
-                plan.type === 'ANNUAL' &&
-                `${translate('general.saveDiscount')} ${discount}`
-              }
-            />
-          ))}
+        <FocusAwareStatusBar hidden />
+        <View
+          style={{
+            position: 'absolute',
+            zIndex: 1,
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            pointerEvents: 'none',
+          }}
+        >
+          <LottieView
+            source={require('assets/lottie/confetti-animation.json')}
+            autoPlay
+            loop={false}
+            renderMode="SOFTWARE"
+            style={{ flex: 1 }}
+          />
         </View>
 
-        <View className="flex-column mx-6 mb-4  items-start justify-between">
+        <View className="rounded-b-[50px]  bg-primary-900 pb-6 pt-20 dark:bg-blackBeauty">
+          <SnakeLine
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            className={`absolute right-[100] top-[-20] ${isVerySmallDevice ? 'right-[10] top-[20]' : 'right[-100]'}`}
+          />
+
+          <SnakeLineRotated
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            className="absolute left-[80] top-[5]"
+          />
+
+          <SnakeLineRotated
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
+            className="absolute right-[-10] top-[-40]"
+          />
+          <Branding isLogoVisible className="justify-center" />
+
+          <View className="gap-4 px-8 pt-8">
+            <Text className="mb-4 text-center font-bold-nunito  text-[24px] text-white">
+              {translate(
+                'rootLayout.screens.paywallOnboarding.freeTierOfferings.title',
+              )}
+            </Text>
+
+            <View className="max-w-[90%] flex-row items-center gap-4">
+              <CrownIllustration width={35} height={35} />
+              <Text className="font-bold-nunito text-lg text-white">
+                {translate(
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.firstOffering',
+                )}
+              </Text>
+            </View>
+
+            <View className="flex-row items-center gap-4">
+              <ScanIllustration
+                width={35}
+                height={35}
+                fill={isDark ? colors.white : colors.blackBeauty}
+              />
+              <Text className="font-bold-nunito text-lg text-white">
+                {translate(
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.thirdOffering',
+                )}
+              </Text>
+            </View>
+
+            <View className="flex-row items-center gap-4">
+              <NoAdsIllustration width={35} height={35} />
+              <Text className="font-bold-nunito text-lg text-white">
+                {translate(
+                  'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering',
+                )}
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <View className="flex-1">
+          <View className="mt-8 px-6">
+            {formattedOfferings.map((plan) => (
+              <SelectableLabel
+                key={plan.id}
+                title={plan.title}
+                subtitle={plan.subtitle}
+                selected={selectedPlan === plan.id}
+                onPress={() => onSelect(plan.id)}
+                additionalClassName={`${selectedPlan === plan.id ? 'px-6 border-primary-900 bg-primary-100 dark:bg-primary-900 dark:border-primary-500' : 'px-6 bg-white border border-gray-300'}`}
+                titleClassName={`${selectedPlan === plan.id ? 'text-black text-lg font-bold-nunito' : 'text-gray-900'}`}
+                subtitleClassName={`${selectedPlan === plan.id ? 'text-gray-800 font-bold-nunito' : 'text-gray-900'}`}
+                indicatorPosition="left"
+                indicatorType="checkbox"
+                extraInfo={
+                  discount &&
+                  plan.type === 'ANNUAL' &&
+                  `${translate('general.saveDiscount')} ${discount}`
+                }
+              />
+            ))}
+          </View>
           <ProgressDots
-            className="mb-10 mt-20"
+            className="ml-6 mt-20"
             totalSteps={totalSteps}
             currentStep={currentScreenIndex}
           />
-          <Button
-            label={translate('general.continue')}
-            variant="default"
-            className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
-            textClassName="text-lg text-center text-white dark:text-white"
-            iconPosition="left"
-            onPress={handleSubscription}
-            disabled={!selectedPlan}
-            loading={isPendingUpdateUser || isLoadingPurchaseSubscription}
-          />
         </View>
+      </ScrollView>
+      <View className="flex-column absolute bottom-0 mx-6 mb-4 w-full items-start justify-between self-center px-6 dark:bg-blackEerie">
+        <Button
+          label={translate('general.continue')}
+          variant="default"
+          className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
+          textClassName="text-lg text-center text-white dark:text-white"
+          iconPosition="left"
+          onPress={handleSubscription}
+          disabled={!selectedPlan}
+          loading={isPendingUpdateUser || isLoadingPurchaseSubscription}
+        />
+        <Button
+          label={translate('general.restorePurchase')}
+          variant="ghost"
+          className="self-center active:opacity-70"
+          onPress={restorePurchase}
+          loading={isPendingRestorePurchase}
+        />
       </View>
-    </ScrollView>
+    </>
   );
 };
 

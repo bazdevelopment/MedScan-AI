@@ -18,9 +18,7 @@ import { queryClient } from '../common';
 export const useGetOfferings = createQuery<PurchasesOffering | null, Error>({
   queryKey: ['subscription-offerings'],
   fetcher: async () => {
-    // const offerings = await Purchases.getOfferings();
     const offerings = await Purchases.getOfferings();
-
     return offerings.current;
   },
 });
@@ -106,7 +104,7 @@ export const useInitializeRevenueCat = (userId: string) =>
       } else {
         await Purchases.configure({
           appUserID: userId,
-          apiKey: process.env.REVENUE_CAT_API_KEYS_APPLE as string,
+          apiKey: Env.REVENUE_CAT_API_KEYS_APPLE as string,
         });
       }
 

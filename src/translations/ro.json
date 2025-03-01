@@ -362,7 +362,7 @@
     "onboardingUnsuccessful": "Onboarding nereușit. Te rugăm să încerci din nou",
     "logoutUnsuccessful": "Deconectare nereușită. Vă rugăm să încercați din nou",
     "deleteScanReportQuestion": "Sigur doriți să ștergeți definitiv acest raport?",
-    "videoLimitExceeds": "Videoclipul tău depășește limita de 15 secunde. Te rog micşorează-l și încarcă din nou",
+    "videoLimitExceeds": "Videoclipul tău depășește limita de {{videoSecondsLimit}} secunde. Te rog micşorează-l și încarcă din nou",
     "subscriptionActivated": "Abonamentul dumneavoastră a fost activat cu succes! Bucurați-vă de beneficiile exclusive!",
     "subscriptionCancelledByUser": "Ați anulat tranzacția. Nu ezitați să încercați din nou!",
     "subscriptionActivationFailed": "Activarea abonamentului a eșuat. Vă rugăm să încercați din nou!",

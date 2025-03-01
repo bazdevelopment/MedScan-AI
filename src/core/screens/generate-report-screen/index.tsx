@@ -4,11 +4,10 @@ import { useLocalSearchParams } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
-import { Balloons } from 'react-native-fiesta';
 
 import GradientText from '@/components/gradient-text';
 import Icon from '@/components/icon';
-import { DEVICE_TYPE, translate } from '@/core';
+import { translate } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import { usePdfConverter } from '@/core/hooks/use-pdf-converter';
 import { useSharePdfContent } from '@/core/hooks/use-share-content';
@@ -35,7 +34,7 @@ const GenerateReportScreen = () => {
   return (
     <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
       {/* display the balloons animation only on ios since android has an issue with pressing the download/share buttons */}
-      {DEVICE_TYPE.IOS && <Balloons />}
+      {/* {DEVICE_TYPE.IOS && <Balloons />} */}
       <View className="flex-1 bg-gray-100 dark:bg-blackEerie">
         <View className="m-4 rounded-3xl bg-white p-3 dark:bg-blackEerie">
           {/* Header Section */}

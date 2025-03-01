@@ -50,7 +50,7 @@ const LoginPage = () => {
             ? DEVICE_TYPE.IOS
               ? 250
               : 200
-            : 250,
+            : 270,
       }}
     >
       <ScrollView
@@ -61,7 +61,7 @@ const LoginPage = () => {
         keyboardShouldPersistTaps="handled"
       >
         <View
-          className={`flex-1 bg-primary-900 px-6 pt-14 dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'} ${isMediumDevice && 'pt-[20%]'}`}
+          className={`flex-1 bg-primary-900 px-6 pt-20 dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'} ${isMediumDevice && 'pt-[20%]'}`}
         >
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}

@@ -362,7 +362,7 @@
     "onboardingUnsuccessful": "Error en el proceso de incorporación. Por favor, inténtalo de nuevo.",
     "logoutUnsuccessful": "Error al cerrar sesión. Por favor, inténtalo de nuevo.",
     "deleteScanReportQuestion": "¿Estás seguro de que deseas eliminar este informe permanentemente?",
-    "videoLimitExceeds": "Tu video excede el límite de 15 segundos. Por favor, recórtalo y vuelve a subirlo",
+    "videoLimitExceeds": "Tu video excede el límite de {{videoSecondsLimit}} segundos. Por favor, recórtalo y vuelve a subirlo",
     "subscriptionActivated": "¡Tu suscripción se ha activado correctamente! ¡Disfruta de tus beneficios exclusivos!",
     "subscriptionCancelledByUser": "Has cancelado la transacción. ¡No dudes en intentarlo de nuevo!",
     "subscriptionActivationFailed": "No se pudo activar tu suscripción. ¡Por favor, inténtalo de nuevo!",

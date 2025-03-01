@@ -362,7 +362,7 @@
     "onboardingUnsuccessful": "Échec de l'intégration. Veuillez réessayer",
     "logoutUnsuccessful": "Échec de la déconnexion. Veuillez réessayer",
     "deleteScanReportQuestion": "Êtes-vous sûr de vouloir supprimer définitivement ce rapport ?",
-    "videoLimitExceeds": "Votre vidéo dépasse la limite de 15 secondes. Veuillez la couper et la téléverser à nouveau",
+    "videoLimitExceeds": "Votre vidéo dépasse la limite de {{videoSecondsLimit}} secondes. Veuillez la couper et la téléverser à nouveau",
     "subscriptionActivated": "Votre abonnement a été activé avec succès ! Profitez de vos avantages exclusifs !",
     "subscriptionCancelledByUser": "Vous avez annulé la transaction. N'hésitez pas à réessayer !",
     "subscriptionActivationFailed": "Échec de l'activation de votre abonnement. Veuillez réessayer !",

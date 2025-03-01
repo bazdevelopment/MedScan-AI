@@ -365,6 +365,7 @@
     "videoLimitExceeds": "Ihr Video überschreitet das 15-Sekunden-Limit. Bitte kürzen Sie es und laden Sie es erneut hoch",
     "subscriptionActivated": "Ihr Abonnement wurde erfolgreich aktiviert! Genießen Sie Ihre exklusiven Vorteile!",
     "subscriptionCancelledByUser": "Sie haben die Transaktion abgebrochen. Versuchen Sie es gerne erneut!",
-    "subscriptionActivationFailed": "Aktivierung Ihres Abonnements fehlgeschlagen. Bitte versuchen Sie es erneut!"
+    "subscriptionActivationFailed": "Aktivierung Ihres Abonnements fehlgeschlagen. Bitte versuchen Sie es erneut!",
+    "logoutQuestion": "Sind Sie sicher, dass Sie sich abmelden möchten?"
   }
 }

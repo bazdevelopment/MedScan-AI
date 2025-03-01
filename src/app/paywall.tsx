@@ -13,9 +13,8 @@ import {
 } from '@/api/subscription/subscription.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Branding from '@/components/branding';
-import Icon from '@/components/icon';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { SUBSCRIPTIONS_PLANS } from '@/constants/subscriptions';
+import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
 import { DEVICE_TYPE, translate } from '@/core';
 import { updateUserAfterSelectingPlan } from '@/core/screens/paywall-onboarding';
 import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
@@ -88,7 +87,9 @@ const Paywall = () => {
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
 
-  const [selectedPlan, setSelectedPlan] = useState(SUBSCRIPTIONS_PLANS.YEARLY);
+  const [selectedPlan, setSelectedPlan] = useState(
+    SUBSCRIPTION_PLANS_PER_PLATFORM?.YEARLY,
+  );
 
   const { mutateAsync: purchaseSubscription } = usePurchaseSubscription();
   const { data: offerings } = useGetOfferings();
@@ -97,11 +98,11 @@ const Paywall = () => {
     useRestorePurchases();
 
   const pricePerMonth = formattedOfferings.find(
-    (item) => item.id === SUBSCRIPTIONS_PLANS.MONTHLY,
+    (item) => item.id === SUBSCRIPTION_PLANS_PER_PLATFORM?.MONTHLY,
   )?.priceNumber;
 
   const pricePerYear = formattedOfferings.find(
-    (item) => item.id === SUBSCRIPTIONS_PLANS.YEARLY,
+    (item) => item.id === SUBSCRIPTION_PLANS_PER_PLATFORM?.YEARLY,
   )?.priceNumber;
 
   const discount = calculateAnnualDiscount(pricePerMonth, pricePerYear);
@@ -154,13 +155,19 @@ const Paywall = () => {
         <View
           className={`rounded-b-[50px]  bg-primary-900 pb-6  dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-10' : 'pt-16'}`}
         >
-          <Icon
-            icon={<CloseIcon />}
-            color={colors.white}
-            size={30}
-            containerStyle={`absolute left-6 z-2 rounded-full ${DEVICE_TYPE.IOS ? 'top-6' : 'top-10'} mr-6`}
+          <Button
+            icon={
+              <CloseIcon
+                width={30}
+                height={30}
+                fill={colors.white}
+                right={18}
+              />
+            }
             onPress={router.back}
+            className="left-6 top-[-10] h-[30] w-[30] justify-center bg-transparent dark:bg-transparent"
           />
+
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className={`absolute right-[100] top-[-20] ${isVerySmallDevice ? 'right-[10] top-[20]' : 'right[-100]'}`}

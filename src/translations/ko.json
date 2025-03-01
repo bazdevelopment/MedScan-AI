@@ -365,6 +365,7 @@
     "videoLimitExceeds": "동영상이 15초 제한을 초과했습니다. 잘라내고 다시 업로드하세요",
     "subscriptionActivated": "구독이 성공적으로 활성화되었습니다! 독점 혜택을 즐기세요!",
     "subscriptionCancelledByUser": "거래를 취소하셨습니다. 다시 시도해 보세요!",
-    "subscriptionActivationFailed": "구독 활성화에 실패했습니다. 다시 시도해 주세요!"
+    "subscriptionActivationFailed": "구독 활성화에 실패했습니다. 다시 시도해 주세요!",
+    "logoutQuestion": "정말 로그아웃하시겠습니까?"
   }
 }

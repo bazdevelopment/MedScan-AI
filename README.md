@@ -45,3 +45,5 @@ pnpm android
 "@react-native/assets-registry": "0.76.1"
 },
 -if the users do not see the offerings make sure the have google play/app store and they are logged in
+-offerings can take a bit of time to load in the app (up to 24 hours on IOS after creating and importing them in RevenueCat)
+-IOS app store connect- App Encryption Documentation (for France a document is needed, so at the moment distribution to France will be stopped)

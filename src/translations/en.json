@@ -368,6 +368,7 @@
     "videoLimitExceeds": "Your video exceeds the 15-seconds limit. Please trim it and re-upload",
     "subscriptionActivated": "Your subscription has been successfully activated! Enjoy your exclusive benefits!",
     "subscriptionCancelledByUser": "You've canceled the transaction. Feel free to try again!",
-    "subscriptionActivationFailed": "Failed to activate your subscription. Please try again"
+    "subscriptionActivationFailed": "Failed to activate your subscription. Please try again",
+    "logoutQuestion": "Are you sure you want to log out?"
   }
 }

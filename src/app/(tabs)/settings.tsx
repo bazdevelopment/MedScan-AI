@@ -15,6 +15,7 @@ import { useAddFieldsToCollection } from '@/api/services/services.hooks';
 import { useUploadTermsOfService } from '@/api/terms-of-service/terms-of-service.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import { logout } from '@/api/user/user.requests';
+import CustomAlert from '@/components/custom-alert';
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
 import { LanguageItem } from '@/components/settings/language-item';
@@ -54,17 +55,49 @@ export default function Settings() {
   const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
 
   const handleLogout = async () => {
-    await onUpdateUser({
-      language,
-      userId: userInfo.userId,
-      fieldsToUpdate: {
-        verificationCode: '',
-        verificationCodeExpiry: '',
-        isOtpVerified: userInfo.email === Env.TEST_ACCOUNT ? true : false,
+    Toast.showCustomToast(
+      <CustomAlert
+        visible
+        title={translate('general.attention')}
+        subtitle={translate('alerts.logoutQuestion')}
+        buttons={[
+          {
+            label: translate('general.close'),
+            variant: 'default',
+            onPress: () => Toast.dismiss(),
+            className:
+              'flex-1 rounded-xl h-[48] bg-slate-100 active:opacity-80',
+            buttonTextClassName: 'text-black',
+          },
+          {
+            label: translate('general.yes'),
+            variant: 'destructive',
+            onPress: async () => {
+              try {
+                await onUpdateUser({
+                  language,
+                  userId: userInfo.userId,
+                  fieldsToUpdate: {
+                    verificationCode: '',
+                    verificationCodeExpiry: '',
+                    isOtpVerified:
+                      userInfo.email === Env.TEST_ACCOUNT ? true : false,
+                  },
+                });
+                logout();
+              } catch (error) {
+                Toast.error(translate('alerts.logoutUnsuccessful'));
+              }
+            },
+            className: 'flex-1 rounded-xl h-[48] active:opacity-80',
+          },
+        ]}
+      />,
+      {
+        position: 'middle', // Place the alert in the middle of the screen
+        duration: Infinity, // Keep the alert visible until dismissed
       },
-    })
-      .then(() => logout())
-      .catch(() => Toast.error(translate('alerts.logoutUnsuccessful')));
+    );
   };
 
   return (

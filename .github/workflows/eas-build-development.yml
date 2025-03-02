@@ -141,11 +141,6 @@ jobs:
       - name: 🧑‍💻 Decode google services
         run: pnpm run decode-google-services
 
-      # - name: Update EAS Config
-      #   run: |
-      #     sed -i 's|WILL_BE_REPLACED_IN_CI|${{ secrets.EXPO_PUBLIC_TEST_URL }}|g' eas.json
-      #   shell: bash
-
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk
         with:

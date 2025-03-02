@@ -63,7 +63,7 @@
       "env": {
         "APP_ENV": "development",
         "EXPO_NO_DOTENV": "1",
-        "EXPO_PUBLIC_TEST_URL": "testssts"
+        "EXPO_PUBLIC_TEST_URL": "WILL_BE_REPLACED_IN_CI"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",

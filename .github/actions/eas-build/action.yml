@@ -82,10 +82,10 @@ runs:
         eas-version: latest
         token: ${{ inputs.EXPO_TOKEN }}
 
-    # - name: ⚙️ Run Prebuild
-    #   run: |
-    #     pnpm prebuild:${{ inputs.APP_ENV }}
-    #   shell: bash
+    - name: ⚙️ Run Prebuild
+      run: |
+        pnpm prebuild:${{ inputs.APP_ENV }}
+      shell: bash
 
     - name: Update EAS Config
       run: |

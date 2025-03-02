@@ -1,4 +1,3 @@
-import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 
 import { useDeleteScanReportById } from '@/api/interpretation/interpretation.hooks';
@@ -6,8 +5,7 @@ import CustomAlert from '@/components/custom-alert';
 import Toast from '@/components/toast';
 import { translate, useSelectedLanguage } from '@/core';
 
-const DeleteReportAlert = () => {
-  const { id: documentId } = useLocalSearchParams();
+const DeleteReportAlert = ({ documentId }: { documentId: string }) => {
   const { language } = useSelectedLanguage();
 
   const { mutate: onDeleteReport } = useDeleteScanReportById();
@@ -28,8 +26,7 @@ const DeleteReportAlert = () => {
         {
           label: translate('general.delete'),
           variant: 'destructive',
-          onPress: () =>
-            onDeleteReport({ documentId: documentId as string, language }),
+          onPress: () => onDeleteReport({ documentId, language }),
           className: 'flex-1 rounded-xl h-[48] active:opacity-80',
         },
       ]}

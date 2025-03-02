@@ -22,15 +22,13 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Toaster } from 'sonner-native';
 
 import { APIProvider } from '@/api';
-import DeleteReportAlert from '@/components/alerts/delete-report';
 import CustomHeader from '@/components/cusom-header';
 import Icon from '@/components/icon';
-import Toast from '@/components/toast';
-import { DEVICE_TYPE, loadSelectedTheme, translate } from '@/core';
+import { loadSelectedTheme, translate } from '@/core';
 import { useNotificationListeners } from '@/core/hooks/use-notification-listeners';
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
-import { CloseIcon, TrashIcon } from '@/ui/assets/icons';
+import { CloseIcon } from '@/ui/assets/icons';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -65,22 +63,26 @@ export default function RootLayout() {
     'Font-Extra-Bold': NunitoSans_800ExtraBold,
   });
 
-  const showCustomAlert = () => {
-    Toast.showCustomToast(<DeleteReportAlert />, {
-      position: 'middle', // Place the alert in the middle of the screen
-      duration: Infinity, // Keep the alert visible until dismissed
-    });
-  };
-
   useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
+    const hideSplashScreen = async () => {
+      if (fontsLoaded) {
+        await SplashScreen.hideAsync();
+      }
+    };
+
+    hideSplashScreen();
+
+    // Fallback: Hide splash screen after 3 seconds even if fonts are not loaded (sometimes it happen on android to remain stuck on splash screen)
+    const timeout = setTimeout(async () => {
+      await SplashScreen.hideAsync();
+    }, 3000);
+
+    return () => clearTimeout(timeout);
   }, [fontsLoaded]);
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   return (
     <Providers>
@@ -128,24 +130,7 @@ export default function RootLayout() {
         <Stack.Screen
           name="scan-interpretation"
           options={{
-            header: (props) => (
-              <CustomHeader
-                {...props}
-                title={translate('rootLayout.screens.scanInterpretation.title')}
-                titlePosition="center"
-                onGoBack={router.back}
-                backIconColor={isDark ? colors.white : colors.black}
-                rightContent={
-                  <Icon
-                    size={26}
-                    containerStyle={`p-1 mr-6 ${DEVICE_TYPE.IOS ? 'mt-8' : 'mt-2'}`}
-                    onPress={showCustomAlert}
-                    icon={<TrashIcon />}
-                    color={colors.danger[500]}
-                  />
-                }
-              />
-            ),
+            headerShown: false,
           }}
         />
         <Stack.Screen

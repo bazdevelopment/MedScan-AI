@@ -143,36 +143,11 @@ jobs:
            echo "REVENUE_CAT_API_KEYS_APPLE=${{secrets.REVENUE_CAT_API_KEYS_APPLE}}" >> $ENV_FILE
            echo "ANALYZE_IMAGE_ENDPOINT=${{secrets.ANALYZE_IMAGE_ENDPOINT}}" >> $ENV_FILE
            echo "ANALYZE_VIDEO_ENDPOINT=${{secrets.ANALYZE_VIDEO_ENDPOINT}}" >> $ENV_FILE
+           echo "EXPO_PUBLIC_TEST_URL=${{secrets.EXPO_PUBLIC_TEST_URL}}" >> $ENV_FILE
 
            # Log the contents of the .env file for debugging
            echo "Contents of $ENV_FILE:"
            cat $ENV_FILE
-
-      # - name: 🏃‍♂️ Run App release
-      #   run: |
-      #     if [ -n "${{ github.event.inputs.release-type }}" ]; then
-      #       echo "Running app-release with release type: ${{ github.event.inputs.release-type }}"
-      #       pnpm app-release --branch=$(
-      #         if [[ "${{ inputs.environment }}" == "production" ]]; then
-      #           echo "master"
-      #         elif [[ "${{ inputs.environment }}" == "development" ]]; then
-      #           echo "development"
-      #         elif [[ "${{ inputs.environment }}" == "staging" ]]; then
-      #           echo "master"
-      #         fi
-      #       ) ${{ github.event.inputs.release-type }} APP_ENV=${{ inputs.environment }}
-      #     else
-      #       echo "Running app-release with app version: ${{ github.event.inputs.new-app-version }} only."
-      #       pnpm app-release --branch=$(
-      #         if [[ "${{ inputs.environment }}" == "production" ]]; then
-      #           echo "master"
-      #         elif [[ "${{ inputs.environment }}" == "development" ]]; then
-      #           echo "development"
-      #         elif [[ "${{ inputs.environment }}" == "staging" ]]; then
-      #           echo "master"
-      #         fi
-      #       ) ${{ github.event.inputs.new-app-version }} APP_ENV=${{ inputs.environment }}
-      #     fi
 
       - name: 🧑‍💻 Decode google services
         run: pnpm run decode-google-services

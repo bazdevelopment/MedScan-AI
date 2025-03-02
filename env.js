@@ -90,6 +90,7 @@ const client = z.object({
   REVENUE_CAT_API_KEYS_APPLE:z.string().optional(),
   ANALYZE_IMAGE_ENDPOINT:z.string().optional(),
   ANALYZE_VIDEO_ENDPOINT:z.string().optional(),
+  EXPO_PUBLIC_TEST_URL:z.string().optional(),
 });
 
 const buildTime = z.object({
@@ -122,6 +123,7 @@ const _clientEnv = {
   REVENUE_CAT_API_KEYS_APPLE:process.env.REVENUE_CAT_API_KEYS_APPLE,
   ANALYZE_IMAGE_ENDPOINT:process.env.ANALYZE_IMAGE_ENDPOINT,
   ANALYZE_VIDEO_ENDPOINT:process.env.ANALYZE_VIDEO_ENDPOINT,
+  EXPO_PUBLIC_TEST_URL:process.env.EXPO_PUBLIC_TEST_URL
 };
 
 /**

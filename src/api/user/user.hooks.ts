@@ -69,6 +69,7 @@ export const useLoginWithEmail = (variables: { email: string }) => {
       alert(`${Env.TEST_ACCOUNT} test account`);
       alert(`${Env.APP_ENV} app env`);
       alert(`${Env.REVENUE_CAT_API_KEYS_APPLE} reven cat`);
+      alert(`${Env.EXPO_PUBLIC_TEST_URL} public cat`);
 
       router.navigate({
         pathname:

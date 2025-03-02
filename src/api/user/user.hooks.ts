@@ -66,11 +66,12 @@ export const useLoginWithEmail = (variables: { email: string }) => {
         setUser(data.user.uid);
       }
 
-      alert(`${Env.TEST_ACCOUNT} test account`);
+      alert(`${Env.EXPO_PUBLIC_TEST_ACCOUNT} test account`);
+      alert(`${Env.EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT} analyze image endpoint`);
 
       router.navigate({
         pathname:
-          variables.email === Env.TEST_ACCOUNT
+          variables.email === Env.EXPO_PUBLIC_TEST_ACCOUNT
             ? '/(tabs)/'
             : '/verify-auth-code',
         params: { email: variables.email },

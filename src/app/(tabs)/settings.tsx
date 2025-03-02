@@ -81,7 +81,9 @@ export default function Settings() {
                     verificationCode: '',
                     verificationCodeExpiry: '',
                     isOtpVerified:
-                      userInfo.email === Env.TEST_ACCOUNT ? true : false,
+                      userInfo.email === Env.EXPO_PUBLIC_TEST_ACCOUNT
+                        ? true
+                        : false,
                   },
                 });
                 logout();

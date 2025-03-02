@@ -99,12 +99,12 @@ export const useInitializeRevenueCat = (userId: string) =>
       if (Platform.OS === 'android') {
         await Purchases.configure({
           appUserID: userId,
-          apiKey: Env.REVENUE_CAT_API_KEYS_GOOGLE as string,
+          apiKey: Env.EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE as string,
         });
       } else {
         await Purchases.configure({
           appUserID: userId,
-          apiKey: Env.REVENUE_CAT_API_KEYS_APPLE as string,
+          apiKey: Env.EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE as string,
         });
       }
 

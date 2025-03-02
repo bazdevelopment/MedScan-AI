@@ -29,7 +29,7 @@ export function useRevenueCat(): UseRevenueCatHook {
       try {
         if (Platform.OS === 'android') {
           await Purchases.configure({
-            apiKey: Env.REVENUE_CAT_API_KEYS_GOOGLE,
+            apiKey: Env.EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE as string,
           });
         } else {
           await Purchases.configure({

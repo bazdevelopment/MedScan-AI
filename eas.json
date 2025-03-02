@@ -61,8 +61,8 @@
         "image": "latest"
       },
       "env": {
-        "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1"
+        "APP_ENV": "development"
+        // "EXPO_NO_DOTENV": "1"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",

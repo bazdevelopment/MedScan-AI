@@ -23,7 +23,7 @@
     "prebuild:production": "cross-env APP_ENV=production pnpm run prebuild",
     "android:production": "cross-env APP_ENV=production pnpm run android",
     "ios:production": "cross-env APP_ENV=production pnpm run ios",
-    "build:development:ios": "cross-env APP_ENV=development EXPO_NO_DOTENV=1 eas build --profile development --platform ios",
+    "build:development:ios": "cross-env APP_ENV=development eas build --profile development --platform ios",
     "build:development:android": "cross-env APP_ENV=development EXPO_NO_DOTENV=1 eas build --profile development --platform android",
     "build:production:ios": "cross-env APP_ENV=production EXPO_NO_DOTENV=1 eas build --profile production --platform ios",
     "build:production:android": "cross-env APP_ENV=production EXPO_NO_DOTENV=1 eas build --profile production --platform android",

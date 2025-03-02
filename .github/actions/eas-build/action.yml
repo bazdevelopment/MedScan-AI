@@ -101,20 +101,28 @@ runs:
 
     - name: Update EAS JSON env variables used in the app
       run: |
-        # Detect OS and use appropriate sed syntax (ios use sed -i '')
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-        sed -i '' 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g' eas.json
-        sed -i '' 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g' eas.json
-        sed -i '' 's|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g' eas.json
-        sed -i '' 's|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g' eas.json
-        sed -i '' 's|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g' eas.json
-        else
-        sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g' eas.json
-        sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g' eas.json
-        sed -i 's|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g' eas.json
-        sed -i 's|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g' eas.json
-        sed -i 's|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g' eas.json
-        fi
+        # Debug: Print inputs to verify they are not empty
+         echo "REVENUE_CAT_API_KEYS_GOOGLE: ${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}"
+         echo "REVENUE_CAT_API_KEYS_APPLE: ${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}"
+         echo "TEST_ACCOUNT: ${{ inputs.TEST_ACCOUNT }}"
+         echo "ANALYZE_IMAGE_ENDPOINT: ${{ inputs.ANALYZE_IMAGE_ENDPOINT }}"
+         echo "ANALYZE_VIDEO_ENDPOINT: ${{ inputs.ANALYZE_VIDEO_ENDPOINT }}"
+
+         # Detect OS and use appropriate sed syntax (ios use sed -i '')
+         if [[ "$OSTYPE" == "darwin"* ]]; then
+         # Use sed to replace placeholders in eas.json
+         sed -i '' "s|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g" eas.json
+         else
+         sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g' eas.json
+         fi
       shell: bash
 
     - name: Log Updated eas.json

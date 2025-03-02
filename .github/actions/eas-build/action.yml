@@ -61,8 +61,20 @@ inputs:
     description: 'Enable EAS Submit step'
     required: true
     default: 'false'
-  EXPO_PUBLIC_TEST_URL:
-    description: 'TEST URL'
+  REVENUE_CAT_API_KEYS_GOOGLE:
+    description: 'REVENUE_CAT_API_KEYS_GOOGLE'
+    required: true
+  REVENUE_CAT_API_KEYS_APPLE:
+    description: 'REVENUE_CAT_API_KEYS_APPLE'
+    required: true
+  TEST_ACCOUNT:
+    description: 'TEST_ACCOUNT'
+    required: true
+  ANALYZE_IMAGE_ENDPOINT:
+    description: 'ANALYZE_IMAGE_ENDPOINT'
+    required: true
+  ANALYZE_VIDEO_ENDPOINT:
+    description: 'ANALYZE_VIDEO_ENDPOINT'
     required: true
 
 runs:
@@ -87,9 +99,14 @@ runs:
         pnpm prebuild:${{ inputs.APP_ENV }}
       shell: bash
 
-    - name: Update EAS Config
+    - name: Update EAS JSON env variables used in the app
       run: |
-        sed -i 's|WILL_BE_REPLACED_IN_CI|${{ inputs.EXPO_PUBLIC_TEST_URL }}|g' eas.json
+        sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g' eas.json
+        sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g' eas.json
+        sed -i 's|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g' eas.json
+        sed -i 's|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g' eas.json
+        sed -i 's|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g' eas.json
+
       shell: bash
 
     - name: Log Updated eas.json

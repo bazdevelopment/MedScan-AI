@@ -141,6 +141,11 @@ jobs:
       - name: 🧑‍💻 Decode google services
         run: pnpm run decode-google-services
 
+      # - name: Update EAS Config
+      #   run: |
+      #     sed -i 's|WILL_BE_REPLACED_IN_CI|${{ secrets.EXPO_PUBLIC_TEST_URL }}|g' eas.json
+      #   shell: bash
+
       - name: 📦 Set Up JDK
         uses: ./.github/actions/setup-jdk-generate-apk
         with:
@@ -158,6 +163,7 @@ jobs:
           ANDROID: true
           IOS: false
           SHOULD_SUBMIT: ${{ inputs.should_submit }}
+          EXPO_PUBLIC_TEST_URL: ${{ secrets.EXPO_PUBLIC_TEST_URL }}
 
   # Build:
   #   name: EAS Development Build (Android & IOS) (EAS)

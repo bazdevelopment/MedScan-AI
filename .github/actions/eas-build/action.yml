@@ -61,6 +61,9 @@ inputs:
     description: 'Enable EAS Submit step'
     required: true
     default: 'false'
+  EXPO_PUBLIC_TEST_URL:
+    description: 'TEST URL'
+    required: true
 
 runs:
   using: 'composite'
@@ -79,9 +82,19 @@ runs:
         eas-version: latest
         token: ${{ inputs.EXPO_TOKEN }}
 
-    - name: ⚙️ Run Prebuild
+    # - name: ⚙️ Run Prebuild
+    #   run: |
+    #     pnpm prebuild:${{ inputs.APP_ENV }}
+    #   shell: bash
+
+    - name: Update EAS Config
       run: |
-        pnpm prebuild:${{ inputs.APP_ENV }}
+        sed -i 's|WILL_BE_REPLACED_IN_CI|${{ inputs.EXPO_PUBLIC_TEST_URL }}|g' eas.json
+      shell: bash
+
+    - name: Log Updated eas.json
+      run: |
+        cat eas.json
       shell: bash
 
     - name: 📱 Run Android Build

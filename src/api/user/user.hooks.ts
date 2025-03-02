@@ -66,9 +66,6 @@ export const useLoginWithEmail = (variables: { email: string }) => {
         setUser(data.user.uid);
       }
 
-      alert(`${Env.EXPO_PUBLIC_TEST_ACCOUNT} test account`);
-      alert(`${Env.EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT} analyze image endpoint`);
-
       router.navigate({
         pathname:
           variables.email === Env.EXPO_PUBLIC_TEST_ACCOUNT

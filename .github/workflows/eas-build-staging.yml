@@ -103,6 +103,11 @@ jobs:
           ANDROID: false
           IOS: true
           SHOULD_SUBMIT: ${{ inputs.should_submit }}
+          REVENUE_CAT_API_KEYS_GOOGLE: ${{ secrets.REVENUE_CAT_API_KEYS_GOOGLE }}
+          REVENUE_CAT_API_KEYS_APPLE: ${{ secrets.REVENUE_CAT_API_KEYS_APPLE }}
+          TEST_ACCOUNT: ${{ secrets.TEST_ACCOUNT }}
+          ANALYZE_IMAGE_ENDPOINT: ${{ secrets.ANALYZE_IMAGE_ENDPOINT }}
+          ANALYZE_VIDEO_ENDPOINT: ${{ secrets.ANALYZE_VIDEO_ENDPOINT }}
 
   android_build:
     needs: setup

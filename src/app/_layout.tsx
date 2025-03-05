@@ -15,7 +15,7 @@ import { useFonts } from 'expo-font';
 import * as Notifications from 'expo-notifications';
 import { router, SplashScreen, Stack } from 'expo-router';
 import { useColorScheme } from 'nativewind';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
@@ -63,26 +63,39 @@ export default function RootLayout() {
     'Font-Extra-Bold': NunitoSans_800ExtraBold,
   });
 
+  const [appIsReady, setAppIsReady] = useState(false);
+
   useEffect(() => {
-    const hideSplashScreen = async () => {
-      if (fontsLoaded) {
-        await SplashScreen.hideAsync();
+    const prepareApp = async () => {
+      try {
+        // Keep the splash screen visible while we load fonts
+        await SplashScreen.preventAutoHideAsync();
+
+        // Check if fonts are loaded
+        if (fontsLoaded) {
+          setAppIsReady(true);
+          await SplashScreen.hideAsync();
+        }
+      } catch (error) {
+        console.error('Error preparing app:', error);
       }
     };
 
-    hideSplashScreen();
+    prepareApp();
 
-    // Fallback: Hide splash screen after 3 seconds even if fonts are not loaded (sometimes it happen on android to remain stuck on splash screen)
+    // Fallback: Hide splash screen after 3 seconds even if fonts are not loaded because sometimes I notices the app remains stuck on splash screen because the fonts were not loaded (mainly android)
     const timeout = setTimeout(async () => {
+      setAppIsReady(true);
       await SplashScreen.hideAsync();
     }, 3000);
 
     return () => clearTimeout(timeout);
   }, [fontsLoaded]);
 
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
+  // Render nothing until the app is ready
+  if (!appIsReady) {
+    return null;
+  }
 
   return (
     <Providers>

@@ -80,7 +80,6 @@ const NamePreferenceScreen = ({
 
             <Button
               onPress={() => {
-                console.log('submit the username');
                 // onCreateAnonymousAccount({ username: nickname, language });
                 Keyboard.dismiss();
               }}

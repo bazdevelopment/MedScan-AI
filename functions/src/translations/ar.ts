@@ -156,4 +156,10 @@ export const ar: ITranslation = {
     successUpdatedUser: 'تم تحديث المستخدم بنجاح',
     updateUserError: 'تعذر تحديث سجل المستخدم. يرجى المحاولة مرة أخرى.',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'اختر لقبًا ولنبدأ!',
+    userLoggedIn: 'مرحبًا بعودتك! لقد قمت بتسجيل الدخول.',
+    accountCreated: 'لقد انضممت! استمتع بالاستكشاف!',
+    error: 'عفوًا! حدث خطأ ما. يرجى التحقق من اتصالك والمحاولة مرة أخرى.',
+  },
 };

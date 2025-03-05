@@ -6,6 +6,7 @@ import Toast from '@/components/toast';
 import { translate } from '@/core';
 import { Env } from '@/core/env';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
+import { wait } from '@/core/utilities/wait';
 
 import { queryClient } from '../common';
 import {
@@ -32,20 +33,21 @@ interface IValidateAuthCode {
   language: string;
 }
 
-export const useCreateAnonymousAccount = createMutation<
-  Response,
-  any,
-  AxiosError
->({
-  mutationFn: (variables) => createAnonymousAccount(variables),
-  onSuccess: () => {
-    Toast.success(translate('alerts.loggedInSuccess'));
-    router.navigate('/(tabs)');
-  },
-  onError: (error) => {
-    Toast.error(error.message || translate('alerts.anonymousSignInError'));
-  },
-});
+export const useCreateAnonymousAccount = (
+  onSuccessHandler: (userId: string) => void,
+) =>
+  createMutation<Response, { language: string; username: string }, AxiosError>({
+    mutationFn: (variables) => createAnonymousAccount(variables),
+    onSuccess: (data) => {
+      onSuccessHandler(data.user.uid);
+      Toast.success(data.message);
+      //add a small delay to display the toast message
+      wait(2000).then(() => router.navigate('/(tabs)'));
+    },
+    onError: (error) => {
+      Toast.error(error.message || translate('alerts.anonymousSignInError'));
+    },
+  })();
 
 export const useLoginWithEmail = (variables: { email: string }) => {
   const { setUser, logEvent, recordError } = useCrashlytics();

@@ -8,24 +8,31 @@ import { queryClient } from '../common';
 
 /** Create anonymous account */
 export const createAnonymousAccount = async ({
-  userName,
-  deviceUniqueId,
+  username,
+  language,
+  actualUserId,
 }: {
-  userName: string;
-  deviceUniqueId: string;
+  username: string;
+  language: string;
+  actualUserId: string;
 }) => {
   try {
     const { data }: { data: any } =
       await firebaseCloudFunctionsInstance.httpsCallable(
-        'createAnonymousAccount',
+        'loginUserAnonymously',
       )({
-        userName,
-        deviceUniqueId,
+        username,
+        language,
+        actualUserId,
       });
+
+    // await firebaseAuth.signInAnonymously();
+
     const userCredentials = await firebaseAuth.signInWithCustomToken(
       data.authToken,
     );
-    return userCredentials;
+
+    return { ...userCredentials, ...data };
   } catch (error) {
     throw error;
   }
@@ -171,9 +178,9 @@ export const getUserInfo = async ({ language }: { language: string }) => {
 };
 
 export const logout = async () => {
-  // await firebaseAuth.currentUser?.delete();
   await firebaseAuth.signOut();
-  router.navigate('/login');
+  // router.navigate('/login');
+  router.navigate('/anonymous-login');
   queryClient.clear(); // Clears all cached queries & mutations
   Toast.success(translate('alerts.loggedOutSuccess'));
 };

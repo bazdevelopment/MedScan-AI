@@ -162,4 +162,11 @@ export const ja: ITranslation = {
     updateUserError:
       'ユーザーレコードを更新できませんでした。再度お試しください。',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'ニックネームを選んで始めましょう！',
+    userLoggedIn: 'おかえりなさい！ログインしました。',
+    accountCreated: '参加しました！探索をお楽しみください！',
+    error:
+      'おっと！問題が発生しました。接続を確認して、もう一度お試しください。',
+  },
 };

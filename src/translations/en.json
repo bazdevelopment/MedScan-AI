@@ -369,6 +369,9 @@
     "subscriptionActivated": "Your subscription has been successfully activated! Enjoy your exclusive benefits!",
     "subscriptionCancelledByUser": "You've canceled the transaction. Feel free to try again!",
     "subscriptionActivationFailed": "Failed to activate your subscription. Please try again",
-    "logoutQuestion": "Are you sure you want to log out?"
+    "logoutQuestion": "Are you sure you want to log out?",
+    "noSubscriptionToRestore": "Oops! It looks like you don't have an active subscription at the moment. To continue enjoying full access, please choose one of our subscription plans.",
+    "restorationSuccessful": "Restoration was successful! Enjoy!",
+    "restorationError": "An error occurred while restoring the purchase."
   }
 }

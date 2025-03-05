@@ -81,7 +81,8 @@ export default function Settings() {
                     verificationCode: '',
                     verificationCodeExpiry: '',
                     isOtpVerified:
-                      userInfo.email === Env.EXPO_PUBLIC_TEST_ACCOUNT
+                      userInfo.email === Env.EXPO_PUBLIC_TEST_ACCOUNT ||
+                      userInfo.isAnonymous
                         ? true
                         : false,
                   },

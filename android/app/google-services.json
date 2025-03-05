@@ -7,42 +7,42 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:152612175524:android:453e3f77c45ce685573031",
+        "mobilesdk_app_id": "1:951069774280:android:f12cda33f8793dc4ddb0fd",
         "android_client_info": {
-          "package_name": "com.xrayanalizer"
+          "package_name": "com.xrayanalizer.development"
         }
       },
       "oauth_client": [
         {
-          "client_id": "152612175524-3o36eokb2917kmendir1mughqfqvfl5d.apps.googleusercontent.com",
+          "client_id": "951069774280-776570j92ivn6qkepsl55fb800qk8gq8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.xrayanalizer",
+            "package_name": "com.xrayanalizer.development",
             "certificate_hash": "f366d778c6125a5630fce01b55423daae916ee0d"
           }
         },
         {
-          "client_id": "152612175524-1ufsc3hf3rmc27jikrc41aguclhkss04.apps.googleusercontent.com",
+          "client_id": "951069774280-1itt9d298j5o912o7f02f6kd2b745jc3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyM4h4f8iS5MmBqdTD6nds22Yy4NUNtxk"
+          "current_key": "AIzaSyBEPGXGxq176OAkjM84-aG-NMLAbTKBZFA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "152612175524-1ufsc3hf3rmc27jikrc41aguclhkss04.apps.googleusercontent.com",
+              "client_id": "951069774280-1itt9d298j5o912o7f02f6kd2b745jc3.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "152612175524-0kv1mo3cedvf6i73ht9c119dqf27l9e8.apps.googleusercontent.com",
+              "client_id": "951069774280-pkev7071pf8biurjs6n439uf6fnqldqp.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.x-ray-analizer"
+                "bundle_id": "com.x-ray-analizer.development"
               }
             }
           ]

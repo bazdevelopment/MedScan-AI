@@ -50,7 +50,6 @@ export default function TabLayout() {
 
   const addSelectionHapticEffect = useHaptic('selection');
   const addHeavyHapticEffect = useHaptic('heavy');
-
   const { isPending: isPendingRevenueCatSdkInit } = useInitializeRevenueCat(
     firebaseAuth.currentUser?.uid as string,
   );
@@ -108,17 +107,19 @@ export default function TabLayout() {
     logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);
     return <Redirect href="/welcome" />;
   }
-  if (!isFirstTime && !isLoggedIn) {
+
+  if (!isFirstTime && !isLoggedIn && !userInfo) {
     logEvent(`User ${userInfo?.userId} is redirected to login screen`);
-    return <Redirect href="/login" />;
+    return <Redirect href="/anonymous-login" />;
   }
 
-  if (!userInfo?.isOtpVerified) {
-    logEvent(
-      `User ${userInfo?.userId} is redirected to verify auth code screen`,
-    );
-    return <Redirect href="/verify-auth-code" />;
-  }
+  //todo: add  this check later when the users are permanent(registered)
+  // if (!userInfo?.isOtpVerified) {
+  //   logEvent(
+  //     `User ${userInfo?.userId} is redirected to verify auth code screen`,
+  //   );
+  //   return <Redirect href="/verify-auth-code" />;
+  // }
 
   if (
     !userInfo?.isOnboarded ||
@@ -134,7 +135,7 @@ export default function TabLayout() {
 
   if (!isLoggedIn) {
     logEvent(`User ${userInfo?.userId} is redirected to login screen`);
-    return <Redirect href="/login" />;
+    return <Redirect href="/anonymous-login" />;
   }
 
   return (

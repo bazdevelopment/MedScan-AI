@@ -175,4 +175,11 @@ export const es: ITranslation = {
     updateUserError:
       'No se pudo actualizar el registro del usuario. Por favor, intenta nuevamente.',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: '¡Elige un apodo y comencemos!',
+    userLoggedIn: '¡Bienvenido de nuevo! Estás dentro.',
+    accountCreated: '¡Estás dentro! ¡Disfruta explorando!',
+    error:
+      '¡Ups! Algo salió mal. Por favor, revisa tu conexión e inténtalo de nuevo.',
+  },
 };

@@ -38,5 +38,6 @@ export * from './support';
 export * from './tick-circle';
 export * from './trash';
 export * from './upload';
+export * from './user-icon';
 export * from './wand-sparkle';
 export * from './website';

@@ -69,16 +69,20 @@ const Profile = () => {
               label={translate('components.Input.labels.nickname')}
               editable={editModeEnabled}
             />
-            <Input
-              className={`flex-1 rounded-xl bg-slate-300 px-3.5 py-5 font-primary-nunito opacity-60 dark:border-neutral-700 dark:bg-charcoal-600 dark:text-white dark:opacity-50`}
-              placeholder={translate(
-                'rootLayout.screens.profile.placeholderPreferredName',
-              )}
-              value={userInfo.email}
-              label={translate('components.Input.labels.email')}
-              onChangeText={(text: string) => handleInputChange('email', text)}
-              editable={false}
-            />
+            {userInfo.email && (
+              <Input
+                className={`flex-1 rounded-xl bg-slate-200 px-3.5 py-5 font-primary-nunito opacity-80 dark:border-neutral-700 dark:bg-charcoal-600 dark:text-white dark:opacity-50`}
+                placeholder={translate(
+                  'rootLayout.screens.profile.placeholderPreferredName',
+                )}
+                value={userInfo.email}
+                label={translate('components.Input.labels.email')}
+                onChangeText={(text: string) =>
+                  handleInputChange('email', text)
+                }
+                editable={false}
+              />
+            )}
           </View>
           <View className="flex-column mx-6 items-start justify-between">
             {!editModeEnabled && (

@@ -164,4 +164,11 @@ export const hi: ITranslation = {
     updateUserError:
       'उपयोगकर्ता रिकॉर्ड अपडेट करने में असमर्थ। कृपया पुनः प्रयास करें।',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'एक उपनाम चुनें और शुरू करें!',
+    userLoggedIn: 'वापस स्वागत है! आप लॉग इन हैं।',
+    accountCreated: 'आप शामिल हो गए हैं! खोज का आनंद लें!',
+    error:
+      'उफ़! कुछ गलत हो गया। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।',
+  },
 };

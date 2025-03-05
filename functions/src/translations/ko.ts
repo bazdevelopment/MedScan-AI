@@ -162,4 +162,10 @@ export const ko: ITranslation = {
     updateUserError:
       '사용자 기록을 업데이트할 수 없습니다. 다시 시도해 주세요.',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: '닉네임을 선택하고 시작합시다!',
+    userLoggedIn: '다시 오신 것을 환영합니다! 로그인되었습니다.',
+    accountCreated: '가입되었습니다! 탐험을 즐기세요!',
+    error: '앗! 문제가 발생했습니다. 연결을 확인하고 다시 시도하세요.',
+  },
 };

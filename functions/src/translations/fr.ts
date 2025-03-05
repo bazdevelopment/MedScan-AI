@@ -181,4 +181,11 @@ export const fr: ITranslation = {
     updateUserError:
       "Impossible de mettre à jour l'enregistrement de l'utilisateur. Veuillez réessayer.",
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'Choisissez un pseudonyme et commençons!',
+    userLoggedIn: 'Content de vous revoir! Vous êtes connecté.',
+    accountCreated: "Vous êtes inscrit! Profitez de l'exploration!",
+    error:
+      "Oups! Quelque chose s'est mal passé. Veuillez vérifier votre connexion et réessayer.",
+  },
 };

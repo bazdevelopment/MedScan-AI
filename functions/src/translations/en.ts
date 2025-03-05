@@ -180,4 +180,12 @@ export const en: ITranslation = {
     successUpdatedUser: 'User updated successfully',
     updateUserError: 'Unable to update the user record. Please try again.',
   },
+
+  loginUserAnonymously: {
+    mandatoryUsername: "Choose a nickname and let's get started!",
+    userLoggedIn: "Welcome back! You're in.",
+    accountCreated: "You're in! Enjoy exploring!",
+    error:
+      'Oops! Something went wrong. Please check your connection and try again.',
+  },
 };

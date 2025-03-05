@@ -11,7 +11,7 @@ import { WelcomeIllustration } from '@/ui/assets/illustrations';
 const Welcome = () => {
   const { isVerySmallDevice } = getDeviceSizeCategory();
   return (
-    <ScrollView contentContainerClassName="bg-primary-50 dark:bg-blackEerie">
+    <ScrollView contentContainerClassName="bg-primary-50 dark:bg-blackEerie flex-1">
       <SafeAreaView>
         <View className="items-center justify-center px-6 pb-32 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />
@@ -23,23 +23,25 @@ const Welcome = () => {
             width={isVerySmallDevice ? 180 : 261}
             height={isVerySmallDevice ? 175 : 268}
           />
-          <View className="mt-14 w-full">
+          <View className="mt-16 w-full">
             <Button
               label={translate('rootLayout.screens.welcome.startButton')}
               variant="default"
               className="h-[55px] w-full rounded-xl bg-primary-900 pl-5 dark:bg-primary-900"
               textClassName="font-semibold-nunito text-lg dark:text-white"
               iconPosition="left"
-              onPress={() => router.navigate('/login')}
+              onPress={() => router.navigate('/anonymous-login')}
             />
-            <Button
+
+            {/* TODO: add the button "Already have an account" */}
+            {/* <Button
               label={translate('rootLayout.screens.welcome.accountButton')}
               variant="default"
               className="h-[55px] w-full rounded-xl border-2 border-primary-900 bg-white pl-5 dark:bg-primary-200"
               textClassName="text-lg text-center text-primary-900"
               iconPosition="left"
               onPress={() => router.navigate('/login')}
-            />
+            /> */}
           </View>
 
           <View className="mt-6 w-full flex-row flex-wrap items-center justify-center px-12">

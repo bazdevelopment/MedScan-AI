@@ -156,5 +156,11 @@ export interface ITranslation {
     noTokenFound: string;
     generalError: string;
   };
+  loginUserAnonymously: {
+    mandatoryUsername: string;
+    accountCreated: string;
+    userLoggedIn: string;
+    error: string;
+  };
   // Add more sections as needed
 }

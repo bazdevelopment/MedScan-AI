@@ -171,4 +171,11 @@ export const pt: ITranslation = {
     updateUserError:
       'Não foi possível atualizar o registo do utilizador. Por favor, tente novamente.',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'Escolha um apelido e vamos começar!',
+    userLoggedIn: 'Bem-vindo de volta! Você está dentro.',
+    accountCreated: 'Você está dentro! Aproveite para explorar!',
+    error:
+      'Ops! Algo deu errado. Por favor, verifique sua conexão e tente novamente.',
+  },
 };

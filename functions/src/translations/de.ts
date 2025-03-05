@@ -177,4 +177,11 @@ export const de: ITranslation = {
     updateUserError:
       'Der Benutzerdatensatz konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'Wähle einen Spitznamen und lass uns loslegen!',
+    userLoggedIn: 'Willkommen zurück! Du bist drin.',
+    accountCreated: 'Du bist dabei! Viel Spaß beim Erkunden!',
+    error:
+      'Hoppla! Etwas ist schiefgelaufen. Bitte überprüfe deine Verbindung und versuche es erneut.',
+  },
 };

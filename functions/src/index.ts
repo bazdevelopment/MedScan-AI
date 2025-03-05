@@ -51,6 +51,10 @@ export const getHelloWorld = usCentralFunctions.https.onCall(
   },
 );
 
+export const loginUserAnonymously = functions.https.onCall(
+  userFunctions.loginUserAnonymouslyHandler,
+);
+
 export const loginUserViaEmail = usCentralFunctions.https.onCall(
   userFunctions.loginUserViaEmailHandler,
 );

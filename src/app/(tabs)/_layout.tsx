@@ -53,7 +53,10 @@ export default function TabLayout() {
   const { isPending: isPendingRevenueCatSdkInit } = useInitializeRevenueCat(
     firebaseAuth.currentUser?.uid as string,
   );
+
+  //todo: make sure if it's good to update the user info that often with the subscription data
   const { data: customerInfo } = useGetCustomerInfo();
+
   useUpdateUserSubscription(customerInfo);
 
   useEffect(() => {

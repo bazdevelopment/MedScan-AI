@@ -12,6 +12,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 import Toast from '@/components/toast';
 import { translate } from '@/core';
 import { wait } from '@/core/utilities/wait';
+import { type IUserInfo } from '@/types/general-types';
 
 import { queryClient } from '../common';
 
@@ -116,26 +117,54 @@ export const useInitializeRevenueCat = (userId: string) =>
   })();
 
 // Mutation to restore purchases
-export const useRestorePurchases = createMutation<CustomerInfo, void, Error>({
-  mutationFn: async () => {
-    const customerInfo = await Purchases.restorePurchases();
-    return customerInfo;
-  },
-  onSuccess: (customerInfo) => {
-    console.log('Purchases restored info:', customerInfo);
-    queryClient.invalidateQueries({ queryKey: ['subscription-customerInfo'] });
-    if (!customerInfo.activeSubscriptions.length)
-      Toast.warning(translate('alerts.noSubscriptionToRestore'), {
-        duration: Infinity,
-        closeButton: true,
+export const useRestorePurchases = (
+  onSuccessRestoration: (fields: object) => void,
+) =>
+  createMutation<CustomerInfo, void, Error>({
+    mutationFn: async () => {
+      const customerInfo = await Purchases.restorePurchases();
+      return customerInfo;
+    },
+    onSuccess: async (customerInfo) => {
+      console.log('Purchases restored info:', customerInfo);
+      queryClient.invalidateQueries({
+        queryKey: ['subscription-customerInfo'],
       });
-    if (customerInfo?.activeSubscriptions?.length) {
-      Toast.success(translate('alerts.restorationSuccessful'));
-      router.navigate('/(tabs)/');
-    }
-  },
-  onError: (error) => {
-    console.error('Failed to restore purchases:', error);
-    wait(500).then(() => Toast.error(translate('alerts.restorationError')));
-  },
-});
+      if (!customerInfo.activeSubscriptions.length)
+        Toast.warning(translate('alerts.noSubscriptionToRestore'), {
+          duration: Infinity,
+          closeButton: true,
+        });
+      if (customerInfo?.activeSubscriptions?.length) {
+        Toast.success(translate('alerts.restorationSuccessful'));
+
+        const fieldsToUpdate: Partial<IUserInfo> = {
+          isOnboarded: true,
+          isFreeTrialOngoing: !!customerInfo?.activeSubscriptions?.length
+            ? false
+            : true,
+          ...(customerInfo && {
+            activeSubscriptionsRevenue: customerInfo.activeSubscriptions,
+            allExpirationDatesRevenue: customerInfo.allExpirationDates,
+            allPurchaseDatesRevenue: customerInfo.allPurchaseDates,
+            allPurchasedProductIdentifiersRevenue:
+              customerInfo.allPurchasedProductIdentifiers,
+            firstSeenRevenue: customerInfo.firstSeen,
+          }),
+        };
+
+        onSuccessRestoration(fieldsToUpdate);
+
+        queryClient.setQueryData(['user-info'], (oldData: IUserInfo) => ({
+          ...oldData,
+          isOnboarded: true,
+        }));
+
+        router.navigate('/(tabs)');
+      }
+    },
+    onError: (error) => {
+      console.error('Failed to restore purchases:', error);
+      wait(500).then(() => Toast.error(translate('alerts.restorationError')));
+    },
+  })();

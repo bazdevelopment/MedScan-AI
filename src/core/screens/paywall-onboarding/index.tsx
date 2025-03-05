@@ -64,8 +64,12 @@ const PaywallOnboarding = ({
 
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
+
+  const onSuccessRestoration = async (fieldsToUpdate: object) => {
+    await onUpdateUser({ language, userId: userInfo.userId, fieldsToUpdate });
+  };
   const { mutate: restorePurchase, isPending: isPendingRestorePurchase } =
-    useRestorePurchases();
+    useRestorePurchases(onSuccessRestoration);
 
   const {
     mutateAsync: purchaseSubscription,

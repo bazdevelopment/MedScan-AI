@@ -366,6 +366,9 @@
     "subscriptionActivated": "サブスクリプションが正常に有効化されました！限定特典をお楽しみください！",
     "subscriptionCancelledByUser": "取引をキャンセルしました。再度お試しください！",
     "subscriptionActivationFailed": "サブスクリプションの有効化に失敗しました。もう一度お試しください！",
-    "logoutQuestion": "本当にログアウトしますか？"
+    "logoutQuestion": "本当にログアウトしますか？",
+    "noSubscriptionToRestore": "おっと！現在、有効なサブスクリプションがないようです。引き続きフルアクセスを楽しむには、サブスクリプションプランのいずれかを選択してください。",
+    "restorationSuccessful": "復元が成功しました！お楽しみください！",
+    "restorationError": "購入の復元中にエラーが発生しました。"
   }
 }

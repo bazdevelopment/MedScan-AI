@@ -24,11 +24,14 @@ const NamePreferenceScreen = ({
 }: OnboardingScreenProps) => {
   const [nickname, setNickname] = useState('');
 
+  // const { mutate: onCreateAnonymousAccount } = useCreateAnonymousAccount();
+
   return (
     <KeyboardAvoidingView
       className="flex-1"
       style={{ flex: 1, paddingTop: DEVICE_TYPE.IOS ? 80 : 70 }}
       behavior="height"
+      // behavior="padding"
       keyboardVerticalOffset={-30}
     >
       <ScrollView
@@ -77,12 +80,12 @@ const NamePreferenceScreen = ({
 
             <Button
               onPress={() => {
-                goToNextScreen({ preferredName: nickname });
+                // onCreateAnonymousAccount({ username: nickname, language });
                 Keyboard.dismiss();
               }}
-              label={translate('general.next')}
-              className="bottom-[-10px] mt-6 h-[56px] w-[150px] rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 dark:bg-primary-900"
-              textClassName="text-lg text-white dark:text-white"
+              label={translate('general.continue')}
+              className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 dark:bg-primary-900"
+              textClassName="text-lg text-center text-white dark:text-white"
             />
           </View>
         </View>

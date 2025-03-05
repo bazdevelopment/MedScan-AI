@@ -10,6 +10,110 @@ import { getTranslation } from './translations';
 
 const db = admin.firestore();
 
+const loginUserAnonymouslyHandler = async (data: {
+  language: string;
+  username: string;
+  actualUserId?: string; // Optional: The existing userId to check
+}) => {
+  let t;
+  try {
+    t = getTranslation(data.language);
+
+    // Validate username
+    if (!data.username) {
+      throw new functions.https.HttpsError(
+        'invalid-argument',
+        t.loginUserAnonymously.mandatoryUsername,
+      );
+    }
+
+    const db = admin.firestore();
+
+    // let userId: string;
+    let isNewUser = false;
+
+    // Step 1: Check if actualUserId is provided and corresponds to an existing user
+    if (data.actualUserId) {
+      const existingUserDoc = await db
+        .collection('users')
+        .doc(data.actualUserId)
+        .get();
+      if (existingUserDoc.exists) {
+        // Update the existing user's username
+        await db.collection('users').doc(data.actualUserId).update({
+          userName: data.username, // Update the username
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(), // Update the timestamp
+        });
+        // Return the existing user's data
+        const customToken = await admin
+          .auth()
+          .createCustomToken(data.actualUserId);
+        return {
+          userId: data.actualUserId,
+          message: t.loginUserAnonymously.userLoggedIn,
+          isNewUser: false,
+          authToken: customToken,
+        };
+      }
+    }
+
+    // Step 2: If no existing user is found, create a new anonymous user
+    const createdUser = await admin.auth().createUser({
+      // No email or password needed for anonymous users
+    });
+
+    const newUserId = createdUser.uid;
+
+    // Step 3: Create a new user document in Firestore
+    await db
+      .collection('users')
+      .doc(newUserId)
+      .set({
+        userId: newUserId,
+        isAnonymous: true, // Mark the user as anonymous
+        scansRemaining: 10, // Example field
+        subscribed: false, // Example field
+        isActive: false, // Example field
+        isOtpVerified: true, // Example field set to true for anonymous users
+        isOnboarded: false, // Example field
+        userName: data.username, // Store the provided username
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        preferredLanguage: data.language || 'en', // Use the provided language or default to 'en'
+        completedScans: 0, // Example field
+        verificationCode: '123564', // Example field
+        verificationCodeExpiry: admin.firestore.FieldValue.serverTimestamp(), // Example field
+      });
+
+    isNewUser = true;
+
+    // Step 4: Generate a custom token for the user
+    const customToken = await admin.auth().createCustomToken(newUserId);
+
+    return {
+      userId: newUserId,
+      message: isNewUser
+        ? t.loginUserAnonymously.accountCreated
+        : t.loginUserAnonymously.userLoggedIn,
+      isNewUser,
+      authToken: customToken,
+    };
+  } catch (error: any) {
+    t = t || getTranslation('en');
+
+    console.error('Anonymous login error:', error);
+    if (error instanceof functions.https.HttpsError) {
+      throw error;
+    }
+
+    throw new functions.https.HttpsError(
+      'internal',
+      t.loginUserAnonymously.error,
+      { message: error.message || 'Unknown error occurred.' },
+    );
+  }
+};
+
 /*
 const createAnonymousAccountHandler = async (data: {
   userName: string;
@@ -64,6 +168,7 @@ const createAnonymousAccountHandler = async (data: {
 };
 
 /*
+
 
 /**
  * Handles user login via email.
@@ -552,16 +657,15 @@ const getUserInfo = async (data: { language: string }, context: any) => {
         t.common.noUserFound,
       );
     }
-
     const userId = context.auth?.uid;
     const userInfoData = await getUserInfoById(userId, data.language);
     return {
       ...userInfoData,
       verificationCodeExpiry: userInfoData?.verificationCodeExpiry
-        .toDate()
-        .toISOString(),
-      createdAt: userInfoData?.createdAt?.toDate().toISOString(),
-      updatedAt: userInfoData?.updatedAt?.toDate().toISOString(),
+        ? userInfoData?.verificationCodeExpiry.toDate().toISOString()
+        : '',
+      createdAt: userInfoData?.createdAt?.toDate()?.toISOString(),
+      updatedAt: userInfoData?.updatedAt?.toDate()?.toISOString(),
       message: t.getUserInfo.successGetInfo,
     };
   } catch (error: any) {
@@ -591,7 +695,6 @@ const getUserInfoById = async (
 
     // Fetch the user info from the database or service
     const userInfoData = await db.collection('users').doc(userId).get();
-
     // Ensure user data is not null/undefined
     if (!userInfoData.exists) {
       throw new functions.https.HttpsError(
@@ -628,6 +731,7 @@ export {
   getUserInfoById,
   handleUpdateUserLanguage,
   incrementUserScans,
+  loginUserAnonymouslyHandler,
   loginUserViaEmailHandler,
   sendEmailVerification,
   updateUser,

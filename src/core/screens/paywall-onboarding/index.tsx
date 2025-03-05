@@ -64,8 +64,12 @@ const PaywallOnboarding = ({
 
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
     useUpdateUser();
+
+  const onSuccessRestoration = async (fieldsToUpdate: object) => {
+    await onUpdateUser({ language, userId: userInfo.userId, fieldsToUpdate });
+  };
   const { mutate: restorePurchase, isPending: isPendingRestorePurchase } =
-    useRestorePurchases();
+    useRestorePurchases(onSuccessRestoration);
 
   const {
     mutateAsync: purchaseSubscription,
@@ -211,7 +215,7 @@ const PaywallOnboarding = ({
         </View>
 
         <View className="flex-1">
-          <View className="mt-8 px-6">
+          <View className="mt-1 px-6">
             {formattedOfferings.map((plan) => (
               <SelectableLabel
                 key={plan.id}
@@ -239,7 +243,7 @@ const PaywallOnboarding = ({
           />
         </View>
       </ScrollView>
-      <View className="flex-column absolute bottom-0 mx-6 mb-4 w-full items-start justify-between self-center px-6 dark:bg-blackEerie">
+      <View className="flex-column absolute bottom-0 mx-6 mb-4 w-full items-start justify-between self-center bg-white px-6 dark:bg-blackEerie">
         <Button
           label={translate('general.continue')}
           variant="default"
@@ -247,7 +251,9 @@ const PaywallOnboarding = ({
           textClassName="text-lg text-center text-white dark:text-white"
           iconPosition="left"
           onPress={handleSubscription}
-          disabled={!selectedPlan}
+          disabled={
+            formattedOfferings.length === 1 && selectedPlan !== 'free_trial' //disabled only when by mistake only free trial is shown
+          }
           loading={isPendingUpdateUser || isLoadingPurchaseSubscription}
         />
         <Button

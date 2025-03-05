@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, Text, View } from 'react-native';
 import { type CustomerInfo } from 'react-native-purchases';
+import { Toaster } from 'sonner-native';
 
 import {
   useGetOfferings,
@@ -91,11 +92,15 @@ const Paywall = () => {
     SUBSCRIPTION_PLANS_PER_PLATFORM?.YEARLY,
   );
 
+  const onSuccessRestoration = async (fieldsToUpdate: object) => {
+    await onUpdateUser({ language, userId: userInfo.userId, fieldsToUpdate });
+  };
+
   const { mutateAsync: purchaseSubscription } = usePurchaseSubscription();
   const { data: offerings } = useGetOfferings();
   const formattedOfferings = formatPaywallData(offerings);
   const { mutate: restorePurchase, isPending: isPendingRestorePurchase } =
-    useRestorePurchases();
+    useRestorePurchases(onSuccessRestoration);
 
   const pricePerMonth = formattedOfferings.find(
     (item) => item.id === SUBSCRIPTION_PLANS_PER_PLATFORM?.MONTHLY,
@@ -134,6 +139,9 @@ const Paywall = () => {
           paddingBottom: 200,
         }}
       >
+        {DEVICE_TYPE.IOS && (
+          <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+        )}
         <View
           style={{
             position: 'absolute',

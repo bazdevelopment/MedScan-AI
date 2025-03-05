@@ -175,4 +175,11 @@ export const ro: ITranslation = {
     updateUserError:
       'Nu s-a putut actualiza înregistrarea utilizatorului. Vă rugăm să încercați din nou.',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: 'Alege un nume și hai să începem!',
+    userLoggedIn: 'Bine ai revenit! Ești conectat.',
+    accountCreated: 'Ești înscris! Bucură-te de explorare!',
+    error:
+      'Hopa! Ceva n-a mers bine. Te rugăm să verifici conexiunea și să încerci din nou.',
+  },
 };

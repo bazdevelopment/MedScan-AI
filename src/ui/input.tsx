@@ -15,7 +15,6 @@ import { tv } from 'tailwind-variants';
 
 import Icon from '@/components/icon';
 
-import { MailIcon } from './assets/icons';
 import colors from './colors';
 import { Text } from './text';
 
@@ -116,11 +115,7 @@ export const Input = React.forwardRef<NTextInput, NInputProps>((props, ref) => {
       )}
       <View className={`${styles.input()} ${containerClassName}`}>
         {!!icon && (
-          <Icon
-            icon={<MailIcon />}
-            containerStyle="ml-4"
-            color={colors.primary[900]}
-          />
+          <Icon icon={icon} containerStyle="ml-4" color={colors.primary[900]} />
         )}
         <NTextInput
           testID={testID}

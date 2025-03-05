@@ -1,4 +1,5 @@
 import { Env } from '@env';
+import { router } from 'expo-router';
 import { Platform } from 'react-native';
 import Purchases, {
   type CustomerInfo,
@@ -121,13 +122,20 @@ export const useRestorePurchases = createMutation<CustomerInfo, void, Error>({
     return customerInfo;
   },
   onSuccess: (customerInfo) => {
+    console.log('Purchases restored info:', customerInfo);
     queryClient.invalidateQueries({ queryKey: ['subscription-customerInfo'] });
-
-    console.log('Purchases restored successfully:', customerInfo);
-    // Optionally, you can update the customer info in your app state here
+    if (!customerInfo.activeSubscriptions.length)
+      Toast.warning(translate('alerts.noSubscriptionToRestore'), {
+        duration: Infinity,
+        closeButton: true,
+      });
+    if (customerInfo?.activeSubscriptions?.length) {
+      Toast.success(translate('alerts.restorationSuccessful'));
+      router.navigate('/(tabs)/');
+    }
   },
   onError: (error) => {
     console.error('Failed to restore purchases:', error);
-    // Handle the error (e.g., show a toast or alert)
+    wait(500).then(() => Toast.error(translate('alerts.restorationError')));
   },
 });

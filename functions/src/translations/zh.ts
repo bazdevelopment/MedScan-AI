@@ -141,4 +141,10 @@ export const zh: ITranslation = {
     successUpdatedUser: '用户已成功更新',
     updateUserError: '无法更新用户记录。请重试。',
   },
+  loginUserAnonymously: {
+    mandatoryUsername: '选择一个昵称，让我们开始吧！',
+    userLoggedIn: '欢迎回来！您已登录。',
+    accountCreated: '您已加入！尽情探索吧！',
+    error: '哎呀！出错了。请检查您的连接并重试。',
+  },
 };

@@ -366,6 +366,9 @@
     "subscriptionActivated": "Ihr Abonnement wurde erfolgreich aktiviert! Genießen Sie Ihre exklusiven Vorteile!",
     "subscriptionCancelledByUser": "Sie haben die Transaktion abgebrochen. Versuchen Sie es gerne erneut!",
     "subscriptionActivationFailed": "Aktivierung Ihres Abonnements fehlgeschlagen. Bitte versuchen Sie es erneut!",
-    "logoutQuestion": "Sind Sie sicher, dass Sie sich abmelden möchten?"
+    "logoutQuestion": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+    "noSubscriptionToRestore": "Hoppla! Es scheint, dass Sie derzeit kein aktives Abonnement haben. Um weiterhin vollen Zugriff zu genießen, wählen Sie bitte einen unserer Abonnementpläne.",
+    "restorationSuccessful": "Wiederherstellung erfolgreich! Viel Spaß!",
+    "restorationError": "Beim Wiederherstellen Ihres Kaufs ist ein Fehler aufgetreten."
   }
 }

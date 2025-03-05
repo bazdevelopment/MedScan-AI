@@ -368,6 +368,9 @@
     "subscriptionActivated": "Sua assinatura foi ativada com sucesso! Aproveite seus benefícios exclusivos!",
     "subscriptionCancelledByUser": "Você cancelou a transação. Sinta-se à vontade para tentar novamente!",
     "subscriptionActivationFailed": "Falha ao ativar sua assinatura. Por favor, tente novamente!",
-    "logoutQuestion": "Tem certeza de que deseja sair?"
+    "logoutQuestion": "Tem certeza de que deseja sair?",
+    "noSubscriptionToRestore": "Ops! Parece que você não tem uma assinatura ativa no momento. Para continuar desfrutando de acesso total, escolha um de nossos planos de assinatura.",
+    "restorationSuccessful": "Restauração bem-sucedida! Aproveite!",
+    "restorationError": "Ocorreu um erro ao restaurar sua compra."
   }
 }

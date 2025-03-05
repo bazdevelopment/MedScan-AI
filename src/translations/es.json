@@ -366,6 +366,9 @@
     "subscriptionActivated": "¡Tu suscripción se ha activado correctamente! ¡Disfruta de tus beneficios exclusivos!",
     "subscriptionCancelledByUser": "Has cancelado la transacción. ¡No dudes en intentarlo de nuevo!",
     "subscriptionActivationFailed": "No se pudo activar tu suscripción. ¡Por favor, inténtalo de nuevo!",
-    "logoutQuestion": "¿Estás seguro de que quieres cerrar sesión?"
+    "logoutQuestion": "¿Estás seguro de que quieres cerrar sesión?",
+    "noSubscriptionToRestore": "¡Ups! Parece que no tienes una suscripción activa en este momento. Para seguir disfrutando de acceso completo, elige uno de nuestros planes de suscripción.",
+    "restorationSuccessful": "¡Restauración exitosa! ¡Disfruta!",
+    "restorationError": "Ocurrió un error al restaurar tu compra."
   }
 }

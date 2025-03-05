@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import FlowModal from '@/components/flow-modal';
 import FreeTrialPreview from '@/core/screens/free-trial-preview';
-import NamePreferenceScreen from '@/core/screens/name-preference-screen';
 import PaywallOnboarding from '@/core/screens/paywall-onboarding';
 
 export interface IOnboardingCollectedData {
@@ -52,7 +51,6 @@ export default function Onboarding() {
       collectedData={collectedData}
       onSkip={onSkip}
     >
-      <NamePreferenceScreen />
       <FreeTrialPreview />
       <PaywallOnboarding />
     </FlowModal>

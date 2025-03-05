@@ -366,6 +366,9 @@
     "subscriptionActivated": "Abonamentul dumneavoastră a fost activat cu succes! Bucurați-vă de beneficiile exclusive!",
     "subscriptionCancelledByUser": "Ați anulat tranzacția. Nu ezitați să încercați din nou!",
     "subscriptionActivationFailed": "Activarea abonamentului a eșuat. Vă rugăm să încercați din nou!",
-    "logoutQuestion": "Sigur doriți să vă deconectați?"
+    "logoutQuestion": "Sigur doriți să vă deconectați?",
+    "noSubscriptionToRestore": "Hopa! Se pare că nu ai un abonament activ în acest moment. Pentru a continua să te bucuri de acces complet, te rugăm să alegi unul dintre planurile noastre de abonament.",
+    "restorationSuccessful": "Restaurarea a avut succes! Bucură-te de acces complet!",
+    "restorationError": "A apărut o eroare la restaurarea achiziției tale."
   }
 }

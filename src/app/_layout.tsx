@@ -99,6 +99,15 @@ export default function RootLayout() {
           options={{ headerShown: false, gestureEnabled: false }}
         />
         <Stack.Screen
+          name="anonymous-login"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            animation: 'fade',
+            animationDuration: 500,
+          }}
+        />
+        <Stack.Screen
           name="verify-auth-code"
           options={{ headerShown: false, gestureEnabled: false }}
         />
@@ -259,6 +268,12 @@ export default function RootLayout() {
 
         <Stack.Screen
           name="welcome"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="name-preference-screen"
           options={{
             headerShown: false,
           }}

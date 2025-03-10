@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { firebaseCloudFunctionsInstance } from 'firebase/config';
 
+import { Env } from '@/core/env';
+
 export const fetchConversation = async ({
   conversationId,
 }: {
@@ -28,7 +30,7 @@ export const sendConversationMessage = async ({
   language: string;
 }) => {
   const response = await axios.post(
-    'https://us-central1-x-ray-analizer-dev.cloudfunctions.net/continueConversation',
+    Env.EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT as string,
     {
       userId,
       conversationId,

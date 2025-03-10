@@ -63,7 +63,7 @@ export default function RootLayout() {
     'Font-Extra-Bold': NunitoSans_800ExtraBold,
   });
 
-  const [appIsReady, setAppIsReady] = useState(false);
+  const [appIsReady, setAppReady] = useState(false);
 
   useEffect(() => {
     const prepareApp = async () => {
@@ -73,7 +73,7 @@ export default function RootLayout() {
 
         // Check if fonts are loaded
         if (fontsLoaded) {
-          setAppIsReady(true);
+          setAppReady(true);
           await SplashScreen.hideAsync();
         }
       } catch (error) {
@@ -85,8 +85,9 @@ export default function RootLayout() {
 
     // Fallback: Hide splash screen after 3 seconds even if fonts are not loaded because sometimes I notices the app remains stuck on splash screen because the fonts were not loaded (mainly android)
     const timeout = setTimeout(async () => {
-      setAppIsReady(true);
+      setAppReady(true);
       await SplashScreen.hideAsync();
+      setAppReady(true);
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -138,6 +139,13 @@ export default function RootLayout() {
             headerShown: false,
             gestureEnabled: false,
             presentation: 'fullScreenModal',
+          }}
+        />
+        <Stack.Screen
+          name="chat-screen"
+          options={{
+            gestureEnabled: false,
+            headerShown: false,
           }}
         />
         <Stack.Screen

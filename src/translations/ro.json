@@ -18,6 +18,9 @@
     "new": "Nou",
     "yes": "Da",
     "or": "sau",
+    "typing": "Scrie...",
+    "online": "Online",
+    "chatbotPlaceholder": "Întreabă-mă orice...",
     "openSettings": "Deschide Setări",
     "seeNotifications": "Vezi notificările",
     "viewProfile": "Vezi Profilul",
@@ -50,6 +53,11 @@
         "second": "Se analizează detaliile, acest lucru poate dura un moment...",
         "third": "Se îmbunătățește acuratețea pentru cele mai bune rezultate...",
         "fourth": "Aproape gata, se finalizează scanarea..."
+      },
+      "loadingChatbot": {
+        "first": "Aria se pregătește să vă ajute...",
+        "second": "Așteptați! Aria vă pregătește răspunsul...",
+        "third": "Se gândește... asistenta dumneavoastră Aria se ocupă de asta!"
       }
     }
   },

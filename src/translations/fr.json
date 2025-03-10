@@ -18,6 +18,9 @@
     "new": "Nouveau",
     "yes": "Oui",
     "or": "ou",
+    "typing": "En train d'écrire...",
+    "online": "En ligne",
+    "chatbotPlaceholder": "Demandez-moi n'importe quoi...",
     "openSettings": "Ouvrir les paramètres",
     "seeNotifications": "Voir les notifications",
     "viewProfile": "Voir le profil",
@@ -50,6 +53,11 @@
         "second": "Analyse des détails, cela peut prendre un moment...",
         "third": "Amélioration de la précision pour des résultats optimaux...",
         "fourth": "Presque terminé, finalisation de l'analyse..."
+      },
+      "loadingChatbot": {
+        "first": "Aria se prépare à vous aider...",
+        "second": "Un instant ! Aria prépare votre réponse...",
+        "third": "Réflexion en cours... votre assistante Aria s'en occupe !"
       }
     }
   },

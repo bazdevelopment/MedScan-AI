@@ -16,6 +16,7 @@ import { getFileSizeInMB } from '../utilities/get-file-size-in-mb';
 import { getImageExtension } from '../utilities/get-image-extension';
 import { getVideoDuration } from '../utilities/get-video-duration';
 import { isVideoDurationLong } from '../utilities/is-video-duration-long';
+import { wait } from '../utilities/wait';
 
 interface IMediaPicker {
   onUploadFinished: (data: ICollectedData) => void;
@@ -33,7 +34,6 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Request media library permissions
       const { status } =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
-
       // Check if the permission is granted
       if (status !== 'granted') {
         Toast.warning(translate('alerts.mediaPickerPermissions'), {
@@ -191,20 +191,22 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Check if the permission is granted
       if (status !== 'granted') {
-        Toast.error(translate('alerts.mediaPickerPermissions'), {
-          closeButton: true,
-          duration: Infinity,
-          action: {
-            label: translate('general.openSettings'),
-            onClick: () => {
-              if (Platform.OS === 'ios') {
-                Linking.openURL('app-settings:');
-              } else {
-                Linking.openSettings();
-              }
+        wait(500).then(() =>
+          Toast.error(translate('alerts.mediaPickerPermissions'), {
+            closeButton: true,
+            duration: Infinity,
+            action: {
+              label: translate('general.openSettings'),
+              onClick: () => {
+                if (Platform.OS === 'ios') {
+                  Linking.openURL('app-settings:');
+                } else {
+                  Linking.openSettings();
+                }
+              },
             },
-          },
-        });
+          }),
+        );
         return;
       }
 

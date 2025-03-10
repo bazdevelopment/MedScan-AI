@@ -35,6 +35,7 @@ export default function TabLayout() {
   const modal = useModal();
   const { language } = useSelectedLanguage();
   const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
+
   const [isFirstTime] = useIsFirstTime();
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
@@ -177,7 +178,7 @@ export default function TabLayout() {
                 <TabBarIcon
                   icon={tab.icon(color, focused)}
                   focused={focused}
-                  textClassName={`text-sm ${focused ? 'font-bold-nunito text-primary-900 dark:text-primary-900' : 'font-medium-nunito'} `}
+                  textClassName={`text-sm w-full ${focused ? 'font-bold-nunito text-primary-900 dark:text-primary-900' : 'font-medium-nunito'} `}
                   title={tab.title}
                 />
               ),

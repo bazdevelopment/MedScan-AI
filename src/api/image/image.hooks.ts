@@ -12,6 +12,7 @@ interface IAnalyzeImageParams {
   interpretationResult: string;
   promptMessage: string;
   createdDate: string;
+  conversationId: string;
 }
 
 export const useAnalyzeImage = ({
@@ -36,6 +37,7 @@ export const useAnalyzeImage = ({
         interpretationResult: data.interpretationResult,
         promptMessage: data.promptMessage,
         createdDate: data.createdAt,
+        conversationId: data.conversationId,
       });
     },
     onError: (error) => {
@@ -54,6 +56,7 @@ export const useAnalyzeVideo = ({
     interpretationResult,
     promptMessage,
     createdDate,
+    conversationId,
   }: IAnalyzeImageParams) => void;
 }) => {
   const { logEvent, recordError } = useCrashlytics();
@@ -65,6 +68,7 @@ export const useAnalyzeVideo = ({
         interpretationResult: data.interpretationResult,
         promptMessage: data.promptMessage,
         createdDate: data.createdAt,
+        // conversationId: data.conversationId,
       });
       logEvent('Medical video has been analyzed successfully');
     },

@@ -8,7 +8,7 @@ export const analyzeImageUsingAi = async (
 ) => {
   try {
     const response = await axios.post(
-      Env.EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT as string,
+      Env.EXPO_PUBLIC_ANALYZE_IMAGE_CONVERSATION as string,
       payload,
       {
         headers: {

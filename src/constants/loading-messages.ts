@@ -13,3 +13,9 @@ export const LOADING_MESSAGES_IMAGE_SCANNING = [
   translate('general.loadingMessages.imageScanningLoading.third'),
   translate('general.loadingMessages.imageScanningLoading.fourth'),
 ];
+
+export const LOADING_MESSAGES_CHATBOT = [
+  translate('general.loadingMessages.loadingChatbot.first'),
+  translate('general.loadingMessages.loadingChatbot.second'),
+  translate('general.loadingMessages.loadingChatbot.third'),
+];

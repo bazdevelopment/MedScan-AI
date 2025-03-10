@@ -1441,6 +1441,8 @@ PODS:
     - ExpoModulesCore
   - ExpoSharing (12.0.1):
     - ExpoModulesCore
+  - ExpoSpeech (12.0.2):
+    - ExpoModulesCore
   - ExpoVideo (1.2.7):
     - ExpoModulesCore
   - EXSplashScreen (0.27.7):
@@ -3207,6 +3209,7 @@ DEPENDENCIES:
   - ExpoPrint (from `../node_modules/expo-print/ios`)
   - ExpoQuickActions (from `../node_modules/expo-quick-actions/ios`)
   - ExpoSharing (from `../node_modules/expo-sharing/ios`)
+  - ExpoSpeech (from `../node_modules/expo-speech/ios`)
   - ExpoVideo (from `../node_modules/expo-video/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - EXUpdatesInterface (from `../node_modules/expo-updates-interface/ios`)
@@ -3403,6 +3406,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-quick-actions/ios"
   ExpoSharing:
     :path: "../node_modules/expo-sharing/ios"
+  ExpoSpeech:
+    :path: "../node_modules/expo-speech/ios"
   ExpoVideo:
     :path: "../node_modules/expo-video/ios"
   EXSplashScreen:
@@ -3598,6 +3603,7 @@ SPEC CHECKSUMS:
   ExpoPrint: 9e221bf0988c77c8a270a7df7135c65c2a396e0a
   ExpoQuickActions: 64fa5626dc168f892b38ec353218b8d10d1f02f7
   ExpoSharing: 8db05dd85081219f75989a3db2c92fe5e9741033
+  ExpoSpeech: 258ea713923eb70ef63d3bdb14f47a462d0b6f0e
   ExpoVideo: 9bf68ae981f3cb64b4fd2fc9f5a5337e55716b5b
   EXSplashScreen: e9758d6c15f77f8f358cb98513f1f9e32eca388c
   EXUpdatesInterface: 996527fd7d1a5d271eb523258d603f8f92038f24

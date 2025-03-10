@@ -44,7 +44,6 @@ export const TERMS_AND_CONDITIONS = {
       listItems: [
         'Monthly subscriptions are billed every 30 days',
         'Annual subscriptions are billed every 12 months',
-        'All prices are in USD unless otherwise specified',
       ],
     },
     {

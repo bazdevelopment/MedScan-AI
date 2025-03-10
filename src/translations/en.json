@@ -18,6 +18,9 @@
     "new": "New",
     "yes": "Yes",
     "or": "or",
+    "typing": "Typing...",
+    "online": "Online",
+    "chatbotPlaceholder": "Ask me anything...",
     "openSettings": "Open Settings",
     "seeNotifications": "See notifications",
     "viewProfile": "View Profile",
@@ -50,6 +53,11 @@
         "second": "Analyzing details, this may take a moment...",
         "third": "Enhancing accuracy for the best results...",
         "fourth": "Almost there, finalizing the scan..."
+      },
+      "loadingChatbot": {
+        "first": "Aria is getting ready to assist you...",
+        "second": "Hold on! Aria is preparing your response...",
+        "third": "Thinking...your assistant Aria is on it!"
       }
     }
   },

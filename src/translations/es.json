@@ -18,6 +18,9 @@
     "new": "Nuevo",
     "yes": "Sí",
     "or": "o",
+    "typing": "Escribiendo...",
+    "online": "En línea",
+    "chatbotPlaceholder": "Pregúntame lo que quieras...",
     "openSettings": "Abrir configuración",
     "seeNotifications": "Ver notificaciones",
     "viewProfile": "Ver perfil",
@@ -50,6 +53,11 @@
         "second": "Analizando detalles, esto puede tomar un momento...",
         "third": "Mejorando la precisión para obtener los mejores resultados...",
         "fourth": "Casi listo, finalizando el escaneo..."
+      },
+      "loadingChatbot": {
+        "first": "Aria se está preparando para ayudarte...",
+        "second": "¡Espera! Aria está preparando tu respuesta...",
+        "third": "Pensando... tu asistente Aria está en ello."
       }
     }
   },

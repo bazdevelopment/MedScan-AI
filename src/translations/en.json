@@ -18,6 +18,9 @@
     "new": "New",
     "yes": "Yes",
     "or": "or",
+    "typing": "Typing...",
+    "online": "Online",
+    "chatbotPlaceholder": "Ask me anything...",
     "openSettings": "Open Settings",
     "seeNotifications": "See notifications",
     "viewProfile": "View Profile",
@@ -33,6 +36,7 @@
     "and": "and",
     "saveDiscount": "SAVE",
     "restorePurchase": "Restore purchase",
+    "medicalDisclaimer": "Medical Disclaimer",
     "copyText": {
       "loading": "Copying...",
       "copied": "Copied!",
@@ -50,6 +54,11 @@
         "second": "Analyzing details, this may take a moment...",
         "third": "Enhancing accuracy for the best results...",
         "fourth": "Almost there, finalizing the scan..."
+      },
+      "loadingChatbot": {
+        "first": "Aria is getting ready to assist you...",
+        "second": "Hold on! Aria is preparing your response...",
+        "third": "Thinking...your assistant Aria is on it!"
       }
     }
   },
@@ -182,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "Generate report"
+      },
+      "disclaimerScreen": {
+        "heading": "Important Medical Disclaimer",
+        "subheading": "MedScan AI is designed for radiology professionals, healthcare experts, medical students, and enthusiasts",
+        "consentAgreement": "I have read and consent to the disclaimer.",
+        "firstConsent": "MedScan AI does not provide medical data, health measurements, diagnoses, or treatment advice, nor is it intended for such purposes. Users of MedScan AI must apply their clinical judgment and verify information from authoritative sources before making any clinical decisions.",
+        "secondConsent": "MedScan AI is not a diagnostic tool, treatment platform, or a replacement for professional medical advice. It offers AI-generated insights to assist healthcare professionals in accessing medical knowledge and analyzing medical images and documents. MedScan AI is an AI-driven informational and educational app designed more to support licensed healthcare professionals.",
+        "thirdConsent": "MedScan AI is not designed for patient use. It does not provide direct medical diagnoses, treatment recommendations, or patient management functionalities.",
+        "fourthConsent": "MedScan AI is not classified as a medical device and does not claim regulatory approval. It is intended for educational and informational purposes to complement professional expertise.",
+        "fifthConsent": "MedScan AI does not collect, store, or process personal or patient data. All user interactions are confidential and limited to the scope of the app."
       }
     }
   },
@@ -203,7 +222,7 @@
         "message": "This is the report result!"
       },
       "uploadFile": {
-        "title": "Please upload your medical imaging file",
+        "title": "Please upload a medical imaging file",
         "size": "Max: {{imageLimit}}MB (images), {{videoLimit}}MB (videos)",
         "location": "Select from Gallery or Files",
         "fileType": "PNG, JPG, PDF, or MP4",

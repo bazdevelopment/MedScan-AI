@@ -18,6 +18,9 @@
     "new": "Neu",
     "yes": "Ja",
     "or": "oder",
+    "typing": "Tippen...",
+    "online": "Online",
+    "chatbotPlaceholder": "Fragen Sie mich alles...",
     "openSettings": "Einstellungen öffnen",
     "seeNotifications": "Benachrichtigungen anzeigen",
     "viewProfile": "Profil anzeigen",
@@ -33,6 +36,7 @@
     "and": "und",
     "saveDiscount": "SPAREN",
     "restorePurchase": "Kauf wiederherstellen",
+    "medicalDisclaimer": "Medizinischer Haftungsausschluss",
     "copyText": {
       "loading": "Wird kopiert...",
       "copied": "Kopiert!",
@@ -50,6 +54,11 @@
         "second": "Analysiere Details, dies kann einen Moment dauern...",
         "third": "Optimiere die Genauigkeit für beste Ergebnisse...",
         "fourth": "Fast fertig, finalisiere den Scan..."
+      },
+      "loadingChatbot": {
+        "first": "Aria bereitet sich darauf vor, Ihnen zu helfen...",
+        "second": "Einen Moment! Aria bereitet Ihre Antwort vor...",
+        "third": "Nachdenken... Ihre Assistentin Aria ist dran!"
       }
     }
   },
@@ -182,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "Bericht generieren"
+      },
+      "disclaimerScreen": {
+        "heading": "Wichtiger medizinischer Haftungsausschluss",
+        "subheading": "MedScan AI ist für Radiologieexperten, Gesundheitsexperten, Medizinstudenten und Enthusiasten konzipiert",
+        "consentAgreement": "Ich habe den Haftungsausschluss gelesen und stimme ihm zu.",
+        "firstConsent": "MedScan AI stellt keine medizinischen Daten, Gesundheitsmessungen, Diagnosen oder Behandlungsempfehlungen bereit und ist auch nicht für solche Zwecke gedacht. Benutzer von MedScan AI müssen ihr klinisches Urteilsvermögen anwenden und Informationen aus autoritativen Quellen überprüfen, bevor sie klinische Entscheidungen treffen.",
+        "secondConsent": "MedScan AI ist kein Diagnosewerkzeug, keine Behandlungsplattform oder ein Ersatz für professionellen medizinischen Rat. Es bietet KI-generierte Einblicke, um medizinischen Fachkräften den Zugang zu medizinischem Wissen und die Analyse von medizinischen Bildern und Dokumenten zu erleichtern. MedScan AI ist eine KI-gestützte Informations- und Bildungs-App, die darauf ausgelegt ist, lizenzierte medizinische Fachkräfte zu unterstützen.",
+        "thirdConsent": "MedScan AI ist nicht für die Verwendung durch Patienten konzipiert. Es bietet keine direkten medizinischen Diagnosen, Behandlungsempfehlungen oder Patientenmanagement-Funktionen.",
+        "fourthConsent": "MedScan AI ist nicht als Medizinprodukt klassifiziert und beansprucht keine regulatorische Zulassung. Es ist für Bildungs- und Informationszwecke gedacht, um Fachwissen zu ergänzen.",
+        "fifthConsent": "MedScan AI sammelt, speichert oder verarbeitet keine persönlichen oder patientenbezogenen Daten. Alle Benutzerinteraktionen sind vertraulich und auf den Anwendungsbereich beschränkt."
       }
     }
   },
@@ -201,8 +220,8 @@
         "message": "Dies ist das Berichtsergebnis!"
       },
       "uploadFile": {
-        "title": "Bitte lade deine medizinische Bilddatei hoch",
-        "size": "Maximale Dateigröße: 10MB",
+        "title": "Bitte laden Sie eine medizinische Bilddatei hoch",
+        "size": "Max: {{imageLimit}}MB (Bilder), {{videoLimit}}MB (Videos)",
         "location": "Aus Galerie oder Dateien auswählen",
         "fileType": "PNG, JPG, PDF oder MP4",
         "openCamera": "Kamera öffnen & Foto aufnehmen",

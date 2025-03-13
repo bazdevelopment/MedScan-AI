@@ -364,9 +364,8 @@ const updateUserAndNavigate = async ({
         ...oldData,
         isOnboarded: true,
       }));
-
-      setIsFirstTime(false);
       router.navigate('/(tabs)');
+      setIsFirstTime(false);
       logEvent(
         `User ${userId} has been onboarded successfully and selected ${collectedData.selectedPackage} plan and is redirected to home screen`,
       );

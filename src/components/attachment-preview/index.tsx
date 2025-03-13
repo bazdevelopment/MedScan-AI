@@ -1,6 +1,7 @@
+/* eslint-disable max-lines-per-function */
 import dayjs from 'dayjs';
 import React from 'react';
-import { View, type ViewStyle } from 'react-native';
+import { TouchableOpacity, View, type ViewStyle } from 'react-native';
 
 import { useSelectedLanguage } from '@/core';
 import { useModal } from '@/core/hooks/use-modal';
@@ -17,20 +18,27 @@ const AttachmentPreview = ({
   additionalImageStyles,
   fileMimeType,
   showAdditionalInfo = true,
+  isEntirelyClickable = false,
+  showDate = true,
 }: {
   isVideo: boolean;
   filePath: string;
-  fileMimeType: string;
+  fileMimeType?: string;
   className?: string;
   additionalVideoStyles?: ViewStyle;
   additionalImageStyles?: string;
   showAdditionalInfo?: boolean;
+  isEntirelyClickable?: boolean;
+  showDate?: boolean;
 }) => {
   const { isVisible: isMediaModalVisible, openModal, closeModal } = useModal();
   const { language } = useSelectedLanguage();
 
+  const Container = isEntirelyClickable ? TouchableOpacity : View;
+
   return (
-    <View
+    <Container
+      onPress={openModal}
       className={`rounded-[25px] border-4 border-primary-300 ${className} overflow-hidden`}
     >
       {isVideo ? (
@@ -54,12 +62,16 @@ const AttachmentPreview = ({
 
       {showAdditionalInfo && (
         <View className="top-[-35px] z-[-1]  mb-[-35px] flex-row justify-between rounded-[22px] border-primary-700 bg-primary-900 px-4 pb-3 pt-[45px] dark:bg-blackEerie">
-          <Text className="font-semibold-nunito text-sm text-white">
-            {fileMimeType.toUpperCase()}
-          </Text>
-          <Text className="font-semibold-nunito text-sm text-white">
-            {dayjs().locale(language).format('DD/MM/YYYY')}
-          </Text>
+          {fileMimeType && (
+            <Text className="font-semibold-nunito text-sm text-white">
+              {fileMimeType.toUpperCase()}
+            </Text>
+          )}
+          {!!showDate && (
+            <Text className="font-semibold-nunito text-sm text-white">
+              {dayjs().locale(language).format('DD/MM/YYYY')}
+            </Text>
+          )}
         </View>
       )}
       <CustomModal visible={isMediaModalVisible} onClose={closeModal}>
@@ -76,7 +88,7 @@ const AttachmentPreview = ({
           </View>
         )}
       </CustomModal>
-    </View>
+    </Container>
   );
 };
 

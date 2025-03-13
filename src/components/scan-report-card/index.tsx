@@ -55,6 +55,7 @@ const ScanReportCard = ({
   };
 
   const isVideo = checkIsVideo(mimeType);
+
   return (
     <>
       <View className="mb flex-row justify-between">

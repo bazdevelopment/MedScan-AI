@@ -18,6 +18,9 @@
     "new": "新建",
     "yes": "是",
     "or": "或",
+    "typing": "正在输入...",
+    "online": "在线",
+    "chatbotPlaceholder": "问我任何问题...",
     "openSettings": "打开设置",
     "seeNotifications": "查看通知",
     "viewProfile": "查看个人资料",
@@ -33,6 +36,7 @@
     "and": "和",
     "saveDiscount": "节省",
     "restorePurchase": "恢复购买",
+    "medicalDisclaimer": "医学免责声明",
     "copyText": {
       "loading": "正在复制...",
       "copied": "已复制！",
@@ -50,6 +54,11 @@
         "second": "正在分析细节，可能需要一点时间...",
         "third": "正在提高准确度以获得最佳结果...",
         "fourth": "即将完成，正在完成扫描..."
+      },
+      "loadingChatbot": {
+        "first": "Aria 正在准备协助您...",
+        "second": "请稍等！Aria 正在准备您的回复...",
+        "third": "思考中...您的助手 Aria 正在处理！"
       }
     }
   },
@@ -182,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "生成报告"
+      },
+      "disclaimerScreen": {
+        "heading": "重要医学免责声明",
+        "subheading": "MedScan AI 专为放射学专业人士、医疗专家、医学生和爱好者设计",
+        "consentAgreement": "我已阅读并同意免责声明。",
+        "firstConsent": "MedScan AI 不提供医疗数据、健康测量、诊断或治疗建议，也不用于此类目的。MedScan AI 的用户必须运用其临床判断，并在做出任何临床决策之前核实来自权威来源的信息。",
+        "secondConsent": "MedScan AI 不是诊断工具、治疗平台，也不能替代专业医疗建议。它提供 AI 生成的见解，以帮助医疗保健专业人员获取医学知识并分析医学图像和文档。MedScan AI 是一款 AI 驱动的信息和教育应用程序，旨在为持牌医疗保健专业人员提供支持。",
+        "thirdConsent": "MedScan AI 不是为患者使用而设计的。它不提供直接的医疗诊断、治疗建议或患者管理功能。",
+        "fourthConsent": "MedScan AI 不被归类为医疗设备，也不声称获得监管批准。它旨在用于教育和信息目的，以补充专业知识。",
+        "fifthConsent": "MedScan AI 不收集、存储或处理个人或患者数据。所有用户交互都是保密的，并仅限于应用程序的范围。"
       }
     }
   },
@@ -201,8 +220,8 @@
         "message": "这是报告结果！"
       },
       "uploadFile": {
-        "title": "请上传您的医学影像文件",
-        "size": "最大文件大小：10MB",
+        "title": "请上传医学影像文件",
+        "size": "最大: {{imageLimit}}MB (图片), {{videoLimit}}MB (视频)",
         "location": "从相册或文件中选择",
         "fileType": "PNG、JPG、PDF或MP4",
         "openCamera": "打开相机拍照",

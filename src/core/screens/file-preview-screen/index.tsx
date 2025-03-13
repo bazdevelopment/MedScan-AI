@@ -7,7 +7,6 @@ import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
-import { useDecrementScans } from '@/api/user/user.hooks';
 import AttachmentPreview from '@/components/attachment-preview';
 import ScanningModal from '@/components/image-scanner-modal';
 import ProgressBar from '@/components/progress-bar';
@@ -84,28 +83,10 @@ const FilePreviewScreen = ({
   const [promptMessage, setPromptMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { mutate: onDecrementScans } = useDecrementScans();
+  // const { mutate: onDecrementScans } = useDecrementScans();
   const {
     i18n: { language },
   } = useTranslation();
-
-  const onSuccess = ({
-    interpretationResult,
-    promptMessage,
-    createdDate,
-  }: {
-    interpretationResult: string;
-    promptMessage: string;
-    createdDate: string;
-  }) => {
-    router.push({
-      pathname: '/generate-report',
-      params: { interpretationResult, promptMessage, createdDate },
-    });
-    setIsModalVisible(false);
-    onDecrementScans({ language });
-    wait(1000).then(() => resetFlow());
-  };
 
   //todo: to be changed in the future with useUser hook
   const userId = firebaseAuth.currentUser?.uid as string;
@@ -131,6 +112,40 @@ const FilePreviewScreen = ({
   const mediaSource = Boolean(collectedData.fileBase64)
     ? getBase64ImageUri(collectedData.fileBase64 as string)
     : collectedData.fileUri || collectedData.file;
+
+  const onSuccess = ({
+    interpretationResult,
+    promptMessage,
+    createdDate,
+    conversationId,
+  }: {
+    interpretationResult: string;
+    promptMessage: string;
+    createdDate: string;
+    conversationId: string;
+  }) => {
+    // router.navigate({
+    //   pathname: '/generate-report',
+    //   params: { interpretationResult, promptMessage, createdDate },
+    // });
+
+    // After receiving the initial image analysis
+
+    router.navigate({
+      pathname: '/chat-screen',
+      params: {
+        interpretationResult,
+        promptMessage,
+        createdDate,
+        conversationId,
+        mediaSource,
+        mimeType: collectedData.fileMimeType,
+      },
+    });
+    setIsModalVisible(false);
+    wait(1000).then(() => resetFlow());
+  };
+
   const {
     mutate: handleAnalyzeImageUsingAi,
     error: errorAnalyzeImage,

@@ -18,6 +18,9 @@
     "new": "Novo",
     "yes": "Sim",
     "or": "ou",
+    "typing": "Digitando...",
+    "online": "Online",
+    "chatbotPlaceholder": "Pergunte-me qualquer coisa...",
     "openSettings": "Abrir Configurações",
     "seeNotifications": "Ver notificações",
     "viewProfile": "Ver Perfil",
@@ -33,6 +36,7 @@
     "and": "e",
     "saveDiscount": "ECONOMIZE",
     "restorePurchase": "Restaurar compra",
+    "medicalDisclaimer": "Aviso de Responsabilidade Médica",
     "copyText": {
       "loading": "Copiando...",
       "copied": "Copiado!",
@@ -50,6 +54,11 @@
         "second": "Analisando detalhes, isso pode levar um momento...",
         "third": "Aprimorando a precisão para os melhores resultados...",
         "fourth": "Quase lá, finalizando o escaneamento..."
+      },
+      "loadingChatbot": {
+        "first": "Aria está se preparando para ajudá-lo...",
+        "second": "Aguarde! Aria está preparando sua resposta...",
+        "third": "Pensando... sua assistente Aria está trabalhando nisso!"
       }
     }
   },
@@ -182,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "Gerar relatório"
+      },
+      "disclaimerScreen": {
+        "heading": "Aviso Médico Importante",
+        "subheading": "O MedScan AI foi projetado para profissionais de radiologia, especialistas em saúde, estudantes de medicina e entusiastas",
+        "consentAgreement": "Li e concordo com o aviso.",
+        "firstConsent": "O MedScan AI não fornece dados médicos, medições de saúde, diagnósticos ou conselhos de tratamento, nem se destina a tais fins. Os usuários do MedScan AI devem aplicar seu julgamento clínico e verificar as informações de fontes autorizadas antes de tomar qualquer decisão clínica.",
+        "secondConsent": "O MedScan AI não é uma ferramenta de diagnóstico, plataforma de tratamento ou substituto para aconselhamento médico profissional. Ele oferece insights gerados por IA para auxiliar profissionais de saúde a acessar conhecimentos médicos e analisar imagens e documentos médicos. O MedScan AI é um aplicativo informativo e educacional movido por IA, projetado para apoiar profissionais de saúde licenciados.",
+        "thirdConsent": "O MedScan AI não foi projetado para uso por pacientes. Ele não fornece diagnósticos médicos diretos, recomendações de tratamento ou funcionalidades de gerenciamento de pacientes.",
+        "fourthConsent": "O MedScan AI não é classificado como um dispositivo médico e não afirma ter aprovação regulatória. Ele é destinado a fins educacionais e informativos para complementar a expertise profissional.",
+        "fifthConsent": "O MedScan AI não coleta, armazena ou processa dados pessoais ou de pacientes. Todas as interações do usuário são confidenciais e limitadas ao escopo do aplicativo."
       }
     }
   },
@@ -203,8 +222,8 @@
         "message": "Este é o resultado do relatório!"
       },
       "uploadFile": {
-        "title": "Por favor, envie seu arquivo de imagem médica",
-        "size": "Tamanho máximo do arquivo: 10MB",
+        "title": "Por favor, carregue um arquivo de imagem médica",
+        "size": "Máx: {{imageLimit}}MB (imagens), {{videoLimit}}MB (vídeos)",
         "location": "Selecione da Galeria ou Arquivos",
         "fileType": "PNG, JPG, PDF ou MP4",
         "openCamera": "Abrir Câmera e Tirar Foto",

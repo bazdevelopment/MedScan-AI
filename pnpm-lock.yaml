@@ -146,6 +146,9 @@ importers:
       expo-sharing:
         specifier: ~12.0.1
         version: 12.0.1(expo@51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7)))
+      expo-speech:
+        specifier: ~12.0.2
+        version: 12.0.2(expo@51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7)))
       expo-splash-screen:
         specifier: 0.27.7
         version: 0.27.7(expo-modules-autolinking@1.11.3)(expo@51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7)))
@@ -155,6 +158,9 @@ importers:
       expo-video:
         specifier: ^1.2.7
         version: 1.2.7(expo@51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7)))
+      ffmpeg-kit-react-native:
+        specifier: ^6.0.2
+        version: 6.0.2(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       i18next:
         specifier: ^23.14.0
         version: 23.16.8
@@ -4277,6 +4283,11 @@ packages:
     peerDependencies:
       expo: '*'
 
+  expo-speech@12.0.2:
+    resolution: {integrity: sha512-voWNz69hvtLEA2jipAbM5XJBIbKCusQsDZ/G/vAKKkP5AUTzAmcdRDWGcmESPRKK0JUtQZ8WetujgLCn2kl83w==}
+    peerDependencies:
+      expo: '*'
+
   expo-splash-screen@0.27.7:
     resolution: {integrity: sha512-s+eGcG185878nixlrjhhLD6UDYrvoqBUaBkIEozBVWFg3pkdsKpONPiUAco4XR3h7I/9ODq4quN28RJLFO+s0Q==}
     peerDependencies:
@@ -4353,6 +4364,13 @@ packages:
 
   fetch-retry@4.1.1:
     resolution: {integrity: sha512-e6eB7zN6UBSwGVwrbWVH+gdLnkW9WwHhmq2YDK1Sh30pzx1onRVGBvogTlUeWxwTa+L86NYdo4hFkh7O8ZjSnA==}
+
+  ffmpeg-kit-react-native@6.0.2:
+    resolution: {integrity: sha512-r9uSmahq8TeyIb7fXf3ft+uUXyoeWRFa99+khjo0TAzWO9y0z9wU7eGnab9JLw1MmCB9v64o4yojNluJhVm9nQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    peerDependencies:
+      react: '*'
+      react-native: '*'
 
   figures@1.7.0:
     resolution: {integrity: sha512-UxKlfCRuCBxSXU4C6t9scbDyWZ4VlaFFdojKtzJuSkuOBQ5CNFum+zZXFwHjo+CxBC1t6zlYPgHIgFjL8ggoEQ==}
@@ -13755,6 +13773,10 @@ snapshots:
     dependencies:
       expo: 51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))
 
+  expo-speech@12.0.2(expo@51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))):
+    dependencies:
+      expo: 51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))
+
   expo-splash-screen@0.27.7(expo-modules-autolinking@1.11.3)(expo@51.0.39(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))):
     dependencies:
       '@expo/prebuild-config': 7.0.9(expo-modules-autolinking@1.11.3)
@@ -13864,6 +13886,11 @@ snapshots:
       - encoding
 
   fetch-retry@4.1.1: {}
+
+  ffmpeg-kit-react-native@6.0.2(react-native@0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.26.7)(@babel/preset-env@7.26.7(@babel/core@7.26.7))(@types/react@18.2.79)(react@18.2.0)
 
   figures@1.7.0:
     dependencies:

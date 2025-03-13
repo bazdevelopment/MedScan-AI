@@ -109,8 +109,9 @@ runs:
          echo "REVENUE_CAT_API_KEYS_GOOGLE: ${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}"
          echo "REVENUE_CAT_API_KEYS_APPLE: ${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}"
          echo "TEST_ACCOUNT: ${{ inputs.TEST_ACCOUNT }}"
-         echo "ANALYZE_IMAGE_ENDPOINT: ${{ inputs.ANALYZE_IMAGE_ENDPOINT }}"
-         echo "ANALYZE_VIDEO_ENDPOINT: ${{ inputs.ANALYZE_VIDEO_ENDPOINT }}"
+         echo "ANALYZE_IMAGE_CONVERSATION_ENDPOINT: ${{ inputs.ANALYZE_IMAGE_CONVERSATION_ENDPOINT }}"
+         echo "ANALYZE_VIDEO_CONVERSATION_ENDPOINT: ${{ inputs.ANALYZE_VIDEO_CONVERSATION_ENDPOINT }}"
+         echo "CONTINUE_CONVERSATION_ENDPOINT: ${{ inputs.CONTINUE_CONVERSATION_ENDPOINT }}"
 
          # Detect OS and use appropriate sed syntax (ios use sed -i '')
          if [[ "$OSTYPE" == "darwin"* ]]; then

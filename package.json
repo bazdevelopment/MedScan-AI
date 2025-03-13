@@ -99,6 +99,7 @@
     "expo-splash-screen": "0.27.7",
     "expo-status-bar": "~1.12.1",
     "expo-video": "^1.2.7",
+    "ffmpeg-kit-react-native": "^6.0.2",
     "i18next": "^23.14.0",
     "input-otp-native": "^0.4.0",
     "lodash.memoize": "^4.1.2",

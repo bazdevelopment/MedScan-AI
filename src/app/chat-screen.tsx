@@ -32,6 +32,7 @@ import Icon from '@/components/icon';
 import { LOADING_MESSAGES_CHATBOT } from '@/constants/loading-messages';
 import { DEVICE_TYPE, translate } from '@/core';
 import { useTextToSpeech } from '@/core/hooks/use-text-to-speech';
+import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { wait } from '@/core/utilities/wait';
 import { colors, Text } from '@/ui';
 import { CloseIcon, SoundOn, StopIcon } from '@/ui/assets/icons';
@@ -142,7 +143,7 @@ const ChatBubble = ({
 
         {message.isError && (
           <TouchableOpacity
-            className="justify-end ml-2 flex-1 flex-row  gap-1"
+            className="ml-2 flex-1 flex-row justify-end  gap-1"
             onPress={onRetrySendMessage}
           >
             <Text className="mt-1 text-xs text-red-500">
@@ -168,12 +169,13 @@ const TypingIndicator = () => {
 };
 
 const ChatScreen = () => {
-  const { conversationId, mediaSource } = useLocalSearchParams();
+  const { conversationId, mediaSource, mimeType } = useLocalSearchParams();
   const [userMessage, setUserMessage] = useState('');
   const [pendingMessages, setPendingMessages] = useState<MessageType[]>([]);
   const [currentlySpeakingId, setCurrentlySpeakingId] = useState<string | null>(
     null,
   );
+  const isVideo = checkIsVideo(mimeType as string);
 
   const flashListRef = useRef<FlashList<MessageType>>(null);
 
@@ -337,7 +339,7 @@ const ChatScreen = () => {
   if (isLoading) {
     return (
       <View className="flex-1 items-center justify-center bg-white dark:bg-blackEerie">
-        <Branding isLogoVisible />
+        <Branding isLogoVisible invertedColors />
         <ActivityIndicator
           size="large"
           className="my-6 items-center justify-center"
@@ -386,7 +388,7 @@ const ChatScreen = () => {
             </View>
             <AttachmentPreview
               filePath={mediaSource as string}
-              isVideo={false}
+              isVideo={isVideo}
               className="h-[40px] w-[40px] rounded-xl border-0"
               isEntirelyClickable
             />

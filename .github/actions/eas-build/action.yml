@@ -70,11 +70,15 @@ inputs:
   TEST_ACCOUNT:
     description: 'TEST_ACCOUNT'
     required: true
-  ANALYZE_IMAGE_ENDPOINT:
-    description: 'ANALYZE_IMAGE_ENDPOINT'
+
+  ANALYZE_IMAGE_CONVERSATION_ENDPOINT:
+    description: 'ANALYZE_IMAGE_CONVERSATION_ENDPOINT'
     required: true
-  ANALYZE_VIDEO_ENDPOINT:
-    description: 'ANALYZE_VIDEO_ENDPOINT'
+  ANALYZE_VIDEO_CONVERSATION_ENDPOINT:
+    description: ' ANALYZE_VIDEO_CONVERSATION_ENDPOINT'
+    required: true
+  CONTINUE_CONVERSATION_ENDPOINT:
+    description: 'CONTINUE_CONVERSATION_ENDPOINT'
     required: true
 
 runs:
@@ -114,14 +118,18 @@ runs:
          sed -i '' "s|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g" eas.json
          sed -i '' "s|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g" eas.json
          sed -i '' "s|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g" eas.json
-         sed -i '' "s|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g" eas.json
-         sed -i '' "s|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_ANALYZE_IMAGE_CONVERSATION_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_CONVERSATION_ENDPOINT }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_ANALYZE_VIDEO_CONVERSATION_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_CONVERSATION_ENDPOINT }}|g" eas.json
+         sed -i '' "s|EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT_CI|${{ inputs.CONTINUE_CONVERSATION_ENDPOINT }}|g" eas.json
+
          else
          sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_GOOGLE }}|g' eas.json
          sed -i 's|EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI|${{ inputs.REVENUE_CAT_API_KEYS_APPLE }}|g' eas.json
          sed -i 's|EXPO_PUBLIC_TEST_ACCOUNT_CI|${{ inputs.TEST_ACCOUNT }}|g' eas.json
-         sed -i 's|EXPO_PUBLIC_ANALYZE_IMAGE_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_ENDPOINT }}|g' eas.json
-         sed -i 's|EXPO_PUBLIC_ANALYZE_VIDEO_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_ENDPOINT }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_ANALYZE_IMAGE_CONVERSATION_ENDPOINT_CI|${{ inputs.ANALYZE_IMAGE_CONVERSATION_ENDPOINT }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_ANALYZE_VIDEO_CONVERSATION_ENDPOINT_CI|${{ inputs.ANALYZE_VIDEO_CONVERSATION_ENDPOINT }}|g' eas.json
+         sed -i 's|EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT_CI|${{ inputs.CONTINUE_CONVERSATION_ENDPOINT }}|g' eas.json
+
          fi
       shell: bash
 

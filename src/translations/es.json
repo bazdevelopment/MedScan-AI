@@ -36,6 +36,7 @@
     "and": "y",
     "saveDiscount": "AHORRA",
     "restorePurchase": "Restaurar compra",
+    "medicalDisclaimer": "Descargo de responsabilidad médica",
     "copyText": {
       "loading": "Copiando...",
       "copied": "¡Copiado!",
@@ -190,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "Generar informe"
+      },
+      "disclaimerScreen": {
+        "heading": "Descargo de responsabilidad médica importante",
+        "subheading": "MedScan AI está diseñado para profesionales de radiología, expertos en salud, estudiantes de medicina y entusiastas",
+        "consentAgreement": "He leído y acepto el descargo de responsabilidad.",
+        "firstConsent": "MedScan AI no proporciona datos médicos, mediciones de salud, diagnósticos o consejos de tratamiento, ni está destinado a tales fines. Los usuarios de MedScan AI deben aplicar su criterio clínico y verificar la información de fuentes autorizadas antes de tomar cualquier decisión clínica.",
+        "secondConsent": "MedScan AI no es una herramienta de diagnóstico, una plataforma de tratamiento ni un reemplazo del consejo médico profesional. Ofrece información generada por IA para ayudar a los profesionales de la salud a acceder a conocimientos médicos y analizar imágenes y documentos médicos. MedScan AI es una aplicación informativa y educativa impulsada por IA diseñada para apoyar a profesionales de la salud licenciados.",
+        "thirdConsent": "MedScan AI no está diseñado para uso de pacientes. No proporciona diagnósticos médicos directos, recomendaciones de tratamiento o funcionalidades de gestión de pacientes.",
+        "fourthConsent": "MedScan AI no está clasificado como un dispositivo médico y no afirma tener aprobación regulatoria. Está destinado a fines educativos e informativos para complementar la experiencia profesional.",
+        "fifthConsent": "MedScan AI no recopila, almacena ni procesa datos personales o de pacientes. Todas las interacciones del usuario son confidenciales y están limitadas al alcance de la aplicación."
       }
     }
   },
@@ -209,8 +220,8 @@
         "message": "¡Este es el resultado del informe!"
       },
       "uploadFile": {
-        "title": "Por favor, sube tu archivo de imágenes médicas",
-        "size": "Tamaño máximo del archivo: 10MB",
+        "title": "Por favor, suba un archivo de imágenes médicas",
+        "size": "Máx: {{imageLimit}}MB (imágenes), {{videoLimit}}MB (videos)",
         "location": "Seleccionar desde Galería o Archivos",
         "fileType": "PNG, JPG, PDF o MP4",
         "openCamera": "Abrir cámara y tomar foto",

@@ -149,6 +149,25 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
+          name="medical-disclaimer"
+          options={{
+            gestureEnabled: false,
+            headerTitle: () => null,
+            animation: 'fade',
+            animationDuration: 500,
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('general.medicalDisclaimer')}
+                className="bg-white"
+                titlePosition="center"
+                onGoBack={() => router.navigate('/anonymous-login')}
+                backIconColor={isDark ? colors.white : colors.blackBeauty}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
           name="new-app-version"
           options={{
             headerShown: false,

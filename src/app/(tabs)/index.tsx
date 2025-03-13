@@ -139,6 +139,21 @@ export default function Home() {
         scrollViewRef={scrollViewRef}
       >
         <View className="mt-16">
+          {/* <View className="mt-2 px-4">
+            <Button
+              label="Medical Diclaimer"
+              className="w-full justify-start bg-primary-100"
+              icon={<WarningIcon />}
+              textClassName="justify-start text-black ml-4"
+              iconPosition="left"
+            />
+            <Icon
+              containerStyle="absolute w-[40px] h-[40px]  items-center justify-center rounded-xl right-4 top-1"
+              icon={<EyeIcon />}
+              onPress={() => router.navigate('/medical-disclaimer')}
+              size={25}
+            />
+          </View> */}
           {!isUserSubscriptionActive && (
             <FreeTierStatus
               className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}

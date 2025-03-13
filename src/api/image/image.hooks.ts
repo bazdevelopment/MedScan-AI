@@ -68,7 +68,7 @@ export const useAnalyzeVideo = ({
         interpretationResult: data.interpretationResult,
         promptMessage: data.promptMessage,
         createdDate: data.createdAt,
-        // conversationId: data.conversationId,
+        conversationId: data.conversationId,
       });
       logEvent('Medical video has been analyzed successfully');
     },

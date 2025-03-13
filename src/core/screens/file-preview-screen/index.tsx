@@ -139,10 +139,10 @@ const FilePreviewScreen = ({
         createdDate,
         conversationId,
         mediaSource,
+        mimeType: collectedData.fileMimeType,
       },
     });
     setIsModalVisible(false);
-    // onDecrementScans({ language });
     wait(1000).then(() => resetFlow());
   };
 

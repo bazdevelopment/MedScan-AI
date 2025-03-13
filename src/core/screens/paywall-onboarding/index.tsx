@@ -365,7 +365,6 @@ const updateUserAndNavigate = async ({
         isOnboarded: true,
       }));
       router.navigate('/(tabs)');
-      console.log('aiic');
       setIsFirstTime(false);
       logEvent(
         `User ${userId} has been onboarded successfully and selected ${collectedData.selectedPackage} plan and is redirected to home screen`,

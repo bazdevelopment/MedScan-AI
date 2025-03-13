@@ -1,0 +1,28 @@
+[debug] [2025-03-11T16:59:19.910Z] ----------------------------------------------------------------------
+[debug] [2025-03-11T16:59:19.911Z] Command:       /Users/mbaziluc/.nvm/versions/node/v18.15.0/bin/node /Users/mbaziluc/Library/pnpm/global/5/node_modules/firebase-tools/lib/bin/firebase.js deploy --only functions:analyzeVideoConversation
+[debug] [2025-03-11T16:59:19.911Z] CLI Version:   13.22.1
+[debug] [2025-03-11T16:59:19.911Z] Platform:      darwin
+[debug] [2025-03-11T16:59:19.912Z] Node Version:  v18.15.0
+[debug] [2025-03-11T16:59:19.912Z] Time:          Tue Mar 11 2025 18:59:19 GMT+0200 (Eastern European Standard Time)
+[debug] [2025-03-11T16:59:19.913Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-11T16:59:19.948Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"react-native"}
+[debug] [2025-03-11T16:59:19.951Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-11T16:59:19.951Z] > authorizing via signed-in user (bazilucm@gmail.com)
+[debug] [2025-03-11T16:59:19.951Z] [iam] checking project x-ray-analizer-dev for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-03-11T16:59:19.952Z] Checked if tokens are valid: false, expires at: 1741708582091
+[debug] [2025-03-11T16:59:19.952Z] Checked if tokens are valid: false, expires at: 1741708582091
+[debug] [2025-03-11T16:59:19.952Z] > refreshing access token with scopes: []
+[debug] [2025-03-11T16:59:19.953Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-03-11T16:59:19.953Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-11T16:59:20.131Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-03-11T16:59:20.131Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-11T16:59:20.163Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/x-ray-analizer-dev:testIamPermissions [none]
+[debug] [2025-03-11T16:59:20.163Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/x-ray-analizer-dev:testIamPermissions x-goog-quota-user=projects/x-ray-analizer-dev
+[debug] [2025-03-11T16:59:20.163Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/x-ray-analizer-dev:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-03-11T16:59:20.440Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/x-ray-analizer-dev:testIamPermissions 200
+[debug] [2025-03-11T16:59:20.440Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/x-ray-analizer-dev:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-03-11T16:59:20.440Z] Checked if tokens are valid: true, expires at: 1741715959131
+[debug] [2025-03-11T16:59:20.440Z] Checked if tokens are valid: true, expires at: 1741715959131
+[debug] [2025-03-11T16:59:20.440Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/x-ray-analizer-dev/serviceAccounts/x-ray-analizer-dev@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-03-11T16:59:20.440Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/x-ray-analizer-dev/serviceAccounts/x-ray-analizer-dev@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}

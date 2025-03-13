@@ -36,6 +36,7 @@
     "and": "și",
     "saveDiscount": "Economisește",
     "restorePurchase": "Restaurează achiziția",
+    "medicalDisclaimer": "Avertisment medical",
     "copyText": {
       "loading": "Se copiază...",
       "copied": "Copiat!",
@@ -190,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "Generează raport"
+      },
+      "disclaimerScreen": {
+        "heading": "Informații importante",
+        "subheading": "MedScan AI este conceput pentru profesioniști în radiologie, experți în sănătate, studenți la medicină și entuziaști",
+        "consentAgreement": "Am citit și sunt de acord cu avertismentul.",
+        "firstConsent": "MedScan AI nu oferă date medicale, măsurători de sănătate, diagnostice sau sfaturi de tratament și nu este destinat unor astfel de scopuri. Utilizatorii MedScan AI trebuie să-și aplice judecata clinică și să verifice informațiile din surse autorizate înainte de a lua orice decizie clinică.",
+        "secondConsent": "MedScan AI nu este un instrument de diagnostic, o platformă de tratament sau un înlocuitor pentru sfaturile medicale profesionale. Oferă informații generate de IA pentru a ajuta profesioniștii din domeniul sănătății să acceseze cunoștințe medicale și să analizeze imagini și documente medicale. MedScan AI este o aplicație informațională și educațională bazată pe IA, concepută pentru a sprijini profesioniștii din domeniul sănătății autorizați.",
+        "thirdConsent": "MedScan AI nu este conceput pentru utilizarea pacienților. Nu oferă diagnostice medicale directe, recomandări de tratament sau funcționalități de gestionare a pacienților.",
+        "fourthConsent": "MedScan AI nu este clasificat ca dispozitiv medical și nu pretinde aprobări reglementare. Este destinat scopurilor educaționale și informaționale pentru a completa expertiza profesională.",
+        "fifthConsent": "MedScan AI nu colectează, stochează sau procesează date personale ale pacienților. Toate interacțiunile utilizatorilor sunt confidențiale și limitate la domeniul de aplicare al aplicației."
       }
     }
   },
@@ -209,8 +220,8 @@
         "message": "Acesta este rezultatul raportului!"
       },
       "uploadFile": {
-        "title": "Te rugăm să încarci fișierul tău de imagistică medicală",
-        "size": "Dimensiunea maximă a fișierului: 10MB",
+        "title": "Vă rugăm să încărcați un fișier de imagistică medicală",
+        "size": "Max: {{imageLimit}}MB (imagini), {{videoLimit}}MB (videoclipuri)",
         "location": "Selectează din Galerie sau Fișiere",
         "fileType": "PNG, JPG, PDF sau MP4",
         "openCamera": "Deschide Camera și Fă o Fotografie",

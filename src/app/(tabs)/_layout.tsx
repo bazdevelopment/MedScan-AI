@@ -19,6 +19,7 @@ import { TabBarIcon } from '@/components/tab-bar-icon';
 import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { useHaptic } from '@/core/hooks/use-haptics';
+import { useMedicalDisclaimerApproval } from '@/core/hooks/use-medical-disclaimer-approval';
 import { usePushNotificationToken } from '@/core/hooks/use-push-notification-token';
 import usePushNotifications from '@/core/hooks/use-push-notifications';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
@@ -37,6 +38,7 @@ export default function TabLayout() {
   const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
 
   const [isFirstTime] = useIsFirstTime();
+  const [isMedicalDisclaimerApproved] = useMedicalDisclaimerApproval();
   const { language: actualLocalLanguage } = useSelectedLanguage();
   const userInfoLanguage = userInfo?.preferredLanguage ?? 'en';
   const { mutate: onUpdatePreferredLanguage } = useUserPreferredLanguage();
@@ -87,7 +89,9 @@ export default function TabLayout() {
   }, []);
 
   useQuickActionRouting();
+  // const [, setIsMedicalDisclaimerApproved] = useMedicalDisclaimerApproval();
 
+  // setIsMedicalDisclaimerApproved(false);
   const { MINIMUM_VERSION_ALLOWED } = useRemoteConfig();
 
   checkForAppUpdate(MINIMUM_VERSION_ALLOWED);
@@ -115,6 +119,13 @@ export default function TabLayout() {
   if (!isFirstTime && !isLoggedIn && !userInfo) {
     logEvent(`User ${userInfo?.userId} is redirected to login screen`);
     return <Redirect href="/anonymous-login" />;
+  }
+
+  if (!isMedicalDisclaimerApproved) {
+    logEvent(
+      `User ${userInfo?.userId} is redirected to medical disclaimer screen`,
+    );
+    return <Redirect href="/medical-disclaimer" />;
   }
 
   //todo: add  this check later when the users are permanent(registered)

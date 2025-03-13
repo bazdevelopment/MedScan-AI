@@ -36,6 +36,7 @@
     "and": "および",
     "saveDiscount": "お得",
     "restorePurchase": "購入を復元",
+    "medicalDisclaimer": "医療免責事項",
     "copyText": {
       "loading": "コピー中...",
       "copied": "コピーしました！",
@@ -190,6 +191,16 @@
       },
       "filePreviewScreen": {
         "generateReportButton": "レポートを生成"
+      },
+      "disclaimerScreen": {
+        "heading": "重要な医療免責事項",
+        "subheading": "MedScan AIは、放射線科専門家、医療専門家、医学生、および愛好家向けに設計されています",
+        "consentAgreement": "免責事項を読み、同意します。",
+        "firstConsent": "MedScan AIは、医療データ、健康測定、診断、または治療アドバイスを提供するものではなく、そのような目的でもありません。MedScan AIのユーザーは、臨床的判断を適用し、信頼できる情報源から情報を確認してから、臨床的な決定を行う必要があります。",
+        "secondConsent": "MedScan AIは、診断ツール、治療プラットフォーム、または専門的な医療アドバイスの代わりにはなりません。医療専門家が医学的知識にアクセスし、医療画像や文書を分析するのを支援するために、AI生成の洞察を提供します。MedScan AIは、ライセンスを持つ医療専門家をサポートするために設計されたAI駆動の情報および教育アプリです。",
+        "thirdConsent": "MedScan AIは、患者の使用を目的としていません。直接的な医療診断、治療推奨、または患者管理機能を提供しません。",
+        "fourthConsent": "MedScan AIは医療機器として分類されておらず、規制当局の承認を主張していません。専門知識を補完するための教育および情報提供を目的としています。",
+        "fifthConsent": "MedScan AIは、個人または患者のデータを収集、保存、または処理しません。すべてのユーザーインタラクションは機密であり、アプリの範囲に限定されています。"
       }
     }
   },
@@ -210,7 +221,7 @@
       },
       "uploadFile": {
         "title": "医療画像ファイルをアップロードしてください",
-        "size": "最大ファイルサイズ：10MB",
+        "size": "最大: {{imageLimit}}MB (画像), {{videoLimit}}MB (動画)",
         "location": "ギャラリーまたはファイルから選択",
         "fileType": "PNG、JPG、PDF、またはMP4",
         "openCamera": "カメラを開いて写真を撮る",

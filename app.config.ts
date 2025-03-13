@@ -83,9 +83,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-image-picker',
       {
         photosPermission:
-          'Allow $(PRODUCT_NAME) to access your photo library to upload images or videos for analysis. The data will be processed by the app’s AI tool to provide you with insights and feedback for informational purposes.',
+          'Allow $(PRODUCT_NAME) to access your photo library to upload media for AI analysis, providing insights and feedback for informational purposes.',
         cameraPermission:
-          'Allow $(PRODUCT_NAME) to access your camera to capture images for analysis. The data will be processed by the app’s AI tool to provide you with insights and feedback for informational purposes.',
+          'Allow $(PRODUCT_NAME) to access your camera to capture images for AI-powered analysis, providing insights and feedback for informational purposes.',
         //'Disables the microphone permission',
         microphonePermission: false,
       },

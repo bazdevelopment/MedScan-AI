@@ -27,10 +27,10 @@ const compareVersions = (
   minVersion: string,
   currentVersion: string,
 ): boolean => {
-  const minParts = minVersion.split('.').map(Number);
-  const currentParts = currentVersion.split('.').map(Number);
+  const minParts = minVersion?.split('.')?.map(Number);
+  const currentParts = currentVersion?.split('.')?.map(Number);
 
-  for (let i = 0; i < Math.max(minParts.length, currentParts.length); i++) {
+  for (let i = 0; i < Math.max(minParts?.length, currentParts?.length); i++) {
     const min = minParts[i] || 0;
     const curr = currentParts[i] || 0;
     if (curr < min) return true;

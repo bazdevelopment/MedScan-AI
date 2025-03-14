@@ -39,7 +39,7 @@ export default function Onboarding() {
 
   const onSkip = () => {
     /**Navigate to the onboarding */
-    setCurrentScreenIndex(2);
+    setCurrentScreenIndex(1);
   };
 
   return (

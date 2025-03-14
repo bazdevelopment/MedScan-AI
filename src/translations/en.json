@@ -196,7 +196,7 @@
         "heading": "Important Medical Disclaimer",
         "subheading": "MedScan AI is designed for radiology professionals, healthcare experts, medical students, and enthusiasts",
         "consentAgreement": "I have read and consent to the disclaimer.",
-        "firstConsent": "MedScan AI does not provide medical data, health measurements, diagnoses, or treatment advice, nor is it intended for such purposes. Users of MedScan AI must apply their clinical judgment and verify information from authoritative sources before making any clinical decisions.",
+        "firstConsent": "MedScan AI does not provide health measurements, diagnoses, or treatment advice, nor is it intended for such purposes. Users of MedScan AI must apply their clinical judgment and verify information from authoritative sources before making any clinical decisions.",
         "secondConsent": "MedScan AI is not a diagnostic tool, treatment platform, or a replacement for professional medical advice. It offers AI-generated insights to assist healthcare professionals in accessing medical knowledge and analyzing medical images and documents. MedScan AI is an AI-driven informational and educational app designed more to support licensed healthcare professionals.",
         "thirdConsent": "MedScan AI is not designed for patient use. It does not provide direct medical diagnoses, treatment recommendations, or patient management functionalities.",
         "fourthConsent": "MedScan AI is not classified as a medical device and does not claim regulatory approval. It is intended for educational and informational purposes to complement professional expertise.",

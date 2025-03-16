@@ -242,14 +242,14 @@
       "heading": "放射線画像"
     },
     "recentReports": {
-      "heading": "最近のレポート",
-      "noReports": "まだレポートはありません！"
+      "heading": "最近のチャット",
+      "noReports": "表示するチャットはまだありません！"
     }
   },
   "reports": {
-    "tab": "レポート",
-    "noReportsAvailable": "この日付のレポートはありません",
-    "heading": "レポート"
+    "tab": "履歴",
+    "noReportsAvailable": "この日付のチャット履歴はありません",
+    "heading": "チャット履歴"
   },
   "settings": {
     "tab": "設定",

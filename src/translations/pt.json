@@ -244,14 +244,14 @@
       "heading": "Carrossel de Radiologia"
     },
     "recentReports": {
-      "heading": "Relatórios Recentes",
-      "noReports": "Nenhum relatório ainda!"
+      "heading": "Chats recentes",
+      "noReports": "Nenhum chat para mostrar ainda!"
     }
   },
   "reports": {
-    "tab": "Relatórios",
-    "noReportsAvailable": "Nenhum relatório disponível para esta data",
-    "heading": "Relatórios"
+    "tab": "Histórico",
+    "noReportsAvailable": "Nenhum histórico de chat disponível para esta data",
+    "heading": "Histórico de chat"
   },
   "settings": {
     "tab": "Configurações",

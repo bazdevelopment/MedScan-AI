@@ -242,14 +242,14 @@
       "heading": "放射影像集"
     },
     "recentReports": {
-      "heading": "最近报告",
-      "noReports": "暂无报告！"
+      "heading": "最近的聊天",
+      "noReports": "还没有聊天记录可显示！"
     }
   },
   "reports": {
-    "tab": "报告",
-    "noReportsAvailable": "该日期暂无报告",
-    "heading": "报告"
+    "tab": "历史记录",
+    "noReportsAvailable": "此日期没有可用的聊天记录",
+    "heading": "聊天记录"
   },
   "settings": {
     "tab": "设置",

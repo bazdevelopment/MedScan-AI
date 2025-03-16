@@ -244,14 +244,14 @@
       "heading": "Radiology Reel"
     },
     "recentReports": {
-      "heading": "Recent Reports",
-      "noReports": "No reports yet!"
+      "heading": "Recent Chats",
+      "noReports": "No chats to show yet!"
     }
   },
   "reports": {
-    "tab": "Reports",
-    "noReportsAvailable": "No reports available for this date",
-    "heading": "Reports"
+    "tab": "History",
+    "noReportsAvailable": "No chat history available for this date",
+    "heading": "Chat History"
   },
   "settings": {
     "tab": "Settings",

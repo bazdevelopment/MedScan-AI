@@ -242,14 +242,14 @@
       "heading": "Répertoire radiologique"
     },
     "recentReports": {
-      "heading": "Rapports récents",
-      "noReports": "Aucun rapport pour le moment !"
+      "heading": "Chats récents",
+      "noReports": "Aucun chat à afficher pour le moment !"
     }
   },
   "reports": {
-    "tab": "Rapports",
-    "noReportsAvailable": "Aucun rapport disponible pour cette date",
-    "heading": "Rapports"
+    "tab": "Historique",
+    "noReportsAvailable": "Aucun historique de chat disponible pour cette date",
+    "heading": "Historique de chat"
   },
   "settings": {
     "tab": "Paramètres",

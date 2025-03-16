@@ -242,14 +242,14 @@
       "heading": "방사선 이미지"
     },
     "recentReports": {
-      "heading": "최근 보고서",
-      "noReports": "아직 보고서가 없습니다!"
+      "heading": "최근 채팅",
+      "noReports": "아직 표시할 채팅이 없습니다!"
     }
   },
   "reports": {
-    "tab": "보고서",
-    "noReportsAvailable": "이 날짜의 보고서가 없습니다",
-    "heading": "보고서"
+    "tab": "기록",
+    "noReportsAvailable": "이 날짜에 대한 채팅 기록이 없습니다",
+    "heading": "채팅 기록"
   },
   "settings": {
     "tab": "설정",

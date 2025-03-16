@@ -16,7 +16,7 @@ const Welcome = () => {
       <SafeAreaView>
         <View className="items-center justify-center px-6 pb-32 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />
-          <Text className="my-10 text-center font-bold-nunito text-[32px] text-primary-900">
+          <Text className="my-10 text-center font-bold-nunito text-[30px] text-primary-900">
             {translate('rootLayout.screens.welcome.heading')}
           </Text>
 
@@ -24,7 +24,9 @@ const Welcome = () => {
             width={isVerySmallDevice ? 180 : 261}
             height={isVerySmallDevice ? 175 : 268}
           />
-          <View className={`mt-16 ${isLargeDevice ? 'w-[50%]' : 'w-full'}`}>
+          <View
+            className={`mt-16 ${isLargeDevice ? 'mt-20 w-[50%]' : 'w-full'}`}
+          >
             <Button
               label={translate('rootLayout.screens.welcome.startButton')}
               variant="default"

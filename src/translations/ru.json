@@ -242,14 +242,14 @@
       "heading": "Радиологическая лента"
     },
     "recentReports": {
-      "heading": "Недавние отчеты",
-      "noReports": "Пока нет отчетов!"
+      "heading": "Недавние чаты",
+      "noReports": "Пока нет чатов для отображения!"
     }
   },
   "reports": {
-    "tab": "Отчеты",
-    "noReportsAvailable": "Нет отчетов для этой даты",
-    "heading": "Отчеты"
+    "tab": "История",
+    "noReportsAvailable": "Нет истории чата за эту дату",
+    "heading": "История чата"
   },
   "settings": {
     "tab": "Настройки",

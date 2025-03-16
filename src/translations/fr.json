@@ -36,6 +36,7 @@
     "saveDiscount": "ÉCONOMISEZ",
     "restorePurchase": "Restaurer l'achat",
     "medicalDisclaimer": "Avertissement médical",
+    "conversationHistory": "Historique de la conversation",
     "and": "et",
     "copyText": {
       "loading": "Copie en cours...",
@@ -184,13 +185,13 @@
         "userInput": "Votre soumission",
         "medicalReport": "Rapport médical",
         "report": "Rapport médical généré par IA",
-        "reportName": "Nom du rapport"
+        "conversationName": "Nom de la conversation"
       },
       "verifyEmail": {
         "heading": "Vérifier l'e-mail"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Générer un rapport"
+        "generateReportButton": "Commencer l'analyse"
       },
       "disclaimerScreen": {
         "heading": "Avis médical important",
@@ -209,7 +210,8 @@
     "subtitle": "Envoyez plutôt un commentaire"
   },
   "pdfPreview": {
-    "noEditorInstalled": "Pour prévisualiser le PDF, assurez-vous d'avoir un lecteur PDF installé, comme Adobe Acrobat Reader ou Google PDF Viewer"
+    "noEditorInstalled": "Pour prévisualiser le PDF, assurez-vous d'avoir un lecteur PDF installé, comme Adobe Acrobat Reader ou Google PDF Viewer",
+    "conversationTitlePdf": "Conversation avec Aria, votre assistant IA"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "Quelle est la raison ?",
-      "unnamedReport": "Rapport sans nom",
+      "unnamedConversation": "Sans titre",
       "reportTitlePlaceholder": "Ajouter un titre"
     },
     "WeekBlock": {

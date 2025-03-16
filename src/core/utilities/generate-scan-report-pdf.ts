@@ -2,8 +2,6 @@
 
 import { Image, Platform } from 'react-native';
 
-import { colors } from '@/ui';
-
 import { translate } from '../i18n';
 
 const getAndroidReleaseImageURI = (assetName: string) =>
@@ -18,8 +16,8 @@ interface IGenerateScanReportPdf {
 
 export const generateScanReportPdf = ({
   createdAt,
-  interpretation,
-  promptMessage,
+  messages,
+  // promptMessage,
   generatedAt,
 }: IGenerateScanReportPdf) => {
   const logo = Platform.select({
@@ -27,10 +25,30 @@ export const generateScanReportPdf = ({
     android: getAndroidReleaseImageURI('icon_transparent.png'),
   });
 
-  const medicalFrame = Platform.select({
-    ios: Image.resolveAssetSource(require('assets/medical_frame.png')).uri,
-    android: getAndroidReleaseImageURI('medical_frame.png'),
-  });
+  // const medicalFrame = Platform.select({
+  //   ios: Image.resolveAssetSource(require('assets/medical_frame.png')).uri,
+  //   android: getAndroidReleaseImageURI('medical_frame.png'),
+  // });
+
+  // Function to format chat messages
+  const formatChatMessages = (messages: any[]) => {
+    return messages
+      .map((message) => {
+        const isUser = message.role === 'user';
+        const bubbleStyle = isUser
+          ? 'background-color: #7982FD; color:white; border-radius: 16px; padding: 12px; margin-left: auto; max-width: 80%; border-bottom-right-radius: 0;'
+          : 'background-color: #F3F4F6; color: black; border-radius: 16px; padding: 12px; margin-right: auto; max-width: 80%; border-bottom-left-radius: 0;';
+
+        return `
+          <div style="display: flex; flex-direction: column; align-items: ${isUser ? 'flex-end' : 'flex-start'}; margin-bottom: 12px;">
+            <div style="${bubbleStyle}">
+              <p style="margin: 0; font-size: 14px; line-height: 1.5;">${message.content}</p>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+  };
 
   return `
    <!DOCTYPE html>
@@ -46,36 +64,37 @@ export const generateScanReportPdf = ({
             padding: 20px;
             display: flex;
             justify-content: center;
+            background-color: #F9FAFB;
         }
         .container {
             background: white;
             padding: 40px;
-            border:1px solid ${colors.lightGray};
-            border-radius:30px;
-          
+            border: 1px solid #E5E7EB;
+            border-radius: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .header {
             text-align: center;
-            display:flex;
-            flex-direction:row;
-            justify-content:center;
-          align-items:center;
-            gap:10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        .branding-text{
-        display:flex;
-        flex-direction:column;
-        margin-top:-5px;
-        margin-left:5px;
+        .branding-text {
+            display: flex;
+            flex-direction: column;
+            margin-top: -5px;
+            margin-left: 5px;
         }
-
-        .background-overlay{
-        position:absolute;
-        left:25%;
-        opacity:0.7;
-
+        .background-overlay {
+            position: absolute;
+            left: 25%;
+            opacity: 0.7;
         }
-
         .logo {
             width: 70px;
             height: 70px;
@@ -90,13 +109,13 @@ export const generateScanReportPdf = ({
             font-size: 14px;
             color: #666;
             margin-bottom: 20px;
-            margin-top:25px;
+            margin-top: 25px;
         }
         .section-title {
             font-size: 16px;
             font-weight: bold;
             color: #7982FD;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         .content {
             font-size: 14px;
@@ -111,62 +130,62 @@ export const generateScanReportPdf = ({
             padding-top: 10px;
             text-align: center;
         }
+        .chat-container {
+            margin-top: 20px;
+        }
+        .user-message {
+            background-color: #7982FD;
+            color: white;
+            border-radius: 16px;
+            padding: 12px;
+            margin-left: auto;
+            max-width: 80%;
+            border-bottom-right-radius: 0;
+        }
+        .assistant-message {
+            background-color: #F3F4F6;
+            color: black;
+            border-radius: 16px;
+            padding: 12px;
+            margin-right: auto;
+            max-width: 80%;
+            border-bottom-left-radius: 0;
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
         <!-- Header -->
         <div class="header">
             <img src=${logo} alt="MedScan AI Logo" class="logo">
             <div class="branding-text">
-            <p style="font-size:25px; line-height:0px; font-weight:800; letter-spacing:1px">MedScan AI</p>
-             </div>
+                <p style="font-size: 25px; line-height: 0px; font-weight: 800; letter-spacing: 1px;">MedScan AI</p>
+            </div>
         </div>
-<p style="text-align: center; font-size:24px; font-weight:700; display:none">${translate('rootLayout.screens.generateReportScreen.medicalReport')}</p> 
-
 
         <!-- Info -->
         <div class="info">
             <div><strong>${translate('general.createdAt')}:</strong> ${generatedAt}</div>
         </div>
 
-        <!-- Analysis Prompt -->
-        <div>
-            <p class="section-title">${translate('rootLayout.screens.generateReportScreen.userInput')}</p>
-            <p class="content">${promptMessage || '-'}</p>
-        </div>
-
+    
         <!-- AI Interpretation -->
-        <div style="position:relative">
-            <img class="background-overlay" src=${medicalFrame} />
-            <p class="section-title">${translate(
-              'rootLayout.screens.generateReportScreen.report',
-            )}</p>
-            <p class="content">
-              ${interpretation}
-                </p>
+        <div style="position: relative;">
+            <p class="section-title">${translate('rootLayout.screens.generateReportScreen.report')}</p>
+            <div class="chat-container">
+                ${formatChatMessages(messages)}
 
+            </div>
         </div>
 
         <!-- Footer -->
-         <footer style="
-          text-align: center;
-          padding: 20px;
-          color: #64748b;
-          font-size: 12px;
-          border-top: 1px solid #e2e8f0;
-          margin-top: 100px;
-          
-        ">
-          <p style="margin: 0;">Generated by MedScan AI • ${createdAt}</p>
-          <p style="margin: 0;">The AI-generated results from MedScan AI are intended for informational purposes only and should not be used as a substitute for professional medical advice. Always seek guidance from a qualified healthcare professional for diagnosis and treatment.
-</p>
-
+        <footer style="text-align: center; padding: 20px; color: #64748B; font-size: 12px; border-top: 1px solid #E2E8F0; margin-top: 100px;">
+            <p style="margin: 0;">Generated by MedScan AI • ${createdAt}</p>
+            <p style="margin: 0;">The AI-generated results from MedScan AI are intended for informational purposes only and should not be used as a substitute for professional medical advice. Always seek guidance from a qualified healthcare professional for diagnosis and treatment.</p>
         </footer>
-
     </div>
 </body>
 </html>
   `;
 };
+// <img class="background-overlay" src=${medicalFrame} />

@@ -37,6 +37,7 @@
     "saveDiscount": "Economisește",
     "restorePurchase": "Restaurează achiziția",
     "medicalDisclaimer": "Avertisment medical",
+    "conversationHistory": "Istoricul conversației",
     "copyText": {
       "loading": "Se copiază...",
       "copied": "Copiat!",
@@ -184,13 +185,13 @@
         "userInput": "Contribuția Ta",
         "medicalReport": "Raport Medical",
         "report": "Raport Medical Generat de AI",
-        "reportName": "Numele raportului"
+        "conversationName": "Numele conversației"
       },
       "verifyEmail": {
         "heading": "Verifică Email"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Generează raport"
+        "generateReportButton": "Începe analiza"
       },
       "disclaimerScreen": {
         "heading": "Informații importante",
@@ -209,7 +210,8 @@
     "subtitle": "Trimite un feedback în schimb"
   },
   "pdfPreview": {
-    "noEditorInstalled": "Pentru a previzualiza PDF-ul, asigură-te că ai un vizualizator PDF instalat, cum ar fi Adobe Acrobat Reader sau Google PDF Viewer"
+    "noEditorInstalled": "Pentru a previzualiza PDF-ul, asigură-te că ai un vizualizator PDF instalat, cum ar fi Adobe Acrobat Reader sau Google PDF Viewer",
+    "conversationTitlePdf": "Conversație cu Aria, asistentul tău AI"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "Care este motivul?",
-      "unnamedReport": "Raport fără nume",
+      "unnamedConversation": "Fără titlu",
       "reportTitlePlaceholder": "Adaugă un titlu"
     },
     "WeekBlock": {

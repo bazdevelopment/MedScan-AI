@@ -2,6 +2,7 @@ import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 
+import { translate } from '@/core';
 import { usePdfConverter } from '@/core/hooks/use-pdf-converter';
 import { useSharePdfContent } from '@/core/hooks/use-share-content';
 import { colors } from '@/ui';
@@ -34,7 +35,9 @@ const SharePdfActionButtons = ({
         onPress={() =>
           shareContent({
             content: html,
-            title: heading,
+            title:
+              heading ||
+              translate('rootLayout.screens.generateReportScreen.report'),
             date,
           })
         }

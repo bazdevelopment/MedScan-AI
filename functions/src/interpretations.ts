@@ -212,7 +212,14 @@ export const deleteScanInterpretationById = async (
 
     // Firestore collection where your records are stored
     const collectionName = 'interpretations'; // Replace with your actual collection name
+    const interpretationResult = await db
+      .collection(collectionName)
+      .doc(documentId)
+      .get();
+    const conversationId = interpretationResult?.data()?.conversationId;
 
+    // Delete the conversation
+    await db.collection('conversations').doc(conversationId).delete();
     // Delete the document with the provided documentId
     await db.collection(collectionName).doc(documentId).delete();
 
@@ -263,7 +270,8 @@ export const getInterpretationByDocumentId = async (
 
     // Get the document by ID
     const doc = await db.collection(collectionName).doc(documentId).get();
-
+    const interpretationResult = doc.data();
+    const conversationId = interpretationResult?.conversationId;
     if (!doc.exists) {
       throw new functions.https.HttpsError(
         'not-found',
@@ -271,12 +279,20 @@ export const getInterpretationByDocumentId = async (
       );
     }
 
+    const conversationResult = await db
+      .collection('conversations')
+      .doc(conversationId)
+      .get();
+
+    const conversationMessages = conversationResult?.data()?.messages;
+
     // Return the document data
     return {
       success: true,
       message: t.getInterpretationByDocumentId.success,
       record: {
-        ...doc.data(),
+        ...interpretationResult,
+        conversationMessages,
         createdAt: doc.data()?.createdAt.toDate().toISOString(),
       },
     };
@@ -343,17 +359,47 @@ export const getRecentInterpretationHandler = async (
       };
     }
 
+    // // Transform the documents data
+    // const records = querySnapshot.docs.map((doc) => {
+    //   const data = doc.data();
+    //   return {
+    //     ...data,
+    //     id: doc.id,
+    //     docId: doc.id,
+    //     createdAt: data.createdAt.toDate().toISOString(),
+    //     interpretation: data.interpretationResult,
+    //     conversationMessages: data.conversationMessages,
+    //   };
+    // });
+
     // Transform the documents data
-    const records = querySnapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        ...data,
-        id: doc.id,
-        docId: doc.id,
-        createdAt: data.createdAt.toDate().toISOString(),
-        interpretation: data.interpretationResult,
-      };
-    });
+    const records = await Promise.all(
+      querySnapshot.docs.map(async (doc) => {
+        const data = doc.data();
+
+        // Fetch conversation messages from the conversations collection
+        const conversationDoc = await db
+          .collection('conversations')
+          .doc(data.conversationId)
+          .get();
+
+        const conversationData = conversationDoc.exists
+          ? conversationDoc.data()
+          : null;
+        const conversationMessages = conversationData
+          ? conversationData.messages
+          : [];
+
+        return {
+          ...data,
+          id: doc.id,
+          docId: doc.id,
+          createdAt: data.createdAt.toDate().toISOString(),
+          interpretation: data.interpretationResult,
+          conversationMessages, // Add conversation messages to the record
+        };
+      }),
+    );
 
     return {
       message: t.getRecentInterpretation.success,

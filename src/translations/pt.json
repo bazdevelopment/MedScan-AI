@@ -37,6 +37,7 @@
     "saveDiscount": "ECONOMIZE",
     "restorePurchase": "Restaurar compra",
     "medicalDisclaimer": "Aviso de Responsabilidade Médica",
+    "conversationHistory": "Histórico de conversa",
     "copyText": {
       "loading": "Copiando...",
       "copied": "Copiado!",
@@ -184,13 +185,13 @@
         "userInput": "Sua Submissão",
         "medicalReport": "Relatório Médico",
         "report": "Relatório Médico Gerado por IA",
-        "reportName": "Nome do relatório"
+        "conversationName": "Nome da conversa"
       },
       "verifyEmail": {
         "heading": "Verificar e-mail"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Gerar relatório"
+        "generateReportButton": "Iniciar análise"
       },
       "disclaimerScreen": {
         "heading": "Aviso Médico Importante",
@@ -210,7 +211,8 @@
   },
 
   "pdfPreview": {
-    "noEditorInstalled": "Para visualizar o PDF, certifique-se de ter um visualizador de PDF instalado, como Adobe Acrobat Reader ou Google PDF Viewer."
+    "noEditorInstalled": "Para visualizar o PDF, certifique-se de ter um visualizador de PDF instalado, como Adobe Acrobat Reader ou Google PDF Viewer.",
+    "conversationTitlePdf": "Conversa com Aria, sua assistente de IA"
   },
 
   "flows": {
@@ -242,14 +244,14 @@
       "heading": "Carrossel de Radiologia"
     },
     "recentReports": {
-      "heading": "Relatórios Recentes",
-      "noReports": "Nenhum relatório ainda!"
+      "heading": "Chats recentes",
+      "noReports": "Nenhum chat para mostrar ainda!"
     }
   },
   "reports": {
-    "tab": "Relatórios",
-    "noReportsAvailable": "Nenhum relatório disponível para esta data",
-    "heading": "Relatórios"
+    "tab": "Histórico",
+    "noReportsAvailable": "Nenhum histórico de chat disponível para esta data",
+    "heading": "Histórico de chat"
   },
   "settings": {
     "tab": "Configurações",
@@ -303,7 +305,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "Qual é o motivo?",
-      "unnamedReport": "Relatório sem nome",
+      "unnamedConversation": "Sem título",
       "reportTitlePlaceholder": "Adicionar um título"
     },
     "WeekBlock": {

@@ -9,13 +9,14 @@ import { Button, SafeAreaView, Text } from '@/ui';
 import { WelcomeIllustration } from '@/ui/assets/illustrations';
 
 const Welcome = () => {
-  const { isVerySmallDevice } = getDeviceSizeCategory();
+  const { isVerySmallDevice, isLargeDevice } = getDeviceSizeCategory();
+
   return (
     <ScrollView contentContainerClassName="bg-primary-50 dark:bg-blackEerie flex-1">
       <SafeAreaView>
         <View className="items-center justify-center px-6 pb-32 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />
-          <Text className="my-10 text-center font-bold-nunito text-[32px] text-primary-900">
+          <Text className="my-10 text-center font-bold-nunito text-[30px] text-primary-900">
             {translate('rootLayout.screens.welcome.heading')}
           </Text>
 
@@ -23,12 +24,14 @@ const Welcome = () => {
             width={isVerySmallDevice ? 180 : 261}
             height={isVerySmallDevice ? 175 : 268}
           />
-          <View className="mt-16 w-full">
+          <View
+            className={`mt-16 ${isLargeDevice ? 'mt-20 w-[50%]' : 'w-full'}`}
+          >
             <Button
               label={translate('rootLayout.screens.welcome.startButton')}
               variant="default"
-              className="h-[55px] w-full rounded-xl bg-primary-900 pl-5 dark:bg-primary-900"
-              textClassName="font-semibold-nunito text-lg dark:text-white"
+              className="h-[55px] rounded-xl bg-primary-900 pl-5 dark:bg-primary-900"
+              textClassName="font-semibold-nunito text-lg dark:text-white "
               iconPosition="left"
               onPress={() => router.navigate('/anonymous-login')}
             />

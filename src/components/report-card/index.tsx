@@ -19,7 +19,7 @@ const ReportCard = ({ date, title, description, score }: IReportCard) => {
         {dayjs(date).locale(language).format('MMMM D, YYYY')}
       </Text>
       <Text className="mt-2 font-primary-nunito text-xl">
-        {title || translate('components.ScanReportCard.unnamedReport')}
+        {title || translate('components.ScanReportCard.unnamedConversation')}
       </Text>
       <Text className="mt-1 text-sm" numberOfLines={2}>
         {description}

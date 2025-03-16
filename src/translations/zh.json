@@ -37,6 +37,7 @@
     "saveDiscount": "节省",
     "restorePurchase": "恢复购买",
     "medicalDisclaimer": "医学免责声明",
+    "conversationHistory": "对话历史",
     "copyText": {
       "loading": "正在复制...",
       "copied": "已复制！",
@@ -184,13 +185,13 @@
         "userInput": "您的提交",
         "medicalReport": "医疗报告",
         "report": "AI生成的医疗报告",
-        "reportName": "报告名称"
+        "conversationName": "对话名称"
       },
       "verifyEmail": {
         "heading": "验证邮箱"
       },
       "filePreviewScreen": {
-        "generateReportButton": "生成报告"
+        "generateReportButton": "开始分析"
       },
       "disclaimerScreen": {
         "heading": "重要医学免责声明",
@@ -209,7 +210,8 @@
     "subtitle": "不如给我们反馈"
   },
   "pdfPreview": {
-    "noEditorInstalled": "要预览 PDF，请确保已安装 PDF 查看器，例如 Adobe Acrobat Reader 或 Google PDF Viewer。"
+    "noEditorInstalled": "要预览 PDF，请确保已安装 PDF 查看器，例如 Adobe Acrobat Reader 或 Google PDF Viewer。",
+    "conversationTitlePdf": "与Aria的对话，您的AI助手"
   },
   "flows": {
     "createReport": {
@@ -240,14 +242,14 @@
       "heading": "放射影像集"
     },
     "recentReports": {
-      "heading": "最近报告",
-      "noReports": "暂无报告！"
+      "heading": "最近的聊天",
+      "noReports": "还没有聊天记录可显示！"
     }
   },
   "reports": {
-    "tab": "报告",
-    "noReportsAvailable": "该日期暂无报告",
-    "heading": "报告"
+    "tab": "历史记录",
+    "noReportsAvailable": "此日期没有可用的聊天记录",
+    "heading": "聊天记录"
   },
   "settings": {
     "tab": "设置",
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "原因是什么？",
-      "unnamedReport": "未命名报告",
+      "unnamedConversation": "未命名",
       "reportTitlePlaceholder": "添加标题"
     },
     "WeekBlock": {

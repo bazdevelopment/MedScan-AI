@@ -37,6 +37,7 @@
     "saveDiscount": "절약",
     "restorePurchase": "구매 복원",
     "medicalDisclaimer": "의학적 면책 조항",
+    "conversationHistory": "대화 기록",
     "copyText": {
       "loading": "복사 중...",
       "copied": "복사되었습니다!",
@@ -184,13 +185,13 @@
         "userInput": "귀하의 제출 내용",
         "medicalReport": "의료 보고서",
         "report": "AI 생성 의료 보고서",
-        "reportName": "보고서 이름"
+        "conversationName": "대화 이름"
       },
       "verifyEmail": {
         "heading": "이메일 확인"
       },
       "filePreviewScreen": {
-        "generateReportButton": "보고서 생성"
+        "generateReportButton": "분석 시작"
       },
       "disclaimerScreen": {
         "heading": "중요한 의학적 면책 조항",
@@ -209,7 +210,8 @@
     "subtitle": "대신 피드백을 보내주세요"
   },
   "pdfPreview": {
-    "noEditorInstalled": "PDF를 미리 보려면 Adobe Acrobat Reader 또는 Google PDF Viewer와 같은 PDF 뷰어가 설치되어 있는지 확인하세요."
+    "noEditorInstalled": "PDF를 미리 보려면 Adobe Acrobat Reader 또는 Google PDF Viewer와 같은 PDF 뷰어가 설치되어 있는지 확인하세요.",
+    "conversationTitlePdf": "Aria와의 대화, 당신의 AI 어시스턴트"
   },
   "flows": {
     "createReport": {
@@ -240,14 +242,14 @@
       "heading": "방사선 이미지"
     },
     "recentReports": {
-      "heading": "최근 보고서",
-      "noReports": "아직 보고서가 없습니다!"
+      "heading": "최근 채팅",
+      "noReports": "아직 표시할 채팅이 없습니다!"
     }
   },
   "reports": {
-    "tab": "보고서",
-    "noReportsAvailable": "이 날짜의 보고서가 없습니다",
-    "heading": "보고서"
+    "tab": "기록",
+    "noReportsAvailable": "이 날짜에 대한 채팅 기록이 없습니다",
+    "heading": "채팅 기록"
   },
   "settings": {
     "tab": "설정",
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "이유는 무엇인가요?",
-      "unnamedReport": "제목 없는 보고서",
+      "unnamedConversation": "제목 없음",
       "reportTitlePlaceholder": "제목 추가"
     },
     "WeekBlock": {

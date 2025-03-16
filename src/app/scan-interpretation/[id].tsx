@@ -1,4 +1,5 @@
 /* eslint-disable max-lines-per-function */
+import { FlashList } from '@shopify/flash-list';
 import dayjs from 'dayjs';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
@@ -13,6 +14,8 @@ import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { colors, Text } from '@/ui';
 import { CalendarIcon, DocumentIcon } from '@/ui/assets/icons';
 
+import { ChatBubble } from '../chat-screen';
+
 const ScanInterpretationDetailsScreen = () => {
   const { id: documentId } = useLocalSearchParams();
   const { language } = useSelectedLanguage();
@@ -21,6 +24,11 @@ const ScanInterpretationDetailsScreen = () => {
     documentId: documentId as string,
     language,
   })();
+
+  const messages =
+    data?.record?.conversationMessages.filter(
+      (msg) => !Array.isArray(msg.content),
+    ) || [];
 
   const isVideo = checkIsVideo(data?.record?.mimeType);
   if (isPending) {
@@ -78,25 +86,29 @@ const ScanInterpretationDetailsScreen = () => {
 
           <View className="p-4">
             <Text className="mb-1 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
-              {translate('rootLayout.screens.generateReportScreen.reportName')}
+              {translate(
+                'rootLayout.screens.generateReportScreen.conversationName',
+              )}
             </Text>
             <Text className="font-semibold-nunito text-base">
               {data?.record?.title ||
-                translate('components.ScanReportCard.unnamedReport')}
+                translate('components.ScanReportCard.unnamedConversation')}
             </Text>
           </View>
         </View>
 
         {/* Interpretation Section */}
-        <View className="mx-4 my-6 rounded-2xl bg-primary-100 dark:bg-blackBeauty">
+        <View className="mx-4 my-6 rounded-2xl bg-slate-100 dark:bg-blackBeauty">
           <View className="rounded-t-2xl bg-primary-900 p-4">
             <Text className="font-semibold-nunito text-base text-white">
-              {translate(
+              {/* Conversation with Aria */}
+              {translate('general.conversationHistory')}
+              {/* {translate(
                 'rootLayout.screens.generateReportScreen.medicalReport',
-              )}
+              )} */}
             </Text>
           </View>
-          <View className="p-4">
+          {/* <View className="p-4">
             <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
               {translate('rootLayout.screens.generateReportScreen.userInput')}
             </Text>
@@ -105,18 +117,29 @@ const ScanInterpretationDetailsScreen = () => {
                 {data.record.promptMessage || '-'}
               </Text>
             </View>
-          </View>
+          </View> */}
 
-          <View className="-mt-4 p-4">
-            <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
+          {/* <Text className="mb-2 font-semibold-nunito text-base text-primary-900 dark:text-primary-600">
               {translate('rootLayout.screens.generateReportScreen.report')}
-            </Text>
-            <View className="rounded-xl">
+            </Text> */}
+          {/* <View className="rounded-xl">
               <Text className="text-lg">
                 {data.record.interpretationResult}
               </Text>
-            </View>
-          </View>
+            </View> */}
+          {/* Messages List */}
+          {!!messages.length && (
+            <FlashList
+              data={messages}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => {
+                return (
+                  <ChatBubble message={item} isUser={item.role === 'user'} />
+                );
+              }}
+              estimatedItemSize={100}
+            />
+          )}
         </View>
       </ScrollView>
     </View>

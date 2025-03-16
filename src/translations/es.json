@@ -37,6 +37,7 @@
     "saveDiscount": "AHORRA",
     "restorePurchase": "Restaurar compra",
     "medicalDisclaimer": "Descargo de responsabilidad médica",
+    "conversationHistory": "Historial de conversación",
     "copyText": {
       "loading": "Copiando...",
       "copied": "¡Copiado!",
@@ -184,13 +185,13 @@
         "userInput": "Tu envío",
         "medicalReport": "Informe médico",
         "report": "Informe médico generado por IA",
-        "reportName": "Nombre del informe"
+        "conversationName": "Nombre de la conversación"
       },
       "verifyEmail": {
         "heading": "Verificar correo electrónico"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Generar informe"
+        "generateReportButton": "Iniciar análisis"
       },
       "disclaimerScreen": {
         "heading": "Descargo de responsabilidad médica importante",
@@ -209,7 +210,8 @@
     "subtitle": "Envía un comentario en su lugar"
   },
   "pdfPreview": {
-    "noEditorInstalled": "Para previsualizar el PDF, asegúrate de tener un visor de PDF instalado, como Adobe Acrobat Reader o Google PDF Viewer"
+    "noEditorInstalled": "Para previsualizar el PDF, asegúrate de tener un visor de PDF instalado, como Adobe Acrobat Reader o Google PDF Viewer",
+    "conversationTitlePdf": "Conversación con Aria, tu asistente de IA"
   },
   "flows": {
     "createReport": {
@@ -240,14 +242,14 @@
       "heading": "Reel de Radiología"
     },
     "recentReports": {
-      "heading": "Informes recientes",
-      "noReports": "¡Aún no hay informes!"
+      "heading": "Chats recientes",
+      "noReports": "¡No hay chats para mostrar todavía!"
     }
   },
   "reports": {
-    "tab": "Informes",
-    "noReportsAvailable": "No hay informes disponibles para esta fecha",
-    "heading": "Informes"
+    "tab": "Historial",
+    "noReportsAvailable": "No hay historial de chat disponible para esta fecha",
+    "heading": "Historial de chat"
   },
   "settings": {
     "tab": "Configuración",
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "¿Cuál es la razón?",
-      "unnamedReport": "Informe sin nombre",
+      "unnamedConversation": "Sin título",
       "reportTitlePlaceholder": "Añadir un título"
     },
     "WeekBlock": {

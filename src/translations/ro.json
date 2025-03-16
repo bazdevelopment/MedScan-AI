@@ -242,14 +242,14 @@
       "heading": "Radiologie"
     },
     "recentReports": {
-      "heading": "Rapoarte Recente",
-      "noReports": "Niciun raport încă!"
+      "heading": "Chat-uri recente",
+      "noReports": "Nu există chat-uri de afișat încă!"
     }
   },
   "reports": {
-    "tab": "Rapoarte",
-    "noReportsAvailable": "Niciun raport disponibil pentru această dată",
-    "heading": "Rapoarte"
+    "tab": "Istoric",
+    "noReportsAvailable": "Nu există istoric de chat disponibil pentru această dată",
+    "heading": "Istoric chat"
   },
   "settings": {
     "tab": "Setări",

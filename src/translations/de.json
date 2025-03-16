@@ -242,14 +242,14 @@
       "heading": "Radiologie-Reel"
     },
     "recentReports": {
-      "heading": "Aktuelle Berichte",
-      "noReports": "Noch keine Berichte!"
+      "heading": "Aktuelle Chats",
+      "noReports": "Noch keine Chats zum Anzeigen!"
     }
   },
   "reports": {
-    "tab": "Berichte",
-    "noReportsAvailable": "Keine Berichte für dieses Datum verfügbar",
-    "heading": "Berichte"
+    "tab": "Chatverlauf",
+    "noReportsAvailable": "Kein Chatverlauf für dieses Datum verfügbar",
+    "heading": "Chatverlauf"
   },
   "settings": {
     "tab": "Einstellungen",

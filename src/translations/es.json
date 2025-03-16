@@ -242,14 +242,14 @@
       "heading": "Reel de Radiología"
     },
     "recentReports": {
-      "heading": "Informes recientes",
-      "noReports": "¡Aún no hay informes!"
+      "heading": "Chats recientes",
+      "noReports": "¡No hay chats para mostrar todavía!"
     }
   },
   "reports": {
-    "tab": "Informes",
-    "noReportsAvailable": "No hay informes disponibles para esta fecha",
-    "heading": "Informes"
+    "tab": "Historial",
+    "noReportsAvailable": "No hay historial de chat disponible para esta fecha",
+    "heading": "Historial de chat"
   },
   "settings": {
     "tab": "Configuración",

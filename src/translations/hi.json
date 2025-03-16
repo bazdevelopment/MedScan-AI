@@ -37,6 +37,7 @@
     "saveDiscount": "बचाएं",
     "restorePurchase": "खरीदारी पुनर्स्थापित करें",
     "medicalDisclaimer": "चिकित्सा अस्वीकरण",
+    "conversationHistory": "वार्तालाप इतिहास",
     "copyText": {
       "loading": "कॉपी हो रहा है...",
       "copied": "कॉपी हो गया!",
@@ -184,13 +185,13 @@
         "userInput": "आपका सबमिशन",
         "medicalReport": "मेडिकल रिपोर्ट",
         "report": "एआई-जनित मेडिकल रिपोर्ट",
-        "reportName": "रिपोर्ट का नाम"
+        "conversationName": "वार्तालाप का नाम"
       },
       "verifyEmail": {
         "heading": "ईमेल सत्यापित करें"
       },
       "filePreviewScreen": {
-        "generateReportButton": "रिपोर्ट जनरेट करें"
+        "generateReportButton": "विश्लेषण शुरू करें"
       },
       "disclaimerScreen": {
         "heading": "महत्वपूर्ण चिकित्सा अस्वीकरण",
@@ -209,7 +210,8 @@
     "subtitle": "इसके बजाय एक प्रतिक्रिया भेजें"
   },
   "pdfPreview": {
-    "noEditorInstalled": "PDF पूर्वावलोकन करने के लिए, सुनिश्चित करें कि आपके पास Adobe Acrobat Reader या Google PDF Viewer जैसा कोई PDF व्यूअर इंस्टॉल हो।"
+    "noEditorInstalled": "PDF पूर्वावलोकन करने के लिए, सुनिश्चित करें कि आपके पास Adobe Acrobat Reader या Google PDF Viewer जैसा कोई PDF व्यूअर इंस्टॉल हो।",
+    "conversationTitlePdf": "अरिया के साथ वार्तालाप, आपका AI सहायक"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "कारण क्या है?",
-      "unnamedReport": "अनाम रिपोर्ट",
+      "unnamedConversation": "अनामांकित",
       "reportTitlePlaceholder": "एक शीर्षक जोड़ें"
     },
     "WeekBlock": {

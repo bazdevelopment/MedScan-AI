@@ -10,4 +10,10 @@ export interface IScanReportCard {
   language: string;
   dateFormat?: string;
   promptMessage: string;
+  conversationMessages: IConversationMessage[];
+}
+
+export interface IConversationMessage {
+  content: string;
+  role: string;
 }

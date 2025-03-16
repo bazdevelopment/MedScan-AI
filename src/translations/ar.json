@@ -37,6 +37,7 @@
     "saveDiscount": "وفر",
     "restorePurchase": "استعادة الشراء",
     "medicalDisclaimer": "إخلاء المسؤولية الطبية",
+    "conversationHistory": "تاريخ المحادثة",
     "copyText": {
       "loading": "جاري النسخ...",
       "copied": "تم النسخ!",
@@ -184,13 +185,13 @@
         "userInput": "إدخالك",
         "medicalReport": "التقرير الطبي",
         "report": "تقرير طبي تم إنشاؤه بواسطة الذكاء الاصطناعي",
-        "reportName": "اسم التقرير"
+        "conversationName": "اسم المحادثة"
       },
       "verifyEmail": {
         "heading": "تحقق من البريد الإلكتروني"
       },
       "filePreviewScreen": {
-        "generateReportButton": "إنشاء تقرير"
+        "generateReportButton": "بدء التحليل"
       },
       "disclaimerScreen": {
         "heading": "إخلاء مسؤولية طبية هام",
@@ -209,7 +210,8 @@
     "subtitle": "أرسل ملاحظاتك بدلًا من ذلك"
   },
   "pdfPreview": {
-    "noEditorInstalled": "لمعاينة ملف PDF، تأكد من تثبيت عارض PDF مثل Adobe Acrobat Reader أو Google PDF Viewer"
+    "noEditorInstalled": "لمعاينة ملف PDF، تأكد من تثبيت عارض PDF مثل Adobe Acrobat Reader أو Google PDF Viewer",
+    "conversationTitlePdf": "محادثة مع آريا، مساعد الذكاء الاصطناعي الخاص بك"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "ما هو السبب؟",
-      "unnamedReport": "تقرير بدون اسم",
+      "unnamedConversation": "بدون عنوان",
       "reportTitlePlaceholder": "أضف عنوانًا"
     },
     "WeekBlock": {

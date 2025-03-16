@@ -29,7 +29,11 @@ const ScanReportCard = ({
   language,
   dateFormat = 'MMMM D, YYYY',
   promptMessage,
+  conversationMessages,
 }: IScanReportCard) => {
+  const messages =
+    conversationMessages?.filter((msg) => !Array.isArray(msg.content)) || [];
+
   const [isEditing, setIsEditing] = useState(false);
   const [editableTitle, setEditableTitle] = useState(title);
   const { colorScheme } = useColorScheme();
@@ -69,7 +73,7 @@ const ScanReportCard = ({
           date={createdAt}
           html={generateScanReportPdf({
             createdAt: dayjs(createdAt).locale(language).format('DD/MM/YYYY'),
-            interpretation,
+            messages,
             promptMessage,
             generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
           })}
@@ -119,7 +123,7 @@ const ScanReportCard = ({
                   numberOfLines={2}
                 >
                   {editableTitle ||
-                    translate('components.ScanReportCard.unnamedReport')}
+                    translate('components.ScanReportCard.unnamedConversation')}
                 </Text>
               )}
             </View>

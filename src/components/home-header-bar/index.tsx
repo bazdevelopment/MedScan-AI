@@ -135,7 +135,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
         }}
       >
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
-          <Branding isLogoVisible invertedColors={DEVICE_TYPE.IOS} />
+          <Branding invertedColors={DEVICE_TYPE.IOS} />
         </Animated.View>
 
         <Animated.View style={[headerDetailsContainerAnimatedStyle]}>

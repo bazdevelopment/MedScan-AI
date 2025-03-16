@@ -37,6 +37,7 @@
     "saveDiscount": "SAVE",
     "restorePurchase": "Restore purchase",
     "medicalDisclaimer": "Medical Disclaimer",
+    "conversationHistory": "Conversation history",
     "copyText": {
       "loading": "Copying...",
       "copied": "Copied!",
@@ -184,13 +185,13 @@
         "userInput": "Your Submission",
         "medicalReport": "Medical Report",
         "report": "AI-Generated Medical Report",
-        "reportName": "Report name"
+        "conversationName": "Conversation name"
       },
       "verifyEmail": {
         "heading": "Verify email"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Generate report"
+        "generateReportButton": "Start Analysis"
       },
       "disclaimerScreen": {
         "heading": "Important Medical Disclaimer",
@@ -210,7 +211,8 @@
   },
 
   "pdfPreview": {
-    "noEditorInstalled": "To preview the PDF, ensure you have a PDF viewer installed, like Adobe Acrobat Reader or Google PDF Viewer"
+    "noEditorInstalled": "To preview the PDF, ensure you have a PDF viewer installed, like Adobe Acrobat Reader or Google PDF Viewer",
+    "conversationTitlePdf": "Conversation with Aria, your AI assistant"
   },
 
   "flows": {
@@ -303,7 +305,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "What is the reason?",
-      "unnamedReport": "Unnamed report",
+      "unnamedConversation": "Untitled",
       "reportTitlePlaceholder": "Add a title"
     },
     "WeekBlock": {

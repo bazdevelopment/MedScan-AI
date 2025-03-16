@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { Keyboard, ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
 import { useAnalyzeImage, useAnalyzeVideo } from '@/api/image/image.hooks';
@@ -175,6 +175,7 @@ const FilePreviewScreen = ({
       <ScrollView
         contentContainerStyle={{ paddingBottom: 150 }}
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
       >
         <View className="dark:bg-black">
           <ProgressBar
@@ -215,6 +216,7 @@ const FilePreviewScreen = ({
           size="lg"
           onPress={() => {
             setIsModalVisible(true);
+            Keyboard.dismiss();
             onAnalyze();
           }}
           icon={<WandSparkle width={25} height={25} color={colors.white} />}

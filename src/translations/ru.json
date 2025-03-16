@@ -37,6 +37,7 @@
     "saveDiscount": "СЭКОНОМЬТЕ",
     "restorePurchase": "Восстановить покупку",
     "medicalDisclaimer": "Медицинский отказ от ответственности",
+    "conversationHistory": "История разговора",
     "copyText": {
       "loading": "Копирование...",
       "copied": "Скопировано!",
@@ -184,13 +185,13 @@
         "userInput": "Ваши данные",
         "medicalReport": "Медицинский отчет",
         "report": "AI-сгенерированный медицинский отчет",
-        "reportName": "Название отчета"
+        "conversationName": "Название разговора"
       },
       "verifyEmail": {
         "heading": "Подтвердить email"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Создать отчет"
+        "generateReportButton": "Начать анализ"
       },
       "disclaimerScreen": {
         "heading": "Важное медицинское предупреждение",
@@ -209,7 +210,8 @@
     "subtitle": "Лучше оставьте отзыв"
   },
   "pdfPreview": {
-    "noEditorInstalled": "Чтобы просмотреть PDF, убедитесь, что у вас установлен просмотрщик PDF, например Adobe Acrobat Reader или Google PDF Viewer"
+    "noEditorInstalled": "Чтобы просмотреть PDF, убедитесь, что у вас установлен просмотрщик PDF, например Adobe Acrobat Reader или Google PDF Viewer",
+    "conversationTitlePdf": "Разговор с Арией, вашим ИИ-ассистентом"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "В чем причина?",
-      "unnamedReport": "Безымянный отчет",
+      "unnamedConversation": "Без названия",
       "reportTitlePlaceholder": "Добавить название"
     },
     "WeekBlock": {

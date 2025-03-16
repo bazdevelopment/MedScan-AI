@@ -44,7 +44,7 @@ type MessageType = {
   isError?: boolean;
 };
 
-const ChatBubble = ({
+export const ChatBubble = ({
   message,
   isUser,
   onRetrySendMessage,
@@ -114,7 +114,7 @@ const ChatBubble = ({
         )} */}
       </Animated.View>
       <View className="item-center mt-1 flex-row gap-1">
-        {!isUser && (
+        {!isUser && !!speak && (
           <View className="h-9">
             {isSpeaking ? (
               <TouchableOpacity onPress={() => speak(message.content)}>
@@ -157,7 +157,7 @@ const ChatBubble = ({
   );
 };
 
-const TypingIndicator = () => {
+export const TypingIndicator = () => {
   return (
     <LottieView
       source={require('assets/lottie/typing-loader-animation.json')}
@@ -175,6 +175,9 @@ const ChatScreen = () => {
   const [currentlySpeakingId, setCurrentlySpeakingId] = useState<string | null>(
     null,
   );
+  const [lastUserMessageIndex, setLastUserMessageIndex] = useState<
+    number | null
+  >(null);
   const isVideo = checkIsVideo(mimeType as string);
 
   const flashListRef = useRef<FlashList<MessageType>>(null);
@@ -223,6 +226,9 @@ const ChatScreen = () => {
       isPending: true,
     };
     setPendingMessages((prev) => [...prev, newMessage]);
+
+    // Store the index of the user's message
+    setLastUserMessageIndex(messages.length);
 
     try {
       await sendMessage({
@@ -302,22 +308,23 @@ const ChatScreen = () => {
   useEffect(() => {
     if (messages.length && flashListRef.current) {
       setTimeout(() => {
-        if (messages.length === 1) {
+        if (lastUserMessageIndex !== null) {
+          // Scroll to the user's question
+          flashListRef.current?.scrollToIndex({
+            index: lastUserMessageIndex,
+            animated: true,
+            viewPosition: 0, // Align the top of the item with the top of the list
+          });
+        } else {
           // If there's only one message, scroll to the top
           flashListRef.current?.scrollToOffset({
             offset: 0,
             animated: true,
           });
-        } else {
-          // If there are multiple messages, scroll to the bottom
-          flashListRef.current?.scrollToOffset({
-            offset: 100000,
-            animated: true,
-          });
         }
       }, 100);
     }
-  }, [messages]);
+  }, [messages, lastUserMessageIndex]);
 
   // Scroll to bottom when keyboard appears
   useEffect(() => {
@@ -400,7 +407,10 @@ const ChatScreen = () => {
             data={messages}
             extraData={isSpeaking}
             keyExtractor={(item, index) => index.toString()}
-            contentContainerStyle={{ padding: 16, paddingBottom: 8 }}
+            contentContainerStyle={{
+              padding: 16,
+              paddingBottom: 8,
+            }}
             renderItem={({ item, index }) => (
               <ChatBubble
                 message={item}
@@ -418,7 +428,7 @@ const ChatScreen = () => {
           <View className="border-t border-gray-200 bg-white px-4 pb-2 pt-4 dark:border-blackEerie dark:bg-blackEerie">
             <View className="flex-row items-center rounded-full bg-gray-100 px-4 py-1 dark:bg-black ">
               <TextInput
-                className="flex-1 py-3 text-base text-gray-800 dark:text-white"
+                className="flex-1 py-2 text-base text-gray-800 dark:text-white"
                 value={userMessage}
                 onChangeText={setUserMessage}
                 placeholder={translate('general.chatbotPlaceholder')}

@@ -470,24 +470,6 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
 
       // NEW: Add the base64 image data to a separate collection for conversation context
 
-      await analysisDocRef.set({
-        userId,
-        url,
-        filePath,
-        interpretationResult: textResult,
-        createdAt,
-        id: uniqueId,
-        mimeType: imageFile.mimeType,
-        promptMessage,
-        title: '',
-      });
-
-      // Update user stats
-      await userDoc.update({
-        completedScans: admin.firestore.FieldValue.increment(1),
-        scansRemaining: admin.firestore.FieldValue.increment(-1),
-      });
-
       // Create a new conversation document
       const conversationDocRef = admin
         .firestore()
@@ -520,6 +502,24 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
         updatedAt: createdAt,
         imageUrl: url, // Store the image URL separately
         promptMessage, // Store the prompt message separately (if it exists)
+      });
+
+      await analysisDocRef.set({
+        userId,
+        url,
+        filePath,
+        interpretationResult: textResult,
+        createdAt,
+        id: uniqueId,
+        mimeType: imageFile.mimeType,
+        promptMessage,
+        conversationId: conversationDocRef.id,
+      });
+
+      // Update user stats
+      await userDoc.update({
+        completedScans: admin.firestore.FieldValue.increment(1),
+        scansRemaining: admin.firestore.FieldValue.increment(-1),
       });
 
       res.status(200).json({
@@ -652,32 +652,9 @@ export const analyzeImageConversationV2 = async (
 
     // Save the analysis result and metadata in Firestore
     try {
-      const analysisDocRef = admin
-        .firestore()
-        .collection('interpretations')
-        .doc();
+      // Create a new conversation document
       const createdAt = admin.firestore.FieldValue.serverTimestamp();
 
-      // NEW: Add the base64 image data to a separate collection for conversation context
-
-      await analysisDocRef.set({
-        userId,
-        url: data.image,
-        fileStoragePath: data.storagePath,
-        interpretationResult: textResult,
-        createdAt,
-        mimeType: 'image/jpeg',
-        promptMessage: data.promptMessage,
-        title: '',
-      });
-
-      // Update user stats
-      await userDoc.update({
-        completedScans: admin.firestore.FieldValue.increment(1),
-        scansRemaining: admin.firestore.FieldValue.increment(-1),
-      });
-
-      // Create a new conversation document
       const conversationDocRef = admin
         .firestore()
         .collection('conversations')
@@ -712,6 +689,30 @@ export const analyzeImageConversationV2 = async (
         updatedAt: createdAt,
         imageUrl: data.image, // Store the image URL separately
         promptMessage: data.promptMessage, // Store the prompt message separately (if it exists)
+      });
+
+      const analysisDocRef = admin
+        .firestore()
+        .collection('interpretations')
+        .doc();
+
+      // NEW: Add the base64 image data to a separate collection for conversation context
+
+      await analysisDocRef.set({
+        userId,
+        url: data.image,
+        fileStoragePath: data.storagePath,
+        interpretationResult: textResult,
+        createdAt,
+        mimeType: 'image/jpeg',
+        promptMessage: data.promptMessage,
+        conversationId: conversationDocRef.id,
+      });
+
+      // Update user stats
+      await userDoc.update({
+        completedScans: admin.firestore.FieldValue.increment(1),
+        scansRemaining: admin.firestore.FieldValue.increment(-1),
       });
 
       return {

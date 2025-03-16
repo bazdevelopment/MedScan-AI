@@ -37,6 +37,7 @@
     "saveDiscount": "お得",
     "restorePurchase": "購入を復元",
     "medicalDisclaimer": "医療免責事項",
+    "conversationHistory": "会話履歴",
     "copyText": {
       "loading": "コピー中...",
       "copied": "コピーしました！",
@@ -184,13 +185,13 @@
         "userInput": "あなたの提出内容",
         "medicalReport": "医療レポート",
         "report": "AI生成医療レポート",
-        "reportName": "レポート名"
+        "conversationName": "会話名"
       },
       "verifyEmail": {
         "heading": "メールを確認"
       },
       "filePreviewScreen": {
-        "generateReportButton": "レポートを生成"
+        "generateReportButton": "分析を開始"
       },
       "disclaimerScreen": {
         "heading": "重要な医療免責事項",
@@ -209,7 +210,8 @@
     "subtitle": "代わりにフィードバックを送信してください"
   },
   "pdfPreview": {
-    "noEditorInstalled": "PDF をプレビューするには、Adobe Acrobat Reader や Google PDF Viewer などの PDF ビューアーがインストールされていることを確認してください。"
+    "noEditorInstalled": "PDF をプレビューするには、Adobe Acrobat Reader や Google PDF Viewer などの PDF ビューアーがインストールされていることを確認してください。",
+    "conversationTitlePdf": "Ariaとの会話、あなたのAIアシスタント"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "理由は何ですか？",
-      "unnamedReport": "無題のレポート",
+      "unnamedConversation": "無題",
       "reportTitlePlaceholder": "タイトルを追加"
     },
     "WeekBlock": {

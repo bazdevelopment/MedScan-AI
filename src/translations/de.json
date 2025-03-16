@@ -37,6 +37,7 @@
     "saveDiscount": "SPAREN",
     "restorePurchase": "Kauf wiederherstellen",
     "medicalDisclaimer": "Medizinischer Haftungsausschluss",
+    "conversationHistory": "Konversationsverlauf",
     "copyText": {
       "loading": "Wird kopiert...",
       "copied": "Kopiert!",
@@ -184,13 +185,13 @@
         "userInput": "Deine Eingabe",
         "medicalReport": "Medizinischer Bericht",
         "report": "KI-generierter medizinischer Bericht",
-        "reportName": "Berichtsname"
+        "conversationName": "Konversationsname"
       },
       "verifyEmail": {
         "heading": "E-Mail verifizieren"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Bericht generieren"
+        "generateReportButton": "Analyse starten"
       },
       "disclaimerScreen": {
         "heading": "Wichtiger medizinischer Haftungsausschluss",
@@ -209,7 +210,8 @@
     "subtitle": "Sende stattdessen Feedback"
   },
   "pdfPreview": {
-    "noEditorInstalled": "Um die PDF anzuzeigen, stellen Sie sicher, dass ein PDF-Viewer wie Adobe Acrobat Reader oder Google PDF Viewer installiert ist."
+    "noEditorInstalled": "Um die PDF anzuzeigen, stellen Sie sicher, dass ein PDF-Viewer wie Adobe Acrobat Reader oder Google PDF Viewer installiert ist.",
+    "conversationTitlePdf": "Unterhaltung mit Aria, Ihrem KI-Assistenten"
   },
   "flows": {
     "createReport": {
@@ -301,7 +303,7 @@
     },
     "ScanReportCard": {
       "promptMessage": "Was ist der Grund?",
-      "unnamedReport": "Unbenannter Bericht",
+      "unnamedConversation": "Unbenannt",
       "reportTitlePlaceholder": "Titel hinzufügen"
     },
     "WeekBlock": {

@@ -390,6 +390,7 @@
     "logoutQuestion": "¿Estás seguro de que quieres cerrar sesión?",
     "noSubscriptionToRestore": "¡Ups! Parece que no tienes una suscripción activa en este momento. Para seguir disfrutando de acceso completo, elige uno de nuestros planes de suscripción.",
     "restorationSuccessful": "¡Restauración exitosa! ¡Disfruta!",
-    "restorationError": "Ocurrió un error al restaurar tu compra."
+    "restorationError": "Ocurrió un error al restaurar tu compra.",
+    "medicalDisclaimerAlert": "La aplicación MedScan AI no ofrece diagnósticos, recomendaciones de tratamiento ni ningún consejo médico. Siempre busque orientación de un profesional de la salud calificado para decisiones médicas."
   }
 }

@@ -390,6 +390,7 @@
     "logoutQuestion": "정말 로그아웃하시겠습니까?",
     "noSubscriptionToRestore": "이런! 현재 활성화된 구독이 없는 것 같습니다. 계속해서 전체 액세스를 즐기려면 구독 플랜 중 하나를 선택하세요.",
     "restorationSuccessful": "복원이 성공했습니다! 즐기세요!",
-    "restorationError": "구매를 복원하는 중 오류가 발생했습니다."
+    "restorationError": "구매를 복원하는 중 오류가 발생했습니다.",
+    "medicalDisclaimerAlert": "MedScan AI 앱은 진단, 치료 권장 사항 또는 의학적 조언을 제공하지 않습니다. 의료 결정을 내리기 위해서는 항상 자격을 갖춘 의료 전문가의 지도를 받으십시오."
   }
 }

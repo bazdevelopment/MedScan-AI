@@ -390,6 +390,7 @@
     "logoutQuestion": "本当にログアウトしますか？",
     "noSubscriptionToRestore": "おっと！現在、有効なサブスクリプションがないようです。引き続きフルアクセスを楽しむには、サブスクリプションプランのいずれかを選択してください。",
     "restorationSuccessful": "復元が成功しました！お楽しみください！",
-    "restorationError": "購入の復元中にエラーが発生しました。"
+    "restorationError": "購入の復元中にエラーが発生しました。",
+    "medicalDisclaimerAlert": "MedScan AIアプリは、診断、治療の推奨、またはいかなる医療アドバイスも提供しません。医療上の決定については、常に資格のある医療専門家の指導を求めてください。"
   }
 }

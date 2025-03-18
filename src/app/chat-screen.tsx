@@ -18,6 +18,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Toaster } from 'sonner-native';
 import { twMerge } from 'tailwind-merge';
 
 import {
@@ -29,6 +30,7 @@ import AttachmentPreview from '@/components/attachment-preview';
 import BounceLoader from '@/components/bounce-loader';
 import Branding from '@/components/branding';
 import Icon from '@/components/icon';
+import Toast from '@/components/toast';
 import { LOADING_MESSAGES_CHATBOT } from '@/constants/loading-messages';
 import { DEVICE_TYPE, translate } from '@/core';
 import { useTextToSpeech } from '@/core/hooks/use-text-to-speech';
@@ -343,6 +345,15 @@ const ChatScreen = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isLoading) {
+      Toast.warning(translate('alerts.medicalDisclaimerAlert'), {
+        closeButton: true,
+        duration: 8000,
+      });
+    }
+  }, [isLoading]);
+
   if (isLoading) {
     return (
       <View className="flex-1 items-center justify-center bg-white dark:bg-blackEerie">
@@ -359,6 +370,9 @@ const ChatScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-white dark:bg-blackEerie">
+      {DEVICE_TYPE.IOS && (
+        <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+      )}
       <KeyboardAvoidingView
         behavior="padding"
         className="flex-1"

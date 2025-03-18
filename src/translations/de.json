@@ -390,6 +390,7 @@
     "logoutQuestion": "Sind Sie sicher, dass Sie sich abmelden möchten?",
     "noSubscriptionToRestore": "Hoppla! Es scheint, dass Sie derzeit kein aktives Abonnement haben. Um weiterhin vollen Zugriff zu genießen, wählen Sie bitte einen unserer Abonnementpläne.",
     "restorationSuccessful": "Wiederherstellung erfolgreich! Viel Spaß!",
-    "restorationError": "Beim Wiederherstellen Ihres Kaufs ist ein Fehler aufgetreten."
+    "restorationError": "Beim Wiederherstellen Ihres Kaufs ist ein Fehler aufgetreten.",
+    "medicalDisclaimerAlert": "Die MedScan AI-App bietet keine Diagnosen, Behandlungsempfehlungen oder medizinische Ratschläge an. Holen Sie immer den Rat eines qualifizierten medizinischen Fachpersonals für medizinische Entscheidungen ein."
   }
 }

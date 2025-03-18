@@ -393,6 +393,7 @@
     "logoutQuestion": "Are you sure you want to log out?",
     "noSubscriptionToRestore": "Oops! It looks like you don't have an active subscription at the moment. To continue enjoying full access, please choose one of our subscription plans.",
     "restorationSuccessful": "Restoration was successful! Enjoy!",
-    "restorationError": "An error occurred while restoring the purchase."
+    "restorationError": "An error occurred while restoring the purchase.",
+    "medicalDisclaimerAlert": "MedScan AI app does not offer diagnoses, treatment recommendations, or any medical advice. Always seek guidance from a qualified healthcare professional for medical decisions."
   }
 }

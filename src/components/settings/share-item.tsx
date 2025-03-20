@@ -63,7 +63,7 @@ export const ShareItem = () => {
               <QRCode
                 value={appLink}
                 size={225}
-                color={colors.primary[900]}
+                color="#6c75e3"
                 logo={require('../../../assets/icon_transparent.png')}
                 logoMargin={5}
                 logoSize={35}

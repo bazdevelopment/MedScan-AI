@@ -12,3 +12,18 @@ export const ACCEPTED_LANGUAGES_CODES = [
   { value: 'fr' },
   { value: 'ro' },
 ];
+
+export const IETF_BCP_47_FORMAT_LANGUAGE = {
+  en: 'en-US',
+  zh: 'zh-CN',
+  es: 'es-ES',
+  hi: 'hi-IN',
+  ar: 'ar-SA',
+  pt: 'pt-PT',
+  ru: 'ru-RU',
+  ja: 'ja-JP',
+  ko: 'ko-KR',
+  de: 'de-DE',
+  fr: 'fr-FR',
+  ro: 'ro-RO',
+};

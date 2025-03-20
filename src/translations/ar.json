@@ -38,6 +38,9 @@
     "restorePurchase": "استعادة الشراء",
     "medicalDisclaimer": "إخلاء المسؤولية الطبية",
     "conversationHistory": "تاريخ المحادثة",
+    "freeTrial": "تجربة مجانية",
+    "completedScans": "تمت عمليات المسح",
+    "activeSubscription": "الاشتراك نشط",
     "copyText": {
       "loading": "جاري النسخ...",
       "copied": "تم النسخ!",
@@ -115,7 +118,7 @@
         "subheading": "جرب هذه المزايا الرائعة خلال فترة التجربة المجانية"
       },
       "scanInterpretation": {
-        "title": "نتيجة التفسير",
+        "title": "نتيجة التحليل",
         "headerBackTitle": "التقارير"
       },
       "paywallOnboarding": {

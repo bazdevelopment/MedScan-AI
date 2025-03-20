@@ -4,25 +4,34 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
+import { useGetCustomerInfo } from '@/api/subscription/subscription.hooks';
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Avatar from '@/components/avatar';
 import { translate } from '@/core';
 import { Button, colors, Input, Text } from '@/ui';
 import { CloseIcon, EditIcon } from '@/ui/assets/icons';
+import MembershipIcon from '@/ui/assets/icons/membership';
+import { ScanIllustration } from '@/ui/assets/illustrations';
 
 const Profile = () => {
   const {
     i18n: { language },
   } = useTranslation();
+
+  const { mutate: onUpdateUser, isPending: isPendingUpdateUser } =
+    useUpdateUser();
+
+  const { data: customerInfo } = useGetCustomerInfo();
+  const activeSubscription = !!customerInfo?.activeSubscriptions?.length
+    ? customerInfo?.activeSubscriptions[0]
+    : translate('general.freeTrial');
+
   const { data: userInfo } = useUser(language);
   const [editModeEnabled, setEditModeEnabled] = useState(false);
 
   const [profileInfo, setProfileInfo] = useState({
     userName: userInfo.userName,
   });
-
-  const { mutate: onUpdateUser, isPending: isPendingUpdateUser } =
-    useUpdateUser();
 
   // Function to handle state changes
   const handleInputChange = (field: string, value: string) => {
@@ -44,7 +53,7 @@ const Profile = () => {
     <KeyboardStickyView offset={{ opened: 150 }}>
       <ScrollView className="dark:bg-blackEerie">
         <View className="flex-1 bg-white dark:bg-blackEerie">
-          <View className="h-[150px] rounded-b-[50px] bg-primary-900 pb-10 pt-12 dark:bg-blackEerie" />
+          <View className="h-[120px] rounded-b-[50px] bg-primary-900 pb-10 pt-12 dark:bg-blackEerie" />
           <Avatar
             image={require('../ui/assets/images/avatar.png')}
             size="xl"
@@ -56,6 +65,31 @@ const Profile = () => {
           <Text className="top-[-30] text-center font-semibold-nunito text-2xl">
             {userInfo.userName}
           </Text>
+          <View className="flex-column mb-6 ml-6">
+            {/* <Icon size={10} icon={<MobileIcon />} /> */}
+            <View className="flex-row">
+              <ScanIllustration
+                fill={colors.primary[900]}
+                width={30}
+                height={30}
+              />
+              <Text className="mb-6 ml-4 font-semibold-nunito">
+                {translate('general.completedScans')} -{' '}
+                {userInfo.completedScans}
+              </Text>
+            </View>
+            <View className="item-center flex-row">
+              <MembershipIcon
+                width={30}
+                height={30}
+                fill={colors.primary[900]}
+              />
+              <Text className="mb-6 ml-4 font-semibold-nunito">
+                {translate('general.activeSubscription')} - {activeSubscription}
+              </Text>
+            </View>
+          </View>
+
           <View className="mx-6 gap-6">
             <Input
               className={`flex-1 rounded-xl bg-white px-3.5 py-5 font-primary-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white ${!editModeEnabled && 'bg-slate-200'}`}
@@ -84,7 +118,7 @@ const Profile = () => {
               />
             )}
           </View>
-          <View className="flex-column mx-6 items-start justify-between">
+          <View className="flex-column mx-6 mt-4 items-start justify-between">
             {!editModeEnabled && (
               <Button
                 label={translate('rootLayout.screens.profile.edit')}

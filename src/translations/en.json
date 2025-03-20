@@ -38,6 +38,9 @@
     "restorePurchase": "Restore purchase",
     "medicalDisclaimer": "Medical Disclaimer",
     "conversationHistory": "Conversation history",
+    "freeTrial": "Free trial",
+    "completedScans": "Scans completed",
+    "activeSubscription": "Subscription active",
     "copyText": {
       "loading": "Copying...",
       "copied": "Copied!",
@@ -115,7 +118,7 @@
         "subheading": "Experience these amazing benefits during your free trial"
       },
       "scanInterpretation": {
-        "title": "Interpretation result",
+        "title": "Analysis result",
         "headerBackTitle": "Reports"
       },
       "paywallOnboarding": {

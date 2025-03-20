@@ -171,7 +171,7 @@ export const generateScanReportPdf = ({
     
         <!-- AI Interpretation -->
         <div style="position: relative;">
-            <p class="section-title">${translate('rootLayout.screens.generateReportScreen.report')}</p>
+            <p class="section-title">${translate('pdfPreview.conversationTitlePdf')}</p>
             <div class="chat-container">
                 ${formatChatMessages(messages)}
 

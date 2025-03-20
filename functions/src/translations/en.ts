@@ -188,4 +188,13 @@ export const en: ITranslation = {
     error:
       'Oops! Something went wrong. Please check your connection and try again.',
   },
+  continueConversation: {
+    messagesLimit:
+      'Aria’s at full capacity! Upload another scan to keep getting analysis and insights',
+    conversationNotFound: 'Unable to find the conversation',
+    serviceIssueAi:
+      'There seems to be an issue with the AI service. Please try again.',
+    noResponseAiService:
+      'Failed to get a valid response from the AI service. Please try again',
+  },
 };

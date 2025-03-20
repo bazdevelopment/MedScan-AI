@@ -77,6 +77,7 @@ const ScanningModal = ({
         {isPending && (
           <BounceLoader
             className="mt-10"
+            textClassName="text-white"
             loadingMessages={LOADING_MESSAGES_IMAGE_SCANNING}
           />
         )}

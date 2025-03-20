@@ -184,4 +184,13 @@ export const de: ITranslation = {
     error:
       'Hoppla! Etwas ist schiefgelaufen. Bitte überprüfe deine Verbindung und versuche es erneut.',
   },
+  continueConversation: {
+    messagesLimit:
+      'Aria hat ihre maximale Kapazität erreicht! Laden Sie einen weiteren Scan hoch, um weiterhin Analysen und Erkenntnisse zu erhalten',
+    conversationNotFound: 'Konversation konnte nicht gefunden werden',
+    serviceIssueAi:
+      'Es scheint ein Problem mit dem KI-Dienst zu geben. Bitte versuchen Sie es erneut.',
+    noResponseAiService:
+      'Es konnte keine gültige Antwort vom KI-Dienst erhalten werden. Bitte versuchen Sie es erneut.',
+  },
 };

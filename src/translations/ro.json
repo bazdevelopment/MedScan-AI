@@ -38,6 +38,9 @@
     "restorePurchase": "Restaurează achiziția",
     "medicalDisclaimer": "Avertisment medical",
     "conversationHistory": "Istoricul conversației",
+    "freeTrial": "Probă gratuită",
+    "completedScans": "Scanări completate",
+    "activeSubscription": "Abonament activ",
     "copyText": {
       "loading": "Se copiază...",
       "copied": "Copiat!",
@@ -115,7 +118,7 @@
         "subheading": "Experimentează aceste beneficii uimitoare în timpul perioadei tale de probă"
       },
       "scanInterpretation": {
-        "title": "Rezultatul interpretării",
+        "title": "Rezultatul analizei",
         "headerBackTitle": "Rapoarte"
       },
       "paywallOnboarding": {

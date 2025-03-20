@@ -169,4 +169,12 @@ export const ja: ITranslation = {
     error:
       'おっと！問題が発生しました。接続を確認して、もう一度お試しください。',
   },
+  continueConversation: {
+    messagesLimit:
+      'Ariaの容量がいっぱいです！分析と洞察を得るためにもう一度スキャンをアップロードしてください',
+    conversationNotFound: '会話が見つかりません',
+    serviceIssueAi: 'AIサービスに問題があるようです。もう一度お試しください。',
+    noResponseAiService:
+      'AIサービスから有効な応答が得られませんでした。もう一度お試しください。',
+  },
 };

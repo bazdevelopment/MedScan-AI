@@ -2,6 +2,8 @@
 import * as Speech from 'expo-speech';
 import { useEffect, useState } from 'react';
 
+import { IETF_BCP_47_FORMAT_LANGUAGE } from '@/constants/language';
+
 import { useSelectedLanguage } from '../i18n';
 
 // Define language types
@@ -184,13 +186,13 @@ export const useTextToSpeech = ({
     try {
       // Stop any ongoing speech
       await Speech.stop();
-
       // Merge default options with user options and selected voice
       const speechOptions: SpeechOptions = {
         pitch: 1.0,
         rate: 1.0,
         volume: 1.0,
         voice: selectedVoice?.identifier,
+        language: IETF_BCP_47_FORMAT_LANGUAGE[language],
         ...options,
       };
 

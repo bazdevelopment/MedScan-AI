@@ -20,7 +20,7 @@ import Branding from '@/components/branding';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
-import { translate, useIsFirstTime } from '@/core';
+import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { calculateAnnualDiscount } from '@/core/utilities/calculate-annual-discout';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
@@ -157,7 +157,9 @@ const PaywallOnboarding = ({
           />
         </View>
 
-        <View className="rounded-b-[50px]  bg-primary-900 pb-6 pt-20 dark:bg-blackBeauty">
+        <View
+          className={`rounded-b-[50px] bg-primary-900 pb-6 dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-16' : 'pt-8'}`}
+        >
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className={`absolute right-[100] top-[-20] ${isVerySmallDevice ? 'right-[10] top-[20]' : 'right[-100]'}`}

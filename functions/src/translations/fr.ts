@@ -188,4 +188,13 @@ export const fr: ITranslation = {
     error:
       "Oups! Quelque chose s'est mal passé. Veuillez vérifier votre connexion et réessayer.",
   },
+  continueConversation: {
+    messagesLimit:
+      'Aria a atteint sa capacité maximale ! Téléversez une autre analyse pour continuer à obtenir des résultats et des insights',
+    conversationNotFound: 'Impossible de trouver la conversation',
+    serviceIssueAi:
+      "Il semble y avoir un problème avec le service d'IA. Veuillez réessayer.",
+    noResponseAiService:
+      "Échec de l'obtention d'une réponse valide du service d'IA. Veuillez réessayer.",
+  },
 };

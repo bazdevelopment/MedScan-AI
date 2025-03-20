@@ -38,6 +38,9 @@
     "restorePurchase": "Restaurar compra",
     "medicalDisclaimer": "Descargo de responsabilidad médica",
     "conversationHistory": "Historial de conversación",
+    "freeTrial": "Prueba gratuita",
+    "completedScans": "Escaneos completados",
+    "activeSubscription": "Suscripción activa",
     "copyText": {
       "loading": "Copiando...",
       "copied": "¡Copiado!",
@@ -115,7 +118,7 @@
         "subheading": "Experimenta estos increíbles beneficios durante tu prueba gratuita"
       },
       "scanInterpretation": {
-        "title": "Resultado de la interpretación",
+        "title": "Resultado del análisis",
         "headerBackTitle": "Informes"
       },
       "paywallOnboarding": {

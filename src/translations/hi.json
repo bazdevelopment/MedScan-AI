@@ -38,6 +38,9 @@
     "restorePurchase": "खरीदारी पुनर्स्थापित करें",
     "medicalDisclaimer": "चिकित्सा अस्वीकरण",
     "conversationHistory": "वार्तालाप इतिहास",
+    "completedScans": "स्कैन पूर्ण",
+    "activeSubscription": "सदस्यता सक्रिय",
+    "freeTrial": "मुफ्त परीक्षण",
     "copyText": {
       "loading": "कॉपी हो रहा है...",
       "copied": "कॉपी हो गया!",
@@ -115,7 +118,7 @@
         "subheading": "अपने मुफ्त ट्रायल के दौरान इन अद्भुत लाभों का अनुभव करें"
       },
       "scanInterpretation": {
-        "title": "व्याख्या परिणाम",
+        "title": "विश्लेषण परिणाम",
         "headerBackTitle": "रिपोर्ट्स"
       },
       "paywallOnboarding": {

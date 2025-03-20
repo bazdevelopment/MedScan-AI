@@ -1,5 +1,7 @@
 import { createMutation, createQuery } from 'react-query-kit';
 
+import Toast from '@/components/toast';
+
 import { queryClient } from '../common';
 import {
   fetchConversation,
@@ -18,11 +20,14 @@ export const useConversation = (conversationId: string) => {
   // Mutation to send a new message
   const sendMessageMutation = createMutation({
     mutationFn: (variables) => sendConversationMessage(variables),
-    onSuccess: (data) => {
+    onSuccess: () => {
       // Invalidate the conversation query to refetch the latest messages
       queryClient.invalidateQueries({
         queryKey: ['conversation', conversationId],
       });
+    },
+    onError: (error) => {
+      Toast.error(error.response.data.message);
     },
   })();
 

@@ -163,7 +163,7 @@ const Paywall = () => {
 
         <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
           <View
-            className={`rounded-b-[50px]  bg-primary-900 dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-6' : 'pt-16'}`}
+            className={`rounded-b-[50px] bg-primary-900 pt-6 dark:bg-blackBeauty`}
           >
             <Button
               icon={

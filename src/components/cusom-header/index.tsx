@@ -21,10 +21,10 @@ const CustomHeader = ({
   return (
     <View
       className={twMerge(
-        'flex-row items-center bg-slate-50 dark:bg-blackEerie pb-6',
+        'flex-row items-center bg-slate-50 dark:bg-blackEerie',
         className,
-        DEVICE_TYPE.ANDROID && 'pt-[45px]',
-        DEVICE_TYPE.IOS && 'pt-[55px]',
+        DEVICE_TYPE.ANDROID && 'pt-[30px] pb-8',
+        DEVICE_TYPE.IOS && 'pt-[55px] pb-5',
       )}
     >
       {/* Left/Back Button */}

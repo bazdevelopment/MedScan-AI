@@ -22,6 +22,7 @@ export * from './language';
 export * from './login';
 export * from './logout';
 export * from './mail';
+export * from './membership';
 export * from './moon';
 export * from './notification-bell';
 export * from './paperclip';

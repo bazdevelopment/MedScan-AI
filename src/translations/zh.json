@@ -38,6 +38,9 @@
     "restorePurchase": "恢复购买",
     "medicalDisclaimer": "医学免责声明",
     "conversationHistory": "对话历史",
+    "freeTrial": "免费试用",
+    "completedScans": "扫描完成",
+    "activeSubscription": "订阅有效",
     "copyText": {
       "loading": "正在复制...",
       "copied": "已复制！",
@@ -115,7 +118,7 @@
         "subheading": "在免费试用期间体验这些精彩功能"
       },
       "scanInterpretation": {
-        "title": "解读结果",
+        "title": "分析结果",
         "headerBackTitle": "报告"
       },
       "paywallOnboarding": {

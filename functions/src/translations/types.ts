@@ -162,5 +162,11 @@ export interface ITranslation {
     userLoggedIn: string;
     error: string;
   };
+  continueConversation: {
+    messagesLimit: string;
+    conversationNotFound: string;
+    serviceIssueAi: string;
+    noResponseAiService: string;
+  };
   // Add more sections as needed
 }

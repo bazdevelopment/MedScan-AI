@@ -97,7 +97,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           onPress={() => onSelect(item)}
           testID={testID ? `${testID}-item-${item.value}` : undefined}
           icon={item.icon}
-          additionalClassName={`${value === item.value ? 'bg-primary-900' : ''}`}
+          additionalClassName={`${value === item.value ? 'bg-primary-900 py-5' : 'py-5'}`}
         />
       ),
       [onSelect, value, testID],
@@ -323,8 +323,8 @@ export const SelectableLabel = ({
   return (
     <Pressable
       className={`
-        mt-5 flex-row items-center gap-4 rounded-2xl
-         p-6
+        mt-4 flex-row items-center gap-4 rounded-2xl
+        p-6
         ${selected ? 'border-[3px] border-primary-500' : 'bg-primary-100 dark:bg-blackEerie'}
         active:bg-gray-100 dark:active:bg-primary-700
         ${additionalClassName}

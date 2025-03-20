@@ -38,6 +38,9 @@
     "restorePurchase": "Restaurar compra",
     "medicalDisclaimer": "Aviso de Responsabilidade Médica",
     "conversationHistory": "Histórico de conversa",
+    "freeTrial": "Teste gratuito",
+    "completedScans": "Digitalizações concluídas",
+    "activeSubscription": "Assinatura ativa",
     "copyText": {
       "loading": "Copiando...",
       "copied": "Copiado!",
@@ -115,7 +118,7 @@
         "subheading": "Experimente estes benefícios incríveis durante seu período de teste"
       },
       "scanInterpretation": {
-        "title": "Resultado da interpretação",
+        "title": "Resultado da análise",
         "headerBackTitle": "Relatórios"
       },
       "paywallOnboarding": {

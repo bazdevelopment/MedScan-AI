@@ -23,7 +23,7 @@ export const analyzeImageUsingAi = async (
     );
     return response.data;
   } catch (error: any) {
-    throw error.message;
+    throw error;
   }
 };
 

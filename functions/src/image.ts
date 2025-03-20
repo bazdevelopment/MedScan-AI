@@ -343,7 +343,8 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
     const { files, fields } = await processUploadedFile(req);
     const languageAbbreviation = req.headers['accept-language'];
 
-    const additionalLngPrompt = `The response language must be in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} but do not mention this in the response.`;
+    const additionalLngPrompt = `Please respond only in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} from now on.`;
+    console.log('additionalLngPrompt', additionalLngPrompt);
     const t = getTranslation(languageAbbreviation as string);
     const { userId, promptMessage } = fields;
     const [imageFile] = files;
@@ -392,7 +393,7 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
     const base64String = convertBufferToBase64(imageFile.buf);
 
     // Modification: Add conversation context to the prompt
-    const conversationPrompt = `${process.env.IMAGE_ANALYZE_PROMPT}. Please provide a detailed analysis that includes all visual aspects of this image, as the user may ask follow-up questions about specific details later. ${userPromptInput}. ${additionalLngPrompt}`;
+    const conversationPrompt = `${additionalLngPrompt}. ${process.env.IMAGE_ANALYZE_PROMPT}. Please provide a detailed analysis that includes all visual aspects of this image, as the user may ask follow-up questions about specific details later. ${userPromptInput}.`;
 
     const message = await anthropic.messages.create({
       model: AI_MODELS.CLAUDE_35_HAIKU,
@@ -741,6 +742,7 @@ export const analyzeImageConversationV2 = async (
 };
 
 export const continueConversation = async (req: Request, res: any) => {
+  let t;
   try {
     res.set('Access-Control-Allow-Origin', '*');
 
@@ -752,6 +754,7 @@ export const continueConversation = async (req: Request, res: any) => {
 
     const { userId, conversationId, userMessage } = req.body;
     const languageAbbreviation = req.headers['accept-language'];
+    t = getTranslation(languageAbbreviation as string);
 
     const additionalLngPrompt = `The response language must be in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} but do not mention this in the response.`;
 
@@ -777,12 +780,20 @@ export const continueConversation = async (req: Request, res: any) => {
     if (!conversationSnapshot.exists) {
       return res.status(404).json({
         success: false,
-        message: 'Conversation not found.',
+        message: t.continueConversation.conversationNotFound,
       });
     }
 
     const conversationData = conversationSnapshot.data();
     const messages = conversationData?.messages || [];
+
+    // limit maximum 20 messages per conversation
+    if (messages.length > 20) {
+      return res.status(500).json({
+        success: false,
+        message: t.continueConversation.messagesLimit,
+      });
+    }
 
     let response;
 
@@ -805,14 +816,14 @@ export const continueConversation = async (req: Request, res: any) => {
       console.error('Error calling Anthropic API:', error, error.message);
       return res.status(500).json({
         success: false,
-        message: `Failed to get a response from the AI service: ${error.message}`,
+        message: t.continueConversation.serviceIssueAi,
       });
     }
 
     if (!response || !response.content || response.content.length === 0) {
       return res.status(500).json({
         success: false,
-        message: 'Failed to get a valid response from the AI service.',
+        message: t.continueConversation.noResponseAiService,
       });
     }
 
@@ -926,7 +937,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       })),
       {
         type: 'text',
-        text: `${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.${additionalLngPrompt}`,
+        text: `${additionalLngPrompt}.${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.`,
       },
     ];
 

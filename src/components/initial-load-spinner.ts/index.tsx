@@ -44,11 +44,14 @@ const InitialLoadSpinner = () => {
       {/* Rotating Spinner */}
       <ActivityIndicator
         size="large"
-        className=" items-center justify-center"
+        className="items-center justify-center"
         color={isDark ? colors.charcoal[300] : colors.charcoal[100]}
       />
       {/* Fading Loading Message */}
-      <BounceLoader loadingMessages={LOADING_MESSAGES_INITIAL_APP_LOAD} />
+      <BounceLoader
+        loadingMessages={LOADING_MESSAGES_INITIAL_APP_LOAD}
+        textClassName="text-white"
+      />
       <SnakeLine
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute bottom-[-10] z-[-1]"

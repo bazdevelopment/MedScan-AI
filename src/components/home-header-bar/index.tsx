@@ -106,7 +106,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
     <>
       <Animated.View
         style={[headerContainerAnimatedStyle]}
-        className={`w-full ${DEVICE_TYPE.IOS ? 'h-[130px]' : 'h-[110px]'}`}
+        className="h-[110px] w-full"
       >
         {DEVICE_TYPE.IOS ? (
           <BlurView
@@ -131,7 +131,7 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
           top: insets.top || DEFAULT_TOP_INSET,
           left: insets.left,
           right: insets.right,
-          marginTop: DEVICE_TYPE.IOS ? -10 : 0,
+          marginTop: DEVICE_TYPE.IOS ? -20 : 0,
         }}
       >
         <Animated.View style={headerDetailsContainerAnimatedStyle}>
@@ -147,21 +147,21 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
             icon={<UploadIcon width={26} height={26} color={colors.white} />}
           />
           <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[400]}
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute left-[-180px] top-[-80px] z-[-1]"
           />
 
           <SnakeLine
-            color={isDark ? colors.charcoal[600] : colors.primary[400]}
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute left-[-120px] top-[-70px] z-[-1]"
           />
 
           <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[400]}
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute left-[30px] top-[-50px] z-[-1]"
           />
           <SnakeLineRotated
-            color={isDark ? colors.charcoal[600] : colors.primary[400]}
+            color={isDark ? colors.charcoal[600] : colors.primary[600]}
             className="absolute left-[150] top-[-50px] z-[-1] "
           />
         </Animated.View>

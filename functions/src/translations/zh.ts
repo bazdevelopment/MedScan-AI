@@ -147,4 +147,10 @@ export const zh: ITranslation = {
     accountCreated: '您已加入！尽情探索吧！',
     error: '哎呀！出错了。请检查您的连接并重试。',
   },
+  continueConversation: {
+    messagesLimit: 'Aria已达到最大容量！上传另一个扫描文件以继续获取分析和见解',
+    conversationNotFound: '无法找到对话',
+    serviceIssueAi: 'AI服务似乎出现了问题。请重试。',
+    noResponseAiService: '未能从AI服务获得有效响应。请重试。',
+  },
 };

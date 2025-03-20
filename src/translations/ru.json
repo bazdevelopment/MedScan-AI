@@ -38,6 +38,9 @@
     "restorePurchase": "Восстановить покупку",
     "medicalDisclaimer": "Медицинский отказ от ответственности",
     "conversationHistory": "История разговора",
+    "freeTrial": "Бесплатная пробная версия",
+    "completedScans": "Сканирование завершено",
+    "activeSubscription": "Подписка активна",
     "copyText": {
       "loading": "Копирование...",
       "copied": "Скопировано!",
@@ -115,7 +118,7 @@
         "subheading": "Испытайте эти удивительные преимущества во время бесплатного пробного периода"
       },
       "scanInterpretation": {
-        "title": "Результат интерпретации",
+        "title": "Результат анализа",
         "headerBackTitle": "Отчеты"
       },
       "paywallOnboarding": {

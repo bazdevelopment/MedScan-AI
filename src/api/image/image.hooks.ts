@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { type AxiosError } from 'axios';
 
+import Toast from '@/components/toast';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 
 import { queryClient } from '../common';
@@ -40,7 +41,8 @@ export const useAnalyzeImage = ({
         conversationId: data.conversationId,
       });
     },
-    onError: (error) => {
+    onError: (error: any) => {
+      Toast.error(error.response.data.message);
       logEvent('Failure when analyzing medical image', 'error');
       recordError(error, 'Failure when analyzing medical image');
     },

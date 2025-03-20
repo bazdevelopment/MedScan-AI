@@ -38,6 +38,9 @@
     "restorePurchase": "Kauf wiederherstellen",
     "medicalDisclaimer": "Medizinischer Haftungsausschluss",
     "conversationHistory": "Konversationsverlauf",
+    "freeTrial": "Kostenlose Testversion",
+    "completedScans": "Scans abgeschlossen",
+    "activeSubscription": "Abonnement aktiv",
     "copyText": {
       "loading": "Wird kopiert...",
       "copied": "Kopiert!",
@@ -115,7 +118,7 @@
         "subheading": "Erlebe diese tollen Vorteile während deiner kostenlosen Testphase"
       },
       "scanInterpretation": {
-        "title": "Interpretationsergebnis",
+        "title": "Analyseergebnis",
         "headerBackTitle": "Berichte"
       },
       "paywallOnboarding": {

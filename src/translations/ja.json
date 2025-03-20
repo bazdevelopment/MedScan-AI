@@ -38,6 +38,9 @@
     "restorePurchase": "購入を復元",
     "medicalDisclaimer": "医療免責事項",
     "conversationHistory": "会話履歴",
+    "freeTrial": "無料トライアル",
+    "completedScans": "スキャン完了",
+    "activeSubscription": "サブスクリプション有効",
     "copyText": {
       "loading": "コピー中...",
       "copied": "コピーしました！",
@@ -115,7 +118,7 @@
         "subheading": "無料トライアル中にこれらの素晴らしい特典を体験してください"
       },
       "scanInterpretation": {
-        "title": "解析結果",
+        "title": "分析結果",
         "headerBackTitle": "レポート"
       },
       "paywallOnboarding": {

@@ -363,7 +363,10 @@ const ChatScreen = () => {
           className="my-6 items-center justify-center"
           color={isDark ? colors.charcoal[300] : colors.charcoal[100]}
         />
-        <BounceLoader loadingMessages={LOADING_MESSAGES_CHATBOT} />
+        <BounceLoader
+          loadingMessages={LOADING_MESSAGES_CHATBOT}
+          textClassName="text-black dark:text-white"
+        />
       </View>
     );
   }

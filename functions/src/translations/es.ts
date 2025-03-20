@@ -182,4 +182,13 @@ export const es: ITranslation = {
     error:
       '¡Ups! Algo salió mal. Por favor, revisa tu conexión e inténtalo de nuevo.',
   },
+  continueConversation: {
+    messagesLimit:
+      '¡Aria está al máximo de su capacidad! Sube otro escaneo para seguir obteniendo análisis y conocimientos',
+    conversationNotFound: 'No se pudo encontrar la conversación',
+    serviceIssueAi:
+      'Parece que hay un problema con el servicio de IA. Por favor, inténtelo de nuevo.',
+    noResponseAiService:
+      'No se pudo obtener una respuesta válida del servicio de IA. Por favor, inténtelo de nuevo.',
+  },
 };

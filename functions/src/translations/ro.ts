@@ -182,4 +182,13 @@ export const ro: ITranslation = {
     error:
       'Hopa! Ceva n-a mers bine. Te rugăm să verifici conexiunea și să încerci din nou.',
   },
+  continueConversation: {
+    messagesLimit:
+      'Aria a atins capacitatea maximă! Încarcă alt scan pentru a continua să primești analize și informații',
+    conversationNotFound: 'Nu s-a putut găsi conversația',
+    serviceIssueAi:
+      'Se pare că există o problemă cu serviciul AI. Vă rugăm să încercați din nou.',
+    noResponseAiService:
+      'Nu s-a putut obține un răspuns valid de la serviciul AI. Vă rugăm să încercați din nou.',
+  },
 };

@@ -29,21 +29,25 @@ export const sendConversationMessage = async ({
   userId: string;
   language: string;
 }) => {
-  const response = await axios.post(
-    Env.EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT as string,
-    {
-      userId,
-      conversationId,
-      userMessage,
-    },
-    {
-      headers: {
-        Accept: 'application/json',
-        // 'Content-Type': 'multipart/form-data',
-        'Accept-Language': language,
+  try {
+    const response = await axios.post(
+      Env.EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT as string,
+      {
+        userId,
+        conversationId,
+        userMessage,
       },
-    },
-  );
+      {
+        headers: {
+          Accept: 'application/json',
+          // 'Content-Type': 'multipart/form-data',
+          'Accept-Language': language,
+        },
+      },
+    );
 
-  return response.data;
+    return response.data;
+  } catch (e) {
+    throw e;
+  }
 };

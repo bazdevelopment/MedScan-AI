@@ -40,7 +40,7 @@ const ScanInterpretationDetailsScreen = () => {
   }
 
   return (
-    <View className="flex-1 bg-slate-50 px-2 pt-8 dark:bg-blackEerie">
+    <View className="flex-1 bg-slate-50 px-2 pt-0 dark:bg-blackEerie">
       {DEVICE_TYPE.IOS && (
         <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
       )}
@@ -62,7 +62,7 @@ const ScanInterpretationDetailsScreen = () => {
           />
         )}
         {/* Document Info Card */}
-        <View className="mx-4 mt-6 rounded-2xl bg-primary-100 dark:bg-blackBeauty">
+        <View className="mx-4 mt-6 rounded-2xl bg-primary-100 dark:bg-blackEerie">
           <View className="flex-row items-center justify-between rounded-t-2xl bg-primary-900 p-4">
             <View className="flex-row items-center">
               <Icon

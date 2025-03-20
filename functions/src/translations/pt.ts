@@ -178,4 +178,13 @@ export const pt: ITranslation = {
     error:
       'Ops! Algo deu errado. Por favor, verifique sua conexão e tente novamente.',
   },
+  continueConversation: {
+    messagesLimit:
+      'Aria está na capacidade máxima! Envie outro exame para continuar recebendo análises e insights',
+    conversationNotFound: 'Não foi possível encontrar a conversa',
+    serviceIssueAi:
+      'Parece haver um problema com o serviço de IA. Por favor, tente novamente.',
+    noResponseAiService:
+      'Falha ao obter uma resposta válida do serviço de IA. Por favor, tente novamente.',
+  },
 };

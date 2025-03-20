@@ -23,7 +23,13 @@ const Profile = () => {
 
   const { data: customerInfo } = useGetCustomerInfo();
   const activeSubscription = !!customerInfo?.activeSubscriptions?.length
-    ? customerInfo?.activeSubscriptions[0]
+    ? customerInfo?.activeSubscriptions[0].includes('month')
+      ? translate(
+          'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
+        )
+      : customerInfo?.activeSubscriptions[0].includes('year')
+        ? translate('rootLayout.screens.paywallUpgradeScreen.thirdOffering')
+        : translate('general.freeTrial')
     : translate('general.freeTrial');
 
   const { data: userInfo } = useUser(language);

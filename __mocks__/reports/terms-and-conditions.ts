@@ -1,5 +1,5 @@
 export const TERMS_AND_CONDITIONS = {
-  lastUpdated: '2025-02-12',
+  lastUpdated: '2025-03-12',
   terms: [
     {
       section: '1. Acceptance of Terms',
@@ -42,6 +42,7 @@ export const TERMS_AND_CONDITIONS = {
       section: 'Subscription Terms',
       content: 'The following terms apply to subscriptions:',
       listItems: [
+        'Free trials are available for new users and are limited to one per user. Additional free trials are not permitted.',
         'Monthly subscriptions are billed every 30 days',
         'Annual subscriptions are billed every 12 months',
       ],

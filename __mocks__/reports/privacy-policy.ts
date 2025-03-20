@@ -1,5 +1,5 @@
 export const PRIVACY_POLICY = {
-  last_updated: '2025-02-12',
+  last_updated: '2025-03-12',
   sections: [
     {
       title: 'Introduction',
@@ -31,17 +31,17 @@ export const PRIVACY_POLICY = {
         {
           title: 'Personal Data',
           description:
-            'While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You, including:\n\n• Email address\n• First name and last name\n• Usage Data',
+            'While using our service, we may request certain personally identifiable information from you that can be used to contact or identify you, including:\n\n• Email address\n• First name and last name\n\nHowever, this will only occur once your account becomes permanent. Until then, we will only ask for a nickname, and your identity will remain completely anonymous.',
         },
         {
           title: 'Usage Data',
           description:
-            "Usage Data is collected automatically when using the Service. This may include information such as Your Device's Internet Protocol address, browser type, browser version, pages visited, visit timestamps, time spent on pages, unique device identifiers and other diagnostic data.\n\nWhen using a mobile device, we may collect additional information such as device type, unique ID, IP address, operating system, and browser type.",
+            "Usage data is collected automatically when you use the service. This may include details such as your device tokens (especially for push notifications), device model, and operating system version. This information is used to enhance the app's functionality and security.",
         },
         {
           title: 'Device Permissions',
           description:
-            "Our Application may request permission to access:\n\n• Pictures and other information from your Device's camera and photo library\n\nThis information is used to provide and improve Our Service features. Data may be uploaded to our servers, Service Provider servers, or stored locally on Your device. You can manage these permissions through Your Device settings.",
+            "Our Application may request permission to access:\n\n• Pictures and other information from your Device's camera and photo library\n\nThis information is used to provide and improve Our Service features. Data may be uploaded to our servers, Service Provider servers. You can manage these permissions through your device settings.",
         },
       ],
     },
@@ -50,7 +50,7 @@ export const PRIVACY_POLICY = {
       content: [
         {
           description:
-            'We may use Your Personal Data for:\n\n• Service provision and maintenance\n• Account management\n• Contract fulfillment\n• Communications about updates and services\n• Marketing of similar products and services\n• Request management\n• Business transfers\n• Analysis and service improvement',
+            'We may use Your Personal Data for:\n\n• Service provision and maintenance\n• Account management\n• Communications about updates and services\n• Analysis and service improvement',
         },
       ],
     },
@@ -69,15 +69,6 @@ export const PRIVACY_POLICY = {
         {
           description:
             'You can update, delete, or request deletion of Your Personal Data through Your Account settings or by contacting Us. We may retain certain information for legal purposes.\n\nYour data may be transferred to computers outside Your jurisdiction. Your use of the Service constitutes agreement to such transfers, which will be conducted with appropriate security measures.',
-        },
-      ],
-    },
-    {
-      title: 'Data Disclosure',
-      content: [
-        {
-          description:
-            'We may disclose Your Personal Data for:\n\n• Legal compliance\n• Company rights protection\n• Fraud prevention\n• User safety\n• Business transactions (mergers, sales, etc.)\n\nWe will notify You if Your data becomes subject to a different Privacy Policy.',
         },
       ],
     },
@@ -104,7 +95,7 @@ export const PRIVACY_POLICY = {
       content: [
         {
           description:
-            "We may update this Privacy Policy periodically. Changes will be posted here with an updated date. We'll notify You of significant changes via email or Service notification. Continued use after changes indicates acceptance of the updated policy.",
+            'We may update this Privacy Policy periodically. Continued use after changes indicates acceptance of the updated policy.',
         },
       ],
     },

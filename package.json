@@ -1,6 +1,6 @@
 {
   "name": "x-ray-analizer",
-  "version": "25.3.10",
+  "version": "25.3.11",
   "private": true,
   "main": "expo-router/entry",
   "scripts": {

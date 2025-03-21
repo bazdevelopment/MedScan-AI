@@ -157,13 +157,14 @@ const Paywall = () => {
             source={require('assets/lottie/confetti-animation.json')}
             autoPlay
             loop={false}
+            renderMode="HARDWARE"
             style={{ flex: 1 }}
           />
         </View>
 
         <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
           <View
-            className={`rounded-b-[50px] bg-primary-900 pt-6 dark:bg-blackBeauty`}
+            className={`rounded-b-[50px] bg-primary-900  dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-6' : 'pt-10'}`}
           >
             <Button
               icon={

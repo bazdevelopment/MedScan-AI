@@ -153,13 +153,13 @@ const PaywallOnboarding = ({
             source={require('assets/lottie/confetti-animation.json')}
             autoPlay
             loop={false}
-            renderMode="SOFTWARE"
+            renderMode="HARDWARE"
             style={{ flex: 1 }}
           />
         </View>
 
         <View
-          className={`rounded-b-[50px] bg-primary-900 pb-6 dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-16' : 'pt-8'}`}
+          className={`rounded-b-[50px] bg-primary-900 pb-6 dark:bg-blackBeauty ${DEVICE_TYPE.IOS ? 'pt-16' : 'pt-10'}`}
         >
           <SnakeLine
             color={isDark ? colors.charcoal[600] : colors.primary[600]}

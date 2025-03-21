@@ -10,7 +10,8 @@ const Rate = () => {
   const handleFeedback = (isPositive: boolean) => {
     if (isPositive) {
       // Redirect happy users to the App Store
-      const appStoreUrl = 'https://apps.apple.com/app/idYOUR_APP_ID'; // Replace with your App Store link
+      const appStoreUrl =
+        'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'; // Replace with your App Store link
       Linking.openURL(appStoreUrl).catch((err) =>
         console.error('Error opening URL', err),
       );

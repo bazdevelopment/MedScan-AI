@@ -416,11 +416,17 @@ export const updateUserAfterSelectingPlan = async ({
     }),
   };
 
-  // if (customerInfo) {
-  await onUpdateUser({
+  // Guard clause to ensure onUpdateUser is a function
+  // If onUpdateUser is undefined, return a resolved Promise
+  if (typeof onUpdateUser !== 'function') {
+    console.error('onUpdateUser is not a function');
+    return Promise.resolve(); // Resolved Promise to ensure .then() is called
+  }
+
+  // Otherwise, call onUpdateUser and return its Promise
+  return onUpdateUser({
     language,
     userId,
     fieldsToUpdate,
   });
-  // }
 };

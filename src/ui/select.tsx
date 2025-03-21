@@ -321,7 +321,8 @@ export const SelectableLabel = ({
 }: ISelectableLabel) => {
   const Indicator = indicatorsType[indicatorType];
   return (
-    <Pressable
+    <TouchableOpacity
+      activeOpacity={0.8}
       className={`
         mt-4 flex-row items-center gap-4 rounded-2xl
         p-6
@@ -383,6 +384,6 @@ export const SelectableLabel = ({
           accessibilityHint="toggle Agree"
         />
       )}
-    </Pressable>
+    </TouchableOpacity>
   );
 };

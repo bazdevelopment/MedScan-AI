@@ -12,7 +12,10 @@ const Welcome = () => {
   const { isVerySmallDevice, isLargeDevice } = getDeviceSizeCategory();
 
   return (
-    <ScrollView contentContainerClassName="bg-primary-50 dark:bg-blackEerie flex-1">
+    <ScrollView
+      contentContainerClassName="bg-primary-50 dark:bg-blackEerie"
+      showsVerticalScrollIndicator={false}
+    >
       <SafeAreaView>
         <View className="items-center justify-center px-6 pb-32 pt-14 dark:bg-blackEerie">
           <Branding isLogoVisible invertedColors />

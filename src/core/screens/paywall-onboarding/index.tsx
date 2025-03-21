@@ -131,6 +131,7 @@ const PaywallOnboarding = ({
   return (
     <>
       <ScrollView
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           overflow: 'hidden',
           paddingBottom: 200,
@@ -245,7 +246,7 @@ const PaywallOnboarding = ({
           />
         </View>
       </ScrollView>
-      <View className="flex-column absolute bottom-0 mx-6 mb-4 w-full items-start justify-between self-center bg-white px-6 dark:bg-blackEerie">
+      <View className="flex-column absolute bottom-0 mx-6  w-full items-start justify-between self-center bg-white px-6 dark:bg-blackEerie">
         <Button
           label={translate('general.continue')}
           variant="default"
@@ -254,7 +255,7 @@ const PaywallOnboarding = ({
           iconPosition="left"
           onPress={handleSubscription}
           disabled={
-            formattedOfferings.length === 1 && selectedPlan !== 'free_trial' //disabled only when by mistake only free trial is shown
+            formattedOfferings?.length === 1 && selectedPlan !== 'free_trial' //disabled only when by mistake only free trial is shown
           }
           loading={isPendingUpdateUser || isLoadingPurchaseSubscription}
         />

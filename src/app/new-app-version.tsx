@@ -1,16 +1,33 @@
 import { useColorScheme } from 'nativewind';
 import React from 'react';
-import { View } from 'react-native';
+import { Linking, View } from 'react-native';
 
 import Icon from '@/components/icon';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
-import { translate } from '@/core';
+import { DEVICE_TYPE, translate } from '@/core';
 import { Button, colors, Text } from '@/ui';
 import { MobileIcon } from '@/ui/assets/icons/mobile-icon';
 
 const NewAppVersion = () => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
+  const openAppStore = () => {
+    // Determine the URL based on device type
+    const storeUrl = DEVICE_TYPE.IOS
+      ? 'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'
+      : ''; //add android url here
+
+    // Try opening the appropriate URL
+    Linking.openURL(storeUrl).catch((err) => {
+      console.error('Error opening URL', err);
+
+      // Provide feedback to the user in case of error
+      alert(
+        'We encountered an error while opening the store. Please try again later.',
+      );
+    });
+  };
   return (
     <View className="flex-1 items-center justify-between bg-primary-900 dark:bg-blackEerie">
       <SnakeLine
@@ -53,9 +70,7 @@ const NewAppVersion = () => {
         className="bottom-14 mt-6 h-[56px] w-[90%] rounded-xl border-2 border-primary-900 bg-white pl-5 active:bg-primary-700 dark:bg-primary-900"
         textClassName="text-lg text-center text-primary-900 dark:text-white"
         iconPosition="left"
-        onPress={() =>
-          console.log('add here the link for stores for both platforms')
-        }
+        onPress={openAppStore}
       />
     </View>
   );

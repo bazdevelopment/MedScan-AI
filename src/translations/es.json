@@ -133,7 +133,7 @@
         "heading": "¡Desbloquea funciones premium hoy! 🎉",
         "firstOffering": {
           "title": "Comenzar prueba gratuita",
-          "subtitle": "Disfruta de 10 escaneos gratis – sin pago"
+          "subtitle": "Disfruta de {{freeScans}} escaneos gratis – sin pago"
         },
         "secondOffering": {
           "title": "Mensual",
@@ -340,7 +340,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obtén 10 escaneos gratis",
+      "first": "Obtén {{freeScans}} escaneos gratis",
       "second": "Acceso a todas las funciones premium",
       "third": "Sin anuncios"
     },

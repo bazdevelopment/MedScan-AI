@@ -133,7 +133,7 @@
         "heading": "Desbloqueie recursos Premium hoje! 🎉",
         "firstOffering": {
           "title": "Iniciar Teste Gratuito",
-          "subtitle": "Aproveite 10 exames gratuitos – sem pagamento"
+          "subtitle": "Aproveite {{freeScans}} exames gratuitos – sem pagamento"
         },
         "secondOffering": {
           "title": "Mensal",
@@ -342,7 +342,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obtenha 10 Exames Gratuitos",
+      "first": "Obtenha {{freeScans}} Exames Gratuitos",
       "second": "Acesso a todos os recursos premium",
       "third": "Sem anúncios"
     },

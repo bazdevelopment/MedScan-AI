@@ -133,7 +133,7 @@
         "heading": "Premium-Funktionen jetzt freischalten! 🎉",
         "firstOffering": {
           "title": "Kostenlose Testphase starten",
-          "subtitle": "Genieße 10 kostenlose Scans – keine Zahlung"
+          "subtitle": "Genieße {{freeScans}} kostenlose Scans – keine Zahlung"
         },
         "secondOffering": {
           "title": "Monatlich",
@@ -340,7 +340,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Erhalte 10 kostenlose Scans",
+      "first": "Erhalte {{freeScans}} kostenlose Scans",
       "second": "Zugriff auf alle Premium-Funktionen",
       "third": "Keine Werbung"
     },

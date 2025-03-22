@@ -60,9 +60,9 @@ const CustomAlert = ({
     }
   }, [visible, fadeAnim]);
 
-  if (!visible) return null;
-
   useBackHandler(() => true);
+
+  if (!visible) return null;
 
   return (
     <Animated.View

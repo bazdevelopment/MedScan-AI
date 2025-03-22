@@ -133,7 +133,7 @@
         "heading": "Débloquez les fonctionnalités premium dès aujourd'hui ! 🎉",
         "firstOffering": {
           "title": "Commencer l'essai gratuit",
-          "subtitle": "Profitez de 10 analyses gratuites – aucun paiement requis"
+          "subtitle": "Profitez de {{freeScans}} analyses gratuites – aucun paiement requis"
         },
         "secondOffering": {
           "title": "Mensuel",
@@ -340,7 +340,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obtenez 10 analyses gratuites",
+      "first": "Obtenez {{freeScans}} analyses gratuites",
       "second": "Accédez à toutes les fonctionnalités premium",
       "third": "Pas de publicité"
     },

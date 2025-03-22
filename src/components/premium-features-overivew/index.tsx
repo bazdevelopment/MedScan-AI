@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 
+import { MAX_FREE_SCANS } from '@/constants/limits';
 import { translate } from '@/core';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { colors, Text } from '@/ui';
@@ -29,7 +30,9 @@ const PremiumFeaturesOverview = () => {
         <Text
           className={`font-bold-nunito text-lg text-primary-900 ${isVerySmallDevice ? 'text-xs' : 'text-lg'}`}
         >
-          {translate('components.PremiumFeaturesOverview.first')}
+          {translate('components.PremiumFeaturesOverview.first', {
+            freeScans: MAX_FREE_SCANS,
+          })}
         </Text>
       </View>
 

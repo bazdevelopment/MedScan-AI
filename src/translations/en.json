@@ -133,7 +133,7 @@
         "heading": "Unlock Premium Features Today! 🎉",
         "firstOffering": {
           "title": "Start Free Trial",
-          "subtitle": "Enjoy 10 free scans – no payment"
+          "subtitle": "Enjoy {{freeScans}} free scans – no payment"
         },
         "secondOffering": {
           "title": "Monthly",
@@ -342,7 +342,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Get 10 Free Scans",
+      "first": "Get {{freeScans}} Free Scans",
       "second": "Access to all premium features",
       "third": "No ads"
     },

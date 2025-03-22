@@ -133,7 +133,7 @@
         "heading": "Deblochează Funcționalitățile Premium Astăzi! 🎉",
         "firstOffering": {
           "title": "Începe Perioada de Probă",
-          "subtitle": "Bucură-te de 10 scanări gratuite – fără plată"
+          "subtitle": "Bucură-te de {{freeScans}} scanări gratuite – fără plată"
         },
         "secondOffering": {
           "title": "Lunar",
@@ -340,7 +340,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obține 10 Scanări Gratuite",
+      "first": "Obține {{freeScans}} Scanări Gratuite",
       "second": "Acces la toate funcționalitățile premium",
       "third": "Fără reclame"
     },

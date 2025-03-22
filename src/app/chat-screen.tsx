@@ -33,6 +33,7 @@ import Icon from '@/components/icon';
 import Toast from '@/components/toast';
 import { LOADING_MESSAGES_CHATBOT } from '@/constants/loading-messages';
 import { DEVICE_TYPE, translate } from '@/core';
+import useBackHandler from '@/core/hooks/use-back-handler';
 import { useTextToSpeech } from '@/core/hooks/use-text-to-speech';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { wait } from '@/core/utilities/wait';
@@ -305,6 +306,8 @@ const ChatScreen = () => {
     ],
     [conversation?.messages, pendingMessages],
   );
+
+  useBackHandler(() => true);
 
   // Scroll logic based on the number of messages
   useEffect(() => {

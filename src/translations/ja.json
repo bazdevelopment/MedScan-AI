@@ -133,7 +133,7 @@
         "heading": "プレミアム機能を今すぐアンロック！🎉",
         "firstOffering": {
           "title": "無料トライアルを開始",
-          "subtitle": "10回の無料スキャンを楽しむ – 支払い不要"
+          "subtitle": "{{freeScans}}回の無料スキャンを楽しむ – 支払い不要"
         },
         "secondOffering": {
           "title": "月次",
@@ -340,7 +340,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "10回の無料スキャンを取得",
+      "first": "{{freeScans}}回の無料スキャンを取得",
       "second": "すべてのプレミアム機能にアクセス",
       "third": "広告なし"
     },

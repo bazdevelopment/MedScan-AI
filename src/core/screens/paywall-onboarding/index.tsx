@@ -19,6 +19,7 @@ import { type IOnboardingCollectedData } from '@/app/onboarding';
 import Branding from '@/components/branding';
 import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
+import { MAX_FREE_SCANS } from '@/constants/limits';
 import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
 import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
@@ -284,6 +285,7 @@ const formatPaywallOnboardingData = (offerings: any) => {
       ),
       subtitle: translate(
         'rootLayout.screens.paywallUpgradeScreen.firstOffering.subtitle',
+        { freeScans: MAX_FREE_SCANS },
       ),
       price: 'Free',
       priceNumber: '',

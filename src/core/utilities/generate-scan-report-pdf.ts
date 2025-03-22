@@ -58,6 +58,7 @@ export const generateScanReportPdf = ({
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Analysis Report</title>
     <style>
+          * { print-color-adjust:exact !important; }
         body {
             font-family: Nunito-Sans, sans-serif;
             margin: 0;

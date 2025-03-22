@@ -377,6 +377,7 @@ export const SelectableLabel = ({
       {showIndicator && indicatorPosition === 'right' && (
         <Indicator
           disabled={false}
+          onChange={onPress}
           checked={selected}
           testID="radio"
           accessibilityLabel="Agree"

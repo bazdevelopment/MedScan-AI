@@ -4,8 +4,10 @@
   <dict>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
+    <key>CFBundleAllowMixedLocalizations</key>
+    <true/>
     <key>CFBundleDevelopmentRegion</key>
-    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <string>en</string>
     <key>CFBundleDisplayName</key>
     <string>MedScan AI</string>
     <key>CFBundleExecutable</key>
@@ -14,6 +16,21 @@
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+      <string>en</string>
+      <string>zh</string>
+      <string>es</string>
+      <string>hi</string>
+      <string>ar</string>
+      <string>pt</string>
+      <string>ru</string>
+      <string>ja</string>
+      <string>ko</string>
+      <string>de</string>
+      <string>fr</string>
+      <string>ro</string>
+    </array>
     <key>CFBundleName</key>
     <string>$(PRODUCT_NAME)</string>
     <key>CFBundlePackageType</key>

@@ -149,13 +149,15 @@ const PaywallOnboarding = ({
             pointerEvents: 'none',
           }}
         >
-          <LottieView
-            source={require('assets/lottie/confetti-animation.json')}
-            autoPlay
-            loop={false}
-            renderMode="HARDWARE"
-            style={{ flex: 1 }}
-          />
+          {DEVICE_TYPE.IOS && (
+            <LottieView
+              source={require('assets/lottie/confetti-animation.json')}
+              autoPlay
+              loop={false}
+              renderMode="HARDWARE"
+              style={{ flex: 1 }}
+            />
+          )}
         </View>
 
         <View
@@ -262,7 +264,7 @@ const PaywallOnboarding = ({
         <Button
           label={translate('general.restorePurchase')}
           variant="ghost"
-          className="self-center active:opacity-70"
+          className="self-center pb-4 active:opacity-70"
           onPress={restorePurchase}
           loading={isPendingRestorePurchase}
         />

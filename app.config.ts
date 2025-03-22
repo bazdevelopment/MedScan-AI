@@ -35,6 +35,24 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     entitlements: {
       'com.apple.developer.networking.wifi-info': true,
     },
+    infoPlist: {
+      CFBundleAllowMixedLocalizations: true,
+      CFBundleLocalizations: [
+        'en', // English
+        'zh', // Chinese
+        'es', // Spanisscroh
+        'hi', // Hindi
+        'ar', // Arabic
+        'pt', // Portuguese
+        'ru', // Russian
+        'ja', // Japanese
+        'ko', // Korean
+        'de', // German
+        'fr', // French
+        'ro', // Romanian
+      ],
+      CFBundleDevelopmentRegion: 'en', // Default language, adjust if needed
+    },
   },
   experiments: {
     typedRoutes: true,

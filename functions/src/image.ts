@@ -359,16 +359,16 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       throw new functions.https.HttpsError('not-found', t.common.noUserFound);
     }
 
-    const { scansRemaining } = userInfoSnapshot.data() as {
-      scansRemaining: number;
-    };
+    // const { scansRemaining } = userInfoSnapshot.data() as {
+    //   scansRemaining: number;
+    // };
 
-    if (scansRemaining <= 0) {
-      throw new functions.https.HttpsError(
-        'resource-exhausted',
-        t.analyzeImage.scanLimitReached,
-      );
-    }
+    // if (scansRemaining <= 0) {
+    //   throw new functions.https.HttpsError(
+    //     'resource-exhausted',
+    //     t.analyzeImage.scanLimitReached,
+    //   );
+    // }
 
     if (!userId) {
       handleOnRequestError({
@@ -892,16 +892,16 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       throw new functions.https.HttpsError('not-found', t.common.noUserFound);
     }
 
-    const { scansRemaining } = userInfoSnapshot.data() as {
-      scansRemaining: number;
-    };
+    // const { scansRemaining } = userInfoSnapshot.data() as {
+    //   scansRemaining: number;
+    // };
 
-    if (scansRemaining <= 0) {
-      throw new functions.https.HttpsError(
-        'resource-exhausted',
-        t.analyzeImage.scanLimitReached,
-      );
-    }
+    // if (scansRemaining <= 0) {
+    //   throw new functions.https.HttpsError(
+    //     'resource-exhausted',
+    //     t.analyzeImage.scanLimitReached,
+    //   );
+    // }
 
     if (!userId) {
       handleOnRequestError({

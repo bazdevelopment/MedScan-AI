@@ -344,12 +344,12 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
     const languageAbbreviation = req.headers['accept-language'];
 
     const additionalLngPrompt = `Please respond only in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} from now on.`;
-    console.log('additionalLngPrompt', additionalLngPrompt);
+
     const t = getTranslation(languageAbbreviation as string);
     const { userId, promptMessage } = fields;
     const [imageFile] = files;
     const userPromptInput = promptMessage.length
-      ? `This is some additional information from the user regarding his request or expectations for this analysis:${promptMessage}`
+      ? `The user has these questions or is looking to find out this:${promptMessage}`
       : '';
     const userDoc = db.collection('users').doc(userId);
     const userInfoSnapshot = await userDoc.get();
@@ -879,7 +879,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
     const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
     const userPromptInput = promptMessage.length
-      ? `This is some additional information from the user regarding his request or expectations for this analysis:${promptMessage}`
+      ? `The user has these questions or is looking to find out this:${promptMessage}`
       : '';
     const t = getTranslation(languageAbbreviation as string);
     const [videoFile] = files;

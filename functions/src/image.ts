@@ -25,14 +25,6 @@ const db = admin.firestore();
 
 export const analyzeImage = async (req: Request, res: any) => {
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
-    if (req.method === 'OPTIONS') {
-      res.set('Access-Control-Allow-Methods', 'GET');
-      res.set('Access-Control-Allow-Headers', 'Content-Type');
-      res.set('Access-Control-Max-Age', '3600');
-    }
-
     const { files, fields } = await processUploadedFile(req);
     const languageAbbreviation = req.headers['accept-language'];
 
@@ -183,13 +175,6 @@ export const analyzeImage = async (req: Request, res: any) => {
 
 export const analyzeVideo = async (req: Request, res: any) => {
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
-    if (req.method === 'OPTIONS') {
-      res.set('Access-Control-Allow-Methods', 'GET');
-      res.set('Access-Control-Allow-Headers', 'Content-Type');
-      res.set('Access-Control-Max-Age', '3600');
-    }
     const storage = admin.storage();
 
     const { files, fields } = await processUploadedFile(req);
@@ -332,14 +317,6 @@ export const analyzeVideo = async (req: Request, res: any) => {
 // !NEW FEATURE TO CONTINUE CONVERSATION
 export const analyzeImageConversation = async (req: Request, res: any) => {
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
-    if (req.method === 'OPTIONS') {
-      res.set('Access-Control-Allow-Methods', 'GET');
-      res.set('Access-Control-Allow-Headers', 'Content-Type');
-      res.set('Access-Control-Max-Age', '3600');
-    }
-
     const { files, fields } = await processUploadedFile(req);
     const languageAbbreviation = req.headers['accept-language'];
 
@@ -744,14 +721,6 @@ export const analyzeImageConversationV2 = async (
 export const continueConversation = async (req: Request, res: any) => {
   let t;
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
-    if (req.method === 'OPTIONS') {
-      res.set('Access-Control-Allow-Methods', 'POST');
-      res.set('Access-Control-Allow-Headers', 'Content-Type');
-      res.set('Access-Control-Max-Age', '3600');
-    }
-
     const { userId, conversationId, userMessage } = req.body;
     const languageAbbreviation = req.headers['accept-language'];
     t = getTranslation(languageAbbreviation as string);
@@ -864,14 +833,6 @@ export const continueConversation = async (req: Request, res: any) => {
 
 export const analyzeVideoConversation = async (req: Request, res: any) => {
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
-    if (req.method === 'OPTIONS') {
-      res.set('Access-Control-Allow-Methods', 'GET');
-      res.set('Access-Control-Allow-Headers', 'Content-Type');
-      res.set('Access-Control-Max-Age', '3600');
-    }
-
     const { files, fields } = await processUploadedFile(req);
     const { userId, promptMessage } = fields;
     const languageAbbreviation = req.headers['accept-language'];

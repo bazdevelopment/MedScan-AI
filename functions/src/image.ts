@@ -816,12 +816,6 @@ export const continueConversation = async (req: Request, res: any) => {
       message: 'Message sent successfully.',
       assistantMessage,
     });
-
-    res.status(200).json({
-      success: true,
-      message: 'Message sent successfully.',
-      assistantMessage,
-    });
   } catch (error: any) {
     console.error('Error continuing conversation:', error);
     res.status(500).json({

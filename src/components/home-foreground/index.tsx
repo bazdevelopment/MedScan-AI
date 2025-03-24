@@ -7,10 +7,16 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import { Toaster } from 'sonner-native';
 
 import { useFetchUserNotifications } from '@/api/push-notifications/push-notifications.hooks';
 import { useUser } from '@/api/user/user.hooks';
-import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
+import {
+  DEVICE_TYPE,
+  translate,
+  useIsFirstTime,
+  useSelectedLanguage,
+} from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { wait } from '@/core/utilities/wait';
 import { Button, colors, Text } from '@/ui';
@@ -97,6 +103,9 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
 
   return (
     <View className="h-[340px] rounded-b-[50px] bg-primary-900 pt-[20px]">
+      {DEVICE_TYPE.IOS && (
+        <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+      )}
       <SnakeLine className="absolute right-[150] top-[10]" />
       <SnakeLineRotated className="absolute left-[100] top-[-20]" />
       <SnakeLineRotated className="absolute left-[170] top-[-120]" />

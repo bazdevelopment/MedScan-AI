@@ -124,6 +124,10 @@ export default function Settings() {
             />
             <LanguageItem />
             <ThemeItem />
+            <Item
+              text="settings.contactUs"
+              onPress={() => router.navigate('/contact-us')}
+            />
           </ItemsContainer>
 
           <ItemsContainer title="settings.about">

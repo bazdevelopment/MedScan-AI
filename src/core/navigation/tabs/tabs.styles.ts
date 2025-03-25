@@ -7,7 +7,7 @@ export const getBottomTabBarStyle = (isDark: boolean) =>
   StyleSheet.create({
     tabBarContainer: {
       paddingTop: 10,
-      paddingBottom: DEVICE_TYPE.ANDROID ? 10 : 22,
+      paddingBottom: DEVICE_TYPE.ANDROID ? 10 : 26,
       backgroundColor: isDark ? colors.black : colors.white,
       height: DEVICE_TYPE.IOS ? 92 : 65,
       width: '100%',

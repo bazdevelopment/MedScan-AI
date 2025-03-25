@@ -205,6 +205,11 @@
         "thirdConsent": "MedScan AI is not designed for patient use. It does not provide direct medical diagnoses, treatment recommendations, or patient management functionalities.",
         "fourthConsent": "MedScan AI is not classified as a medical device and does not claim regulatory approval. It is intended for educational and informational purposes to complement professional expertise.",
         "fifthConsent": "MedScan AI does not collect, store, or process personal or patient data. All user interactions are confidential and limited to the scope of the app."
+      },
+      "contactUs": {
+        "heading": "Feel free to email us directly, and our team will get back to you as soon as possible",
+        "customerSupport": "Customer Support",
+        "emailAddress": "Email Address"
       }
     }
   },
@@ -259,6 +264,7 @@
   "settings": {
     "tab": "Settings",
     "profile": "Profile",
+    "contactUs": "Contact us",
     "about": "About",
     "app_name": "App Name",
     "languages": {

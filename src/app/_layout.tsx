@@ -337,6 +337,22 @@ export default function RootLayout() {
             ),
           }}
         />
+        <Stack.Screen
+          name="contact-us"
+          options={{
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('settings.contactUs')}
+                titlePosition="center"
+                onGoBack={router.back}
+                className="bg-white"
+                titleClassName="text-black"
+                backIconColor={isDark ? colors.white : colors.black}
+              />
+            ),
+          }}
+        />
       </Stack>
     </Providers>
   );

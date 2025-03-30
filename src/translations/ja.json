@@ -41,6 +41,7 @@
     "freeTrial": "無料トライアル",
     "completedScans": "スキャン完了",
     "activeSubscription": "サブスクリプション有効",
+    "askAssistant": "AIアシスタントに質問",
     "copyText": {
       "loading": "コピー中...",
       "copied": "コピーしました！",
@@ -126,7 +127,7 @@
           "title": "プレミアム機能を今すぐアンロック！🎉",
           "firstOffering": "すべてのプレミアム機能にアクセス",
           "secondOffering": "広告なしの体験",
-          "thirdOffering": "無制限のスキャン回数"
+          "thirdOffering": "合理的な使用範囲内での無制限スキャン"
         }
       },
       "paywallUpgradeScreen": {
@@ -356,6 +357,24 @@
         "email": "メールアドレス",
         "emailVerification": "メール確認"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "説明",
+        "first": "1. 「四角形を追加」ボタンをタップして選択四角形を作成します。",
+        "second": "2. 四角形を関心領域にドラッグします。",
+        "third": "3. 角を調整して領域を正確にカバーします。"
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "スタジオを開く",
+        "editMore": "さらに編集",
+        "continueEditing": "注釈の編集を続けますか？",
+        "highlightedRegionsCount": "{{highlightedRegions}} のハイライトされた領域があります。さらに追加するには下をタップしてください",
+        "highlightRegions": "医療画像の領域をハイライトする必要がありますか？"
+      },
+      "studioToolbar": {
+        "addSquare": "四角形を追加"
+      }
     }
   },
   "alerts": {
@@ -400,6 +419,7 @@
     "noSubscriptionToRestore": "おっと！現在、有効なサブスクリプションがないようです。引き続きフルアクセスを楽しむには、サブスクリプションプランのいずれかを選択してください。",
     "restorationSuccessful": "復元が成功しました！お楽しみください！",
     "restorationError": "購入の復元中にエラーが発生しました。",
-    "medicalDisclaimerAlert": "MedScan AIアプリは、診断、治療の推奨、またはいかなる医療アドバイスも提供しません。医療上の決定については、常に資格のある医療専門家の指導を求めてください。"
+    "medicalDisclaimerAlert": "MedScan AIアプリは、診断、治療の推奨、またはいかなる医療アドバイスも提供しません。医療上の決定については、常に資格のある医療専門家の指導を求めてください。",
+    "scanLimitReached": "スキャン品質を最適化中です！約{{hours}}時間{{minutes}}分後に再度スキャンできます。医療に関する質問がありますか？待っている間にチャットアシスタントに質問してください！"
   }
 }

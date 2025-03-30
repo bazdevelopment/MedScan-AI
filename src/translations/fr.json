@@ -41,6 +41,7 @@
     "completedScans": "Analyses terminées",
     "activeSubscription": "Abonnement actif",
     "and": "et",
+    "askAssistant": "Demander à l'assistant IA",
     "copyText": {
       "loading": "Copie en cours...",
       "copied": "Copié !",
@@ -126,7 +127,7 @@
           "title": "Débloquez les fonctionnalités premium dès aujourd'hui ! 🎉",
           "firstOffering": "Accédez à toutes les fonctionnalités premium",
           "secondOffering": "Expérience sans publicité",
-          "thirdOffering": "Nombre illimité d'analyses"
+          "thirdOffering": "Analyses illimitées dans des limites raisonnables"
         }
       },
       "paywallUpgradeScreen": {
@@ -356,6 +357,24 @@
         "email": "E-mail",
         "emailVerification": "Vérification de l'e-mail"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instructions",
+        "first": "1. Appuyez sur le bouton 'Ajouter un carré' pour créer un carré de sélection.",
+        "second": "2. Faites glisser le carré sur votre région d'intérêt.",
+        "third": "3. Ajustez les coins pour couvrir précisément la région."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Ouvrir le Studio",
+        "editMore": "Modifier plus",
+        "continueEditing": "Continuer à modifier vos annotations ?",
+        "highlightedRegionsCount": "Vous avez {{highlightedRegions}} régions en surbrillance. Appuyez ci-dessous pour en ajouter plus",
+        "highlightRegions": "Besoin de mettre en évidence des régions de votre image médicale ?"
+      },
+      "studioToolbar": {
+        "addSquare": "Ajouter un carré"
+      }
     }
   },
   "alerts": {
@@ -400,6 +419,7 @@
     "noSubscriptionToRestore": "Oups ! Il semble que vous n'ayez pas d'abonnement actif pour le moment. Pour continuer à profiter d'un accès complet, veuillez choisir l'un de nos plans d'abonnement.",
     "restorationSuccessful": "Restauration réussie ! Profitez-en !",
     "restorationError": "Une erreur s'est produite lors de la restauration de votre achat.",
-    "medicalDisclaimerAlert": "L'application MedScan AI ne propose pas de diagnostics, de recommandations de traitement ou de conseils médicaux. Consultez toujours un professionnel de santé qualifié pour les décisions médicales."
+    "medicalDisclaimerAlert": "L'application MedScan AI ne propose pas de diagnostics, de recommandations de traitement ou de conseils médicaux. Consultez toujours un professionnel de santé qualifié pour les décisions médicales.",
+    "scanLimitReached": "Nous optimisons la qualité des analyses pour vous ! Vous pourrez effectuer un nouveau scan dans environ {{hours}} heures et {{minutes}} minutes. Vous avez des questions sur un sujet médical ? Interrogez notre assistant de chat pendant votre attente !"
   }
 }

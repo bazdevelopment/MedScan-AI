@@ -29,13 +29,11 @@ const PromptSection = ({
   return (
     <View className="mt-2 w-full px-2 ">
       <Text className="mb-2 ml-1 font-bold-nunito text-2xl text-primary-900">
-        {translate('components.PromptSection.message')}
+        {translate('general.chatbotPlaceholder')}
       </Text>
-      {/* <Text className="my-2 h-14 font-semibold-nunito text-base text-gray-700">
-        E.g. {FILE_UPLOAD_PROMPT_MESSAGES[currentPrompt]}
-      </Text> */}
+
       <Input
-        className="font-regular-nunito  min-h-[130] w-full rounded-xl border border-gray-300 bg-white p-3 text-base text-gray-800 dark:border-charcoal-600 dark:bg-charcoal-900 dark:text-white"
+        className="font-regular-nunito  min-h-[80] w-full rounded-xl border border-gray-300 bg-white p-3 text-base text-gray-800 dark:border-charcoal-600 dark:bg-charcoal-900 dark:text-white"
         multiline
         // numberOfLines={3}
         //todo: long placeholder is not completely shown because of min-h-[100px], find the cause
@@ -44,6 +42,7 @@ const PromptSection = ({
         onChangeText={onUpdatePromptMessage}
         textAlignVertical="top"
         value={promptMessage}
+        maxLength={150}
         underlineColorAndroid="transparent"
       />
     </View>

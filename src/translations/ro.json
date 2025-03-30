@@ -41,6 +41,7 @@
     "freeTrial": "Probă gratuită",
     "completedScans": "Scanări completate",
     "activeSubscription": "Abonament activ",
+    "askAssistant": "Întreabă asistentul AI",
     "copyText": {
       "loading": "Se copiază...",
       "copied": "Copiat!",
@@ -126,7 +127,7 @@
           "title": "Deblochează Funcționalitățile Premium Astăzi! 🎉",
           "firstOffering": "Acces la toate funcționalitățile premium",
           "secondOffering": "Experiență fără reclame",
-          "thirdOffering": "Număr nelimitat de scanări"
+          "thirdOffering": "Scanări nelimitate în limite rezonabile"
         }
       },
       "paywallUpgradeScreen": {
@@ -356,6 +357,24 @@
         "email": "Email",
         "emailVerification": "Verificare Email"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instrucțiuni",
+        "first": "1. Apăsați butonul 'Adăugați pătrat' pentru a crea un pătrat de selecție.",
+        "second": "2. Trageți pătratul peste regiunea de interes.",
+        "third": "3. Ajustați colțurile pentru a acoperi cu precizie regiunea."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Deschide Studio",
+        "editMore": "Editează mai mult",
+        "continueEditing": "Continuați editarea adnotărilor?",
+        "highlightedRegionsCount": "Aveți {{highlightedRegions}} regiuni evidențiate. Apăsați mai jos pentru a adăuga mai multe",
+        "highlightRegions": "Doriți să evidențiați regiuni ale imaginii dumneavoastră medicale?"
+      },
+      "studioToolbar": {
+        "addSquare": "Adăugați pătrat"
+      }
     }
   },
   "alerts": {
@@ -400,6 +419,7 @@
     "noSubscriptionToRestore": "Hopa! Se pare că nu ai un abonament activ în acest moment. Pentru a continua să te bucuri de acces complet, te rugăm să alegi unul dintre planurile noastre de abonament.",
     "restorationSuccessful": "Restaurarea a avut succes! Bucură-te de acces complet!",
     "restorationError": "A apărut o eroare la restaurarea achiziției tale.",
-    "medicalDisclaimerAlert": "Aplicația MedScan AI nu oferă diagnostice, recomandări de tratament sau sfaturi medicale. Consultați întotdeauna un profesionist calificat în sănătate pentru decizii medicale."
+    "medicalDisclaimerAlert": "Aplicația MedScan AI nu oferă diagnostice, recomandări de tratament sau sfaturi medicale. Consultați întotdeauna un profesionist calificat în sănătate pentru decizii medicale.",
+    "scanLimitReached": "Optimizăm calitatea scanării pentru dumneavoastră! Veți putea scana din nou în aproximativ {{hours}} ore și {{minutes}} minute. Aveți întrebări despre vreun subiect medical? Întrebați asistentul nostru de chat în timp ce așteptați!"
   }
 }

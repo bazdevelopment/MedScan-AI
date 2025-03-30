@@ -36,6 +36,7 @@ import { DEVICE_TYPE, translate } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import { useTextToSpeech } from '@/core/hooks/use-text-to-speech';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
+import { generateUniqueId } from '@/core/utilities/generate-unique-id';
 import { wait } from '@/core/utilities/wait';
 import { colors, Text } from '@/ui';
 import { CloseIcon, SoundOn, StopIcon } from '@/ui/assets/icons';
@@ -172,7 +173,12 @@ export const TypingIndicator = () => {
 };
 
 const ChatScreen = () => {
-  const { conversationId, mediaSource, mimeType } = useLocalSearchParams();
+  const {
+    conversationId = generateUniqueId(),
+    mediaSource,
+    mimeType,
+    conversationMode,
+  } = useLocalSearchParams();
   const [userMessage, setUserMessage] = useState('');
   const [pendingMessages, setPendingMessages] = useState<MessageType[]>([]);
   const [currentlySpeakingId, setCurrentlySpeakingId] = useState<string | null>(
@@ -237,6 +243,7 @@ const ChatScreen = () => {
       await sendMessage({
         userMessage,
         conversationId: conversationId as string,
+        conversationMode,
         userId: userInfo.userId,
         language,
       });
@@ -271,6 +278,7 @@ const ChatScreen = () => {
       await sendMessage({
         userMessage: message.content,
         conversationId: conversationId as string,
+        conversationMode,
         userId: userInfo.userId,
         language,
       });
@@ -349,13 +357,13 @@ const ChatScreen = () => {
   }, []);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && conversationMode === 'IMAGE_SCAN_CONVERSATION') {
       Toast.warning(translate('alerts.medicalDisclaimerAlert'), {
         closeButton: true,
         duration: 8000,
       });
     }
-  }, [isLoading]);
+  }, [isLoading, conversationMode]);
 
   if (isLoading) {
     return (
@@ -413,12 +421,16 @@ const ChatScreen = () => {
                 </View>
               )}
             </View>
-            <AttachmentPreview
-              filePath={mediaSource as string}
-              isVideo={isVideo}
-              className="h-[40px] w-[40px] rounded-xl border-0"
-              isEntirelyClickable
-            />
+            <View>
+              {!!mediaSource && (
+                <AttachmentPreview
+                  filePath={mediaSource as string}
+                  isVideo={isVideo}
+                  className="h-[40px] w-[40px] rounded-xl border-0"
+                  isEntirelyClickable
+                />
+              )}
+            </View>
           </View>
 
           {/* Messages List */}
@@ -454,7 +466,7 @@ const ChatScreen = () => {
                 placeholder={translate('general.chatbotPlaceholder')}
                 placeholderTextColor={isDark ? colors.charcoal[300] : '#9CA3AF'}
                 multiline
-                maxLength={500}
+                maxLength={150}
               />
               <TouchableOpacity
                 onPress={handleSendMessage}

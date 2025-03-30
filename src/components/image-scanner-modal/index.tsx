@@ -7,7 +7,7 @@ import { Image, Modal, StyleSheet, View } from 'react-native';
 import { LOADING_MESSAGES_IMAGE_SCANNING } from '@/constants/loading-messages';
 import { translate } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
-import { Button, colors, Text } from '@/ui';
+import { Button, colors } from '@/ui';
 import { CloseIcon, RetryIcon } from '@/ui/assets/icons';
 
 import BounceLoader from '../bounce-loader';
@@ -106,11 +106,11 @@ const ScanningModal = ({
               />
             </View>
           )}
-          {!!error && (
+          {/* {!!error && (
             <Text className="text-center text-danger-400 dark:text-danger-400">
               {error.toString()}
             </Text>
-          )}
+          )} */}
         </View>
       </View>
     </Modal>

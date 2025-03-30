@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import dayjs from 'dayjs';
 import React from 'react';
-import { TouchableOpacity, View, type ViewStyle } from 'react-native';
+import { Platform, TouchableOpacity, View, type ViewStyle } from 'react-native';
 
 import { useSelectedLanguage } from '@/core';
 import { useModal } from '@/core/hooks/use-modal';
@@ -50,7 +50,7 @@ const AttachmentPreview = ({
         />
       ) : (
         <Image
-          className={`h-[200px] w-full rounded-[23px] ${additionalImageStyles}`}
+          className={`h-[120px] w-full rounded-[23px] ${additionalImageStyles}`}
           source={{
             uri: filePath,
           }}
@@ -80,10 +80,11 @@ const AttachmentPreview = ({
             <VideoPlayer videoSource={{ uri: filePath }} />
           </View>
         ) : (
-          <View className="h-96 w-full">
+          <View className={`w-full ${Platform.isPad ? 'h-[85%]' : 'h-96'}`}>
             <Image
               source={{ uri: filePath }}
-              className="h-full w-full rounded-lg"
+              className="h-full w-full"
+              contentFit="contain"
             />
           </View>
         )}

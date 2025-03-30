@@ -41,6 +41,7 @@
     "freeTrial": "Kostenlose Testversion",
     "completedScans": "Scans abgeschlossen",
     "activeSubscription": "Abonnement aktiv",
+    "askAssistant": "KI-Assistent fragen",
     "copyText": {
       "loading": "Wird kopiert...",
       "copied": "Kopiert!",
@@ -126,7 +127,7 @@
           "title": "Premium-Funktionen jetzt freischalten! 🎉",
           "firstOffering": "Zugriff auf alle Premium-Funktionen",
           "secondOffering": "Werbefreie Nutzung",
-          "thirdOffering": "Unbegrenzte Anzahl an Scans"
+          "thirdOffering": "Unbegrenzte Scans innerhalb des angemessenen Gebrauchs"
         }
       },
       "paywallUpgradeScreen": {
@@ -356,6 +357,24 @@
         "email": "E-Mail",
         "emailVerification": "E-Mail-Verifizierung"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Anweisungen",
+        "first": "1. Tippen Sie auf die Schaltfläche 'Quadrat hinzufügen', um ein Auswahlquadrat zu erstellen.",
+        "second": "2. Ziehen Sie das Quadrat über Ihren interessierenden Bereich.",
+        "third": "3. Passen Sie die Ecken an, um den Bereich genau abzudecken."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Studio öffnen",
+        "editMore": "Mehr bearbeiten",
+        "continueEditing": "Mit der Bearbeitung Ihrer Anmerkungen fortfahren?",
+        "highlightedRegionsCount": "Sie haben {{ highlightedRegions }} hervorgehobene Bereiche. Tippen Sie unten, um weitere hinzuzufügen",
+        "highlightRegions": "Müssen Sie Bereiche Ihres medizinischen Bildes hervorheben?"
+      },
+      "studioToolbar": {
+        "addSquare": "Quadrat hinzufügen"
+      }
     }
   },
   "alerts": {
@@ -400,6 +419,7 @@
     "noSubscriptionToRestore": "Hoppla! Es scheint, dass Sie derzeit kein aktives Abonnement haben. Um weiterhin vollen Zugriff zu genießen, wählen Sie bitte einen unserer Abonnementpläne.",
     "restorationSuccessful": "Wiederherstellung erfolgreich! Viel Spaß!",
     "restorationError": "Beim Wiederherstellen Ihres Kaufs ist ein Fehler aufgetreten.",
-    "medicalDisclaimerAlert": "Die MedScan AI-App bietet keine Diagnosen, Behandlungsempfehlungen oder medizinische Ratschläge an. Holen Sie immer den Rat eines qualifizierten medizinischen Fachpersonals für medizinische Entscheidungen ein."
+    "medicalDisclaimerAlert": "Die MedScan AI-App bietet keine Diagnosen, Behandlungsempfehlungen oder medizinische Ratschläge an. Holen Sie immer den Rat eines qualifizierten medizinischen Fachpersonals für medizinische Entscheidungen ein.",
+    "scanLimitReached": "Wir optimieren die Scan-Qualität für Sie! Sie können in etwa {{hours}} Stunden und {{minutes}} Minuten wieder scannen. Haben Sie Fragen zu medizinischen Themen? Fragen Sie unseren Chat-Assistenten, während Sie warten!"
   }
 }

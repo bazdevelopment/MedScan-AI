@@ -25,11 +25,13 @@
     "utilities/truncate-email-address.ts",
     "utilities/cloud-functions-utils",
     "utilities/terms-of-service-structure.ts",
+    "utilities/check-daily-scan-limit.ts",
     "utilities/privacy-policy-structure.ts",
     "utilities/languages.ts",
     "utilities/language.ts",
     "utilities/add-fields-to-collection.ts",
     "utilities/ai-models.ts",
+    "utilities/get-time-until-midnight.ts",
     "dayjs/index.ts"
   ]
 }

@@ -124,6 +124,7 @@
     "react-native-screens": "~3.31.1",
     "react-native-sticky-parallax-header": "^1.1.1",
     "react-native-svg": "~15.2.0",
+    "react-native-view-shot": "3.8.0",
     "react-native-web": "~0.19.12",
     "react-query-kit": "^3.3.0",
     "sonner-native": "^0.17.0",

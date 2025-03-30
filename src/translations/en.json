@@ -41,6 +41,7 @@
     "freeTrial": "Free trial",
     "completedScans": "Scans completed",
     "activeSubscription": "Subscription active",
+    "askAssistant": "Ask AI assistant",
     "copyText": {
       "loading": "Copying...",
       "copied": "Copied!",
@@ -126,7 +127,8 @@
           "title": "Unlock Premium Features Today! 🎉",
           "firstOffering": "Access All Premium Features",
           "secondOffering": "Ad-Free Experience",
-          "thirdOffering": "Unlimited number of scans"
+          "thirdOffering": "Unlimited scans within reasonable use",
+          "fourthOffering": "Unlimited scans with fair use and 24/7 personal AI assistant access"
         }
       },
       "paywallUpgradeScreen": {
@@ -359,6 +361,24 @@
         "email": "Email",
         "emailVerification": "Email Verification"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instructions",
+        "first": "1. Tap the 'Add Square' button to create a selection square.",
+        "second": "2. Drag the square over your region of interest.",
+        "third": "3. Adjust the corners to precisely cover the region."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Open Studio",
+        "editMore": "Edit More",
+        "continueEditing": "Continue editing your annotations?",
+        "highlightedRegionsCount": "You have {{highlightedRegions}} highlighted regions. Tap below to add more",
+        "highlightRegions": "Need to highlight regions of your medical image?"
+      },
+      "studioToolbar": {
+        "addSquare": "Add Square"
+      }
     }
   },
   "alerts": {
@@ -403,6 +423,7 @@
     "noSubscriptionToRestore": "Oops! It looks like you don't have an active subscription at the moment. To continue enjoying full access, please choose one of our subscription plans.",
     "restorationSuccessful": "Restoration was successful! Enjoy!",
     "restorationError": "An error occurred while restoring the purchase.",
-    "medicalDisclaimerAlert": "MedScan AI app does not offer diagnoses, treatment recommendations, or any medical advice. Always seek guidance from a qualified healthcare professional for medical decisions."
+    "medicalDisclaimerAlert": "MedScan AI app does not offer diagnoses, treatment recommendations, or any medical advice. Always seek guidance from a qualified healthcare professional for medical decisions.",
+    "scanLimitReached": "We're optimizing scan quality for you! You'll be able to scan again in around {{hours}} hours and {{minutes}} minutes. Have any questions about any medical topic? Ask our chat assistant while you wait!"
   }
 }

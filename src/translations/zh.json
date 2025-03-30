@@ -41,6 +41,7 @@
     "freeTrial": "免费试用",
     "completedScans": "扫描完成",
     "activeSubscription": "订阅有效",
+    "askAssistant": "询问AI助手",
     "copyText": {
       "loading": "正在复制...",
       "copied": "已复制！",
@@ -126,7 +127,7 @@
           "title": "立即解锁高级功能！🎉",
           "firstOffering": "使用所有高级功能",
           "secondOffering": "无广告体验",
-          "thirdOffering": "无限次扫描"
+          "thirdOffering": "合理使用范围内的无限次扫描"
         }
       },
       "paywallUpgradeScreen": {
@@ -356,6 +357,24 @@
         "email": "电子邮箱",
         "emailVerification": "邮箱验证"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "说明",
+        "first": "1. 点击“添加方框”按钮创建一个选择方框。",
+        "second": "2. 将方框拖到您感兴趣的区域。",
+        "third": "3. 调整角落以精确覆盖区域。"
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "打开工作室",
+        "editMore": "编辑更多",
+        "continueEditing": "继续编辑您的标注？",
+        "highlightedRegionsCount": "您有{{highlightedRegions}}个高亮区域。点击下方添加更多",
+        "highlightRegions": "需要突出显示医学图像的某些区域吗？"
+      },
+      "studioToolbar": {
+        "addSquare": "添加方框"
+      }
     }
   },
   "alerts": {
@@ -400,6 +419,7 @@
     "noSubscriptionToRestore": "哎呀！看起来您目前没有有效的订阅。要继续享受完整访问权限，请选择我们的订阅计划之一。",
     "restorationSuccessful": "恢复成功！请尽情享受！",
     "restorationError": "恢复您的购买时发生错误。",
-    "medicalDisclaimerAlert": "MedScan AI 应用程序不提供诊断、治疗建议或任何医疗建议。请务必向合格的医疗专业人员寻求医疗决策指导。"
+    "medicalDisclaimerAlert": "MedScan AI 应用程序不提供诊断、治疗建议或任何医疗建议。请务必向合格的医疗专业人员寻求医疗决策指导。",
+    "scanLimitReached": "我们正在为您优化扫描质量！大约{{hours}}小时{{minutes}}分钟后您将可以再次扫描。有任何关于医学主题的问题吗？在等待期间可以咨询我们的聊天助手！"
   }
 }

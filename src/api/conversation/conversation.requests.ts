@@ -21,11 +21,13 @@ export const fetchConversation = async ({
 export const sendConversationMessage = async ({
   userMessage,
   conversationId,
+  conversationMode,
   userId,
   language,
 }: {
   userMessage: string;
   conversationId: string;
+  conversationMode: string;
   userId: string;
   language: string;
 }) => {
@@ -36,6 +38,7 @@ export const sendConversationMessage = async ({
         userId,
         conversationId,
         userMessage,
+        conversationMode,
       },
       {
         headers: {

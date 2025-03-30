@@ -157,7 +157,9 @@ export default function Home() {
           {!isUserSubscriptionActive && (
             <FreeTierStatus
               className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
-              scansLeft={userInfo?.scansRemaining}
+              scansLeft={
+                userInfo?.scansRemaining >= 0 ? userInfo?.scansRemaining : 0 //do this to avoid showing values with "-" in front
+              }
               onUpgrade={() => router.navigate('/paywall')}
             />
           )}

@@ -41,6 +41,7 @@
     "freeTrial": "무료 체험",
     "completedScans": "스� 완료",
     "activeSubscription": "구독 활성화됨",
+    "askAssistant": "AI 어시스턴트에게 질문",
     "copyText": {
       "loading": "복사 중...",
       "copied": "복사되었습니다!",
@@ -126,7 +127,7 @@
           "title": "프리미엄 기능을 지금 해제하세요!🎉",
           "firstOffering": "모든 프리미엄 기능에 액세스",
           "secondOffering": "광고 없는 경험",
-          "thirdOffering": "무제한 스캔"
+          "thirdOffering": "합리적인 사용 범위 내에서 무제한 스캔"
         }
       },
       "paywallUpgradeScreen": {
@@ -356,6 +357,24 @@
         "email": "이메일",
         "emailVerification": "이메일 확인"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "지침",
+        "first": "1. '사각형 추가' 버튼을 눌러 선택 사각형을 만듭니다.",
+        "second": "2. 관심 영역 위로 사각형을 드래그합니다.",
+        "third": "3. 영역을 정확하게 덮도록 모서리를 조정합니다."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "스튜디오 열기",
+        "editMore": "더 편집하기",
+        "continueEditing": "주석 편집을 계속하시겠습니까?",
+        "highlightedRegionsCount": "{{highlightedRegions}}개의 강조된 영역이 있습니다. 더 추가하려면 아래를 탭하세요",
+        "highlightRegions": "의료 이미지의 영역을 강조해야 합니까?"
+      },
+      "studioToolbar": {
+        "addSquare": "사각형 추가"
+      }
     }
   },
   "alerts": {
@@ -400,6 +419,7 @@
     "noSubscriptionToRestore": "이런! 현재 활성화된 구독이 없는 것 같습니다. 계속해서 전체 액세스를 즐기려면 구독 플랜 중 하나를 선택하세요.",
     "restorationSuccessful": "복원이 성공했습니다! 즐기세요!",
     "restorationError": "구매를 복원하는 중 오류가 발생했습니다.",
-    "medicalDisclaimerAlert": "MedScan AI 앱은 진단, 치료 권장 사항 또는 의학적 조언을 제공하지 않습니다. 의료 결정을 내리기 위해서는 항상 자격을 갖춘 의료 전문가의 지도를 받으십시오."
+    "medicalDisclaimerAlert": "MedScan AI 앱은 진단, 치료 권장 사항 또는 의학적 조언을 제공하지 않습니다. 의료 결정을 내리기 위해서는 항상 자격을 갖춘 의료 전문가의 지도를 받으십시오.",
+    "scanLimitReached": "스캔 품질을 최적화하고 있습니다! 약 {{hours}}시간 {{minutes}}분 후에 다시 스캔할 수 있습니다. 의료 주제에 대한 질문이 있으신가요? 기다리는 동안 채팅 어시스턴트에게 물어보세요!"
   }
 }

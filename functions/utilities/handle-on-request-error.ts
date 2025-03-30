@@ -1,6 +1,6 @@
 import * as logger from 'firebase-functions/logger';
 
-const logError = (context: string, errorDetails: any) => {
+export const logError = (context: string, errorDetails: any) => {
   // Use Firebase's logger to log structured errors
   logger.error(`[${context}]`, errorDetails);
 };

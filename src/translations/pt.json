@@ -41,6 +41,7 @@
     "freeTrial": "Teste gratuito",
     "completedScans": "Digitalizações concluídas",
     "activeSubscription": "Assinatura ativa",
+    "askAssistant": "Perguntar ao assistente IA",
     "copyText": {
       "loading": "Copiando...",
       "copied": "Copiado!",
@@ -126,7 +127,7 @@
           "title": "Desbloqueie recursos Premium hoje! 🎉",
           "firstOffering": "Acesso a todos os recursos Premium",
           "secondOffering": "Experiência sem anúncios",
-          "thirdOffering": "Número ilimitado de exames"
+          "thirdOffering": "Digitalizações ilimitadas dentro do uso razoável"
         }
       },
       "paywallUpgradeScreen": {
@@ -358,6 +359,24 @@
         "email": "E-mail",
         "emailVerification": "Verificação de E-mail"
       }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instruções",
+        "first": "1. Toque no botão 'Adicionar Quadrado' para criar um quadrado de seleção.",
+        "second": "2. Arraste o quadrado sobre sua região de interesse.",
+        "third": "3. Ajuste os cantos para cobrir a região com precisão."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Abrir Estúdio",
+        "editMore": "Editar Mais",
+        "continueEditing": "Continuar editando suas anotações?",
+        "highlightedRegionsCount": "Você tem {{highlightedRegions}} regiões destacadas. Toque abaixo para adicionar mais",
+        "highlightRegions": "Precisa destacar regiões da sua imagem médica?"
+      },
+      "studioToolbar": {
+        "addSquare": "Adicionar Quadrado"
+      }
     }
   },
   "alerts": {
@@ -402,6 +421,7 @@
     "noSubscriptionToRestore": "Ops! Parece que você não tem uma assinatura ativa no momento. Para continuar desfrutando de acesso total, escolha um de nossos planos de assinatura.",
     "restorationSuccessful": "Restauração bem-sucedida! Aproveite!",
     "restorationError": "Ocorreu um erro ao restaurar sua compra.",
-    "medicalDisclaimerAlert": "O aplicativo MedScan AI não oferece diagnósticos, recomendações de tratamento ou qualquer aconselhamento médico. Sempre busque orientação de um profissional de saúde qualificado para decisões médicas."
+    "medicalDisclaimerAlert": "O aplicativo MedScan AI não oferece diagnósticos, recomendações de tratamento ou qualquer aconselhamento médico. Sempre busque orientação de um profissional de saúde qualificado para decisões médicas.",
+    "scanLimitReached": "Estamos otimizando a qualidade da digitalização para você! Você poderá digitalizar novamente em aproximadamente {{hours}} horas e {{minutes}} minutos. Tem alguma dúvida sobre algum tópico médico? Pergunte ao nosso assistente de chat enquanto espera!"
   }
 }

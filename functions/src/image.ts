@@ -9,12 +9,16 @@ import { v4 as uuidv4 } from 'uuid';
 
 import dayjs from '../dayjs';
 import { AI_MODELS } from '../utilities/ai-models';
+import { checkDailyScanLimit } from '../utilities/check-daily-scan-limit';
 import {
   convertBufferToBase64,
   getBase64ImageFrames,
 } from '../utilities/extract-video-frames';
 import { generateUniqueId } from '../utilities/generate-unique-id';
-import { handleOnRequestError } from '../utilities/handle-on-request-error';
+import {
+  handleOnRequestError,
+  logError,
+} from '../utilities/handle-on-request-error';
 import { LANGUAGES } from '../utilities/languages';
 import { processUploadedFile } from '../utilities/multipart';
 import { admin } from './common';
@@ -323,7 +327,7 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
     const additionalLngPrompt = `Please respond only in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} from now on.`;
 
     const t = getTranslation(languageAbbreviation as string);
-    const { userId, promptMessage } = fields;
+    const { userId, promptMessage, highlightedRegions } = fields;
     const [imageFile] = files;
     const userPromptInput = promptMessage.length
       ? `The user has these questions or is looking to find out this:${promptMessage}`
@@ -336,16 +340,10 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       throw new functions.https.HttpsError('not-found', t.common.noUserFound);
     }
 
-    // const { scansRemaining } = userInfoSnapshot.data() as {
-    //   scansRemaining: number;
-    // };
-
-    // if (scansRemaining <= 0) {
-    //   throw new functions.https.HttpsError(
-    //     'resource-exhausted',
-    //     t.analyzeImage.scanLimitReached,
-    //   );
-    // }
+    const { lastScanDate, scansToday } = userInfoSnapshot.data() as {
+      lastScanDate: string;
+      scansToday: number;
+    };
 
     if (!userId) {
       handleOnRequestError({
@@ -362,6 +360,26 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       });
     }
 
+    // First check daily limits (new logic)
+    const canScanResult = await checkDailyScanLimit({
+      userId,
+      lastScanDate,
+      scansToday,
+      dailyLimit: 20,
+    });
+    if (!canScanResult.canScan) {
+      const limitReachedMessage = 'Scan Limit Reached';
+      logError('Analyze Image Conversation Error', {
+        message: limitReachedMessage,
+        statusCode: 500,
+        statusMessage: 'Internal Server Error',
+      });
+      return res.status(500).json({
+        success: false,
+        message: limitReachedMessage,
+      });
+    }
+
     // Initialize Anthropic client
     const anthropic = new Anthropic({
       apiKey: process.env.ANTHROPIC_API_KEY,
@@ -369,11 +387,10 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
 
     const base64String = convertBufferToBase64(imageFile.buf);
 
-    // Modification: Add conversation context to the prompt
-    const conversationPrompt = `${additionalLngPrompt}. ${process.env.IMAGE_ANALYZE_PROMPT}. Please provide a detailed analysis that includes all visual aspects of this image, as the user may ask follow-up questions about specific details later. ${userPromptInput}.`;
+    const conversationPrompt = `${additionalLngPrompt}. ${process.env.IMAGE_ANALYZE_PROMPT}. ${Number(highlightedRegions) > 0 ? `This medical image has ${Number(highlightedRegions)} regions marked in red. Examine part of each highlighted region of the picture and provide a thorough medical analysis (Key observations,potential abnormalities,clinical relevance)` : ''}. ${userPromptInput}.`;
 
     const message = await anthropic.messages.create({
-      model: AI_MODELS.CLAUDE_35_HAIKU,
+      model: AI_MODELS.CLAUDE_37_SONNET,
       max_tokens: 1024,
       messages: [
         {
@@ -494,10 +511,14 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
         conversationId: conversationDocRef.id,
       });
 
-      // Update user stats
+      // Increment the scans
+      const today = new Date().toISOString().split('T')[0];
+
       await userDoc.update({
         completedScans: admin.firestore.FieldValue.increment(1),
+        scansToday: admin.firestore.FieldValue.increment(1),
         scansRemaining: admin.firestore.FieldValue.increment(-1),
+        lastScanDate: today,
       });
 
       res.status(200).json({
@@ -721,17 +742,29 @@ export const analyzeImageConversationV2 = async (
 export const continueConversation = async (req: Request, res: any) => {
   let t;
   try {
-    const { userId, conversationId, userMessage } = req.body;
+    const {
+      userId,
+      conversationId,
+      userMessage,
+      conversationMode = 'IMAGE_SCAN_CONVERSATION',
+    } = req.body;
     const languageAbbreviation = req.headers['accept-language'];
     t = getTranslation(languageAbbreviation as string);
 
     const additionalLngPrompt = `The response language must be in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} but do not mention this in the response.`;
 
-    if (!userId || !conversationId || !userMessage) {
+    const responseGuidelinesImageScan =
+      "Response Guidelines: 1. Valid Medical Imaging Follow-Ups: * Take into account all the details from the first response (e.g., modality, anatomy, abnormalities) when continuing the conversation. (e.g., modality, anatomy, abnormalities) as a reference point. * Expand on specific aspects (e.g., tissue traits, imaging theory) as requested, keeping it theoretical (e.g., ‘in theory, this could reflect…’). * Avoid repeating the full initial report unless asked; focus on the user’s specific query.  2. For questions about user health (e.g., questions referring to your, yourself, etc.): Respond: 'I won’t assist with personal health issues. Consult a healthcare specialist.’ Role: * Act as a radiology expert, not a health advisor. * DO NOT provide any form of diagnosis, DO NOT suggest specific treatments, or make health assessments or measurements.";
+    const responseGuidelinesRandomChat =
+      'Imagine you are Aria, a chatbot with in-depth expertise in the medical field. If you haven’t already, introduce yourself and maintain an engaging, friendly conversation with the user. Keep it interactive and enjoyable';
+    const responseGuidelines =
+      conversationMode === 'IMAGE_SCAN_CONVERSATION'
+        ? responseGuidelinesImageScan
+        : responseGuidelinesRandomChat;
+    if (!userId || !userMessage) {
       return res.status(400).json({
         success: false,
-        message:
-          'Missing required fields (userId, conversationId, userMessage).',
+        message: 'Missing required fields (userId,  userMessage).',
       });
     }
 
@@ -740,30 +773,47 @@ export const continueConversation = async (req: Request, res: any) => {
       apiKey: process.env.ANTHROPIC_API_KEY,
     });
 
-    const conversationDocRef = admin
-      .firestore()
-      .collection('conversations')
-      .doc(conversationId);
-    const conversationSnapshot = await conversationDocRef.get();
+    let conversationDocRef;
+    let messages = [];
 
-    if (!conversationSnapshot.exists) {
-      return res.status(404).json({
-        success: false,
-        message: t.continueConversation.conversationNotFound,
-      });
+    // Check if a conversationId is provided
+    if (conversationId) {
+      // Reference to the conversation document
+      conversationDocRef = admin
+        .firestore()
+        .collection('conversations')
+        .doc(conversationId);
+
+      // Attempt to fetch the conversation document
+      const conversationSnapshot = await conversationDocRef.get();
+
+      if (!conversationSnapshot.exists) {
+        // If the document doesn't exist, create a new one with an empty messages array
+        await conversationDocRef.set({
+          messages: [], // Start with an empty array of messages for the new conversation
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+
+        // Now, since the document is created, you can set messages if needed
+        messages = []; // (or any default message you want to add initially)
+      } else {
+        // If the document exists, retrieve the messages from it
+        messages = conversationSnapshot.data()?.messages || [];
+      }
+    } else {
+      // Handle case where conversationId is not provided
+      // Optionally, throw an error or handle this scenario
+      throw new Error('Conversation ID is required');
     }
-
-    const conversationData = conversationSnapshot.data();
-    const messages = conversationData?.messages || [];
-
-    // limit maximum 20 messages per conversation
+    // Check message limit
     if (messages.length > 20) {
-      return res.status(500).json({
+      // maybe you can increase the limit for messages without image/video
+      return res.status(400).json({
         success: false,
         message: t.continueConversation.messagesLimit,
       });
     }
-
     let response;
 
     try {
@@ -777,7 +827,7 @@ export const continueConversation = async (req: Request, res: any) => {
           })),
           {
             role: 'user',
-            content: `${userMessage}.${additionalLngPrompt}`,
+            content: `The user added this as input: ${userMessage}.${additionalLngPrompt}.Follow this guidelines for giving the response back:${responseGuidelines}`,
           },
         ],
       });
@@ -847,17 +897,6 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       throw new functions.https.HttpsError('not-found', t.common.noUserFound);
     }
 
-    // const { scansRemaining } = userInfoSnapshot.data() as {
-    //   scansRemaining: number;
-    // };
-
-    // if (scansRemaining <= 0) {
-    //   throw new functions.https.HttpsError(
-    //     'resource-exhausted',
-    //     t.analyzeImage.scanLimitReached,
-    //   );
-    // }
-
     if (!userId) {
       handleOnRequestError({
         error: { message: t.common.userIdMissing },
@@ -865,13 +904,29 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
         context: 'Analyze video',
       });
     }
-    // if (!videoFile.buf) {
-    //   handleOnRequestError({
-    //     error: { message: t.analyzeVideo.videoMissing },
-    //     res,
-    //     context: 'Analyze video',
-    //   });
-    // }
+    const { lastScanDate, scansToday } = userInfoSnapshot.data() as {
+      lastScanDate: string;
+      scansToday: number;
+    };
+
+    const canScanResult = await checkDailyScanLimit({
+      userId,
+      lastScanDate,
+      scansToday,
+      dailyLimit: 15, // 15 for videos
+    });
+    if (!canScanResult.canScan) {
+      const limitReachedMessage = 'Scan Limit Reached';
+      logError('Analyze Video Conversation Error - Scan Limit Reached', {
+        message: limitReachedMessage,
+        statusCode: 500,
+        statusMessage: 'Internal Server Error',
+      });
+      return res.status(500).json({
+        success: false,
+        message: limitReachedMessage,
+      });
+    }
 
     // Extract frames from the video
     const base64Frames = await getBase64ImageFrames(
@@ -962,11 +1017,14 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
         title: '',
         frameUrls, // Store the public URLs of the extracted frames
       });
-
+      // Increment the scans
+      const today = new Date().toISOString().split('T')[0];
       // Update user stats
       await userDoc.update({
         completedScans: admin.firestore.FieldValue.increment(1),
         scansRemaining: admin.firestore.FieldValue.increment(-1),
+        lastScanDate: today,
+        scansToday: admin.firestore.FieldValue.increment(1),
       });
 
       // Create a new conversation document

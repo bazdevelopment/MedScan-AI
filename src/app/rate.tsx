@@ -2,7 +2,7 @@ import React from 'react';
 import { Linking, View } from 'react-native';
 
 import EdgeCaseTemplate from '@/components/edge-case-template';
-import { translate } from '@/core';
+import { DEVICE_TYPE, translate } from '@/core';
 import { Button } from '@/ui';
 import { RatingIllustration } from '@/ui/assets/illustrations';
 
@@ -10,9 +10,10 @@ const Rate = () => {
   const handleFeedback = (isPositive: boolean) => {
     if (isPositive) {
       // Redirect happy users to the App Store
-      const appStoreUrl =
-        'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'; // Replace with your App Store link
-      Linking.openURL(appStoreUrl).catch((err) =>
+      const storeUrl = DEVICE_TYPE.IOS
+        ? 'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'
+        : 'https://play.google.com/store/apps/details?id=com.xrayanalizer';
+      Linking.openURL(storeUrl).catch((err) =>
         console.error('Error opening URL', err),
       );
     } else {

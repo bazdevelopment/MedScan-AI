@@ -16,7 +16,7 @@ const NewAppVersion = () => {
     // Determine the URL based on device type
     const storeUrl = DEVICE_TYPE.IOS
       ? 'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'
-      : ''; //add android url here
+      : 'https://play.google.com/store/apps/details?id=com.xrayanalizer';
 
     // Try opening the appropriate URL
     Linking.openURL(storeUrl).catch((err) => {

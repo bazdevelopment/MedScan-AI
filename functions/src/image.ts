@@ -324,13 +324,13 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
     const { files, fields } = await processUploadedFile(req);
     const languageAbbreviation = req.headers['accept-language'];
 
-    const additionalLngPrompt = `Please respond only in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} from now on.`;
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
 
     const t = getTranslation(languageAbbreviation as string);
     const { userId, promptMessage, highlightedRegions } = fields;
     const [imageFile] = files;
     const userPromptInput = promptMessage.length
-      ? `The user has these questions or is looking to find out this:${promptMessage}`
+      ? `THE USER HAS THIS QUESTION AND IS INTERESTED TO FIND OUT THIS:${promptMessage}`
       : '';
     const userDoc = db.collection('users').doc(userId);
     const userInfoSnapshot = await userDoc.get();
@@ -569,7 +569,7 @@ export const analyzeImageConversationV2 = async (
       );
     }
     const userId = context.auth?.uid;
-    const additionalLngPrompt = `The response language must be in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} but do not mention this in the response.`;
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
     // const t = getTranslation(languageAbbreviation as string);
     // const { userId, promptMessage } = fields;
     // const [imageFile] = files;
@@ -751,7 +751,7 @@ export const continueConversation = async (req: Request, res: any) => {
     const languageAbbreviation = req.headers['accept-language'];
     t = getTranslation(languageAbbreviation as string);
 
-    const additionalLngPrompt = `The response language must be in ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} but do not mention this in the response.`;
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
 
     const responseGuidelinesImageScan =
       "Response Guidelines: 1. Valid Medical Imaging Follow-Ups: * Take into account all the details from the first response (e.g., modality, anatomy, abnormalities) when continuing the conversation. (e.g., modality, anatomy, abnormalities) as a reference point. * Expand on specific aspects (e.g., tissue traits, imaging theory) as requested, keeping it theoretical (e.g., ‘in theory, this could reflect…’). * Avoid repeating the full initial report unless asked; focus on the user’s specific query.  2. For questions about user health (e.g., questions referring to your, yourself, etc.): Respond: 'I won’t assist with personal health issues. Consult a healthcare specialist.’ Role: * Act as a radiology expert, not a health advisor. * DO NOT provide any form of diagnosis, DO NOT suggest specific treatments, or make health assessments or measurements.";
@@ -882,9 +882,9 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
     const languageAbbreviation = req.headers['accept-language'];
     const preferredLanguage =
       LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
-    const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE ${preferredLanguage} FROM NOW ON.`;
     const userPromptInput = promptMessage.length
-      ? `The user has these questions or is looking to find out this:${promptMessage}`
+      ? `THE USER HAS THIS QUESTION AND IS INTERESTED TO FIND OUT THIS:${promptMessage}`
       : '';
     const t = getTranslation(languageAbbreviation as string);
     const [videoFile] = files;

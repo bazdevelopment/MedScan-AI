@@ -71,7 +71,7 @@ const loginUserAnonymouslyHandler = async (data: {
       .set({
         userId: newUserId,
         isAnonymous: true, // Mark the user as anonymous
-        scansRemaining: 7, // Example field
+        scansRemaining: 3, // Example field
         subscribed: false, // Example field
         isActive: false, // Example field
         isOtpVerified: true, // Example field set to true for anonymous users
@@ -144,7 +144,7 @@ const createAnonymousAccountHandler = async (data: {
     const customToken = await admin.auth().createCustomToken(createdUser.uid);
     const createdUserDoc = db.collection('users').doc(createdUser.uid);
     await createdUserDoc.set({
-      scansRemaining: 7,
+      scansRemaining: 3,
       maxScans: 10,
       subscribed: false,
       isActive: true,
@@ -232,7 +232,7 @@ const loginUserViaEmailHandler = async (data: {
         .doc(userId)
         .set({
           email: data.email,
-          scansRemaining: 7,
+          scansRemaining: 3,
           maxScans: 10,
           subscribed: false,
           isActive: false,

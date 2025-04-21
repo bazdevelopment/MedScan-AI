@@ -3,7 +3,7 @@ import { useColorScheme } from 'nativewind';
 import React from 'react';
 import QRCode from 'react-native-qrcode-svg';
 
-import { translate } from '@/core';
+import { DEVICE_TYPE, translate } from '@/core';
 import { useClipboard } from '@/core/hooks/use-clipboard';
 import { useShareLink } from '@/core/hooks/use-share-link';
 import {
@@ -23,7 +23,9 @@ export const ShareItem = () => {
   const modal = useModal();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-  const appLink = 'https://yourappstorelink.com';
+  const appLink = DEVICE_TYPE.IOS
+    ? 'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'
+    : 'https://play.google.com/store/apps/details?id=com.xrayanalizer';
 
   const iconColor = isDark ? colors.neutral[50] : colors.black;
 

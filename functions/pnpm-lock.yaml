@@ -17,6 +17,9 @@ importers:
       '@google-cloud/functions-framework':
         specifier: ^3.4.2
         version: 3.4.2
+      '@google/generative-ai':
+        specifier: ^0.24.0
+        version: 0.24.0
       busboy:
         specifier: ^1.6.0
         version: 1.6.0
@@ -364,6 +367,10 @@ packages:
   '@google-cloud/storage@7.13.0':
     resolution: {integrity: sha512-Y0rYdwM5ZPW3jw/T26sMxxfPrVQTKm9vGrZG8PRyGuUmUJ8a2xNuQ9W/NNA1prxqv2i54DSydV8SJqxF2oCVgA==}
     engines: {node: '>=14'}
+
+  '@google/generative-ai@0.24.0':
+    resolution: {integrity: sha512-fnEITCGEB7NdX0BhoYZ/cq/7WPZ1QS5IzJJfC3Tg/OwkvBetMiVJciyaan297OvE4B9Jg1xvo0zIazX/9sGu1Q==}
+    engines: {node: '>=18.0.0'}
 
   '@grpc/grpc-js@1.12.2':
     resolution: {integrity: sha512-bgxdZmgTrJZX50OjyVwz3+mNEnCTNkh3cIqGPWVNeW9jX6bn1ZkU80uPd+67/ZpIJIjRQ9qaHCjhavyoWYxumg==}
@@ -3331,6 +3338,8 @@ snapshots:
       - encoding
       - supports-color
     optional: true
+
+  '@google/generative-ai@0.24.0': {}
 
   '@grpc/grpc-js@1.12.2':
     dependencies:

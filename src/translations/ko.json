@@ -419,7 +419,7 @@
     "noSubscriptionToRestore": "이런! 현재 활성화된 구독이 없는 것 같습니다. 계속해서 전체 액세스를 즐기려면 구독 플랜 중 하나를 선택하세요.",
     "restorationSuccessful": "복원이 성공했습니다! 즐기세요!",
     "restorationError": "구매를 복원하는 중 오류가 발생했습니다.",
-    "medicalDisclaimerAlert": "MedScan AI 앱은 진단, 치료 권장 사항 또는 의학적 조언을 제공하지 않습니다. 의료 결정을 내리기 위해서는 항상 자격을 갖춘 의료 전문가의 지도를 받으십시오.",
+    "medicalDisclaimerAlert": "MedScan AI 앱은 의료 상담을 대체하지 않습니다. 일부 진단은 정보 제공/교육 목적으로만 사용됩니다. 의학적 권고 사항은 항상 의사나 면허를 보유한 전문가와 상담하세요.",
     "scanLimitReached": "스캔 품질을 최적화하고 있습니다! 약 {{hours}}시간 {{minutes}}분 후에 다시 스캔할 수 있습니다. 의료 주제에 대한 질문이 있으신가요? 기다리는 동안 채팅 어시스턴트에게 물어보세요!"
   }
 }

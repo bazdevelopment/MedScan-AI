@@ -419,7 +419,7 @@
     "noSubscriptionToRestore": "Hopa! Se pare că nu ai un abonament activ în acest moment. Pentru a continua să te bucuri de acces complet, te rugăm să alegi unul dintre planurile noastre de abonament.",
     "restorationSuccessful": "Restaurarea a avut succes! Bucură-te de acces complet!",
     "restorationError": "A apărut o eroare la restaurarea achiziției tale.",
-    "medicalDisclaimerAlert": "Aplicația MedScan AI nu oferă diagnostice, recomandări de tratament sau sfaturi medicale. Consultați întotdeauna un profesionist calificat în sănătate pentru decizii medicale.",
+    "medicalDisclaimerAlert": "Aplicația MedScan AI nu înlocuiește consultul medical. Unele diagnostice sunt doar cu caracter informativ/educational. Pentru recomandări medicale, consultați întotdeauna un medic sau un specialist autorizat.",
     "scanLimitReached": "Optimizăm calitatea scanării pentru dumneavoastră! Veți putea scana din nou în aproximativ {{hours}} ore și {{minutes}} minute. Aveți întrebări despre vreun subiect medical? Întrebați asistentul nostru de chat în timp ce așteptați!"
   }
 }

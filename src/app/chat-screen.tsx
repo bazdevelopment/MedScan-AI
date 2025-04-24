@@ -18,6 +18,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Markdown from 'react-native-markdown-display';
 import { Toaster } from 'sonner-native';
 import { twMerge } from 'tailwind-merge';
 
@@ -62,6 +63,8 @@ export const ChatBubble = ({
   isSpeaking: boolean;
 }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -70,6 +73,12 @@ export const ChatBubble = ({
       useNativeDriver: true,
     }).start();
   }, []);
+
+  const { lightStyles, darkStyles } = getChatMessagesStyles(
+    message,
+    isUser,
+    colors,
+  );
 
   return (
     <>
@@ -99,15 +108,17 @@ export const ChatBubble = ({
             className="mr-2 h-8 w-8 self-start rounded-full"
           />
         )}
-        <Text
+        {/* <Text
           className={twMerge(
             'text-base',
             isUser ? 'text-white' : 'text-gray-800 dark:text-white',
             message.isError && 'text-red-800',
           )}
-        >
+        > */}
+        <Markdown style={isDark ? darkStyles : lightStyles}>
           {message.content}
-        </Text>
+        </Markdown>
+        {/* </Text> */}
         {message.isPending && !isUser && <TypingIndicator />}
 
         {/* {isUser && (
@@ -489,3 +500,99 @@ const ChatScreen = () => {
 };
 
 export default ChatScreen;
+
+type Message = {
+  isError: boolean;
+};
+
+type Colors = {
+  danger: Record<number, string>;
+  white: string;
+  charcoal: Record<number, string>;
+};
+
+type StyleObject = Record<string, React.CSSProperties>;
+
+function getChatMessagesStyles(
+  message: Message,
+  isUser: boolean,
+  colors: Colors,
+): {
+  lightStyles: StyleObject;
+  darkStyles: StyleObject;
+} {
+  const baseTextColor = message.isError
+    ? colors.danger[800]
+    : isUser
+      ? colors.white
+      : colors.charcoal[800];
+
+  const darkTextColor = message.isError ? colors.danger[800] : colors.white;
+
+  const lightStyles: StyleObject = {
+    body: {
+      marginTop: -7,
+      marginBottom: -7,
+      fontSize: 14,
+      lineHeight: 22,
+      color: baseTextColor,
+    },
+    heading1: {
+      color: baseTextColor,
+    },
+    paragraph: {
+      fontFamily: 'Font-Regular',
+    },
+    list_item: {
+      fontFamily: 'Font-Regular',
+    },
+    span: {
+      fontFamily: 'Font-Regular',
+    },
+    strong: {
+      fontFamily: 'Font-Extra-Bold',
+      fontWeight: '800',
+    },
+    em: {
+      fontFamily: 'Font-Regular',
+      fontStyle: 'italic',
+    },
+  };
+
+  const darkStyles: StyleObject = {
+    body: {
+      marginTop: -7,
+      marginBottom: -7,
+      fontSize: 14,
+      lineHeight: 22,
+      color: darkTextColor,
+    },
+    heading1: {
+      fontFamily: 'Font-Extra-Bold',
+      color: darkTextColor,
+    },
+    heading2: {
+      fontFamily: 'Font-Extra-Bold',
+      fontWeight: '800',
+    },
+    paragraph: {
+      fontFamily: 'Font-Regular',
+    },
+    list_item: {
+      fontFamily: 'Font-Regular',
+    },
+    span: {
+      fontFamily: 'Font-Regular',
+    },
+    strong: {
+      fontFamily: 'Font-Extra-Bold',
+      fontWeight: '800',
+    },
+    em: {
+      fontFamily: 'Font-Regular',
+      fontStyle: 'italic',
+    },
+  };
+
+  return { lightStyles, darkStyles };
+}

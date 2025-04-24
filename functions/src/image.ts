@@ -26,6 +26,7 @@ import { getTranslation } from './translations';
 ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 const db = admin.firestore();
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const analyzeImage = async (req: Request, res: any) => {
   try {
@@ -318,8 +319,214 @@ export const analyzeVideo = async (req: Request, res: any) => {
     });
   }
 };
-// !NEW FEATURE TO CONTINUE CONVERSATION
+
 export const analyzeImageConversation = async (req: Request, res: any) => {
+  try {
+    const { files, fields } = await processUploadedFile(req);
+    const languageAbbreviation = req.headers['accept-language'];
+
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
+
+    const t = getTranslation(languageAbbreviation as string);
+    const { userId, promptMessage, highlightedRegions } = fields;
+    const [imageFile] = files;
+    const userPromptInput = promptMessage.length
+      ? `THE USER ASKED THIS: ${promptMessage}`
+      : '';
+    const userDoc = db.collection('users').doc(userId);
+    const userInfoSnapshot = await userDoc.get();
+    const storage = admin.storage();
+
+    if (!userInfoSnapshot.exists) {
+      throw new functions.https.HttpsError('not-found', t.common.noUserFound);
+    }
+
+    const { lastScanDate, scansToday } = userInfoSnapshot.data() as {
+      lastScanDate: string;
+      scansToday: number;
+    };
+
+    if (!userId) {
+      handleOnRequestError({
+        error: { message: t.common.userIdMissing },
+        res,
+        context: 'Analyze image',
+      });
+    }
+    if (!imageFile.buf) {
+      handleOnRequestError({
+        error: { message: t.analyzeImage.imageMissing },
+        res,
+        context: 'Analyze image',
+      });
+    }
+
+    // First check daily limits (new logic)
+    const canScanResult = await checkDailyScanLimit({
+      userId,
+      lastScanDate,
+      scansToday,
+      dailyLimit: 20,
+    });
+    if (!canScanResult.canScan) {
+      const limitReachedMessage = 'Scan Limit Reached';
+      logError('Analyze Image Conversation Error', {
+        message: limitReachedMessage,
+        statusCode: 500,
+        statusMessage: 'Internal Server Error',
+      });
+      return res.status(500).json({
+        success: false,
+        message: limitReachedMessage,
+      });
+    }
+
+    // Initialize Google Generative AI client
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+
+    const base64String = convertBufferToBase64(imageFile.buf);
+
+    const conversationPrompt = `${additionalLngPrompt}.${userPromptInput}. ${process.env.IMAGE_ANALYZE_PROMPT}. ${Number(highlightedRegions) > 0 ? `This medical image has ${Number(highlightedRegions)} regions marked in red. Examine part of each highlighted region of the picture and provide a thorough medical analysis (Key observations,potential abnormalities,clinical relevance)` : ''}.`;
+
+    const imagePart = {
+      inlineData: {
+        data: base64String,
+        mimeType: imageFile.mimeType,
+      },
+    };
+
+    const result = await model.generateContent({
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: conversationPrompt }, imagePart],
+        },
+      ],
+    });
+
+    const response = await result.response;
+    const textResult = response.text();
+
+    /* Logic for storing the image in db */
+    // Generate a unique filename
+    const uniqueId = generateUniqueId();
+    const filePath = `interpretations/${userId}/${uniqueId}`;
+    const bucket = storage.bucket();
+
+    // Upload the image to Firebase Storage
+    const file = bucket.file(filePath);
+    const token = uuidv4();
+    try {
+      await file.save(imageFile.buf, {
+        metadata: {
+          contentType: imageFile.mimeType,
+          metadata: {
+            firebaseStorageDownloadTokens: token, // ! Add token for preview in the dashboard this add an access token to the image otherwise it wont be visible in the dashboard
+          },
+        },
+      });
+
+      // Make the file publicly readable
+      await file.makePublic();
+    } catch (error) {
+      console.error('Error uploading file to Firebase Storage:', error);
+      return res.status(500).json({
+        success: false,
+        message: t.analyzeImage.uploadImageStorageError,
+      });
+    }
+    const url = file.publicUrl();
+
+    // Save the analysis result and metadata in Firestore
+    try {
+      const analysisDocRef = admin
+        .firestore()
+        .collection('interpretations')
+        .doc();
+      const createdAt = admin.firestore.FieldValue.serverTimestamp();
+
+      // Create a new conversation document
+      const conversationDocRef = admin
+        .firestore()
+        .collection('conversations')
+        .doc();
+
+      await conversationDocRef.set({
+        userId,
+        messages: [
+          {
+            role: 'user',
+            content: [
+              // Add image URL (mandatory)
+              {
+                type: 'image',
+                source: {
+                  type: 'url',
+                  url, // Always include the image URL
+                },
+              },
+            ],
+          },
+          ...(promptMessage ? [{ role: 'user', content: promptMessage }] : []),
+          {
+            role: 'assistant',
+            content: textResult, // Assistant's response
+          },
+        ],
+        createdAt,
+        updatedAt: createdAt,
+        imageUrl: url, // Store the image URL separately
+        promptMessage, // Store the prompt message separately (if it exists)
+      });
+
+      await analysisDocRef.set({
+        userId,
+        url,
+        filePath,
+        interpretationResult: textResult,
+        createdAt,
+        id: uniqueId,
+        mimeType: imageFile.mimeType,
+        promptMessage,
+        conversationId: conversationDocRef.id,
+      });
+
+      // Increment the scans
+      const today = new Date().toISOString().split('T')[0];
+
+      await userDoc.update({
+        completedScans: admin.firestore.FieldValue.increment(1),
+        scansToday: admin.firestore.FieldValue.increment(1),
+        scansRemaining: admin.firestore.FieldValue.increment(-1),
+        lastScanDate: today,
+      });
+
+      res.status(200).json({
+        success: true,
+        message: t.analyzeImage.analysisCompleted,
+        interpretationResult: textResult,
+        promptMessage,
+        createdAt: dayjs().toISOString(),
+        conversationId: conversationDocRef.id, // Return the conversation ID for future messages
+      });
+    } catch (error) {
+      console.error('Error saving analysis metadata to Firestore:', error);
+      return res.status(500).json({
+        success: false,
+        message: t.analyzeImage.interpretationNotSaved,
+      });
+    }
+  } catch (error: any) {
+    handleOnRequestError({
+      error,
+      res,
+      context: 'Analyze image',
+    });
+  }
+};
+// !NEW FEATURE TO CONTINUE CONVERSATION
+export const analyzeImageConversationV2 = async (req: Request, res: any) => {
   try {
     const { files, fields } = await processUploadedFile(req);
     const languageAbbreviation = req.headers['accept-language'];
@@ -545,200 +752,6 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
   }
 };
 
-// the new endpoint for analyzeImageConversation
-export const analyzeImageConversationV2 = async (
-  data: {
-    promptMessage: string;
-    image: string;
-    language: string;
-    storagePath: string;
-  },
-  context: any,
-) => {
-  let t;
-  try {
-    t = getTranslation(data.language);
-
-    // const { files, fields } = await processUploadedFile(req);
-    const languageAbbreviation = data.language;
-    // Validate authentication
-    if (!context.auth) {
-      throw new functions.https.HttpsError(
-        'unauthenticated',
-        t.common.noUserFound,
-      );
-    }
-    const userId = context.auth?.uid;
-    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
-    // const t = getTranslation(languageAbbreviation as string);
-    // const { userId, promptMessage } = fields;
-    // const [imageFile] = files;
-    const userPromptInput = data.promptMessage.length
-      ? `This is some additional information from the user regarding his request or expectations for this analysis:${data.promptMessage}`
-      : '';
-    const userDoc = db.collection('users').doc(userId);
-    const userInfoSnapshot = await userDoc.get();
-    // const storage = admin.storage();
-
-    if (!userInfoSnapshot.exists) {
-      throw new functions.https.HttpsError('not-found', t.common.noUserFound);
-    }
-
-    const { scansRemaining } = userInfoSnapshot.data() as {
-      scansRemaining: number;
-    };
-
-    if (scansRemaining <= 0) {
-      throw new functions.https.HttpsError(
-        'resource-exhausted',
-        t.analyzeImage.scanLimitReached,
-      );
-    }
-
-    // if (!userId) {
-    //   handleOnRequestError({
-    //     error: { message: t.common.userIdMissing },
-    //     res,
-    //     context: 'Analyze image',
-    //   });
-    // }
-    // if (!imageFile.buf) {
-    //   handleOnRequestError({
-    //     error: { message: t.analyzeImage.imageMissing },
-    //     res,
-    //     context: 'Analyze image',
-    //   });
-    // }
-
-    // Initialize Anthropic client
-    const anthropic = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY,
-    });
-
-    // const base64String = convertBufferToBase64(imageFile.buf);
-
-    // Modification: Add conversation context to the prompt
-    const conversationPrompt = `${process.env.IMAGE_ANALYZE_PROMPT}. Please provide a detailed analysis that includes all visual aspects of this image, as the user may ask follow-up questions about specific details later. ${userPromptInput}. ${additionalLngPrompt}`;
-
-    const message = await anthropic.messages.create({
-      model: AI_MODELS.CLAUDE_35_HAIKU,
-      max_tokens: 1024,
-      messages: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'image',
-              source: {
-                type: 'url' as any,
-                url: data.image,
-              } as any,
-            },
-            {
-              type: 'text',
-              text: conversationPrompt,
-            },
-          ],
-        },
-      ],
-    });
-    const messageContent = message.content[0] as any;
-    const textResult: string = messageContent.text;
-
-    // // Generate a unique filename
-    // const uniqueId = generateUniqueId();
-    // const filePath = `interpretations/${userId}/${uniqueId}`;
-
-    // Save the analysis result and metadata in Firestore
-    try {
-      // Create a new conversation document
-      const createdAt = admin.firestore.FieldValue.serverTimestamp();
-
-      const conversationDocRef = admin
-        .firestore()
-        .collection('conversations')
-        .doc();
-
-      await conversationDocRef.set({
-        userId,
-        messages: [
-          {
-            role: 'user',
-            content: [
-              // Add image URL (mandatory)
-              {
-                type: 'image',
-                source: {
-                  type: 'url',
-                  url: data.image,
-                },
-              },
-              // // Add prompt message (optional)
-            ],
-          },
-          ...(data.promptMessage
-            ? [{ role: 'user', content: data.promptMessage }]
-            : []),
-          {
-            role: 'assistant',
-            content: textResult, // Assistant's response
-          },
-        ],
-        createdAt,
-        updatedAt: createdAt,
-        imageUrl: data.image, // Store the image URL separately
-        promptMessage: data.promptMessage, // Store the prompt message separately (if it exists)
-      });
-
-      const analysisDocRef = admin
-        .firestore()
-        .collection('interpretations')
-        .doc();
-
-      // NEW: Add the base64 image data to a separate collection for conversation context
-
-      await analysisDocRef.set({
-        userId,
-        url: data.image,
-        fileStoragePath: data.storagePath,
-        interpretationResult: textResult,
-        createdAt,
-        mimeType: 'image/jpeg',
-        promptMessage: data.promptMessage,
-        conversationId: conversationDocRef.id,
-      });
-
-      // Update user stats
-      await userDoc.update({
-        completedScans: admin.firestore.FieldValue.increment(1),
-        scansRemaining: admin.firestore.FieldValue.increment(-1),
-      });
-
-      return {
-        success: true,
-        message: t.analyzeImage.analysisCompleted,
-        interpretationResult: textResult,
-        promptMessage: data.promptMessage,
-        createdAt: dayjs().toISOString(),
-        conversationId: conversationDocRef.id, // Return the conversation ID for future messages
-      };
-    } catch (error) {
-      console.error('Error saving analysis metadata to Firestore:', error);
-      return {
-        success: false,
-        message: t.analyzeImage.interpretationNotSaved,
-      };
-    }
-  } catch (error: any) {
-    t = t || getTranslation('en');
-    throw new functions.https.HttpsError(
-      error.code || 'internal',
-      error.message || 'error',
-      { message: error.message },
-    );
-  }
-};
-
 export const continueConversation = async (req: Request, res: any) => {
   let t;
   try {
@@ -754,7 +767,151 @@ export const continueConversation = async (req: Request, res: any) => {
     const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
 
     const responseGuidelinesImageScan =
-      "Response Guidelines: 1. Valid Medical Imaging Follow-Ups: * Take into account all the details from the first response (e.g., modality, anatomy, abnormalities) when continuing the conversation. (e.g., modality, anatomy, abnormalities) as a reference point. * Expand on specific aspects (e.g., tissue traits, imaging theory) as requested, keeping it theoretical (e.g., ‘in theory, this could reflect…’). * Avoid repeating the full initial report unless asked; focus on the user’s specific query.  2. For questions about user health (e.g., questions referring to your, yourself, etc.): Respond: 'I won’t assist with personal health issues. Consult a healthcare specialist.’ Role: * Act as a radiology expert, not a health advisor. * DO NOT provide any form of diagnosis, DO NOT suggest specific treatments, or make health assessments or measurements.";
+      "Response Guidelines: 1. Valid Medical Imaging Follow-Ups: * Take into account all the details from the first response (e.g., modality, anatomy, abnormalities) when continuing the conversation. (e.g., modality, anatomy, abnormalities) as a reference point. * Expand on specific aspects (e.g., tissue traits, imaging theory) as requested, keeping it theoretical (e.g., 'in theory, this could reflect…'). * Avoid repeating the full initial report unless asked; focus on the user's specific query.  2. DO NOT provide a final diagnosis, DO NOT suggest specific treatments, just highlight the abnormalities.";
+    const responseGuidelinesRandomChat =
+      "Imagine you are Aria, a chatbot with in-depth expertise in the medical field. If you haven't already, introduce yourself and maintain an engaging, friendly conversation with the user. Keep it interactive and enjoyable";
+    const responseGuidelines =
+      conversationMode === 'IMAGE_SCAN_CONVERSATION'
+        ? responseGuidelinesImageScan
+        : responseGuidelinesRandomChat;
+    if (!userId || !userMessage) {
+      return res.status(400).json({
+        success: false,
+        message: 'Missing required fields (userId,  userMessage).',
+      });
+    }
+
+    // Initialize Google Generative AI client
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+
+    let conversationDocRef;
+    let messages = [];
+
+    // Check if a conversationId is provided
+    if (conversationId) {
+      // Reference to the conversation document
+      conversationDocRef = admin
+        .firestore()
+        .collection('conversations')
+        .doc(conversationId);
+
+      // Attempt to fetch the conversation document
+      const conversationSnapshot = await conversationDocRef.get();
+
+      if (!conversationSnapshot.exists) {
+        // If the document doesn't exist, create a new one with an empty messages array
+        await conversationDocRef.set({
+          messages: [], // Start with an empty array of messages for the new conversation
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+
+        // Now, since the document is created, you can set messages if needed
+        messages = []; // (or any default message you want to add initially)
+      } else {
+        // If the document exists, retrieve the messages from it
+        messages = conversationSnapshot.data()?.messages || [];
+      }
+    } else {
+      // Handle case where conversationId is not provided
+      // Optionally, throw an error or handle this scenario
+      throw new Error('Conversation ID is required');
+    }
+    // Check message limit
+    if (messages.length > 20) {
+      // maybe you can increase the limit for messages without image/video
+      return res.status(400).json({
+        success: false,
+        message: t.continueConversation.messagesLimit,
+      });
+    }
+
+    // Prepare the conversation history for Gemini
+    interface Message {
+      role: 'user' | 'assistant';
+      content: string | Record<string, any>;
+    }
+
+    interface HistoryItem {
+      role: 'model' | 'user';
+      parts: { text: string }[];
+    }
+
+    const history: HistoryItem[] = messages.map((msg: Message) => ({
+      role: msg.role === 'assistant' ? 'model' : 'user',
+      parts: [
+        {
+          text:
+            typeof msg.content === 'string'
+              ? msg.content
+              : JSON.stringify(msg.content),
+        },
+      ],
+    }));
+
+    // Add the new user message with instructions
+    const userMessageWithInstructions = `The user added this as input: ${userMessage}.${additionalLngPrompt}.Follow this guidelines for giving the response back:${responseGuidelines}`;
+
+    try {
+      const chat = model.startChat({
+        history: history,
+        generationConfig: {
+          maxOutputTokens: 1024,
+        },
+      });
+
+      const result = await chat.sendMessage(userMessageWithInstructions);
+      const response = await result.response;
+      const assistantMessage = response.text();
+
+      // Update the conversation with the new messages
+      await conversationDocRef.update({
+        messages: [
+          ...messages,
+          { role: 'user', content: userMessage },
+          { role: 'assistant', content: assistantMessage },
+        ],
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Message sent successfully.',
+        assistantMessage,
+      });
+    } catch (error: any) {
+      console.error('Error calling Gemini API:', error, error.message);
+      return res.status(500).json({
+        success: false,
+        message: t.continueConversation.serviceIssueAi,
+      });
+    }
+  } catch (error: any) {
+    console.error('Error continuing conversation:', error);
+    res.status(500).json({
+      success: false,
+      message: `An error occurred while continuing the conversation: ${error.message}`,
+    });
+  }
+};
+
+export const continueConversationV2 = async (req: Request, res: any) => {
+  let t;
+  try {
+    const {
+      userId,
+      conversationId,
+      userMessage,
+      conversationMode = 'IMAGE_SCAN_CONVERSATION',
+    } = req.body;
+    const languageAbbreviation = req.headers['accept-language'];
+    t = getTranslation(languageAbbreviation as string);
+
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE: ${LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES]} FROM NOW ON.`;
+
+    const responseGuidelinesImageScan =
+      'Response Guidelines: 1. Valid Medical Imaging Follow-Ups: * Take into account all the details from the first response (e.g., modality, anatomy, abnormalities) when continuing the conversation. (e.g., modality, anatomy, abnormalities) as a reference point. * Expand on specific aspects (e.g., tissue traits, imaging theory) as requested, keeping it theoretical (e.g., ‘in theory, this could reflect…’). * Avoid repeating the full initial report unless asked; focus on the user’s specific query.  2. Role: * Act as a radiology expert, not a health advisor. * DO NOT provide any form of diagnosis, DO NOT suggest specific treatments.';
     const responseGuidelinesRandomChat =
       'Imagine you are Aria, a chatbot with in-depth expertise in the medical field. If you haven’t already, introduce yourself and maintain an engaging, friendly conversation with the user. Keep it interactive and enjoyable';
     const responseGuidelines =
@@ -875,7 +1032,7 @@ export const continueConversation = async (req: Request, res: any) => {
   }
 };
 
-export const analyzeVideoConversation = async (req: Request, res: any) => {
+export const analyzeVideoConversationV2 = async (req: Request, res: any) => {
   try {
     const { files, fields } = await processUploadedFile(req);
     const { userId, promptMessage } = fields;
@@ -1120,103 +1277,128 @@ async function uploadFramesToStorage(
   return frameUrls;
 }
 
-export const analyzeVideoConversationV2 = async (
-  data: {
-    promptMessage: string;
-    imageUrls: string[];
-    language: string;
-    storagePaths: string[];
-  },
-  context: any,
-) => {
-  let t;
+export const analyzeVideoConversation = async (req: Request, res: any) => {
   try {
-    t = getTranslation(data.language);
-
-    const languageAbbreviation = data.language;
-    if (!context.auth) {
-      throw new functions.https.HttpsError(
-        'unauthenticated',
-        t.common.noUserFound,
-      );
-    }
-    const userId = context.auth?.uid;
-
+    const { files, fields } = await processUploadedFile(req);
+    const { userId, promptMessage } = fields;
+    const languageAbbreviation = req.headers['accept-language'];
     const preferredLanguage =
       LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
-    const additionalLngPrompt = `The response language must be in ${preferredLanguage}`;
-    const userPromptInput = data.promptMessage.length
-      ? `This is some additional information from the user regarding his request or expectations for this analysis:${data.promptMessage}`
+    const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE ${preferredLanguage} FROM NOW ON.`;
+    const userPromptInput = promptMessage.length
+      ? `THE USER HAS THIS QUESTION AND IS INTERESTED TO FIND OUT THIS:${promptMessage}`
       : '';
+    const t = getTranslation(languageAbbreviation as string);
+    const [videoFile] = files;
 
     const userDoc = db.collection('users').doc(userId);
     const userInfoSnapshot = await userDoc.get();
+    const storage = admin.storage();
 
     if (!userInfoSnapshot.exists) {
       throw new functions.https.HttpsError('not-found', t.common.noUserFound);
     }
 
-    const { scansRemaining } = userInfoSnapshot.data() as {
-      scansRemaining: number;
+    if (!userId) {
+      handleOnRequestError({
+        error: { message: t.common.userIdMissing },
+        res,
+        context: 'Analyze video',
+      });
+    }
+    const { lastScanDate, scansToday } = userInfoSnapshot.data() as {
+      lastScanDate: string;
+      scansToday: number;
     };
 
-    if (scansRemaining <= 0) {
-      throw new functions.https.HttpsError(
-        'resource-exhausted',
-        t.analyzeImage.scanLimitReached,
-      );
+    const canScanResult = await checkDailyScanLimit({
+      userId,
+      lastScanDate,
+      scansToday,
+      dailyLimit: 15, // 15 for videos
+    });
+    if (!canScanResult.canScan) {
+      const limitReachedMessage = 'Scan Limit Reached';
+      logError('Analyze Video Conversation Error - Scan Limit Reached', {
+        message: limitReachedMessage,
+        statusCode: 500,
+        statusMessage: 'Internal Server Error',
+      });
+      return res.status(500).json({
+        success: false,
+        message: limitReachedMessage,
+      });
     }
 
-    // if (!userId) {
-    //   handleOnRequestError({
-    //     error: { message: t.common.userIdMissing },
-    //     res,
-    //     context: 'Analyze video',
-    //   });
-    // }
-    // if (!videoFile.buf) {
-    //   handleOnRequestError({
-    //     error: { message: t.analyzeVideo.videoMissing },
-    //     res,
-    //     context: 'Analyze video',
-    //   });
-    // }
+    // Extract frames from the video
+    const base64Frames = await getBase64ImageFrames(
+      videoFile.filename,
+      videoFile.buf,
+    );
+    // Upload frames to Firebase Storage and get their public URLs
+    const frameUrls = await uploadFramesToStorage(base64Frames, userId);
+
+    // Initialize Google Generative AI client
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
     // Prepare content for AI analysis
-    const content = [
-      ...data.imageUrls.map((url) => ({
-        type: 'image',
-        source: {
-          type: 'url',
-          url,
-        },
-      })),
-      {
-        type: 'text',
-        text: `${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.${additionalLngPrompt}`,
-      },
-    ];
+    const prompt = `${additionalLngPrompt}.${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.`;
+    type GeminiPart =
+      | { text: string }
+      | { inlineData: { data: string; mimeType: string } };
+    // For Gemini, we need to process each frame and create parts array
+    const parts: GeminiPart[] = [{ text: prompt }];
 
-    // Initialize Anthropic client
-    const anthropic = new Anthropic({
-      apiKey: process.env.ANTHROPIC_API_KEY,
-    });
+    // Add each frame as an image part (using public URLs)
+    for (const url of frameUrls) {
+      parts.push({
+        inlineData: {
+          data: await fetchAndConvertToBase64(url), // Helper function to get base64 from URL
+          mimeType: 'image/jpeg', // Assuming JPEG format for frames
+        },
+      });
+    }
 
     // Send frames and prompt to AI for analysis
-    const message = await anthropic.messages.create({
-      model: AI_MODELS.CLAUDE_35_HAIKU,
-      max_tokens: 1024,
-      messages: [
+    const result = await model.generateContent({
+      contents: [
         {
           role: 'user',
-          content: content as any,
+          parts: parts,
         },
       ],
     });
 
-    const messageContent = message.content[0] as any;
-    const textResult = messageContent.text;
+    const response = await result.response;
+    const textResult = response.text();
 
+    // Upload the video to Firebase Storage
+    const uniqueId = generateUniqueId();
+    const videoFilePath = `interpretations/${userId}/${uniqueId}`;
+    const bucket = storage.bucket();
+    const videoFileRef = bucket.file(videoFilePath);
+
+    try {
+      await videoFileRef.save(videoFile.buf, {
+        metadata: {
+          contentType: videoFile.mimeType,
+          metadata: {
+            firebaseStorageDownloadTokens: uuidv4(),
+          },
+        },
+      });
+
+      await videoFileRef.makePublic();
+    } catch (error) {
+      console.error('Error uploading video to Firebase Storage:', error);
+      return res.status(500).json({
+        success: false,
+        message: t.analyzeVideo.uploadVideoStorageError,
+      });
+    }
+
+    const videoUrl = videoFileRef.publicUrl();
     // Save the analysis result and metadata in Firestore
     try {
       const analysisDocRef = admin
@@ -1227,19 +1409,24 @@ export const analyzeVideoConversationV2 = async (
 
       await analysisDocRef.set({
         userId,
-        fileStoragePath: data.storagePaths,
+        url: videoUrl,
+        filePath: videoFilePath,
         interpretationResult: textResult,
         createdAt,
-        mimeType: 'image/jpeg',
-        promptMessage: data.promptMessage,
+        id: uniqueId,
+        mimeType: videoFile.mimeType,
+        promptMessage,
         title: '',
-        imageUrls: data.imageUrls, // Store the public URLs of the extracted frames
+        frameUrls, // Store the public URLs of the extracted frames
       });
-
+      // Increment the scans
+      const today = new Date().toISOString().split('T')[0];
       // Update user stats
       await userDoc.update({
         completedScans: admin.firestore.FieldValue.increment(1),
         scansRemaining: admin.firestore.FieldValue.increment(-1),
+        lastScanDate: today,
+        scansToday: admin.firestore.FieldValue.increment(1),
       });
 
       // Create a new conversation document
@@ -1254,10 +1441,11 @@ export const analyzeVideoConversationV2 = async (
           {
             role: 'user',
             content: [
-              ...content,
-              ...(data.promptMessage
-                ? [{ type: 'text', text: data.promptMessage }]
-                : []),
+              ...frameUrls.map((url) => ({
+                type: 'image',
+                source: { type: 'url', url },
+              })),
+              ...(promptMessage ? [{ type: 'text', text: promptMessage }] : []),
             ],
           },
           {
@@ -1267,31 +1455,38 @@ export const analyzeVideoConversationV2 = async (
         ],
         createdAt,
         updatedAt: createdAt,
-        promptMessage: data.promptMessage,
-        frameUrls: data.imageUrls, // Store the frame URLs in the conversation document
+        url: videoUrl,
+        promptMessage,
+        frameUrls, // Store the frame URLs in the conversation document
       });
 
-      return {
+      res.status(200).json({
         success: true,
         message: t.analyzeVideo.analysisCompleted,
         interpretationResult: textResult,
-        promptMessage: data.promptMessage,
+        promptMessage,
         createdAt: dayjs().toISOString(),
         conversationId: conversationDocRef.id,
-      };
+      });
     } catch (error) {
       console.error('Error saving analysis metadata to Firestore:', error);
-      return {
+      return res.status(500).json({
         success: false,
         message: t.analyzeVideo.interpretationNotSaved,
-      };
+      });
     }
   } catch (error: any) {
-    t = t || getTranslation('en');
-    throw new functions.https.HttpsError(
-      error.code || 'internal',
-      error.message || 'error',
-      { message: error.message },
-    );
+    handleOnRequestError({
+      error,
+      res,
+      context: 'Analyze video',
+    });
   }
 };
+
+// Helper function to fetch image and convert to base64
+async function fetchAndConvertToBase64(url: string): Promise<string> {
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  return Buffer.from(buffer).toString('base64');
+}

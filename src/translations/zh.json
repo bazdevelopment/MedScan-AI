@@ -419,7 +419,7 @@
     "noSubscriptionToRestore": "哎呀！看起来您目前没有有效的订阅。要继续享受完整访问权限，请选择我们的订阅计划之一。",
     "restorationSuccessful": "恢复成功！请尽情享受！",
     "restorationError": "恢复您的购买时发生错误。",
-    "medicalDisclaimerAlert": "MedScan AI 应用程序不提供诊断、治疗建议或任何医疗建议。请务必向合格的医疗专业人员寻求医疗决策指导。",
+    "medicalDisclaimerAlert": "MedScan AI 应用不能替代医疗咨询。某些诊断仅供参考/教育目的。医疗建议请务必咨询医生或持牌专家。",
     "scanLimitReached": "我们正在为您优化扫描质量！大约{{hours}}小时{{minutes}}分钟后您将可以再次扫描。有任何关于医学主题的问题吗？在等待期间可以咨询我们的聊天助手！"
   }
 }

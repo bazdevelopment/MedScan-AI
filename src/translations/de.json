@@ -419,7 +419,7 @@
     "noSubscriptionToRestore": "Hoppla! Es scheint, dass Sie derzeit kein aktives Abonnement haben. Um weiterhin vollen Zugriff zu genießen, wählen Sie bitte einen unserer Abonnementpläne.",
     "restorationSuccessful": "Wiederherstellung erfolgreich! Viel Spaß!",
     "restorationError": "Beim Wiederherstellen Ihres Kaufs ist ein Fehler aufgetreten.",
-    "medicalDisclaimerAlert": "Die MedScan AI-App bietet keine Diagnosen, Behandlungsempfehlungen oder medizinische Ratschläge an. Holen Sie immer den Rat eines qualifizierten medizinischen Fachpersonals für medizinische Entscheidungen ein.",
+    "medicalDisclaimerAlert": "Die MedScan AI-App ersetzt keine medizinische Beratung. Einige Diagnosen dienen nur zu Informations-/Bildungszwecken. Für medizinische Empfehlungen konsultieren Sie immer einen Arzt oder zugelassenen Facharzt.",
     "scanLimitReached": "Wir optimieren die Scan-Qualität für Sie! Sie können in etwa {{hours}} Stunden und {{minutes}} Minuten wieder scannen. Haben Sie Fragen zu medizinischen Themen? Fragen Sie unseren Chat-Assistenten, während Sie warten!"
   }
 }

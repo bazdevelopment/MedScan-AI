@@ -419,7 +419,7 @@
     "noSubscriptionToRestore": "Oups ! Il semble que vous n'ayez pas d'abonnement actif pour le moment. Pour continuer à profiter d'un accès complet, veuillez choisir l'un de nos plans d'abonnement.",
     "restorationSuccessful": "Restauration réussie ! Profitez-en !",
     "restorationError": "Une erreur s'est produite lors de la restauration de votre achat.",
-    "medicalDisclaimerAlert": "L'application MedScan AI ne propose pas de diagnostics, de recommandations de traitement ou de conseils médicaux. Consultez toujours un professionnel de santé qualifié pour les décisions médicales.",
+    "medicalDisclaimerAlert": "L'application MedScan AI ne remplace pas une consultation médicale. Certains diagnostics sont uniquement à des fins informatives/éducatives. Pour des recommandations médicales, consultez toujours un médecin ou un spécialiste agréé.",
     "scanLimitReached": "Nous optimisons la qualité des analyses pour vous ! Vous pourrez effectuer un nouveau scan dans environ {{hours}} heures et {{minutes}} minutes. Vous avez des questions sur un sujet médical ? Interrogez notre assistant de chat pendant votre attente !"
   }
 }

@@ -10,7 +10,7 @@
       "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
-        "image": "macos-sonoma-14.6-xcode-16.0"
+        "image": "macos-sonoma-14.6-xcode-16.1"
       },
       "android": {
         "buildType": "app-bundle",

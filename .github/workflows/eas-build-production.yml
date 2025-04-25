@@ -55,7 +55,7 @@ jobs:
     needs: setup
     if: ${{ inputs.run_ios }}
     name: iOS Build
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     environment: production
     steps:
       - uses: actions/checkout@v3

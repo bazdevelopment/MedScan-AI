@@ -4,18 +4,13 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "base": {
-      "ios": {
-        "image": "macos-sonoma-14.6-xcode-16.1"
-      }
-    },
     "production": {
       "channel": "production",
       "distribution": "store",
       "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
-        "extends": "base",
+        "image": "macos-sonoma-14.6-xcode-16.1",
         "cocoapods": "1.16.2"
       },
       "android": {
@@ -44,7 +39,7 @@
       "pnpm": "8.15.4",
       "autoIncrement": true,
       "ios": {
-        "extends": "base",
+        "image": "macos-sonoma-14.6-xcode-16.1",
         "cocoapods": "1.16.2"
       },
       "android": {
@@ -74,7 +69,7 @@
       "autoIncrement": true,
       "pnpm": "8.15.4",
       "ios": {
-        "extends": "base",
+        "image": "macos-sonoma-14.6-xcode-16.1",
         "cocoapods": "1.16.2"
       },
       "android": {
@@ -99,7 +94,7 @@
     "simulator": {
       "ios": {
         "simulator": true,
-        "extends": "base"
+        "image": "macos-sonoma-14.6-xcode-16.1"
       },
       "android": {
         "image": "latest"

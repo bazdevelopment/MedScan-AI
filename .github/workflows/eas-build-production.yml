@@ -55,11 +55,18 @@ jobs:
     needs: setup
     if: ${{ inputs.run_ios }}
     name: iOS Build
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment: production
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup-node-pnpm-install
+
+      - name: List Available Xcode Versions
+        run: ls /Applications | grep Xcode
+      - name: Select Xcode 16.1
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app
+      - name: Verify Xcode Version
+        run: xcodebuild -version
 
       - name: 'Load environment variables'
         run: |

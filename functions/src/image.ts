@@ -366,7 +366,7 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 20,
+      dailyLimit: 50,
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';
@@ -383,7 +383,9 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
 
     // Initialize Google Generative AI client
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-2.5-flash-preview-04-17',
+    });
 
     const base64String = convertBufferToBase64(imageFile.buf);
 
@@ -572,7 +574,7 @@ export const analyzeImageConversationV2 = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 20,
+      dailyLimit: 40,
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';
@@ -783,7 +785,10 @@ export const continueConversation = async (req: Request, res: any) => {
 
     // Initialize Google Generative AI client
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    // gemini-2.0-flash
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-2.0-flash',
+    });
 
     let conversationDocRef;
     let messages = [];
@@ -819,7 +824,7 @@ export const continueConversation = async (req: Request, res: any) => {
       throw new Error('Conversation ID is required');
     }
     // Check message limit
-    if (messages.length > 20) {
+    if (messages.length > 30) {
       // maybe you can increase the limit for messages without image/video
       return res.status(400).json({
         success: false,
@@ -1285,11 +1290,22 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
     const preferredLanguage =
       LANGUAGES[languageAbbreviation as keyof typeof LANGUAGES];
     const additionalLngPrompt = `THE LANGUAGE USED FOR RESPONSE SHOULD BE ${preferredLanguage} FROM NOW ON.`;
-    const userPromptInput = promptMessage.length
-      ? `THE USER HAS THIS QUESTION AND IS INTERESTED TO FIND OUT THIS:${promptMessage}`
-      : '';
+
+    const userPromptInput =
+      promptMessage && promptMessage.length > 0
+        ? `THE USER HAS THIS QUESTION AND IS INTERESTED TO FIND OUT THIS:${promptMessage}`
+        : '';
+
     const t = getTranslation(languageAbbreviation as string);
+
     const [videoFile] = files;
+
+    // if (!videoFile) {
+    //   throw new functions.https.HttpsError(
+    //     'invalid-argument',
+    //     t.common.noVideoFileProvided,
+    //   );
+    // }
 
     const userDoc = db.collection('users').doc(userId);
     const userInfoSnapshot = await userDoc.get();
@@ -1305,6 +1321,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
         res,
         context: 'Analyze video',
       });
+      return; // Ensure we return after handling error
     }
     const { lastScanDate, scansToday } = userInfoSnapshot.data() as {
       lastScanDate: string;
@@ -1315,7 +1332,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 15, // 15 for videos
+      dailyLimit: 50, // 50 for videos (adjust as needed)
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';
@@ -1330,37 +1347,25 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       });
     }
 
-    // Extract frames from the video
-    const base64Frames = await getBase64ImageFrames(
-      videoFile.filename,
-      videoFile.buf,
-    );
-    // Upload frames to Firebase Storage and get their public URLs
-    const frameUrls = await uploadFramesToStorage(base64Frames, userId);
-
     // Initialize Google Generative AI client
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-2.5-flash-preview-04-17', // Or the latest compatible model
+    });
 
-    // Prepare content for AI analysis
+    // Prepare content for AI analysis - including the video file directly
     const prompt = `${additionalLngPrompt}.${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.`;
-    type GeminiPart =
-      | { text: string }
-      | { inlineData: { data: string; mimeType: string } };
-    // For Gemini, we need to process each frame and create parts array
-    const parts: GeminiPart[] = [{ text: prompt }];
 
-    // Add each frame as an image part (using public URLs)
-    for (const url of frameUrls) {
-      parts.push({
-        inlineData: {
-          data: await fetchAndConvertToBase64(url), // Helper function to get base64 from URL
-          mimeType: 'image/jpeg', // Assuming JPEG format for frames
-        },
-      });
-    }
+    const videoPart = {
+      inlineData: {
+        data: videoFile.buf.toString('base64'), // Send the video buffer as base64
+        mimeType: videoFile.mimeType, // Use the detected mime type
+      },
+    };
 
-    // Send frames and prompt to AI for analysis
+    const parts = [{ text: prompt }, videoPart];
+
+    // Send video and prompt to AI for analysis
     const result = await model.generateContent({
       contents: [
         {
@@ -1372,10 +1377,10 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
 
     const response = await result.response;
     const textResult = response.text();
-
     // Upload the video to Firebase Storage
     const uniqueId = generateUniqueId();
-    const videoFilePath = `interpretations/${userId}/${uniqueId}`;
+    const videoFilePath = `interpretations/${userId}/${uniqueId}.${videoFile.filename.split('.').pop()}`; // Include file extension
+
     const bucket = storage.bucket();
     const videoFileRef = bucket.file(videoFilePath);
 
@@ -1407,6 +1412,12 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
         .doc();
       const createdAt = admin.firestore.FieldValue.serverTimestamp();
 
+      // Create a new conversation document
+      const conversationDocRef = admin
+        .firestore()
+        .collection('conversations')
+        .doc();
+
       await analysisDocRef.set({
         userId,
         url: videoUrl,
@@ -1416,9 +1427,14 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
         id: uniqueId,
         mimeType: videoFile.mimeType,
         promptMessage,
+        conversationId: conversationDocRef.id,
         title: '',
-        frameUrls, // Store the public URLs of the extracted frames
+
+        // frameUrls are no longer needed for the AI analysis,
+        // but you could potentially generate a thumbnail and store its URL here if desired.
+        // frameUrls: [],
       });
+
       // Increment the scans
       const today = new Date().toISOString().split('T')[0];
       // Update user stats
@@ -1429,35 +1445,31 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
         scansToday: admin.firestore.FieldValue.increment(1),
       });
 
-      // Create a new conversation document
-      const conversationDocRef = admin
-        .firestore()
-        .collection('conversations')
-        .doc();
-
       await conversationDocRef.set({
         userId,
         messages: [
           {
             role: 'user',
             content: [
-              ...frameUrls.map((url) => ({
-                type: 'image',
-                source: { type: 'url', url },
-              })),
-              ...(promptMessage ? [{ type: 'text', text: promptMessage }] : []),
+              // Represent the video in the conversation history, perhaps with its URL or a thumbnail
+              {
+                type: 'video', // Using a custom type to represent the video
+                source: { type: 'url', url: videoUrl },
+                text: promptMessage || '', // Include the prompt message
+              },
             ],
           },
           {
             role: 'assistant',
-            content: textResult,
+            content: textResult, // Ensure content is an array of parts
           },
         ],
         createdAt,
         updatedAt: createdAt,
         url: videoUrl,
         promptMessage,
-        frameUrls, // Store the frame URLs in the conversation document
+        // frameUrls are no longer needed in the conversation document
+        // frameUrls: [],
       });
 
       res.status(200).json({
@@ -1483,10 +1495,9 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
     });
   }
 };
-
-// Helper function to fetch image and convert to base64
-async function fetchAndConvertToBase64(url: string): Promise<string> {
-  const response = await fetch(url);
-  const buffer = await response.arrayBuffer();
-  return Buffer.from(buffer).toString('base64');
-}
+// // Helper function to fetch image and convert to base64
+// async function fetchAndConvertToBase64(url: string): Promise<string> {
+//   const response = await fetch(url);
+//   const buffer = await response.arrayBuffer();
+//   return Buffer.from(buffer).toString('base64');
+// }

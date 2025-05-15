@@ -48,5 +48,3 @@ runs:
         testers: 'bazilucm@gmail.com'
         file: ${{ steps.app-name.outputs.APP_NAME }}
         releaseNotes: ${{ inputs.release_notes }}
-
-      #  - name: Deploy IPA to firebase TBA

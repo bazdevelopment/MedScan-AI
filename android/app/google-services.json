@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "152612175524",
     "project_id": "x-ray-analizer-prod",
-    "storage_bucket": "x-ray-analizer-prod.firebasestorage.app"
+    "storage_bucket": "x-ray-analizer-prod.appspot.com"
   },
   "client": [
     {

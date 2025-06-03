@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "Débloquez les fonctionnalités premium dès aujourd'hui ! 🎉",
+          "title": "Débloquez les fonctionnalités premium dès aujourd'hui !",
           "firstOffering": "Accédez à toutes les fonctionnalités premium",
           "secondOffering": "Expérience sans publicité",
           "thirdOffering": "Analyses illimitées dans des limites raisonnables"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "Débloquez les fonctionnalités premium dès aujourd'hui ! 🎉",
+        "heading": "Débloquez les fonctionnalités premium dès aujourd'hui !",
         "firstOffering": {
           "title": "Commencer l'essai gratuit",
           "subtitle": "Profitez de {{freeScans}} analyses gratuites – aucun paiement requis"

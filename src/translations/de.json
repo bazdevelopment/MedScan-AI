@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "Premium-Funktionen jetzt freischalten! 🎉",
+          "title": "Premium-Funktionen jetzt freischalten!",
           "firstOffering": "Zugriff auf alle Premium-Funktionen",
           "secondOffering": "Werbefreie Nutzung",
           "thirdOffering": "Unbegrenzte Scans innerhalb des angemessenen Gebrauchs"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "Premium-Funktionen jetzt freischalten! 🎉",
+        "heading": "Premium-Funktionen jetzt freischalten!",
         "firstOffering": {
           "title": "Kostenlose Testphase starten",
           "subtitle": "Genieße {{freeScans}} kostenlose Scans – keine Zahlung"

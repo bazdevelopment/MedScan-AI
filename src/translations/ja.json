@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "プレミアム機能を今すぐアンロック！🎉",
+          "title": "プレミアム機能を今すぐアンロック！",
           "firstOffering": "すべてのプレミアム機能にアクセス",
           "secondOffering": "広告なしの体験",
           "thirdOffering": "合理的な使用範囲内での無制限スキャン"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "プレミアム機能を今すぐアンロック！🎉",
+        "heading": "プレミアム機能を今すぐアンロック！",
         "firstOffering": {
           "title": "無料トライアルを開始",
           "subtitle": "{{freeScans}}回の無料スキャンを楽しむ – 支払い不要"

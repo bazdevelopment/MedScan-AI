@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "Deblochează Funcționalitățile Premium Astăzi! 🎉",
+          "title": "Deblochează Funcționalitățile Premium Astăzi!",
           "firstOffering": "Acces la toate funcționalitățile premium",
           "secondOffering": "Experiență fără reclame",
           "thirdOffering": "Scanări nelimitate în limite rezonabile"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "Deblochează Funcționalitățile Premium Astăzi! 🎉",
+        "heading": "Deblochează Funcționalitățile Premium Astăzi!",
         "firstOffering": {
           "title": "Începe Perioada de Probă",
           "subtitle": "Bucură-te de {{freeScans}} scanări gratuite – fără plată"

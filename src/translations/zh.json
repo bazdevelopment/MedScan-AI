@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "立即解锁高级功能！🎉",
+          "title": "立即解锁高级功能！",
           "firstOffering": "使用所有高级功能",
           "secondOffering": "无广告体验",
           "thirdOffering": "合理使用范围内的无限次扫描"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "立即解锁高级功能！🎉",
+        "heading": "立即解锁高级功能！",
         "firstOffering": {
           "title": "开始免费试用",
           "subtitle": "享受{{freeScans}}次免费扫描 – 无需付款"

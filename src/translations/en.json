@@ -124,7 +124,7 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "Unlock Premium Features Today! 🎉",
+          "title": "Unlock Premium Features Today!",
           "firstOffering": "Access All Premium Features",
           "secondOffering": "Ad-Free Experience",
           "thirdOffering": "Unlimited scans within reasonable use",
@@ -132,7 +132,7 @@
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "Unlock Premium Features Today! 🎉",
+        "heading": "Unlock Premium Features Today!",
         "firstOffering": {
           "title": "Start Free Trial",
           "subtitle": "Enjoy {{freeScans}} free scans – no payment"

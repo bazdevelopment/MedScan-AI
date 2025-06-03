@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "¡Desbloquea funciones premium hoy! 🎉",
+          "title": "¡Desbloquea funciones premium hoy!",
           "firstOffering": "Acceso a todas las funciones premium",
           "secondOffering": "Experiencia sin anuncios",
           "thirdOffering": "Escaneos ilimitados dentro de un uso razonable"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "¡Desbloquea funciones premium hoy! 🎉",
+        "heading": "¡Desbloquea funciones premium hoy!",
         "firstOffering": {
           "title": "Comenzar prueba gratuita",
           "subtitle": "Disfruta de {{freeScans}} escaneos gratis – sin pago"

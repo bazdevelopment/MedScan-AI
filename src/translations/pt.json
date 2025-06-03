@@ -124,14 +124,14 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "title": "Desbloqueie recursos Premium hoje! 🎉",
+          "title": "Desbloqueie recursos Premium hoje!",
           "firstOffering": "Acesso a todos os recursos Premium",
           "secondOffering": "Experiência sem anúncios",
           "thirdOffering": "Digitalizações ilimitadas dentro do uso razoável"
         }
       },
       "paywallUpgradeScreen": {
-        "heading": "Desbloqueie recursos Premium hoje! 🎉",
+        "heading": "Desbloqueie recursos Premium hoje!",
         "firstOffering": {
           "title": "Iniciar Teste Gratuito",
           "subtitle": "Aproveite {{freeScans}} exames gratuitos – sem pagamento"

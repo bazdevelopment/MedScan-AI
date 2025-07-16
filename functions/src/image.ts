@@ -2,6 +2,8 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { ImageBlockParam, TextBlockParam } from '@anthropic-ai/sdk/resources';
 import ffmpegPath from '@ffmpeg-installer/ffmpeg';
+import { GoogleGenAI } from '@google/genai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import * as functions from 'firebase-functions/v1';
 import { Request } from 'firebase-functions/v1/https';
 import ffmpeg from 'fluent-ffmpeg';
@@ -26,7 +28,6 @@ import { getTranslation } from './translations';
 ffmpeg.setFfmpegPath(ffmpegPath.path);
 
 const db = admin.firestore();
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const analyzeImage = async (req: Request, res: any) => {
   try {
@@ -382,10 +383,7 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
     }
 
     // Initialize Google Generative AI client
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.5-flash-preview-04-17',
-    });
+    const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const base64String = convertBufferToBase64(imageFile.buf);
 
@@ -398,7 +396,13 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       },
     };
 
-    const result = await model.generateContent({
+    const result = await genAI.models.generateContent({
+      model: 'gemini-2.5-flash',
+      config: {
+        thinkingConfig: {
+          thinkingBudget: 0,
+        },
+      },
       contents: [
         {
           role: 'user',
@@ -407,8 +411,7 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       ],
     });
 
-    const response = await result.response;
-    const textResult = response.text();
+    const textResult = result.text;
 
     /* Logic for storing the image in db */
     // Generate a unique filename
@@ -784,12 +787,12 @@ export const continueConversation = async (req: Request, res: any) => {
     }
 
     // Initialize Google Generative AI client
+    // Initialize Google Generative AI client
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
     // gemini-2.0-flash
     const model = genAI.getGenerativeModel({
       model: 'gemini-2.0-flash',
     });
-
     let conversationDocRef;
     let messages = [];
 
@@ -1348,10 +1351,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
     }
 
     // Initialize Google Generative AI client
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.5-flash-preview-04-17', // Or the latest compatible model
-    });
+    const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     // Prepare content for AI analysis - including the video file directly
     const prompt = `${additionalLngPrompt}.${process.env.IMAGE_ANALYZE_PROMPT}.${userPromptInput}.`;
@@ -1365,8 +1365,13 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
 
     const parts = [{ text: prompt }, videoPart];
 
-    // Send video and prompt to AI for analysis
-    const result = await model.generateContent({
+    const result = await genAI.models.generateContent({
+      model: 'gemini-2.5-flash',
+      config: {
+        thinkingConfig: {
+          thinkingBudget: 0,
+        },
+      },
       contents: [
         {
           role: 'user',
@@ -1375,8 +1380,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       ],
     });
 
-    const response = await result.response;
-    const textResult = response.text();
+    const textResult = result.text;
     // Upload the video to Firebase Storage
     const uniqueId = generateUniqueId();
     const videoFilePath = `interpretations/${userId}/${uniqueId}.${videoFile.filename.split('.').pop()}`; // Include file extension

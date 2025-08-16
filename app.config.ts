@@ -19,11 +19,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#060047',
     translucent: true,
   },
-  splash: {
-    image: './assets/splash.png',
-    resizeMode: 'cover',
-    backgroundColor: '#FFFFFF',
-  },
   updates: {
     fallbackToCacheTimeout: 0,
   },
@@ -82,6 +77,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundler: 'metro',
   },
   plugins: [
+    [
+      'expo-splash-screen',
+      {
+        backgroundColor: '#FFFFFF',
+        image: './assets/icon_transparent.png',
+        dark: {
+          image: './assets/icon_transparent.png',
+          backgroundColor: '#000000',
+        },
+        imageWidth: 150,
+      },
+    ],
     [
       'expo-notifications',
       {

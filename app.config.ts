@@ -19,11 +19,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#060047',
     translucent: true,
   },
-  splash: {
-    image: './assets/splash.png',
-    resizeMode: 'cover',
-    backgroundColor: '#FFFFFF',
-  },
   updates: {
     fallbackToCacheTimeout: 0,
   },
@@ -83,6 +78,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     [
+      'expo-splash-screen',
+      {
+        backgroundColor: '#FFFFFF',
+        image: './assets/icon_transparent.png',
+        dark: {
+          image: './assets/icon_transparent.png',
+          backgroundColor: '#000000',
+        },
+        imageWidth: 200,
+      },
+    ],
+    [
       'expo-notifications',
       {
         icon: './assets/icon_notification_96x96.png',
@@ -96,6 +103,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         fonts: ['./assets/fonts/Inter.ttf'],
       },
     ],
+    'expo-video',
     'expo-localization',
     [
       'expo-image-picker',
@@ -139,6 +147,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-build-properties',
       {
+        android: {
+          compileSdkVersion: 35,
+          targetSdkVersion: 35,
+          buildToolsVersion: '35.0.0',
+        },
         ios: {
           useFrameworks: 'static',
         },

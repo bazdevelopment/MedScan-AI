@@ -13,7 +13,7 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as Notifications from 'expo-notifications';
-import { router, SplashScreen, Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
@@ -29,6 +29,7 @@ import { useNotificationListeners } from '@/core/hooks/use-notification-listener
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
+import * as SplashScreen from 'expo-splash-screen';
 
 export { ErrorBoundary } from 'expo-router';
 

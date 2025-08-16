@@ -21,6 +21,7 @@ export const useGetOfferings = createQuery<PurchasesOffering | null, Error>({
   queryKey: ['subscription-offerings'],
   fetcher: async () => {
     const offerings = await Purchases.getOfferings();
+    console.log('aici', offerings);
     return offerings.current;
   },
 });

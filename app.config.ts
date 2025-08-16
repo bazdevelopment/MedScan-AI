@@ -86,7 +86,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           image: './assets/icon_transparent.png',
           backgroundColor: '#000000',
         },
-        imageWidth: 200,
+        imageWidth: 150,
       },
     ],
     [

@@ -61,7 +61,8 @@ export const HomeHeaderBar = ({ scrollValue }: IHomeHeaderBar) => {
             {
               label: translate('components.UpgradeBanner.heading'),
               variant: 'default',
-              onPress: () => wait(500).then(() => router.navigate('/paywall')), // a small delay in mandatory for Toast, not sure why
+              onPress: () =>
+                wait(500).then(() => router.navigate('/paywall-new')), // a small delay in mandatory for Toast, not sure why
               buttonTextClassName: 'dark:text-white',
               className:
                 'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',

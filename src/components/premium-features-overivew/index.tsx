@@ -15,7 +15,7 @@ const PremiumFeaturesOverview = () => {
 
   return (
     <View
-      className={`flex-1 justify-center p-4 ${isVerySmallDevice ? 'mt-4 gap-8' : 'gap-16'}`}
+      className={`flex-1 justify-center ${isVerySmallDevice ? 'mt-4 gap-8' : 'gap-16'}`}
     >
       <View
         className={`rotate-3 flex-row items-center justify-center rounded-xl bg-white shadow dark:bg-primary-900 ${isVerySmallDevice ? 'p-3' : 'p-6'}`}
@@ -31,7 +31,7 @@ const PremiumFeaturesOverview = () => {
           className={`font-bold-nunito text-lg text-primary-900 ${isVerySmallDevice ? 'text-xs' : 'text-lg'}`}
         >
           {translate('components.PremiumFeaturesOverview.first', {
-            freeScans: MAX_FREE_SCANS,
+            trialDays: 3,
           })}
         </Text>
       </View>

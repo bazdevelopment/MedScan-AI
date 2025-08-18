@@ -14,6 +14,7 @@ import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import * as Notifications from 'expo-notifications';
 import { router, Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
@@ -29,7 +30,6 @@ import { useNotificationListeners } from '@/core/hooks/use-notification-listener
 import { useThemeConfig } from '@/core/utilities/use-theme-config';
 import { colors } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
-import * as SplashScreen from 'expo-splash-screen';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -135,7 +135,15 @@ export default function RootLayout() {
           options={{
             headerShown: false,
             gestureEnabled: false,
-            presentation: 'formSheet',
+            presentation: 'modal',
+          }}
+        />
+        <Stack.Screen
+          name="paywall-new"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            presentation: 'modal',
           }}
         />
         <Stack.Screen
@@ -166,7 +174,7 @@ export default function RootLayout() {
                 title={translate('general.medicalDisclaimer')}
                 className="bg-white"
                 titlePosition="center"
-                onGoBack={() => router.navigate('/anonymous-login')}
+                // onGoBack={() => router.navigate('/anonymous-login')}
                 backIconColor={isDark ? colors.white : colors.blackBeauty}
               />
             ),

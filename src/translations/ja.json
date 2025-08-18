@@ -39,9 +39,15 @@
     "medicalDisclaimer": "医療免責事項",
     "conversationHistory": "会話履歴",
     "freeTrial": "無料トライアル",
+    "free": "無料",
     "completedScans": "スキャン完了",
     "activeSubscription": "サブスクリプション有効",
     "askAssistant": "AIアシスタントに質問",
+    "then": "その後",
+    "perWeek": "毎週",
+    "perYear": "毎年",
+    "tryForFree": "無料で試す",
+    "unlockNow": "今すぐアンロック",
     "copyText": {
       "loading": "コピー中...",
       "copied": "コピーしました！",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "無料トライアルが有効化されました",
+          "heading": "無制限アクセス",
           "title": "プレミアム機能を今すぐアンロック！",
           "firstOffering": "すべてのプレミアム機能にアクセス",
           "secondOffering": "広告なしの体験",
-          "thirdOffering": "合理的な使用範囲内での無制限スキャン"
+          "thirdOffering": "無制限の医療スキャン",
+          "fourthOffering": "24/7 AIアシスタントとの無制限のチャット"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / 月"
         },
         "thirdOffering": {
-          "title": "年間",
-          "subtitle": "お得なプラン：{{ price }} / 年 – さらに節約！"
+          "title": "年間プラン",
+          "subtitle": "{{ price }} 年間"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}日間の無料トライアル",
+          "subtitle": "{{ price }} 年間",
+          "plan": "週間計画"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "{{freeScans}}回の無料スキャンを取得",
+      "first": "X線、CT、MRI、ECGなど、さまざまな医療スキャンから分析を取得",
       "second": "すべてのプレミアム機能にアクセス",
       "third": "広告なし"
     },

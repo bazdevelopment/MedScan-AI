@@ -39,9 +39,15 @@
     "medicalDisclaimer": "إخلاء المسؤولية الطبية",
     "conversationHistory": "تاريخ المحادثة",
     "freeTrial": "تجربة مجانية",
+    "free": "مجانًا",
     "completedScans": "تمت عمليات المسح",
     "activeSubscription": "الاشتراك نشط",
     "askAssistant": "اسأل المساعد الذكي",
+    "then": "ثم",
+    "perWeek": "كل أسبوع",
+    "perYear": "كل عام",
+    "tryForFree": "جرب مجانًا",
+    "unlockNow": "افتح الآن",
     "copyText": {
       "loading": "جاري النسخ...",
       "copied": "تم النسخ!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "تم تفعيل النسخة التجريبية المجانية",
+          "heading": "وصول غير محدود",
           "title": "افتح المزايا المميزة اليوم!",
           "firstOffering": "الوصول إلى جميع المزايا المميزة",
           "secondOffering": "تجربة خالية من الإعلانات",
-          "thirdOffering": "فحوصات غير محدودة ضمن الاستخدام المعقول"
+          "thirdOffering": "فحوصات طبية غير محدودة",
+          "fourthOffering": "دردشات غير محدودة مع مساعد ذكي متاح على مدار الساعة"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }}/شهر"
         },
         "thirdOffering": {
-          "title": "سنوي",
-          "subtitle": "أفضل عرض: {{ price }}/سنة – وفر أكثر!"
+          "title": "الخطة السنوية",
+          "subtitle": "{{ price }} سنويًا"
+        },
+        "fourthOffering": {
+          "title": "نسخة تجريبية لمدة {{trialDays}} يومًا",
+          "subtitle": "{{ price }} سنويًا",
+          "plan": "الخطة الأسبوعية"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "احصل على {{freeScans}} اختبارًا مجانيًا",
+      "first": "احصل على تحليلات من مختلف الفحوصات الطبية، بما في ذلك الأشعة السينية، الأشعة المقطعية، الرنين المغناطيسي، تخطيط القلب الكهربائي والمزيد",
       "second": "الوصول إلى جميع المزايا المميزة",
       "third": "بدون إعلانات"
     },

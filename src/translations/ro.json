@@ -39,9 +39,15 @@
     "medicalDisclaimer": "Avertisment medical",
     "conversationHistory": "Istoricul conversației",
     "freeTrial": "Probă gratuită",
+    "free": "GRATUIT",
     "completedScans": "Scanări completate",
     "activeSubscription": "Abonament activ",
     "askAssistant": "Întreabă asistentul AI",
+    "then": "iar apoi",
+    "perWeek": "pe săptămână",
+    "perYear": "pe an",
+    "tryForFree": "Încearcă gratuit",
+    "unlockNow": "Deblochează acum",
     "copyText": {
       "loading": "Se copiază...",
       "copied": "Copiat!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Test gratuit activat",
+          "heading": "Acces nelimitat",
           "title": "Deblochează Funcționalitățile Premium Astăzi!",
           "firstOffering": "Acces la toate funcționalitățile premium",
           "secondOffering": "Experiență fără reclame",
-          "thirdOffering": "Scanări nelimitate în limite rezonabile"
+          "thirdOffering": "Scanări medicale nelimitate",
+          "fourthOffering": "Chat-uri nelimitate cu un asistent AI 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }}/lună"
         },
         "thirdOffering": {
-          "title": "Anual",
-          "subtitle": "Cea mai bună ofertă: {{ price }}/an – economisește mai mult!"
+          "title": "Plan Anual",
+          "subtitle": "{{ price }} pe an"
+        },
+        "fourthOffering": {
+          "title": "Probă de {{trialDays}} zile",
+          "subtitle": "{{ price }} pe an",
+          "plan": "Plan Săptămânal"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obține {{freeScans}} Scanări Gratuite",
+      "first": "Obține analize pentru diverse scanări medicale, inclusiv raze X, CT, RMN, ECG și altele",
       "second": "Acces la toate funcționalitățile premium",
       "third": "Fără reclame"
     },

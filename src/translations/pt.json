@@ -39,9 +39,15 @@
     "medicalDisclaimer": "Aviso de Responsabilidade Médica",
     "conversationHistory": "Histórico de conversa",
     "freeTrial": "Teste gratuito",
+    "free": "GRÁTIS",
     "completedScans": "Digitalizações concluídas",
     "activeSubscription": "Assinatura ativa",
     "askAssistant": "Perguntar ao assistente IA",
+    "then": "então",
+    "perWeek": "por semana",
+    "perYear": "por ano",
+    "tryForFree": "Experimente grátis",
+    "unlockNow": "Desbloquear agora",
     "copyText": {
       "loading": "Copiando...",
       "copied": "Copiado!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Teste gratuito habilitado",
+          "heading": "Acesso ilimitado",
           "title": "Desbloqueie recursos Premium hoje!",
           "firstOffering": "Acesso a todos os recursos Premium",
           "secondOffering": "Experiência sem anúncios",
-          "thirdOffering": "Digitalizações ilimitadas dentro do uso razoável"
+          "thirdOffering": "Exames médicos ilimitados",
+          "fourthOffering": "Chats ilimitados com um assistente AI 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / mês"
         },
         "thirdOffering": {
-          "title": "Anual",
-          "subtitle": "Melhor oferta: {{ price }}/ano – economize mais!"
+          "title": "Plano Anual",
+          "subtitle": "{{ price }} por ano"
+        },
+        "fourthOffering": {
+          "title": "Teste de {{trialDays}} dias",
+          "subtitle": "{{ price }} por ano",
+          "plan": "Plano Semanal"
         }
       },
       "newAppVersionScreen": {
@@ -349,7 +363,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obtenha {{freeScans}} Exames Gratuitos",
+      "first": "Obtenha análises de vários exames médicos, incluindo raio-X, tomografia, ressonância magnética, ECG e mais",
       "second": "Acesso a todos os recursos premium",
       "third": "Sem anúncios"
     },

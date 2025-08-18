@@ -23,7 +23,7 @@ const CustomHeader = ({
       className={twMerge(
         'flex-row items-center bg-slate-50 dark:bg-blackEerie',
         className,
-        DEVICE_TYPE.ANDROID && 'pt-[30px] pb-8',
+        DEVICE_TYPE.ANDROID && 'pt-[40px] pb-8',
         DEVICE_TYPE.IOS && 'pt-[55px] pb-5',
       )}
     >

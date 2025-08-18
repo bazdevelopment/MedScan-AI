@@ -1,9 +1,8 @@
 /* eslint-disable max-lines-per-function */
-import { Link } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { useColorScheme } from 'nativewind';
 import React, { useState } from 'react';
-import { Keyboard } from 'react-native';
+import { Keyboard, Linking, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { KeyboardStickyView } from 'react-native-keyboard-controller';
 
@@ -123,19 +122,27 @@ export default function AnonymousLogin() {
                 <Text className="text-sm">
                   {translate('rootLayout.screens.login.agreeingMessage')}{' '}
                 </Text>
-                <Link
-                  href="/terms-of-service"
-                  className="text-sm text-primary-900"
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL(
+                      'https://medscanaitermsconditions.netlify.app/',
+                    )
+                  }
                 >
-                  {translate('rootLayout.screens.login.termsAndConditions')}
-                </Link>
+                  <Text className="text-sm text-primary-900">
+                    {translate('rootLayout.screens.login.termsAndConditions')}
+                  </Text>
+                </TouchableOpacity>
                 <Text className="text-sm"> {translate('general.and')} </Text>
-                <Link
-                  href="/privacy-policy"
-                  className="text-sm text-primary-900"
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL('https://medscanaiprivacy.netlify.app/')
+                  }
                 >
-                  {translate('rootLayout.screens.login.privacyPolicy')}
-                </Link>
+                  <Text className="text-sm text-primary-900">
+                    {translate('rootLayout.screens.login.privacyPolicy')}
+                  </Text>
+                </TouchableOpacity>
               </View>
 
               <Button

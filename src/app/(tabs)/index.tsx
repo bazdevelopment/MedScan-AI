@@ -2,7 +2,7 @@
 import { router } from 'expo-router';
 import { useRouteInfo } from 'expo-router/build/hooks';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
 import {
@@ -107,6 +107,12 @@ export default function Home() {
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
   useCustomScrollToTop(scrollViewRef);
 
+  useEffect(() => {
+    if (userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
+      router.navigate('/paywall-new');
+    }
+  }, []);
+
   useBackHandler(() => (pathname === '/' ? true : false)); // Prevent default behavior and navigating back tot the onboarding
 
   return (
@@ -160,7 +166,7 @@ export default function Home() {
               scansLeft={
                 userInfo?.scansRemaining >= 0 ? userInfo?.scansRemaining : 0 //do this to avoid showing values with "-" in front
               }
-              onUpgrade={() => router.navigate('/paywall')}
+              onUpgrade={() => router.navigate('/paywall-new')}
             />
           )}
           {!areErrorsOnScanCategories && (
@@ -258,7 +264,7 @@ const ReportsList = ({
                         label: translate('components.UpgradeBanner.heading'),
                         variant: 'default',
                         onPress: () =>
-                          wait(500).then(() => router.navigate('/paywall')), // a small delay in mandatory for Toast, not sure why
+                          wait(500).then(() => router.navigate('/paywall-new')), // a small delay in mandatory for Toast, not sure why
                         buttonTextClassName: 'dark:text-white',
                         className:
                           'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',

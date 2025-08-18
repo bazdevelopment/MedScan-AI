@@ -43,12 +43,13 @@ export const usePurchaseSubscription = createMutation<
 >({
   mutationFn: async ({ packageIdentifier }: { packageIdentifier: string }) => {
     const offerings = await Purchases.getOfferings();
-    const monthlyAndAnnualOfferings = [
+    const monthlyAnnualWeeklyOfferings = [
       ...(offerings.current?.annual ? [offerings.current.annual] : []),
       ...(offerings.current?.monthly ? [offerings.current.monthly] : []),
+      ...(offerings.current?.weekly ? [offerings.current.weekly] : []),
     ];
 
-    const selectedPackage = monthlyAndAnnualOfferings.find(
+    const selectedPackage = monthlyAnnualWeeklyOfferings.find(
       (pkg: PurchasesPackage) => pkg.product.identifier === packageIdentifier,
     );
 

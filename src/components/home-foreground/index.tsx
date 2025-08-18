@@ -70,7 +70,8 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             {
               label: translate('components.UpgradeBanner.heading'),
               variant: 'default',
-              onPress: () => wait(500).then(() => router.navigate('/paywall')), // a small delay in mandatory for Toast, not sure why
+              onPress: () =>
+                wait(500).then(() => router.navigate('/paywall-new')), // a small delay in mandatory for Toast, not sure why
               buttonTextClassName: 'dark:text-white',
               className:
                 'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
@@ -130,7 +131,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
         >
           <View className="ml-6 flex-row items-center">
             <Avatar
-              image={require('../../ui/assets/images/avatar.png')}
+              image={require('../../ui/assets/images/doctor.png')}
               size="large"
               shape="circle"
             />

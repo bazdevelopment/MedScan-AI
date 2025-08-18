@@ -39,9 +39,15 @@
     "medicalDisclaimer": "Medizinischer Haftungsausschluss",
     "conversationHistory": "Konversationsverlauf",
     "freeTrial": "Kostenlose Testversion",
+    "free": "KOSTENLOS",
     "completedScans": "Scans abgeschlossen",
     "activeSubscription": "Abonnement aktiv",
     "askAssistant": "KI-Assistent fragen",
+    "then": "dann",
+    "perWeek": "pro Woche",
+    "perYear": "pro Jahr",
+    "tryForFree": "Kostenlos ausprobieren",
+    "unlockNow": "Jetzt freischalten",
     "copyText": {
       "loading": "Wird kopiert...",
       "copied": "Kopiert!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Kostenlose Testversion aktiviert",
+          "heading": "Unbegrenzter Zugriff",
           "title": "Premium-Funktionen jetzt freischalten!",
           "firstOffering": "Zugriff auf alle Premium-Funktionen",
           "secondOffering": "Werbefreie Nutzung",
-          "thirdOffering": "Unbegrenzte Scans innerhalb des angemessenen Gebrauchs"
+          "thirdOffering": "Unbegrenzte medizinische Scans",
+          "fourthOffering": "Unbegrenzte Chats mit einem 24/7 AI-Assistenten"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / Monat"
         },
         "thirdOffering": {
-          "title": "Jährlich",
-          "subtitle": "Bestes Angebot: {{ price }}/Jahr – spare mehr!"
+          "title": "Jahresplan",
+          "subtitle": "{{ price }} pro Jahr"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-Tägige Testversion",
+          "subtitle": "{{ price }} pro Jahr",
+          "plan": "Wochenplan"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Erhalte {{freeScans}} kostenlose Scans",
+      "first": "Erhalten Sie Analysen aus verschiedenen medizinischen Scans, einschließlich Röntgen, CT, MRT, EKG und mehr",
       "second": "Zugriff auf alle Premium-Funktionen",
       "third": "Keine Werbung"
     },

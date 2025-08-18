@@ -28,6 +28,7 @@ const Icon = ({
       onPress={onPress}
       className={`flex flex-col items-center ${containerStyle}`}
       disabled={disabled}
+      // hitSlop={{ top: 50, bottom: 50, left: 50, right: 50 }}
     >
       <View className={iconContainerStyle}>{clonedIcon}</View>
       {label && (

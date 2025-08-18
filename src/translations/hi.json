@@ -41,7 +41,13 @@
     "completedScans": "स्कैन पूर्ण",
     "activeSubscription": "सदस्यता सक्रिय",
     "freeTrial": "मुफ्त परीक्षण",
+    "free": "मुफ्त",
     "askAssistant": "AI सहायक से पूछें",
+    "then": "फिर",
+    "perWeek": "प्रति सप्ताह",
+    "perYear": "प्रति वर्ष",
+    "tryForFree": "मुफ्त में आज़माएं",
+    "unlockNow": "अब अनलॉक करें",
     "copyText": {
       "loading": "कॉपी हो रहा है...",
       "copied": "कॉपी हो गया!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "मुफ्त ट्रायल सक्षम किया गया",
+          "heading": "असीमित पहुंच",
           "title": "प्रीमियम फीचर्स को आज ही अनलॉक करें!",
           "firstOffering": "सभी प्रीमियम फीचर्स तक पहुंच",
           "secondOffering": "विज्ञापन-मुक्त अनुभव",
-          "thirdOffering": "उचित उपयोग के भीतर असीमित स्कैन"
+          "thirdOffering": "असीमित चिकित्सा स्कैन",
+          "fourthOffering": "24/7 AI सहायक के साथ असीमित चैट"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / माह"
         },
         "thirdOffering": {
-          "title": "सालाना",
-          "subtitle": "सर्वोत्तम डील: {{ price }}/वर्ष – अधिक बचत करें!"
+          "title": "वार्षिक योजना",
+          "subtitle": "{{ price }} प्रति वर्ष"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-दिन ट्रायल",
+          "subtitle": "{{ price }} प्रति वर्ष",
+          "plan": "साप्ताहिक योजना"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "{{freeScans}} निःशुल्क स्कैन प्राप्त करें",
+      "first": "विभिन्न चिकित्सा स्कैन, जिसमें X-रे, CT, MRI, ECG और अन्य शामिल हैं, से विश्लेषण प्राप्त करें",
       "second": "सभी प्रीमियम सुविधाओं तक पहुंच",
       "third": "कोई विज्ञापन नहीं"
     },

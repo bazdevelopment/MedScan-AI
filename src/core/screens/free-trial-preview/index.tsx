@@ -1,10 +1,10 @@
 /* eslint-disable max-lines-per-function */
+import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 
 import PremiumFeaturesOverview from '@/components/premium-features-overivew';
-import ProgressDots from '@/components/progress-dots';
 import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { translate } from '@/core/i18n';
 import { DEVICE_TYPE } from '@/core/utilities/device-type';
@@ -46,7 +46,7 @@ const FreeTrialPreview = ({
         className="absolute right-[-10] top-[-20]"
       />
       <View
-        className={`flex-1 px-6 pt-8 ${DEVICE_TYPE.ANDROID && isVerySmallDevice ? 'pt-[10]' : 'pt-[50]'}`}
+        className={`flex-1 px-6 pt-8 ${DEVICE_TYPE.ANDROID && isVerySmallDevice ? 'pt-[10]' : 'pt-[40]'}`}
       >
         <Text className="font-bold-nunito text-[32px]  text-white">
           {translate('rootLayout.screens.freeTrialPreview.heading')}
@@ -63,12 +63,12 @@ const FreeTrialPreview = ({
           className={`mb-12 mt-auto flex-row items-end justify-between ${isVerySmallDevice ? 'mb-2' : 'mb-12'}`}
         >
           <View className={`${isVerySmallDevice ? 'gap-4' : 'gap-12'}`}>
-            <ProgressDots
+            {/* <ProgressDots
               className="ml-2"
               totalSteps={totalSteps}
               currentStep={currentScreenIndex}
               activeColor={isDark ? colors.primary[900] : colors.white}
-            />
+            /> */}
 
             <Button
               onPress={onSkip}
@@ -79,7 +79,12 @@ const FreeTrialPreview = ({
           </View>
 
           <Button
-            onPress={() => goToNextScreen({})}
+            onPress={() =>
+              router.navigate({
+                pathname: '/paywall-new',
+                params: { allowAppAccess: true },
+              })
+            }
             label={translate('general.next')}
             className="bottom-[-10px] mt-6 h-[56px] w-[150px] rounded-xl border-2 border-primary-900 bg-white pl-5 dark:bg-primary-900"
             textClassName="text-lg text-primary-900 dark:text-white"

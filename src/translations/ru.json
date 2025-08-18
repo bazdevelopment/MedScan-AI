@@ -39,9 +39,15 @@
     "medicalDisclaimer": "Медицинский отказ от ответственности",
     "conversationHistory": "История разговора",
     "freeTrial": "Бесплатная пробная версия",
+    "free": "БЕСПЛАТНО",
     "completedScans": "Сканирование завершено",
     "activeSubscription": "Подписка активна",
     "askAssistant": "Спросить ИИ-ассистента",
+    "then": "тогда",
+    "perWeek": "в неделю",
+    "perYear": "в год",
+    "tryForFree": "Попробовать бесплатно",
+    "unlockNow": "Разблокировать сейчас",
     "copyText": {
       "loading": "Копирование...",
       "copied": "Скопировано!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Бесплатная пробная версия включена",
+          "heading": "Неограниченный доступ",
           "title": "Разблокируйте премиум-функции сегодня!",
           "firstOffering": "Доступ ко всем премиум-функциям",
           "secondOffering": "Работа без рекламы",
-          "thirdOffering": "Неограниченное количество сканирований в разумных пределах"
+          "thirdOffering": "Неограниченные медицинские сканирования",
+          "fourthOffering": "Неограниченные чаты с AI помощником 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }}/месяц"
         },
         "thirdOffering": {
-          "title": "Ежегодно",
-          "subtitle": "Лучшая цена: {{ price }}/год – экономьте больше!"
+          "title": "Годовой план",
+          "subtitle": "{{ price }} в год"
+        },
+        "fourthOffering": {
+          "title": "Пробная версия на {{trialDays}} дней",
+          "subtitle": "{{ price }} в год",
+          "plan": "Еженедельный план"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Получите {{freeScans}} бесплатных сканирований",
+      "first": "Получите анализы различных медицинских сканирований, включая рентген, КТ, МРТ, ЭКГ и многое другое",
       "second": "Доступ ко всем премиум-функциям",
       "third": "Без рекламы"
     },

@@ -108,9 +108,14 @@ export default function TabLayout() {
     ]);
   }, []);
 
+  // return <Redirect href="/onboarding" />;
   if (isPendingUserinfo || isPendingRevenueCatSdkInit)
     return <InitialLoadSpinner />;
 
+  if (isFirstTime && !userInfo) {
+    logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);
+    return <Redirect href="/welcome" />;
+  }
   if (isFirstTime && !isLoggedIn) {
     logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);
     return <Redirect href="/welcome" />;

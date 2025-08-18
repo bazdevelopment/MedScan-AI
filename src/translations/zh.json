@@ -39,9 +39,15 @@
     "medicalDisclaimer": "医学免责声明",
     "conversationHistory": "对话历史",
     "freeTrial": "免费试用",
+    "free": "免费",
     "completedScans": "扫描完成",
     "activeSubscription": "订阅有效",
     "askAssistant": "询问AI助手",
+    "then": "然后",
+    "perWeek": "每周",
+    "perYear": "每年",
+    "tryForFree": "免费试用",
+    "unlockNow": "立即解锁",
     "copyText": {
       "loading": "正在复制...",
       "copied": "已复制！",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "启用免费试用",
+          "heading": "无限访问",
           "title": "立即解锁高级功能！",
           "firstOffering": "使用所有高级功能",
           "secondOffering": "无广告体验",
-          "thirdOffering": "合理使用范围内的无限次扫描"
+          "thirdOffering": "无限医疗扫描",
+          "fourthOffering": "与24/7 AI助手的无限聊天"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }}/月"
         },
         "thirdOffering": {
-          "title": "每年",
-          "subtitle": "最优惠：{{ price }}/年 – 省钱更多！"
+          "title": "年度计划",
+          "subtitle": "{{ price }} 每年"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}天试用",
+          "subtitle": "{{ price }} 每年",
+          "plan": "每周计划"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "获得{{freeScans}}次免费扫描",
+      "first": "获取来自各种医学扫描的分析，包括X光、CT、MRI、ECG等",
       "second": "使用所有高级功能",
       "third": "无广告"
     },

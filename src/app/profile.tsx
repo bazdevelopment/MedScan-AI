@@ -28,8 +28,14 @@ const Profile = () => {
           'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
         )
       : customerInfo?.activeSubscriptions[0].includes('year')
-        ? translate('rootLayout.screens.paywallUpgradeScreen.thirdOffering')
-        : translate('general.freeTrial')
+        ? translate(
+            'rootLayout.screens.paywallUpgradeScreen.thirdOffering.title',
+          )
+        : customerInfo?.activeSubscriptions[0].includes('week')
+          ? translate(
+              'rootLayout.screens.paywallUpgradeScreen.fourthOffering.plan',
+            )
+          : translate('general.freeTrial')
     : translate('general.freeTrial');
 
   const { data: userInfo } = useUser(language);
@@ -58,13 +64,13 @@ const Profile = () => {
   return (
     <KeyboardStickyView offset={{ opened: 150 }}>
       <ScrollView className="dark:bg-blackEerie">
-        <View className="flex-1 bg-white dark:bg-blackEerie">
-          <View className="h-[120px] rounded-b-[50px] bg-primary-900 pb-10 pt-12 dark:bg-blackEerie" />
+        <View className="flex-1">
+          <View className="h-[120px] rounded-b-[50px] pb-10 pt-12 " />
           <Avatar
-            image={require('../ui/assets/images/avatar.png')}
+            image={require('../ui/assets/images/doctor.png')}
             size="xl"
             shape="rounded-xl"
-            className="top-[-55px] self-center rounded-3xl border-4 border-primary-300"
+            className="top-[-55px] self-center rounded-3xl"
             isEditable={false} //!todo: for now upload picture should be disabled due to privacy politics
           />
 

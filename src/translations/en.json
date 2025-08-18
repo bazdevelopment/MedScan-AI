@@ -39,9 +39,15 @@
     "medicalDisclaimer": "Medical Disclaimer",
     "conversationHistory": "Conversation history",
     "freeTrial": "Free trial",
+    "free": "FREE",
     "completedScans": "Scans completed",
     "activeSubscription": "Subscription active",
     "askAssistant": "Ask AI assistant",
+    "then": "then",
+    "perWeek": "per week",
+    "perYear": "per year",
+    "tryForFree": "Try For Free",
+    "unlockNow": "Unlock Now",
     "copyText": {
       "loading": "Copying...",
       "copied": "Copied!",
@@ -124,11 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Free Trial Enabled",
+          "heading": " Unlimited Access",
           "title": "Unlock Premium Features Today!",
           "firstOffering": "Access All Premium Features",
           "secondOffering": "Ad-Free Experience",
-          "thirdOffering": "Unlimited scans within reasonable use",
-          "fourthOffering": "Unlimited scans with fair use and 24/7 personal AI assistant access"
+          "thirdOffering": "Unlimited medical scans",
+          "fourthOffering": "Unlimited chats with a 24/7 AI assistant"
         }
       },
       "paywallUpgradeScreen": {
@@ -142,8 +150,13 @@
           "subtitle": "{{ price }}/month"
         },
         "thirdOffering": {
-          "title": "Yearly",
-          "subtitle": "Best deal: {{ price }}/year – save more!"
+          "title": "Yearly Plan",
+          "subtitle": "{{ price }} per year"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-Day Trial",
+          "subtitle": "{{ price }} per year",
+          "plan": "Weekly Plan"
         }
       },
       "newAppVersionScreen": {
@@ -350,7 +363,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Get {{freeScans}} Free Scans",
+      "first": "Get analysis from various medical scans, including X-RAY, CT, MRI, ECG and more",
       "second": "Access to all premium features",
       "third": "No ads"
     },

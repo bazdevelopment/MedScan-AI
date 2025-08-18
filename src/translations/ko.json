@@ -39,9 +39,15 @@
     "medicalDisclaimer": "의학적 면책 조항",
     "conversationHistory": "대화 기록",
     "freeTrial": "무료 체험",
+    "free": "무료",
     "completedScans": "스� 완료",
     "activeSubscription": "구독 활성화됨",
     "askAssistant": "AI 어시스턴트에게 질문",
+    "then": "그때",
+    "perWeek": "매주",
+    "perYear": "매년",
+    "tryForFree": "무료로 시도하기",
+    "unlockNow": "지금 잠금 해제",
     "copyText": {
       "loading": "복사 중...",
       "copied": "복사되었습니다!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "무료 체험 활성화됨",
+          "heading": "무제한 액세스",
           "title": "프리미엄 기능을 지금 해제하세요!",
           "firstOffering": "모든 프리미엄 기능에 액세스",
           "secondOffering": "광고 없는 경험",
-          "thirdOffering": "합리적인 사용 범위 내에서 무제한 스캔"
+          "thirdOffering": "무제한 의료 스캔",
+          "fourthOffering": "24/7 AI 어시스턴트와의 무제한 채팅"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / 월"
         },
         "thirdOffering": {
-          "title": "매년",
-          "subtitle": "가장 합리적인 가격: {{ price }} / 년 – 더 많이 절약하세요!"
+          "title": "연간 계획",
+          "subtitle": "{{ price }} 연간"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}일 무료 체험",
+          "subtitle": "{{ price }} 연간",
+          "plan": "주간 계획"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "{{freeScans}}회 무료 스캔 제공",
+      "first": "X-레이, CT, MRI, ECG 등 다양한 의료 스캔에서 분석을 받으세요",
       "second": "모든 프리미엄 기능에 액세스",
       "third": "광고 없음"
     },

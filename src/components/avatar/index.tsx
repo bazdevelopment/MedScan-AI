@@ -68,7 +68,7 @@ export default Avatar;
 const avatar = tv({
   slots: {
     container: 'items-center justify-center',
-    image: 'h-full w-full bg-primary-200 dark:bg-blackBeauty',
+    image: 'h-full w-full',
     name: 'items-center justify-center',
   },
   variants: {

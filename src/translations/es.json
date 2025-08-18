@@ -39,9 +39,15 @@
     "medicalDisclaimer": "Descargo de responsabilidad médica",
     "conversationHistory": "Historial de conversación",
     "freeTrial": "Prueba gratuita",
+    "free": "GRATIS",
     "completedScans": "Escaneos completados",
     "activeSubscription": "Suscripción activa",
     "askAssistant": "Preguntar al asistente IA",
+    "then": "entonces",
+    "perWeek": "por semana",
+    "perYear": "por año",
+    "tryForFree": "Prueba gratis",
+    "unlockNow": "Desbloquear ahora",
     "copyText": {
       "loading": "Copiando...",
       "copied": "¡Copiado!",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Prueba gratuita habilitada",
+          "heading": "Acceso ilimitado",
           "title": "¡Desbloquea funciones premium hoy!",
           "firstOffering": "Acceso a todas las funciones premium",
           "secondOffering": "Experiencia sin anuncios",
-          "thirdOffering": "Escaneos ilimitados dentro de un uso razonable"
+          "thirdOffering": "Escaneos médicos ilimitados",
+          "fourthOffering": "Chats ilimitados con un asistente AI disponible 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / mes"
         },
         "thirdOffering": {
-          "title": "Anual",
-          "subtitle": "Mejor oferta: {{ price }}/año – ¡ahorra más!"
+          "title": "Plan Anual",
+          "subtitle": "{{ price }} por año"
+        },
+        "fourthOffering": {
+          "title": "Prueba de {{trialDays}} días",
+          "subtitle": "{{ price }} por año",
+          "plan": "Plan Semanal"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obtén {{freeScans}} escaneos gratis",
+      "first": "Obtén análisis de diversas exploraciones médicas, incluyendo radiografías, tomografías, resonancias magnéticas, ECG y más",
       "second": "Acceso a todas las funciones premium",
       "third": "Sin anuncios"
     },

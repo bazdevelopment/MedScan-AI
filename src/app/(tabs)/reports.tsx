@@ -191,7 +191,7 @@ const Reports = () => {
       {userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing && (
         <UpgradeBanner
           className="mx-4 mt-6"
-          onUpgradePress={() => router.navigate('/paywall')}
+          onUpgradePress={() => router.navigate('/paywall-new')}
         />
       )}
 

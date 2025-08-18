@@ -278,7 +278,7 @@ const formatPaywallOnboardingData = (offerings: any) => {
   return paywallData;
 };
 
-const updateUserAndNavigate = async ({
+export const updateUserAndNavigate = async ({
   userId,
   language,
   collectedData,
@@ -311,6 +311,7 @@ const updateUserAndNavigate = async ({
     onUpdateUser,
   })
     .then(() => {
+      console.log('siisi');
       queryClient.setQueryData(['user-info'], (oldData: IUserInfo) => ({
         ...oldData,
         isOnboarded: true,
@@ -321,7 +322,8 @@ const updateUserAndNavigate = async ({
         `User ${userId} has been onboarded successfully and selected ${collectedData.selectedPackage} plan and is redirected to home screen`,
       );
     })
-    .catch(() => {
+    .catch((e) => {
+      console.log('error', e);
       // !updateUserAfterSelectingPlan will throw an error if the google modal for subscription is shown and the user close the modal (without paying)
     });
 };
@@ -347,6 +349,13 @@ export const updateUserAfterSelectingPlan = async ({
     fieldsToUpdate: object;
   }) => Promise<void>;
 }) => {
+  console.log('payload', {
+    language,
+    userId,
+    collectedData,
+    customerInfo,
+    onUpdateUser,
+  });
   const fieldsToUpdate: Partial<IUserInfo> = {
     isOnboarded: true,
     ...(collectedData.preferredName && {

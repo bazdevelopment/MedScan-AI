@@ -367,14 +367,14 @@ const ChatScreen = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!isLoading && conversationMode === 'IMAGE_SCAN_CONVERSATION') {
-      Toast.warning(translate('alerts.medicalDisclaimerAlert'), {
-        closeButton: true,
-        duration: 8000,
-      });
-    }
-  }, [isLoading, conversationMode]);
+  // useEffect(() => {
+  //   if (!isLoading && conversationMode === 'IMAGE_SCAN_CONVERSATION') {
+  //     Toast.warning(translate('alerts.medicalDisclaimerAlert'), {
+  //       closeButton: true,
+  //       duration: 8000,
+  //     });
+  //   }
+  // }, [isLoading, conversationMode]);
 
   if (isLoading) {
     return (

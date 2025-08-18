@@ -38,10 +38,16 @@
     "medicalDisclaimer": "Avertissement médical",
     "conversationHistory": "Historique de la conversation",
     "freeTrial": "Essai gratuit",
+    "free": "GRATUIT",
     "completedScans": "Analyses terminées",
     "activeSubscription": "Abonnement actif",
     "and": "et",
     "askAssistant": "Demander à l'assistant IA",
+    "then": "alors",
+    "perWeek": "par semaine",
+    "perYear": "par an",
+    "tryForFree": "Essayer gratuitement",
+    "unlockNow": "Déverrouiller maintenant",
     "copyText": {
       "loading": "Copie en cours...",
       "copied": "Copié !",
@@ -124,10 +130,13 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
+          "freeTrialEnabled": "Essai gratuit activé",
+          "heading": "Accès illimité",
           "title": "Débloquez les fonctionnalités premium dès aujourd'hui !",
           "firstOffering": "Accédez à toutes les fonctionnalités premium",
           "secondOffering": "Expérience sans publicité",
-          "thirdOffering": "Analyses illimitées dans des limites raisonnables"
+          "thirdOffering": "Scans médicaux illimités",
+          "fourthOffering": "Chats illimités avec un assistant IA disponible 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -141,8 +150,13 @@
           "subtitle": "{{ price }} / mois"
         },
         "thirdOffering": {
-          "title": "Annuel",
-          "subtitle": "Meilleure offre : {{ price }} / an – économisez plus !"
+          "title": "Plan Annuel",
+          "subtitle": "{{ price }} par an"
+        },
+        "fourthOffering": {
+          "title": "Essai de {{trialDays}} jours",
+          "subtitle": "{{ price }} par an",
+          "plan": "Plan Hebdomadaire"
         }
       },
       "newAppVersionScreen": {
@@ -347,7 +361,7 @@
       }
     },
     "PremiumFeaturesOverview": {
-      "first": "Obtenez {{freeScans}} analyses gratuites",
+      "first": "Obtenez des analyses provenant de divers scans médicaux, y compris des radiographies, CT, IRM, ECG et plus encore",
       "second": "Accédez à toutes les fonctionnalités premium",
       "third": "Pas de publicité"
     },

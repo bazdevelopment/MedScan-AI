@@ -27,6 +27,7 @@ import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
 import { Button, colors, ScrollView, View } from '@/ui';
 import { LogoutIcon, Rate } from '@/ui/assets/icons';
+import { Linking } from 'react-native';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -112,7 +113,7 @@ export default function Settings() {
       {userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing && (
         <UpgradeBanner
           className="mx-4 mt-4"
-          onUpgradePress={() => router.navigate('/paywall')}
+          onUpgradePress={() => router.navigate('/paywall-new')}
         />
       )}
       <ScrollView ref={scrollViewRef}>
@@ -150,11 +151,15 @@ export default function Settings() {
           <ItemsContainer title="settings.links">
             <Item
               text="settings.privacy"
-              onPress={() => router.navigate('/privacy-policy')}
+              onPress={() =>
+                Linking.openURL('https://medscanaiprivacy.netlify.app/')
+              }
             />
             <Item
               text="settings.terms"
-              onPress={() => router.navigate('/terms-of-service')}
+              onPress={() =>
+                Linking.openURL('https://medscanaitermsconditions.netlify.app/')
+              }
             />
             {SHOW_FAQ_SCREEN && (
               <Item

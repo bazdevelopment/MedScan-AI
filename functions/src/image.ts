@@ -367,7 +367,7 @@ export const analyzeImageConversation = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 50,
+      dailyLimit: 100,
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';
@@ -577,7 +577,7 @@ export const analyzeImageConversationV2 = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 40,
+      dailyLimit: 100,
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';
@@ -827,7 +827,7 @@ export const continueConversation = async (req: Request, res: any) => {
       throw new Error('Conversation ID is required');
     }
     // Check message limit
-    if (messages.length > 30) {
+    if (messages.length > 60) {
       // maybe you can increase the limit for messages without image/video
       return res.status(400).json({
         success: false,
@@ -1078,7 +1078,7 @@ export const analyzeVideoConversationV2 = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 15, // 15 for videos
+      dailyLimit: 50, // 15 for videos
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';
@@ -1335,7 +1335,7 @@ export const analyzeVideoConversation = async (req: Request, res: any) => {
       userId,
       lastScanDate,
       scansToday,
-      dailyLimit: 50, // 50 for videos (adjust as needed)
+      dailyLimit: 80, // 50 for videos (adjust as needed)
     });
     if (!canScanResult.canScan) {
       const limitReachedMessage = 'Scan Limit Reached';

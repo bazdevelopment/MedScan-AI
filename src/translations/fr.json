@@ -46,6 +46,7 @@
     "then": "alors",
     "perWeek": "par semaine",
     "perYear": "par an",
+    "perMonth": "par mois",
     "tryForFree": "Essayer gratuitement",
     "unlockNow": "Déverrouiller maintenant",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "Profitez de {{freeScans}} analyses gratuites – aucun paiement requis"
         },
         "secondOffering": {
-          "title": "Mensuel",
+          "title": "Plan mensuel",
           "subtitle": "{{ price }} / mois"
         },
         "thirdOffering": {

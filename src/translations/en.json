@@ -46,6 +46,7 @@
     "then": "then",
     "perWeek": "per week",
     "perYear": "per year",
+    "perMonth": "per month",
     "tryForFree": "Try For Free",
     "unlockNow": "Unlock Now",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "Enjoy {{freeScans}} free scans – no payment"
         },
         "secondOffering": {
-          "title": "Monthly",
+          "title": "Monthly Plan",
           "subtitle": "{{ price }}/month"
         },
         "thirdOffering": {

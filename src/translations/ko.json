@@ -46,6 +46,7 @@
     "then": "그때",
     "perWeek": "매주",
     "perYear": "매년",
+    "perMonth": "매달",
     "tryForFree": "무료로 시도하기",
     "unlockNow": "지금 잠금 해제",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "{{freeScans}}회 무료 스캔 – 결제 불필요"
         },
         "secondOffering": {
-          "title": "월간 간행물",
+          "title": "월간 계획",
           "subtitle": "{{ price }} / 월"
         },
         "thirdOffering": {

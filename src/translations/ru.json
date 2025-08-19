@@ -46,6 +46,7 @@
     "then": "тогда",
     "perWeek": "в неделю",
     "perYear": "в год",
+    "perMonth": "в месяц",
     "tryForFree": "Попробовать бесплатно",
     "unlockNow": "Разблокировать сейчас",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "Получите {{freeScans}} бесплатных сканирований – без оплаты"
         },
         "secondOffering": {
-          "title": "Ежемесячно",
+          "title": "Ежемесячный план",
           "subtitle": "{{ price }}/месяц"
         },
         "thirdOffering": {

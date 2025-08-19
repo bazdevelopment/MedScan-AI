@@ -46,6 +46,7 @@
     "then": "फिर",
     "perWeek": "प्रति सप्ताह",
     "perYear": "प्रति वर्ष",
+    "perMonth": "प्रति माह",
     "tryForFree": "मुफ्त में आज़माएं",
     "unlockNow": "अब अनलॉक करें",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "{{freeScans}} मुफ्त स्कैन का आनंद लें – कोई भुगतान नहीं"
         },
         "secondOffering": {
-          "title": "महीने के",
+          "title": "मासिक योजना",
           "subtitle": "{{ price }} / माह"
         },
         "thirdOffering": {

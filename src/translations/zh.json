@@ -46,6 +46,7 @@
     "then": "然后",
     "perWeek": "每周",
     "perYear": "每年",
+    "perMonth": "每月",
     "tryForFree": "免费试用",
     "unlockNow": "立即解锁",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "享受{{freeScans}}次免费扫描 – 无需付款"
         },
         "secondOffering": {
-          "title": "每月",
+          "title": "月度计划",
           "subtitle": "{{ price }}/月"
         },
         "thirdOffering": {

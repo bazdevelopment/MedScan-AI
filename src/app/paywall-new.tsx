@@ -16,7 +16,7 @@ import {
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Icon from '@/components/icon';
 import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
-import { translate, useIsFirstTime } from '@/core';
+import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import {
   updateUserAfterSelectingPlan,
@@ -29,25 +29,6 @@ const formatPaywallData = (offerings: any) => {
   if (!offerings) return [];
 
   const paywallData = [];
-
-  // if (offerings?.monthly?.product) {
-  //   paywallData.push({
-  //     id: offerings.monthly.product.identifier,
-  //     title: translate(
-  //       'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
-  //     ),
-  //     subtitle: translate(
-  //       'rootLayout.screens.paywallUpgradeScreen.secondOffering.subtitle',
-  //       {
-  //         price: offerings.monthly.product.priceString,
-  //       },
-  //     ),
-  //     price: offerings.monthly.product.priceString,
-  //     priceNumber: offerings.monthly.product.price,
-  //     currency: offerings.monthly.product.currencyCode,
-  //     type: 'MONTHLY',
-  //   });
-  // }
 
   if (offerings?.annual?.product) {
     paywallData.push({
@@ -67,6 +48,26 @@ const formatPaywallData = (offerings: any) => {
       type: 'ANNUAL',
     });
   }
+
+  if (offerings?.monthly?.product && DEVICE_TYPE.IOS) {
+    paywallData.push({
+      id: offerings.monthly.product.identifier,
+      title: translate(
+        'rootLayout.screens.paywallUpgradeScreen.secondOffering.title',
+      ),
+      subtitle: translate(
+        'rootLayout.screens.paywallUpgradeScreen.secondOffering.subtitle',
+        {
+          price: offerings.monthly.product.priceString,
+        },
+      ),
+      price: offerings.monthly.product.priceString,
+      priceNumber: offerings.monthly.product.price,
+      currency: offerings.monthly.product.currencyCode,
+      type: 'MONTHLY',
+    });
+  }
+
   if (offerings?.weekly?.product) {
     paywallData.push({
       id: offerings.weekly.product.identifier,
@@ -235,6 +236,10 @@ const PaywallNew = () => {
   const annualOffering = formattedOfferings?.find(
     (offering) => offering.type === 'ANNUAL',
   );
+  const monthlyOffering = formattedOfferings?.find(
+    (offering) => offering.type === 'MONTHLY',
+  );
+
   const weeklyOffering = formattedOfferings?.find(
     (offering) => offering.type === 'WEEKLY',
   );
@@ -272,7 +277,9 @@ const PaywallNew = () => {
     const packageIdentifier =
       selectedPlan === 'yearly'
         ? SUBSCRIPTION_PLANS_PER_PLATFORM?.YEARLY
-        : SUBSCRIPTION_PLANS_PER_PLATFORM?.WEEKLY;
+        : selectedPlan === 'monthly'
+          ? SUBSCRIPTION_PLANS_PER_PLATFORM?.MONTHLY
+          : SUBSCRIPTION_PLANS_PER_PLATFORM?.WEEKLY;
 
     const customerInfoAfterPurchase = await purchaseSubscription({
       packageIdentifier,
@@ -303,7 +310,7 @@ const PaywallNew = () => {
 
           <Icon
             size={28}
-            containerStyle="right-3 top-2 self-end p-2 z-10"
+            containerStyle="right-4 top-3 self-end p-2 z-10"
             onPress={() => {
               if (allowAppAccess === 'true') {
                 updateUserAndNavigate({
@@ -369,7 +376,16 @@ const PaywallNew = () => {
                   onPress={() => handlePlanSelection('yearly')}
                 />
               )}
-
+              {monthlyOffering && (
+                <PricingCard
+                  title={monthlyOffering.title}
+                  subtitle={`${monthlyOffering.price} ${translate('general.perMonth')}`}
+                  price=""
+                  isSelected={selectedPlan === 'monthly'}
+                  onPress={() => handlePlanSelection('monthly')}
+                  isFree={false}
+                />
+              )}
               {weeklyOffering && (
                 <PricingCard
                   title={weeklyOffering.title}

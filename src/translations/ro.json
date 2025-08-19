@@ -46,6 +46,7 @@
     "then": "iar apoi",
     "perWeek": "pe săptămână",
     "perYear": "pe an",
+    "perMonth": "pe lună",
     "tryForFree": "Încearcă gratuit",
     "unlockNow": "Deblochează acum",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "Bucură-te de {{freeScans}} scanări gratuite – fără plată"
         },
         "secondOffering": {
-          "title": "Lunar",
+          "title": "Plan lunar",
           "subtitle": "{{ price }}/lună"
         },
         "thirdOffering": {

@@ -46,6 +46,7 @@
     "then": "その後",
     "perWeek": "毎週",
     "perYear": "毎年",
+    "perMonth": "毎月",
     "tryForFree": "無料で試す",
     "unlockNow": "今すぐアンロック",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "{{freeScans}}回の無料スキャンを楽しむ – 支払い不要"
         },
         "secondOffering": {
-          "title": "月次",
+          "title": "月間プラン",
           "subtitle": "{{ price }} / 月"
         },
         "thirdOffering": {

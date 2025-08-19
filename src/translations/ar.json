@@ -46,6 +46,7 @@
     "then": "ثم",
     "perWeek": "كل أسبوع",
     "perYear": "كل عام",
+    "perMonth": "شهريًا",
     "tryForFree": "جرب مجانًا",
     "unlockNow": "افتح الآن",
     "copyText": {
@@ -146,7 +147,7 @@
           "subtitle": "استمتع بـ{{freeScans}} فحوصات مجانية – بدون دفع"
         },
         "secondOffering": {
-          "title": "شهريا",
+          "title": "الخطة الشهرية",
           "subtitle": "{{ price }}/شهر"
         },
         "thirdOffering": {

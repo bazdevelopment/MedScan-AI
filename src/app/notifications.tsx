@@ -50,7 +50,7 @@ export default function NotificationsScreen() {
   );
 
   return (
-    <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
+    <View className="`-mt-6 flex-1 bg-primary-50 dark:bg-blackEerie">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {areUserNotificationsLoading ? (
           <SkeletonLoader />

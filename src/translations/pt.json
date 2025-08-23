@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "Você está achando o aplicativo útil e envolvente?",
-        "like": "Sim, eu amo!",
+        "like": "Sim, eu gosto disso!",
         "dislike": "Não muito..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "Sinta-se à vontade para nos enviar um e-mail diretamente, e nossa equipe responderá o mais rápido possível",
         "customerSupport": "Suporte ao cliente",
         "emailAddress": "Endereço de e-mail"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Que idioma prefere para a análise da IA?",
+        "languageSelection": "Escolha um idioma para as respostas da IA",
+        "languageSearchCriteria": "Pesquise por idioma, código do país ou bandeira",
+        "noLanguageFound": "Nenhum Idioma Encontrado",
+        "noLanguageFoundSubtitle": "Tente modificar os seus termos de pesquisa"
       }
     }
   },
@@ -260,9 +267,9 @@
   "home": {
     "tab": "Início",
     "homeForeground": {
-      "maxNumberOfScans": "Você atingiu seu limite de exames! Atualize seu plano agora para desbloquear mais exames. 🚀",
+      "maxNumberOfScans": "Atingiu o limite de digitalizações! Atualize o seu plano para ter digitalizações ilimitadas. 🚀",
       "heading": "Bem-vindo ao MedScan AI",
-      "subHeading": "Obtenha insights vitais sobre ressonâncias magnéticas, raios-X, tomografias, imagens PET, ultrassons e medicina nuclear por meio de análises impulsionadas por IA"
+      "subHeading": "Carregue raios-X, tomografias, eletrocardiogramas, ressonâncias magnéticas, tomografias PET, ultrassons ou quaisquer outras imagens médicas para análise por IA."
     },
     "scanCategories": {
       "heading": "Carrossel de Radiologia"

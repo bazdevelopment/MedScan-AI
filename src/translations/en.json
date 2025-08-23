@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "Are you finding the app valuable and engaging?",
-        "like": "Yes, I love it!",
+        "like": "Yes, I like it!",
         "dislike": "Not really..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "Feel free to email us directly, and our team will get back to you as soon as possible",
         "customerSupport": "Customer Support",
         "emailAddress": "Email Address"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "What language would you prefer for the AI analysis?",
+        "languageSelection": "Choose a language for AI responses",
+        "languageSearchCriteria": "Search by language, country code, or flag",
+        "noLanguageFound": "No Language Found",
+        "noLanguageFoundSubtitle": "Try modifying your search terms"
       }
     }
   },
@@ -260,9 +267,9 @@
   "home": {
     "tab": "Home",
     "homeForeground": {
-      "maxNumberOfScans": "You've reached your scan limit! Upgrade your plan now to unlock more scans. 🚀",
+      "maxNumberOfScans": "You've reached the scan limit! Upgrade your plan for unlimited scans. 🚀",
       "heading": "Welcome to MedScan AI!",
-      "subHeading": "Get vital insights about X-Rays, MRI, CT scans, PET imaging, ultrasounds, and nuclear medicine through AI-powered analysis"
+      "subHeading": "Upload X-Rays, CT scans, ECGs, MRIs, PET scans, ultrasounds, or any other medical images for AI analysis."
     },
     "scanCategories": {
       "heading": "Radiology Reel"

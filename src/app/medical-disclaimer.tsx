@@ -13,26 +13,28 @@ const disclaimerTexts = [
     text: translate('rootLayout.screens.disclaimerScreen.heading'),
     className: 'mb-6 font-bold-nunito text-xl',
   },
-  {
-    text: translate('rootLayout.screens.disclaimerScreen.subheading'),
-    className: 'mb-8 text-base',
-  },
+
+  // {
+  //   text: translate('rootLayout.screens.disclaimerScreen.subheading'),
+  //   className: 'mb-8 text-base',
+  // },
   {
     text: translate('rootLayout.screens.disclaimerScreen.firstConsent'),
-    className: 'mb-8 text-base',
-  },
-  {
-    text: translate('rootLayout.screens.disclaimerScreen.secondConsent'),
-    className: 'mb-8 text-base',
-  },
-  {
-    text: translate('rootLayout.screens.disclaimerScreen.thirdConsent'),
     className: 'mb-8 text-base',
   },
   {
     text: translate('rootLayout.screens.disclaimerScreen.fourthConsent'),
     className: 'mb-8 font-bold-nunito text-base',
   },
+  {
+    text: translate('rootLayout.screens.disclaimerScreen.secondConsent'),
+    className: 'mb-8 text-base',
+  },
+  // {
+  //   text: translate('rootLayout.screens.disclaimerScreen.thirdConsent'),
+  //   className: 'mb-8 text-base',
+  // },
+
   {
     text: translate('rootLayout.screens.disclaimerScreen.fifthConsent'),
     className: 'mb-8 text-base',
@@ -54,7 +56,7 @@ const MedicalDisclaimerScreen = () => {
   return (
     <>
       <ScrollView
-        contentContainerStyle={{ padding: 16, paddingBottom: 200 }}
+        contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 200 }}
         className="bg-white dark:bg-blackEerie"
         showsVerticalScrollIndicator={false}
       >

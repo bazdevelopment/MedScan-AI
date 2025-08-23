@@ -7,13 +7,11 @@ import { TouchableOpacity, View } from 'react-native';
 import { translate } from '@/core';
 import { useModal } from '@/core/hooks/use-modal';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
-import { generateScanReportPdf } from '@/core/utilities/generate-scan-report-pdf';
 import { colors, Image, Input, Text } from '@/ui';
 import { EditIcon, PlayerIcon, TickCircle } from '@/ui/assets/icons';
 
 import CustomModal from '../custom-modal';
 import Icon from '../icon';
-import SharePdfActionButtons from '../share-pdf-action-buttons';
 import VideoPlayer from '../video';
 import { type IScanReportCard } from './scan-report-card.interface';
 
@@ -33,7 +31,6 @@ const ScanReportCard = ({
 }: IScanReportCard) => {
   const messages =
     conversationMessages?.filter((msg) => !Array.isArray(msg.content)) || [];
-
   const [isEditing, setIsEditing] = useState(false);
   const [editableTitle, setEditableTitle] = useState(title);
   const { colorScheme } = useColorScheme();
@@ -67,7 +64,7 @@ const ScanReportCard = ({
           {dayjs(createdAt).locale(language).format(dateFormat).toUpperCase()}
         </Text>
 
-        <SharePdfActionButtons
+        {/* <SharePdfActionButtons
           position="horizontal"
           heading={title}
           date={createdAt}
@@ -77,7 +74,7 @@ const ScanReportCard = ({
             promptMessage,
             generatedAt: dayjs().locale(language).format('DD/MM/YYYY'),
           })}
-        />
+        /> */}
       </View>
       <View className="mt-2 flex-row items-center">
         {/* Image Section */}
@@ -101,7 +98,7 @@ const ScanReportCard = ({
         <View className="flex-1">
           {/* Header Row */}
           <View className="w-[180px] flex-row items-center">
-            <View className="w-full flex-row items-center">
+            <View className="flex-row items-center">
               {isEditing ? (
                 <Input
                   value={editableTitle}

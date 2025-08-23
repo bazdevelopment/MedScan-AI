@@ -2,7 +2,7 @@
 import { router } from 'expo-router';
 import { useRouteInfo } from 'expo-router/build/hooks';
 import { useColorScheme } from 'nativewind';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
 import {
@@ -55,7 +55,6 @@ export default function Home() {
     limit: 5,
     language,
   })();
-
   const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
   const { data: customerInfo, refetch: refetchCustomerInfo } =
     useGetCustomerInfo();
@@ -107,11 +106,11 @@ export default function Home() {
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
   useCustomScrollToTop(scrollViewRef);
 
-  useEffect(() => {
-    if (userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
-      router.navigate('/paywall-new');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
+  //     router.navigate('/paywall-new');
+  //   }
+  // }, []);
 
   useBackHandler(() => (pathname === '/' ? true : false)); // Prevent default behavior and navigating back tot the onboarding
 
@@ -162,7 +161,7 @@ export default function Home() {
           </View> */}
           {!isUserSubscriptionActive && (
             <FreeTierStatus
-              className={`mx-4 mt-10 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
+              className={`mx-4 rounded-xl bg-white p-4 dark:bg-blackBeauty ${isVerySmallDevice ? 'mx-0' : 'mx-4'}`}
               scansLeft={
                 userInfo?.scansRemaining >= 0 ? userInfo?.scansRemaining : 0 //do this to avoid showing values with "-" in front
               }
@@ -287,7 +286,7 @@ const ReportsList = ({
           {recentInterpretations?.records?.map(
             (record: IInterpretationResult) => (
               <CardWrapper
-                key={record.id}
+                key={`${record.docId}-${record.title}-${record.createdAt}`}
                 chevronColor={colors.primary[900]}
                 className="rounded-xl bg-white p-4 dark:bg-blackBeauty"
                 onPress={() =>

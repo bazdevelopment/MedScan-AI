@@ -34,7 +34,7 @@ const FreeTierStatus = ({
         </View>
 
         <View className="ml-4 mr-2 w-full flex-1 flex-col gap-1">
-          <Text className="font-semibold-nunito text-2xl">
+          <Text className="font-semibold-nunito text-lg">
             {translate('components.FreeTierStatus.heading')}
           </Text>
           <Text className="text-sm text-gray-600">

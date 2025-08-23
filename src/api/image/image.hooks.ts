@@ -92,7 +92,10 @@ export const useAnalyzeImage = ({
           },
         });
       }
-      Toast.error(error.response.data.message);
+      Toast.error(error.response.data.message, {
+        closeButton: true,
+        duration: 20000,
+      });
       logEvent('Failure when analyzing medical image', 'error');
       recordError(error, 'Failure when analyzing medical image');
     },
@@ -171,8 +174,11 @@ export const useAnalyzeVideo = ({
         });
       }
 
-      Toast.error(error?.response?.data?.message);
-      logEvent('Failure when analyzing medical vide', 'error');
+      Toast.error(
+        error?.response?.data?.message ||
+          'Could you please try submitting again? It seems there was an issue with your internet connection.',
+      );
+      logEvent('Failure when analyzing medical video', 'error');
       recordError(error, 'Failure when analyzing medical video');
     },
   });

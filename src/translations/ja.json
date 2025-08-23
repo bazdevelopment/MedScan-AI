@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "このアプリは役に立っていますか？",
-        "like": "はい、気に入っています！",
+        "like": "はい、私はそれが好きです！",
         "dislike": "あまり気に入っていません..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "直接メールでご連絡ください。チームができるだけ早く返信いたします",
         "customerSupport": "カスタマーサポート",
         "emailAddress": "メールアドレス"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "AI分析にはどの言語を使用しますか？",
+        "languageSelection": "AIの応答言語を選択してください",
+        "languageSearchCriteria": "言語、国コード、または国旗で検索",
+        "noLanguageFound": "言語が見つかりません",
+        "noLanguageFoundSubtitle": "検索キーワードを変更してみてください"
       }
     }
   },
@@ -258,9 +265,9 @@
   "home": {
     "tab": "ホーム",
     "homeForeground": {
-      "maxNumberOfScans": "スキャン回数の上限に達しました！プランをアップグレードして、さらにスキャンを利用しましょう。🚀",
+      "maxNumberOfScans": "スキャン回数の上限に達しました！無制限のスキャンを利用するには、プランをアップグレードしてください。🚀",
       "heading": "MedScan AIへようこそ",
-      "subHeading": "AIを活用した分析により、MRI、X線、CTスキャン、PETイメージング、超音波、核医学に関する重要な知見を得る"
+      "subHeading": "AI分析のために、X線、CTスキャン、ECG、MRI、PETスキャン、超音波、その他の医療画像をアップロードしてください。"
     },
     "scanCategories": {
       "heading": "放射線画像"

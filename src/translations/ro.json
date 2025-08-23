@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "Sunteți mulțumit de aplicația MedScan AI?",
-        "like": "Da, o iubesc!",
+        "like": "Da, îmi place!",
         "dislike": "Nu prea..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "Nu ezitați să ne trimiteți un e-mail direct, iar echipa noastră vă va răspunde cât mai curând posibil",
         "customerSupport": "Suport clienți",
         "emailAddress": "Adresă de email"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Ce limbă ați prefera pentru analiza AI?",
+        "languageSelection": "Alegeți o limbă pentru răspunsurile AI",
+        "languageSearchCriteria": "Căutați după limbă, cod de țară sau steag",
+        "noLanguageFound": "Nicio limbă găsită",
+        "noLanguageFoundSubtitle": "Încercați să modificați termenii de căutare"
       }
     }
   },
@@ -258,9 +265,9 @@
   "home": {
     "tab": "Acasă",
     "homeForeground": {
-      "maxNumberOfScans": "Ai atins limita de scanări! Actualizează planul tău pentru a debloca mai multe scanări. 🚀",
+      "maxNumberOfScans": "Ai ajuns la limita de scanări! Upgradează-ți planul pentru a avea scanări nelimitate. 🚀",
       "heading": "Bine ați venit la MedScan AI!",
-      "subHeading": "Obțineți informații esențiale despre raze X, RMN, tomografie computerizată, imagistică PET, ecografii și medicină nucleară prin analiză bazată pe inteligență artificială"
+      "subHeading": "Încărcați radiografii, tomografii computerizate, electrocardiograme, RMN-uri, scanări PET, ecografii sau orice alte imagini medicale pentru analiză AI."
     },
     "scanCategories": {
       "heading": "Radiologie"

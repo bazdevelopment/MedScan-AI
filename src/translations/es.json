@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "¿Te parece útil y atractiva la aplicación?",
-        "like": "¡Sí, me encanta!",
+        "like": "¡Sí, me gusta!",
         "dislike": "No realmente..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "No dudes en enviarnos un correo directamente, y nuestro equipo te responderá lo antes posible",
         "customerSupport": "Atención al cliente",
         "emailAddress": "Dirección de correo electrónico"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "¿Qué idioma preferirías para el análisis de la IA?",
+        "languageSelection": "Elige un idioma para las respuestas de la IA",
+        "languageSearchCriteria": "Busca por idioma, código de país o bandera",
+        "noLanguageFound": "No se encontró ningún idioma",
+        "noLanguageFoundSubtitle": "Intenta modificar tus términos de búsqueda"
       }
     }
   },
@@ -258,9 +265,9 @@
   "home": {
     "tab": "Inicio",
     "homeForeground": {
-      "maxNumberOfScans": "¡Has alcanzado tu límite de escaneos! Actualiza tu plan ahora para desbloquear más escaneos. 🚀",
+      "maxNumberOfScans": "¡Has alcanzado el límite de escaneos! Actualiza tu plan para tener escaneos ilimitados. 🚀",
       "heading": "Bienvenido a MedScan AI",
-      "subHeading": "Obtén información vital sobre resonancias magnéticas, radiografías, tomografías, imágenes PET, ultrasonidos y medicina nuclear mediante análisis potenciado por IA"
+      "subHeading": "Suba Rayos-X, TC, ECG, RM, PET, ultrasonidos y otras imágenes médicas para análisis con IA."
     },
     "scanCategories": {
       "heading": "Reel de Radiología"

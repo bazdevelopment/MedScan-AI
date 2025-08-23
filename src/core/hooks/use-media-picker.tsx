@@ -6,8 +6,13 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { Linking, Platform } from 'react-native';
 
+import CustomAlert from '@/components/custom-alert';
 import Toast from '@/components/toast';
-import { VIDEO_LENGTH_SECONDS_LIMIT } from '@/constants/limits';
+import {
+  IMAGE_SIZE_LIMIT_MB,
+  VIDEO_LENGTH_SECONDS_LIMIT,
+  VIDEO_SIZE_LIMIT_MB,
+} from '@/constants/limits';
 
 import { type ICollectedData } from '../flows/upload-file-flow/upload-file-flow.interface';
 import { translate } from '../i18n';
@@ -34,6 +39,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Request media library permissions
       const { status } =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
+
       // Check if the permission is granted
       if (status !== 'granted') {
         Toast.warning(translate('alerts.mediaPickerPermissions'), {
@@ -49,15 +55,13 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
             },
           },
         });
-
         return;
       }
 
       // Launch the image library picker
       const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        mediaTypes: ['images', 'videos'],
         allowsEditing: true, //todo: make sure in the future that you want to allow editing
-        // aspect: [4, 3],
         quality: 0.9, //!if you use quality=1 the image size will be bigger and the risk is to exceed the AI limit (5MB currently)
         base64: true,
       });
@@ -67,40 +71,123 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         return;
       }
 
-      const sizeInMb = getFileSizeInMB(result.assets[0].fileSize as number);
-      const isLongVideo = isVideoDurationLong(
-        result.assets[0].duration as number,
-      );
+      const asset = result.assets[0];
+      const fileType = asset.type; // 'image' or 'video'
 
-      const { isLimitReached } = checkFileSize(
-        Number(sizeInMb),
-        result.assets[0].type,
-      );
+      // Handle video files
+      if (fileType === 'video') {
+        const isLongVideo = isVideoDurationLong(asset.duration as number);
 
-      if (isLongVideo) {
-        Toast.error(
-          translate('alerts.videoLimitExceeds', {
-            videoSecondsLimit: VIDEO_LENGTH_SECONDS_LIMIT,
-          }),
-          {
-            closeButton: true,
-            duration: Infinity,
-          },
-        );
+        if (isLongVideo) {
+          Toast.error(
+            translate('alerts.videoLimitExceeds', {
+              videoSecondsLimit: VIDEO_LENGTH_SECONDS_LIMIT,
+            }),
+            {
+              closeButton: true,
+              duration: Infinity,
+            },
+          );
+          return;
+        }
+
+        const sizeInMb = getFileSizeInMB(asset.fileSize as number);
+        const { isLimitReached } = checkFileSize(Number(sizeInMb), fileType);
+
+        if (!isLimitReached) {
+          handleLoadFile(asset.uri);
+          onUploadFinished({
+            fileMimeType: asset.mimeType,
+            fileExtension: getImageExtension(asset.fileName as string),
+            fileUri: asset.uri,
+            fileName: asset.fileName,
+          });
+        } else {
+          Toast.showCustomToast(
+            <CustomAlert
+              title={translate('general.attention')}
+              subtitle={translate('alerts.videoSizeLarge', {
+                fileSize: Number(sizeInMb),
+                videoLimit: VIDEO_SIZE_LIMIT_MB,
+              })}
+              buttons={[
+                {
+                  label: translate('general.close'),
+                  variant: 'default',
+                  onPress: Toast.dismiss,
+                  buttonTextClassName: 'dark:text-white',
+                  className:
+                    'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+                },
+              ]}
+            />,
+            {
+              position: 'middle', // Place the alert in the middle of the screen
+              duration: Infinity, // Keep the alert visible until dismissed
+            },
+          );
+        }
       }
 
-      if (!isLimitReached && !isLongVideo) {
-        // Handle the loaded file with the URI
-        handleLoadFile(result.assets[0].uri);
-        onUploadFinished &&
+      // Handle image files
+      if (fileType === 'image') {
+        const originalSizeInMb = getFileSizeInMB(asset.fileSize as number);
+        const { isLimitReached: originalLimitReached } = checkFileSize(
+          Number(originalSizeInMb),
+          fileType,
+        );
+
+        // If original image is within limits, use it as is
+        if (!originalLimitReached) {
+          handleLoadFile(asset.uri);
           onUploadFinished({
-            fileMimeType: result.assets[0].mimeType,
-            fileExtension: getImageExtension(
-              result.assets[0].fileName as string,
-            ),
-            fileUri: result.assets[0].uri,
-            fileName: result.assets[0].fileName,
+            fileMimeType: asset.mimeType,
+            fileExtension: getImageExtension(asset.fileName as string),
+            fileUri: asset.uri,
+            fileName: asset.fileName,
           });
+        } else {
+          // If original exceeds limit, compress and check again
+          const compressedImage = await compressImage(asset.uri);
+          const compressedSizeInMb = getFileSizeInMB(compressedImage.fileSize);
+          const { isLimitReached: compressedLimitReached } = checkFileSize(
+            Number(compressedSizeInMb),
+            fileType,
+          );
+          if (!compressedLimitReached) {
+            handleLoadFile(compressedImage.uri);
+            onUploadFinished({
+              fileMimeType: 'image/jpeg',
+              fileExtension: compressedImage.fileExtension,
+              fileUri: compressedImage.uri,
+              fileName: compressedImage.fileName,
+            });
+          } else {
+            Toast.showCustomToast(
+              <CustomAlert
+                title={translate('general.attention')}
+                subtitle={translate('alerts.imageSizeLarge', {
+                  fileSize: Number(compressedSizeInMb),
+                  imageLimit: IMAGE_SIZE_LIMIT_MB,
+                })}
+                buttons={[
+                  {
+                    label: translate('general.close'),
+                    variant: 'default',
+                    onPress: Toast.dismiss,
+                    buttonTextClassName: 'dark:text-white',
+                    className:
+                      'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+                  },
+                ]}
+              />,
+              {
+                position: 'middle', // Place the alert in the middle of the screen
+                duration: Infinity, // Keep the alert visible until dismissed
+              },
+            );
+          }
+        }
       }
     } catch (error) {
       Toast.error(translate('alerts.errorSelectingImagePicker'), {
@@ -109,6 +196,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       });
     }
   };
+
   const handleChooseFromFiles = async () => {
     try {
       // Launch the document picker for selecting an image file
@@ -161,7 +249,6 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         const compressedImage = await compressImage(result?.assets[0].uri);
         const sizeInMb = getFileSizeInMB(compressedImage.fileSize as number);
         const { isLimitReached } = checkFileSize(Number(sizeInMb), fileType);
-
         // Handle the loaded file with the URI
         if (!isLimitReached) {
           handleLoadFile(compressedImage.uri);
@@ -185,9 +272,6 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
     try {
       // Request camera permissions
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
-
-      // Log the status for debugging purposes
-      console.log('Camera permission status:', status);
 
       // Check if the permission is granted
       if (status !== 'granted') {
@@ -213,31 +297,50 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Launch the camera
       const result = await ImagePicker.launchCameraAsync({
         allowsEditing: true,
-        // aspect: [4, 3],
         quality: 0.9, //!if you use quality=1 the image size will be bigger and the risk is to exceed the AI limit (5MB currently)
         base64: true,
       });
 
-      const sizeInMb = getFileSizeInMB(result?.assets?.[0].fileSize as number);
       // Check if the user didn't cancel the action and a URI is available
       if (result.canceled || !result.assets || !result.assets[0]?.uri) {
         return;
       }
 
-      const { isLimitReached } = checkFileSize(
-        Number(sizeInMb),
-        result.assets[0].type,
+      const asset = result.assets[0];
+
+      // Check original image size first
+      const originalSizeInMb = getFileSizeInMB(asset.fileSize as number);
+      const { isLimitReached: originalLimitReached } = checkFileSize(
+        Number(originalSizeInMb),
+        'image',
       );
 
-      // Handle the loaded file with the URI
-      if (!isLimitReached) {
-        handleLoadFile(result.assets[0].uri);
-        onUploadFinished &&
+      // If original image is within limits, use it as is
+      if (!originalLimitReached) {
+        handleLoadFile(asset.uri);
+        onUploadFinished({
+          fileMimeType: asset.mimeType,
+          fileUri: asset.uri,
+          fileName: asset.fileName,
+        } as ICollectedData);
+      } else {
+        // If original exceeds limit, compress and check again
+        const compressedImage = await compressImage(asset.uri);
+        const compressedSizeInMb = getFileSizeInMB(compressedImage.fileSize);
+        const { isLimitReached: compressedLimitReached } = checkFileSize(
+          Number(compressedSizeInMb),
+          'image',
+        );
+
+        if (!compressedLimitReached) {
+          handleLoadFile(compressedImage.uri);
           onUploadFinished({
-            fileMimeType: result.assets[0].mimeType,
-            fileUri: result.assets[0].uri,
-            fileName: result.assets[0].fileName,
-          } as ICollectedData);
+            fileMimeType: 'image/jpeg',
+            fileExtension: compressedImage.fileExtension,
+            fileUri: compressedImage.uri,
+            fileName: compressedImage.fileName,
+          });
+        }
       }
     } catch (error) {
       Toast.error(translate('alerts.errorTakingPicture'), {

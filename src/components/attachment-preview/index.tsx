@@ -39,7 +39,7 @@ const AttachmentPreview = ({
   return (
     <Container
       onPress={openModal}
-      className={`rounded-[25px] border-4 border-primary-300 ${className} overflow-hidden`}
+      className={`rounded-[25px] border-2 border-primary-300 dark:border-primary-900 ${className} overflow-hidden`}
     >
       {isVideo ? (
         <VideoPlayer

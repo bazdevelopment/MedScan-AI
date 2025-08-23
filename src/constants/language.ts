@@ -27,3 +27,5 @@ export const IETF_BCP_47_FORMAT_LANGUAGE = {
   fr: 'fr-FR',
   ro: 'ro-RO',
 };
+
+export const AI_ANALYSIS_LANGUAGE_SELECTION = 'AI_ANALYSIS_LANGUAGE_SELECTION';

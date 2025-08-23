@@ -4,6 +4,7 @@ import { useScrollToTop } from '@react-navigation/native';
 import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import React, { useRef } from 'react';
+import { Linking } from 'react-native';
 import { Toaster } from 'sonner-native';
 
 import { useUploadPrivacyPolicy } from '@/api/privacy-policy/privacy-policy.hooks';
@@ -13,7 +14,11 @@ import {
 } from '@/api/push-notifications/push-notifications.hooks';
 import { useAddFieldsToCollection } from '@/api/services/services.hooks';
 import { useUploadTermsOfService } from '@/api/terms-of-service/terms-of-service.hooks';
-import { useUpdateUser, useUser } from '@/api/user/user.hooks';
+import {
+  useGrantFreeScans,
+  useUpdateUser,
+  useUser,
+} from '@/api/user/user.hooks';
 import { logout } from '@/api/user/user.requests';
 import CustomAlert from '@/components/custom-alert';
 import { Item } from '@/components/settings/item';
@@ -27,7 +32,6 @@ import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import useRemoteConfig from '@/core/hooks/use-remote-config';
 import { Button, colors, ScrollView, View } from '@/ui';
 import { LogoutIcon, Rate } from '@/ui/assets/icons';
-import { Linking } from 'react-native';
 
 export default function Settings() {
   const { colorScheme } = useColorScheme();
@@ -51,6 +55,7 @@ export default function Settings() {
   const { mutate: onHandleIndividualNotification } =
     useSendIndividualPushNotification();
   useScrollToTop(scrollViewRef);
+  const { mutate: onGrantFreeScans } = useGrantFreeScans();
 
   const { mutate: onUploadTermsOfService } = useUploadTermsOfService();
   const { mutate: onUploadPrivacyPolicy } = useUploadPrivacyPolicy();
@@ -117,7 +122,7 @@ export default function Settings() {
         />
       )}
       <ScrollView ref={scrollViewRef}>
-        <View className="mb-20 px-6">
+        <View className="mb-20 mt-[-20px] px-6">
           <ItemsContainer title="settings.generale">
             <Item
               text="settings.profile"
@@ -201,8 +206,8 @@ export default function Settings() {
                       text="Send global push notification"
                       onPress={() =>
                         onHandleGlobalPushNotifications({
-                          title: 'This is a global notification title',
-                          body: 'This is a global notification body',
+                          title: 'New Version Available! 🚀',
+                          body: "Dear user, a new version v25.8.2 for MedScan AI - Medical AI Assistant app is now available!📱 Upgrade to this version for new features, bug fixes, and an improved experience. If you've already upgraded, you're all set!",
                           language,
                         })
                       }
@@ -211,16 +216,20 @@ export default function Settings() {
                       text="Send individual push notification"
                       onPress={() =>
                         onHandleIndividualNotification({
-                          title:
-                            'Hinweis zu persönlichen medizinischen Bildern',
-                          body: 'Wir empfehlen NICHT, persönliche medizinische Bilder zur individuellen Analyse auf MedScan AI hochzuladen, da die Ergebnisse nicht als endgültig betrachtet werden sollten. Unsere KI-Modelle werden noch erforscht und verfeinert und es können potenzielle Ungenauigkeiten auftreten. Es eignet sich hervorragend zum Lernen und um allgemeine Einblicke zu gewinnen, für ausführlichere Überprüfungen sollten Sie jedoch einen Spezialisten konsultieren. Wenn Sie Fragen haben, kontaktieren Sie uns per E-Mail - medscanaiapp@gmail.com',
+                          title: 'test',
+                          body: 'test',
                           // title: 'Notice About Personal Medical Images',
                           // body: 'We DO NOT encourage uploading personal medical images to MedScan AI for individual analysis, as the results should not be considered final. Our AI models are still being researched and refined, and potential inaccuracies may occur. It’s great for learning and get general insights, but for in-depth reviews, consult a specialist. If you have any questions contact us via email - medscanaiapp@gmail.com',
-                          userId: '',
+                          userId: 'LFwYyNDljVaUlyMR6emuA3d8JBy1',
                           language,
                         })
                       }
                     />
+
+                    {/* <Item
+                      text="Grant free scans action"
+                      onPress={onGrantFreeScans}
+                    /> */}
                     <Item
                       text="Upload terms of service"
                       onPress={() => onUploadTermsOfService({ language })}

@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "Findest du die App wertvoll und ansprechend?",
-        "like": "Ja, ich liebe sie!",
+        "like": "Ja, ich mag es!",
         "dislike": "Nicht wirklich..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "Sie können uns gerne direkt eine E-Mail senden, unser Team wird sich so schnell wie möglich bei Ihnen melden",
         "customerSupport": "Kundensupport",
         "emailAddress": "E-Mail-Adresse"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Welche Sprache bevorzugen Sie für die KI-Analyse?",
+        "languageSelection": "Wählen Sie eine Sprache für KI-Antworten",
+        "languageSearchCriteria": "Suche nach Sprache, Ländercode oder Flagge",
+        "noLanguageFound": "Keine Sprache gefunden",
+        "noLanguageFoundSubtitle": "Versuchen Sie, Ihre Suchbegriffe zu ändern"
       }
     }
   },
@@ -258,9 +265,9 @@
   "home": {
     "tab": "Start",
     "homeForeground": {
-      "maxNumberOfScans": "Du hast dein Scan-Limit erreicht! Upgrade jetzt deinen Plan, um mehr Scans freizuschalten. 🚀",
+      "maxNumberOfScans": "Du hast das Scan-Limit erreicht! Führe ein Upgrade deines Tarifs durch, um unbegrenzte Scans zu erhalten. 🚀",
       "heading": "Willkommen bei MedScan AI",
-      "subHeading": "Erhalten Sie wichtige Einblicke über MRT, Röntgen, CT-Scans, PET-Bildgebung, Ultraschall und Nuklearmedizin mittels KI-gestützter Analyse"
+      "subHeading": "Laden Sie Röntgenbilder, CT-Scans, EKGs, MRTs, PET-Scans, Ultraschallbilder oder andere medizinische Bilder zur KI-Analyse hoch."
     },
     "scanCategories": {
       "heading": "Radiologie-Reel"

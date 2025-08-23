@@ -184,3 +184,18 @@ export const logout = async () => {
   queryClient.clear(); // Clears all cached queries & mutations
   Toast.success(translate('alerts.loggedOutSuccess'));
 };
+/**
+ * Grant free scans to eligible users
+ */
+export const grantFreeScans = async () => {
+  try {
+    const onGrantFreeScans = firebaseCloudFunctionsInstance.httpsCallable(
+      'grantFreeScansForEligibleUsers',
+    );
+    const { data } = await onGrantFreeScans();
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

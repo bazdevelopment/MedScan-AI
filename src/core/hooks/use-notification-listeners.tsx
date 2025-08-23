@@ -6,6 +6,7 @@ import Toast from '@/components/toast';
 
 import { translate } from '../i18n';
 import { playSound } from '../utilities/play-sound';
+import { wait } from '../utilities/wait';
 import { useHaptic } from './use-haptics';
 
 export const useNotificationListeners = () => {
@@ -21,15 +22,18 @@ export const useNotificationListeners = () => {
         // You can update state, show a custom UI, etc.
         addSuccessHapticEffect?.();
         playSound('success');
-        Toast.info(notification.request.content.title as string, {
-          action: {
-            label: translate('general.seeNotifications'),
-            onClick: () => {
-              router.navigate('/notifications');
-              Toast.dismiss();
+        // !add the delay otherwise toast here causes an error when the notifications is received and the app is closed
+        wait(3000).then(() => {
+          Toast.info(notification.request.content.title as string, {
+            action: {
+              label: translate('general.seeNotifications'),
+              onClick: () => {
+                router.navigate('/notifications');
+                Toast.dismiss();
+              },
             },
-          },
-          duration: 20000,
+            duration: 20000,
+          });
         });
       });
 
@@ -38,15 +42,18 @@ export const useNotificationListeners = () => {
       Notifications.addNotificationResponseReceivedListener((response) => {
         // Handle the user's interaction with the notification
         // Navigate to a specific screen, perform actions, etc.
-        Toast.warning(response.notification.request.content.title as string, {
-          action: {
-            label: translate('general.seeNotifications'),
-            onClick: () => {
-              router.navigate('/notifications');
-              Toast.dismiss();
+        // !add the delay otherwise toast here causes an error when the notifications is received and the app is closed
+        wait(3000).then(() => {
+          Toast.info(response.notification.request.content.title as string, {
+            action: {
+              label: translate('general.seeNotifications'),
+              onClick: () => {
+                router.navigate('/notifications');
+                Toast.dismiss();
+              },
             },
-          },
-          duration: 20000,
+            duration: 20000,
+          });
         });
       });
 

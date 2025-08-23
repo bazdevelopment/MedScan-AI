@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "Trouvez-vous l'application utile et engageante ?",
-        "like": "Oui, j'adore !",
+        "like": "Oui, j'aime ça !",
         "dislike": "Pas vraiment..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "N'hésitez pas à nous envoyer un e-mail directement, notre équipe vous répondra dès que possible",
         "customerSupport": "Service client",
         "emailAddress": "Adresse e-mail"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Quelle langue préférez-vous pour l'analyse par l'IA ?",
+        "languageSelection": "Choisissez une langue pour les réponses de l'IA",
+        "languageSearchCriteria": "Rechercher par langue, code de pays ou drapeau",
+        "noLanguageFound": "Aucune langue trouvée",
+        "noLanguageFoundSubtitle": "Essayez de modifier vos termes de recherche"
       }
     }
   },
@@ -258,9 +265,9 @@
   "home": {
     "tab": "Accueil",
     "homeForeground": {
-      "maxNumberOfScans": "Vous avez atteint votre limite d'analyses ! Améliorez votre abonnement pour débloquer plus d'analyses. 🚀",
+      "maxNumberOfScans": "Vous avez atteint la limite de scans ! Mettez à niveau votre abonnement pour des scans illimités. 🚀",
       "heading": "Bienvenue dans MedScan AI",
-      "subHeading": "Obtenez des informations vitales sur l'IRM, les rayons X, les scanners, l'imagerie PET, les ultrasons et la médecine nucléaire via une analyse alimentée par l'IA"
+      "subHeading": "Téléchargez des radiographies, des scanners, des électrocardiogrammes, des IRM, des TEP, des échographies ou toute autre image médicale pour une analyse par l'IA."
     },
     "scanCategories": {
       "heading": "Répertoire radiologique"

@@ -1,4 +1,3 @@
-import { useColorScheme } from 'nativewind';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -9,63 +8,41 @@ import { ResizeIcon } from '@/ui/assets/icons';
 import { type IOpenStudioSection } from './open-studio-section.interface';
 
 const OpenStudioSection = ({ squares, onOpenStudio }: IOpenStudioSection) => {
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
+  const hasSquares = squares.length > 0;
+
   return (
-    <>
-      {squares.length > 0 ? (
-        // EDIT MODE (when annotations exist)
-        <View className="mx-6 mt-6 items-center justify-center rounded-xl border-primary-300 bg-primary-100 p-6 dark:bg-charcoal-900">
-          <Text className="mb-2 text-center font-semibold-nunito text-xl text-gray-800">
-            {translate(
-              'components.ImageAnnotationStudio.OpenStudioSection.continueEditing',
-            )}
+    <View className="mt-3 flex-row items-center justify-between rounded-lg border border-primary-300 bg-primary-100 px-4 py-3 dark:border-charcoal-600 dark:bg-blackEerie">
+      <View className="flex-1 pr-3">
+        <Text className="font-semibold-nunito text-base text-gray-800">
+          {translate(
+            hasSquares
+              ? 'components.ImageAnnotationStudio.OpenStudioSection.continueEditing'
+              : 'components.ImageAnnotationStudio.OpenStudioSection.highlightRegions',
+          )}
+        </Text>
+        {hasSquares && (
+          <Text className="text-xs text-gray-600">
+            {squares.length} {squares.length === 1 ? 'region' : 'regions'}
           </Text>
-          <Text className="mb-2 text-center text-gray-600">
-            {translate(
-              'components.ImageAnnotationStudio.OpenStudioSection.highlightedRegionsCount',
-              { highlightedRegions: squares.length },
-            )}
-          </Text>
+        )}
+      </View>
 
-          <Button
-            label={translate(
-              'components.ImageAnnotationStudio.OpenStudioSection.editMore',
-            )}
-            className={`mb-0 h-[52] rounded-full border-[3px] border-primary-600 bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie`}
-            size="lg"
-            textClassName="text-md font-semibold-nunito text-white dark:text-white"
-            onPress={onOpenStudio}
-            icon={<ResizeIcon width={20} height={20} color={colors.white} />}
-          />
-        </View>
-      ) : (
-        <View className="border-1 mx-6 mt-6 items-center justify-center rounded-3xl  border-primary-300 bg-primary-100 p-6 dark:bg-charcoal-900">
-          <Text className="mb-2 text-center font-semibold-nunito text-xl text-gray-800">
-            {translate(
-              'components.ImageAnnotationStudio.OpenStudioSection.highlightRegions',
-            )}
-          </Text>
-
-          <Button
-            label={translate(
-              'components.ImageAnnotationStudio.OpenStudioSection.openStudioButton',
-            )}
-            className={`mb-0 h-[52]  rounded-full border-[3px] border-primary-600 bg-blackEerie active:bg-charcoal-800 dark:border-primary-900 dark:bg-blackEerie`}
-            size="lg"
-            textClassName="text-md font-semibold-nunito dark:text-white text-center"
-            onPress={onOpenStudio}
-            icon={
-              <ResizeIcon
-                width={20}
-                height={20}
-                color={isDark ? colors.white : colors.white}
-              />
-            }
-          />
-        </View>
-      )}
-    </>
+      <Button
+        label={
+          hasSquares
+            ? translate(
+                'components.ImageAnnotationStudio.OpenStudioSection.editMore',
+              )
+            : translate(
+                'components.ImageAnnotationStudio.OpenStudioSection.openStudioButton',
+              )
+        }
+        className="min-w-[60px] justify-center rounded-full border-2 border-primary-900 bg-blackEerie px-3 dark:bg-blackEerie"
+        textClassName="text-xs text-center font-semibold-nunito text-white dark:text-white"
+        onPress={onOpenStudio}
+        icon={<ResizeIcon width={12} height={12} color={colors.white} />}
+      />
+    </View>
   );
 };
 

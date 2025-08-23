@@ -11,8 +11,9 @@ const Rate = () => {
     if (isPositive) {
       // Redirect happy users to the App Store
       const storeUrl = DEVICE_TYPE.IOS
-        ? 'https://apps.apple.com/us/app/medscan-ai-imaging-analysis/id6742465790'
-        : 'https://play.google.com/store/apps/details?id=com.xrayanalizer';
+        ? 'itms-apps://itunes.apple.com/app/viewContentsUserReviews/id6742465790?action=write-review'
+        : 'market://details?id=com.xrayanalizer&showAllReviews=true';
+
       Linking.openURL(storeUrl).catch((err) =>
         console.error('Error opening URL', err),
       );

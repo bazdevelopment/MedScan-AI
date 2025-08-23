@@ -32,6 +32,7 @@
     "utilities/add-fields-to-collection.ts",
     "utilities/ai-models.ts",
     "utilities/get-time-until-midnight.ts",
+    "utilities/upload-media.ts",
     "dayjs/index.ts"
   ]
 }

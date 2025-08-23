@@ -174,7 +174,7 @@ export const generateScanReportPdf = ({
         <div style="position: relative;">
             <p class="section-title">${translate('pdfPreview.conversationTitlePdf')}</p>
             <div class="chat-container">
-                ${formatChatMessages(messages)}
+                ${formatChatMessages(messages) ? JSON.stringify(formatChatMessages(messages)) : ''} 
 
             </div>
         </div>

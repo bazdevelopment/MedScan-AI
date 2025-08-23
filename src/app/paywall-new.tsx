@@ -16,12 +16,13 @@ import {
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Icon from '@/components/icon';
 import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
-import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
+import { translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import {
   updateUserAfterSelectingPlan,
   updateUserAndNavigate,
 } from '@/core/screens/paywall-onboarding';
+import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import { Button, CheckboxIcon, colors, Image, Switch, Text } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
 
@@ -49,7 +50,7 @@ const formatPaywallData = (offerings: any) => {
     });
   }
 
-  if (offerings?.monthly?.product && DEVICE_TYPE.IOS) {
+  if (offerings?.monthly?.product) {
     paywallData.push({
       id: offerings.monthly.product.identifier,
       title: translate(
@@ -296,6 +297,7 @@ const PaywallNew = () => {
     if (customerInfoAfterPurchase) {
       router.back();
     }
+    requestAppRatingWithDelay(3000);
   };
 
   return (
@@ -323,6 +325,7 @@ const PaywallNew = () => {
                   setIsFirstTime,
                 });
                 router.dismiss();
+                requestAppRatingWithDelay(3000);
                 return;
               }
 

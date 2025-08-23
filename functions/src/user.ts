@@ -71,7 +71,7 @@ const loginUserAnonymouslyHandler = async (data: {
       .set({
         userId: newUserId,
         isAnonymous: true, // Mark the user as anonymous
-        scansRemaining: 3, // Example field
+        scansRemaining: 2, // Example field
         subscribed: false, // Example field
         isActive: false, // Example field
         isOtpVerified: true, // Example field set to true for anonymous users
@@ -144,7 +144,7 @@ const createAnonymousAccountHandler = async (data: {
     const customToken = await admin.auth().createCustomToken(createdUser.uid);
     const createdUserDoc = db.collection('users').doc(createdUser.uid);
     await createdUserDoc.set({
-      scansRemaining: 3,
+      scansRemaining: 2,
       maxScans: 10,
       subscribed: false,
       isActive: true,
@@ -232,7 +232,7 @@ const loginUserViaEmailHandler = async (data: {
         .doc(userId)
         .set({
           email: data.email,
-          scansRemaining: 3,
+          scansRemaining: 2,
           maxScans: 10,
           subscribed: false,
           isActive: false,
@@ -725,10 +725,72 @@ const getUserInfoById = async (
   }
 };
 
+// Alternative batch function to process multiple users at once
+const grantFreeScansForEligibleUsersHandler = async (
+  data: any,
+  context: any,
+) => {
+  try {
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'You need to be authenticated',
+      );
+    }
+
+    const db = admin.firestore();
+    const limit = 450; // Default limit of 500 users per batch (Firestore's max)
+
+    // Step 1: Query users who qualify for free scans
+    const usersQuery = await db
+      .collection('users')
+      .where('scansRemaining', '<=', 0)
+      .limit(limit)
+      .get();
+
+    const batch = db.batch();
+    const processedUsers: string[] = [];
+
+    // Step 2: Filter users with empty activeSubscriptionsRevenue and prepare batch updates
+    for (const userDoc of usersQuery.docs) {
+      const userData = userDoc.data();
+      const activeSubscriptionsRevenue =
+        userData.activeSubscriptionsRevenue || [];
+
+      // Only process users with no active subscriptions
+      if (activeSubscriptionsRevenue.length === 0) {
+        batch.update(userDoc.ref, {
+          scansRemaining: 2,
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+        processedUsers.push(userDoc.id);
+      }
+    }
+
+    // Step 3: Execute batch update
+    if (processedUsers.length > 0) {
+      await batch.commit();
+    }
+
+    return {
+      message: 'Batch free scans granted successfully',
+      usersProcessed: processedUsers.length,
+      userIds: processedUsers,
+      scansGrantedPerUser: 2,
+      success: true,
+    };
+  } catch (error: any) {
+    console.log('error', error.message);
+    console.error('Batch grant free scans error:', error);
+    return error.message;
+  }
+};
+
 export {
   decrementUserScans,
   getUserInfo,
   getUserInfoById,
+  grantFreeScansForEligibleUsersHandler,
   handleUpdateUserLanguage,
   incrementUserScans,
   loginUserAnonymouslyHandler,

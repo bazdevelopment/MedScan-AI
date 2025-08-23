@@ -140,7 +140,7 @@ const Reports = () => {
             item.records.map((record: IInterpretationResult) => {
               return (
                 <CardWrapper
-                  key={record.id}
+                  key={`${record.docId}-${record.title}-${record.createdAt}`}
                   chevronColor={colors.primary[900]}
                   className="rounded-xl bg-white p-4 dark:bg-blackBeauty"
                   isEntirelyClickable

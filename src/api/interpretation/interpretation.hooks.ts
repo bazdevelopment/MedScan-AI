@@ -44,10 +44,13 @@ export const useUpdateInterpretationFields = () => {
   return createMutation<Response, any, AxiosError>({
     mutationFn: (variables) => updateInterpretationFields(variables),
     onSuccess: (data) => {
-      Toast.success(data.message);
+      queryClient.invalidateQueries({
+        queryKey: ['recent-interpretations'],
+      });
       queryClient.invalidateQueries({
         queryKey: ['interpretations-by-date'],
       });
+      Toast.success(data.message);
 
       logEvent('Successfully updated interpretation fields');
     },

@@ -167,7 +167,7 @@
       },
       "rateAppScreen": {
         "heading": "您觉得这个应用有价值且引人入胜吗？",
-        "like": "是的，我很喜欢！",
+        "like": "是的，我喜欢它！",
         "dislike": "不太喜欢..."
       },
       "noInternetScreen": {
@@ -226,6 +226,13 @@
         "heading": "欢迎直接发送邮件给我们，我们的团队将尽快回复您",
         "customerSupport": "客户支持",
         "emailAddress": "电子邮件地址"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "您希望使用哪种语言进行AI分析？",
+        "languageSelection": "为 AI 回应选择一种语言",
+        "languageSearchCriteria": "按语言、国家代码或旗帜搜索",
+        "noLanguageFound": "未找到语言",
+        "noLanguageFoundSubtitle": "请尝试修改您的搜索词"
       }
     }
   },
@@ -258,9 +265,9 @@
   "home": {
     "tab": "首页",
     "homeForeground": {
-      "maxNumberOfScans": "您已达到扫描限制！立即升级计划解锁更多扫描。🚀",
+      "maxNumberOfScans": "您已达到扫描次数上限！升级您的套餐以获得无限次扫描。🚀",
       "heading": "欢迎来到 MedScan AI！",
-      "subHeading": "通过AI驱动的分析，获取有关MRI、X光、CT扫描、PET成像、超声波和核医学的重要见解"
+      "subHeading": "上传X光、CT扫描、心电图、MRI、PET扫描、超声波或任何其他医学影像以进行AI分析。"
     },
     "scanCategories": {
       "heading": "放射影像集"

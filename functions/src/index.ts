@@ -69,6 +69,9 @@ export const updateUserSubscription = usCentralFunctions.https.onCall(
 export const updateUser = usCentralFunctions.https.onCall(
   userFunctions.updateUser,
 );
+export const grantFreeScansForEligibleUsers = usCentralFunctions.https.onCall(
+  userFunctions.grantFreeScansForEligibleUsersHandler,
+);
 
 export const sendVerificationCodeViaEmail = usCentralFunctions.https.onCall(
   userFunctions.sendEmailVerification,

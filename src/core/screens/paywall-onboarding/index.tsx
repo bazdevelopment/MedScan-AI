@@ -311,7 +311,6 @@ export const updateUserAndNavigate = async ({
     onUpdateUser,
   })
     .then(() => {
-      console.log('siisi');
       queryClient.setQueryData(['user-info'], (oldData: IUserInfo) => ({
         ...oldData,
         isOnboarded: true,

@@ -129,7 +129,7 @@ export default function AnonymousLogin() {
                     )
                   }
                 >
-                  <Text className="text-sm text-primary-900">
+                  <Text className="text-sm text-primary-900 dark:text-primary-900">
                     {translate('rootLayout.screens.login.termsAndConditions')}
                   </Text>
                 </TouchableOpacity>
@@ -139,7 +139,7 @@ export default function AnonymousLogin() {
                     Linking.openURL('https://medscanaiprivacy.netlify.app/')
                   }
                 >
-                  <Text className="text-sm text-primary-900">
+                  <Text className="text-sm text-primary-900 dark:text-primary-900">
                     {translate('rootLayout.screens.login.privacyPolicy')}
                   </Text>
                 </TouchableOpacity>

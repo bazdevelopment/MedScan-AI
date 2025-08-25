@@ -115,7 +115,7 @@ const Profile = () => {
               label={translate('components.Input.labels.nickname')}
               editable={editModeEnabled}
             />
-            {userInfo.email && (
+            {userInfo?.email && (
               <Input
                 className={`flex-1 rounded-xl bg-slate-200 px-3.5 py-5 font-primary-nunito opacity-80 dark:border-neutral-700 dark:bg-charcoal-600 dark:text-white dark:opacity-50`}
                 placeholder={translate(

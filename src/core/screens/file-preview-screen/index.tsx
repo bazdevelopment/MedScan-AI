@@ -158,7 +158,6 @@ const FilePreviewScreen = ({
   );
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-  console.log('selectedLanguage', selectedLanguage);
   const languageModalRef = useModal();
 
   const originalImage = collectedData.fileUri;
@@ -349,7 +348,7 @@ const FilePreviewScreen = ({
           )}
 
           {/* Language Selection */}
-          <View className="pb-4">
+          <View className={`pb-4 ${isVideo && 'mt-4'}`}>
             <Text className="mb-2 font-bold-nunito text-lg text-gray-700 dark:text-white">
               {translate(
                 'rootLayout.screens.languageAnalysisModal.languagePreferenceQuestion',

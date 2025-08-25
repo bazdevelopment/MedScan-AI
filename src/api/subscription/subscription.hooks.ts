@@ -161,7 +161,7 @@ export const useRestorePurchases = (
           isOnboarded: true,
         }));
 
-        router.navigate('/(tabs)');
+        wait(2000).then(() => router.navigate('/(tabs)'));
       }
     },
     onError: (error) => {

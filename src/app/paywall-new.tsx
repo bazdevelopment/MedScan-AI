@@ -16,12 +16,9 @@ import {
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
 import Icon from '@/components/icon';
 import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
-import { translate, useIsFirstTime } from '@/core';
+import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
-import {
-  updateUserAfterSelectingPlan,
-  updateUserAndNavigate,
-} from '@/core/screens/paywall-onboarding';
+import { updateUserAndNavigate } from '@/core/screens/paywall-onboarding';
 import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import { Button, CheckboxIcon, colors, Image, Switch, Text } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
@@ -286,18 +283,19 @@ const PaywallNew = () => {
       packageIdentifier,
     });
 
-    await updateUserAfterSelectingPlan({
-      language,
-      userId: userInfo.userId,
-      collectedData: { preferredName: userInfo.userName },
-      customerInfo: customerInfoAfterPurchase as CustomerInfo,
-      onUpdateUser,
-    });
-
     if (customerInfoAfterPurchase) {
-      router.back();
+      updateUserAndNavigate({
+        userId: userInfo.userId,
+        language,
+        collectedData: {},
+        customerInfo: customerInfo as CustomerInfo,
+        onUpdateUser,
+        logEvent,
+        setIsFirstTime,
+      });
+      DEVICE_TYPE.IOS && router.dismiss();
+      requestAppRatingWithDelay(3000);
     }
-    requestAppRatingWithDelay(3000);
   };
 
   return (
@@ -324,7 +322,7 @@ const PaywallNew = () => {
                   logEvent,
                   setIsFirstTime,
                 });
-                router.dismiss();
+                DEVICE_TYPE.IOS && router.dismiss();
                 requestAppRatingWithDelay(3000);
                 return;
               }

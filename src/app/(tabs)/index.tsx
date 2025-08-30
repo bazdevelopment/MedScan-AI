@@ -2,7 +2,7 @@
 import { router } from 'expo-router';
 import { useRouteInfo } from 'expo-router/build/hooks';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStickyHeaderScrollProps } from 'react-native-sticky-parallax-header';
 
 import {
@@ -29,6 +29,7 @@ import { translate, useIsFirstTime, useSelectedLanguage } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import useCustomScrollToTop from '@/core/hooks/use-custom-scroll-to-top';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
+import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import { wait } from '@/core/utilities/wait';
 import {
   type IInterpretationResult,
@@ -106,11 +107,12 @@ export default function Home() {
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
   useCustomScrollToTop(scrollViewRef);
 
-  // useEffect(() => {
-  //   if (userInfo.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
-  //     router.navigate('/paywall-new');
-  //   }
-  // }, []);
+  /** Ask for rating after 5,10 scans */
+  useEffect(() => {
+    if (userInfo?.completedScans === 5 || userInfo?.completedScans === 10) {
+      requestAppRatingWithDelay(2000);
+    }
+  }, [userInfo?.completedScans]);
 
   useBackHandler(() => (pathname === '/' ? true : false)); // Prevent default behavior and navigating back tot the onboarding
 

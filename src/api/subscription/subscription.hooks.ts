@@ -11,6 +11,7 @@ import { createMutation, createQuery } from 'react-query-kit';
 
 import Toast from '@/components/toast';
 import { translate } from '@/core';
+import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import { wait } from '@/core/utilities/wait';
 import { type IUserInfo } from '@/types/general-types';
 
@@ -161,7 +162,7 @@ export const useRestorePurchases = (
           ...oldData,
           isOnboarded: true,
         }));
-
+        requestAppRatingWithDelay(3000);
         wait(2000).then(() => router.navigate('/(tabs)'));
       }
     },

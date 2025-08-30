@@ -47,7 +47,7 @@ const Rate = () => {
         <Button
           className="h-[62px] w-[160px] rounded-full bg-primary-900 pl-5 active:bg-primary-700 dark:bg-primary-900"
           onPress={() => handleFeedback(true)}
-          label={translate('rootLayout.screens.rateAppScreen.like')}
+          label={`${translate('rootLayout.screens.rateAppScreen.like')} ❤️`}
           textClassName="dark:text-white"
         />
       </View>

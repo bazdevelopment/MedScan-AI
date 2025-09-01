@@ -109,7 +109,7 @@ export default function Home() {
 
   /** Ask for rating after 5,10 scans */
   useEffect(() => {
-    if (userInfo?.completedScans === 5 || userInfo?.completedScans === 10) {
+    if (userInfo?.completedScans === 10) {
       requestAppRatingWithDelay(2000);
     }
   }, [userInfo?.completedScans]);

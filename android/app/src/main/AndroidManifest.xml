@@ -33,7 +33,6 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="x-ray-analizer"/>
-        <data android:scheme="com.xrayanalizer.development"/>
         <data android:scheme="exp+x-ray-analyzer"/>
       </intent-filter>
       <intent-filter data-generated="true">

@@ -35,7 +35,7 @@ import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
 } from '@/types/interpretation-report';
-import { ActivityIndicator, colors, type ScrollView, Text, View } from '@/ui';
+import { ActivityIndicator, colors, ScrollView, Text, View } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 import { NoReports } from '@/ui/assets/illustrations';
 

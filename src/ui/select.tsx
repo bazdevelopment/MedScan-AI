@@ -63,7 +63,7 @@ const selectTv = tv({
   },
 });
 
-const List = Platform.OS === 'web' ? FlashList : BottomSheetFlatList;
+const List = Platform.OS === 'web' ? FlashList : FlashList;
 
 export type OptionType = { label: string; value: string | number };
 

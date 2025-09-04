@@ -1,6 +1,13 @@
 /* eslint-disable max-lines-per-function */
 // Import  global CSS file
-import '../../global.css';
+// import '../../global.css';
+function loadGlobalCSS() {
+  try {
+    require('../../global.css');
+  } catch (e) {}
+}
+
+loadGlobalCSS();
 
 import {
   NunitoSans_300Light,
@@ -172,7 +179,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('general.medicalDisclaimer')}
-                className="bg-white"
                 titlePosition="center"
                 // onGoBack={() => router.navigate('/anonymous-login')}
                 backIconColor={isDark ? colors.white : colors.blackBeauty}
@@ -203,7 +209,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('uploadScan.title')}
-                className="bg-white"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.blackBeauty}
@@ -237,7 +242,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title="Report Result"
-                className="bg-white"
                 titlePosition="center"
                 rightContent={
                   <Icon
@@ -264,10 +268,9 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.notifications.title')}
-                className="bg-primary-50"
                 titlePosition="center"
                 onGoBack={router.back}
-                backIconColor={isDark ? colors.white : colors.black}
+                backIconColor={colors.white}
               />
             ),
           }}
@@ -279,7 +282,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.termsOfService.title')}
-                className="bg-primary-50"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
@@ -294,7 +296,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.privacyPolicy.title')}
-                className="bg-primary-50"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
@@ -310,7 +311,6 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.rate.title')}
-                className="bg-white"
                 titlePosition="center"
                 onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.black}
@@ -338,10 +338,9 @@ export default function RootLayout() {
               <CustomHeader
                 {...props}
                 title={translate('rootLayout.screens.profile.title')}
-                className="bg-primary-900"
                 titlePosition="center"
                 onGoBack={router.back}
-                titleClassName="text-white"
+                backIconColor={isDark ? colors.white : colors.black}
               />
             ),
           }}
@@ -355,7 +354,6 @@ export default function RootLayout() {
                 title={translate('settings.contactUs')}
                 titlePosition="center"
                 onGoBack={router.back}
-                className="bg-white"
                 titleClassName="text-black"
                 backIconColor={isDark ? colors.white : colors.black}
               />

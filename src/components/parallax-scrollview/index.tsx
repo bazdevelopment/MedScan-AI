@@ -9,7 +9,6 @@ import {
 import { runOnJS } from 'react-native-reanimated';
 import { StickyHeaderScrollView } from 'react-native-sticky-parallax-header';
 
-import { EndScrollPlaceholder } from '../end-scroll-placeholder';
 import {
   type IParallaxScrollView,
   type IScrollCloseToBottom,
@@ -29,7 +28,6 @@ const ParallaxScrollView = ({
 }: IParallaxScrollView) => {
   const { width: windowWidth } = useWindowDimensions();
 
-  const [showScrollEndAnimation, setShowScrollEndAnimation] = useState(false);
   const [isHeaderPrio, setIsHeaderPrio] = useState(scrollValue.value !== 0);
 
   const scrollToTop = () => {
@@ -54,12 +52,9 @@ const ParallaxScrollView = ({
       runOnJS(setIsHeaderPrio)(false);
     }
 
-    if (isCloseToBottom({ layoutMeasurement, contentOffset, contentSize })) {
-      runOnJS(setShowScrollEndAnimation)(true);
-    }
-    if (contentOffset.y < 40) {
-      runOnJS(setShowScrollEndAnimation)(false);
-    }
+    // if (contentOffset.y < 40) {
+    //   runOnJS(setShowScrollEndAnimation)(false);
+    // }
     // Call the onScroll handler from sticky header props
     onScroll(event);
   };
@@ -68,9 +63,11 @@ const ParallaxScrollView = ({
     <View className="flex-1 bg-primary-50 dark:bg-blackEerie">
       {/* Render Header Bar */}
       <View
-        className={`absolute inset-x-0 items-center overflow-hidden ${isHeaderPrio ? 'z-10' : 'z-0'}`}
+        className="absolute inset-x-0 items-center overflow-hidden"
         style={{
           width: windowWidth,
+          top: isHeaderPrio ? 0 : -1000, // Move way off screen
+          zIndex: 10,
         }}
       >
         {cloneElement(HeaderBarComponent, { scrollValue })}
@@ -90,9 +87,9 @@ const ParallaxScrollView = ({
         showsVerticalScrollIndicator={false}
       >
         <View className="mb-[300px] mt-14">{children}</View>
-        {showScrollEndAnimation && (
+        {/* {showScrollEndAnimation && (
           <EndScrollPlaceholder onScrollToTop={scrollToTop} />
-        )}
+        )} */}
       </StickyHeaderScrollView>
     </View>
   );

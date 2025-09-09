@@ -73,7 +73,18 @@ const MedicalDisclaimerScreen = () => {
       </ScrollView>
       <View className="absolute bottom-0 w-full bg-white p-6 dark:bg-black">
         <View className="mb-2 flex-row items-center">
-          <Checkbox.Root
+          <Checkbox
+            checked={checked}
+            testID="checkbox"
+            className="pb-2"
+            onChange={() => setChecked(!checked)}
+            accessibilityLabel="Disclaimer"
+            accessibilityHint="toggle Agree"
+            label={translate(
+              'rootLayout.screens.disclaimerScreen.consentAgreement',
+            )}
+          />
+          {/* <Checkbox.Root
             checked={checked}
             onChange={() => setChecked(!checked)}
             accessibilityLabel="Disclaimer"
@@ -85,7 +96,7 @@ const MedicalDisclaimerScreen = () => {
                 'rootLayout.screens.disclaimerScreen.consentAgreement',
               )}
             />
-          </Checkbox.Root>
+          </Checkbox.Root> */}
         </View>
         <Button
           label={translate('general.continue')}

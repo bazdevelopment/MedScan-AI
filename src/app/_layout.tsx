@@ -4,7 +4,9 @@
 function loadGlobalCSS() {
   try {
     require('../../global.css');
-  } catch (e) {}
+  } catch (error) {
+    console.log('error loading global css', error);
+  }
 }
 
 loadGlobalCSS();
@@ -270,7 +272,7 @@ export default function RootLayout() {
                 title={translate('rootLayout.screens.notifications.title')}
                 titlePosition="center"
                 onGoBack={router.back}
-                backIconColor={colors.white}
+                backIconColor={isDark ? colors.white : colors.black}
               />
             ),
           }}

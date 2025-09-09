@@ -22,6 +22,7 @@ import { updateUserAndNavigate } from '@/core/screens/paywall-onboarding';
 import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import { Button, CheckboxIcon, colors, Image, Switch, Text } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
+import { CheckIcon } from '@/ui/assets/icons/check';
 
 const formatPaywallData = (offerings: any) => {
   if (!offerings) return [];
@@ -92,7 +93,8 @@ const formatPaywallData = (offerings: any) => {
 const FeatureRow = ({ icon, text }: { icon: string; text: string }) => (
   <View className="mb-3 flex-row items-center">
     <View className="mr-4 items-center justify-center rounded-full bg-blue-500 p-1">
-      <Ionicons name={icon as any} size={14} color="white" />
+      {/* <Ionicons name={icon as any} size={14} color="white" /> */}
+      <CheckIcon color={colors.white} strokeWidth={3} width={14} height={14} />
     </View>
     <Text className="flex-1 font-semibold-nunito text-lg">{text}</Text>
   </View>
@@ -180,7 +182,14 @@ const PricingCard = ({
             : 'border-gray-300 bg-white dark:bg-black'
         } items-center justify-center`}
       >
-        {isSelected && <Ionicons name="checkmark" size={16} color="white" />}
+        {isSelected && (
+          <CheckIcon
+            color={colors.white}
+            strokeWidth={3}
+            width={15}
+            height={15}
+          />
+        )}
       </View>
     </View>
   </TouchableOpacity>

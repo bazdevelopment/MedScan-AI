@@ -13,7 +13,6 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
-  SafeAreaView,
   TextInput,
   TouchableOpacity,
   View,
@@ -39,7 +38,7 @@ import { useTextToSpeech } from '@/core/hooks/use-text-to-speech';
 import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { generateUniqueId } from '@/core/utilities/generate-unique-id';
 import { wait } from '@/core/utilities/wait';
-import { colors, Text } from '@/ui';
+import { colors, SafeAreaView, Text } from '@/ui';
 import { CloseIcon, CopiedIcon, SoundOn, StopIcon } from '@/ui/assets/icons';
 import CopyIcon from '@/ui/assets/icons/copy';
 

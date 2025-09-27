@@ -1,4 +1,4 @@
-package com.xrayanalizer
+package com.xrayanalizer.development
 import com.facebook.react.common.assets.ReactFontManager
 
 import android.app.Application

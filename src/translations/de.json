@@ -210,7 +210,8 @@
         "heading": "E-Mail verifizieren"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Analyse starten"
+        "generateReportButton": "Analyse starten",
+        "mediaFilesUploaded": "Sie haben {{totalMediaFiles}} Mediendateien hochgeladen"
       },
       "disclaimerScreen": {
         "heading": "Wichtiger medizinischer Haftungsausschluss",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "Suche nach Sprache, Ländercode oder Flagge",
         "noLanguageFound": "Keine Sprache gefunden",
         "noLanguageFoundSubtitle": "Versuchen Sie, Ihre Suchbegriffe zu ändern"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Was sind die Unterschiede zwischen CT, MRT und Ultraschall? 🩻",
+          "two": "Wie beeinflusst die Patientenlagerung die Bildqualität? 🛋️",
+          "three": "Wann sollte ich eine kontrastverstärkte Bildgebung anfordern und wann ohne Kontrast? 💉",
+          "four": "Wie kann die Strahlendosis minimiert werden, ohne den diagnostischen Wert zu beeinträchtigen? ☢️",
+          "five": "Welche Rolle spielt die Schichtdicke bei der CT-Bildauflösung? 📐",
+          "six": "Wie kalibriere und warte ich Bildgebungsgeräte richtig? ⚙️",
+          "seven": "Welche Modalitäten eignen sich am besten zur Erkennung von Weichteil- im Vergleich zu Knochenerkrankungen? 🦴",
+          "eight": "Wann ist PET-CT gegenüber einer alleinigen CT oder MRT vorzuziehen? 🔬",
+          "nine": "Wie kann ich die Reproduzierbarkeit in radiologischen Messungen sicherstellen? 📊",
+          "ten": "Was sind die besten Praktiken bei der Verabreichung und Überwachung von Kontrastmitteln? 🧪",
+          "eleven": "Wie wähle ich die richtige MRT-Sequenz für eine klinische Fragestellung aus? 🧠",
+          "twelve": "Warum ist die Bewegungsreduktion bei der Bildgebung von Kindern und Traumapatienten entscheidend? 👶",
+          "thirteen": "Wie lassen sich Artefakte in MRT- und CT-Aufnahmen minimieren? 🌐",
+          "fourteen": "Welche Methoden eignen sich für die korrekte Speicherung und Archivierung von DICOM-Bildern? 💾",
+          "fifteen": "Welche Parameter gewährleisten radiologische Bilder in Veröffentlichungsqualität? 📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "Chatverlauf",
     "noReportsAvailable": "Kein Chatverlauf für dieses Datum verfügbar",
     "heading": "Chatverlauf"
+  },
+  "chat": {
+    "tab": "Chat"
   },
   "settings": {
     "tab": "Einstellungen",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "Wiederherstellung erfolgreich! Viel Spaß!",
     "restorationError": "Beim Wiederherstellen Ihres Kaufs ist ein Fehler aufgetreten.",
     "medicalDisclaimerAlert": "Die MedScan AI-App ersetzt keine medizinische Beratung. Einige Diagnosen dienen nur zu Informations-/Bildungszwecken. Für medizinische Empfehlungen konsultieren Sie immer einen Arzt oder zugelassenen Facharzt.",
-    "scanLimitReached": "Wir optimieren die Scan-Qualität für Sie! Sie können in etwa {{hours}} Stunden und {{minutes}} Minuten wieder scannen. Haben Sie Fragen zu medizinischen Themen? Fragen Sie unseren Chat-Assistenten, während Sie warten!"
+    "scanLimitReached": "Wir optimieren die Scan-Qualität für Sie! Sie können in etwa {{hours}} Stunden und {{minutes}} Minuten wieder scannen. Haben Sie Fragen zu medizinischen Themen? Fragen Sie unseren Chat-Assistenten, während Sie warten!",
+    "mixedMediaNotAllowed": "Uploads dürfen nur Bilder oder nur Videos enthalten, nicht eine Mischung aus beiden.",
+    "multipleVideosNotAllowed": "Für bessere Genauigkeit laden Sie bitte jeweils nur ein Video hoch.",
+    "mediaFilesUploadFiles": "Beim Hochladen Ihrer Mediendateien ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
   }
 }

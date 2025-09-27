@@ -56,6 +56,7 @@ export default function Home() {
     limit: 5,
     language,
   })();
+
   const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
   const { data: customerInfo, refetch: refetchCustomerInfo } =
     useGetCustomerInfo();

@@ -230,14 +230,14 @@ export default function Settings() {
                       text="Grant free scans action"
                       onPress={onGrantFreeScans}
                     /> */}
-                    <Item
+                    {/* <Item
                       text="Upload terms of service"
                       onPress={() => onUploadTermsOfService({ language })}
                     />
                     <Item
                       text="Upload privacy policy"
                       onPress={() => onUploadPrivacyPolicy({ language })}
-                    />
+                    /> */}
                     <Item
                       text="Add completedScans field to userInfo"
                       //! be careful with the below functions

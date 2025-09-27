@@ -1,4 +1,4 @@
-package com.xrayanalizer
+package com.xrayanalizer.development
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

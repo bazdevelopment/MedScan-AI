@@ -210,7 +210,8 @@
         "heading": "Verificar e-mail"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Iniciar análise"
+        "generateReportButton": "Iniciar análise",
+        "mediaFilesUploaded": "Carregou {{totalMediaFiles}} ficheiros multimédia"
       },
       "disclaimerScreen": {
         "heading": "Aviso Médico Importante",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "Pesquise por idioma, código do país ou bandeira",
         "noLanguageFound": "Nenhum Idioma Encontrado",
         "noLanguageFoundSubtitle": "Tente modificar os seus termos de pesquisa"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Quais são as diferenças entre TC, RM e ecografia? 🩻",
+          "two": "Como o posicionamento do paciente afeta a qualidade da imagem? 🛋️",
+          "three": "Quando devo pedir um exame com contraste em vez de sem contraste? 💉",
+          "four": "Como minimizar a dose de radiação sem comprometer o valor diagnóstico? ☢️",
+          "five": "Qual é o papel da espessura do corte na resolução da TC? 📐",
+          "six": "Como calibrar e manter adequadamente os equipamentos de imagem? ⚙️",
+          "seven": "Quais modalidades são melhores para detetar tecidos moles versus ossos? 🦴",
+          "eight": "Quando é preferível PET-TC em vez de apenas TC ou RM? 🔬",
+          "nine": "Como posso garantir a reprodutibilidade nas medições radiológicas? 📊",
+          "ten": "Quais são as melhores práticas para administrar e monitorizar agentes de contraste? 🧪",
+          "eleven": "Como escolher a sequência de RM correta para uma questão clínica? 🧠",
+          "twelve": "Por que a redução de movimento é crítica em exames pediátricos e de trauma? 👶",
+          "thirteen": "Como minimizar artefactos em exames de RM e TC? 🌐",
+          "fourteen": "Quais são os métodos corretos para armazenar e arquivar imagens DICOM? 💾",
+          "fifteen": "Quais parâmetros garantem imagens radiológicas com qualidade de publicação? 📸"
+        }
       }
     }
   },
@@ -283,6 +303,9 @@
     "tab": "Histórico",
     "noReportsAvailable": "Nenhum histórico de chat disponível para esta data",
     "heading": "Histórico de chat"
+  },
+  "chat": {
+    "tab": "Chat"
   },
   "settings": {
     "tab": "Configurações",
@@ -444,6 +467,9 @@
     "restorationSuccessful": "Restauração bem-sucedida! Aproveite!",
     "restorationError": "Ocorreu um erro ao restaurar sua compra.",
     "medicalDisclaimerAlert": "O aplicativo MedScan AI não substitui a consulta médica. Alguns diagnósticos são apenas para fins informativos/educacionais. Para recomendações médicas, consulte sempre um médico ou especialista licenciado.",
-    "scanLimitReached": "Estamos otimizando a qualidade da digitalização para você! Você poderá digitalizar novamente em aproximadamente {{hours}} horas e {{minutes}} minutos. Tem alguma dúvida sobre algum tópico médico? Pergunte ao nosso assistente de chat enquanto espera!"
+    "scanLimitReached": "Estamos otimizando a qualidade da digitalização para você! Você poderá digitalizar novamente em aproximadamente {{hours}} horas e {{minutes}} minutos. Tem alguma dúvida sobre algum tópico médico? Pergunte ao nosso assistente de chat enquanto espera!",
+    "mixedMediaNotAllowed": "Os uploads devem conter apenas imagens ou apenas vídeos, não uma mistura de ambos.",
+    "multipleVideosNotAllowed": "Para melhor precisão, carregue apenas um vídeo de cada vez.",
+    "mediaFilesUploadFiles": "Ocorreu um erro ao carregar os seus ficheiros multimédia. Por favor, tente novamente."
   }
 }

@@ -13,6 +13,7 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
   TextInput,
   TouchableOpacity,
   View,
@@ -31,7 +32,7 @@ import BounceLoader from '@/components/bounce-loader';
 import Branding from '@/components/branding';
 import Icon from '@/components/icon';
 import { LOADING_MESSAGES_CHATBOT } from '@/constants/loading-messages';
-import { DEVICE_TYPE, translate } from '@/core';
+import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import useBackHandler from '@/core/hooks/use-back-handler';
 import { useClipboard } from '@/core/hooks/use-clipboard';
 import { useTextToSpeech } from '@/core/hooks/use-text-to-speech';
@@ -39,8 +40,20 @@ import { checkIsVideo } from '@/core/utilities/check-is-video';
 import { generateUniqueId } from '@/core/utilities/generate-unique-id';
 import { wait } from '@/core/utilities/wait';
 import { colors, SafeAreaView, Text } from '@/ui';
-import { CloseIcon, CopiedIcon, SoundOn, StopIcon } from '@/ui/assets/icons';
+import {
+  Camera,
+  CloseIcon,
+  CopiedIcon,
+  SoundOn,
+  StopIcon,
+} from '@/ui/assets/icons';
 import CopyIcon from '@/ui/assets/icons/copy';
+import AnimatedChatQuestions from '@/components/animated-questions';
+import { shuffleArray } from '@/core/utilities/shuffle-array';
+import CustomAlert from '@/components/custom-alert';
+import Toast from '@/components/toast';
+import { AI_ANALYSIS_LANGUAGE_SELECTION } from '@/constants/language';
+import { getStorageItem } from '@/core/storage';
 
 type MessageType = {
   role: string;
@@ -48,6 +61,24 @@ type MessageType = {
   isPending?: boolean;
   isError?: boolean;
 };
+
+const RANDOM_QUESTIONS = [
+  translate('rootLayout.screens.chatScreen.randomQuestions.one'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.two'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.three'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.four'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.five'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.six'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.seven'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.eight'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.nine'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.ten'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.eleven'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.twelve'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.thirteen'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.fourteen'),
+  translate('rootLayout.screens.chatScreen.randomQuestions.fifteen'),
+];
 
 export const ChatBubble = ({
   message,
@@ -65,6 +96,7 @@ export const ChatBubble = ({
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+
   const { copyToClipboard, copiedText } = useClipboard();
 
   useEffect(() => {
@@ -119,9 +151,9 @@ export const ChatBubble = ({
         <Markdown style={isDark ? darkStyles : lightStyles}>
           {message.content}
         </Markdown>
+
         {/* </Text> */}
         {message.isPending && !isUser && <TypingIndicator />}
-
         {/* {isUser && (
           <Image
             source={require('../ui/assets/images/avatar.png')}
@@ -129,6 +161,18 @@ export const ChatBubble = ({
           />
         )} */}
       </Animated.View>
+      {isUser && message?.imageUrls?.length > 0 && (
+        <View className="flex-row flex-wrap self-end">
+          {message.imageUrls.map((url, index) => (
+            <Image
+              key={index}
+              source={{ uri: url }}
+              className="w-[70px] h-[70px] rounded-xl m-1"
+              resizeMode="cover"
+            />
+          ))}
+        </View>
+      )}
       <View className="item-center mt-1 flex-row gap-4">
         {!isUser && (
           <TouchableOpacity
@@ -204,6 +248,7 @@ const ChatScreen = () => {
     mimeType,
     conversationMode,
   } = useLocalSearchParams();
+
   const [userMessage, setUserMessage] = useState('');
   const [pendingMessages, setPendingMessages] = useState<MessageType[]>([]);
   const [currentlySpeakingId, setCurrentlySpeakingId] = useState<string | null>(
@@ -213,8 +258,14 @@ const ChatScreen = () => {
     number | null
   >(null);
   const isVideo = checkIsVideo(mimeType as string);
+  const { language: appLanguage } = useSelectedLanguage();
+  const languageAIResponsesLocally = getStorageItem(
+    AI_ANALYSIS_LANGUAGE_SELECTION,
+  );
 
+  const selectedLanguage = languageAIResponsesLocally || appLanguage;
   const flashListRef = useRef<FlashList<MessageType>>(null);
+  const [randomQuestions, setRandomQuestions] = useState<string[]>([]);
 
   const {
     speak,
@@ -248,15 +299,15 @@ const ChatScreen = () => {
     }
   };
 
-  const handleSendMessage = async () => {
-    if (!userMessage.trim()) return;
+  const handleSendMessage = async (userMsg) => {
+    if (!userMsg.trim()) return;
     setUserMessage('');
     Keyboard.dismiss();
 
     // Add the message to pending messages
     const newMessage: MessageType = {
       role: 'user',
-      content: userMessage,
+      content: userMsg,
       isPending: true,
     };
     setPendingMessages((prev) => [...prev, newMessage]);
@@ -266,11 +317,11 @@ const ChatScreen = () => {
 
     try {
       await sendMessage({
-        userMessage,
+        userMessage: userMsg,
         conversationId: conversationId as string,
         conversationMode,
         userId: userInfo.userId,
-        language,
+        language: selectedLanguage,
       });
       // Remove the pending message and add it to the conversation
       setPendingMessages((prev) =>
@@ -381,6 +432,12 @@ const ChatScreen = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (conversationMode === 'RANDOM_CONVERSATION') {
+      setRandomQuestions(shuffleArray(RANDOM_QUESTIONS).slice(0, 5));
+    }
+  }, [conversationMode]);
+
   // useEffect(() => {
   //   if (!isLoading && conversationMode === 'IMAGE_SCAN_CONVERSATION') {
   //     Toast.warning(translate('alerts.medicalDisclaimerAlert'), {
@@ -390,7 +447,7 @@ const ChatScreen = () => {
   //   }
   // }, [isLoading, conversationMode]);
 
-  if (isLoading) {
+  if (isLoading && conversationMode !== 'RANDOM_CONVERSATION') {
     return (
       <View className="flex-1 items-center justify-center bg-white dark:bg-blackEerie">
         <Branding isLogoVisible invertedColors />
@@ -457,6 +514,20 @@ const ChatScreen = () => {
               )}
             </View>
           </View>
+          {conversationMode === 'RANDOM_CONVERSATION' &&
+            !pendingMessages.length &&
+            !conversation &&
+            !!RANDOM_QUESTIONS.length && (
+              <ScrollView
+                contentContainerClassName="h-[90%] justify-end"
+                keyboardShouldPersistTaps="handled"
+              >
+                <AnimatedChatQuestions
+                  questions={randomQuestions}
+                  onSelect={(question) => handleSendMessage(question)}
+                />
+              </ScrollView>
+            )}
 
           {/* Messages List */}
           <FlashList
@@ -483,7 +554,56 @@ const ChatScreen = () => {
 
           {/* Input Area */}
           <View className="border-t border-gray-200 bg-white px-4 pb-2 pt-4 dark:border-blackEerie dark:bg-blackEerie">
-            <View className="flex-row items-center rounded-full bg-gray-100 px-4 py-1 dark:bg-black ">
+            <View className="flex-row items-center rounded-full bg-gray-100 px-4 py-1 dark:bg-black">
+              {conversationMode === 'RANDOM_CONVERSATION' && (
+                <Icon
+                  icon={<Camera />}
+                  size={28}
+                  color={isDark ? colors.white : colors.black}
+                  containerStyle="-left-2"
+                  onPress={() => {
+                    if (
+                      userInfo?.scansRemaining <= 0 &&
+                      userInfo.isFreeTrialOngoing
+                    ) {
+                      /**
+                       * isFirstTime is used to check if the user installs the app for the first time
+                       * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
+                       * thats why we need to set it to false based on an action instead of creating another useEffect in layout
+                       *  */
+                      return Toast.showCustomToast(
+                        <CustomAlert
+                          title={translate('general.attention')}
+                          subtitle={translate(
+                            'home.homeForeground.maxNumberOfScans',
+                          )}
+                          buttons={[
+                            {
+                              label: translate(
+                                'components.UpgradeBanner.heading',
+                              ),
+                              variant: 'default',
+                              onPress: () =>
+                                wait(500).then(() =>
+                                  router.navigate('/paywall-new'),
+                                ), // a small delay in mandatory for Toast, not sure why
+                              buttonTextClassName: 'dark:text-white',
+                              className:
+                                'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+                            },
+                          ]}
+                        />,
+                        {
+                          position: 'middle', // Place the alert in the middle of the screen
+                          duration: Infinity, // Keep the alert visible until dismissed
+                        },
+                      );
+                    }
+
+                    router.navigate('/upload-file-flow');
+                  }}
+                />
+              )}
               <TextInput
                 className="flex-1 py-2 text-base text-gray-800 dark:text-white"
                 value={userMessage}
@@ -494,7 +614,47 @@ const ChatScreen = () => {
                 maxLength={400}
               />
               <TouchableOpacity
-                onPress={handleSendMessage}
+                onPress={() => {
+                  if (
+                    userInfo?.scansRemaining <= 0 &&
+                    userInfo.isFreeTrialOngoing
+                  ) {
+                    /**
+                     * isFirstTime is used to check if the user installs the app for the first time
+                     * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
+                     * thats why we need to set it to false based on an action instead of creating another useEffect in layout
+                     *  */
+                    return Toast.showCustomToast(
+                      <CustomAlert
+                        title={translate('general.attention')}
+                        subtitle={translate(
+                          'home.homeForeground.maxNumberOfScans',
+                        )}
+                        buttons={[
+                          {
+                            label: translate(
+                              'components.UpgradeBanner.heading',
+                            ),
+                            variant: 'default',
+                            onPress: () =>
+                              wait(500).then(() =>
+                                router.navigate('/paywall-new'),
+                              ), // a small delay in mandatory for Toast, not sure why
+                            buttonTextClassName: 'dark:text-white',
+                            className:
+                              'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+                          },
+                        ]}
+                      />,
+                      {
+                        position: 'middle', // Place the alert in the middle of the screen
+                        duration: Infinity, // Keep the alert visible until dismissed
+                      },
+                    );
+                  }
+
+                  handleSendMessage(userMessage);
+                }}
                 disabled={isSending || !userMessage.trim()}
                 className={twMerge(
                   'ml-2 p-2 rounded-full',

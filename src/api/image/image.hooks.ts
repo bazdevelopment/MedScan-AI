@@ -10,7 +10,11 @@ import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { generateUniqueId } from '@/core/utilities/generate-unique-id';
 
 import { queryClient } from '../common';
-import { analyzeImageUsingAi, analyzeVideoUsingAi } from './image.requests';
+import {
+  analyzeImageUsingAi,
+  analyzeMultipleImagesUsingAI,
+  analyzeVideoUsingAi,
+} from './image.requests';
 
 type Response = any;
 
@@ -98,6 +102,87 @@ export const useAnalyzeImage = ({
       });
       logEvent('Failure when analyzing medical image', 'error');
       recordError(error, 'Failure when analyzing medical image');
+    },
+  });
+};
+
+export const useAnalyzeMultipleImages = ({
+  onSuccessCallback,
+  language,
+  handleCloseScanningModal,
+  resetFlow,
+}: {
+  onSuccessCallback: ({
+    interpretationResult,
+    promptMessage,
+    createdDate,
+  }: IAnalyzeImageParams) => void;
+  language: string;
+  handleCloseScanningModal: () => void;
+  resetFlow: () => void;
+}) => {
+  const { logEvent, recordError } = useCrashlytics();
+
+  return useMutation<Response, AxiosError, FormData>({
+    mutationFn: (variables) => analyzeMultipleImagesUsingAI(variables),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['recent-interpretations'] });
+      logEvent('Multiple Medical Images has been analyzed successfully');
+      onSuccessCallback({
+        interpretationResult: data.interpretationResult,
+        promptMessage: data.promptMessage,
+        createdDate: data.createdAt,
+        conversationId: data.conversationId,
+      });
+    },
+    onError: (error: any) => {
+      const isLimitReachedError = error.response.data.message
+        .toLowerCase()
+        .includes('limit');
+      if (isLimitReachedError) {
+        const { hours, minutes } = getTimeUntilMidnight();
+        const limitReachedMessage = translate('alerts.scanLimitReached', {
+          hours,
+          minutes,
+        });
+
+        logEvent(
+          'Failure when analyzing multiple medical images - scan limit reached',
+          'error',
+        );
+        recordError(
+          error,
+          'Failure when analyzing multiple medical images - scan limit reached',
+        );
+
+        return Toast.warning(limitReachedMessage, {
+          closeButton: true,
+          duration: Infinity,
+          action: {
+            label: translate('general.askAssistant'),
+            onClick: () => {
+              Toast.dismiss();
+              handleCloseScanningModal();
+              router.navigate({
+                pathname: '/chat-screen',
+                params: {
+                  conversationId: generateUniqueId(),
+                  mediaSource: '',
+                  mimeType: '',
+                  conversationMode: 'RANDOM_CONVERSATION',
+                },
+              });
+              resetFlow();
+            },
+          },
+        });
+      }
+      Toast.error(error.response.data.message, {
+        closeButton: true,
+        duration: 20000,
+      });
+      logEvent('Failure when analyzing multiple medical images', 'error');
+      recordError(error, 'Failure when analyzing multpiple medical image');
     },
   });
 };

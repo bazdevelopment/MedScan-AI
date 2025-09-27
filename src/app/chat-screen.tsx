@@ -554,7 +554,9 @@ const ChatScreen = () => {
 
           {/* Input Area */}
           <View className="border-t border-gray-200 bg-white px-4 pb-2 pt-4 dark:border-blackEerie dark:bg-blackEerie">
-            <View className="flex-row items-center rounded-full bg-gray-100 px-4 py-1 dark:bg-black">
+            <View
+              className={`flex-row items-center rounded-2xl border-2 border-primary-900/60 bg-gray-100 px-4 py-1 dark:bg-black`}
+            >
               {conversationMode === 'RANDOM_CONVERSATION' && (
                 <Icon
                   icon={<Camera />}
@@ -605,7 +607,7 @@ const ChatScreen = () => {
                 />
               )}
               <TextInput
-                className="flex-1 py-2 text-base text-gray-800 dark:text-white"
+                className="flex-1 py-3 text-base text-gray-800 dark:text-white"
                 value={userMessage}
                 onChangeText={setUserMessage}
                 placeholder={translate('general.chatbotPlaceholder')}

@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import { router } from 'expo-router';
 import { useColorScheme } from 'nativewind';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, View } from 'react-native';
 
 import PremiumFeaturesOverview from '@/components/premium-features-overivew';
@@ -10,6 +10,7 @@ import { translate } from '@/core/i18n';
 import { DEVICE_TYPE } from '@/core/utilities/device-type';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
 import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
+import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 
 const FreeTrialPreview = ({
   totalSteps,
@@ -20,6 +21,10 @@ const FreeTrialPreview = ({
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
   const { isVerySmallDevice } = getDeviceSizeCategory();
+
+  useEffect(() => {
+    requestAppRatingWithDelay(500);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-primary-900 dark:bg-blackEerie">

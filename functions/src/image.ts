@@ -1620,11 +1620,8 @@ export const analyzeMultipleImagesWithUrlsHandler = async (
 
 Please analyze the medical images at the following URLs: ${urlsForPrompt}
 
-${images.length > 1 ? 'For each image, provide a comparative analysis including:' : 'For the image, provide:'}
-1. Key observations and findings
-2. Potential abnormalities or areas of interest
-3. Clinical relevance and recommendations
-${images.length > 1 ? '4. Comparison with other images and any progression patterns' : ''}
+${images.length > 1 ? 'For each image, provide a short analysis:' : ''}
+${images.length > 1 ? 'Comparison with other images and any progression patterns' : ''}
 
 ${userPromptInput}`;
 

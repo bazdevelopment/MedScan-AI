@@ -1,20 +1,12 @@
 /* eslint-disable max-lines-per-function */
-import {
-  BottomSheetFlatList,
-  type BottomSheetModal,
-} from '@gorhom/bottom-sheet';
+import { type BottomSheetModal } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
 import { useColorScheme } from 'nativewind';
 import type { ComponentProps } from 'react';
 import React from 'react';
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
-import {
-  ActivityIndicator,
-  Platform,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { Pressable, type PressableProps } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 import Svg, { Path } from 'react-native-svg';
@@ -28,6 +20,7 @@ import type { InputControllerType } from './input';
 import { useModal } from './modal';
 import { Modal } from './modal';
 import { Text } from './text';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const selectTv = tv({
   slots: {
@@ -63,7 +56,7 @@ const selectTv = tv({
   },
 });
 
-const List = Platform.OS === 'web' ? FlashList : BottomSheetFlatList;
+const List = FlashList;
 
 export type OptionType = { label: string; value: string | number };
 
@@ -123,6 +116,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           renderItem={renderSelectItem}
           testID={testID ? `${testID}-modal` : undefined}
           estimatedItemSize={52}
+          renderScrollComponent={ScrollView}
         />
       </Modal>
     );

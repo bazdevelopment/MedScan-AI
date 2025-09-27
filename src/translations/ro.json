@@ -210,7 +210,8 @@
         "heading": "Verifică Email"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Începe analiza"
+        "generateReportButton": "Începe analiza",
+        "mediaFilesUploaded": "Ați încărcat {{totalMediaFiles}} fișiere media"
       },
       "disclaimerScreen": {
         "heading": "Informații importante",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "Căutați după limbă, cod de țară sau steag",
         "noLanguageFound": "Nicio limbă găsită",
         "noLanguageFoundSubtitle": "Încercați să modificați termenii de căutare"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Care sunt diferențele dintre CT, RMN și ecografie? 🩻",
+          "two": "Cum influențează poziționarea pacientului calitatea imaginii? 🛋️",
+          "three": "Când ar trebui să solicit imagistică cu substanță de contrast versus fără contrast? 💉",
+          "four": "Cum poate fi minimizată doza de radiații fără a compromite valoarea diagnostică? ☢️",
+          "five": "Ce rol are grosimea secțiunii în rezoluția CT? 📐",
+          "six": "Cum calibrez și întrețin corect echipamentele de imagistică? ⚙️",
+          "seven": "Ce modalități sunt cele mai bune pentru a detecta patologia țesuturilor moi versus osoase? 🦴",
+          "eight": "Când este PET-CT preferat în locul unui CT sau RMN simplu? 🔬",
+          "nine": "Cum pot asigura reproductibilitatea măsurătorilor radiologice? 📊",
+          "ten": "Care sunt cele mai bune practici pentru administrarea și monitorizarea agenților de contrast? 🧪",
+          "eleven": "Cum aleg secvența RMN corectă pentru o întrebare clinică? 🧠",
+          "twelve": "De ce este esențială reducerea mișcării în imagistica pediatrică și de traumatism? 👶",
+          "thirteen": "Cum pot fi minimizate artefactele în investigațiile RMN și CT? 🌐",
+          "fourteen": "Care sunt metodele corecte de stocare și arhivare a imaginilor DICOM? 💾",
+          "fifteen": "Ce parametri asigură imagini radiologice de calitate pentru publicare? 📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "Istoric",
     "noReportsAvailable": "Nu există istoric de chat disponibil pentru această dată",
     "heading": "Istoric chat"
+  },
+  "chat": {
+    "tab": "Chat"
   },
   "settings": {
     "tab": "Setări",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "Restaurarea a avut succes! Bucură-te de acces complet!",
     "restorationError": "A apărut o eroare la restaurarea achiziției tale.",
     "medicalDisclaimerAlert": "Aplicația MedScan AI nu înlocuiește consultul medical. Unele diagnostice sunt doar cu caracter informativ/educational. Pentru recomandări medicale, consultați întotdeauna un medic sau un specialist autorizat.",
-    "scanLimitReached": "Optimizăm calitatea scanării pentru dumneavoastră! Veți putea scana din nou în aproximativ {{hours}} ore și {{minutes}} minute. Aveți întrebări despre vreun subiect medical? Întrebați asistentul nostru de chat în timp ce așteptați!"
+    "scanLimitReached": "Optimizăm calitatea scanării pentru dumneavoastră! Veți putea scana din nou în aproximativ {{hours}} ore și {{minutes}} minute. Aveți întrebări despre vreun subiect medical? Întrebați asistentul nostru de chat în timp ce așteptați!",
+    "mixedMediaNotAllowed": "Încărcările trebuie să conțină doar imagini sau doar videoclipuri, nu o combinație a ambelor.",
+    "multipleVideosNotAllowed": "Pentru o mai bună acuratețe, vă rugăm să încărcați câte un singur videoclip pe rând.",
+    "mediaFilesUploadFiles": "A apărut o eroare la încărcarea fișierelor media. Vă rugăm să încercați din nou."
   }
 }

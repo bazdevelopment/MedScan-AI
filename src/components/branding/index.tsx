@@ -15,10 +15,10 @@ const Branding = ({
   return (
     <View className={`flex-row items-center ${className}`}>
       {isLogoVisible && (
-        <View className="rounded-xl bg-primary-50 p-2 dark:bg-blackEerie dark:p-0">
+        <View className="rounded-xl bg-primary-50 dark:bg-blackEerie dark:p-0">
           <Image
             source={require('../../../assets/icon_transparent.png')}
-            className="h-[40px] w-[40px]"
+            className="h-[50px] w-[50px]"
           />
         </View>
       )}

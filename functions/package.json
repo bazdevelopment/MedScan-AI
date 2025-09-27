@@ -21,6 +21,7 @@
     "@google-cloud/functions-framework": "^3.4.2",
     "@google/genai": "^1.9.0",
     "@google/generative-ai": "^0.24.0",
+    "axios": "^1.12.2",
     "busboy": "^1.6.0",
     "dayjs": "^1.11.13",
     "expo-server-sdk": "^3.12.0",

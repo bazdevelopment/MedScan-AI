@@ -2,7 +2,7 @@
 import { FlashList } from '@shopify/flash-list';
 import dayjs from 'dayjs';
 import { useLocalSearchParams } from 'expo-router';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { Toaster } from 'sonner-native';
 
@@ -29,6 +29,36 @@ const ScanInterpretationDetailsScreen = () => {
     data?.record?.conversationMessages.filter(
       (msg) => !Array.isArray(msg.content),
     ) || [];
+
+  //  const { isMultipleImages, imageDataArray, currentImageData, totalImages } =
+  //     useMemo(() => {
+  //       // Check if collectedData is an object with multiple images (image_0, image_1, etc.)
+  //       if (
+  //         collectedData &&
+  //         typeof collectedData === 'object' &&
+  //         !collectedData.fileMimeType
+  //       ) {
+  //         const attachments = Object.values(collectedData).filter(Boolean);
+
+  //         if (attachments.length > 1) {
+  //           return {
+  //             isMultipleImages: true,
+  //             imageDataArray: attachments,
+  //             currentImageData: attachments[currentImageIndex] || imageArray[0],
+  //             totalImages: attachments.length,
+  //           };
+  //         }
+  //         // Single image in object format
+  //         if (attachments.length === 1) {
+  //           const singleImage = attachments[0];
+  //           return {
+  //             isMultipleImages: false,
+  //             imageDataArray: [singleImage],
+  //             currentImageData: singleImage,
+  //             totalImages: 1,
+  //           };
+  //         }
+  //       }
 
   const isVideo = checkIsVideo(data?.record?.mimeType);
   if (isPending) {
@@ -71,7 +101,7 @@ const ScanInterpretationDetailsScreen = () => {
                 color={colors.white}
               />
               <Text className="ml-2 font-semibold-nunito text-sm text-white">
-                {data.record.mimeType.toUpperCase()}
+                {data?.record?.mimeType?.toUpperCase()}
               </Text>
             </View>
             <View className="flex-row items-center">

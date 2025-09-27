@@ -210,7 +210,8 @@
         "heading": "이메일 확인"
       },
       "filePreviewScreen": {
-        "generateReportButton": "분석 시작"
+        "generateReportButton": "분석 시작",
+        "mediaFilesUploaded": "{{totalMediaFiles}}개의 미디어 파일을 업로드했습니다"
       },
       "disclaimerScreen": {
         "heading": "중요한 의학적 면책 조항",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "언어, 국가 코드 또는 국기로 검색",
         "noLanguageFound": "언어를 찾을 수 없음",
         "noLanguageFoundSubtitle": "검색어를 수정해 보세요"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "CT, MRI, 초음파의 차이는 무엇인가요? 🩻",
+          "two": "환자 자세가 영상 품질에 어떤 영향을 미치나요? 🛋️",
+          "three": "언제 조영제를 사용하는 영상검사를 선택해야 하고, 언제 비조영 검사를 선택해야 하나요? 💉",
+          "four": "진단 가치를 떨어뜨리지 않고 방사선량을 최소화하려면 어떻게 해야 하나요? ☢️",
+          "five": "CT 영상 해상도에서 슬라이스 두께의 역할은 무엇인가요? 📐",
+          "six": "영상 장비를 올바르게 교정하고 유지하려면 어떻게 해야 하나요? ⚙️",
+          "seven": "연부조직과 뼈 병변을 확인하는 데 가장 적합한 영상 기법은 무엇인가요? 🦴",
+          "eight": "PET-CT는 언제 단독 CT 또는 MRI보다 선호되나요? 🔬",
+          "nine": "방사선학 측정의 재현성을 어떻게 보장할 수 있나요? 📊",
+          "ten": "조영제를 투여하고 모니터링할 때의 최선의 방법은 무엇인가요? 🧪",
+          "eleven": "임상 질문에 적합한 MRI 시퀀스를 어떻게 선택하나요? 🧠",
+          "twelve": "소아 및 외상 환자의 영상검사에서 움직임을 줄이는 것이 중요한 이유는 무엇인가요? 👶",
+          "thirteen": "MRI와 CT 스캔에서 아티팩트를 최소화하려면 어떻게 해야 하나요? 🌐",
+          "fourteen": "DICOM 영상을 올바르게 저장하고 보관하는 방법은 무엇인가요? 💾",
+          "fifteen": "출판 품질의 방사선 이미지를 보장하는 매개변수는 무엇인가요? 📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "기록",
     "noReportsAvailable": "이 날짜에 대한 채팅 기록이 없습니다",
     "heading": "채팅 기록"
+  },
+  "chat": {
+    "tab": "채팅"
   },
   "settings": {
     "tab": "설정",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "복원이 성공했습니다! 즐기세요!",
     "restorationError": "구매를 복원하는 중 오류가 발생했습니다.",
     "medicalDisclaimerAlert": "MedScan AI 앱은 의료 상담을 대체하지 않습니다. 일부 진단은 정보 제공/교육 목적으로만 사용됩니다. 의학적 권고 사항은 항상 의사나 면허를 보유한 전문가와 상담하세요.",
-    "scanLimitReached": "스캔 품질을 최적화하고 있습니다! 약 {{hours}}시간 {{minutes}}분 후에 다시 스캔할 수 있습니다. 의료 주제에 대한 질문이 있으신가요? 기다리는 동안 채팅 어시스턴트에게 물어보세요!"
+    "scanLimitReached": "스캔 품질을 최적화하고 있습니다! 약 {{hours}}시간 {{minutes}}분 후에 다시 스캔할 수 있습니다. 의료 주제에 대한 질문이 있으신가요? 기다리는 동안 채팅 어시스턴트에게 물어보세요!",
+    "mixedMediaNotAllowed": "업로드에는 이미지만 또는 동영상만 포함되어야 하며, 둘을 혼합할 수 없습니다.",
+    "multipleVideosNotAllowed": "정확도를 높이려면 한 번에 하나의 동영상만 업로드하세요.",
+    "mediaFilesUploadFiles": "미디어 파일을 업로드하는 중 오류가 발생했습니다. 다시 시도하세요."
   }
 }

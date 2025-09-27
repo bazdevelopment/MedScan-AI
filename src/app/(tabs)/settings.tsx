@@ -220,7 +220,7 @@ export default function Settings() {
                           body: 'test',
                           // title: 'Notice About Personal Medical Images',
                           // body: 'We DO NOT encourage uploading personal medical images to MedScan AI for individual analysis, as the results should not be considered final. Our AI models are still being researched and refined, and potential inaccuracies may occur. It’s great for learning and get general insights, but for in-depth reviews, consult a specialist. If you have any questions contact us via email - medscanaiapp@gmail.com',
-                          userId: 'LFwYyNDljVaUlyMR6emuA3d8JBy1',
+                          userId: 'rOwcCGBvdQSw84gfRtfKVqIaSwd2',
                           language,
                         })
                       }
@@ -230,14 +230,14 @@ export default function Settings() {
                       text="Grant free scans action"
                       onPress={onGrantFreeScans}
                     /> */}
-                    <Item
+                    {/* <Item
                       text="Upload terms of service"
                       onPress={() => onUploadTermsOfService({ language })}
                     />
                     <Item
                       text="Upload privacy policy"
                       onPress={() => onUploadPrivacyPolicy({ language })}
-                    />
+                    /> */}
                     <Item
                       text="Add completedScans field to userInfo"
                       //! be careful with the below functions

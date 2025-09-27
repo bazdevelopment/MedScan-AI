@@ -210,7 +210,8 @@
         "heading": "Verificar correo electrónico"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Iniciar análisis"
+        "generateReportButton": "Iniciar análisis",
+        "mediaFilesUploaded": "Has subido {{totalMediaFiles}} archivos multimedia"
       },
       "disclaimerScreen": {
         "heading": "Descargo de responsabilidad médica importante",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "Busca por idioma, código de país o bandera",
         "noLanguageFound": "No se encontró ningún idioma",
         "noLanguageFoundSubtitle": "Intenta modificar tus términos de búsqueda"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "¿Cuáles son las diferencias entre TC, RM y ecografía? 🩻",
+          "two": "¿Cómo afecta la posición del paciente a la calidad de la imagen? 🛋️",
+          "three": "¿Cuándo debo solicitar una imagen con contraste frente a una sin contraste? 💉",
+          "four": "¿Cómo se puede minimizar la dosis de radiación sin comprometer el valor diagnóstico? ☢️",
+          "five": "¿Qué papel juega el grosor de corte en la resolución de una TC? 📐",
+          "six": "¿Cómo calibrar y mantener adecuadamente los equipos de imagen? ⚙️",
+          "seven": "¿Qué modalidades son mejores para detectar patología de tejidos blandos frente a huesos? 🦴",
+          "eight": "¿Cuándo se prefiere un PET-TC frente a una TC o RM sola? 🔬",
+          "nine": "¿Cómo puedo garantizar la reproducibilidad en las mediciones radiológicas? 📊",
+          "ten": "¿Cuáles son las mejores prácticas para administrar y monitorizar contrastes? 🧪",
+          "eleven": "¿Cómo elegir la secuencia de RM adecuada para una pregunta clínica? 🧠",
+          "twelve": "¿Por qué es fundamental reducir el movimiento en pacientes pediátricos y traumatológicos? 👶",
+          "thirteen": "¿Cómo se pueden minimizar los artefactos en RM y TC? 🌐",
+          "fourteen": "¿Cuáles son los métodos correctos de almacenamiento y archivo de imágenes DICOM? 💾",
+          "fifteen": "¿Qué parámetros aseguran imágenes radiológicas con calidad de publicación? 📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "Historial",
     "noReportsAvailable": "No hay historial de chat disponible para esta fecha",
     "heading": "Historial de chat"
+  },
+  "chat": {
+    "tab": "Chat"
   },
   "settings": {
     "tab": "Configuración",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "¡Restauración exitosa! ¡Disfruta!",
     "restorationError": "Ocurrió un error al restaurar tu compra.",
     "medicalDisclaimerAlert": "La aplicación MedScan AI no reemplaza la consulta médica. Algunos diagnósticos son solo con fines informativos/educativos. Para recomendaciones médicas, consulte siempre a un médico o especialista autorizado.",
-    "scanLimitReached": "¡Estamos optimizando la calidad del escaneo para usted! Podrá escanear nuevamente en aproximadamente {{hours}} horas y {{minutes}} minutos. ¿Tiene alguna pregunta sobre algún tema médico? ¡Pregúntele a nuestro asistente de chat mientras espera!"
+    "scanLimitReached": "¡Estamos optimizando la calidad del escaneo para usted! Podrá escanear nuevamente en aproximadamente {{hours}} horas y {{minutes}} minutos. ¿Tiene alguna pregunta sobre algún tema médico? ¡Pregúntele a nuestro asistente de chat mientras espera!",
+    "mixedMediaNotAllowed": "Las cargas deben contener solo imágenes o solo vídeos, no una mezcla de ambos.",
+    "multipleVideosNotAllowed": "Para mayor precisión, suba solo un vídeo a la vez.",
+    "mediaFilesUploadFiles": "Hubo un error al subir tus archivos multimedia. Por favor, inténtalo de nuevo."
   }
 }

@@ -16,12 +16,12 @@ const CustomHeader = ({
   className,
   titlePosition = 'center', // Default position is 'center'
   titleClassName,
-  backIconColor,
+  backIconColor = colors.black,
 }: ICustomHeader) => {
   return (
     <View
       className={twMerge(
-        'flex-row items-center bg-slate-50 dark:bg-blackEerie',
+        'flex-row items-center',
         className,
         DEVICE_TYPE.ANDROID && 'pt-[40px] pb-8',
         DEVICE_TYPE.IOS && 'pt-[55px] pb-5',
@@ -67,7 +67,7 @@ const CustomHeader = ({
       >
         {titlePosition !== 'left' && (
           <Text
-            className={`max-w-[70%] text-center font-bold-nunito text-2xl text-gray-800 ${titleClassName}`}
+            className={`max-w-[70%] text-center font-bold-nunito text-2xl text-gray-800 z-10 ${titleClassName}`}
           >
             {title}
           </Text>

@@ -117,6 +117,10 @@ export const analyzeImage = usCentralFunctions.https.onRequest(
   imageFunctions.analyzeImage,
 );
 
+export const analyzeMultipleImagesUrls = usCentralFunctions.https.onCall(
+  imageFunctions.analyzeMultipleImagesWithUrlsHandler,
+);
+
 /** Make sure you use onRequest instead of onCall for analyzeImage function because onCall do not support FormData */
 export const analyzeImageConversation = usCentralFunctions.https.onRequest(
   imageFunctions.analyzeImageConversation,

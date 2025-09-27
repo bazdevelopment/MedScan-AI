@@ -194,7 +194,7 @@ export default function TabLayout() {
                 <TabBarIcon
                   icon={tab.icon(color, focused)}
                   focused={focused}
-                  textClassName={`text-sm w-full ${focused ? 'font-bold-nunito text-primary-900 dark:text-primary-900' : 'font-medium-nunito'} `}
+                  textClassName={`text-sm w-full ${focused ? 'font-bold-nunito text-primary-900 dark:text-primary-900' : 'font-medium-nunito'} ${tab.title === translate('chat.tab') ? '-top-2' : ''} `}
                   title={tab.title}
                 />
               ),

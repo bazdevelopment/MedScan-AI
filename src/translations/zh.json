@@ -210,7 +210,8 @@
         "heading": "验证邮箱"
       },
       "filePreviewScreen": {
-        "generateReportButton": "开始分析"
+        "generateReportButton": "开始分析",
+        "mediaFilesUploaded": "您上传了 {{totalMediaFiles}} 个媒体文件"
       },
       "disclaimerScreen": {
         "heading": "重要医学免责声明",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "按语言、国家代码或旗帜搜索",
         "noLanguageFound": "未找到语言",
         "noLanguageFoundSubtitle": "请尝试修改您的搜索词"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "CT、MRI 和超声有什么区别？🩻",
+          "two": "病人摆位如何影响图像质量？🛋️",
+          "three": "什么时候应选择增强扫描而不是非增强扫描？💉",
+          "four": "如何在不影响诊断价值的情况下尽量减少辐射剂量？☢️",
+          "five": "层厚在 CT 图像分辨率中起什么作用？📐",
+          "six": "如何正确校准和维护影像设备？⚙️",
+          "seven": "哪些成像方式最适合检测软组织与骨病变？🦴",
+          "eight": "什么时候 PET-CT 优于单独的 CT 或 MRI？🔬",
+          "nine": "如何确保影像学测量的可重复性？📊",
+          "ten": "使用和监测对比剂的最佳实践是什么？🧪",
+          "eleven": "如何为临床问题选择合适的 MRI 序列？🧠",
+          "twelve": "为什么在儿科和创伤患者成像中减少运动非常重要？👶",
+          "thirteen": "如何在 MRI 和 CT 扫描中减少伪影？🌐",
+          "fourteen": "DICOM 图像的正确存储和归档方法是什么？💾",
+          "fifteen": "哪些参数能确保影像学图像达到出版质量？📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "历史记录",
     "noReportsAvailable": "此日期没有可用的聊天记录",
     "heading": "聊天记录"
+  },
+  "chat": {
+    "tab": "聊天"
   },
   "settings": {
     "tab": "设置",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "恢复成功！请尽情享受！",
     "restorationError": "恢复您的购买时发生错误。",
     "medicalDisclaimerAlert": "MedScan AI 应用不能替代医疗咨询。某些诊断仅供参考/教育目的。医疗建议请务必咨询医生或持牌专家。",
-    "scanLimitReached": "我们正在为您优化扫描质量！大约{{hours}}小时{{minutes}}分钟后您将可以再次扫描。有任何关于医学主题的问题吗？在等待期间可以咨询我们的聊天助手！"
+    "scanLimitReached": "我们正在为您优化扫描质量！大约{{hours}}小时{{minutes}}分钟后您将可以再次扫描。有任何关于医学主题的问题吗？在等待期间可以咨询我们的聊天助手！",
+    "mixedMediaNotAllowed": "上传的内容必须仅包含图片或仅包含视频，不能两者混合。",
+    "multipleVideosNotAllowed": "为提高准确性，请一次只上传一个视频。",
+    "mediaFilesUploadFiles": "上传您的媒体文件时出错。请重试。"
   }
 }

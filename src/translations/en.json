@@ -210,13 +210,14 @@
         "heading": "Verify email"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Start Analysis"
+        "generateReportButton": "Start Analysis",
+        "mediaFilesUploaded": "You uploaded {{totalMediaFiles}} media files"
       },
       "disclaimerScreen": {
         "heading": "Important Medical Disclaimer",
         "subheading": "MedScan AI is designed for radiology professionals, healthcare experts, medical students, and enthusiasts",
         "consentAgreement": "I have read and consent to the disclaimer.",
-        "firstConsent": "MedScan AI does not provide health measurements, diagnoses, or treatment advice, nor is it intended for such purposes. Users of MedScan AI must apply their clinical judgment and verify information from authoritative sources before making any clinical decisions.",
+        "firstConsent": "MedScan AI does not provide health measurements or treatment advice, nor is it intended for such purposes. Users of MedScan AI must apply their clinical judgment and verify information from authoritative sources before making any clinical decisions.",
         "secondConsent": "MedScan AI is not a diagnostic tool, treatment platform, or a replacement for professional medical advice. It offers AI-generated insights to assist healthcare professionals in accessing medical knowledge and analyzing medical images and documents. MedScan AI is an AI-driven informational and educational app designed more to support licensed healthcare professionals.",
         "thirdConsent": "MedScan AI is not designed for patient use. It does not provide direct medical diagnoses, treatment recommendations, or patient management functionalities.",
         "fourthConsent": "MedScan AI is not classified as a medical device and does not claim regulatory approval. It is intended for educational and informational purposes to complement professional expertise.",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "Search by language, country code, or flag",
         "noLanguageFound": "No Language Found",
         "noLanguageFoundSubtitle": "Try modifying your search terms"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "What are the differences between CT, MRI, and ultrasound? 🩻",
+          "two": "How does patient positioning affect image quality? 🛋️",
+          "three": "When should I order contrast-enhanced imaging versus non-contrast? 💉",
+          "four": "How can radiation dose be minimized without compromising diagnostic value? ☢️",
+          "five": "What is the role of slice thickness in CT image resolution? 📐",
+          "six": "How do I properly calibrate and maintain imaging equipment? ⚙️",
+          "seven": "Which modalities are best for detecting soft tissue versus bone pathology? 🦴",
+          "eight": "When is PET-CT preferred over standalone CT or MRI? 🔬",
+          "nine": "How can I ensure reproducibility in radiology measurements? 📊",
+          "ten": "What are best practices for administering and monitoring contrast agents? 🧪",
+          "eleven": "How do I choose the right MRI sequence for a clinical question? 🧠",
+          "twelve": "Why is motion reduction critical in imaging pediatric and trauma patients? 👶",
+          "thirteen": "How can artifacts be minimized in MRI and CT scans? 🌐",
+          "fourteen": "What are proper storage and archiving methods for DICOM images? 💾",
+          "fifteen": "Which parameters ensure publication-quality radiology images? 📸"
+        }
       }
     }
   },
@@ -283,6 +303,9 @@
     "tab": "History",
     "noReportsAvailable": "No chat history available for this date",
     "heading": "Chat History"
+  },
+  "chat": {
+    "tab": "Chat"
   },
   "settings": {
     "tab": "Settings",
@@ -445,6 +468,9 @@
     "restorationSuccessful": "Restoration was successful! Enjoy!",
     "restorationError": "An error occurred while restoring the purchase.",
     "medicalDisclaimerAlert": "The MedScan AI app does not replace medical consultation. Some diagnoses are for informational/educational purposes only. For medical recommendations, always consult a doctor or licensed specialist.",
-    "scanLimitReached": "We're optimizing scan quality for you! You'll be able to scan again in around {{hours}} hours and {{minutes}} minutes. Have any questions about any medical topic? Ask our chat assistant while you wait!"
+    "scanLimitReached": "We're optimizing scan quality for you! You'll be able to scan again in around {{hours}} hours and {{minutes}} minutes. Have any questions about any medical topic? Ask our chat assistant while you wait!",
+    "mixedMediaNotAllowed": "Uploads must contain only images or only videos, not a mix of both.",
+    "multipleVideosNotAllowed": "For better accuracy, please upload only one video at a time.",
+    "mediaFilesUploadFiles": "There was an error uploading your media files. Please try again."
   }
 }

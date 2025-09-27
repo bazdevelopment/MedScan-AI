@@ -35,7 +35,7 @@ import {
   type IInterpretationResult,
   type IInterpretationResultRecords,
 } from '@/types/interpretation-report';
-import { ActivityIndicator, colors, type ScrollView, Text, View } from '@/ui';
+import { ActivityIndicator, colors, ScrollView, Text, View } from '@/ui';
 import { UploadIcon } from '@/ui/assets/icons';
 import { NoReports } from '@/ui/assets/illustrations';
 
@@ -56,6 +56,7 @@ export default function Home() {
     limit: 5,
     language,
   })();
+
   const { data: userInfo, refetch: refetchUserInfo } = useUser(language);
   const { data: customerInfo, refetch: refetchCustomerInfo } =
     useGetCustomerInfo();

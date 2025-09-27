@@ -210,7 +210,8 @@
         "heading": "メールを確認"
       },
       "filePreviewScreen": {
-        "generateReportButton": "分析を開始"
+        "generateReportButton": "分析を開始",
+        "mediaFilesUploaded": "{{totalMediaFiles}} 個のメディアファイルをアップロードしました"
       },
       "disclaimerScreen": {
         "heading": "重要な医療免責事項",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "言語、国コード、または国旗で検索",
         "noLanguageFound": "言語が見つかりません",
         "noLanguageFoundSubtitle": "検索キーワードを変更してみてください"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "CT、MRI、超音波の違いは何ですか？🩻",
+          "two": "患者の体位は画像の品質にどのように影響しますか？🛋️",
+          "three": "いつ造影検査を選ぶべきで、いつ非造影検査を選ぶべきですか？💉",
+          "four": "診断精度を落とさずに放射線量を最小限にするにはどうすればよいですか？☢️",
+          "five": "CT のスライス厚は画像解像度にどのような役割を果たしますか？📐",
+          "six": "画像診断装置を正しく校正・維持するにはどうすればよいですか？⚙️",
+          "seven": "軟部組織と骨病変の検出に最適なモダリティはどれですか？🦴",
+          "eight": "いつ PET-CT が単独の CT や MRI より有用ですか？🔬",
+          "nine": "放射線測定の再現性をどう確保できますか？📊",
+          "ten": "造影剤の投与とモニタリングの最良の方法は何ですか？🧪",
+          "eleven": "臨床的な疑問に対してどの MRI シークエンスを選べばよいですか？🧠",
+          "twelve": "小児や外傷患者の画像検査で動きを抑えることが重要なのはなぜですか？👶",
+          "thirteen": "MRI や CT でアーチファクトを最小限にするには？🌐",
+          "fourteen": "DICOM 画像の適切な保存とアーカイブ方法は何ですか？💾",
+          "fifteen": "出版品質の放射線画像を得るためのパラメータは何ですか？📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "履歴",
     "noReportsAvailable": "この日付のチャット履歴はありません",
     "heading": "チャット履歴"
+  },
+  "chat": {
+    "tab": "チャット"
   },
   "settings": {
     "tab": "設定",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "復元が成功しました！お楽しみください！",
     "restorationError": "購入の復元中にエラーが発生しました。",
     "medicalDisclaimerAlert": "MedScan AIアプリは医療相談の代わりにはなりません。一部の診断は情報提供/教育目的のみです。医療アドバイスについては、必ず医師または認定専門家に相談してください。",
-    "scanLimitReached": "スキャン品質を最適化中です！約{{hours}}時間{{minutes}}分後に再度スキャンできます。医療に関する質問がありますか？待っている間にチャットアシスタントに質問してください！"
+    "scanLimitReached": "スキャン品質を最適化中です！約{{hours}}時間{{minutes}}分後に再度スキャンできます。医療に関する質問がありますか？待っている間にチャットアシスタントに質問してください！",
+    "mixedMediaNotAllowed": "アップロードは画像のみ、または動画のみを含める必要があり、両方を混在させることはできません。",
+    "multipleVideosNotAllowed": "より正確にするため、動画は一度に1つだけアップロードしてください。",
+    "mediaFilesUploadFiles": "メディアファイルのアップロード中にエラーが発生しました。もう一度お試しください。"
   }
 }

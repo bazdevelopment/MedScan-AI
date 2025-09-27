@@ -210,7 +210,8 @@
         "heading": "Vérifier l'e-mail"
       },
       "filePreviewScreen": {
-        "generateReportButton": "Commencer l'analyse"
+        "generateReportButton": "Commencer l'analyse",
+        "mediaFilesUploaded": "Vous avez téléchargé {{totalMediaFiles}} fichiers multimédias"
       },
       "disclaimerScreen": {
         "heading": "Avis médical important",
@@ -233,6 +234,25 @@
         "languageSearchCriteria": "Rechercher par langue, code de pays ou drapeau",
         "noLanguageFound": "Aucune langue trouvée",
         "noLanguageFoundSubtitle": "Essayez de modifier vos termes de recherche"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Quelles sont les différences entre le scanner (CT), l’IRM et l’échographie ? 🩻",
+          "two": "Comment la position du patient influence-t-elle la qualité de l’image ? 🛋️",
+          "three": "Quand dois-je demander une imagerie avec contraste plutôt que sans contraste ? 💉",
+          "four": "Comment minimiser la dose de rayonnement sans compromettre la valeur diagnostique ? ☢️",
+          "five": "Quel est le rôle de l’épaisseur de coupe dans la résolution du scanner ? 📐",
+          "six": "Comment bien calibrer et entretenir les équipements d’imagerie ? ⚙️",
+          "seven": "Quelles modalités sont les plus adaptées pour détecter les tissus mous par rapport aux os ? 🦴",
+          "eight": "Quand le PET-CT est-il préférable à un CT ou une IRM seuls ? 🔬",
+          "nine": "Comment assurer la reproductibilité des mesures en radiologie ? 📊",
+          "ten": "Quelles sont les meilleures pratiques pour administrer et surveiller les agents de contraste ? 🧪",
+          "eleven": "Comment choisir la séquence IRM la plus adaptée à une question clinique ? 🧠",
+          "twelve": "Pourquoi la réduction des mouvements est-elle cruciale en imagerie pédiatrique et traumatique ? 👶",
+          "thirteen": "Comment minimiser les artéfacts en IRM et en scanner ? 🌐",
+          "fourteen": "Quelles sont les bonnes méthodes de stockage et d’archivage des images DICOM ? 💾",
+          "fifteen": "Quels paramètres garantissent des images radiologiques de qualité publication ? 📸"
+        }
       }
     }
   },
@@ -281,6 +301,9 @@
     "tab": "Historique",
     "noReportsAvailable": "Aucun historique de chat disponible pour cette date",
     "heading": "Historique de chat"
+  },
+  "chat": {
+    "tab": "Discussion"
   },
   "settings": {
     "tab": "Paramètres",
@@ -442,6 +465,9 @@
     "restorationSuccessful": "Restauration réussie ! Profitez-en !",
     "restorationError": "Une erreur s'est produite lors de la restauration de votre achat.",
     "medicalDisclaimerAlert": "L'application MedScan AI ne remplace pas une consultation médicale. Certains diagnostics sont uniquement à des fins informatives/éducatives. Pour des recommandations médicales, consultez toujours un médecin ou un spécialiste agréé.",
-    "scanLimitReached": "Nous optimisons la qualité des analyses pour vous ! Vous pourrez effectuer un nouveau scan dans environ {{hours}} heures et {{minutes}} minutes. Vous avez des questions sur un sujet médical ? Interrogez notre assistant de chat pendant votre attente !"
+    "scanLimitReached": "Nous optimisons la qualité des analyses pour vous ! Vous pourrez effectuer un nouveau scan dans environ {{hours}} heures et {{minutes}} minutes. Vous avez des questions sur un sujet médical ? Interrogez notre assistant de chat pendant votre attente !",
+    "mixedMediaNotAllowed": "Les fichiers téléchargés doivent contenir uniquement des images ou uniquement des vidéos, pas un mélange des deux.",
+    "multipleVideosNotAllowed": "Pour plus de précision, veuillez télécharger une seule vidéo à la fois.",
+    "mediaFilesUploadFiles": "Une erreur s'est produite lors du téléchargement de vos fichiers multimédias. Veuillez réessayer."
   }
 }

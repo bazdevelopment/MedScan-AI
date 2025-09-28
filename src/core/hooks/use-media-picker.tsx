@@ -569,10 +569,9 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
 
       // Launch the camera
       const result = await ImagePicker.launchCameraAsync({
-        allowsEditing: false, // Disable editing for consistency with gallery
+        allowsEditing: true, // Disable editing for consistency with gallery
         quality: 0.9, //!if you use quality=1 the image size will be bigger and the risk is to exceed the AI limit (5MB currently)
         base64: false,
-        allowsMultipleSelection: true,
       });
 
       // Check if the user didn't cancel the action and assets are available

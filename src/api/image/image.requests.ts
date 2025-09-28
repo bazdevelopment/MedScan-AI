@@ -8,6 +8,7 @@ import { generateUniqueId } from 'functions/utilities/generate-unique-id';
 import * as FileSystem from 'expo-file-system';
 
 import { Env } from '@/core/env';
+import { recordError } from '@/crashlytics/crashlytics.utils';
 
 export const analyzeImageUsingAi = async (
   payload: FormData,
@@ -198,6 +199,10 @@ const uploadImageToFirebase = async (
 
           resolve(downloadURL);
         } catch (urlError) {
+          recordError(
+            urlError,
+            'Error when uploading multiple images to storage',
+          );
           console.error('Error getting download URL:', urlError);
 
           reject(urlError);

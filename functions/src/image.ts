@@ -1567,10 +1567,10 @@ export const analyzeMultipleImagesWithUrlsHandler = async (
     }
 
     // Limit number of images (optional)
-    if (images.length > 4) {
+    if (images.length > 5) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Maximum 4 images allowed per analysis',
+        'Maximum 5 images allowed per analysis',
       );
     }
 

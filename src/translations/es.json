@@ -117,13 +117,15 @@
         "backToLogin": "Volver a Iniciar Sesión"
       },
       "namePreferenceScreen": {
-        "heading": "¡Hagamos esto personal!",
-        "preferredNameQuestion": "¿Cómo deberíamos llamarte?",
+        "heading": "¡Acceso seguro, protegido y simple!",
+        "preferredNameQuestion": "Elige un apodo divertido para mantenerte anónimo — tu privacidad nos importa",
         "placeholderPreferredName": "Ej.: Capitán Cool, Reina Abeja, o simplemente Alex."
       },
       "freeTrialPreview": {
         "heading": "¡Disfruta tu prueba gratuita! 🎉",
-        "subheading": "Experimenta estos increíbles beneficios durante tu prueba gratuita"
+        "subheading": "Experimenta estos increíbles beneficios durante tu prueba gratuita",
+        "review": "El análisis del escáner médico me proporcionó información valiosa sobre las imágenes, y el soporte por chat es muy útil.",
+        "reviewTrust": "📈 Con la confianza de más de 4,512 usuarios"
       },
       "scanInterpretation": {
         "title": "Resultado del análisis",
@@ -136,8 +138,8 @@
           "title": "¡Desbloquea funciones premium hoy!",
           "firstOffering": "Acceso a todas las funciones premium",
           "secondOffering": "Experiencia sin anuncios",
-          "thirdOffering": "Escaneos médicos ilimitados",
-          "fourthOffering": "Chats ilimitados con un asistente AI disponible 24/7"
+          "thirdOffering": "Escaneos ilimitados + informe médico con múltiples imágenes",
+          "fourthOffering": "Chats ilimitados con un asistente médico de IA 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -162,7 +164,7 @@
       },
       "newAppVersionScreen": {
         "heading": "Hay una nueva versión de MedScan AI disponible",
-        "subheading": "Actualiza a la última versión para seguir usando la aplicación",
+        "subheading": "Actualiza a la última versión para seguir disfrutando de todas las funciones de la app — ¡solo te llevará 5 segundos!",
         "action": "¡Consíguela ahora!"
       },
       "rateAppScreen": {
@@ -237,21 +239,21 @@
       },
       "chatScreen": {
         "randomQuestions": {
-          "one": "¿Cuáles son las diferencias entre TC, RM y ecografía? 🩻",
-          "two": "¿Cómo afecta la posición del paciente a la calidad de la imagen? 🛋️",
-          "three": "¿Cuándo debo solicitar una imagen con contraste frente a una sin contraste? 💉",
-          "four": "¿Cómo se puede minimizar la dosis de radiación sin comprometer el valor diagnóstico? ☢️",
-          "five": "¿Qué papel juega el grosor de corte en la resolución de una TC? 📐",
-          "six": "¿Cómo calibrar y mantener adecuadamente los equipos de imagen? ⚙️",
-          "seven": "¿Qué modalidades son mejores para detectar patología de tejidos blandos frente a huesos? 🦴",
-          "eight": "¿Cuándo se prefiere un PET-TC frente a una TC o RM sola? 🔬",
-          "nine": "¿Cómo puedo garantizar la reproducibilidad en las mediciones radiológicas? 📊",
-          "ten": "¿Cuáles son las mejores prácticas para administrar y monitorizar contrastes? 🧪",
-          "eleven": "¿Cómo elegir la secuencia de RM adecuada para una pregunta clínica? 🧠",
-          "twelve": "¿Por qué es fundamental reducir el movimiento en pacientes pediátricos y traumatológicos? 👶",
-          "thirteen": "¿Cómo se pueden minimizar los artefactos en RM y TC? 🌐",
-          "fourteen": "¿Cuáles son los métodos correctos de almacenamiento y archivo de imágenes DICOM? 💾",
-          "fifteen": "¿Qué parámetros aseguran imágenes radiológicas con calidad de publicación? 📸"
+          "one": "¿Cuáles son las diferencias entre la TC, la RMN y la ecografía?",
+          "two": "¿Cuándo debo solicitar una imagen con contraste en lugar de una sin contraste?",
+          "three": "¿Cómo se puede minimizar la dosis de radiación sin comprometer el valor diagnóstico?",
+          "four": "¿Qué modalidades son mejores para detectar patologías de tejidos blandos frente a las óseas?",
+          "five": "¿Cuáles son los signos de advertencia clave de un ataque al corazón frente a la ansiedad?",
+          "six": "¿Cómo decido entre antibióticos y antivirales para una infección?",
+          "seven": "¿Qué cambios en el estilo de vida reducen más eficazmente el riesgo de diabetes tipo 2?",
+          "eight": "¿Cuándo es la cirugía la opción preferida sobre la terapia médica?",
+          "nine": "¿Cómo puedo diferenciar clínicamente entre neumonía bacteriana y viral?",
+          "ten": "¿Cuáles son las últimas guías para el manejo de la hipertensión?",
+          "eleven": "¿Cómo se presentan los pacientes pediátricos de manera diferente a los adultos en las emergencias?",
+          "twelve": "¿Cuáles son las estrategias seguras de manejo del dolor para las condiciones crónicas?",
+          "thirteen": "¿Qué vacunas son más críticas para los adultos más allá de las inmunizaciones infantiles?",
+          "fourteen": "¿Cuáles son las mejores prácticas para prevenir infecciones adquiridas en el hospital?",
+          "fifteen": "¿Cómo interpreto los valores de laboratorio comunes como el hemograma completo (CBC) y los electrolitos en contexto?"
         }
       }
     }
@@ -468,6 +470,7 @@
     "scanLimitReached": "¡Estamos optimizando la calidad del escaneo para usted! Podrá escanear nuevamente en aproximadamente {{hours}} horas y {{minutes}} minutos. ¿Tiene alguna pregunta sobre algún tema médico? ¡Pregúntele a nuestro asistente de chat mientras espera!",
     "mixedMediaNotAllowed": "Las cargas deben contener solo imágenes o solo vídeos, no una mezcla de ambos.",
     "multipleVideosNotAllowed": "Para mayor precisión, suba solo un vídeo a la vez.",
-    "mediaFilesUploadFiles": "Hubo un error al subir tus archivos multimedia. Por favor, inténtalo de nuevo."
+    "mediaFilesUploadFiles": "Hubo un error al subir tus archivos multimedia. Por favor, inténtalo de nuevo.",
+    "chatAndMediaFilesLimit": "Estimado usuario, necesita actualizar su plan para beneficiarse de chats ilimitados, escaneos ilimitados, análisis de múltiples imágenes y más. 🔓"
   }
 }

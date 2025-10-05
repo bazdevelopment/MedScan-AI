@@ -11,7 +11,10 @@ import * as logger from 'firebase-functions/logger';
 import * as functions from 'firebase-functions/v1';
 
 import { addFieldsToCollectionHandler } from '../utilities/add-fields-to-collection';
-import { getConversationHandler } from './conversation';
+import {
+  getAllConversationsHandler,
+  getConversationHandler,
+} from './conversation';
 import * as imageFunctions from './image';
 import {
   deleteScanInterpretationById,
@@ -135,6 +138,10 @@ export const continueConversation = usCentralFunctions.https.onRequest(
 
 export const getConversation = usCentralFunctions.https.onCall(
   getConversationHandler,
+);
+
+export const getAllConversations = usCentralFunctions.https.onCall(
+  getAllConversationsHandler,
 );
 
 /** Make sure you use onRequest instead of onCall for analyzeVideo function because onCall do not support FormData */

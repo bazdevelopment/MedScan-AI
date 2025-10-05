@@ -104,7 +104,7 @@ const Profile = () => {
 
           <View className="mx-6 gap-6">
             <Input
-              className={`flex-1 rounded-xl bg-white px-3.5 py-5 font-primary-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white ${!editModeEnabled && 'bg-slate-200'}`}
+              className={`flex-1 rounded-xl bg-white px-3.5 py-5 font-medium-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white ${!editModeEnabled && 'bg-slate-200'}`}
               placeholder={translate(
                 'rootLayout.screens.profile.placeholderPreferredName',
               )}
@@ -117,7 +117,7 @@ const Profile = () => {
             />
             {userInfo?.email && (
               <Input
-                className={`flex-1 rounded-xl bg-slate-200 px-3.5 py-5 font-primary-nunito opacity-80 dark:border-neutral-700 dark:bg-charcoal-600 dark:text-white dark:opacity-50`}
+                className={`flex-1 rounded-xl bg-slate-200 px-3.5 py-5 font-medium-nunito opacity-80 dark:border-neutral-700 dark:bg-charcoal-600 dark:text-white dark:opacity-50`}
                 placeholder={translate(
                   'rootLayout.screens.profile.placeholderPreferredName',
                 )}

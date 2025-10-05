@@ -117,13 +117,15 @@
         "backToLogin": "Back to Sign In"
       },
       "namePreferenceScreen": {
-        "heading": "Let's make this personal!",
-        "preferredNameQuestion": "What should we call you?",
+        "heading": "Safe, secure, simple access!",
+        "preferredNameQuestion": "Pick a fun nickname to stay anonymous — your privacy matters to us",
         "placeholderPreferredName": "E.g., Captain Cool, Queen Bee, or just Alex!"
       },
       "freeTrialPreview": {
         "heading": "Enjoy your free trial! 🎉",
-        "subheading": "Experience these amazing benefits during your free trial"
+        "subheading": "Experience these amazing benefits during your free trial",
+        "review": "The medical scan analysis gave me valuable insights into the images, and the chat support is very helpful.",
+        "reviewTrust": "📈 Trusted by 4,512+ users"
       },
       "scanInterpretation": {
         "title": "Analysis result",
@@ -136,8 +138,8 @@
           "title": "Unlock Premium Features Today!",
           "firstOffering": "Access All Premium Features",
           "secondOffering": "Ad-Free Experience",
-          "thirdOffering": "Unlimited medical scans",
-          "fourthOffering": "Unlimited chats with a 24/7 AI assistant"
+          "thirdOffering": "Unlimited scans + multi-images medical report",
+          "fourthOffering": "Unlimited chats with a 24/7 medical AI assistant"
         }
       },
       "paywallUpgradeScreen": {
@@ -162,7 +164,7 @@
       },
       "newAppVersionScreen": {
         "heading": "A new version of MedScan AI is available",
-        "subheading": "Please update to the latest version to continue using the app",
+        "subheading": "Update to the latest version to continue enjoying all app features — it only takes 5 seconds!",
         "action": "Get it now!"
       },
       "rateAppScreen": {
@@ -237,21 +239,21 @@
       },
       "chatScreen": {
         "randomQuestions": {
-          "one": "What are the differences between CT, MRI, and ultrasound? 🩻",
-          "two": "How does patient positioning affect image quality? 🛋️",
-          "three": "When should I order contrast-enhanced imaging versus non-contrast? 💉",
-          "four": "How can radiation dose be minimized without compromising diagnostic value? ☢️",
-          "five": "What is the role of slice thickness in CT image resolution? 📐",
-          "six": "How do I properly calibrate and maintain imaging equipment? ⚙️",
-          "seven": "Which modalities are best for detecting soft tissue versus bone pathology? 🦴",
-          "eight": "When is PET-CT preferred over standalone CT or MRI? 🔬",
-          "nine": "How can I ensure reproducibility in radiology measurements? 📊",
-          "ten": "What are best practices for administering and monitoring contrast agents? 🧪",
-          "eleven": "How do I choose the right MRI sequence for a clinical question? 🧠",
-          "twelve": "Why is motion reduction critical in imaging pediatric and trauma patients? 👶",
-          "thirteen": "How can artifacts be minimized in MRI and CT scans? 🌐",
-          "fourteen": "What are proper storage and archiving methods for DICOM images? 💾",
-          "fifteen": "Which parameters ensure publication-quality radiology images? 📸"
+          "one": "What are the differences between CT, MRI, and ultrasound?",
+          "two": "When should I order contrast-enhanced imaging versus non-contrast?",
+          "three": "How can radiation dose be minimized without compromising diagnostic value?",
+          "four": "Which modalities are best for detecting soft tissue versus bone pathology?",
+          "five": "What are the key warning signs of a heart attack versus anxiety?",
+          "six": "How do I decide between antibiotics and antivirals for an infection?",
+          "seven": "What lifestyle changes most effectively reduce the risk of type 2 diabetes?",
+          "eight": "When is surgery the preferred option over medical therapy?",
+          "nine": "How can I differentiate between bacterial and viral pneumonia clinically?",
+          "ten": "What are the latest guidelines for managing hypertension?",
+          "eleven": "How do pediatric patients present differently compared to adults in emergencies?",
+          "twelve": "What are safe pain management strategies for chronic conditions?",
+          "thirteen": "Which vaccines are most critical for adults beyond childhood immunizations?",
+          "fourteen": "What are best practices for preventing hospital-acquired infections?",
+          "fifteen": "How do I interpret common lab values like CBC and electrolytes in context?"
         }
       }
     }
@@ -471,6 +473,7 @@
     "scanLimitReached": "We're optimizing scan quality for you! You'll be able to scan again in around {{hours}} hours and {{minutes}} minutes. Have any questions about any medical topic? Ask our chat assistant while you wait!",
     "mixedMediaNotAllowed": "Uploads must contain only images or only videos, not a mix of both.",
     "multipleVideosNotAllowed": "For better accuracy, please upload only one video at a time.",
-    "mediaFilesUploadFiles": "There was an error uploading your media files. Please try again."
+    "mediaFilesUploadFiles": "There was an error uploading your media files. Please try again.",
+    "chatAndMediaFilesLimit": "Dear user, you need to upgrade your plan to benefit from unlimited chats, unlimited scans, multi-images analysis and more. 🔓"
   }
 }

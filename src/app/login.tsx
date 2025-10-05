@@ -21,7 +21,7 @@ import { MailIcon } from '@/ui/assets/icons';
 export default function Login() {
   return (
     <>
-      <FocusAwareStatusBar />
+      {/* <FocusAwareStatusBar /> */}
       <LoginPage />
     </>
   );
@@ -112,7 +112,7 @@ const LoginPage = () => {
               autoComplete={undefined}
               autoCorrect={false}
               // autoFocus
-              className="flex-1 rounded-xl bg-white px-3.5 py-5 font-primary-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white"
+              className="flex-1 rounded-xl bg-white px-3.5 py-5 font-medium-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white"
               icon={<MailIcon />}
             />
 

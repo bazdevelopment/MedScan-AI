@@ -182,7 +182,7 @@ export default function RootLayout() {
                 {...props}
                 title={translate('general.medicalDisclaimer')}
                 titlePosition="center"
-                // onGoBack={() => router.navigate('/anonymous-login')}
+                onGoBack={router.back}
                 backIconColor={isDark ? colors.white : colors.blackBeauty}
               />
             ),

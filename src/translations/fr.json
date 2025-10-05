@@ -117,13 +117,15 @@
         "backToLogin": "Retour à la connexion"
       },
       "namePreferenceScreen": {
-        "heading": "Personnalisons cela !",
-        "preferredNameQuestion": "Comment devrions-nous vous appeler ?",
+        "heading": "Accès sûr, sécurisé et simple !",
+        "preferredNameQuestion": "Choisissez un surnom amusant pour rester anonyme — votre confidentialité est importante pour nous",
         "placeholderPreferredName": "Par exemple, Capitaine Cool, Queen Bee, ou simplement Alex !"
       },
       "freeTrialPreview": {
         "heading": "Profitez de votre essai gratuit ! 🎉",
-        "subheading": "Découvrez ces avantages incroyables pendant votre essai gratuit"
+        "subheading": "Découvrez ces avantages incroyables pendant votre essai gratuit",
+        "review": "L'analyse du scan médical m'a donné des informations précieuses sur les images, et le support par chat est très utile.",
+        "reviewTrust": "📈 Approuvé par plus de 4.512 utilisateurs"
       },
       "scanInterpretation": {
         "title": "Résultat de l'analyse",
@@ -136,8 +138,8 @@
           "title": "Débloquez les fonctionnalités premium dès aujourd'hui !",
           "firstOffering": "Accédez à toutes les fonctionnalités premium",
           "secondOffering": "Expérience sans publicité",
-          "thirdOffering": "Scans médicaux illimités",
-          "fourthOffering": "Chats illimités avec un assistant IA disponible 24/7"
+          "thirdOffering": "Scans illimités + rapport médical multi-images",
+          "fourthOffering": "Chats illimités avec un assistant médical IA disponible 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -162,7 +164,7 @@
       },
       "newAppVersionScreen": {
         "heading": "Une nouvelle version de MedScan AI est disponible",
-        "subheading": "Veuillez mettre à jour vers la dernière version pour continuer à utiliser l'application",
+        "subheading": "Mettez à jour vers la dernière version pour continuer à profiter de toutes les fonctionnalités de l'application — cela ne prend que 5 secondes !",
         "action": "Obtenez-la maintenant !"
       },
       "rateAppScreen": {
@@ -237,21 +239,21 @@
       },
       "chatScreen": {
         "randomQuestions": {
-          "one": "Quelles sont les différences entre le scanner (CT), l’IRM et l’échographie ? 🩻",
-          "two": "Comment la position du patient influence-t-elle la qualité de l’image ? 🛋️",
-          "three": "Quand dois-je demander une imagerie avec contraste plutôt que sans contraste ? 💉",
-          "four": "Comment minimiser la dose de rayonnement sans compromettre la valeur diagnostique ? ☢️",
-          "five": "Quel est le rôle de l’épaisseur de coupe dans la résolution du scanner ? 📐",
-          "six": "Comment bien calibrer et entretenir les équipements d’imagerie ? ⚙️",
-          "seven": "Quelles modalités sont les plus adaptées pour détecter les tissus mous par rapport aux os ? 🦴",
-          "eight": "Quand le PET-CT est-il préférable à un CT ou une IRM seuls ? 🔬",
-          "nine": "Comment assurer la reproductibilité des mesures en radiologie ? 📊",
-          "ten": "Quelles sont les meilleures pratiques pour administrer et surveiller les agents de contraste ? 🧪",
-          "eleven": "Comment choisir la séquence IRM la plus adaptée à une question clinique ? 🧠",
-          "twelve": "Pourquoi la réduction des mouvements est-elle cruciale en imagerie pédiatrique et traumatique ? 👶",
-          "thirteen": "Comment minimiser les artéfacts en IRM et en scanner ? 🌐",
-          "fourteen": "Quelles sont les bonnes méthodes de stockage et d’archivage des images DICOM ? 💾",
-          "fifteen": "Quels paramètres garantissent des images radiologiques de qualité publication ? 📸"
+          "one": "Quelles sont les différences entre le scanner (TDM), l'IRM et l'échographie?",
+          "two": "Quand dois-je demander une imagerie avec contraste plutôt qu'une imagerie sans contraste?",
+          "three": "Comment minimiser la dose de rayonnement sans compromettre la valeur diagnostique?",
+          "four": "Quelles modalités sont les meilleures pour détecter la pathologie des tissus mous par rapport à la pathologie osseuse?",
+          "five": "Quels sont les signes d'alerte clés d'une crise cardiaque par rapport à l'anxiété?",
+          "six": "Comment choisir entre les antibiotiques et les antiviraux pour une infection?",
+          "seven": "Quels changements de mode de vie réduisent le risque de diabète de type 2 le plus efficacement?",
+          "eight": "Quand la chirurgie est-elle l'option préférée par rapport à la thérapie médicale?",
+          "nine": "Comment puis-je différencier cliniquement entre la pneumonie bactérienne et virale?",
+          "ten": "Quelles sont les dernières directives pour la gestion de l'hypertension?",
+          "eleven": "Comment les patients pédiatriques se présentent-ils différemment des adultes dans les situations d'urgence?",
+          "twelve": "Quelles sont les stratégies de gestion de la douleur sûres pour les affections chroniques?",
+          "thirteen": "Quels vaccins sont les plus cruciaux pour les adultes au-delà des immunisations infantiles?",
+          "fourteen": "Quelles sont les meilleures pratiques pour prévenir les infections acquises à l'hôpital?",
+          "fifteen": "Comment interpréter les valeurs de laboratoire courantes comme la numération formule sanguine (NFS) et les électrolytes en contexte?"
         }
       }
     }
@@ -468,6 +470,7 @@
     "scanLimitReached": "Nous optimisons la qualité des analyses pour vous ! Vous pourrez effectuer un nouveau scan dans environ {{hours}} heures et {{minutes}} minutes. Vous avez des questions sur un sujet médical ? Interrogez notre assistant de chat pendant votre attente !",
     "mixedMediaNotAllowed": "Les fichiers téléchargés doivent contenir uniquement des images ou uniquement des vidéos, pas un mélange des deux.",
     "multipleVideosNotAllowed": "Pour plus de précision, veuillez télécharger une seule vidéo à la fois.",
-    "mediaFilesUploadFiles": "Une erreur s'est produite lors du téléchargement de vos fichiers multimédias. Veuillez réessayer."
+    "mediaFilesUploadFiles": "Une erreur s'est produite lors du téléchargement de vos fichiers multimédias. Veuillez réessayer.",
+    "chatAndMediaFilesLimit": "Cher utilisateur, vous devez mettre à niveau votre plan pour bénéficier de chats illimités, de scans illimités, de l'analyse multi-images et plus encore. 🔓"
   }
 }

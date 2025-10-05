@@ -22,13 +22,14 @@ const disclaimerTexts = [
     text: translate('rootLayout.screens.disclaimerScreen.firstConsent'),
     className: 'mb-8 text-base',
   },
-  {
-    text: translate('rootLayout.screens.disclaimerScreen.fourthConsent'),
-    className: 'mb-8 font-bold-nunito text-base',
-  },
+
   {
     text: translate('rootLayout.screens.disclaimerScreen.secondConsent'),
     className: 'mb-8 text-base',
+  },
+  {
+    text: translate('rootLayout.screens.disclaimerScreen.fourthConsent'),
+    className: 'mb-8 font-bold-nunito text-base',
   },
   // {
   //   text: translate('rootLayout.screens.disclaimerScreen.thirdConsent'),
@@ -43,13 +44,14 @@ const disclaimerTexts = [
 
 const MedicalDisclaimerScreen = () => {
   const [checked, setChecked] = useState(false);
-  const [, setIsMedicalDisclaimerApproved] = useMedicalDisclaimerApproval();
+  const [isMedicalDisclaimerApproved, setIsMedicalDisclaimerApproved] =
+    useMedicalDisclaimerApproval();
 
   const handleContinue = () => {
     if (checked) {
       // Navigate to the next screen or perform the next action
       setIsMedicalDisclaimerApproved(true);
-      router.navigate('/onboarding');
+      router.back();
     }
   };
 
@@ -71,7 +73,7 @@ const MedicalDisclaimerScreen = () => {
           </Text>
         ))}
       </ScrollView>
-      <View className="absolute bottom-0 w-full bg-white p-6 dark:bg-black">
+      {/* <View className="absolute bottom-0 w-full bg-white p-6 dark:bg-black">
         <View className="mb-2 flex-row items-center">
           <Checkbox
             checked={checked}
@@ -84,19 +86,6 @@ const MedicalDisclaimerScreen = () => {
               'rootLayout.screens.disclaimerScreen.consentAgreement',
             )}
           />
-          {/* <Checkbox.Root
-            checked={checked}
-            onChange={() => setChecked(!checked)}
-            accessibilityLabel="Disclaimer"
-            className="pb-2"
-          >
-            <Checkbox.Icon checked={checked} />
-            <Checkbox.Label
-              text={translate(
-                'rootLayout.screens.disclaimerScreen.consentAgreement',
-              )}
-            />
-          </Checkbox.Root> */}
         </View>
         <Button
           label={translate('general.continue')}
@@ -107,7 +96,7 @@ const MedicalDisclaimerScreen = () => {
           onPress={handleContinue}
           disabled={!checked}
         />
-      </View>
+      </View> */}
     </>
   );
 };

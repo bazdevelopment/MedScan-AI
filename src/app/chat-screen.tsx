@@ -23,6 +23,7 @@ import { Toaster } from 'sonner-native';
 import { twMerge } from 'tailwind-merge';
 
 import {
+  useAllUserConversations,
   useConversation,
   useConversationHistory,
 } from '@/api/conversation/conversation.hooks';
@@ -137,8 +138,8 @@ export const ChatBubble = ({
       >
         {!isUser && (
           <Image
-            source={require('../ui/assets/images/assistant-avatar.png')}
-            className="mr-2 h-8 w-8 self-start rounded-full"
+            source={require('../ui/assets/images/assistant-avatar2.png')}
+            className="mr-2 h-10 w-10 self-start rounded-full"
           />
         )}
         {/* <Text
@@ -285,6 +286,10 @@ const ChatScreen = () => {
   const { data: conversation, isLoading } = useConversationHistory(
     conversationId as string,
   );
+
+  const { data } = useAllUserConversations();
+  const conversationsCount = data?.count || 0;
+
   const { sendMessage, isSending } = useConversation(conversationId as string);
 
   const handleSpeak = (messageId: string, text: string) => {
@@ -514,6 +519,7 @@ const ChatScreen = () => {
               )}
             </View>
           </View>
+
           {conversationMode === 'RANDOM_CONVERSATION' &&
             !pendingMessages.length &&
             !conversation &&
@@ -524,7 +530,44 @@ const ChatScreen = () => {
               >
                 <AnimatedChatQuestions
                   questions={randomQuestions}
-                  onSelect={(question) => handleSendMessage(question)}
+                  onSelect={(question) => {
+                    if (
+                      userInfo.isFreeTrialOngoing &&
+                      conversationsCount >= 1
+                    ) {
+                      /**
+                       * isFirstTime is used to check if the user installs the app for the first time
+                       * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
+                       * thats why we need to set it to false based on an action instead of creating another useEffect in layout
+                       *  */
+                      return Toast.showCustomToast(
+                        <CustomAlert
+                          title={translate('general.attention')}
+                          subtitle={translate('alerts.chatAndMediaFilesLimit')}
+                          buttons={[
+                            {
+                              label: translate(
+                                'components.UpgradeBanner.heading',
+                              ),
+                              variant: 'default',
+                              onPress: () =>
+                                wait(500).then(() =>
+                                  router.navigate('/paywall-new'),
+                                ), // a small delay in mandatory for Toast, not sure why
+                              buttonTextClassName: 'dark:text-white',
+                              className:
+                                'flex-1 rounded-xl h-[48] bg-primary-900 active:opacity-80 dark:bg-primary-900',
+                            },
+                          ]}
+                        />,
+                        {
+                          position: 'middle', // Place the alert in the middle of the screen
+                          duration: Infinity, // Keep the alert visible until dismissed
+                        },
+                      );
+                    }
+                    handleSendMessage(question);
+                  }}
                 />
               </ScrollView>
             )}
@@ -565,8 +608,8 @@ const ChatScreen = () => {
                   containerStyle="-left-2"
                   onPress={() => {
                     if (
-                      userInfo?.scansRemaining <= 0 &&
-                      userInfo.isFreeTrialOngoing
+                      userInfo.isFreeTrialOngoing &&
+                      conversationsCount >= 1
                     ) {
                       /**
                        * isFirstTime is used to check if the user installs the app for the first time
@@ -576,9 +619,7 @@ const ChatScreen = () => {
                       return Toast.showCustomToast(
                         <CustomAlert
                           title={translate('general.attention')}
-                          subtitle={translate(
-                            'home.homeForeground.maxNumberOfScans',
-                          )}
+                          subtitle={translate('alerts.chatAndMediaFilesLimit')}
                           buttons={[
                             {
                               label: translate(
@@ -611,27 +652,26 @@ const ChatScreen = () => {
                 value={userMessage}
                 onChangeText={setUserMessage}
                 placeholder={translate('general.chatbotPlaceholder')}
-                placeholderTextColor={isDark ? colors.charcoal[300] : '#9CA3AF'}
+                placeholderTextColor={
+                  isDark ? colors.charcoal[300] : colors.charcoal[800]
+                }
                 multiline
                 maxLength={400}
               />
               <TouchableOpacity
                 onPress={() => {
-                  if (
-                    userInfo?.scansRemaining <= 0 &&
-                    userInfo.isFreeTrialOngoing
-                  ) {
+                  if (userInfo.isFreeTrialOngoing && conversationsCount >= 1) {
                     /**
                      * isFirstTime is used to check if the user installs the app for the first time
                      * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
                      * thats why we need to set it to false based on an action instead of creating another useEffect in layout
                      *  */
+                    Keyboard.dismiss();
+
                     return Toast.showCustomToast(
                       <CustomAlert
                         title={translate('general.attention')}
-                        subtitle={translate(
-                          'home.homeForeground.maxNumberOfScans',
-                        )}
+                        subtitle={translate('alerts.chatAndMediaFilesLimit')}
                         buttons={[
                           {
                             label: translate(

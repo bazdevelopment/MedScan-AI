@@ -124,7 +124,7 @@ const PaywallOnboarding = ({
 
   return (
     <View className="flex-1 bg-black">
-      <FocusAwareStatusBar hidden />
+      {/* <FocusAwareStatusBar hidden /> */}
       {/* Liquid Background Image */}
       <ImageBackground
         source={require('../../../ui/assets/images/liquid-purple.jpg')}

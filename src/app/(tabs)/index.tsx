@@ -173,7 +173,7 @@ export default function Home() {
           )}
           {!areErrorsOnScanCategories && (
             <>
-              <Text className="mx-4 mb-3 mt-8 font-semibold-nunito">
+              <Text className="mx-4 mb-3 mt-2 font-semibold-nunito">
                 {translate('home.scanCategories.heading')}
               </Text>
 
@@ -260,7 +260,7 @@ const ReportsList = ({
                 return Toast.showCustomToast(
                   <CustomAlert
                     title={translate('general.attention')}
-                    subtitle={translate('home.homeForeground.maxNumberOfScans')}
+                    subtitle={translate('alerts.chatAndMediaFilesLimit')}
                     buttons={[
                       {
                         label: translate('components.UpgradeBanner.heading'),

@@ -1,4 +1,4 @@
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 import React from 'react';
 import { Linking, ScrollView, TouchableOpacity, View } from 'react-native';
 
@@ -50,7 +50,6 @@ const Welcome = () => {
             /> */}
           </View>
 
-        
           <View className="mt-6 w-full flex-row flex-wrap items-center justify-center px-12">
             <Text className="text-sm">
               {translate('rootLayout.screens.login.agreeingMessage')}{' '}

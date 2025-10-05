@@ -137,7 +137,7 @@ const Paywall = () => {
 
   return (
     <View className="flex-1 bg-black">
-      <FocusAwareStatusBar hidden />
+      {/* <FocusAwareStatusBar hidden /> */}
 
       {/* Liquid Background Image */}
       <ImageBackground

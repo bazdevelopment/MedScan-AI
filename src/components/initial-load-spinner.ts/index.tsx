@@ -15,7 +15,7 @@ const InitialLoadSpinner = () => {
 
   return (
     <View className="flex-1 items-center justify-center gap-3 bg-primary-900 dark:bg-blackEerie">
-      <FocusAwareStatusBar hidden />
+      {/* <FocusAwareStatusBar hidden /> */}
       <SnakeLine
         color={isDark ? colors.charcoal[600] : colors.primary[600]}
         className="absolute right-[150] top-[70]"

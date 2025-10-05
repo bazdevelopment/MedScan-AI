@@ -117,13 +117,15 @@
         "backToLogin": "Zurück zur Anmeldung"
       },
       "namePreferenceScreen": {
-        "heading": "Lass es uns persönlich machen!",
-        "preferredNameQuestion": "Wie sollen wir dich nennen?",
+        "heading": "Sicherer, geschützter, einfacher Zugang!",
+        "preferredNameQuestion": "Wählen Sie einen lustigen Spitznamen, um anonym zu bleiben — Ihre Privatsphäre ist uns wichtig",
         "placeholderPreferredName": "z.B. Captain Cool, Queen Bee, oder einfach Alex!"
       },
       "freeTrialPreview": {
         "heading": "Genieße deine kostenlose Testphase! 🎉",
-        "subheading": "Erlebe diese tollen Vorteile während deiner kostenlosen Testphase"
+        "subheading": "Erlebe diese tollen Vorteile während deiner kostenlosen Testphase",
+        "review": "Die Analyse des medizinischen Scans lieferte mir wertvolle Einblicke in die Bilder, und der Chat-Support ist sehr hilfreich.",
+        "reviewTrust": "📈 Von über 4.512 Nutzern vertraut"
       },
       "scanInterpretation": {
         "title": "Analyseergebnis",
@@ -136,8 +138,8 @@
           "title": "Premium-Funktionen jetzt freischalten!",
           "firstOffering": "Zugriff auf alle Premium-Funktionen",
           "secondOffering": "Werbefreie Nutzung",
-          "thirdOffering": "Unbegrenzte medizinische Scans",
-          "fourthOffering": "Unbegrenzte Chats mit einem 24/7 AI-Assistenten"
+          "thirdOffering": "Unbegrenzte Scans + medizinischer Bericht mit mehreren Bildern",
+          "fourthOffering": "Unbegrenzte Chats mit einem medizinischen KI-Assistenten, 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -162,7 +164,7 @@
       },
       "newAppVersionScreen": {
         "heading": "Eine neue Version von MedScan AI ist verfügbar",
-        "subheading": "Bitte aktualisiere auf die neueste Version, um die App weiter zu nutzen",
+        "subheading": "Aktualisieren Sie auf die neueste Version, um weiterhin alle App-Funktionen zu nutzen — es dauert nur 5 Sekunden!",
         "action": "Jetzt herunterladen!"
       },
       "rateAppScreen": {
@@ -237,21 +239,21 @@
       },
       "chatScreen": {
         "randomQuestions": {
-          "one": "Was sind die Unterschiede zwischen CT, MRT und Ultraschall? 🩻",
-          "two": "Wie beeinflusst die Patientenlagerung die Bildqualität? 🛋️",
-          "three": "Wann sollte ich eine kontrastverstärkte Bildgebung anfordern und wann ohne Kontrast? 💉",
-          "four": "Wie kann die Strahlendosis minimiert werden, ohne den diagnostischen Wert zu beeinträchtigen? ☢️",
-          "five": "Welche Rolle spielt die Schichtdicke bei der CT-Bildauflösung? 📐",
-          "six": "Wie kalibriere und warte ich Bildgebungsgeräte richtig? ⚙️",
-          "seven": "Welche Modalitäten eignen sich am besten zur Erkennung von Weichteil- im Vergleich zu Knochenerkrankungen? 🦴",
-          "eight": "Wann ist PET-CT gegenüber einer alleinigen CT oder MRT vorzuziehen? 🔬",
-          "nine": "Wie kann ich die Reproduzierbarkeit in radiologischen Messungen sicherstellen? 📊",
-          "ten": "Was sind die besten Praktiken bei der Verabreichung und Überwachung von Kontrastmitteln? 🧪",
-          "eleven": "Wie wähle ich die richtige MRT-Sequenz für eine klinische Fragestellung aus? 🧠",
-          "twelve": "Warum ist die Bewegungsreduktion bei der Bildgebung von Kindern und Traumapatienten entscheidend? 👶",
-          "thirteen": "Wie lassen sich Artefakte in MRT- und CT-Aufnahmen minimieren? 🌐",
-          "fourteen": "Welche Methoden eignen sich für die korrekte Speicherung und Archivierung von DICOM-Bildern? 💾",
-          "fifteen": "Welche Parameter gewährleisten radiologische Bilder in Veröffentlichungsqualität? 📸"
+          "one": "Was sind die Unterschiede zwischen CT, MRT und Ultraschall?",
+          "two": "Wann sollte ich eine kontrastmittelverstärkte Bildgebung anstelle einer nicht-kontrastverstärkten anordnen?",
+          "three": "Wie kann die Strahlendosis ohne Beeinträchtigung des diagnostischen Werts minimiert werden?",
+          "four": "Welche Modalitäten eignen sich am besten zur Erkennung von Weichteil- im Vergleich zu Knochenpathologien?",
+          "five": "Was sind die wichtigsten Warnzeichen für einen Herzinfarkt im Vergleich zu Angstzuständen?",
+          "six": "Wie entscheide ich bei einer Infektion zwischen Antibiotika und Antivirenmitteln?",
+          "seven": "Welche Lebensstiländerungen reduzieren das Risiko für Typ-2-Diabetes am effektivsten?",
+          "eight": "Wann ist eine Operation die bevorzugte Option gegenüber einer medikamentösen Therapie?",
+          "nine": "Wie kann ich klinisch zwischen bakterieller und viraler Pneumonie unterscheiden?",
+          "ten": "Was sind die neuesten Leitlinien für das Management von Bluthochdruck?",
+          "eleven": "Wie unterscheiden sich pädiatrische Patienten im Notfall im Vergleich zu Erwachsenen?",
+          "twelve": "Was sind sichere Schmerztherapiestrategien für chronische Erkrankungen?",
+          "thirteen": "Welche Impfungen sind für Erwachsene über die Kinderimpfungen hinaus am wichtigsten?",
+          "fourteen": "Was sind die besten Praktiken zur Vorbeugung von im Krankenhaus erworbenen Infektionen?",
+          "fifteen": "Wie interpretiere ich gängige Laborwerte wie Blutbild (CBC) und Elektrolyte im Kontext?"
         }
       }
     }
@@ -468,6 +470,7 @@
     "scanLimitReached": "Wir optimieren die Scan-Qualität für Sie! Sie können in etwa {{hours}} Stunden und {{minutes}} Minuten wieder scannen. Haben Sie Fragen zu medizinischen Themen? Fragen Sie unseren Chat-Assistenten, während Sie warten!",
     "mixedMediaNotAllowed": "Uploads dürfen nur Bilder oder nur Videos enthalten, nicht eine Mischung aus beiden.",
     "multipleVideosNotAllowed": "Für bessere Genauigkeit laden Sie bitte jeweils nur ein Video hoch.",
-    "mediaFilesUploadFiles": "Beim Hochladen Ihrer Mediendateien ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    "mediaFilesUploadFiles": "Beim Hochladen Ihrer Mediendateien ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "chatAndMediaFilesLimit": "Sehr geehrter Benutzer, Sie müssen Ihren Plan upgraden, um von unbegrenzten Chats, unbegrenzten Scans, der Analyse mehrerer Bilder und mehr zu profitieren. 🔓"
   }
 }

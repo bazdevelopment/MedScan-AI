@@ -47,7 +47,7 @@
     "perWeek": "pe săptămână",
     "perYear": "pe an",
     "perMonth": "pe lună",
-    "tryForFree": "Încearcă gratuit",
+    "tryForFree": "Încearcă gratuit ",
     "unlockNow": "Deblochează acum",
     "copyText": {
       "loading": "Se copiază...",
@@ -117,13 +117,15 @@
         "backToLogin": "Înapoi la Autentificare"
       },
       "namePreferenceScreen": {
-        "heading": "Hai să personalizăm!",
-        "preferredNameQuestion": "Cum să te numim?",
+        "heading": "Acces sigur, securizat, simplu!",
+        "preferredNameQuestion": "Alege un pseudonim distractiv pentru a rămâne anonim — confidențialitatea ta contează pentru noi",
         "placeholderPreferredName": "De exemplu, Căpitanul Cool, Regina Albinelor sau doar Alex!"
       },
       "freeTrialPreview": {
         "heading": "Bucură-te de perioada de probă gratuită! 🎉",
-        "subheading": "Experimentează aceste beneficii uimitoare în timpul perioadei tale de probă"
+        "subheading": "Experimentează aceste beneficii uimitoare în timpul perioadei tale de probă",
+        "review": "Analiza scanării medicale mi-a oferit informații valoroase despre imagini, iar suportul prin chat este foarte util.",
+        "reviewTrust": "📈 Încredere din partea a peste 4.512 utilizatori"
       },
       "scanInterpretation": {
         "title": "Rezultatul analizei",
@@ -136,8 +138,8 @@
           "title": "Deblochează Funcționalitățile Premium Astăzi!",
           "firstOffering": "Acces la toate funcționalitățile premium",
           "secondOffering": "Experiență fără reclame",
-          "thirdOffering": "Scanări medicale nelimitate",
-          "fourthOffering": "Chat-uri nelimitate cu un asistent AI 24/7"
+          "thirdOffering": "Scanări nelimitate + raport medical cu imagini multiple",
+          "fourthOffering": "Chat-uri nelimitate cu un asistent medical AI 24/7"
         }
       },
       "paywallUpgradeScreen": {
@@ -162,7 +164,7 @@
       },
       "newAppVersionScreen": {
         "heading": "O nouă versiune a MedScan AI este disponibilă",
-        "subheading": "Te rugăm să actualizezi la cea mai recentă versiune pentru a continua să folosești aplicația",
+        "subheading": "Actualizați la cea mai recentă versiune pentru a continua să vă bucurați de toate funcțiile aplicației — durează doar 5 secunde!",
         "action": "Obține-o acum!"
       },
       "rateAppScreen": {
@@ -237,21 +239,21 @@
       },
       "chatScreen": {
         "randomQuestions": {
-          "one": "Care sunt diferențele dintre CT, RMN și ecografie? 🩻",
-          "two": "Cum influențează poziționarea pacientului calitatea imaginii? 🛋️",
-          "three": "Când ar trebui să solicit imagistică cu substanță de contrast versus fără contrast? 💉",
-          "four": "Cum poate fi minimizată doza de radiații fără a compromite valoarea diagnostică? ☢️",
-          "five": "Ce rol are grosimea secțiunii în rezoluția CT? 📐",
-          "six": "Cum calibrez și întrețin corect echipamentele de imagistică? ⚙️",
-          "seven": "Ce modalități sunt cele mai bune pentru a detecta patologia țesuturilor moi versus osoase? 🦴",
-          "eight": "Când este PET-CT preferat în locul unui CT sau RMN simplu? 🔬",
-          "nine": "Cum pot asigura reproductibilitatea măsurătorilor radiologice? 📊",
-          "ten": "Care sunt cele mai bune practici pentru administrarea și monitorizarea agenților de contrast? 🧪",
-          "eleven": "Cum aleg secvența RMN corectă pentru o întrebare clinică? 🧠",
-          "twelve": "De ce este esențială reducerea mișcării în imagistica pediatrică și de traumatism? 👶",
-          "thirteen": "Cum pot fi minimizate artefactele în investigațiile RMN și CT? 🌐",
-          "fourteen": "Care sunt metodele corecte de stocare și arhivare a imaginilor DICOM? 💾",
-          "fifteen": "Ce parametri asigură imagini radiologice de calitate pentru publicare? 📸"
+          "one": "Care sunt diferențele dintre CT, RMN și ultrasunete?",
+          "two": "Când ar trebui să solicit imagistică cu substanță de contrast versus fără contrast?",
+          "three": "Cum poate fi minimizată doza de radiații fără a compromite valoarea diagnostică?",
+          "four": "Ce modalități sunt cele mai bune pentru detectarea patologiei țesuturilor moi versus cea a oaselor?",
+          "five": "Care sunt semnele cheie de avertizare ale unui atac de cord versus anxietate?",
+          "six": "Cum decid între antibiotice și antivirale pentru o infecție?",
+          "seven": "Ce schimbări ale stilului de viață reduc cel mai eficient riscul de diabet de tip 2?",
+          "eight": "Când este intervenția chirurgicală opțiunea preferată în locul terapiei medicale?",
+          "nine": "Cum pot diferenția clinic între pneumonia bacteriană și cea virală?",
+          "ten": "Care sunt cele mai recente ghiduri pentru gestionarea hipertensiunii?",
+          "eleven": "Cum se prezintă pacienții pediatrici diferit față de adulți în urgențe?",
+          "twelve": "Care sunt strategiile sigure de gestionare a durerii pentru afecțiunile cronice?",
+          "thirteen": "Ce vaccinuri sunt cele mai critice pentru adulți, dincolo de imunizările din copilărie?",
+          "fourteen": "Care sunt cele mai bune practici pentru prevenirea infecțiilor dobândite în spital?",
+          "fifteen": "Cum interpretez valorile comune de laborator, cum ar fi hemoleucograma completă (CBC) și electroliții, în context?"
         }
       }
     }
@@ -468,6 +470,7 @@
     "scanLimitReached": "Optimizăm calitatea scanării pentru dumneavoastră! Veți putea scana din nou în aproximativ {{hours}} ore și {{minutes}} minute. Aveți întrebări despre vreun subiect medical? Întrebați asistentul nostru de chat în timp ce așteptați!",
     "mixedMediaNotAllowed": "Încărcările trebuie să conțină doar imagini sau doar videoclipuri, nu o combinație a ambelor.",
     "multipleVideosNotAllowed": "Pentru o mai bună acuratețe, vă rugăm să încărcați câte un singur videoclip pe rând.",
-    "mediaFilesUploadFiles": "A apărut o eroare la încărcarea fișierelor media. Vă rugăm să încercați din nou."
+    "mediaFilesUploadFiles": "A apărut o eroare la încărcarea fișierelor media. Vă rugăm să încercați din nou.",
+    "chatAndMediaFilesLimit": "Stimate utilizator, trebuie să vă actualizați planul pentru a beneficia de chat-uri nelimitate, scanări nelimitate, analiză multi-imagini și multe altele. 🔓"
   }
 }

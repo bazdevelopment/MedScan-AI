@@ -80,7 +80,7 @@ const ParallaxScrollView = ({
         onMomentumScrollEnd={onMomentumScrollEnd}
         renderHeader={() => (
           <View style={{ height: scrollHeight }}>
-            <StatusBar hidden />
+            {/* <StatusBar hidden /> */}
             {cloneElement(ForegroundComponent, { scrollValue })}
           </View>
         )}

@@ -27,7 +27,7 @@ export const useGetOfferings = createQuery<PurchasesOffering | null, Error>({
   },
 });
 
-// Query to fetch customer info
+// Query to fetch customer infox
 export const useGetCustomerInfo = createQuery<CustomerInfo | null, Error>({
   queryKey: ['subscription-customerInfo'],
   fetcher: async () => {

@@ -31,6 +31,7 @@ import { type INotificationItem } from '../notifications/notification-item/notif
 import { SnakeLine, SnakeLineRotated } from '../snake-line';
 import Toast from '../toast';
 import { type IHomeForeground } from './home-forground.interface';
+import MedicalDisclaimerButton from '../medical-disclaimer-button';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { colorScheme } = useColorScheme();
@@ -65,7 +66,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
       return Toast.showCustomToast(
         <CustomAlert
           title={translate('general.attention')}
-          subtitle={translate('home.homeForeground.maxNumberOfScans')}
+          subtitle={translate('alerts.chatAndMediaFilesLimit')}
           buttons={[
             {
               label: translate('components.UpgradeBanner.heading'),
@@ -103,7 +104,9 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
   }, [scrollValue]);
 
   return (
-    <View className="h-[330px] rounded-b-[50px] bg-primary-900 pt-[20px]">
+    <View
+      className={`h-[320px] rounded-b-[50px] bg-primary-900 ${DEVICE_TYPE.IOS ? 'pt-[20px]' : 'pt-[5px]'}`}
+    >
       {DEVICE_TYPE.IOS && (
         <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
       )}
@@ -114,7 +117,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
       <SnakeLineRotated className=" absolute right-[-10] top-[-20]" />
 
       <Animated.View style={foregroundWrapperAnimatedStyle}>
-        <View className="mb-2 mt-8 flex-row items-center justify-between px-8">
+        <View className="mt-8 flex-row items-center justify-between px-8">
           <Branding />
           <TouchableOpacity onPress={() => router.navigate('/notifications')}>
             <IconBadge
@@ -124,9 +127,10 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
             />
           </TouchableOpacity>
         </View>
+        <MedicalDisclaimerButton />
         <CardWrapper
           isEntirelyClickable
-          className="mr-12 mt-4"
+          className="mr-12 mt-2"
           onPress={() => router.navigate('/profile')}
         >
           <View className="ml-6 flex-row items-center">
@@ -150,7 +154,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           </View>
         </CardWrapper>
 
-        <View className="absolute top-[190px] w-[85%] flex-col items-center self-center overflow-hidden rounded-[40px] border-[3px] border-primary-600 bg-primary-900  p-[20px]  dark:bg-charcoal-800">
+        <View className="absolute top-[200px] w-[85%] flex-col items-center self-center overflow-hidden rounded-[40px] border-[3px] border-primary-600 bg-primary-900  p-[20px]  dark:bg-charcoal-800">
           <SnakeLine
             className="absolute bottom-[-20] left-[-60]"
             color={isDark ? colors.charcoal[600] : colors.primary[700]}
@@ -172,7 +176,7 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
           <Text className="text-center font-bold-nunito text-xl text-white">
             {translate('home.homeForeground.heading')}
           </Text>
-          <Text className="mt-2 text-center text-sm text-white">
+          <Text className="mt-2 text-center font-semibold-nunito text-sm text-white">
             {translate('home.homeForeground.subHeading')}
           </Text>
           <Button

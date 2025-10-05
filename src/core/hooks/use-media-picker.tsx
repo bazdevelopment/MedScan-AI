@@ -23,6 +23,8 @@ import { getImageExtension } from '../utilities/get-image-extension';
 import { getVideoDuration } from '../utilities/get-video-duration';
 import { isVideoDurationLong } from '../utilities/is-video-duration-long';
 import { wait } from '../utilities/wait';
+import { useUser } from '@/api/user/user.hooks';
+import { useTranslation } from 'react-i18next';
 
 interface IMediaPicker {
   onUploadFinished: (data: ICollectedData) => void;
@@ -30,6 +32,11 @@ interface IMediaPicker {
 
 export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
   const [file, setFile] = useState('');
+
+  const {
+    i18n: { language },
+  } = useTranslation();
+  const { data: userInfo } = useUser(language);
 
   const handleLoadFile = (file: string) => {
     setFile(file);
@@ -66,7 +73,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         allowsEditing: false, // Disable editing for multiple selection
         quality: 0.9, //!if you use quality=1 the image size will be bigger and the risk is to exceed the AI limit (5MB currently)
         base64: false,
-        selectionLimit: 5,
+        selectionLimit: userInfo?.isFreeTrialOngoing ? 1 : 6,
       });
 
       // Check if the user didn't cancel the action and assets are available
@@ -304,7 +311,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Launch the document picker for selecting files
       const result = await DocumentPicker.getDocumentAsync({
         type: ['image/*', 'video/*'], // Accepts only images and videos,
-        multiple: true,
+        multiple: userInfo?.isFreeTrialOngoing ? false : true,
       });
 
       // Check if the user canceled the action or if no assets are available

@@ -66,7 +66,7 @@ function Slot({
       className={`h-[56px] w-[40px] items-center justify-center rounded-xl  bg-white dark:bg-blackEerie ${isActive || isLoading ? 'border-[3px] border-primary-900' : 'border border-charcoal-200 dark:border-charcoal-600'} ${isError && 'border-[3px]  border-red-400 dark:border-red-400'}`}
     >
       {!!char && (
-        <Text className="font-primary-nunito text-base text-gray-900">
+        <Text className="font-medium-nunito text-base text-gray-900">
           {char}
         </Text>
       )}

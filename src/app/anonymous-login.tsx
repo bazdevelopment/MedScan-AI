@@ -12,8 +12,9 @@ import { SnakeLine, SnakeLineRotated } from '@/components/snake-line';
 import { DEVICE_TYPE, translate, useSelectedLanguage } from '@/core';
 import { useStoreUserId } from '@/core/hooks/use-store-user-id';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
-import { Button, colors, FocusAwareStatusBar, Input, Text, View } from '@/ui';
+import { Button, colors, Input, Text, View } from '@/ui';
 import { UserIcon } from '@/ui/assets/icons';
+import { ArrowRightSharp } from '@/ui/assets/icons/arrow-right-sharp';
 
 export default function AnonymousLogin() {
   const [username, setUsername] = useState('');
@@ -36,7 +37,7 @@ export default function AnonymousLogin() {
 
   return (
     <>
-      <FocusAwareStatusBar hidden />
+      {/* <FocusAwareStatusBar hidden /> */}
       <KeyboardStickyView
         className="flex-1"
         offset={{
@@ -57,7 +58,7 @@ export default function AnonymousLogin() {
           keyboardShouldPersistTaps="handled"
         >
           <View
-            className={`flex-1 bg-primary-900 px-6 pt-20 dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'} ${isMediumDevice && 'pt-[20%]'}`}
+            className={`flex-1 bg-primary-900 px-6 pt-16 dark:bg-blackEerie ${isVerySmallDevice && 'pt-[10%]'} ${isMediumDevice && 'pt-[20%]'}`}
           >
             <SnakeLine
               color={isDark ? colors.charcoal[600] : colors.primary[600]}
@@ -88,18 +89,18 @@ export default function AnonymousLogin() {
 
             <Text
               testID="form-title"
-              className={`mt-14 font-bold-nunito text-[32px] text-white ${isVerySmallDevice && 'mt-4'}`}
+              className={`mt-6 font-bold-nunito text-[32px] text-white ${isVerySmallDevice && 'mt-4'}`}
             >
               {translate('rootLayout.screens.namePreferenceScreen.heading')}
             </Text>
 
-            <Text className="my-4 text-xl text-white">
+            <Text className="my-4 text-lg font-semibold-nunito text-white">
               {translate(
                 'rootLayout.screens.namePreferenceScreen.preferredNameQuestion',
               )}
             </Text>
 
-            <View className="mt-10 rounded-3xl bg-white p-6 dark:bg-blackBeauty">
+            <View className="mt-4 rounded-3xl bg-white p-6 dark:bg-blackBeauty">
               <Input
                 testID="username"
                 label={translate('components.Input.labels.nickname')}
@@ -112,9 +113,10 @@ export default function AnonymousLogin() {
                 autoCapitalize="sentences"
                 keyboardType="default"
                 autoComplete={undefined}
+                autoFocus
                 autoCorrect={false}
                 // autoFocus
-                className="h-16 flex-1 rounded-xl bg-white px-3.5 py-5 font-primary-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white"
+                className="h-16 flex-1 rounded-xl bg-white px-3.5 py-5 font-medium-nunito dark:border-neutral-700 dark:bg-charcoal-800 dark:text-white"
                 icon={<UserIcon top={3} />}
               />
 
@@ -150,7 +152,8 @@ export default function AnonymousLogin() {
                 variant="default"
                 className="mt-6 h-[55px] w-full rounded-xl border-2 border-primary-900 bg-primary-900 pl-5 dark:bg-primary-900"
                 textClassName="text-lg text-center text-white dark:text-white"
-                iconPosition="left"
+                iconPosition="right"
+                icon={<ArrowRightSharp color={colors.white} />}
                 onPress={() => {
                   onCreateAnonymousAccount({
                     username,

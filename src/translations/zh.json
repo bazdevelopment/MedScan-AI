@@ -117,13 +117,15 @@
         "backToLogin": "返回登录"
       },
       "namePreferenceScreen": {
-        "heading": "让我们个性化一下！",
-        "preferredNameQuestion": "我们该如何称呼您？",
+        "heading": "安全、可靠、便捷的访问！",
+        "preferredNameQuestion": "选择一个有趣的昵称来保持匿名 — 您的隐私对我们至关重要",
         "placeholderPreferredName": "例如：酷队长、蜂后、或者就叫小明！"
       },
       "freeTrialPreview": {
         "heading": "享受您的免费试用！🎉",
-        "subheading": "在免费试用期间体验这些精彩功能"
+        "subheading": "在免费试用期间体验这些精彩功能",
+        "review": "医疗扫描分析为我提供了对图像的宝贵见解，而且聊天支持服务非常有帮助。",
+        "reviewTrust": "📈 受到 4,512+ 用户的信赖"
       },
       "scanInterpretation": {
         "title": "分析结果",
@@ -136,8 +138,8 @@
           "title": "立即解锁高级功能！",
           "firstOffering": "使用所有高级功能",
           "secondOffering": "无广告体验",
-          "thirdOffering": "无限医疗扫描",
-          "fourthOffering": "与24/7 AI助手的无限聊天"
+          "thirdOffering": "无限次扫描 + 多图像医疗报告",
+          "fourthOffering": "与 24/7 全天候医疗 AI 助理无限次聊天"
         }
       },
       "paywallUpgradeScreen": {
@@ -162,7 +164,7 @@
       },
       "newAppVersionScreen": {
         "heading": "MedScan AI 有新版本可用",
-        "subheading": "请更新到最新版本以继续使用应用",
+        "subheading": "更新到最新版本，继续享用所有应用功能 — 只需 5 秒钟！",
         "action": "立即获取！"
       },
       "rateAppScreen": {
@@ -237,21 +239,21 @@
       },
       "chatScreen": {
         "randomQuestions": {
-          "one": "CT、MRI 和超声有什么区别？🩻",
-          "two": "病人摆位如何影响图像质量？🛋️",
-          "three": "什么时候应选择增强扫描而不是非增强扫描？💉",
-          "four": "如何在不影响诊断价值的情况下尽量减少辐射剂量？☢️",
-          "five": "层厚在 CT 图像分辨率中起什么作用？📐",
-          "six": "如何正确校准和维护影像设备？⚙️",
-          "seven": "哪些成像方式最适合检测软组织与骨病变？🦴",
-          "eight": "什么时候 PET-CT 优于单独的 CT 或 MRI？🔬",
-          "nine": "如何确保影像学测量的可重复性？📊",
-          "ten": "使用和监测对比剂的最佳实践是什么？🧪",
-          "eleven": "如何为临床问题选择合适的 MRI 序列？🧠",
-          "twelve": "为什么在儿科和创伤患者成像中减少运动非常重要？👶",
-          "thirteen": "如何在 MRI 和 CT 扫描中减少伪影？🌐",
-          "fourteen": "DICOM 图像的正确存储和归档方法是什么？💾",
-          "fifteen": "哪些参数能确保影像学图像达到出版质量？📸"
+          "one": "CT、MRI 和超声波之间有什么区别？",
+          "two": "何时应选择增强造影成像而非非造影成像？",
+          "three": "如何在不影响诊断价值的情况下最大限度地减少辐射剂量？",
+          "four": "哪种模式最适合检测软组织病理学，哪种最适合检测骨骼病理学？",
+          "five": "心脏病发作和焦虑的关键警告信号是什么？",
+          "six": "如何决定感染是使用抗生素还是抗病毒药物？",
+          "seven": "哪些生活方式改变能最有效地降低患 2 型糖尿病的风险？",
+          "eight": "何时手术是优于药物治疗的首选方案？",
+          "nine": "在临床上如何区分细菌性肺炎和病毒性肺炎？",
+          "ten": "管理高血压的最新指南是什么？",
+          "eleven": "与成人相比，儿科患者在紧急情况下表现有何不同？",
+          "twelve": "慢性病有哪些安全的疼痛管理策略？",
+          "thirteen": "除儿童免疫接种外，哪些疫苗对成人最关键？",
+          "fourteen": "预防医院获得性感染的最佳实践是什么？",
+          "fifteen": "如何结合具体情况解读常见的实验室值，如全血细胞计数 (CBC) 和电解质？"
         }
       }
     }
@@ -468,6 +470,7 @@
     "scanLimitReached": "我们正在为您优化扫描质量！大约{{hours}}小时{{minutes}}分钟后您将可以再次扫描。有任何关于医学主题的问题吗？在等待期间可以咨询我们的聊天助手！",
     "mixedMediaNotAllowed": "上传的内容必须仅包含图片或仅包含视频，不能两者混合。",
     "multipleVideosNotAllowed": "为提高准确性，请一次只上传一个视频。",
-    "mediaFilesUploadFiles": "上传您的媒体文件时出错。请重试。"
+    "mediaFilesUploadFiles": "上传您的媒体文件时出错。请重试。",
+    "chatAndMediaFilesLimit": "尊敬的用户，您需要升级您的套餐才能享受无限次聊天、无限次扫描、多图像分析等更多权益。 🔓"
   }
 }

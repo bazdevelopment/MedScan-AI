@@ -20,16 +20,16 @@ interface RatingResult {
 export const requestInAppRating = async (): Promise<RatingResult> => {
   try {
     // Check if we should request rating
-    const { canRequest, reason } = shouldRequestInAppRating();
+    // const { canRequest, reason } = shouldRequestInAppRating();
 
-    if (!canRequest) {
-      console.log(`Skipping rating request: ${reason}`);
-      return {
-        success: true,
-        skipped: true,
-        reason: reason,
-      };
-    }
+    // if (!canRequest) {
+    //   console.log(`Skipping rating request: ${reason}`);
+    //   return {
+    //     success: true,
+    //     skipped: true,
+    //     reason: reason,
+    //   };
+    // }
 
     // Check if store review is available on this device
     const isAvailable = await StoreReview.isAvailableAsync();
@@ -41,18 +41,18 @@ export const requestInAppRating = async (): Promise<RatingResult> => {
 
     // Check if device supports native rating dialog
     const hasAction = await StoreReview.hasAction();
-
+    console.log('hasAction', hasAction);
     if (hasAction) {
       // Show native rating dialog (preferred method)
       await StoreReview.requestReview();
       // Automatically mark as rated after showing the dialog
-      markUserHasRated();
+      // markUserHasRated();
       return { success: true, method: 'native_dialog' };
     } else {
       // Fallback: redirect to store page
       await StoreReview.requestReview();
       // Automatically mark as rated after redirect
-      markUserHasRated();
+      // markUserHasRated();
       return { success: true, method: 'store_redirect' };
     }
   } catch (error) {

@@ -7,6 +7,9 @@ import LottieView from 'lottie-react-native';
 import { useColorScheme } from 'nativewind';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BlurView } from '@react-native-community/blur';
+import { LockerIcon } from '@/ui/assets/icons/locker';
+
 import {
   ActivityIndicator,
   Animated,
@@ -14,6 +17,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   ScrollView,
+  StyleSheet,
   TextInput,
   TouchableOpacity,
   View,
@@ -55,6 +59,11 @@ import CustomAlert from '@/components/custom-alert';
 import Toast from '@/components/toast';
 import { AI_ANALYSIS_LANGUAGE_SELECTION } from '@/constants/language';
 import { getStorageItem } from '@/core/storage';
+import {
+  BLURRING_CONTENT_CONVERSATIONS_LIMIT,
+  MAX_CONVERSATIONS_ALLOWED_FREE_TRIAL,
+} from '@/constants/limits';
+import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 
 type MessageType = {
   role: string;
@@ -81,18 +90,88 @@ const RANDOM_QUESTIONS = [
   translate('rootLayout.screens.chatScreen.randomQuestions.fifteen'),
 ];
 
+const BlurredMessageOverlay = ({
+  onUnlock,
+  isDark,
+}: {
+  onUnlock: () => void;
+  isDark: boolean;
+}) => {
+  const pulseAnim = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    // Gentle pulse animation
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, {
+          toValue: 1.08,
+          duration: 1100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulseAnim, {
+          toValue: 1,
+          duration: 1100,
+          useNativeDriver: true,
+        }),
+      ]),
+    ).start();
+  }, []);
+
+  return (
+    <TouchableOpacity
+      className="absolute inset-0 top-[30%] items-center justify-center rounded-2xl"
+      onPress={onUnlock}
+      activeOpacity={1}
+    >
+      {DEVICE_TYPE.IOS ? (
+        <BlurView
+          blurAmount={2}
+          blurType={isDark ? 'dark' : 'light'}
+          style={[StyleSheet.absoluteFill]}
+        />
+      ) : (
+        <View className="absolute inset-0   bg-slate-100/90 dark:bg-blackBeauty/95" />
+      )}
+      <TouchableOpacity
+        onPress={onUnlock}
+        className="items-center justify-center"
+        activeOpacity={0.7}
+      >
+        <View className="rounded-full border-2 border-charcoal-300 p-[3px] dark:border-charcoal-500 dark:bg-charcoal-800">
+          <Animated.View
+            style={{
+              transform: [{ scale: pulseAnim }],
+            }}
+            className="border-1 items-center justify-center rounded-full border-charcoal-700 bg-[#2196F3] p-4 shadow-lg"
+          >
+            <LockerIcon width={22} height={22} fill={colors.white} />
+          </Animated.View>
+        </View>
+
+        <Text className="mt-2 rounded-full bg-white p-2 text-center font-bold-nunito text-base text-gray-800 dark:bg-blackEerie dark:text-white">
+          {translate('general.unlockNow')} 🔓
+        </Text>
+      </TouchableOpacity>
+    </TouchableOpacity>
+  );
+};
+
 export const ChatBubble = ({
   message,
   isUser,
   onRetrySendMessage,
   speak,
   isSpeaking,
+  shouldBlur = false,
+  onUnlock,
 }: {
   message: MessageType;
   isUser: boolean;
   onRetrySendMessage: () => void;
   speak: (text: string) => void;
   isSpeaking: boolean;
+  shouldBlur?: boolean;
+  onUnlock?: () => void;
 }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const { colorScheme } = useColorScheme();
@@ -129,7 +208,7 @@ export const ChatBubble = ({
           ],
         }}
         className={twMerge(
-          'py-3 my-1 rounded-2xl flex-row items-end',
+          'py-3 my-1 rounded-2xl flex-row items-end relative',
           isUser
             ? 'px-4 bg-primary-900 dark:bg-primary-900 self-end rounded-tr-none'
             : 'pr-1 bg-slate-100 dark:bg-black self-start rounded-tl-none mr-[30]',
@@ -155,6 +234,10 @@ export const ChatBubble = ({
 
         {/* </Text> */}
         {message.isPending && !isUser && <TypingIndicator />}
+
+        {shouldBlur && !isUser && onUnlock && (
+          <BlurredMessageOverlay onUnlock={onUnlock} isDark={isDark} />
+        )}
         {/* {isUser && (
           <Image
             source={require('../ui/assets/images/avatar.png')}
@@ -174,59 +257,65 @@ export const ChatBubble = ({
           ))}
         </View>
       )}
-      <View className="item-center mt-1 flex-row gap-4">
-        {!isUser && (
-          <TouchableOpacity
-            className="rounded-full p-1"
-            onPress={() => copyToClipboard(message.content)}
-          >
-            {!!copiedText ? (
-              <CopiedIcon width={20} height={20} color={colors.primary[900]} />
-            ) : (
-              <CopyIcon width={20} height={20} color={colors.primary[900]} />
-            )}
-          </TouchableOpacity>
-        )}
-
-        {!isUser && !!speak && (
-          <View className="h-9">
-            {isSpeaking ? (
-              <TouchableOpacity onPress={() => speak(message.content)}>
-                <StopIcon
-                  width={22}
-                  height={22}
-                  top={3}
+      {!shouldBlur && (
+        <View className="item-center mt-1 flex-row gap-4">
+          {!isUser && (
+            <TouchableOpacity
+              className="rounded-full p-1"
+              onPress={() => copyToClipboard(message.content)}
+            >
+              {!!copiedText ? (
+                <CopiedIcon
+                  width={20}
+                  height={20}
                   color={colors.primary[900]}
                 />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity onPress={() => speak(message.content)}>
-                <SoundOn width={20} height={20} top={3} />
-              </TouchableOpacity>
-            )}
-          </View>
-        )}
-        {isSpeaking && !isUser && (
-          <LottieView
-            source={require('assets/lottie/speaking-animation.json')}
-            autoPlay
-            loop
-            style={{ width: 30, height: 30 }}
-          />
-        )}
+              ) : (
+                <CopyIcon width={20} height={20} color={colors.primary[900]} />
+              )}
+            </TouchableOpacity>
+          )}
 
-        {message.isError && (
-          <TouchableOpacity
-            className="ml-2 flex-1 flex-row justify-end  gap-1"
-            onPress={onRetrySendMessage}
-          >
-            <Text className="mt-1 text-xs text-red-500">
-              {translate('general.tryAgain')}
-            </Text>
-            <Ionicons name="refresh-circle" size={24} color="#EF4444" />
-          </TouchableOpacity>
-        )}
-      </View>
+          {!isUser && !!speak && (
+            <View className="h-9">
+              {isSpeaking ? (
+                <TouchableOpacity onPress={() => speak(message.content)}>
+                  <StopIcon
+                    width={22}
+                    height={22}
+                    top={3}
+                    color={colors.primary[900]}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity onPress={() => speak(message.content)}>
+                  <SoundOn width={20} height={20} top={3} />
+                </TouchableOpacity>
+              )}
+            </View>
+          )}
+          {isSpeaking && !isUser && (
+            <LottieView
+              source={require('assets/lottie/speaking-animation.json')}
+              autoPlay
+              loop
+              style={{ width: 30, height: 30 }}
+            />
+          )}
+
+          {message.isError && (
+            <TouchableOpacity
+              className="ml-2 flex-1 flex-row justify-end  gap-1"
+              onPress={onRetrySendMessage}
+            >
+              <Text className="mt-1 text-xs text-red-500">
+                {translate('general.tryAgain')}
+              </Text>
+              <Ionicons name="refresh-circle" size={24} color="#EF4444" />
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
     </>
   );
 };
@@ -267,7 +356,6 @@ const ChatScreen = () => {
   const selectedLanguage = languageAIResponsesLocally || appLanguage;
   const flashListRef = useRef<FlashList<MessageType>>(null);
   const [randomQuestions, setRandomQuestions] = useState<string[]>([]);
-
   const {
     speak,
     stop: stopSpeaking,
@@ -287,7 +375,8 @@ const ChatScreen = () => {
     conversationId as string,
   );
 
-  const { data } = useAllUserConversations();
+  const { data, isPending: isFetchingAllConversationsPending } =
+    useAllUserConversations();
   const conversationsCount = data?.count || 0;
 
   const { sendMessage, isSending } = useConversation(conversationId as string);
@@ -381,6 +470,9 @@ const ChatScreen = () => {
     }
   };
 
+  const handleUnlockMessage = () => {
+    router.navigate('/paywall-new');
+  };
   // Combine conversation messages and pending messages
   interface ConversationMessage {
     role: string;
@@ -533,7 +625,7 @@ const ChatScreen = () => {
                   onSelect={(question) => {
                     if (
                       userInfo.isFreeTrialOngoing &&
-                      conversationsCount >= 1
+                      conversationsCount >= MAX_CONVERSATIONS_ALLOWED_FREE_TRIAL
                     ) {
                       /**
                        * isFirstTime is used to check if the user installs the app for the first time
@@ -576,21 +668,34 @@ const ChatScreen = () => {
           <FlashList
             ref={flashListRef}
             data={messages}
-            extraData={isSpeaking}
+            extraData={[
+              isSpeaking,
+              userInfo?.isFreeTrialOngoing,
+              conversationsCount,
+            ]} // Add conversationsCount
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={{
               padding: 16,
               paddingBottom: 8,
             }}
-            renderItem={({ item, index }) => (
-              <ChatBubble
-                message={item}
-                isUser={item.role === 'user'}
-                onRetrySendMessage={() => handleRetryMessage(item)}
-                speak={(text) => handleSpeak(index.toString(), text)}
-                isSpeaking={currentlySpeakingId === index.toString()}
-              />
-            )}
+            renderItem={({ item, index }) => {
+              const isAssistantMessage = item.role !== 'user';
+              const shouldBlurMessage =
+                userInfo?.isFreeTrialOngoing &&
+                conversationsCount >= BLURRING_CONTENT_CONVERSATIONS_LIMIT &&
+                isAssistantMessage;
+              return (
+                <ChatBubble
+                  message={item}
+                  isUser={item.role === 'user'}
+                  onRetrySendMessage={() => handleRetryMessage(item)}
+                  speak={(text) => handleSpeak(index.toString(), text)}
+                  isSpeaking={currentlySpeakingId === index.toString()}
+                  shouldBlur={shouldBlurMessage}
+                  onUnlock={handleUnlockMessage}
+                />
+              );
+            }}
             estimatedItemSize={100}
             ListFooterComponent={isSending ? <TypingIndicator /> : null}
           />
@@ -609,7 +714,7 @@ const ChatScreen = () => {
                   onPress={() => {
                     if (
                       userInfo.isFreeTrialOngoing &&
-                      conversationsCount >= 1
+                      conversationsCount >= MAX_CONVERSATIONS_ALLOWED_FREE_TRIAL
                     ) {
                       /**
                        * isFirstTime is used to check if the user installs the app for the first time
@@ -660,7 +765,10 @@ const ChatScreen = () => {
               />
               <TouchableOpacity
                 onPress={() => {
-                  if (userInfo.isFreeTrialOngoing && conversationsCount >= 1) {
+                  if (
+                    userInfo.isFreeTrialOngoing &&
+                    conversationsCount >= MAX_CONVERSATIONS_ALLOWED_FREE_TRIAL
+                  ) {
                     /**
                      * isFirstTime is used to check if the user installs the app for the first time
                      * usually this variable is set to false after first onboarding, but if the first onboarding is not shown again after reinstallation, the thi variable will remain to true
@@ -697,7 +805,11 @@ const ChatScreen = () => {
 
                   handleSendMessage(userMessage);
                 }}
-                disabled={isSending || !userMessage.trim()}
+                disabled={
+                  isSending ||
+                  !userMessage.trim() ||
+                  isFetchingAllConversationsPending
+                }
                 className={twMerge(
                   'ml-2 p-2 rounded-full',
                   userMessage.trim()

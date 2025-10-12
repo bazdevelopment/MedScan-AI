@@ -32,6 +32,7 @@ import { SnakeLine, SnakeLineRotated } from '../snake-line';
 import Toast from '../toast';
 import { type IHomeForeground } from './home-forground.interface';
 import MedicalDisclaimerButton from '../medical-disclaimer-button';
+import { MAX_SCANS_ALLOWED_FREE_TRIAL } from '@/constants/limits';
 
 export const Foreground = ({ scrollValue }: IHomeForeground) => {
   const { colorScheme } = useColorScheme();
@@ -39,7 +40,6 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
 
   const isDark = colorScheme === 'dark';
   const { language } = useSelectedLanguage();
-
   const { data: userInfo } = useUser(language);
 
   const { data: userNotifications } = useFetchUserNotifications({
@@ -59,7 +59,10 @@ export const Foreground = ({ scrollValue }: IHomeForeground) => {
      * thats why we need to set it to false based on an action instead of creating another useEffect in layout
      *  */
     isFirstTime && setIsFirstTime(false);
-    if (userInfo?.scansRemaining <= 0 && userInfo.isFreeTrialOngoing) {
+    if (
+      userInfo.isFreeTrialOngoing &&
+      userInfo?.completedScans >= MAX_SCANS_ALLOWED_FREE_TRIAL
+    ) {
       logEvent(
         `Alert informing user - ${userInfo.userId} that there are no scans available is displayed`,
       );

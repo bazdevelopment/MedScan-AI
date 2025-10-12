@@ -107,13 +107,7 @@ export default function Home() {
 
   //! make sure this functionality is tested properly and also add protection when there is no internet connection
   useCustomScrollToTop(scrollViewRef);
-
   /** Ask for rating after 5,10 scans */
-  useEffect(() => {
-    if (userInfo?.completedScans === 10) {
-      requestAppRatingWithDelay(2000);
-    }
-  }, [userInfo?.completedScans]);
 
   useBackHandler(() => (pathname === '/' ? true : false)); // Prevent default behavior and navigating back tot the onboarding
 

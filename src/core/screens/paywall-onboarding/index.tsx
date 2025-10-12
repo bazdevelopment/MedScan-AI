@@ -96,6 +96,7 @@ const PaywallOnboarding = ({
           onUpdateUser,
           logEvent,
           setIsFirstTime,
+          allowAppAccess,
         });
 
         return;
@@ -286,7 +287,9 @@ export const updateUserAndNavigate = async ({
   onUpdateUser,
   logEvent,
   setIsFirstTime,
+  allowAppAccess,
 }: {
+  allowAppAccess: string;
   userId: string;
   language: string;
   collectedData: IOnboardingCollectedData;
@@ -314,8 +317,15 @@ export const updateUserAndNavigate = async ({
       queryClient.setQueryData(['user-info'], (oldData: IUserInfo) => ({
         ...oldData,
         isOnboarded: true,
+        isFreeTrialOngoing: false,
       }));
-      router.navigate('/(tabs)');
+      queryClient.invalidateQueries({ queryKey: ['user-info'] });
+
+      if (allowAppAccess === 'false') {
+        router.back();
+      } else {
+        router.navigate('/(tabs)');
+      }
       setIsFirstTime(false);
       logEvent(
         `User ${userId} has been onboarded successfully and selected ${collectedData.selectedPackage} plan and is redirected to home screen`,

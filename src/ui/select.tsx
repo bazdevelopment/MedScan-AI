@@ -75,9 +75,8 @@ function keyExtractor(item: OptionType) {
 
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({ options, onSelect, value, isPending, testID, heading }, ref) => {
-    const height =
-      options.length > 3 ? options.length * 70 : options.length * 70 + 150;
-    const snapPoints = React.useMemo(() => [height], [height]);
+    const height = '90%';
+    const snapPoints = React.useMemo(() => [height, '90%'], [height]);
     const { colorScheme } = useColorScheme();
     const isDark = colorScheme === 'dark';
 

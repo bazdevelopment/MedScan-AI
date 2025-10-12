@@ -73,7 +73,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         allowsEditing: false, // Disable editing for multiple selection
         quality: 0.9, //!if you use quality=1 the image size will be bigger and the risk is to exceed the AI limit (5MB currently)
         base64: false,
-        selectionLimit: userInfo?.isFreeTrialOngoing ? 1 : 6,
+        selectionLimit: 6,
       });
 
       // Check if the user didn't cancel the action and assets are available
@@ -311,7 +311,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
       // Launch the document picker for selecting files
       const result = await DocumentPicker.getDocumentAsync({
         type: ['image/*', 'video/*'], // Accepts only images and videos,
-        multiple: userInfo?.isFreeTrialOngoing ? false : true,
+        multiple: true,
       });
 
       // Check if the user canceled the action or if no assets are available

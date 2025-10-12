@@ -7,7 +7,7 @@ import { View, ScrollView, SafeAreaView } from 'react-native';
 
 import { translate } from '@/core/i18n';
 import getDeviceSizeCategory from '@/core/utilities/get-device-size-category';
-import { Button, colors, FocusAwareStatusBar, Text } from '@/ui';
+import { Button, colors, Text } from '@/ui';
 import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import PremiumFeaturesOverview from '@/components/premium-features-overivew';
 import FadeInView from '@/components/fade-in-view/fade-in-view';
@@ -63,12 +63,12 @@ const FreeTrialPreview = ({
   const isDark = colorScheme === 'dark';
   const { isVerySmallDevice } = getDeviceSizeCategory();
 
-  useEffect(() => {
-    requestAppRatingWithDelay(500);
-  }, []);
+  // useEffect(() => {
+  //   requestAppRatingWithDelay(500);
+  // }, []);
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 bg-primary-900 dark:bg-black">
       <LinearGradient
         colors={
           isDark
@@ -83,7 +83,7 @@ const FreeTrialPreview = ({
         {/* <FocusAwareStatusBar hidden /> */}
 
         <ScrollView
-          className={`flex-1 px-5 ${DEVICE_TYPE.ANDROID && isVerySmallDevice ? 'pt-[10]' : 'pt-[44]'}`}
+          className={`flex-1 px-5 ${DEVICE_TYPE.ANDROID && 'pt-[42]'}`}
           showsVerticalScrollIndicator={false}
         >
           <Text className="mb-2 text-center font-bold-nunito text-4xl text-white">
@@ -101,7 +101,7 @@ const FreeTrialPreview = ({
         </ScrollView>
         {/* Bottom Navigation */}
         <View
-          className={`bottom-10 px-6 items-center mt-auto flex-row items-end justify-between ${isVerySmallDevice ? 'mb-2' : 'mb-2'}`}
+          className={`mb-8 px-6 items-center mt-auto flex-row items-end justify-between ${isVerySmallDevice ? 'mb-2' : 'mb-2'}`}
         >
           <View className={`${isVerySmallDevice ? 'gap-4' : 'gap-12'}`}>
             <Button

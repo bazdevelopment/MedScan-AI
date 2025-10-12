@@ -17,7 +17,7 @@ export const useConversationHistory = (conversationId: string) => {
   })();
 };
 
-export const useAllUserConversations = (limit: number = 5) => {
+export const useAllUserConversations = (limit: number = 10) => {
   return createQuery({
     queryKey: ['user-conversations'],
     fetcher: () => fetchAllUserConversations({ limit }),
@@ -32,6 +32,9 @@ export const useConversation = (conversationId: string) => {
       // Invalidate the conversation query to refetch the latest messages
       queryClient.invalidateQueries({
         queryKey: ['conversation', conversationId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['user-conversations'],
       });
     },
     onError: (error) => {

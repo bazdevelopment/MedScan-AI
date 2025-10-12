@@ -305,6 +305,7 @@ const PaywallNew = () => {
         onUpdateUser,
         logEvent,
         setIsFirstTime,
+        allowAppAccess,
       });
       requestAppRatingWithDelay(3000);
       DEVICE_TYPE.IOS && router.dismiss();
@@ -352,15 +353,15 @@ const PaywallNew = () => {
           />
 
           {/* Content Container */}
-          <View className="-mt-4 px-6">
+          <View className="-mt-6 px-6">
             {/* Fish Icon */}
-            <View className="mb-12 items-center">
+            <View className="mb-2 items-center">
               {/* <FishIcon /> */}
               <Image
-                source={require('../ui/assets/images/chest-xray.png')}
+                source={require('../ui/assets/images/medical.png')}
                 style={{
-                  width: 150,
-                  height: 100,
+                  width: 120,
+                  height: 120,
                 }}
               />
             </View>
@@ -373,7 +374,7 @@ const PaywallNew = () => {
             </Text>
 
             {/* Features */}
-            <View className="mb-8 w-[90%] items-center justify-center self-center">
+            <View className="mb-4 w-[90%] items-center justify-center self-center">
               {features.map((feature, idx) => (
                 <FeatureRow key={idx} icon="checkmark" text={feature.title} />
               ))}
@@ -414,7 +415,7 @@ const PaywallNew = () => {
             </View>
 
             {/* Free Trial Toggle */}
-            <View className="mb-10 mt-3 flex-row items-center justify-between rounded-2xl bg-gray-100 p-4 dark:bg-charcoal-800">
+            <View className="mb-8 mt-3 flex-row items-center justify-between rounded-2xl bg-gray-100 p-4 dark:bg-charcoal-800">
               <Text className="font-bold-nunito text-lg text-gray-900">
                 {translate(
                   'rootLayout.screens.paywallOnboarding.freeTierOfferings.freeTrialEnabled',

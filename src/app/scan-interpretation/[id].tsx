@@ -1,8 +1,8 @@
 /* eslint-disable max-lines-per-function */
 import { FlashList } from '@shopify/flash-list';
 import dayjs from 'dayjs';
-import { useLocalSearchParams } from 'expo-router';
-import React, { useMemo } from 'react';
+import { router, useLocalSearchParams } from 'expo-router';
+import React from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { Toaster } from 'sonner-native';
 
@@ -15,16 +15,22 @@ import { colors, Text } from '@/ui';
 import { CalendarIcon, DocumentIcon } from '@/ui/assets/icons';
 
 import { ChatBubble } from '../chat-screen';
+import { useUser } from '@/api/user/user.hooks';
 
 const ScanInterpretationDetailsScreen = () => {
   const { id: documentId } = useLocalSearchParams();
   const { language } = useSelectedLanguage();
-
+  const { data: userInfo } = useUser(language);
   const { data, isPending } = useInterpretationById({
     documentId: documentId as string,
     language,
   })();
 
+  const handleUnlockMessage = () => {
+    router.navigate('/paywall-new');
+  };
+
+  const shouldBlurMessage = userInfo?.isFreeTrialOngoing;
   const messages =
     data?.record?.conversationMessages.filter(
       (msg) => !Array.isArray(msg.content),
@@ -164,7 +170,12 @@ const ScanInterpretationDetailsScreen = () => {
               keyExtractor={(item, index) => index.toString()}
               renderItem={({ item }) => {
                 return (
-                  <ChatBubble message={item} isUser={item.role === 'user'} />
+                  <ChatBubble
+                    message={item}
+                    isUser={item.role === 'user'}
+                    shouldBlur={shouldBlurMessage}
+                    onUnlock={handleUnlockMessage}
+                  />
                 );
               }}
               estimatedItemSize={100}

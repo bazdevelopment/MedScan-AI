@@ -19,7 +19,6 @@ import { SUBSCRIPTION_PLANS_PER_PLATFORM } from '@/constants/subscriptions';
 import { DEVICE_TYPE, translate, useIsFirstTime } from '@/core';
 import { useCrashlytics } from '@/core/hooks/use-crashlytics';
 import { updateUserAndNavigate } from '@/core/screens/paywall-onboarding';
-import { requestAppRatingWithDelay } from '@/core/utilities/request-app-review';
 import { Button, CheckboxIcon, colors, Image, Switch, Text } from '@/ui';
 import { CloseIcon } from '@/ui/assets/icons';
 import { CheckIcon } from '@/ui/assets/icons/check';
@@ -307,8 +306,10 @@ const PaywallNew = () => {
         setIsFirstTime,
         allowAppAccess,
       });
-      requestAppRatingWithDelay(3000);
       DEVICE_TYPE.IOS && router.dismiss();
+
+      // !!remove from now asking the review
+      // if (conversationsCount === 0) requestAppRatingWithDelay(3000); // !important display the banner if the used didn't start any conversation, if there is at least one conversation, then the rating will be displayed in the chat screen
     }
   };
 
@@ -337,7 +338,7 @@ const PaywallNew = () => {
                   logEvent,
                   setIsFirstTime,
                 });
-                requestAppRatingWithDelay(3000);
+                // requestAppRatingWithDelay(3000);
                 DEVICE_TYPE.IOS && router.dismiss();
                 return;
               }

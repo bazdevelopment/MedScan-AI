@@ -130,7 +130,7 @@ const BlurredMessageOverlay = ({
           style={[StyleSheet.absoluteFill]}
         />
       ) : (
-        <View className="absolute inset-0   bg-slate-100/90 dark:bg-blackBeauty/95" />
+        <View className="absolute inset-0 bg-slate-100/95 dark:bg-blackBeauty/95" />
       )}
       <TouchableOpacity
         onPress={onUnlock}
@@ -320,6 +320,40 @@ export const ChatBubble = ({
   );
 };
 
+let globalHasRequested = false;
+
+export function useRequestAppRatingOnce({
+  isLoading,
+  isFetchingAllConversationsPending,
+  userInfo,
+  requestAppRatingWithDelay,
+}: {
+  isLoading: boolean;
+  isFetchingAllConversationsPending: boolean;
+  userInfo?: { completedScans?: number };
+  requestAppRatingWithDelay: (delay: number) => void;
+}) {
+  const hasRequestedRef = useRef(globalHasRequested);
+
+  useEffect(() => {
+    if (hasRequestedRef.current || globalHasRequested) return;
+
+    if (
+      !isLoading &&
+      !isFetchingAllConversationsPending &&
+      userInfo?.completedScans === 1
+    ) {
+      hasRequestedRef.current = true;
+      globalHasRequested = true;
+      requestAppRatingWithDelay(1000);
+    }
+  }, [
+    isLoading,
+    isFetchingAllConversationsPending,
+    userInfo?.completedScans,
+    requestAppRatingWithDelay,
+  ]);
+}
 export const TypingIndicator = () => {
   return (
     <LottieView
@@ -378,7 +412,6 @@ const ChatScreen = () => {
   const { data, isPending: isFetchingAllConversationsPending } =
     useAllUserConversations();
   const conversationsCount = data?.count || 0;
-
   const { sendMessage, isSending } = useConversation(conversationId as string);
 
   const handleSpeak = (messageId: string, text: string) => {
@@ -534,6 +567,13 @@ const ChatScreen = () => {
       setRandomQuestions(shuffleArray(RANDOM_QUESTIONS).slice(0, 5));
     }
   }, [conversationMode]);
+
+  useRequestAppRatingOnce({
+    isLoading,
+    isFetchingAllConversationsPending,
+    userInfo,
+    requestAppRatingWithDelay,
+  });
 
   // useEffect(() => {
   //   if (!isLoading && conversationMode === 'IMAGE_SCAN_CONVERSATION') {

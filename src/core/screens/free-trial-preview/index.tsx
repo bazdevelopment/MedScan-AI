@@ -63,9 +63,9 @@ const FreeTrialPreview = ({
   const isDark = colorScheme === 'dark';
   const { isVerySmallDevice } = getDeviceSizeCategory();
 
-  // useEffect(() => {
-  //   requestAppRatingWithDelay(500);
-  // }, []);
+  useEffect(() => {
+    requestAppRatingWithDelay(500);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-primary-900 dark:bg-black">
@@ -83,7 +83,8 @@ const FreeTrialPreview = ({
         {/* <FocusAwareStatusBar hidden /> */}
 
         <ScrollView
-          className={`flex-1 px-5 ${DEVICE_TYPE.ANDROID && 'pt-[42]'}`}
+          className={`px-5 ${DEVICE_TYPE.ANDROID && 'pt-[42]'}`}
+          contentContainerClassName={`${DEVICE_TYPE.ANDROID ? 'pb-20' : ''}`}
           showsVerticalScrollIndicator={false}
         >
           <Text className="mb-2 text-center font-bold-nunito text-4xl text-white">

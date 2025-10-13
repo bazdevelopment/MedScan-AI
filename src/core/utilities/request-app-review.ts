@@ -41,7 +41,6 @@ export const requestInAppRating = async (): Promise<RatingResult> => {
 
     // Check if device supports native rating dialog
     const hasAction = await StoreReview.hasAction();
-    console.log('hasAction', hasAction);
     if (hasAction) {
       // Show native rating dialog (preferred method)
       await StoreReview.requestReview();

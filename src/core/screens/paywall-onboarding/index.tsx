@@ -192,7 +192,7 @@ const PaywallOnboarding = ({
             <Button
               label={translate('general.continue')}
               variant="default"
-              className="mt-6 h-[55px] w-full rounded-full border-2  bg-[#3B82F6] pl-5 active:bg-primary-700 dark:bg-primary-900"
+              className="mt-6 h-[55px] w-full rounded-full border-2 bg-[#3B82F6] pl-5 active:bg-primary-700 dark:bg-primary-900"
               textClassName="text-lg text-center text-white dark:text-white"
               iconPosition="left"
               onPress={handleSubscription}

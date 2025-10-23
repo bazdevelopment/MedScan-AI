@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "Tervetuloa MedScan AI:hin!"
+  },
+  "general": {
+    "back": "Takaisin",
+    "welcome": "Hei",
+    "welcomeBack": "Tervetuloa takaisin!",
+    "welcomeMessage": "Tervetuloa!",
+    "continue": "Jatka",
+    "retry": "Yritä uudelleen",
+    "close": "Sulje",
+    "gallery": "Galleria",
+    "files": "Tiedostot",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "attention": "Huomio!",
+    "new": "Uusi",
+    "yes": "Kyllä",
+    "or": "tai",
+    "typing": "Kirjoittaa...",
+    "online": "Online",
+    "chatbotPlaceholder": "Kysy minulta mitä vain...",
+    "openSettings": "Avaa asetukset",
+    "seeNotifications": "Katso ilmoitukset",
+    "viewProfile": "Näytä profiili",
+    "upgradePlan": "Päivitä suunnitelma",
+    "download": "Lataa",
+    "share": "Jaa",
+    "shareLink": "Jaa linkki",
+    "skip": "Ohita",
+    "next": "Seuraava",
+    "update": "Päivitä",
+    "tryAgain": "Yritä uudelleen",
+    "createdAt": "Luotu",
+    "and": "ja",
+    "saveDiscount": "TALLENNA",
+    "restorePurchase": "Palauta osto",
+    "medicalDisclaimer": "Lääketieteellinen vastuuvapauslauseke",
+    "conversationHistory": "Keskusteluhistoria",
+    "freeTrial": "Ilmainen kokeilu",
+    "free": "ILMAINEN",
+    "completedScans": "Suoritetut skannaukset",
+    "activeSubscription": "Tilaus aktiivinen",
+    "askAssistant": "Kysy tekoälyavustajalta",
+    "then": "sitten",
+    "perWeek": "viikossa",
+    "perYear": "vuodessa",
+    "perMonth": "kuukaudessa",
+    "tryForFree": "Kokeile ilmaiseksi",
+    "unlockNow": "Avaa nyt",
+    "copyText": {
+      "loading": "Kopioidaan...",
+      "copied": "Kopioitu!",
+      "copy": "Kopioi linkki"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Ladataan henkilökohtaista kokemustasi...",
+        "second": "Synkronoidaan järjestelmiä...",
+        "third": "Käsitellään tietojasi...",
+        "fourth": "Melkein valmis, vain hetki..."
+      },
+      "imageScanningLoading": {
+        "first": "Skannataan lääketieteellistä kuvantamistasi, odota...",
+        "second": "Analysoidaan yksityiskohtia, tämä voi kestää hetken...",
+        "third": "Parannetaan tarkkuutta saadaksemme parhaat tulokset...",
+        "fourth": "Melkein valmis, viimeistellään skannausta..."
+      },
+      "loadingChatbot": {
+        "first": "Aria valmistautuu auttamaan sinua...",
+        "second": "Odota! Aria valmistelee vastaustasi...",
+        "third": "Ajatellaan...avustajasi Aria hoitaa asian!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Odota!",
+    "goBackMessage": "Haluatko varmasti palata takaisin?"
+  },
+  "internet": {
+    "noConnectionTitle": "Olet offline-tilassa!",
+    "noConnectionMessage": "Käynnistä matkapuhelinverkko tai yhdistä Wi-Fiin. Tai vain pidetään tauko ja käydään kävelyllä!"
+  },
+  "uploadScan": {
+    "title": "Lataa skannaus",
+    "scanNow": "Skannaa nyt"
+  },
+  "weekDays": {
+    "today": "Tänään",
+    "yesterday": "Eilen"
+  },
+  "auth": {
+    "verifyAuthCode": "Vahvista tunnistautumiskoodi",
+    "verifyAuthCodeButton": "Vahvista koodi",
+    "authCodeHeading": "Tunnistautumiskoodi",
+    "loginViaEmailHeading": "Kirjaudutaan sisään. Anna sähköpostiosoitteesi jatkaaksesi.",
+    "emailAddress": "Sähköposti"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Tervetuloa MedScan AI:hin!",
+        "startButton": "Aloitetaan!",
+        "accountButton": "Minulla on jo tili"
+      },
+      "login": {
+        "agreeingMessage": "Jatkamalla hyväksyt",
+        "termsAndConditions": "Käyttöehdot",
+        "privacyPolicy": "Tietosuojakäytäntö"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Syötä sähköpostitse lähetetty vahvistuskoodi. Huomaa, että koodi vanhenee 5 minuutissa.",
+        "verificationCodeSent": "Olemme lähettäneet vahvistuskoodin osoitteeseen",
+        "verificationCodeMissing": "Etkö saanut koodia?",
+        "resendCode": "Lähetä koodi uudelleen",
+        "backToLogin": "Takaisin kirjautumiseen"
+      },
+      "namePreferenceScreen": {
+        "heading": "Turvallinen, suojattu ja helppo pääsy!",
+        "preferredNameQuestion": "Valitse hauska lempinimi pysyäksesi nimettömänä — yksityisyytesi on meille tärkeää",
+        "placeholderPreferredName": "Esim., Kapteeni Viileä, Kuningatar Mehiläinen, tai vain Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Nauti ilmaisesta kokeilustasi! 🎉",
+        "subheading": "Koe nämä upeat edut ilmaisen kokeilusi aikana",
+        "review": "Lääketieteellinen skannausanalyysi antoi minulle arvokkaita oivalluksia kuvista, ja chat-tuki on erittäin hyödyllinen.",
+        "reviewTrust": "📈 Yli 4 512 käyttäjän luottama"
+      },
+      "scanInterpretation": {
+        "title": "Analyysin tulos",
+        "headerBackTitle": "Raportit"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Ilmainen kokeilu käytössä",
+          "heading": " Rajaton Pääsy",
+          "title": "Avaa Premium-ominaisuudet Tänään!",
+          "firstOffering": "Pääsy kaikkiin Premium-ominaisuuksiin",
+          "secondOffering": "Mainokseton kokemus",
+          "thirdOffering": "Rajattomat skannaukset + usean kuvan lääketieteellinen raportti",
+          "fourthOffering": "Rajattomat keskustelut 24/7 lääketieteellisen tekoälyavustajan kanssa"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Avaa Premium-ominaisuudet Tänään!",
+        "firstOffering": {
+          "title": "Aloita ilmainen kokeilu",
+          "subtitle": "Nauti {{freeScans}} ilmaisesta skannauksesta – ei maksua"
+        },
+        "secondOffering": {
+          "title": "Kuukausisuunnitelma",
+          "subtitle": "{{ price }}/kuukausi"
+        },
+        "thirdOffering": {
+          "title": "Vuosisuunnitelma",
+          "subtitle": "{{ price }} vuodessa"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}} päivän kokeilu",
+          "subtitle": "{{ price }} vuodessa",
+          "plan": "Viikkosuunnitelma"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "MedScan AI:n uusi versio on saatavilla",
+        "subheading": "Päivitä uusimpaan versioon jatkaaksesi kaikkien sovellusominaisuuksien nauttimista — se kestää vain 5 sekuntia!",
+        "action": "Hae se nyt!"
+      },
+      "rateAppScreen": {
+        "heading": "Pidätkö sovelluksesta ja sen tarjoamasta arvosta?",
+        "like": "Kyllä, pidän siitä!",
+        "dislike": "Ei oikeastaan..."
+      },
+      "noInternetScreen": {
+        "heading": "Olet offline-tilassa",
+        "subheading": "Yhteytesi vaikuttaa epävakaalta. Tarkista verkkotilasi"
+      },
+      "notifications": {
+        "title": "Ilmoitukset",
+        "noNotifications": "Ei ilmoituksia toistaiseksi — pysy kuulolla päivityksiä varten!"
+      },
+      "termsOfService": {
+        "title": "Käyttöehdot"
+      },
+      "privacyPolicy": {
+        "title": "Tietosuojakäytäntö"
+      },
+      "share": {
+        "title": "Jaa",
+        "heading": "Jaa MedScan AI-sovellus",
+        "subheading": "Auta muita löytämään tekoälyavusteisen lääketieteellisen kuvantamisanalyysin voiman",
+        "scanMessage": "Skannaa ladataksesi sovelluksen",
+        "shareMessage": "tai jaa suosikkialustasi kautta"
+      },
+      "rate": {
+        "title": "Anna palautetta!"
+      },
+      "profile": {
+        "title": "Profiili",
+        "edit": "Muokkaa profiilia",
+        "placeholderPreferredName": "Esim., Kapteeni Viileä, Kuningatar Mehiläinen, tai vain Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Arvostamme kärsivällisyyttäsi! Tässä on tekoälyraporttisi.",
+        "userInput": "Lähetyksesi",
+        "medicalReport": "Lääketieteellinen raportti",
+        "report": "Tekoälyn luoma lääketieteellinen raportti",
+        "conversationName": "Keskustelun nimi"
+      },
+      "verifyEmail": {
+        "heading": "Vahvista sähköposti"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Aloita analyysi",
+        "mediaFilesUploaded": "Latoit {{totalMediaFiles}} mediatiedostoa"
+      },
+      "disclaimerScreen": {
+        "heading": "Tärkeä lääketieteellinen vastuuvapauslauseke",
+        "subheading": "MedScan AI on suunniteltu radiologia-ammattilaisille, terveydenhuollon asiantuntijoille, lääketieteen opiskelijoille ja harrastajille",
+        "consentAgreement": "Olen lukenut ja hyväksyn vastuuvapauslausekkeen.",
+        "firstConsent": "MedScan AI ei tarjoa terveysmittauksia tai hoitoneuvoja, eikä sitä ole tarkoitettu sellaisiin tarkoituksiin. MedScan AI:n käyttäjien on sovellettava omaa kliinistä harkintaansa ja varmennettava tiedot auktoritatiivisista lähteistä ennen kliinisiä päätöksiä.",
+        "secondConsent": "MedScan AI ei ole diagnostinen työkalu, hoitoalusta tai korvike ammattimaiselle lääketieteelliselle neuvonnalle. Se tarjoaa tekoälyn tuottamia oivalluksia auttaakseen terveydenhuollon ammattilaisia pääsemään käsiksi lääketieteelliseen tietoon ja analysoimaan lääketieteellisiä kuvia ja asiakirjoja. MedScan AI on tekoälyavusteinen informatiivinen ja koulutussovellus, joka on suunniteltu enemmän tukemaan lisensoituja terveydenhuollon ammattilaisia.",
+        "thirdConsent": "MedScan AI ei ole suunniteltu potilaskäyttöön. Se ei tarjoa suoria lääketieteellisiä diagnooseja, hoitosuosituksia tai potilashallintatoimintoja.",
+        "fourthConsent": "MedScan AI:a ei luokitella lääketieteelliseksi laitteeksi, eikä se väitä saaneensa sääntelyhyväksyntää. Se on tarkoitettu koulutus- ja informatiivisiin tarkoituksiin täydentämään ammattitaitoa.",
+        "fifthConsent": "MedScan AI ei kerää, tallenna tai käsittele henkilö- tai potilastietoja. Kaikki käyttäjävuorovaikutukset ovat luottamuksellisia ja rajoittuvat sovelluksen käyttöalaan."
+      },
+      "contactUs": {
+        "heading": "Lähetä meille sähköpostia suoraan, ja tiimimme vastaa sinulle mahdollisimman pian",
+        "customerSupport": "Asiakastuki",
+        "emailAddress": "Sähköpostiosoite"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Mitä kieltä haluaisit tekoälyanalyysiä varten?",
+        "languageSelection": "Valitse kieli tekoälyvasteita varten",
+        "languageSearchCriteria": "Hae kielen, maakoodin tai lipun perusteella",
+        "noLanguageFound": "Kieltä ei löytynyt",
+        "noLanguageFoundSubtitle": "Yritä muokata hakuehtojasi"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Mitkä ovat CT:n, MRI:n ja ultraäänen väliset erot?",
+          "two": "Milloin tulisi tilata kontrastia käyttävä kuvantaminen vs. ilman kontrastia?",
+          "three": "Miten säteilyannosta voidaan vähentää vaarantamatta diagnostista arvoa?",
+          "fourth": "Mitkä menetelmät ovat parhaita pehmytkudoksen vs. luupatologian havaitsemiseen?",
+          "five": "Mitkä ovat tärkeimmät varoitusmerkit sydänkohtauksesta vs. ahdistuksesta?",
+          "six": "Miten päätän antibioottien ja virustenlääkkeiden välillä infektion hoidossa?",
+          "seven": "Mitkä elämäntapamuutokset vähentävät tyypin 2 diabeteksen riskiä tehokkaimmin?",
+          "eight": "Milloin leikkaus on parempi vaihtoehto kuin lääkehoito?",
+          "nine": "Miten erotan bakteeri- ja virusperäisen keuhkokuumeen kliinisesti?",
+          "ten": "Mitkä ovat uusimmat hyperension hoidon suositukset?",
+          "eleven": "Miten lasten potilaat esiintyvät eri tavalla kuin aikuiset hätätilanteissa?",
+          "twelve": "Mitkä ovat turvalliset kivunhallintastrategiat kroonisissa tiloissa?",
+          "thirteen": "Mitkä rokotteet ovat tärkeimpiä aikuisille lastuksen rokotuksen lisäksi?",
+          "fourteen": "Mitkä ovat parhaat käytännöt sairaalainfektioiden ehkäisemiseksi?",
+          "fifteen": "Miten tulkitsen yleisiä laboratorioarvoja kuten verenkuvaa ja elektrolyyttejä kontekstissa?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Odota! Älä poista minua!",
+    "subtitle": "Lähetä sen sijaan palautetta"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "Voit esikatsella PDF-tiedostoa asentamalla PDF-katseluohjelman, kuten Adobe Acrobat Readerin tai Google PDF Viewerin",
+    "conversationTitlePdf": "Keskustelu Arian, tekoälyavustajasi, kanssa"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Kiitos kärsivällisyydestäsi!"
+      },
+      "finalReportHeader": {
+        "message": "Tässä on raportin tulos!"
+      },
+      "uploadFile": {
+        "title": "Lataa lääketieteellinen kuvantamistiedosto",
+        "size": "Maksimi: {{imageLimit}}Mt (kuvat), {{videoLimit}}Mt (videot)",
+        "location": "Valitse galleriasta tai tiedostoista",
+        "fileType": "PNG, JPG, PDF tai MP4",
+        "openCamera": "Avaa kamera & ota kuva",
+        "scanType": "Vain röntgen-, CT-, MRI-, PET- tai muut lääketieteelliset kuvantamistiedostot sallittu"
+      }
+    }
+  },
+  "home": {
+    "tab": "Koti",
+    "homeForeground": {
+      "maxNumberOfScans": "Olet saavuttanut skannausrajan! Päivitä suunnitelmasi saadaksesi rajattomat skannaukset. 🚀",
+      "heading": "Tervetuloa MedScan AI:hin!",
+      "subHeading": "Lataa röntgenkuvia, CT-skannauksia, EKG:ita, MRI:ta, PET-skannauksia, ultraääntä tai muita lääketieteellisiä kuvia tekoälyanalyysiä varten."
+    },
+    "scanCategories": {
+      "heading": "Radiologiakela"
+    },
+    "recentReports": {
+      "heading": "Viimeisimmät keskustelut",
+      "noReports": "Ei keskusteluja näytettäväksi vielä!"
+    }
+  },
+  "reports": {
+    "tab": "Historia",
+    "noReportsAvailable": "Ei keskusteluhistoriaa tälle päivämäärälle",
+    "heading": "Keskusteluhistoria"
+  },
+  "chat": {
+    "tab": "Keskustele"
+  },
+  "settings": {
+    "tab": "Asetukset",
+    "profile": "Profiili",
+    "contactUs": "Ota yhteyttä",
+    "about": "Tietoja",
+    "app_name": "Sovelluksen nimi",
+    "languages": {
+      "english": "Englanti",
+      "mandarin_chinese": "Kiina",
+      "hindi": "Hindi",
+      "spanish_spain": "Espanja (Espanja)",
+      "spanish_mexico": "Espanja (Meksiko)",
+      "arabic": "Arabia",
+      "french": "Ranska",
+      "french_canada": "Ranska (Kanada)",
+      "portuguese_brazil": "Portugali (Brasilia)",
+      "portuguese_portugal": "Portugali (Portugali)",
+      "german": "Saksa",
+      "japanese": "Japani",
+      "russian": "Venäjä",
+      "korean": "Korea",
+      "italian": "Italia",
+      "turkish": "Turkki",
+      "vietnamese": "Vietnam",
+      "polish": "Puola",
+      "ukrainian": "Ukraina",
+      "romanian": "Romania",
+      "dutch": "Hollanti",
+      "czech": "Tšekki",
+      "greek": "Kreikka",
+      "swedish": "Ruotsi",
+      "hungarian": "Unkari",
+      "thai": "Thai",
+      "hebrew": "Heprea",
+      "indonesian": "Indonesia",
+      "malay": "Malaiji",
+      "finnish": "Suomi",
+      "danish": "Tanska",
+      "norwegian": "Norja",
+      "slovak": "Slovakki",
+      "croatian": "Kroatia",
+      "catalan": "Katalaani"
+    },
+    "generale": "Yleinen",
+    "github": "Github",
+    "language": "Kieli",
+    "links": "Linkit",
+    "logout": "Kirjaudu ulos",
+    "more": "Lisää",
+    "privacy": "Tietosuojakäytäntö",
+    "faq": "Usein Kysytyt Kysymykset",
+    "rate": "Arvioi",
+    "share": "Jaa",
+    "support": "Tuki",
+    "support_us": "Tue meitä",
+    "terms": "Käyttöehdot",
+    "theme": {
+      "dark": "Tumma",
+      "light": "Vaalea",
+      "system": "Järjestelmä",
+      "title": "Teema"
+    },
+    "title": "Asetukset",
+    "version": "Versio",
+    "website": "Verkkosivusto",
+    "devMode": {
+      "title": "Kehittäjätila",
+      "componentsLibrary": "Käyttöliittymäkirjasto"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Arviointi"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Mikä on syy?",
+      "unnamedConversation": "Nimetön",
+      "reportTitlePlaceholder": "Lisää otsikko"
+    },
+    "WeekBlock": {
+      "week": "Viikko"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Vieritä ylös"
+    },
+    "FreeTierStatus": {
+      "heading": "Ilmaiset skannaukset",
+      "subheading": "Avaa rajattomat skannaukset päivittämällä suunnitelmasi",
+      "action": "Päivitä"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Valitse kuva / video"
+    },
+    "TapToViewLabel": {
+      "label": "Naputa katsellaksesi"
+    },
+    "UpgradeBanner": {
+      "heading": "Päivitä nyt",
+      "subheading": "Avaa rajattomat skannaukset päivittämällä suunnitelmasi"
+    },
+    "PromptSection": {
+      "message": "Skannauksesi on valmis! Mitä haluaisit nyt selvittää?",
+      "prompts": {
+        "first": "Kuvaile keuhkokentissä esiintyviä poikkeavuuksia",
+        "second": "Arvioi sydämen muotoa ja mediastinumia",
+        "third": "Arvioi luurakenteita vaurioita tai murtumia varten",
+        "fourth": "Kommentoi pleuraefuusioiden esiintymistä tai puuttumista"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Saat analyysin erilaisista lääketieteellisistä skannauksista, mukaan lukien röntgen, CT, MRI, EKG ja muut",
+      "second": "Pääsy kaikkiin premium-ominaisuuksiin",
+      "third": "Ei mainoksia"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Lempinimi",
+        "email": "Sähköposti",
+        "emailVerification": "Sähköpostin vahvistus"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Ohjeet",
+        "first": "1. Naputa 'Lisää neliö' -painiketta luodaksesi valintaneliön.",
+        "second": "2. Vedä neliö kiinnostuksen kohteesi yli.",
+        "third": "3. Säädä kulmia peittämään alue tarkasti."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Avaa studio",
+        "editMore": "Muokkaa lisää",
+        "continueEditing": "Jatketaanko annotaatioidesi muokkaamista?",
+        "highlightedRegionsCount": "Sinulla on {{highlightedRegions}} korostettua aluetta. Naputa alla lisätäksesi lisää",
+        "highlightRegions": "Tarvitsetko korostaa lääketieteellisen kuvasi alueita?"
+      },
+      "studioToolbar": {
+        "addSquare": "Lisää neliö"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Anteeksi, tarvitsemme kameraluvat toimiaksemme!",
+    "errorSelectingImagePicker": "Jotain meni pieleen kuvan valinnassa. Yritä uudelleen.",
+    "errorSelectingDocumentPicker": "Jotain meni pieleen asiakirjan valinnassa. Yritä uudelleen.",
+    "errorTakingPicture": "Jotain meni pieleen kuvan ottamisessa. Yritä uudelleen.",
+    "enableNotifications": {
+      "heading": "Ota ilmoitukset käyttöön",
+      "subHeading": "Ilmoitukset ovat tällä hetkellä pois käytöstä. Pysyäksesi ajan tasalla, ota ne käyttöön laitteesi asetuksista."
+    },
+    "enableNotificationFailed": "Push-ilmoitukset ovat pois käytöstä. Ota ne käyttöön asetuksista saadaksesi tärkeitä päivityksiä!",
+    "enableNotificationError": "Ilmoitusten käyttöönotossa tapahtui virhe",
+    "notificationDisabledSuccess": "Ilmoitukset poistettu käytöstä onnistuneesti.",
+    "notificationDisabledRegisterError": "Laitteen ilmoitusten poistaminen rekisteristä epäonnistui.",
+    "notificationDisabledError": "Ilmoitusten käytöstä poistossa tapahtui virhe.",
+    "checkNotificationStatusError": "Virhe ilmoitustilan tarkistuksessa.",
+    "projectIdNotFound": "Ilmoitusprojektin ID:tä ei löytynyt.",
+    "imageSizeLarge": "Kuva on liian suuri! Tiedostokoko on {{fileSize}} Mt, mutta raja on {{imageLimit}} Mt.",
+    "videoSizeLarge": "Video on liian suuri! Tiedostokoko on {{fileSize}} Mt, mutta raja on {{videoLimit}} Mt.",
+    "loggedInSuccess": "Kirjautuminen onnistui",
+    "loggedOutSuccess": "Olet kirjautunut ulos onnistuneesti!",
+    "sendVerificationCodeError": "Virhe vahvistuskoodia lähetettäessä",
+    "validateAuthCodeError": "Virhe tunnistautumiskoodia vahvistettaessa",
+    "anonymousSignInError": "Virhe kirjautuessa sisään anonyymisti",
+    "emailLoginError": "Virhe kirjautuessa sisään",
+    "preferredLanguageError": "Virhe käyttäjän ensisijaisen kielen päivittämisessä",
+    "sharingNotAvailable": "Jakaminen ei ole tällä hetkellä saatavilla laitteellasi",
+    "sharingLinkError": "Linkin jakaminen epäonnistui.",
+    "individualPushNotificationSuccess": "Yksittäiset push-ilmoitukset lähetetty onnistuneesti!",
+    "globalPushNotificationSuccess": "Maailmanlaajuiset push-ilmoitukset lähetetty onnistuneesti! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Tulkintakenttien päivitys epäonnistui! ❌",
+    "deleteScanReportFail": "Skannausraportin poistaminen epäonnistui. Yritä uudelleen",
+    "onboardingUnsuccessful": "Käyttöönotto epäonnistui. Yritä uudelleen",
+    "logoutUnsuccessful": "Uloskirjautuminen epäonnistui. Yritä uudelleen",
+    "deleteScanReportQuestion": "Haluatko varmasti poistaa tämän raportin pysyvästi?",
+    "videoLimitExceeds": "Videosi ylittää {{videoSecondsLimit}} sekunnin rajan. Rajaa sitä ja lataa uudelleen",
+    "subscriptionActivated": "Tilauksesi on aktivoitu onnistuneesti! Nauti ainutlaatuisista eduistasi!",
+    "subscriptionCancelledByUser": "Olet peruuttanut kaupan. Voit vapaasti yrittää uudelleen!",
+    "subscriptionActivationFailed": "Tilauksesi aktivointi epäonnistui. Yritä uudelleen",
+    "logoutQuestion": "Haluatko varmasti kirjautua ulos?",
+    "noSubscriptionToRestore": "Hups! Sinulla ei näytä olevan aktiivista tilausta tällä hetkellä. Jatkaaksesi täyden pääsyn nauttimista, valitse jokin tilaussuunnitelmistamme.",
+    "restorationSuccessful": "Palautus onnistui! Nauti!",
+    "restorationError": "Oston palauttamisessa tapahtui virhe.",
+    "medicalDisclaimerAlert": "MedScan AI-sovellus ei korvaa lääketieteellistä konsultaatiota. Jotkin diagnoosit ovat vain informatiivisia/koulutuksellisia tarkoituksia varten. Lääketieteellisiä suosituksia varten konsultoi aina lääkäriä tai lisensoitua asiantuntijaa.",
+    "scanLimitReached": "Optimoidaan skannauksen laatua puolestasi! Pystyt skannaamaan uudelleen noin {{hours}} tunnin ja {{minutes}} minuutin kuluttua. Onko sinulla kysyttävää jostain lääketieteellisestä aiheesta? Kysy chat-avustajaltamme odotellessasi!",
+    "mixedMediaNotAllowed": "Latausten on sisällettävä vain kuvia tai vain videoita, ei molempia sekoitettuna.",
+    "multipleVideosNotAllowed": "Parempaa tarkkuutta varten lataa vain yksi video kerrallaan.",
+    "mediaFilesUploadFiles": "Mediatiedostojesi lataamisessa tapahtui virhe. Yritä uudelleen.",
+    "chatAndMediaFilesLimit": "Hyvä käyttäjä, sinun on päivitettävä suunnitelmasi hyötyäksesi rajoittomista keskusteluista, rajoittomista skannauksista, usean kuvan analyyseistä ja enemmän. 🔓"
+  }
+}

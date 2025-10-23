@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "ברוכים הבאים ל-MedScan AI!"
+  },
+  "general": {
+    "back": "חזרה",
+    "welcome": "היי",
+    "welcomeBack": "ברוך שובך!",
+    "welcomeMessage": "ברוכים הבאים!",
+    "continue": "המשך",
+    "retry": "נסה שוב",
+    "close": "סגור",
+    "gallery": "גלריה",
+    "files": "קבצים",
+    "cancel": "ביטול",
+    "delete": "מחיקה",
+    "attention": "תשומת לב!",
+    "new": "חדש",
+    "yes": "כן",
+    "or": "או",
+    "typing": "כותב...",
+    "online": "מקוון",
+    "chatbotPlaceholder": "שאל אותי כל דבר...",
+    "openSettings": "פתח הגדרות",
+    "seeNotifications": "צפה בהתראות",
+    "viewProfile": "צפה בפרופיל",
+    "upgradePlan": "שדרוג תוכנית",
+    "download": "הורדה",
+    "share": "שתף",
+    "shareLink": "שתף קישור",
+    "skip": "דלג",
+    "next": "הבא",
+    "update": "עדכון",
+    "tryAgain": "נסה שוב",
+    "createdAt": "נוצר ב-",
+    "and": "ו-",
+    "saveDiscount": "שמור",
+    "restorePurchase": "שחזר רכישה",
+    "medicalDisclaimer": "הצהרה רפואית",
+    "conversationHistory": "היסטוריית שיחות",
+    "freeTrial": "ניסיון חינם",
+    "free": "חינם",
+    "completedScans": "סריקות שהושלמו",
+    "activeSubscription": "מינוי פעיל",
+    "askAssistant": "שאל את עוזר הבינה המלאכותית",
+    "then": "אז",
+    "perWeek": "לשבוע",
+    "perYear": "לשנה",
+    "perMonth": "לחודש",
+    "tryForFree": "נסה בחינם",
+    "unlockNow": "בטל נעילה עכשיו",
+    "copyText": {
+      "loading": "מעתיק...",
+      "copied": "הועתק!",
+      "copy": "העתק קישור"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "טוען את החוויה האישית שלך...",
+        "second": "מסנכרן מערכות...",
+        "third": "מעבד את הנתונים שלך...",
+        "fourth": "כמעט מוכן, רק רגע..."
+      },
+      "imageScanningLoading": {
+        "first": "סורק את הדימות הרפואי שלך, אנא המתן...",
+        "second": "מנתח פרטים, זה עשוי לקחת רגע...",
+        "third": "משפר דיוק לתוצאות הטובות ביותר...",
+        "fourth": "כמעט שם, מסיים את הסריקה..."
+      },
+      "loadingChatbot": {
+        "first": "Aria מתכוננת לסייע לך...",
+        "second": "המתן! Aria מכינה את התשובה שלך...",
+        "third": "חושב... העוזרת שלך Aria עובדת על זה!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "חכה!",
+    "goBackMessage": "האם אתה בטוח שאתה רוצה לחזור?"
+  },
+  "internet": {
+    "noConnectionTitle": "אתה לא מחובר!",
+    "noConnectionMessage": "הפעל נתונים סלולריים או התחבר ל-Wi-Fi. או פשוט קח הפסקה וצא להליכה!"
+  },
+  "uploadScan": {
+    "title": "העלאת סריקה",
+    "scanNow": "סרוק עכשיו"
+  },
+  "weekDays": {
+    "today": "היום",
+    "yesterday": "אתמול"
+  },
+  "auth": {
+    "verifyAuthCode": "אמת קוד אימות",
+    "verifyAuthCodeButton": "אמת קוד",
+    "authCodeHeading": "קוד אימות",
+    "loginViaEmailHeading": "בואו נכניס אותך למערכת. אנא הזן את האימייל שלך כדי להמשיך.",
+    "emailAddress": "אימייל"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "ברוכים הבאים ל-MedScan AI!",
+        "startButton": "בואו נתחיל!",
+        "accountButton": "כבר יש לי חשבון"
+      },
+      "login": {
+        "agreeingMessage": "בהמשך השימוש, אתה מסכים ל-",
+        "termsAndConditions": "תנאים והגבלות",
+        "privacyPolicy": "מדיניות פרטיות"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "הזן את קוד האימות שנשלח בדוא\"ל. שים לב, הקוד יפוג תוך 5 דקות.",
+        "verificationCodeSent": "שלחנו את קוד האימות ל-",
+        "verificationCodeMissing": "לא קיבלת את הקוד?",
+        "resendCode": "שלח קוד מחדש",
+        "backToLogin": "חזרה להתחברות"
+      },
+      "namePreferenceScreen": {
+        "heading": "גישה בטוחה, מאובטחת ופשוטה!",
+        "preferredNameQuestion": "בחר כינוי כיפי כדי להישאר אנונימי - הפרטיות שלך חשובה לנו",
+        "placeholderPreferredName": "למשל, קפטן מגניב, מלכת הדבורים, או פשוט אלקס!"
+      },
+      "freeTrialPreview": {
+        "heading": "תהנה מהניסיון החינמי שלך! 🎉",
+        "subheading": "חווה את היתרונות המדהימים האלה במהלך הניסיון החינמי שלך",
+        "review": "ניתוח סריקות הרפואי נתן לי תובנות חשובות לגבי התמונות, ותמיכת הצ'אט מאוד מועילה.",
+        "reviewTrust": "📈 אמון על ידי 4,512+ משתמשים"
+      },
+      "scanInterpretation": {
+        "title": "תוצאת ניתוח",
+        "headerBackTitle": "דוחות"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "ניסיון חינם מופעל",
+          "heading": " גישה בלתי מוגבלת",
+          "title": "בטל נעילה לתכונות פרימיום היום!",
+          "firstOffering": "גישה לכל תכונות הפרימיום",
+          "secondOffering": "חוויה נטולת פרסומות",
+          "thirdOffering": "סריקות בלתי מוגבלות + דוח רפואי עם תמונות מרובות",
+          "fourthOffering": "צ'אטים בלתי מוגבלים עם עוזר רפואי בינה מלאכותית 24/7"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "בטל נעילה לתכונות פרימיום היום!",
+        "firstOffering": {
+          "title": "התחל ניסיון חינם",
+          "subtitle": "תהנה מ-{{freeScans}} סריקות חינם - ללא תשלום"
+        },
+        "secondOffering": {
+          "title": "תוכנית חודשית",
+          "subtitle": "{{ price }}/לחודש"
+        },
+        "thirdOffering": {
+          "title": "תוכנית שנתית",
+          "subtitle": "{{ price }} לשנה"
+        },
+        "fourthOffering": {
+          "title": "ניסיון {{trialDays}}-יום",
+          "subtitle": "{{ price }} לשנה",
+          "plan": "תוכנית שבועית"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "גרסה חדשה של MedScan AI זמינה",
+        "subheading": "עדכן לגרסה האחרונה כדי להמשיך ליהנות מכל תכונות האפליקציה - זה לוקח רק 5 שניות!",
+        "action": "קבל עכשיו!"
+      },
+      "rateAppScreen": {
+        "heading": "האם אתה מוצא את האפליקציה מועילה ומעניינת?",
+        "like": "כן, אני אוהב את זה!",
+        "dislike": "לא really..."
+      },
+      "noInternetScreen": {
+        "heading": "אתה לא מחובר",
+        "subheading": "החיבור שלך נראה לא יציב. אנא בדוק את סטטוס הרשת שלך"
+      },
+      "notifications": {
+        "title": "התראות",
+        "noNotifications": "אין התראות כרגע - הישאר מעודכן!"
+      },
+      "termsOfService": {
+        "title": "תנאי שירות"
+      },
+      "privacyPolicy": {
+        "title": "מדיניות פרטיות"
+      },
+      "share": {
+        "title": "שתף",
+        "heading": "שתף את אפליקציית MedScan AI",
+        "subheading": "עזור לאחרים לגלות את כוח הניתוח של דימות רפואי מונחה בינה מלאכותית",
+        "scanMessage": "סרוק כדי להוריד את האפליקציה",
+        "shareMessage": "או שתף דרך הפלטפורמה המועדפת עליך"
+      },
+      "rate": {
+        "title": "תן לנו משוב!"
+      },
+      "profile": {
+        "title": "פרופיל",
+        "edit": "ערוך פרופיל",
+        "placeholderPreferredName": "למשל, קפטן מגניב, מלכת הדבורים, או פשוט אלקס!"
+      },
+      "generateReportScreen": {
+        "title": "אנו מעריכים את הסבלנות שלך! הנה דוח הבינה המלאכותית שלך.",
+        "userInput": "ההגשה שלך",
+        "medicalReport": "דוח רפואי",
+        "report": "דוח רפואי שנוצר על ידי בינה מלאכותית",
+        "conversationName": "שם השיחה"
+      },
+      "verifyEmail": {
+        "heading": "אמת אימייל"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "התחל ניתוח",
+        "mediaFilesUploaded": "העלית {{totalMediaFiles}} קבצי מדיה"
+      },
+      "disclaimerScreen": {
+        "heading": "הצהרה רפואית חשובה",
+        "subheading": "MedScan AI נועד עבור אנשי מקצוע ברדיולוגיה, מומחי בריאות, סטודנטים לרפואה וחובבים",
+        "consentAgreement": "קראתי ואני מסכים להצהרה.",
+        "firstConsent": "MedScan AI אינו מספק מדידות בריאות או ייעוץ טיפולי, ואינו מיועד למטרות כאלה. על המשתמשים ב-MedScan AI להפעיל שיקול דעת קליני ולאמת מידע ממקורות סמכותיים לפני קבלת החלטות קליניות.",
+        "secondConsent": "MedScan AI אינו כלי אבחון, פלטפורמת טיפול, או תחליף לייעוץ רפואי מקצועי. הוא מציע תובנות שנוצרו על ידי בינה מלאכותית כדי לסייע לאנשי מקצוע בתחום הבריאות בגישה לידע רפואי ובניתוח תמונות ומסמכים רפואיים. MedScan AI הוא אפליקציה אינפורמטיבית וחינוכית מונחית בינה מלאכותית שנועדה יותר לתמוך באנשי מקצוע רפואיים מורשים.",
+        "thirdConsent": "MedScan AI אינו מיועד לשימוש מטופלים. הוא אינו מספק אבחנות רפואיות ישירות, המלצות טיפול או פונקציונליות לניהול מטופלים.",
+        "fourthConsent": "MedScan AI אינו מסווג כמכשיר רפואי ואינו טוען לאישור רגולטורי. הוא מיועד למטרות חינוכיות ואינפורמטיביות כדי להשלים מומחיות מקצועית.",
+        "fifthConsent": "MedScan AI אינו אוסף, מאחסן או מעבד נתונים אישיים או נתוני מטופלים. כל אינטראקציות המשתמש הן חסויות ומוגבלות להיקף האפליקציה."
+      },
+      "contactUs": {
+        "heading": "אל תהסס לשלוח לנו אימייל ישירות, והצוות שלנו יחזור אליך בהקדם האפשרי",
+        "customerSupport": "תמיכה ללקוחות",
+        "emailAddress": "כתובת אימייל"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "איזו שפה אתה מעדיף לניתוח הבינה המלאכותית?",
+        "languageSelection": "בחר שפה לתגובות הבינה המלאכותית",
+        "languageSearchCriteria": "חפש לפי שפה, קוד מדינה או דגל",
+        "noLanguageFound": "לא נמצאה שפה",
+        "noLanguageFoundSubtitle": "נסה לשנות את מונחי החיפוש שלך"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "מהן ההבדלים בין CT, MRI ואולטרסאונד?",
+          "two": "מתי עלי להזמין הדמיה עם חומר ניגוד לעומת ללא ניגוד?",
+          "three": "כיצד ניתן למזער את מינון הקרינה ללא פגיעה בערך האבחוני?",
+          "fourth": "אילו שיטות הדמיה עדיפות לגילוי פתולוגיה של רקמות רכות לעומת עצם?",
+          "five": "מהם סימני האזהרה העיקריים להתקף לב לעומת חרדה?",
+          "six": "כיצד אני מחליט בין אנטיביוטיקה לאנטי-ויראלית לזיהום?",
+          "seven": "אילו שינויים באורח החיים מפחיתים בצורה היעילה ביותר את הסיכון לסוכרת מסוג 2?",
+          "eight": "מתי ניתוח הוא האופציה המועדפת על פני טיפול תרופתי?",
+          "nine": "כיצד אני מבדיל קלינית בין דלקת ריאות חיידקית לויראלית?",
+          "ten": "מהן ההנחיות העדכניות לטיפול ביתר לחץ דם?",
+          "eleven": "כיצד מטופלים ילדים מציגים תסמינים שונים ממבוגרים במצבי חירום?",
+          "twelve": "מהן אסטרטגיות ניהול כאב בטוחות למצבים כרוניים?",
+          "thirteen": "אילו חיסונים הכרחיים ביותר למבוגרים מעבר לחיסוני הילדות?",
+          "fourteen": "מהן שיטות העבודה המומלצות למניעת זיהומים נרכשים בבתי חולים?",
+          "fifteen": "כיצד אני מפרש ערכי מעבדה נפוצים כמו ספירת דם ואלקטרוליטים בהקשר?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "חכה! אל תמחק אותי!",
+    "subtitle": "שלח משוב במקום"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "לצפייה ב-PDF, ודא שיש לך מתצוגה PDF מותקנת, כמו Adobe Acrobat Reader או Google PDF Viewer",
+    "conversationTitlePdf": "שיחה עם Aria, העוזרת הבינה המלאכותית שלך"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "תודה על הסבלנות שלך!"
+      },
+      "finalReportHeader": {
+        "message": "זו תוצאת הדוח!"
+      },
+      "uploadFile": {
+        "title": "אנא העלה קובץ דימות רפואי",
+        "size": "מקסימום: {{imageLimit}}MB (תמונות), {{videoLimit}}MB (סרטונים)",
+        "location": "בחר מגלריה או קבצים",
+        "fileType": "PNG, JPG, PDF, או MP4",
+        "openCamera": "פתח מצלמה וצלם תמונה",
+        "scanType": "רק צילומי רנטגן, CT, MRI, PET או דימות רפואי אחר מותרים"
+      }
+    }
+  },
+  "home": {
+    "tab": "בית",
+    "homeForeground": {
+      "maxNumberOfScans": "הגעת למגבלת הסריקות! שדרג את התוכנית שלך לסריקות בלתי מוגבלות. 🚀",
+      "heading": "ברוכים הבאים ל-MedScan AI!",
+      "subHeading": "העלה צילומי רנטגן, סריקות CT, ECG, MRI, PET, אולטרסאונד או כל תמונה רפואית אחרת לניתוח בינה מלאכותית."
+    },
+    "scanCategories": {
+      "heading": "גלריה רדיולוגית"
+    },
+    "recentReports": {
+      "heading": "שיחות אחרונות",
+      "noReports": "אין שיחות להצגה עדיין!"
+    }
+  },
+  "reports": {
+    "tab": "היסטוריה",
+    "noReportsAvailable": "אין היסטוריית צ'אט זמינה לתאריך זה",
+    "heading": "היסטוריית צ'אט"
+  },
+  "chat": {
+    "tab": "צ'אט"
+  },
+  "settings": {
+    "tab": "הגדרות",
+    "profile": "פרופיל",
+    "contactUs": "צור קשר",
+    "about": "אודות",
+    "app_name": "שם האפליקציה",
+    "languages": {
+      "english": "אנגלית",
+      "mandarin_chinese": "סינית",
+      "hindi": "הינדי",
+      "spanish_spain": "ספרדית (ספרד)",
+      "spanish_mexico": "ספרדית (מקסיקו)",
+      "arabic": "ערבית",
+      "french": "צרפתית",
+      "french_canada": "צרפתית (קנדה)",
+      "portuguese_brazil": "פורטוגזית (ברזיל)",
+      "portuguese_portugal": "פורטוגזית (פורטוגל)",
+      "german": "גרמנית",
+      "japanese": "יפנית",
+      "russian": "רוסית",
+      "korean": "קוריאנית",
+      "italian": "איטלקית",
+      "turkish": "טורקית",
+      "vietnamese": "וייטנאמית",
+      "polish": "פולנית",
+      "ukrainian": "אוקראינית",
+      "romanian": "רומנית",
+      "dutch": "הולנדית",
+      "czech": "צ'כית",
+      "greek": "יוונית",
+      "swedish": "שוודית",
+      "hungarian": "הונגרית",
+      "thai": "תאילנדית",
+      "hebrew": "עברית",
+      "indonesian": "אינדונזית",
+      "malay": "מלאית",
+      "finnish": "פינית",
+      "danish": "דנית",
+      "norwegian": "נורווגית",
+      "slovak": "סלובקית",
+      "croatian": "קרואטית",
+      "catalan": "קטלאנית"
+    },
+    "generale": "כללי",
+    "github": "Github",
+    "language": "שפה",
+    "links": "קישורים",
+    "logout": "התנתק",
+    "more": "עוד",
+    "privacy": "מדיניות פרטיות",
+    "faq": "שאלות נפוצות",
+    "rate": "דירוג",
+    "share": "שתף",
+    "support": "תמיכה",
+    "support_us": "תמכו בנו",
+    "terms": "תנאי שירות",
+    "theme": {
+      "dark": "כהה",
+      "light": "בהיר",
+      "system": "מערכת",
+      "title": "ערכת נושא"
+    },
+    "title": "הגדרות",
+    "version": "גרסה",
+    "website": "אתר אינטרנט",
+    "devMode": {
+      "title": "מצב מפתח",
+      "componentsLibrary": "ספריית ממשק"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "דירוג"
+    },
+    "ScanReportCard": {
+      "promptMessage": "מה הסיבה?",
+      "unnamedConversation": "ללא כותרת",
+      "reportTitlePlaceholder": "הוסף כותרת"
+    },
+    "WeekBlock": {
+      "week": "שבוע"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "גלול למעלה"
+    },
+    "FreeTierStatus": {
+      "heading": "סריקות חינם",
+      "subheading": "בטל נעילה לסריקות בלתי מוגבלות על ידי שדרוג התוכנית שלך",
+      "action": "שדרג"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "בחר תמונה / סרטון"
+    },
+    "TapToViewLabel": {
+      "label": "הקש לצפייה"
+    },
+    "UpgradeBanner": {
+      "heading": "שדרג עכשיו",
+      "subheading": "בטל נעילה לסריקות בלתי מוגבלות על ידי שדרוג התוכנית שלך"
+    },
+    "PromptSection": {
+      "message": "הסריקה שלך מוכנה! עכשיו, מה תרצה לגלות?",
+      "prompts": {
+        "first": "תאר כל חריגה בשדות הריאה",
+        "second": "הערך את צל הלב והמדיאסטינום",
+        "third": "הערך את מבני העצם לגבי נגעים או שברים",
+        "fourth": "הערך על נוכחות או היעדר תפליט פלאורלי"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "קבל ניתוח מסריקות רפואיות שונות, כולל רנטגן, CT, MRI, ECG ועוד",
+      "second": "גישה לכל תכונות הפרימיום",
+      "third": "ללא פרסומות"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "כינוי",
+        "email": "אימייל",
+        "emailVerification": "אימות אימייל"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "הוראות",
+        "first": "1. הקש על 'הוסף ריבוע' כדי ליצור ריבוע בחירה.",
+        "second": "2. גרור את הריבוע מעל האזור שמעניין אותך.",
+        "third": "3. התאם את הפינות כדי לכסות במדויק את האזור."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "פתח סטודיו",
+        "editMore": "ערוך עוד",
+        "continueEditing": "להמשיך לערוך את הסימונים שלך?",
+        "highlightedRegionsCount": "יש לך {{highlightedRegions}} אזורים מסומנים. הקש למטה כדי להוסיף עוד",
+        "highlightRegions": "צריך לסמן אזורים בתמונה הרפואית שלך?"
+      },
+      "studioToolbar": {
+        "addSquare": "הוסף ריבוע"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "סליחה, אנחנו צריכים הרשאות מצלמה כדי שזה יעבוד!",
+    "errorSelectingImagePicker": "משהו השתבש בבחירת התמונה. אנא נסה שוב.",
+    "errorSelectingDocumentPicker": "משהו השתבש בבחירת המסמך. אנא נסה שוב.",
+    "errorTakingPicture": "משהו השתבש בצילום התמונה. אנא נסה שוב.",
+    "enableNotifications": {
+      "heading": "הפעל התראות",
+      "subHeading": "ההתראות כבויות כרגע. כדי להישאר מעודכן, אנא הפעל אותן בהגדרות המכשיר שלך."
+    },
+    "enableNotificationFailed": "התראות Push כבויות. הפעל אותן בהגדרות כדי לקבל עדכונים חשובים!",
+    "enableNotificationError": "אירעה שגיאה בהפעלת ההתראות",
+    "notificationDisabledSuccess": "ההתראות כובו בהצלחה.",
+    "notificationDisabledRegisterError": "נכשל ביטול רישום המכשיר להתראות.",
+    "notificationDisabledError": "אירעה שגיאה בכיבוי ההתראות.",
+    "checkNotificationStatusError": "שגיאה בבדיקת סטטוס ההתראות.",
+    "projectIdNotFound": "מזהה פרויקט ההתראות לא נמצא.",
+    "imageSizeLarge": "התמונה גדולה מדי! גודל הקובץ הוא {{fileSize}} MB, אבל המגבלה היא {{imageLimit}} MB.",
+    "videoSizeLarge": "הסרטון גדול מדי! גודל הקובץ הוא {{fileSize}} MB, אבל המגבלה היא {{videoLimit}} MB.",
+    "loggedInSuccess": "נכנסת בהצלחה",
+    "loggedOutSuccess": "יצאת בהצלחה!",
+    "sendVerificationCodeError": "שגיאה בשליחת קוד האימות",
+    "validateAuthCodeError": "שגיאה באימות קוד האימות",
+    "anonymousSignInError": "שגיאה בהתחברות אנונימית",
+    "emailLoginError": "שגיאה בהתחברות",
+    "preferredLanguageError": "שגיאה בעדכון שפת המשתמש המועדפת",
+    "sharingNotAvailable": "שיתוף אינו זמין כרגע במכשיר שלך",
+    "sharingLinkError": "נכשל שיתוף הקישור.",
+    "individualPushNotificationSuccess": "התראות Push אישיות נשלחו בהצלחה!",
+    "globalPushNotificationSuccess": "התראות Push גלובליות נשלחו בהצלחה! 🌍🚀",
+    "interpretationFieldsUpdateFail": "נכשל עדכון שדות הניתוח! ❌",
+    "deleteScanReportFail": "לא ניתן למחוק את דוח הסריקה. אנא נסה שוב",
+    "onboardingUnsuccessful": "ההתחלה לא הצליחה. אנא נסה שוב",
+    "logoutUnsuccessful": "ההתנתקות לא הצליחה. אנא נסה שוב",
+    "deleteScanReportQuestion": "האם אתה בטוח שאתה רוצה למחוק דוח זה לצמיתות?",
+    "videoLimitExceeds": "הסרטון שלך חורג ממגבלת {{videoSecondsLimit}} השניות. אנא חתוך אותו והעלה מחדש",
+    "subscriptionActivated": "המינוי שלך הופעל בהצלחה! תיהנה מהיתרונות הבלעדיים שלך!",
+    "subscriptionCancelledByUser": "ביטלת את העסקה. אל תהסס לנסות שוב!",
+    "subscriptionActivationFailed": "נכשל בהפעלת המינוי שלך. אנא נסה שוב",
+    "logoutQuestion": "האם אתה בטוח שאתה רוצה להתנתק?",
+    "noSubscriptionToRestore": "אופס! נראה שאין לך מינוי פעיל כרגע. כדי להמשיך ליהנות מגישה מלאה, אנא בחר אחת מתוכניות המינוי שלנו.",
+    "restorationSuccessful": "השחזור הצליח! תיהנה!",
+    "restorationError": "אירעה שגיאה בשחזור הרכישה.",
+    "medicalDisclaimerAlert": "אפליקציית MedScan AI אינה מחליפה ייעוץ רפואי. חלק מהאבחנות הן למטרות מידע/חינוך בלבד. להמלצות רפואיות, התייעץ תמיד עם רופא או מומחה מורשה.",
+    "scanLimitReached": "אנו משפרים את איכות הסריקה עבורך! תוכל לסרוק שוב בעוד כ-{{hours}} שעות ו-{{minutes}} דקות. יש לך שאלות על נושא רפואי כלשהו? שאל את עוזר הצ'אט שלנו בזמן שאתה מחכה!",
+    "mixedMediaNotAllowed": "העלאות חייבות להכיל רק תמונות או רק סרטונים, לא ערבוב של שניהם.",
+    "multipleVideosNotAllowed": "לדיוק טוב יותר, אנא העלה רק סרטון אחד בכל פעם.",
+    "mediaFilesUploadFiles": "אירעה שגיאה בהעלאת קבצי המדיה שלך. אנא נסה שוב.",
+    "chatAndMediaFilesLimit": "משתמש יקר, עליך לשדרג את התוכנית שלך כדי ליהנות מצ'אטים בלתי מוגבלים, סריקות בלתי מוגבלות, ניתוח תמונות מרובות ועוד. 🔓"
+  }
+}

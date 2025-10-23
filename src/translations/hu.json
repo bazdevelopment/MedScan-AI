@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "Üdvözöljük a MedScan AI-ban!"
+  },
+  "general": {
+    "back": "Vissza",
+    "welcome": "Szia",
+    "welcomeBack": "Üdv újra!",
+    "welcomeMessage": "Üdvözöljük!",
+    "continue": "Folytatás",
+    "retry": "Újra",
+    "close": "Bezárás",
+    "gallery": "Galéria",
+    "files": "Fájlok",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "attention": "Figyelem!",
+    "new": "Új",
+    "yes": "Igen",
+    "or": "vagy",
+    "typing": "Gépelés...",
+    "online": "Online",
+    "chatbotPlaceholder": "Kérdezz bármit...",
+    "openSettings": "Beállítások megnyitása",
+    "seeNotifications": "Értesítések megtekintése",
+    "viewProfile": "Profil megtekintése",
+    "upgradePlan": "Csomag frissítése",
+    "download": "Letöltés",
+    "share": "Megosztás",
+    "shareLink": "Link megosztása",
+    "skip": "Kihagyás",
+    "next": "Tovább",
+    "update": "Frissítés",
+    "tryAgain": "Próbáld újra",
+    "createdAt": "Létrehozva",
+    "and": "és",
+    "saveDiscount": "MENTÉS",
+    "restorePurchase": "Vásárlás visszaállítása",
+    "medicalDisclaimer": "Orvosi felelősségkizárás",
+    "conversationHistory": "Beszélgetési előzmények",
+    "freeTrial": "Ingyenes próba",
+    "free": "INGYENES",
+    "completedScans": "Befejezett vizsgálatok",
+    "activeSubscription": "Aktív előfizetés",
+    "askAssistant": "Kérdezd az AI asszisztenst",
+    "then": "majd",
+    "perWeek": "hetente",
+    "perYear": "évente",
+    "perMonth": "havonta",
+    "tryForFree": "Próbáld ki ingyen",
+    "unlockNow": "Feloldás most",
+    "copyText": {
+      "loading": "Másolás...",
+      "copied": "Másolva!",
+      "copy": "Link másolása"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Személyre szabott élményed betöltése...",
+        "second": "Rendszerek szinkronizálása...",
+        "third": "Adataid feldolgozása...",
+        "fourth": "Majdnem kész, csak egy pillanat..."
+      },
+      "imageScanningLoading": {
+        "first": "Orvosi felvételeid szkennelése, kérjük várj...",
+        "second": "Részletek elemzése, ez eltarthat egy ideig...",
+        "third": "Pontosság növelése a legjobb eredményekért...",
+        "fourth": "Majdnem kész, szkennelés befejezése..."
+      },
+      "loadingChatbot": {
+        "first": "Aria készül, hogy segítsen...",
+        "second": "Várj! Aria előkészíti a válaszod...",
+        "third": "Gondolkodás... Aria asszisztensed dolgozik rajta!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Várj!",
+    "goBackMessage": "Biztosan vissza szeretnél menni?"
+  },
+  "internet": {
+    "noConnectionTitle": "Offline vagy!",
+    "noConnectionMessage": "Kapcsold be a mobiladatokat vagy csatlakozz Wi-Fi-hóz. Vagy csak pihenj egyet és menj sétálni!"
+  },
+  "uploadScan": {
+    "title": "Vizsgálat feltöltése",
+    "scanNow": "Szkennelj most"
+  },
+  "weekDays": {
+    "today": "Ma",
+    "yesterday": "Tegnap"
+  },
+  "auth": {
+    "verifyAuthCode": "Hitelesítési kód ellenőrzése",
+    "verifyAuthCodeButton": "Kód ellenőrzése",
+    "authCodeHeading": "Hitelesítési kód",
+    "loginViaEmailHeading": "Jelentkezz be. Kérjük, add meg az email címed a folytatáshoz.",
+    "emailAddress": "Email"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Üdvözöljük a MedScan AI-ban!",
+        "startButton": "Kezdjük!",
+        "accountButton": "Már van fiókom"
+      },
+      "login": {
+        "agreeingMessage": "A folytatással elfogadod",
+        "termsAndConditions": "Felhasználási feltételeinket",
+        "privacyPolicy": "Adatvédelmi irányelveinket"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Add meg az emailben küldött ellenőrző kódod. Kérjük vedd figyelembe, hogy a kód 5 perc múlva lejár.",
+        "verificationCodeSent": "Elküldtük az ellenőrző kódot a következő címre",
+        "verificationCodeMissing": "Nem kaptad meg a kódot?",
+        "resendCode": "Kód újraküldése",
+        "backToLogin": "Vissza a bejelentkezéshez"
+      },
+      "namePreferenceScreen": {
+        "heading": "Biztonságos, védett, egyszerű hozzáférés!",
+        "preferredNameQuestion": "Válassz egy vicces becenevet, hogy névtelen maradj - a magánéleted fontos számunkra",
+        "placeholderPreferredName": "Pl., Kapitány Király, Méh Királynő, vagy csak Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Élvezd az ingyenes próbaidőszakot! 🎉",
+        "subheading": "Tapasztald meg ezeket a csodás előnyöket az ingyenes próbaidőszak alatt",
+        "review": "Az orvosi szkennelési elemzés értékes betekintést nyújtott a felvételekbe, és a chat támogatás nagyon hasznos.",
+        "reviewTrust": "📈 Több mint 4 512 felhasználó bízik bennünk"
+      },
+      "scanInterpretation": {
+        "title": "Elemzés eredménye",
+        "headerBackTitle": "Jelentések"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Ingyenes próba engedélyezve",
+          "heading": " Korlátlan hozzáférés",
+          "title": "Tárd fel a Prémium funkciókat ma!",
+          "firstOffering": "Hozzáférés minden Prémium funkcióhoz",
+          "secondOffering": "Reklámmentes élmény",
+          "thirdOffering": "Korlátlan szkennelések + több képből álló orvosi jelentés",
+          "fourthOffering": "Korlátlan csevegés 24/7 orvosi AI asszisztenssel"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Tárd fel a Prémium funkciókat ma!",
+        "firstOffering": {
+          "title": "Ingyenes próba indítása",
+          "subtitle": "Élvezz {{freeScans}} ingyenes szkennelést - fizetés nélkül"
+        },
+        "secondOffering": {
+          "title": "Havi csomag",
+          "subtitle": "{{ price }}/hónap"
+        },
+        "thirdOffering": {
+          "title": "Éves csomag",
+          "subtitle": "{{ price }} évente"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}} napos próba",
+          "subtitle": "{{ price }} évente",
+          "plan": "Heti csomag"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "A MedScan AI új verziója elérhető",
+        "subheading": "Frissíts a legújabb verzióra, hogy továbbra is élvezhesd az app összes funkcióját - ez csak 5 másodpercet vesz igénybe!",
+        "action": "Szerezd meg most!"
+      },
+      "rateAppScreen": {
+        "heading": "Értékesnek és vonzónak találod az alkalmazást?",
+        "like": "Igen, tetszik!",
+        "dislike": "Nem igazán..."
+      },
+      "noInternetScreen": {
+        "heading": "Offline vagy",
+        "subheading": "A kapcsolatod instabilnak tűnik. Kérjük, ellenőrizd a hálózati állapotod"
+      },
+      "notifications": {
+        "title": "Értesítések",
+        "noNotifications": "Jelenleg nincsenek értesítések - maradj velünk a frissítésekért!"
+      },
+      "termsOfService": {
+        "title": "Felhasználási feltételek"
+      },
+      "privacyPolicy": {
+        "title": "Adatvédelmi irányelvek"
+      },
+      "share": {
+        "title": "Megosztás",
+        "heading": "Oszd meg a MedScan AI alkalmazást",
+        "subheading": "Segíts másoknak felfedezni az AI-alapú orvosi képalkotó elemzés erejét",
+        "scanMessage": "Szkenneld le az alkalmazás letöltéséhez",
+        "shareMessage": "vagy oszd meg kedvenc platformodon"
+      },
+      "rate": {
+        "title": "Adj visszajelzést!"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Profil szerkesztése",
+        "placeholderPreferredName": "Pl., Kapitány Király, Méh Királynő, vagy csak Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Köszönjük a türelmed! Itt az AI által generált jelentésed.",
+        "userInput": "Beküldött anyagod",
+        "medicalReport": "Orvosi jelentés",
+        "report": "AI generálta orvosi jelentés",
+        "conversationName": "Beszélgetés neve"
+      },
+      "verifyEmail": {
+        "heading": "Email megerősítése"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Elemzés indítása",
+        "mediaFilesUploaded": "{{totalMediaFiles}} médiafájlt töltöttél fel"
+      },
+      "disclaimerScreen": {
+        "heading": "Fontos orvosi felelősségkizárás",
+        "subheading": "A MedScan AI radiológus szakemberek, egészségügyi szakértők, orvostanhallgatók és rajongók számára készült",
+        "consentAgreement": "Elolvastam és hozzájárulok a felelősségkizáráshoz.",
+        "firstConsent": "A MedScan AI nem nyújt egészségügyi méréseket vagy kezelési tanácsot, és nem ilyen célra szolgál. A MedScan AI felhasználóinak saját klinikai ítélőképességüket kell alkalmazniuk, és hiteles forrásokból kell ellenőrizniük az információkat, mielőtt klinikai döntéseket hoznának.",
+        "secondConsent": "A MedScan AI nem diagnosztikai eszköz, kezelési platform vagy helyettesítője a szakmai orvosi tanácsadásnak. AI által generált betekintéseket kínál, hogy segítse az egészségügyi szakembereket az orvosi ismeretek elérésében és az orvosi képek és dokumentumok elemzésében. A MedScan AI egy AI-alapú tájékoztató és oktató alkalmazás, amely inkább a engedéllyel rendelkező egészségügyi szakemberek támogatására szolgál.",
+        "thirdConsent": "A MedScan AI nem betegek használatára készült. Nem nyújt közvetlen orvosi diagnózisokat, kezelési javaslatokat vagy betegkezelési funkciókat.",
+        "fourthConsent": "A MedScan AI nem minősül orvosi eszköznek, és nem állítja, hogy szabályozási engedéllyel rendelkezik. Oktatási és tájékoztatási célokat szolgál a szakmai szaktudás kiegészítésére.",
+        "fifthConsent": "A MedScan AI nem gyűjt, tárol vagy dolgoz fel személyes vagy betegadatokat. Minden felhasználói interakció bizalmas és az alkalmazás hatókörére korlátozódik."
+      },
+      "contactUs": {
+        "heading": "Nyugodtan küldj közvetlenül emailt, és csapatunk a lehető leghamarabb válaszol",
+        "customerSupport": "Ügyfélszolgálat",
+        "emailAddress": "Email cím"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Milyen nyelvet részesítene előnyben az AI elemzéshez?",
+        "languageSelection": "Válassz nyelvet az AI válaszokhoz",
+        "languageSearchCriteria": "Keresés nyelv, országkód vagy zászló alapján",
+        "noLanguageFound": "Nincs találat",
+        "noLanguageFoundSubtitle": "Próbáld módosítani a keresési feltételeidet"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Mik a különbségek a CT, MRI és ultrahang között?",
+          "two": "Mikor rendeljek kontrasztanyaggal készült felvételt a kontrasztanyag nélküli helyett?",
+          "three": "Hogyan minimalizálható a sugárdózis a diagnosztikai érték veszélyeztetése nélkül?",
+          "four": "Mely modalitások a legjobbak lágy szöveti versus csontpatológiák észlelésére?",
+          "five": "Mik a szívroham versus szorongás fő figyelmeztető jelei?",
+          "six": "Hogyan döntsek az antibiotikumok és vírusellenes szerek között fertőzés esetén?",
+          "seven": "Milyen életmódbeli változtatások csökkentik leginkább a 2-es típusú diabétesz kockázatát?",
+          "eight": "Mikor előnyösebb a sebészeti beavatkozás a gyógyszeres terápia helyett?",
+          "nine": "Hogyan különböztetem meg klinikailag a bakteriális és vírusos tüdőgyulladást?",
+          "ten": "Mik a hypertenzió kezelésének legújabb irányelvei?",
+          "eleven": "Hogyan jelentkeznek eltérően a gyermekbetegek a felnőttekhez képest sürgősségi esetekben?",
+          "twelve": "Mik a biztonságos fájdalomkezelési stratégiák krónikus betegségek esetén?",
+          "thirteen": "Mely vakcinák a legkritikusabbak a felnőttek számára a gyermekkori immunizáláson túl?",
+          "fourteen": "Mik a legjobb gyakorlatok a kórházi fertőzések megelőzésére?",
+          "fifteen": "Hogyan értelmezem a gyakori laborértékeket, mint a vérkép és elektrolitok, kontextusban?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Várj! Ne törölj!",
+    "subtitle": "Küldj visszajelzést helyette"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "A PDF megtekintéséhez győződj meg róla, hogy van telepítve PDF-megjelenítő, mint az Adobe Acrobat Reader vagy a Google PDF Viewer",
+    "conversationTitlePdf": "Beszélgetés Aria AI asszisztenseddel"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Köszönjük a türelmedet!"
+      },
+      "finalReportHeader": {
+        "message": "Ez a jelentés eredménye!"
+      },
+      "uploadFile": {
+        "title": "Kérjük, tölts fel egy orvosi képalkotó fájlt",
+        "size": "Max: {{imageLimit}}MB (képek), {{videoLimit}}MB (videók)",
+        "location": "Válassz a Galériából vagy Fájlokból",
+        "fileType": "PNG, JPG, PDF vagy MP4",
+        "openCamera": "Kamera megnyitása és fénykép készítése",
+        "scanType": "Csak röntgen, CT, MRI, PET vagy egyéb orvosi képalkotó felvételek engedélyezettek"
+      }
+    }
+  },
+  "home": {
+    "tab": "Kezdőlap",
+    "homeForeground": {
+      "maxNumberOfScans": "Elérted a szkennelési korlátot! Frissítsd a csomagod a korlátlan szkennelésért. 🚀",
+      "heading": "Üdvözöljük a MedScan AI-ban!",
+      "subHeading": "Tölts fel röntgenfelvételeket, CT-vizsgálatokat, EKG-kat, MRI-kat, PET-vizsgálatokat, ultrahangokat vagy bármilyen más orvosi felvételt AI elemzésre."
+    },
+    "scanCategories": {
+      "heading": "Radiológiai vizsgálatok"
+    },
+    "recentReports": {
+      "heading": "Legutóbbi beszélgetések",
+      "noReports": "Még nincsenek megjeleníthető beszélgetések!"
+    }
+  },
+  "reports": {
+    "tab": "Előzmények",
+    "noReportsAvailable": "Nincs beszélgetési előzmény ehhez a dátumhoz",
+    "heading": "Beszélgetési előzmények"
+  },
+  "chat": {
+    "tab": "Csevegés"
+  },
+  "settings": {
+    "tab": "Beállítások",
+    "profile": "Profil",
+    "contactUs": "Lépj kapcsolatba velünk",
+    "about": "Rólunk",
+    "app_name": "Alkalmazás neve",
+    "languages": {
+      "english": "Angol",
+      "mandarin_chinese": "Kínai",
+      "hindi": "Hindi",
+      "spanish_spain": "Spanyol (Spanyolország)",
+      "spanish_mexico": "Spanyol (Mexikó)",
+      "arabic": "Arab",
+      "french": "Francia",
+      "french_canada": "Francia (Kanada)",
+      "portuguese_brazil": "Portugál (Brazília)",
+      "portuguese_portugal": "Portugál (Portugália)",
+      "german": "Német",
+      "japanese": "Japán",
+      "russian": "Orosz",
+      "korean": "Koreai",
+      "italian": "Olasz",
+      "turkish": "Török",
+      "vietnamese": "Vietnami",
+      "polish": "Lengyel",
+      "ukrainian": "Ukrán",
+      "romanian": "Román",
+      "dutch": "Holland",
+      "czech": "Cseh",
+      "greek": "Görög",
+      "swedish": "Svéd",
+      "hungarian": "Magyar",
+      "thai": "Thai",
+      "hebrew": "Héber",
+      "indonesian": "Indonéz",
+      "malay": "Maláj",
+      "finnish": "Finn",
+      "danish": "Dán",
+      "norwegian": "Norvég",
+      "slovak": "Szlovák",
+      "croatian": "Horvát",
+      "catalan": "Katalán"
+    },
+    "generale": "Általános",
+    "github": "Github",
+    "language": "Nyelv",
+    "links": "Linkek",
+    "logout": "Kijelentkezés",
+    "more": "Több",
+    "privacy": "Adatvédelmi irányelvek",
+    "faq": "GYIK",
+    "rate": "Értékelés",
+    "share": "Megosztás",
+    "support": "Támogatás",
+    "support_us": "Támogass minket",
+    "terms": "Felhasználási feltételek",
+    "theme": {
+      "dark": "Sötét",
+      "light": "Világos",
+      "system": "Rendszer",
+      "title": "Téma"
+    },
+    "title": "Beállítások",
+    "version": "Verzió",
+    "website": "Weboldal",
+    "devMode": {
+      "title": "Fejlesztői mód",
+      "componentsLibrary": "UI könyvtár"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Értékelés"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Mi az oka?",
+      "unnamedConversation": "Névtelen",
+      "reportTitlePlaceholder": "Cím hozzáadása"
+    },
+    "WeekBlock": {
+      "week": "Hét"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Görgess a tetejére"
+    },
+    "FreeTierStatus": {
+      "heading": "Ingyenes szkennelések",
+      "subheading": "Tárd fel a korlátlan szkenneléseket a csomagod frissítésével",
+      "action": "Frissítés"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Válassz képet / videót"
+    },
+    "TapToViewLabel": {
+      "label": "Koppints a megtekintéshez"
+    },
+    "UpgradeBanner": {
+      "heading": "Frissíts most",
+      "subheading": "Tárd fel a korlátlan szkenneléseket a csomagod frissítésével"
+    },
+    "PromptSection": {
+      "message": "A szkennelésed kész! Most mit szeretnél megtudni?",
+      "prompts": {
+        "first": "Írd le a tüdőmezőkben jelenlévő rendellenességeket",
+        "second": "Értékeld a szív sziluettjét és mediastinumot",
+        "third": "Értékeld a csontszerkezeteket léziókért vagy törésekért",
+        "fourth": "Kommentáld a pleurális folyadékgyülem jelenlétét vagy hiányát"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Kapsz elemzést különböző orvosi vizsgálatokról, beleértve röntgent, CT-t, MRI-t, EKG-t és többet",
+      "second": "Hozzáférés minden prémium funkcióhoz",
+      "third": "Nincsenek hirdetések"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Becenév",
+        "email": "Email",
+        "emailVerification": "Email megerősítése"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Utasítások",
+        "first": "1. Koppints a 'Négyzet hozzáadása' gombra egy kijelölő négyzet létrehozásához.",
+        "second": "2. Húzd a négyzetet az érdeklődési területedre.",
+        "third": "3. Állítsd be a sarkokat, hogy pontosan lefedje a területet."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Stúdió megnyitása",
+        "editMore": "További szerkesztés",
+        "continueEditing": "Folytatod a megjegyzéseid szerkesztését?",
+        "highlightedRegionsCount": "{{highlightedRegions}} kiemelt területed van. Koppints alul, hogy többet adj hozzá",
+        "highlightRegions": "Ki kell emelned az orvosi képed területeit?"
+      },
+      "studioToolbar": {
+        "addSquare": "Négyzet hozzáadása"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Sajnáljuk, kamerajogosultságokra van szükségünk a működéshez!",
+    "errorSelectingImagePicker": "Hiba történt a kép kiválasztásakor. Kérjük, próbáld újra.",
+    "errorSelectingDocumentPicker": "Hiba történt a dokumentum kiválasztásakor. Kérjük, próbáld újra.",
+    "errorTakingPicture": "Hiba történt a fénykép készítésekor. Kérjük, próbáld újra.",
+    "enableNotifications": {
+      "heading": "Értesítések engedélyezése",
+      "subHeading": "Az értesítések jelenleg ki vannak kapcsolva. Az naprakészség érdekében kapcsold be őket az eszköz beállításaiban."
+    },
+    "enableNotificationFailed": "A push értesítések ki vannak kapcsolva. Kapcsold be őket a beállításokban, hogy fontos frissítéseket kapj!",
+    "enableNotificationError": "Hiba történt az értesítések engedélyezésekor",
+    "notificationDisabledSuccess": "Értesítések sikeresen letiltva.",
+    "notificationDisabledRegisterError": "Nem sikerült regisztrációt törölni az értesítésekhez.",
+    "notificationDisabledError": "Hiba történt az értesítések letiltásakor.",
+    "checkNotificationStatusError": "Hiba az értesítési állapot ellenőrzésekor.",
+    "projectIdNotFound": "Értesítési projekt ID nem található.",
+    "imageSizeLarge": "A kép túl nagy! A fájlméret {{fileSize}} MB, de a korlát {{imageLimit}} MB.",
+    "videoSizeLarge": "A videó túl nagy! A fájlméret {{fileSize}} MB, de a korlát {{videoLimit}} MB.",
+    "loggedInSuccess": "Sikeres bejelentkezés",
+    "loggedOutSuccess": "Sikeresen kijelentkeztél!",
+    "sendVerificationCodeError": "Hiba a megerősítő kód küldésekor",
+    "validateAuthCodeError": "Hiba az auth kód ellenőrzésekor",
+    "anonymousSignInError": "Hiba a névtelen bejelentkezéskor",
+    "emailLoginError": "Hiba a bejelentkezéskor",
+    "preferredLanguageError": "Hiba a felhasználó preferált nyelvének frissítésekor",
+    "sharingNotAvailable": "A megosztás jelenleg nem elérhető az eszközödön",
+    "sharingLinkError": "A link megosztása sikertelen.",
+    "individualPushNotificationSuccess": "Egyéni push értesítések sikeresen elküldve!",
+    "globalPushNotificationSuccess": "Globális push értesítések sikeresen elküldve! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Az értelmezési mezők frissítése sikertelen! ❌",
+    "deleteScanReportFail": "A szkennelési jelentés törlése sikertelen. Kérjük, próbáld újra",
+    "onboardingUnsuccessful": "A bevezetés sikertelen. Kérjük, próbáld újra",
+    "logoutUnsuccessful": "A kijelentkezés sikertelen. Kérjük, próbáld újra",
+    "deleteScanReportQuestion": "Biztosan végleg törölni szeretnéd ezt a jelentést?",
+    "videoLimitExceeds": "A videód meghaladja a {{videoSecondsLimit}} másodperces korlátot. Kérjük, vágd le és töltsd fel újra",
+    "subscriptionActivated": "Az előfizetésed sikeresen aktiválva! Élvezd az exkluzív előnyöket!",
+    "subscriptionCancelledByUser": "Visszavontad a tranzakciót. Nyugodtan próbáld újra!",
+    "subscriptionActivationFailed": "Az előfizetésed aktiválása sikertelen. Kérjük, próbáld újra",
+    "logoutQuestion": "Biztosan ki szeretnél jelentkezni?",
+    "noSubscriptionToRestore": "Hoppá! Úgy tűnik, jelenleg nincs aktív előfizetésed. A teljes hozzáférés folytatásához válassz egy előfizetési csomagunkat.",
+    "restorationSuccessful": "A visszaállítás sikeres! Élvezd!",
+    "restorationError": "Hiba történt a vásárlás visszaállítása során.",
+    "medicalDisclaimerAlert": "A MedScan AI alkalmazás nem helyettesíti az orvosi konzultációt. Egyes diagnózisok csak tájékoztató/oktató célokat szolgálnak. Orvosi ajánlásokért mindig konzultálj orvossal vagy engedéllyel rendelkező szakértővel.",
+    "scanLimitReached": "Optimalizáljuk a szkennelés minőségét a számodra! Körülbelül {{hours}} óra és {{minutes}} perc múlva újra tudsz szkennelni. Van kérdésed valamilyen orvosi témával kapcsolatban? Kérdezd a chat asszisztenst, amíg vársz!",
+    "mixedMediaNotAllowed": "A feltöltések csak képeket vagy csak videókat tartalmazhatnak, nem keveréket.",
+    "multipleVideosNotAllowed": "A jobb pontosság érdekében kérjük, egyszerre csak egy videót tölts fel.",
+    "mediaFilesUploadFiles": "Hiba történt a médiafájlok feltöltésekor. Kérjük, próbáld újra.",
+    "chatAndMediaFilesLimit": "Kedves felhasználó, frissítened kell a csomagodat, hogy élvezhesd a korlátlan csevegést, korlátlan szkennelést, több kép elemzését és egyebeket. 🔓"
+  }
+}

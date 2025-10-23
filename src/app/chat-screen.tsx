@@ -623,22 +623,28 @@ const ChatScreen = () => {
               }}
               icon={<CloseIcon color={colors.white} />}
             />
-            <View className="item-center justify-center">
-              <Text className="ml-2 font-bold-nunito text-xl dark:text-white">
-                Aria
-              </Text>
-              {isSending ? (
-                <Text className="ml-2 text-xs text-gray-500 dark:text-white">
-                  {translate('general.typing')}
+            <View className="justify-center items-center flex-row -left-2">
+              <Image
+                source={require('../ui/assets/images/assistant-avatar2.png')}
+                className="mr-2 h-8 w-8 rounded-full"
+              />
+              <View>
+                <Text className="ml-2 font-bold-nunito text-xl dark:text-white">
+                  Aria
                 </Text>
-              ) : (
-                <View className="flex-row items-center gap-2">
-                  <View className="h-2 w-2 rounded-full bg-success-400" />
-                  <Text className="text-xs text-gray-500 dark:text-white">
-                    {translate('general.online')}
+                {isSending ? (
+                  <Text className="ml-2 text-xs text-gray-500 dark:text-white">
+                    {translate('general.typing')}
                   </Text>
-                </View>
-              )}
+                ) : (
+                  <View className="flex-row items-center gap-2">
+                    <View className="h-2 w-2 rounded-full bg-success-400" />
+                    <Text className="text-xs text-gray-500 dark:text-white">
+                      {translate('general.online')}
+                    </Text>
+                  </View>
+                )}
+              </View>
             </View>
             <View>
               {!!mediaSource && (

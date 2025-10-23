@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "Velkommen til MedScan AI!"
+  },
+  "general": {
+    "back": "Tilbake",
+    "welcome": "Hei",
+    "welcomeBack": "Velkommen tilbake!",
+    "welcomeMessage": "Velkommen!",
+    "continue": "Fortsett",
+    "retry": "Prøv igjen",
+    "close": "Lukk",
+    "gallery": "Galleri",
+    "files": "Filer",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "attention": "Oppmerksomhet!",
+    "new": "Ny",
+    "yes": "Ja",
+    "or": "eller",
+    "typing": "Skriver...",
+    "online": "Pålogget",
+    "chatbotPlaceholder": "Spør meg om noe...",
+    "openSettings": "Åpne innstillinger",
+    "seeNotifications": "Se varsler",
+    "viewProfile": "Vis profil",
+    "upgradePlan": "Oppgrader abonnement",
+    "download": "Last ned",
+    "share": "Del",
+    "shareLink": "Del lenke",
+    "skip": "Hopp over",
+    "next": "Neste",
+    "update": "Oppdater",
+    "tryAgain": "Prøv igjen",
+    "createdAt": "Opprettet",
+    "and": "og",
+    "saveDiscount": "SPAR",
+    "restorePurchase": "Gjenopprett kjøp",
+    "medicalDisclaimer": "Medisinsk ansvarsfraskrivelse",
+    "conversationHistory": "Samtalhistorikk",
+    "freeTrial": "Gratis prøveperiode",
+    "free": "GRATIS",
+    "completedScans": "Fullførte skanninger",
+    "activeSubscription": "Aktivt abonnement",
+    "askAssistant": "Spør AI-assistenten",
+    "then": "deretter",
+    "perWeek": "per uke",
+    "perYear": "per år",
+    "perMonth": "per måned",
+    "tryForFree": "Prøv gratis",
+    "unlockNow": "Lås opp nå",
+    "copyText": {
+      "loading": "Kopierer...",
+      "copied": "Kopiert!",
+      "copy": "Kopier lenke"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Laster din personlige opplevelse...",
+        "second": "Synkroniserer systemer...",
+        "third": "Behandler dine data...",
+        "fourth": "Nesten klar, bare et øyeblikk..."
+      },
+      "imageScanningLoading": {
+        "first": "Skanner dine medisinske bilder, vennligst vent...",
+        "second": "Analyserer detaljer, dette kan ta en stund...",
+        "third": "Forbedrer nøyaktighet for beste resultater...",
+        "fourth": "Nesten ferdig, fullfører skanningen..."
+      },
+      "loadingChatbot": {
+        "first": "Aria forbereder seg på å hjelpe deg...",
+        "second": "Vent! Aria forbereder svaret ditt...",
+        "third": "Tenker... assistenten din Aria jobber med det!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Vent litt!",
+    "goBackMessage": "Er du sikker på at du vil gå tilbake?"
+  },
+  "internet": {
+    "noConnectionTitle": "Du er offline!",
+    "noConnectionMessage": "Slå på mobildata eller koble til Wi-Fi. Eller bare ta en pause og gå en tur!"
+  },
+  "uploadScan": {
+    "title": "Last opp skanning",
+    "scanNow": "Skann nå"
+  },
+  "weekDays": {
+    "today": "I dag",
+    "yesterday": "I går"
+  },
+  "auth": {
+    "verifyAuthCode": "Bekreft autentiseringskode",
+    "verifyAuthCodeButton": "Bekreft kode",
+    "authCodeHeading": "Autentiseringskode",
+    "loginViaEmailHeading": "La oss logge deg på. Vennligst skriv inn e-posten din for å fortsette.",
+    "emailAddress": "E-post"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Velkommen til MedScan AI!",
+        "startButton": "La oss komme i gang!",
+        "accountButton": "Jeg har allerede en konto"
+      },
+      "login": {
+        "agreeingMessage": "Ved å fortsette godtar du våre",
+        "termsAndConditions": "Vilkår og betingelser",
+        "privacyPolicy": "Personvernregler"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Skriv inn bekreftelseskoden som er sendt via e-post. Vær oppmerksom på at koden utløper om 5 minutter.",
+        "verificationCodeSent": "Vi har sendt bekreftelseskoden til",
+        "verificationCodeMissing": "Fikk du ikke koden?",
+        "resendCode": "Send kode på nytt",
+        "backToLogin": "Tilbake til innlogging"
+      },
+      "namePreferenceScreen": {
+        "heading": "Trygg, sikker, enkel tilgang!",
+        "preferredNameQuestion": "Velg et morsomt kallenavn for å forbli anonym — ditt personvern betyr noe for oss",
+        "placeholderPreferredName": "F.eks. Kaptein Kul, Dronning Bi, eller bare Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Nyt din gratis prøveperiode! 🎉",
+        "subheading": "Opplev disse fantastiske fordelene under din gratis prøveperiode",
+        "review": "Den medisinske skanneanalysen ga meg verdifull innsikt i bildene, og chat-støtten er veldig hjelpsom.",
+        "reviewTrust": "📈 Stolt brukt av over 4 512 brukere"
+      },
+      "scanInterpretation": {
+        "title": "Analyseresultat",
+        "headerBackTitle": "Rapporter"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Gratis prøveperiode aktivert",
+          "heading": " Ubegrenset tilgang",
+          "title": "Lås opp Premium-funksjoner i dag!",
+          "firstOffering": "Tilgang til alle Premium-funksjoner",
+          "secondOffering": "Reklamefri opplevelse",
+          "thirdOffering": "Ubegrensede skanninger + flerbildeforskningsrapport",
+          "fourthOffering": "Ubegrensede chatter med en 24/7 medisinsk AI-assistent"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Lås opp Premium-funksjoner i dag!",
+        "firstOffering": {
+          "title": "Start gratis prøveperiode",
+          "subtitle": "Nyt {{freeScans}} gratis skanninger – ingen betaling"
+        },
+        "secondOffering": {
+          "title": "Månedsabonnement",
+          "subtitle": "{{ price }}/måned"
+        },
+        "thirdOffering": {
+          "title": "Årlig abonnement",
+          "subtitle": "{{ price }} per år"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-dagers prøveperiode",
+          "subtitle": "{{ price }} per år",
+          "plan": "Ukentlig abonnement"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "En ny versjon av MedScan AI er tilgjengelig",
+        "subheading": "Oppdater til den nyeste versjonen for å fortsette å nyte alle app-funksjoner – det tar bare 5 sekunder!",
+        "action": "Få den nå!"
+      },
+      "rateAppScreen": {
+        "heading": "Synes du appen er verdifull og engasjerende?",
+        "like": "Ja, jeg liker den!",
+        "dislike": "Ikke egentlig..."
+      },
+      "noInternetScreen": {
+        "heading": "Du er offline",
+        "subheading": "Tilkoblingen din virker ustabil. Vennligst verifiser nettverksstatusen din"
+      },
+      "notifications": {
+        "title": "Varsler",
+        "noNotifications": "Ingen varsler foreløpig – følg med for oppdateringer!"
+      },
+      "termsOfService": {
+        "title": "Tjenestevilkår"
+      },
+      "privacyPolicy": {
+        "title": "Personvernregler"
+      },
+      "share": {
+        "title": "Del",
+        "heading": "Del MedScan AI-appen",
+        "subheading": "Hjelp andre med å oppdage kraften i AI-drevet medisinsk bildeanalyse",
+        "scanMessage": "Skann for å laste ned appen",
+        "shareMessage": "eller del via din favorittplattform"
+      },
+      "rate": {
+        "title": "Gi oss en tilbakemelding!"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Rediger profil",
+        "placeholderPreferredName": "F.eks. Kaptein Kul, Dronning Bi, eller bare Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Vi setter pris på tålmodigheten din! Her er din AI-rapport.",
+        "userInput": "Ditt bidrag",
+        "medicalReport": "Medisinsk rapport",
+        "report": "AI-generert medisinsk rapport",
+        "conversationName": "Samtalenavn"
+      },
+      "verifyEmail": {
+        "heading": "Bekreft e-post"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Start analyse",
+        "mediaFilesUploaded": "Du lastet opp {{totalMediaFiles}} mediefiler"
+      },
+      "disclaimerScreen": {
+        "heading": "Viktig medisinsk ansvarsfraskrivelse",
+        "subheading": "MedScan AI er designet for radiologiprofesjonelle, helsepersonell, medisinstudenter og entusiaster",
+        "consentAgreement": "Jeg har lest og samtykker til ansvarsfraskrivelsen.",
+        "firstConsent": "MedScan AI gir ikke helsemålinger eller behandlingsråd, og er ikke beregnet for slike formål. Brukere av MedScan AI må anvende sin kliniske skjønn og verifisere informasjon fra autoritative kilder før de tar noen kliniske beslutninger.",
+        "secondConsent": "MedScan AI er ikke et diagnostisk verktøy, behandlingsplattform eller erstatning for profesjonell medisinsk rådgivning. Den tilbyr AI-genererte innsikter for å hjelpe helsepersonell med å få tilgang til medisinsk kunnskap og analysere medisinske bilder og dokumenter. MedScan AI er en AI-drevet informasjons- og utdanningsapp designet for å støtte lisensierte helsepersonell.",
+        "thirdConsent": "MedScan AI er ikke designet for pasientbruk. Den gir ikke direkte medisinske diagnoser, behandlingsanbefalinger eller pasienthåndteringsfunksjoner.",
+        "fourthConsent": "MedScan AI er ikke klassifisert som et medisinsk device og hevder ikke regulatorisk godkjenning. Den er beregnet for pedagogiske og informative formål for å utfylle faglig ekspertise.",
+        "fifthConsent": "MedScan AI samler ikke inn, lagrer eller behandler personlige eller pasientdata. Alle brukerinteraksjoner er konfidensielle og begrenset til appens omfang."
+      },
+      "contactUs": {
+        "heading": "Send oss gjerne en e-post direkte, og teamet vårt vil komme tilbake til deg så snart som mulig",
+        "customerSupport": "Kundestøtte",
+        "emailAddress": "E-postadresse"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Hvilket språk foretrekker du for AI-analysen?",
+        "languageSelection": "Velg et språk for AI-svar",
+        "languageSearchCriteria": "Søk etter språk, landkode eller flagg",
+        "noLanguageFound": "Ingen språk funnet",
+        "noLanguageFoundSubtitle": "Prøv å endre søkeordene dine"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Hva er forskjellene mellom CT, MRI og ultralyd?",
+          "two": "Når bør jeg bestille kontrastforsterket bildeforming versus ikke-kontrast?",
+          "three": "Hvordan kan strålingsdosen minimeres uten å kompromittere diagnostisk verdi?",
+          "four": "Hvilke modaliteter er best for å oppdage bløtvev versus beinpatologi?",
+          "five": "Hva er de viktigste advarselstegnene på hjerteinfarkt versus angst?",
+          "six": "Hvordan avgjør jeg mellom antibiotika og antivirale midler for en infeksjon?",
+          "seven": "Hvilke livsstilsendringer reduserer risikoen for type 2-diabetes mest effektivt?",
+          "eight": "Når er kirurgi det foretrukne alternativet fremfor medisinsk terapi?",
+          "nine": "Hvordan skiller jeg mellom bakteriell og viral pneumoni klinisk?",
+          "ten": "Hva er de siste retningslinjene for behandling av hypertensjon?",
+          "eleven": "Hvordan presenterer pediatriske pasienter seg annerledes sammenlignet med voksne i nødsituasjoner?",
+          "twelve": "Hva er trygge smertehåndteringsstrategier for kroniske tilstander?",
+          "thirteen": "Hvilke vaksiner er mest kritiske for voksne utover barnevaksinasjoner?",
+          "fourteen": "Hva er beste praksis for å forebygge sykehusinfeksjoner?",
+          "fifteen": "Hvordan tolker jeg vanlige laboratorieverdier som blodprøve og elektrolytter i kontekst?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Vent! Ikke slett meg!",
+    "subtitle": "Send en tilbakemelding i stedet"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "For å forhåndsvise PDF-en, sørg for at du har en PDF-viser installert, som Adobe Acrobat Reader eller Google PDF Viewer",
+    "conversationTitlePdf": "Samtale med Aria, din AI-assistent"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Takk for din tålmodighet!"
+      },
+      "finalReportHeader": {
+        "message": "Dette er rapportresultatet!"
+      },
+      "uploadFile": {
+        "title": "Vennligst last opp en medisinsk bildefil",
+        "size": "Maks: {{imageLimit}}MB (bilder), {{videoLimit}}MB (videoer)",
+        "location": "Velg fra Galleri eller Filer",
+        "fileType": "PNG, JPG, PDF eller MP4",
+        "openCamera": "Åpne kamera og ta bilde",
+        "scanType": "Kun røntgen, CT, MRI, PET eller annen medisinsk bildeforming tillatt"
+      }
+    }
+  },
+  "home": {
+    "tab": "Hjem",
+    "homeForeground": {
+      "maxNumberOfScans": "Du har nått skannegrensen! Oppgrader abonnementet ditt for ubegrensede skanninger. 🚀",
+      "heading": "Velkommen til MedScan AI!",
+      "subHeading": "Last opp røntgenbilder, CT-skanninger, EKG, MRI, PET-skanninger, ultralyd eller andre medisinske bilder for AI-analyse."
+    },
+    "scanCategories": {
+      "heading": "Radiologisk samling"
+    },
+    "recentReports": {
+      "heading": "Nylige samtaler",
+      "noReports": "Ingen samtaler å vise ennå!"
+    }
+  },
+  "reports": {
+    "tab": "Historikk",
+    "noReportsAvailable": "Ingen samtalhistorikk tilgjengelig for denne datoen",
+    "heading": "Samtalhistorikk"
+  },
+  "chat": {
+    "tab": "Chat"
+  },
+  "settings": {
+    "tab": "Innstillinger",
+    "profile": "Profil",
+    "contactUs": "Kontakt oss",
+    "about": "Om",
+    "app_name": "App-navn",
+    "languages": {
+      "english": "Engelsk",
+      "mandarin_chinese": "Kinesisk",
+      "hindi": "Hindi",
+      "spanish_spain": "Spansk (Spania)",
+      "spanish_mexico": "Spansk (Mexico)",
+      "arabic": "Arabisk",
+      "french": "Fransk",
+      "french_canada": "Fransk (Canada)",
+      "portuguese_brazil": "Portugisisk (Brasil)",
+      "portuguese_portugal": "Portugisisk (Portugal)",
+      "german": "Tysk",
+      "japanese": "Japansk",
+      "russian": "Russisk",
+      "korean": "Koreansk",
+      "italian": "Italiensk",
+      "turkish": "Tyrkisk",
+      "vietnamese": "Vietnamesisk",
+      "polish": "Polsk",
+      "ukrainian": "Ukrainsk",
+      "romanian": "Rumensk",
+      "dutch": "Nederlandsk",
+      "czech": "Tsjekkisk",
+      "greek": "Gresk",
+      "swedish": "Svensk",
+      "hungarian": "Ungarsk",
+      "thai": "Thai",
+      "hebrew": "Hebraisk",
+      "indonesian": "Indonesisk",
+      "malay": "Malayisk",
+      "finnish": "Finsk",
+      "danish": "Dansk",
+      "norwegian": "Norsk",
+      "slovak": "Slovakisk",
+      "croatian": "Kroatisk",
+      "catalan": "Katalansk"
+    },
+    "generale": "Generelt",
+    "github": "Github",
+    "language": "Språk",
+    "links": "Lenker",
+    "logout": "Logg ut",
+    "more": "Mer",
+    "privacy": "Personvernregler",
+    "faq": "FAQ",
+    "rate": "Vurder",
+    "share": "Del",
+    "support": "Støtte",
+    "support_us": "Støtt oss",
+    "terms": "Tjenestevilkår",
+    "theme": {
+      "dark": "Mørk",
+      "light": "Lys",
+      "system": "System",
+      "title": "Tema"
+    },
+    "title": "Innstillinger",
+    "version": "Versjon",
+    "website": "Nettsted",
+    "devMode": {
+      "title": "Utviklermodus",
+      "componentsLibrary": "UI-bibliotek"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Vurdering"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Hva er grunnen?",
+      "unnamedConversation": "Uten tittel",
+      "reportTitlePlaceholder": "Legg til en tittel"
+    },
+    "WeekBlock": {
+      "week": "Uke"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Scroll til toppen"
+    },
+    "FreeTierStatus": {
+      "heading": "Gratis skanninger",
+      "subheading": "Lås opp ubegrensede skanninger ved å oppgradere abonnementet ditt",
+      "action": "Oppgrader"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Velg et bilde / video"
+    },
+    "TapToViewLabel": {
+      "label": "Trykk for å se"
+    },
+    "UpgradeBanner": {
+      "heading": "Oppgrader nå",
+      "subheading": "Lås opp ubegrensede skanninger ved å oppgradere abonnementet ditt"
+    },
+    "PromptSection": {
+      "message": "Skanningen din er klar! Nå, hva vil du finne ut?",
+      "prompts": {
+        "first": "Beskriv eventuelle abnormaliteter tilstede i lungefeltene",
+        "second": "Evaluer hjerte-silhuetten og mediastinum",
+        "third": "Evaluer benstrukturer for eventuelle lesjoner eller brudd",
+        "fourth": "Kommenter tilstedeværelsen eller fraværet av pleurale effusioner"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Få analyse fra ulike medisinske skanninger, inkludert røntgen, CT, MRI, EKG og mer",
+      "second": "Tilgang til alle premium-funksjoner",
+      "third": "Ingen annonser"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Kallenavn",
+        "email": "E-post",
+        "emailVerification": "E-postbekreftelse"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instruksjoner",
+        "first": "1. Trykk på 'Legg til firkant'-knappen for å opprette en utvalgsfirkant.",
+        "second": "2. Dra firkanten over ditt interesseområde.",
+        "third": "3. Juster hjørnene for å dekke området nøyaktig."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Åpne studio",
+        "editMore": "Rediger mer",
+        "continueEditing": "Fortsett å redigere annoteringene dine?",
+        "highlightedRegionsCount": "Du har {{highlightedRegions}} uthevede områder. Trykk nedenfor for å legge til mer",
+        "highlightRegions": "Trenger du å fremheve områder av ditt medisinske bilde?"
+      },
+      "studioToolbar": {
+        "addSquare": "Legg til firkant"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Beklager, vi trenger kameratillatelser for å få dette til å fungere!",
+    "errorSelectingImagePicker": "Noe gikk galt ved valg av bilde. Vennligst prøv igjen.",
+    "errorSelectingDocumentPicker": "Noe gikk galt ved valg av dokument. Vennligst prøv igjen.",
+    "errorTakingPicture": "Noe gikk galt ved taking av bilde. Vennligst prøv igjen.",
+    "enableNotifications": {
+      "heading": "Aktiver varsler",
+      "subHeading": "Varsler er for øyeblikket slått av. For å holde deg oppdatert, vennligst aktiver dem i enhetsinnstillingene dine."
+    },
+    "enableNotificationFailed": "Push-varsler er deaktivert. Aktiver dem i innstillingene for å motta viktige oppdateringer!",
+    "enableNotificationError": "Det oppstod en feil under aktivering av varsler",
+    "notificationDisabledSuccess": "Varsler deaktivert vellykket.",
+    "notificationDisabledRegisterError": "Kunne ikke fjerne enhet fra varslingsregistrering.",
+    "notificationDisabledError": "Det oppstod en feil under deaktivering av varsler",
+    "checkNotificationStatusError": "Feil ved sjekk av varslingsstatus.",
+    "projectIdNotFound": "Varslingsprosjekt-ID ikke funnet.",
+    "imageSizeLarge": "Bildet er for stort! Filstørrelsen er {{fileSize}} MB, men grensen er {{imageLimit}} MB.",
+    "videoSizeLarge": "Videoen er for stor! Filstørrelsen er {{fileSize}} MB, men grensen er {{videoLimit}} MB.",
+    "loggedInSuccess": "Vellykket innlogging",
+    "loggedOutSuccess": "Du har logget ut vellykket!",
+    "sendVerificationCodeError": "Feil ved sending av bekreftelseskode",
+    "validateAuthCodeError": "Feil ved validering av auth-kode",
+    "anonymousSignInError": "Feil ved anonym innlogging",
+    "emailLoginError": "Feil ved innlogging",
+    "preferredLanguageError": "Feil ved oppdatering av brukerens foretrukne språk",
+    "sharingNotAvailable": "Deling er for øyeblikket ikke tilgjengelig på enheten din",
+    "sharingLinkError": "Kunne ikke dele lenke.",
+    "individualPushNotificationSuccess": "Individuelle push-varsler sendt vellykket!",
+    "globalPushNotificationSuccess": "Globale push-varsler sendt vellykket! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Kunne ikke oppdatere tolkingsfelt! ❌",
+    "deleteScanReportFail": "Kan ikke slette skannerapporten. Vennligst prøv igjen",
+    "onboardingUnsuccessful": "Onboarding mislyktes. Vennligst prøv igjen",
+    "logoutUnsuccessful": "Utlogging mislyktes. Vennligst prøv igjen",
+    "deleteScanReportQuestion": "Er du sikker på at du vil slette denne rapporten permanent?",
+    "videoLimitExceeds": "Videoen din overskrider {{videoSecondsLimit}}-sekunders grensen. Vennligst trim den og last opp på nytt",
+    "subscriptionActivated": "Abonnementet ditt har blitt aktivert! Nyt de eksklusive fordelene!",
+    "subscriptionCancelledByUser": "Du har avbrutt transaksjonen. Prøv gjerne igjen!",
+    "subscriptionActivationFailed": "Kunne ikke aktivere abonnementet ditt. Vennligst prøv igjen",
+    "logoutQuestion": "Er du sikker på at du vil logge ut?",
+    "noSubscriptionToRestore": "Oisann! Det ser ut til at du ikke har et aktivt abonnement for øyeblikket. For å fortsette å nyte full tilgang, vennligst velg en av våre abonnementsplaner.",
+    "restorationSuccessful": "Gjenopprettelsen var vellykket! Nyt!",
+    "restorationError": "Det oppstod en feil under gjenoppretting av kjøpet.",
+    "medicalDisclaimerAlert": "MedScan AI-appen erstatter ikke medisinsk konsultasjon. Noen diagnoser er kun til informasjons-/utdanningsformål. For medisinske anbefalinger, konsulter alltid en lege eller lisensiert spesialist.",
+    "scanLimitReached": "Vi optimaliserer skannekvaliteten for deg! Du vil kunne skanne igjen om cirka {{hours}} timer og {{minutes}} minutter. Har du noen spørsmål om noe medisinsk emne? Spør chat-assistenten vår mens du venter!",
+    "mixedMediaNotAllowed": "Opplastinger må inneholde kun bilder eller kun videoer, ikke en blanding av begge.",
+    "multipleVideosNotAllowed": "For bedre nøyaktighet, vennligst last kun opp én video om gangen.",
+    "mediaFilesUploadFiles": "Det oppstod en feil under opplasting av mediefilene dine. Vennligst prøv igjen.",
+    "chatAndMediaFilesLimit": "Kjære bruker, du må oppgradere abonnementet ditt for å dra nytte av ubegrensede samtaler, ubegrensede skanninger, flerbildeforskningsanalyse og mer. 🔓"
+  }
+}

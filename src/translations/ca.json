@@ -1,0 +1,502 @@
+{
+  "onboarding": {
+    "message": "Benvingut/da a MedScan AI!"
+  },
+  "general": {
+    "back": "Enrere",
+    "welcome": "Hola",
+    "welcomeBack": "Benvingut/da de nou!",
+    "welcomeMessage": "Benvingut/da!",
+    "continue": "Continua",
+    "retry": "Torna-ho a provar",
+    "close": "Tanca",
+    "gallery": "Galeria",
+    "files": "Arxius",
+    "cancel": "Cancel·la",
+    "delete": "Elimina",
+    "attention": "Atenció!",
+    "new": "Nou",
+    "yes": "Sí",
+    "or": "o",
+    "typing": "Escrivint...",
+    "online": "En línia",
+    "chatbotPlaceholder": "Pregunta'm el que vulguis...",
+    "openSettings": "Obre la configuració",
+    "seeNotifications": "Veure notificacions",
+    "viewProfile": "Veure perfil",
+    "upgradePlan": "Millora el pla",
+    "download": "Descarrega",
+    "share": "Comparteix",
+    "shareLink": "Comparteix l'enllaç",
+    "skip": "Omet",
+    "next": "Següent",
+    "update": "Actualitza",
+    "tryAgain": "Torna-ho a provar",
+    "createdAt": "Creat el",
+    "and": "i",
+    "saveDiscount": "ESTALVIA",
+    "restorePurchase": "Restaura la compra",
+    "medicalDisclaimer": "Avís mèdic",
+    "conversationHistory": "Historial de converses",
+    "freeTrial": "Prova gratuïta",
+    "free": "GRATUÏT",
+    "completedScans": "Escanejats completats",
+    "activeSubscription": "Subscripció activa",
+    "askAssistant": "Pregunta a l'assistent d'IA",
+    "then": "llavors",
+    "perWeek": "per setmana",
+    "perYear": "per any",
+    "perMonth": "per mes",
+    "tryForFree": "Prova-ho Gratuïtament",
+    "unlockNow": "Desbloqueja Ara",
+    "copyText": {
+      "loading": "S'està copiant...",
+      "copied": "S'ha copiat!",
+      "copy": "Copia l'enllaç"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Carregant la teva experiència personalitzada...",
+        "second": "Sincronitzant sistemes...",
+        "third": "Processant les teves dades...",
+        "fourth": "Gairebé llest, només un moment..."
+      },
+      "imageScanningLoading": {
+        "first": "S'està escanejant la teva imatge mèdica, si us plau, espera...",
+        "second": "Analitzant detalls, això pot tardar uns moments...",
+        "third": "Millorant la precisió per als millors resultats...",
+        "fourth": "Gairebé allà, finalitzant l'escaneig..."
+      },
+      "loadingChatbot": {
+        "first": "L'Aria s'està preparant per ajudar-te...",
+        "second": "Espera! L'Aria està preparant la teva resposta...",
+        "third": "Pensant... el teu assistent Aria hi està treballant!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Espera!",
+    "goBackMessage": "Estàs segur que vols tornar enrere?"
+  },
+  "internet": {
+    "noConnectionTitle": "Estàs sense connexió!",
+    "noConnectionMessage": "Activa les dades mòbils o connecta't a Wi-Fi. O simplement fes una pausa i fes una passejada!"
+  },
+  "uploadScan": {
+    "title": "Puja un escaneig",
+    "scanNow": "Escaneja ara"
+  },
+  "weekDays": {
+    "today": "Avui",
+    "yesterday": "Ahir"
+  },
+  "auth": {
+    "verifyAuthCode": "Verifica el codi d'autenticació",
+    "verifyAuthCodeButton": "Verifica el codi",
+    "authCodeHeading": "Codi d'autenticació",
+    "loginViaEmailHeading": "Iniciem sessió. Si us plau, introdueix el teu correu electrònic per continuar.",
+    "emailAddress": "Correu electrònic"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Benvingut/da a MedScan AI!",
+        "startButton": "Començem!",
+        "accountButton": "Ja tinc un compte"
+      },
+      "login": {
+        "agreeingMessage": "En continuar, acceptes els nostres",
+        "termsAndConditions": "Termes i Condicions",
+        "privacyPolicy": "Política de Privadesa"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Introdueix el teu codi de verificació enviat per correu electrònic. Si us plau, tingues en compte que el codi expirarà en 5 minuts.",
+        "verificationCodeSent": "Hem enviat el codi de verificació a",
+        "verificationCodeMissing": "No has rebut el codi?",
+        "resendCode": "Reenvia el codi",
+        "backToLogin": "Torna a Iniciar Sessió"
+      },
+      "namePreferenceScreen": {
+        "heading": "Accés segur, simple i fàcil!",
+        "preferredNameQuestion": "Tria un sobrenom divertit per romandre anònim — la teva privadesa és important per a nosaltres",
+        "placeholderPreferredName": "Ex., Capità Guai, Reina Abella, o simplement l'Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Gaudiu de la vostra prova gratuïta! 🎉",
+        "subheading": "Experimenta aquests beneficis increïbles durant la teva prova gratuïta",
+        "review": "L'anàlisi de l'escaneig mèdic em va donar informació valuosa sobre les imatges, i el suport del xat és molt útil.",
+        "reviewTrust": "📈 Confiat per més de 4.512 usuaris"
+      },
+      "scanInterpretation": {
+        "title": "Resultat de l'anàlisi",
+        "headerBackTitle": "Informes"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Prova Gratuïta Activada",
+          "heading": " Accés Il·limitat",
+          "title": "Desbloqueja les Funcions Premium Avui!",
+          "firstOffering": "Accés a totes les funcions premium",
+          "secondOffering": "Experència sense anuncis",
+          "thirdOffering": "Escaneigs il·limitats + informe mèdic amb múltiples imatges",
+          "fourthOffering": "Xats il·limitats amb un assistent mèdic d'IA 24/7"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Desbloqueja les Funcions Premium Avui!",
+        "firstOffering": {
+          "title": "Comença la Prova Gratuïta",
+          "subtitle": "Gaudeix de {{freeScans}} escaneigs gratuïts – sense pagament"
+        },
+        "secondOffering": {
+          "title": "Pla Mensual",
+          "subtitle": "{{ price }}/mes"
+        },
+        "thirdOffering": {
+          "title": "Pla Anual",
+          "subtitle": "{{ price }} per any"
+        },
+        "fourthOffering": {
+          "title": "Prova de {{trialDays}} Dies",
+          "subtitle": "{{ price }} per any",
+          "plan": "Pla Setmanal"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Hi ha una nova versió de MedScan AI disponible",
+        "subheading": "Actualitza a l'última versió per continuar gaudint de totes les funcions de l'aplicació — només triga 5 segons!",
+        "action": "Obtingueu-la ara!"
+      },
+      "rateAppScreen": {
+        "heading": "Trobes que l'aplicació és valuosa i atractiva?",
+        "like": "Sí, m'agrada!",
+        "dislike": "Realment no..."
+      },
+      "noInternetScreen": {
+        "heading": "Estàs sense connexió",
+        "subheading": "La teva connexió sembla inestable. Si us plau, verifica l'estat de la teva xarxa"
+      },
+      "notifications": {
+        "title": "Notificacions",
+        "noNotifications": "Encara no hi ha notificacions — estigueu atents a les actualitzacions!"
+      },
+      "termsOfService": {
+        "title": "Termes de Servei"
+      },
+      "privacyPolicy": {
+        "title": "Política de Privadesa"
+      },
+      "share": {
+        "title": "Comparteix",
+        "heading": "Comparteix l'App MedScan AI",
+        "subheading": "Ajuda altres a descobrir el poder de l'anàlisi d'imatges mèdiques amb IA",
+        "scanMessage": "Escaneja per descarregar l'aplicació",
+        "shareMessage": "o comparteix per la teva plataforma preferida"
+      },
+      "rate": {
+        "title": "Dona'ns la teva opinió!"
+      },
+      "profile": {
+        "title": "Perfil",
+        "edit": "Edita el perfil",
+        "placeholderPreferredName": "Ex., Capità Guai, Reina Abella, o simplement l'Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Agraïm la teva paciència! Aquí tens el teu informe d'IA. ",
+        "userInput": "La teva tramesa",
+        "medicalReport": "Informe Mèdic",
+        "report": "Informe Mèdic Generat per IA",
+        "conversationName": "Nom de la conversa"
+      },
+      "verifyEmail": {
+        "heading": "Verifica el correu electrònic"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Comença l'Anàlisi",
+        "mediaFilesUploaded": "Has pujat {{totalMediaFiles}} arxius multimèdia"
+      },
+      "disclaimerScreen": {
+        "heading": "Avís Mèdic Important",
+        "subheading": "MedScan AI està dissenyat per a professionals de radiologia, experts en salut, estudiants de medicina i entusiastes",
+        "consentAgreement": "He llegit i accepto l'avís.",
+        "firstConsent": "MedScan AI no proporciona mesures de salut ni consells de tractament, ni està destinat a aquests propòsits. Els usuaris de MedScan AI han d'aplicar el seu judici clínic i verificar la informació de fonts autoritzades abans de prendre decisions clíniques.",
+        "secondConsent": "MedScan AI no és una eina de diagnòstic, una plataforma de tractament o un substitut del consell mèdic professional. Ofereix informació generada per IA per ajudar els professionals de la salut a accedir al coneixement mèdic i analitzar imatges i documents mèdics. MedScan AI és una aplicació informativa i educativa impulsada per IA dissenyada principalment per donar suport als professionals de la salut amb llicència.",
+        "thirdConsent": "MedScan AI no està dissenyat per a l'ús de pacients. No proporciona diagnòstics mèdics directes, recomanacions de tractament ni funcionalitats de gestió de pacients.",
+        "fourthConsent": "MedScan AI no està classificat com a dispositiu mèdic i no pretén aprovacions reglamentàries. Està destinat a fins educatius i informatius per complementar l'experiència professional.",
+        "fifthConsent": "MedScan AI no recull, emmagatzema ni processa dades personals o de pacients. Totes les interaccions de l'usuari són confidencials i limitades a l'abast de l'aplicació."
+      },
+      "contactUs": {
+        "heading": "No dubtis a enviar-nos un correu electrònic directament, i el nostre equip et respondrà tan aviat com sigui possible",
+        "customerSupport": "Suport al Client",
+        "emailAddress": "Adreça de Correu Electrònic"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Quina llengua prefereixes per a l'anàlisi d'IA?",
+        "languageSelection": "Tria una llengua per a les respostes de l'IA",
+        "languageSearchCriteria": "Cerca per llengua, codi de país o bandera",
+        "noLanguageFound": "No s'ha trobat cap llengua",
+        "noLanguageFoundSubtitle": "Prova de modificar els termes de cerca"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Quines són les diferències entre TAC, RMN i ecografia?",
+          "two": "Quan hauria de sol·licitar imatges amb contrast versus sense contrast?",
+          "three": "Com es pot minimitzar la dosi de radiació sense comprometre el valor diagnòstic?",
+          "four": "Quines modalitats són millors per detectar patologies de teixits tous versus ossis?",
+          "five": "Quins són els signes d'alarma clau d'un atac de cor versus ansietat?",
+          "six": "Com decideixo entre antibiòtics i antivirals per a una infecció?",
+          "seven": "Quins canvis d'estil de vida redueixen eficaçment el risc de diabetis tipus 2?",
+          "eight": "Quan és la cirurgia l'opció preferida sobre la teràpia mèdica?",
+          "nine": "Com puc diferenciar clínicament entre pneumònia bacteriana i viral?",
+          "ten": "Quines són les darreres directrius per a la gestió de la hipertensió?",
+          "eleven": "Com es presenten els pacients pediàtrics de manera diferent als adults en emergències?",
+          "twelve": "Quines són les estratègies segures per al maneig del dolor en condicions cròniques?",
+          "thirteen": "Quines vacunes són més crítiques per als adults més enllà de les immunitzacions infantils?",
+          "fourteen": "Quines són les millors pràctiques per prevenir infeccions nosocomials?",
+          "fifteen": "Com interpreto valors comuns de laboratori com hemograma i electròlits en context?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Espera! No em suprimeixis!",
+    "subtitle": "Envia comentaris en lloc"
+  },
+
+  "pdfPreview": {
+    "noEditorInstalled": "Per visualitzar el PDF, assegura't que tens un visualitzador de PDF instal·lat, com Adobe Acrobat Reader o Google PDF Viewer",
+    "conversationTitlePdf": "Conversa amb l'Aria, el teu assistent d'IA"
+  },
+
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Gràcies per la teva paciència!"
+      },
+      "finalReportHeader": {
+        "message": "Aquest és el resultat de l'informe!"
+      },
+      "uploadFile": {
+        "title": "Si us plau, puja un arxiu d'imatge mèdica",
+        "size": "Màx: {{imageLimit}}MB (imatges), {{videoLimit}}MB (videos)",
+        "location": "Selecciona des de la Galeria o Arxius",
+        "fileType": "PNG, JPG, PDF, o MP4",
+        "openCamera": "Obre la Càmera i Fes una Foto",
+        "scanType": "Només es permeten Raigs X, TAC, RMN, TEP o altres imatges mèdiques"
+      }
+    }
+  },
+  "home": {
+    "tab": "Inici",
+    "homeForeground": {
+      "maxNumberOfScans": "Has arribat al límit d'escaneigs! Millora el teu pla per a escaneigs il·limitats. 🚀",
+      "heading": "Benvingut/da a MedScan AI!",
+      "subHeading": "Puja radiografies, TAC, ECG, RMN, TEP, ecografies o qualsevol altra imatge mèdica per a l'anàlisi d'IA."
+    },
+    "scanCategories": {
+      "heading": "Carrusel de Radiologia"
+    },
+    "recentReports": {
+      "heading": "Xats Recents",
+      "noReports": "Encara no hi ha xats per mostrar!"
+    }
+  },
+  "reports": {
+    "tab": "Historial",
+    "noReportsAvailable": "No hi ha historial de xats disponible per a aquesta data",
+    "heading": "Historial de Xats"
+  },
+  "chat": {
+    "tab": "Xat"
+  },
+  "settings": {
+    "tab": "Configuració",
+    "profile": "Perfil",
+    "contactUs": "Contacta'ns",
+    "about": "Quant a",
+    "app_name": "Nom de l'Aplicació",
+    "languages": {
+      "english": "Anglès",
+      "mandarin_chinese": "Xinès",
+      "hindi": "Hindi",
+      "spanish_spain": "Espanyol (Espanya)",
+      "spanish_mexico": "Espanyol (Mèxic)",
+      "arabic": "Àrab",
+      "french": "Francès",
+      "french_canada": "Francès (Canadà)",
+      "portuguese_brazil": "Portuguès (Brasil)",
+      "portuguese_portugal": "Portuguès (Portugal)",
+      "german": "Alemany",
+      "japanese": "Japonès",
+      "russian": "Rus",
+      "korean": "Coreà",
+      "italian": "Italià",
+      "turkish": "Turc",
+      "vietnamese": "Vietnamita",
+      "polish": "Polonès",
+      "ukrainian": "Ucraïnès",
+      "romanian": "Romanès",
+      "dutch": "Neerlandès",
+      "czech": "Txec",
+      "greek": "Grec",
+      "swedish": "Suec",
+      "hungarian": "Hongarès",
+      "thai": "Tai",
+      "hebrew": "Hebreu",
+      "indonesian": "Indonesi",
+      "malay": "Malai",
+      "finnish": "Finès",
+      "danish": "Danès",
+      "norwegian": "Noruec",
+      "slovak": "Eslovac",
+      "croatian": "Croat",
+      "catalan": "Català"
+    },
+    "generale": "General",
+    "github": "Github",
+    "language": "Idioma",
+    "links": "Enllaços",
+    "logout": "Tanca sessió",
+    "more": "Més",
+    "privacy": "Política de Privadesa",
+    "faq": "PMF",
+    "rate": "Valora",
+    "share": "Comparteix",
+    "support": "Suport",
+    "support_us": "Suporta'ns",
+    "terms": "Termes de Servei",
+    "theme": {
+      "dark": "Fosc",
+      "light": "Clar",
+      "system": "Sistema",
+      "title": "Tema"
+    },
+    "title": "Configuració",
+    "version": "Versió",
+    "website": "Lloc web",
+    "devMode": {
+      "title": "Mode desenvolupador",
+      "componentsLibrary": "Biblioteca d'UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Valoració"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Quina és la raó?",
+      "unnamedConversation": "Sense títol",
+      "reportTitlePlaceholder": "Afegeix un títol"
+    },
+    "WeekBlock": {
+      "week": "Setmana"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Desplaça't a dalt"
+    },
+    "FreeTierStatus": {
+      "heading": "Escaneigs gratuïts",
+      "subheading": "Desbloqueja escaneigs il·limitats millorant el teu pla",
+      "action": "Millora"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Tria una imatge / vídeo"
+    },
+    "TapToViewLabel": {
+      "label": "Toqueu per veure"
+    },
+    "UpgradeBanner": {
+      "heading": "Millora Ara",
+      "subheading": "Desbloqueja escaneigs il·limitats millorant el teu pla"
+    },
+    "PromptSection": {
+      "message": "El teu escaneig està llest! Ara, què t'agradaria saber?",
+      "prompts": {
+        "first": "Descriu qualsevol anormalitat present als camps pulmonars",
+        "second": "Avalua la silueta cardíaca i el mediastí",
+        "third": "Avalua les estructures òssies per a qualsevol lesió o fractura",
+        "fourth": "Comenta la presència o absència de derrames pleurals"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Obtén anàlisi de diversos escaneigs mèdics, incloent Raigs X, TAC, RMN, ECG i més",
+      "second": "Accés a totes les funcions premium",
+      "third": "Sense anuncis"
+    },
+
+    "Input": {
+      "labels": {
+        "nickname": "Sobrenom",
+        "email": "Correu electrònic",
+        "emailVerification": "Verificació de correu electrònic"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instruccions",
+        "first": "1. Toqueu el botó 'Afegeix Quadrat' per crear un quadrat de selecció.",
+        "second": "2. Arrossega el quadrat sobre la teva regió d'interès.",
+        "third": "3. Ajusta les cantonades per cobrir amb precisió la regió."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Obre l'Estudi",
+        "editMore": "Edita més",
+        "continueEditing": "Continueu editant les vostres anotacions?",
+        "highlightedRegionsCount": "Tens {{highlightedRegions}} regions destacades. Toqueu a sota per afegir-ne més",
+        "highlightRegions": "Necessites destacar regions de la teva imatge mèdica?"
+      },
+      "studioToolbar": {
+        "addSquare": "Afegeix Quadrat"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Ho sentim, necessitem permisos de càmera perquè això funcioni!",
+    "errorSelectingImagePicker": "Alguna cosa ha anat malament en seleccionar la imatge. Si us plau, torna-ho a provar.",
+    "errorSelectingDocumentPicker": "Alguna cosa ha anat malament en seleccionar el document. Si us plau, torna-ho a provar.",
+    "errorTakingPicture": "Alguna cosa ha anat malament en fer la foto. Si us plau, torna-ho a provar.",
+    "enableNotifications": {
+      "heading": "Activa les Notificacions",
+      "subHeading": "Les notificacions estan desactivades actualment. Per estar actualitzat, si us plau, activa-les a la configuració del teu dispositiu."
+    },
+    "enableNotificationFailed": "Les notificacions push estan desactivades. Activa-les a la configuració per rebre actualitzacions importants!",
+    "enableNotificationError": "S'ha produït un error en activar les notificacions",
+    "notificationDisabledSuccess": "Notificacions desactivades correctament.",
+    "notificationDisabledRegisterError": "No s'ha pogut desregistrar el dispositiu per a notificacions.",
+    "notificationDisabledError": "S'ha produït un error en desactivar les notificacions.",
+    "checkNotificationStatusError": "Error en comprovar l'estat de les notificacions.",
+    "projectIdNotFound": "No s'ha trobat l'ID del projecte de notificació.",
+    "imageSizeLarge": "La imatge és massa gran! La mida de l'arxiu és {{fileSize}} MB, però el límit és {{imageLimit}} MB.",
+    "videoSizeLarge": "El vídeo és massa gran! La mida de l'arxiu és {{fileSize}} MB, però el límit és {{videoLimit}} MB.",
+    "loggedInSuccess": "Sessió iniciada correctament",
+    "loggedOutSuccess": "Has tancat la sessió correctament!",
+    "sendVerificationCodeError": "Error en enviar el codi de verificació",
+    "validateAuthCodeError": "Error en validar el codi d'autenticació",
+    "anonymousSignInError": "Error en iniciar sessió de manera anònima",
+    "emailLoginError": "Error en iniciar sessió",
+    "preferredLanguageError": "Error en actualitzar l'idioma preferit de l'usuari",
+    "sharingNotAvailable": "La funció de compartir no està disponible actualment al teu dispositiu",
+    "sharingLinkError": "No s'ha pogut compartir l'enllaç.",
+    "individualPushNotificationSuccess": "Notificacions push individuals enviades correctament!",
+    "globalPushNotificationSuccess": "Notificacions push globals enviades correctament! 🌍🚀",
+    "interpretationFieldsUpdateFail": "No s'han pogut actualitzar els camps d'interpretació! ❌",
+    "deleteScanReportFail": "No s'ha pogut eliminar l'informe de l'escaneig. Si us plau, torna-ho a provar",
+    "onboardingUnsuccessful": "El procés d'inici no ha tingut èxit. Si us plau, torna-ho a provar",
+    "logoutUnsuccessful": "No s'ha pogut tancar la sessió. Si us plau, torna-ho a provar",
+    "deleteScanReportQuestion": "Estàs segur que vols eliminar permanentment aquest informe?",
+    "videoLimitExceeds": "El teu vídeo supera el límit de {{videoSecondsLimit}} segons. Si us plau, retalla'l i torna'l a pujar",
+    "subscriptionActivated": "La teva subscripció s'ha activat correctament! Gaudeix dels teus beneficis exclusius!",
+    "subscriptionCancelledByUser": "Has cancel·lat la transacció. No dubtis en tornar-ho a provar!",
+    "subscriptionActivationFailed": "No s'ha pogut activar la teva subscripció. Si us plau, torna-ho a provar",
+    "logoutQuestion": "Estàs segur que vols tancar la sessió?",
+    "noSubscriptionToRestore": "Vaja! Sembla que no tens una subscripció activa en aquest moment. Per continuar gaudint d'accés complet, si us plau, tria un dels nostres plans de subscripció.",
+    "restorationSuccessful": "La restauració ha estat exitosa! Gaudeix!",
+    "restorationError": "S'ha produït un error en restaurar la compra.",
+    "medicalDisclaimerAlert": "L'aplicació MedScan AI no substitueix la consulta mèdica. Alguns diagnòstics són només per a fins informatius/educatius. Per a recomanacions mèdiques, consulta sempre un metge o especialista acreditat.",
+    "scanLimitReached": "Estem optimitzant la qualitat de l'escaneig per a tu! Podràs escanejar de nou en aproximadament {{hours}} hores i {{minutes}} minuts. Tens alguna pregunta sobre algun tema mèdic? Pregunta al nostre assistent de xat mentre esperes!",
+    "mixedMediaNotAllowed": "Les pujades han de contenir només imatges o només vídeos, no una barreja d'ambdós.",
+    "multipleVideosNotAllowed": "Per a una millor precisió, si us plau, puja només un vídeo a la vegada.",
+    "mediaFilesUploadFiles": "Hi ha hagut un error en pujar els teus arxius multimèdia. Si us plau, torna-ho a provar.",
+    "chatAndMediaFilesLimit": "Estimat/ada usuari/ària, has de millorar el teu pla per beneficiar-te de xats il·limitats, escaneigs il·limitats, anàlisi de múltiples imatges i més. 🔓"
+  }
+}

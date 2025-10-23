@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "Chào mừng đến với MedScan AI!"
+  },
+  "general": {
+    "back": "Quay lại",
+    "welcome": "Xin chào",
+    "welcomeBack": "Chào mừng trở lại!",
+    "welcomeMessage": "Chào mừng!",
+    "continue": "Tiếp tục",
+    "retry": "Thử lại",
+    "close": "Đóng",
+    "gallery": "Thư viện",
+    "files": "Tệp",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "attention": "Chú ý!",
+    "new": "Mới",
+    "yes": "Có",
+    "or": "hoặc",
+    "typing": "Đang nhập...",
+    "online": "Trực tuyến",
+    "chatbotPlaceholder": "Hỏi tôi bất cứ điều gì...",
+    "openSettings": "Mở Cài đặt",
+    "seeNotifications": "Xem thông báo",
+    "viewProfile": "Xem Hồ sơ",
+    "upgradePlan": "Nâng cấp Gói",
+    "download": "Tải xuống",
+    "share": "Chia sẻ",
+    "shareLink": "Chia sẻ Liên kết",
+    "skip": "Bỏ qua",
+    "next": "Tiếp theo",
+    "update": "Cập nhật",
+    "tryAgain": "Thử lại",
+    "createdAt": "Được tạo lúc",
+    "and": "và",
+    "saveDiscount": "TIẾT KIỆM",
+    "restorePurchase": "Khôi phục giao dịch mua",
+    "medicalDisclaimer": "Tuyên bố miễn trừ trách nhiệm y tế",
+    "conversationHistory": "Lịch sử trò chuyện",
+    "freeTrial": "Dùng thử miễn phí",
+    "free": "MIỄN PHÍ",
+    "completedScans": "Quét đã hoàn thành",
+    "activeSubscription": "Đang đăng ký",
+    "askAssistant": "Hỏi trợ lý AI",
+    "then": "sau đó",
+    "perWeek": "mỗi tuần",
+    "perYear": "mỗi năm",
+    "perMonth": "mỗi tháng",
+    "tryForFree": "Dùng Thử Miễn Phí",
+    "unlockNow": "Mở Khóa Ngay",
+    "copyText": {
+      "loading": "Đang sao chép...",
+      "copied": "Đã sao chép!",
+      "copy": "Sao chép Liên kết"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Đang tải trải nghiệm cá nhân hóa của bạn...",
+        "second": "Đang đồng bộ hóa hệ thống...",
+        "third": "Đang xử lý dữ liệu của bạn...",
+        "fourth": "Gần xong, chờ một chút..."
+      },
+      "imageScanningLoading": {
+        "first": "Đang quét hình ảnh y tế của bạn, vui lòng chờ...",
+        "second": "Đang phân tích chi tiết, việc này có thể mất một lúc...",
+        "third": "Đang cải thiện độ chính xác để có kết quả tốt nhất...",
+        "fourth": "Gần xong, đang hoàn tất quá trình quét..."
+      },
+      "loadingChatbot": {
+        "first": "Aria đang chuẩn bị để hỗ trợ bạn...",
+        "second": "Chờ chút! Aria đang chuẩn bị phản hồi của bạn...",
+        "third": "Đang suy nghĩ... trợ lý Aria của bạn đang xử lý!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Chờ đã!",
+    "goBackMessage": "Bạn có chắc muốn quay lại không?"
+  },
+  "internet": {
+    "noConnectionTitle": "Bạn đang ngoại tuyến!",
+    "noConnectionMessage": "Bật dữ liệu di động hoặc kết nối Wi-Fi. Hoặc nghỉ ngơi và đi dạo!"
+  },
+  "uploadScan": {
+    "title": "Tải lên Ảnh quét",
+    "scanNow": "Quét ngay"
+  },
+  "weekDays": {
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua"
+  },
+  "auth": {
+    "verifyAuthCode": "Xác minh mã xác thực",
+    "verifyAuthCodeButton": "Xác minh mã",
+    "authCodeHeading": "Mã xác thực",
+    "loginViaEmailHeading": "Hãy đăng nhập cho bạn. Vui lòng nhập email để tiếp tục.",
+    "emailAddress": "Email"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Chào mừng đến với MedScan AI!",
+        "startButton": "Hãy bắt đầu!",
+        "accountButton": "Tôi đã có tài khoản"
+      },
+      "login": {
+        "agreeingMessage": "Bằng cách tiếp tục, bạn đồng ý với",
+        "termsAndConditions": "Điều khoản & Điều kiện",
+        "privacyPolicy": "Chính sách Quyền riêng tư"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Nhập mã xác minh được gửi qua email. Lưu ý, mã sẽ hết hạn sau 5 phút.",
+        "verificationCodeSent": "Chúng tôi đã gửi mã xác minh đến",
+        "verificationCodeMissing": "Không nhận được mã?",
+        "resendCode": "Gửi lại mã",
+        "backToLogin": "Quay lại Đăng nhập"
+      },
+      "namePreferenceScreen": {
+        "heading": "Truy cập an toàn, bảo mật, đơn giản!",
+        "preferredNameQuestion": "Chọn biệt danh thú vị để ẩn danh - quyền riêng tư của bạn quan trọng với chúng tôi",
+        "placeholderPreferredName": "Ví dụ: Captain Cool, Queen Bee, hoặc chỉ Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Tận hưởng bản dùng thử miễn phí của bạn! 🎉",
+        "subheading": "Trải nghiệm những lợi ích tuyệt vời này trong thời gian dùng thử miễn phí",
+        "review": "Phân tích ảnh quét y tế cho tôi những hiểu biết giá trị về hình ảnh, và hỗ trợ trò chuyện rất hữu ích.",
+        "reviewTrust": "📈 Được tin tưởng bởi 4.512+ người dùng"
+      },
+      "scanInterpretation": {
+        "title": "Kết quả phân tích",
+        "headerBackTitle": "Báo cáo"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Đã Bật Dùng Thử Miễn Phí",
+          "heading": " Truy cập Không giới hạn",
+          "title": "Mở khóa Tính năng Cao cấp Hôm nay!",
+          "firstOffering": "Truy cập Tất cả Tính năng Cao cấp",
+          "secondOffering": "Trải nghiệm Không quảng cáo",
+          "thirdOffering": "Quét không giới hạn + báo cáo y tế đa hình ảnh",
+          "fourthOffering": "Trò chuyện không giới hạn với trợ lý y tế AI 24/7"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Mở khóa Tính năng Cao cấp Hôm nay!",
+        "firstOffering": {
+          "title": "Bắt đầu Dùng Thử Miễn Phí",
+          "subtitle": "Tận hưởng {{freeScans}} lượt quét miễn phí - không thanh toán"
+        },
+        "secondOffering": {
+          "title": "Gói Hàng Tháng",
+          "subtitle": "{{ price }}/tháng"
+        },
+        "thirdOffering": {
+          "title": "Gói Hàng Năm",
+          "subtitle": "{{ price }} mỗi năm"
+        },
+        "fourthOffering": {
+          "title": "Dùng Thử {{trialDays}} Ngày",
+          "subtitle": "{{ price }} mỗi năm",
+          "plan": "Gói Hàng Tuần"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Đã có phiên bản mới của MedScan AI",
+        "subheading": "Cập nhật lên phiên bản mới nhất để tiếp tục tận hưởng tất cả tính năng ứng dụng - chỉ mất 5 giây!",
+        "action": "Tải ngay!"
+      },
+      "rateAppScreen": {
+        "heading": "Bạn có thấy ứng dụng có giá trị và hấp dẫn không?",
+        "like": "Có, tôi thích nó!",
+        "dislike": "Không hẳn..."
+      },
+      "noInternetScreen": {
+        "heading": "Bạn đang ngoại tuyến",
+        "subheading": "Kết nối của bạn có vẻ không ổn định. Vui lòng kiểm tra trạng thái mạng"
+      },
+      "notifications": {
+        "title": "Thông báo",
+        "noNotifications": "Chưa có thông báo nào - hãy theo dõi để cập nhật!"
+      },
+      "termsOfService": {
+        "title": "Điều khoản Dịch vụ"
+      },
+      "privacyPolicy": {
+        "title": "Chính sách Quyền riêng tư"
+      },
+      "share": {
+        "title": "Chia sẻ",
+        "heading": "Chia sẻ Ứng dụng MedScan AI",
+        "subheading": "Giúp người khác khám phá sức mạnh phân tích hình ảnh y tế bằng AI",
+        "scanMessage": "Quét để tải ứng dụng",
+        "shareMessage": "hoặc chia sẻ qua nền tảng yêu thích của bạn"
+      },
+      "rate": {
+        "title": "Cho chúng tôi phản hồi!"
+      },
+      "profile": {
+        "title": "Hồ sơ",
+        "edit": "Chỉnh sửa Hồ sơ",
+        "placeholderPreferredName": "Ví dụ: Captain Cool, Queen Bee, hoặc chỉ Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Chúng tôi đánh giá cao sự kiên nhẫn của bạn! Đây là báo cáo AI của bạn.",
+        "userInput": "Bài gửi của Bạn",
+        "medicalReport": "Báo cáo Y tế",
+        "report": "Báo cáo Y tế được Tạo bởi AI",
+        "conversationName": "Tên cuộc trò chuyện"
+      },
+      "verifyEmail": {
+        "heading": "Xác minh email"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Bắt đầu Phân tích",
+        "mediaFilesUploaded": "Bạn đã tải lên {{totalMediaFiles}} tệp media"
+      },
+      "disclaimerScreen": {
+        "heading": "Tuyên bố Miễn trừ Trách nhiệm Y tế Quan trọng",
+        "subheading": "MedScan AI được thiết kế cho chuyên gia X-quang, chuyên gia y tế, sinh viên y khoa và người đam mê",
+        "consentAgreement": "Tôi đã đọc và đồng ý với tuyên bố miễn trừ.",
+        "firstConsent": "MedScan AI không cung cấp phép đo sức khỏe hoặc tư vấn điều trị, và không nhằm mục đích đó. Người dùng MedScan AI phải áp dụng phán đoán lâm sàng và xác minh thông tin từ các nguồn có thẩm quyền trước khi đưa ra quyết định lâm sàng.",
+        "secondConsent": "MedScan AI không phải là công cụ chẩn đoán, nền tảng điều trị hoặc thay thế cho tư vấn y tế chuyên nghiệp. Nó cung cấp thông tin chi tiết được tạo bởi AI để hỗ trợ chuyên gia y tế truy cập kiến thức y tế và phân tích hình ảnh và tài liệu y tế. MedScan AI là ứng dụng thông tin và giáo dục dựa trên AI được thiết kế để hỗ trợ chuyên gia y tế có giấy phép.",
+        "thirdConsent": "MedScan AI không được thiết kế cho bệnh nhân sử dụng. Nó không cung cấp chẩn đoán y tế trực tiếp, khuyến nghị điều trị hoặc chức năng quản lý bệnh nhân.",
+        "fourthConsent": "MedScan AI không được phân loại là thiết bị y tế và không tuyên bố phê duyệt quy định. Nó nhằm mục đích giáo dục và thông tin để bổ sung cho chuyên môn chuyên nghiệp.",
+        "fifthConsent": "MedScan AI không thu thập, lưu trữ hoặc xử lý dữ liệu cá nhân hoặc dữ liệu bệnh nhân. Tất cả tương tác của người dùng đều được bảo mật và giới hạn trong phạm vi ứng dụng."
+      },
+      "contactUs": {
+        "heading": "Hãy gửi email trực tiếp cho chúng tôi, và đội ngũ của chúng tôi sẽ phản hồi sớm nhất có thể",
+        "customerSupport": "Hỗ trợ Khách hàng",
+        "emailAddress": "Địa chỉ Email"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Bạn muốn ngôn ngữ nào cho phân tích AI?",
+        "languageSelection": "Chọn ngôn ngữ cho phản hồi AI",
+        "languageSearchCriteria": "Tìm kiếm theo ngôn ngữ, mã quốc gia hoặc cờ",
+        "noLanguageFound": "Không Tìm Thấy Ngôn Ngữ",
+        "noLanguageFoundSubtitle": "Thử điều chỉnh từ khóa tìm kiếm của bạn"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Sự khác biệt giữa CT, MRI và siêu âm là gì?",
+          "two": "Khi nào tôi nên yêu cầu chụp ảnh có cản quang so với không cản quang?",
+          "three": "Làm thế nào để giảm thiểu liều bức xạ mà không ảnh hưởng đến giá trị chẩn đoán?",
+          "four": "Phương thức nào tốt nhất để phát hiện bệnh lý mô mềm so với xương?",
+          "five": "Các dấu hiệu cảnh báo chính của cơn đau tim so với lo lắng là gì?",
+          "six": "Làm thế nào để quyết định giữa kháng sinh và thuốc kháng vi-rút cho nhiễm trùng?",
+          "seven": "Thay đổi lối sống nào hiệu quả nhất để giảm nguy cơ tiểu đường loại 2?",
+          "eight": "Khi nào phẫu thuật là lựa chọn ưu tiên hơn liệu pháp y tế?",
+          "nine": "Làm thế nào để phân biệt lâm sàng giữa viêm phổi do vi khuẩn và vi-rút?",
+          "ten": "Hướng dẫn mới nhất để quản lý tăng huyết áp là gì?",
+          "eleven": "Bệnh nhân nhi trình bày khác với người lớn trong trường hợp khẩn cấp như thế nào?",
+          "twelve": "Chiến lược quản lý đau an toàn cho tình trạng mãn tính là gì?",
+          "thirteen": "Vắc-xin nào quan trọng nhất cho người lớn ngoài tiêm chủng thời thơ ấu?",
+          "fourteen": "Thực hành tốt nhất để ngăn ngừa nhiễm trùng mắc phải tại bệnh viện là gì?",
+          "fifteen": "Làm thế nào để diễn giải các giá trị xét nghiệm phổ biến như CBC và điện giải trong ngữ cảnh?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Chờ đã! Đừng xóa tôi!",
+    "subtitle": "Thay vào đó hãy gửi phản hồi"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "Để xem trước PDF, hãy đảm bảo bạn đã cài đặt trình xem PDF như Adobe Acrobat Reader hoặc Google PDF Viewer",
+    "conversationTitlePdf": "Trò chuyện với Aria, trợ lý AI của bạn"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Cảm ơn sự kiên nhẫn của bạn!"
+      },
+      "finalReportHeader": {
+        "message": "Đây là kết quả báo cáo!"
+      },
+      "uploadFile": {
+        "title": "Vui lòng tải lên tệp hình ảnh y tế",
+        "size": "Tối đa: {{imageLimit}}MB (hình ảnh), {{videoLimit}}MB (video)",
+        "location": "Chọn từ Thư viện hoặc Tệp",
+        "fileType": "PNG, JPG, PDF hoặc MP4",
+        "openCamera": "Mở Máy ảnh & Chụp Ảnh",
+        "scanType": "Chỉ cho phép X-Quang, CT, MRI, PET hoặc hình ảnh y tế khác"
+      }
+    }
+  },
+  "home": {
+    "tab": "Trang chủ",
+    "homeForeground": {
+      "maxNumberOfScans": "Bạn đã đạt đến giới hạn quét! Nâng cấp gói của bạn để quét không giới hạn. 🚀",
+      "heading": "Chào mừng đến với MedScan AI!",
+      "subHeading": "Tải lên X-Quang, CT scan, ECG, MRI, PET scan, siêu âm hoặc bất kỳ hình ảnh y tế nào khác để phân tích AI."
+    },
+    "scanCategories": {
+      "heading": "Cuộn X-Quang"
+    },
+    "recentReports": {
+      "heading": "Cuộc Trò chuyện Gần đây",
+      "noReports": "Chưa có cuộc trò chuyện nào để hiển thị!"
+    }
+  },
+  "reports": {
+    "tab": "Lịch sử",
+    "noReportsAvailable": "Không có lịch sử trò chuyện nào cho ngày này",
+    "heading": "Lịch sử Trò chuyện"
+  },
+  "chat": {
+    "tab": "Trò chuyện"
+  },
+  "settings": {
+    "tab": "Cài đặt",
+    "profile": "Hồ sơ",
+    "contactUs": "Liên hệ chúng tôi",
+    "about": "Giới thiệu",
+    "app_name": "Tên Ứng dụng",
+    "languages": {
+      "english": "Tiếng Anh",
+      "mandarin_chinese": "Tiếng Trung",
+      "hindi": "Tiếng Hindi",
+      "spanish_spain": "Tiếng Tây Ban Nha (Tây Ban Nha)",
+      "spanish_mexico": "Tiếng Tây Ban Nha (Mexico)",
+      "arabic": "Tiếng Ả Rập",
+      "french": "Tiếng Pháp",
+      "french_canada": "Tiếng Pháp (Canada)",
+      "portuguese_brazil": "Tiếng Bồ Đào Nha (Brazil)",
+      "portuguese_portugal": "Tiếng Bồ Đào Nha (Bồ Đào Nha)",
+      "german": "Tiếng Đức",
+      "japanese": "Tiếng Nhật",
+      "russian": "Tiếng Nga",
+      "korean": "Tiếng Hàn",
+      "italian": "Tiếng Ý",
+      "turkish": "Tiếng Thổ Nhĩ Kỳ",
+      "vietnamese": "Tiếng Việt",
+      "polish": "Tiếng Ba Lan",
+      "ukrainian": "Tiếng Ukraina",
+      "romanian": "Tiếng Romania",
+      "dutch": "Tiếng Hà Lan",
+      "czech": "Tiếng Séc",
+      "greek": "Tiếng Hy Lạp",
+      "swedish": "Tiếng Thụy Điển",
+      "hungarian": "Tiếng Hungary",
+      "thai": "Tiếng Thái",
+      "hebrew": "Tiếng Do Thái",
+      "indonesian": "Tiếng Indonesia",
+      "malay": "Tiếng Mã Lai",
+      "finnish": "Tiếng Phần Lan",
+      "danish": "Tiếng Đan Mạch",
+      "norwegian": "Tiếng Na Uy",
+      "slovak": "Tiếng Slovak",
+      "croatian": "Tiếng Croatia",
+      "catalan": "Tiếng Catalan"
+    },
+    "generale": "Chung",
+    "github": "Github",
+    "language": "Ngôn ngữ",
+    "links": "Liên kết",
+    "logout": "Đăng xuất",
+    "more": "Thêm",
+    "privacy": "Chính sách Quyền riêng tư",
+    "faq": "Câu hỏi Thường gặp",
+    "rate": "Đánh giá",
+    "share": "Chia sẻ",
+    "support": "Hỗ trợ",
+    "support_us": "Hỗ trợ Chúng tôi",
+    "terms": "Điều khoản Dịch vụ",
+    "theme": {
+      "dark": "Tối",
+      "light": "Sáng",
+      "system": "Hệ thống",
+      "title": "Chủ đề"
+    },
+    "title": "Cài đặt",
+    "version": "Phiên bản",
+    "website": "Trang web",
+    "devMode": {
+      "title": "Chế độ nhà phát triển",
+      "componentsLibrary": "Thư viện UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Đánh giá"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Lý do là gì?",
+      "unnamedConversation": "Không tên",
+      "reportTitlePlaceholder": "Thêm tiêu đề"
+    },
+    "WeekBlock": {
+      "week": "Tuần"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Cuộn lên Đầu"
+    },
+    "FreeTierStatus": {
+      "heading": "Quét miễn phí",
+      "subheading": "Mở khóa quét không giới hạn bằng cách nâng cấp gói của bạn",
+      "action": "Nâng cấp"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Chọn hình ảnh / video"
+    },
+    "TapToViewLabel": {
+      "label": "Chạm để Xem"
+    },
+    "UpgradeBanner": {
+      "heading": "Nâng cấp Ngay",
+      "subheading": "Mở khóa quét không giới hạn bằng cách nâng cấp gói của bạn"
+    },
+    "PromptSection": {
+      "message": "Ảnh quét của bạn đã sẵn sàng! Bây giờ, bạn muốn tìm hiểu điều gì?",
+      "prompts": {
+        "first": "Mô tả bất kỳ bất thường nào trong phế trường",
+        "second": "Đánh giá bóng tim và trung thất",
+        "third": "Đánh giá cấu trúc xương để tìm tổn thương hoặc gãy xương",
+        "fourth": "Nhận xét về sự có mặt hoặc vắng mặt của tràn dịch màng phổi"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Nhận phân tích từ nhiều loại quét y tế, bao gồm X-RAY, CT, MRI, ECG và hơn thế",
+      "second": "Truy cập tất cả tính năng cao cấp",
+      "third": "Không quảng cáo"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Biệt danh",
+        "email": "Email",
+        "emailVerification": "Xác minh Email"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Hướng dẫn",
+        "first": "1. Chạm nút 'Thêm Hình vuông' để tạo hình vuông lựa chọn.",
+        "second": "2. Kéo hình vuông qua vùng quan tâm của bạn.",
+        "third": "3. Điều chỉnh các góc để che phủ chính xác vùng."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Mở Studio",
+        "editMore": "Chỉnh sửa Thêm",
+        "continueEditing": "Tiếp tục chỉnh sửa chú thích của bạn?",
+        "highlightedRegionsCount": "Bạn có {{highlightedRegions}} vùng được đánh dấu. Chạm bên dưới để thêm",
+        "highlightRegions": "Cần đánh dấu vùng của hình ảnh y tế của bạn?"
+      },
+      "studioToolbar": {
+        "addSquare": "Thêm Hình vuông"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Xin lỗi, chúng tôi cần quyền máy ảnh để hoạt động này!",
+    "errorSelectingImagePicker": "Đã xảy ra lỗi khi chọn hình ảnh. Vui lòng thử lại.",
+    "errorSelectingDocumentPicker": "Đã xảy ra lỗi khi chọn tài liệu. Vui lòng thử lại.",
+    "errorTakingPicture": "Đã xảy ra lỗi khi chụp ảnh. Vui lòng thử lại.",
+    "enableNotifications": {
+      "heading": "Bật Thông báo",
+      "subHeading": "Thông báo hiện đang tắt. Vui lòng bật trong cài đặt thiết bị để cập nhật."
+    },
+    "enableNotificationFailed": "Thông báo đẩy bị tắt. Bật trong cài đặt để nhận cập nhật quan trọng!",
+    "enableNotificationError": "Đã xảy ra lỗi khi bật thông báo",
+    "notificationDisabledSuccess": "Đã tắt thông báo thành công.",
+    "notificationDisabledRegisterError": "Không thể hủy đăng ký thiết bị cho thông báo.",
+    "notificationDisabledError": "Đã xảy ra lỗi khi tắt thông báo.",
+    "checkNotificationStatusError": "Lỗi kiểm tra trạng thái thông báo.",
+    "projectIdNotFound": "Không tìm thấy ID dự án thông báo.",
+    "imageSizeLarge": "Hình ảnh quá lớn! Kích thước tệp là {{fileSize}} MB, nhưng giới hạn là {{imageLimit}} MB.",
+    "videoSizeLarge": "Video quá lớn! Kích thước tệp là {{fileSize}} MB, nhưng giới hạn là {{videoLimit}} MB.",
+    "loggedInSuccess": "Đã đăng nhập thành công",
+    "loggedOutSuccess": "Bạn đã đăng xuất thành công!",
+    "sendVerificationCodeError": "Lỗi khi gửi mã xác minh",
+    "validateAuthCodeError": "Lỗi khi xác thực mã auth",
+    "anonymousSignInError": "Lỗi đăng nhập ẩn danh",
+    "emailLoginError": "Lỗi khi đăng nhập",
+    "preferredLanguageError": "Lỗi khi cập nhật ngôn ngữ ưa thích của người dùng",
+    "sharingNotAvailable": "Chia sẻ hiện không khả dụng trên thiết bị của bạn",
+    "sharingLinkError": "Không thể chia sẻ liên kết.",
+    "individualPushNotificationSuccess": "Đã gửi thông báo đẩy cá nhân thành công!",
+    "globalPushNotificationSuccess": "Đã gửi thông báo đẩy toàn cầu thành công! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Không thể cập nhật trường diễn giải! ❌",
+    "deleteScanReportFail": "Không thể xóa báo cáo quét. Vui lòng thử lại",
+    "onboardingUnsuccessful": "Đăng ký không thành công. Vui lòng thử lại",
+    "logoutUnsuccessful": "Đăng xuất không thành công. Vui lòng thử lại",
+    "deleteScanReportQuestion": "Bạn có chắc muốn xóa vĩnh viễn báo cáo này không?",
+    "videoLimitExceeds": "Video của bạn vượt quá giới hạn {{videoSecondsLimit}} giây. Vui lòng cắt và tải lên lại",
+    "subscriptionActivated": "Đăng ký của bạn đã được kích hoạt thành công! Tận hưởng đặc quyền độc quyền của bạn!",
+    "subscriptionCancelledByUser": "Bạn đã hủy giao dịch. Hãy thử lại!",
+    "subscriptionActivationFailed": "Không thể kích hoạt đăng ký của bạn. Vui lòng thử lại",
+    "logoutQuestion": "Bạn có chắc muốn đăng xuất không?",
+    "noSubscriptionToRestore": "Rất tiếc! Hiện bạn không có đăng ký hoạt động. Để tiếp tục truy cập đầy đủ, vui lòng chọn một trong các gói đăng ký của chúng tôi.",
+    "restorationSuccessful": "Khôi phục thành công! Tận hưởng!",
+    "restorationError": "Đã xảy ra lỗi khi khôi phục giao dịch mua.",
+    "medicalDisclaimerAlert": "Ứng dụng MedScan AI không thay thế tư vấn y tế. Một số chẩn đoán chỉ dành cho mục đích thông tin/giáo dục. Để được khuyến nghị y tế, luôn tham khảo ý kiến bác sĩ hoặc chuyên gia được cấp phép.",
+    "scanLimitReached": "Chúng tôi đang tối ưu hóa chất lượng quét cho bạn! Bạn sẽ có thể quét lại sau khoảng {{hours}} giờ và {{minutes}} phút. Có câu hỏi về chủ đề y tế? Hỏi trợ lý trò chuyện của chúng tôi trong khi chờ đợi!",
+    "mixedMediaNotAllowed": "Tải lên phải chỉ chứa hình ảnh hoặc chỉ video, không phải hỗn hợp cả hai.",
+    "multipleVideosNotAllowed": "Để chính xác hơn, vui lòng chỉ tải lên một video mỗi lần.",
+    "mediaFilesUploadFiles": "Đã xảy ra lỗi khi tải lên tệp media của bạn. Vui lòng thử lại.",
+    "chatAndMediaFilesLimit": "Người dùng thân mến, bạn cần nâng cấp gói của mình để hưởng lợi từ trò chuyện không giới hạn, quét không giới hạn, phân tích đa hình ảnh và hơn thế nữa. 🔓"
+  }
+}

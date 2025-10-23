@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "Selamat datang di MedScan AI!"
+  },
+  "general": {
+    "back": "Kembali",
+    "welcome": "Hai",
+    "welcomeBack": "Selamat Datang Kembali!",
+    "welcomeMessage": "Selamat Datang!",
+    "continue": "Lanjutkan",
+    "retry": "Coba Lagi",
+    "close": "Tutup",
+    "gallery": "Galeri",
+    "files": "File",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "attention": "Perhatian!",
+    "new": "Baru",
+    "yes": "Ya",
+    "or": "atau",
+    "typing": "Mengetik...",
+    "online": "Online",
+    "chatbotPlaceholder": "Tanyakan apa saja...",
+    "openSettings": "Buka Pengaturan",
+    "seeNotifications": "Lihat notifikasi",
+    "viewProfile": "Lihat Profil",
+    "upgradePlan": "Tingkatkan Paket",
+    "download": "Unduh",
+    "share": "Bagikan",
+    "shareLink": "Bagikan Tautan",
+    "skip": "Lewati",
+    "next": "Berikutnya",
+    "update": "Perbarui",
+    "tryAgain": "Coba lagi",
+    "createdAt": "Dibuat Pada",
+    "and": "dan",
+    "saveDiscount": "HEMAT",
+    "restorePurchase": "Pulihkan pembelian",
+    "medicalDisclaimer": "Penyangkalan Medis",
+    "conversationHistory": "Riwayat percakapan",
+    "freeTrial": "Uji coba gratis",
+    "free": "GRATIS",
+    "completedScans": "Pemindaian selesai",
+    "activeSubscription": "Langganan aktif",
+    "askAssistant": "Tanya asisten AI",
+    "then": "lalu",
+    "perWeek": "per minggu",
+    "perYear": "per tahun",
+    "perMonth": "per bulan",
+    "tryForFree": "Coba Gratis",
+    "unlockNow": "Buka Sekarang",
+    "copyText": {
+      "loading": "Menyalin...",
+      "copied": "Tersalin!",
+      "copy": "Salin Tautan"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Memuat pengalaman pribadi Anda...",
+        "second": "Menyinkronkan sistem...",
+        "third": "Memproses data Anda...",
+        "fourth": "Hampir siap, tunggu sebentar..."
+      },
+      "imageScanningLoading": {
+        "first": "Memindai pencitraan medis Anda, harap tunggu...",
+        "second": "Menganalisis detail, ini mungkin membutuhkan waktu...",
+        "third": "Meningkatkan akurasi untuk hasil terbaik...",
+        "fourth": "Hampir selesai, menyelesaikan pemindaian..."
+      },
+      "loadingChatbot": {
+        "first": "Aria sedang bersiap untuk membantu Anda...",
+        "second": "Tunggu! Aria sedang mempersiapkan respons Anda...",
+        "third": "Berpikir... asisten Anda Aria sedang menanganinya!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Tunggu!",
+    "goBackMessage": "Apakah Anda yakin ingin kembali?"
+  },
+  "internet": {
+    "noConnectionTitle": "Anda offline!",
+    "noConnectionMessage": "Nyalakan data seluler atau sambungkan ke Wi-Fi. Atau istirahat sebentar dan jalan-jalan!"
+  },
+  "uploadScan": {
+    "title": "Unggah Pindaian",
+    "scanNow": "Pindai sekarang"
+  },
+  "weekDays": {
+    "today": "Hari ini",
+    "yesterday": "Kemarin"
+  },
+  "auth": {
+    "verifyAuthCode": "Verifikasi kode autentikasi",
+    "verifyAuthCodeButton": "Verifikasi kode",
+    "authCodeHeading": "Kode autentikasi",
+    "loginViaEmailHeading": "Mari kita masukkan Anda. Silakan masukkan email Anda untuk melanjutkan.",
+    "emailAddress": "Email"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Selamat datang di MedScan AI!",
+        "startButton": "Mari kita mulai!",
+        "accountButton": "Saya sudah memiliki akun"
+      },
+      "login": {
+        "agreeingMessage": "Dengan melanjutkan, Anda menyetujui",
+        "termsAndConditions": "Syarat & Ketentuan",
+        "privacyPolicy": "Kebijakan Privasi"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Masukkan kode verifikasi Anda yang dikirim via email. Harap dicatat, kode akan kedaluwarsa dalam 5 menit.",
+        "verificationCodeSent": "Kami telah mengirim kode verifikasi ke",
+        "verificationCodeMissing": "Tidak mendapatkan kode?",
+        "resendCode": "Kirim ulang kode",
+        "backToLogin": "Kembali ke Masuk"
+      },
+      "namePreferenceScreen": {
+        "heading": "Akses aman, terjamin, dan sederhana!",
+        "preferredNameQuestion": "Pilih nama panggilan yang menyenangkan untuk tetap anonim - privasi Anda penting bagi kami",
+        "placeholderPreferredName": "Misalnya, Kapten Keren, Ratu Lebah, atau hanya Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Nikmati uji coba gratis Anda! 🎉",
+        "subheading": "Rasakan manfaat luar biasa ini selama uji coba gratis Anda",
+        "review": "Analisis pemindaian medis memberikan saya wawasan berharga tentang gambar, dan dukungan chat sangat membantu.",
+        "reviewTrust": "📈 Dipercaya oleh 4.512+ pengguna"
+      },
+      "scanInterpretation": {
+        "title": "Hasil analisis",
+        "headerBackTitle": "Laporan"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Uji Coba Gratis Diaktifkan",
+          "heading": " Akses Tidak Terbatas",
+          "title": "Buka Fitur Premium Hari Ini!",
+          "firstOffering": "Akses Semua Fitur Premium",
+          "secondOffering": "Pengalaman Bebas Iklan",
+          "thirdOffering": "Pemindaian tidak terbatas + laporan medis multi-gambar",
+          "fourthOffering": "Chat tidak terbatas dengan asisten medis AI 24/7"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Buka Fitur Premium Hari Ini!",
+        "firstOffering": {
+          "title": "Mulai Uji Coba Gratis",
+          "subtitle": "Nikmati {{freeScans}} pemindaian gratis - tanpa pembayaran"
+        },
+        "secondOffering": {
+          "title": "Paket Bulanan",
+          "subtitle": "{{ price }}/bulan"
+        },
+        "thirdOffering": {
+          "title": "Paket Tahunan",
+          "subtitle": "{{ price }} per tahun"
+        },
+        "fourthOffering": {
+          "title": "Uji Coba {{trialDays}}-Hari",
+          "subtitle": "{{ price }} per tahun",
+          "plan": "Paket Mingguan"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Versi baru MedScan AI tersedia",
+        "subheading": "Perbarui ke versi terbaru untuk terus menikmati semua fitur aplikasi - hanya butuh 5 detik!",
+        "action": "Dapatkan sekarang!"
+      },
+      "rateAppScreen": {
+        "heading": "Apakah Anda merasa aplikasi ini berharga dan menarik?",
+        "like": "Ya, saya menyukainya!",
+        "dislike": "Tidak terlalu..."
+      },
+      "noInternetScreen": {
+        "heading": "Anda sedang offline",
+        "subheading": "Koneksi Anda tampak tidak stabil. Harap verifikasi status jaringan Anda"
+      },
+      "notifications": {
+        "title": "Notifikasi",
+        "noNotifications": "Tidak ada notifikasi untuk saat ini - nantikan pembaruan!"
+      },
+      "termsOfService": {
+        "title": "Syarat Layanan"
+      },
+      "privacyPolicy": {
+        "title": "Kebijakan Privasi"
+      },
+      "share": {
+        "title": "Bagikan",
+        "heading": "Bagikan Aplikasi MedScan AI",
+        "subheading": "Bantu orang lain menemukan kekuatan analisis pencitraan medis berbasis AI",
+        "scanMessage": "Pindai untuk mengunduh aplikasi",
+        "shareMessage": "atau bagikan melalui platform favorit Anda"
+      },
+      "rate": {
+        "title": "Berikan kami masukan!"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Edit Profil",
+        "placeholderPreferredName": "Misalnya, Kapten Keren, Ratu Lebah, atau hanya Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Kami menghargai kesabaran Anda! Ini laporan AI Anda.",
+        "userInput": "Kiriman Anda",
+        "medicalReport": "Laporan Medis",
+        "report": "Laporan Medis Hasil AI",
+        "conversationName": "Nama percakapan"
+      },
+      "verifyEmail": {
+        "heading": "Verifikasi email"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Mulai Analisis",
+        "mediaFilesUploaded": "Anda mengunggah {{totalMediaFiles}} file media"
+      },
+      "disclaimerScreen": {
+        "heading": "Penyangkalan Medis Penting",
+        "subheading": "MedScan AI dirancang untuk profesional radiologi, pakar kesehatan, mahasiswa kedokteran, dan penggemar",
+        "consentAgreement": "Saya telah membaca dan menyetujui penyangkalan.",
+        "firstConsent": "MedScan AI tidak memberikan pengukuran kesehatan atau saran pengobatan, dan tidak dimaksudkan untuk tujuan tersebut. Pengguna MedScan AI harus menerapkan penilaian klinis mereka dan memverifikasi informasi dari sumber otoritatif sebelum membuat keputusan klinis.",
+        "secondConsent": "MedScan AI bukan alat diagnostik, platform pengobatan, atau pengganti saran medis profesional. Ini menawarkan wawasan yang dihasilkan AI untuk membantu profesional kesehatan dalam mengakses pengetahuan medis dan menganalisis gambar dan dokumen medis. MedScan AI adalah aplikasi informasional dan edukasional berbasis AI yang dirancang lebih untuk mendukung profesional kesehatan berlisensi.",
+        "thirdConsent": "MedScan AI tidak dirancang untuk penggunaan pasien. Ini tidak memberikan diagnosis medis langsung, rekomendasi pengobatan, atau fungsionalitas manajemen pasien.",
+        "fourthConsent": "MedScan AI tidak diklasifikasikan sebagai perangkat medis dan tidak mengklaim persetujuan regulatori. Ini dimaksudkan untuk tujuan edukasional dan informasional untuk melengkapi keahlian profesional.",
+        "fifthConsent": "MedScan AI tidak mengumpulkan, menyimpan, atau memproses data pribadi atau data pasien. Semua interaksi pengguna bersifat rahasia dan terbatas pada ruang lingkup aplikasi."
+      },
+      "contactUs": {
+        "heading": "Jangan ragu untuk mengirim email langsung kepada kami, dan tim kami akan membalas sesegera mungkin",
+        "customerSupport": "Dukungan Pelanggan",
+        "emailAddress": "Alamat Email"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Bahasa apa yang Anda sukai untuk analisis AI?",
+        "languageSelection": "Pilih bahasa untuk respons AI",
+        "languageSearchCriteria": "Cari berdasarkan bahasa, kode negara, atau bendera",
+        "noLanguageFound": "Bahasa Tidak Ditemukan",
+        "noLanguageFoundSubtitle": "Coba ubah istilah pencarian Anda"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Apa perbedaan antara CT, MRI, dan ultrasound?",
+          "two": "Kapan saya harus memesan pencitraan dengan kontras versus tanpa kontras?",
+          "three": "Bagaimana dosis radiasi dapat diminimalkan tanpa mengorbankan nilai diagnostik?",
+          "four": "Modalitas mana yang terbaik untuk mendeteksi patologi jaringan lunak versus tulang?",
+          "five": "Apa tanda peringatan utama serangan jantung versus kecemasan?",
+          "six": "Bagaimana saya memutuskan antara antibiotik dan antivirus untuk infeksi?",
+          "seven": "Perubahan gaya hidup apa yang paling efektif mengurangi risiko diabetes tipe 2?",
+          "eight": "Kapan operasi adalah pilihan yang lebih disukai daripada terapi medis?",
+          "nine": "Bagaimana saya membedakan pneumonia bakteri dan virus secara klinis?",
+          "ten": "Apa panduan terbaru untuk mengelola hipertensi?",
+          "eleven": "Bagaimana pasien pediatri mempresentasikan berbeda dibandingkan dewasa dalam keadaan darurat?",
+          "twelve": "Apa strategi manajemen nyeri yang aman untuk kondisi kronis?",
+          "thirteen": "Vaksin mana yang paling kritis untuk dewasa di luar imunisasi masa kanak-kanak?",
+          "fourteen": "Apa praktik terbaik untuk mencegah infeksi yang didapat di rumah sakit?",
+          "fifteen": "Bagaimana saya menginterpretasikan nilai lab umum seperti CBC dan elektrolit dalam konteks?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Tunggu! Jangan hapus saya!",
+    "subtitle": "Kirim masukan saja"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "Untuk melihat pratinjau PDF, pastikan Anda memiliki penampil PDF terinstal, seperti Adobe Acrobat Reader atau Google PDF Viewer",
+    "conversationTitlePdf": "Percakapan dengan Aria, asisten AI Anda"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Terima kasih atas kesabaran Anda!"
+      },
+      "finalReportHeader": {
+        "message": "Ini hasil laporannya!"
+      },
+      "uploadFile": {
+        "title": "Silakan unggah file pencitraan medis",
+        "size": "Maks: {{imageLimit}}MB (gambar), {{videoLimit}}MB (video)",
+        "location": "Pilih dari Galeri atau File",
+        "fileType": "PNG, JPG, PDF, atau MP4",
+        "openCamera": "Buka Kamera & Ambil Foto",
+        "scanType": "Hanya X-Ray, CT, MRI, PET, atau pencitraan medis lainnya yang diizinkan"
+      }
+    }
+  },
+  "home": {
+    "tab": "Beranda",
+    "homeForeground": {
+      "maxNumberOfScans": "Anda telah mencapai batas pemindaian! Tingkatkan paket Anda untuk pemindaian tidak terbatas. 🚀",
+      "heading": "Selamat datang di MedScan AI!",
+      "subHeading": "Unggah X-Ray, CT scan, ECG, MRI, PET scan, ultrasound, atau gambar medis lainnya untuk analisis AI."
+    },
+    "scanCategories": {
+      "heading": "Gulungan Radiologi"
+    },
+    "recentReports": {
+      "heading": "Chat Terbaru",
+      "noReports": "Belum ada chat untuk ditampilkan!"
+    }
+  },
+  "reports": {
+    "tab": "Riwayat",
+    "noReportsAvailable": "Tidak ada riwayat chat yang tersedia untuk tanggal ini",
+    "heading": "Riwayat Chat"
+  },
+  "chat": {
+    "tab": "Chat"
+  },
+  "settings": {
+    "tab": "Pengaturan",
+    "profile": "Profil",
+    "contactUs": "Hubungi kami",
+    "about": "Tentang",
+    "app_name": "Nama Aplikasi",
+    "languages": {
+      "english": "Inggris",
+      "mandarin_chinese": "Cina",
+      "hindi": "Hindi",
+      "spanish_spain": "Spanyol (Spanyol)",
+      "spanish_mexico": "Spanyol (Meksiko)",
+      "arabic": "Arab",
+      "french": "Prancis",
+      "french_canada": "Prancis (Kanada)",
+      "portuguese_brazil": "Portugis (Brasil)",
+      "portuguese_portugal": "Portugis (Portugal)",
+      "german": "Jerman",
+      "japanese": "Jepang",
+      "russian": "Rusia",
+      "korean": "Korea",
+      "italian": "Italia",
+      "turkish": "Turki",
+      "vietnamese": "Vietnam",
+      "polish": "Polandia",
+      "ukrainian": "Ukraina",
+      "romanian": "Rumania",
+      "dutch": "Belanda",
+      "czech": "Ceko",
+      "greek": "Yunani",
+      "swedish": "Swedia",
+      "hungarian": "Hungaria",
+      "thai": "Thailand",
+      "hebrew": "Ibrani",
+      "indonesian": "Indonesia",
+      "malay": "Melayu",
+      "finnish": "Finlandia",
+      "danish": "Denmark",
+      "norwegian": "Norwegia",
+      "slovak": "Slovakia",
+      "croatian": "Kroasia",
+      "catalan": "Katalan"
+    },
+    "generale": "Umum",
+    "github": "Github",
+    "language": "Bahasa",
+    "links": "Tautan",
+    "logout": "Keluar",
+    "more": "Lainnya",
+    "privacy": "Kebijakan Privasi",
+    "faq": "FAQ",
+    "rate": "Nilai",
+    "share": "Bagikan",
+    "support": "Dukungan",
+    "support_us": "Dukung Kami",
+    "terms": "Syarat Layanan",
+    "theme": {
+      "dark": "Gelap",
+      "light": "Terang",
+      "system": "Sistem",
+      "title": "Tema"
+    },
+    "title": "Pengaturan",
+    "version": "Versi",
+    "website": "Situs Web",
+    "devMode": {
+      "title": "Mode pengembang",
+      "componentsLibrary": "Pustaka UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Peringkat"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Apa alasannya?",
+      "unnamedConversation": "Tanpa judul",
+      "reportTitlePlaceholder": "Tambahkan judul"
+    },
+    "WeekBlock": {
+      "week": "Minggu"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Gulir ke Atas"
+    },
+    "FreeTierStatus": {
+      "heading": "Pemindaian gratis",
+      "subheading": "Buka pemindaian tidak terbatas dengan meningkatkan paket Anda",
+      "action": "Tingkatkan"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Pilih gambar / video"
+    },
+    "TapToViewLabel": {
+      "label": "Ketuk untuk Melihat"
+    },
+    "UpgradeBanner": {
+      "heading": "Tingkatkan Sekarang",
+      "subheading": "Buka pemindaian tidak terbatas dengan meningkatkan paket Anda"
+    },
+    "PromptSection": {
+      "message": "Pemindaian Anda sudah siap! Sekarang, apa yang ingin Anda ketahui?",
+      "prompts": {
+        "first": "Jelaskan kelainan apa pun yang ada di bidang paru",
+        "second": "Evaluasi siluet jantung dan mediastinum",
+        "third": "Evaluasi struktur tulang untuk lesi atau patah tulang",
+        "fourth": "Komentari ada atau tidaknya efusi pleura"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Dapatkan analisis dari berbagai pemindaian medis, termasuk X-RAY, CT, MRI, ECG dan lainnya",
+      "second": "Akses ke semua fitur premium",
+      "third": "Tanpa iklan"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Nama panggilan",
+        "email": "Email",
+        "emailVerification": "Verifikasi Email"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instruksi",
+        "first": "1. Ketuk tombol 'Tambah Kotak' untuk membuat kotak seleksi.",
+        "second": "2. Seret kotak ke atas area minat Anda.",
+        "third": "3. Sesuaikan sudut untuk menutupi area dengan tepat."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Buka Studio",
+        "editMore": "Edit Lebih Lanjut",
+        "continueEditing": "Lanjutkan mengedit anotasi Anda?",
+        "highlightedRegionsCount": "Anda memiliki {{highlightedRegions}} area yang disorot. Ketuk di bawah untuk menambah lebih banyak",
+        "highlightRegions": "Perlu menyorot area dari gambar medis Anda?"
+      },
+      "studioToolbar": {
+        "addSquare": "Tambah Kotak"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Maaf, kami perlu izin kamera untuk membuat ini bekerja!",
+    "errorSelectingImagePicker": "Ada yang salah saat memilih gambar. Silakan coba lagi.",
+    "errorSelectingDocumentPicker": "Ada yang salah saat memilih dokumen. Silakan coba lagi.",
+    "errorTakingPicture": "Ada yang salah saat mengambil foto. Silakan coba lagi.",
+    "enableNotifications": {
+      "heading": "Aktifkan Notifikasi",
+      "subHeading": "Notifikasi saat ini dimatikan. Untuk tetap diperbarui, harap aktifkan di pengaturan perangkat Anda."
+    },
+    "enableNotificationFailed": "Notifikasi push dinonaktifkan. Aktifkan di pengaturan untuk menerima pembaruan penting!",
+    "enableNotificationError": "Terjadi kesalahan saat mengaktifkan notifikasi",
+    "notificationDisabledSuccess": "Notifikasi berhasil dinonaktifkan.",
+    "notificationDisabledRegisterError": "Gagal membatalkan pendaftaran perangkat untuk notifikasi.",
+    "notificationDisabledError": "Terjadi kesalahan saat menonaktifkan notifikasi.",
+    "checkNotificationStatusError": "Kesalahan memeriksa status notifikasi.",
+    "projectIdNotFound": "ID proyek notifikasi tidak ditemukan.",
+    "imageSizeLarge": "Gambar terlalu besar! Ukuran file adalah {{fileSize}} MB, tetapi batasnya adalah {{imageLimit}} MB.",
+    "videoSizeLarge": "Video terlalu besar! Ukuran file adalah {{fileSize}} MB, tetapi batasnya adalah {{videoLimit}} MB.",
+    "loggedInSuccess": "Berhasil masuk",
+    "loggedOutSuccess": "Anda telah berhasil keluar!",
+    "sendVerificationCodeError": "Kesalahan saat mengirim kode verifikasi",
+    "validateAuthCodeError": "Kesalahan saat memvalidasi kode auth",
+    "anonymousSignInError": "Kesalahan masuk secara anonim",
+    "emailLoginError": "Kesalahan saat masuk",
+    "preferredLanguageError": "Kesalahan saat memperbarui bahasa pilihan pengguna",
+    "sharingNotAvailable": "Berbagi saat ini tidak tersedia di perangkat Anda",
+    "sharingLinkError": "Gagal membagikan tautan.",
+    "individualPushNotificationSuccess": "Notifikasi push individu berhasil dikirim!",
+    "globalPushNotificationSuccess": "Notifikasi push global berhasil dikirim! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Gagal memperbarui bidang interpretasi! ❌",
+    "deleteScanReportFail": "Tidak dapat menghapus laporan pemindaian. Silakan coba lagi",
+    "onboardingUnsuccessful": "Onboarding tidak berhasil. Silakan coba lagi",
+    "logoutUnsuccessful": "Keluar tidak berhasil. Silakan coba lagi",
+    "deleteScanReportQuestion": "Apakah Anda yakin ingin menghapus laporan ini secara permanen?",
+    "videoLimitExceeds": "Video Anda melebihi batas {{videoSecondsLimit}}-detik. Harap potong dan unggah ulang",
+    "subscriptionActivated": "Langganan Anda telah berhasil diaktifkan! Nikmati manfaat eksklusif Anda!",
+    "subscriptionCancelledByUser": "Anda telah membatalkan transaksi. Jangan ragu untuk mencoba lagi!",
+    "subscriptionActivationFailed": "Gagal mengaktifkan langganan Anda. Silakan coba lagi",
+    "logoutQuestion": "Apakah Anda yakin ingin keluar?",
+    "noSubscriptionToRestore": "Ups! Sepertinya Anda tidak memiliki langganan aktif saat ini. Untuk terus menikmati akses penuh, silakan pilih salah satu paket langganan kami.",
+    "restorationSuccessful": "Pemulihan berhasil! Selamat menikmati!",
+    "restorationError": "Terjadi kesalahan saat memulihkan pembelian.",
+    "medicalDisclaimerAlert": "Aplikasi MedScan AI tidak menggantikan konsultasi medis. Beberapa diagnosis hanya untuk tujuan informasi/edukasi. Untuk rekomendasi medis, selalu konsultasikan dengan dokter atau spesialis berlisensi.",
+    "scanLimitReached": "Kami mengoptimalkan kualitas pemindaian untuk Anda! Anda akan dapat memindai lagi dalam sekitar {{hours}} jam dan {{minutes}} menit. Ada pertanyaan tentang topik medis? Tanyakan asisten chat kami sambil menunggu!",
+    "mixedMediaNotAllowed": "Unggahan harus berisi hanya gambar atau hanya video, bukan campuran keduanya.",
+    "multipleVideosNotAllowed": "Untuk akurasi yang lebih baik, harap unggah hanya satu video sekaligus.",
+    "mediaFilesUploadFiles": "Terjadi kesalahan saat mengunggah file media Anda. Silakan coba lagi.",
+    "chatAndMediaFilesLimit": "Pengguna yang terhormat, Anda perlu meningkatkan paket Anda untuk mendapatkan manfaat dari chat tidak terbatas, pemindaian tidak terbatas, analisis multi-gambar, dan lainnya. 🔓"
+  }
+}

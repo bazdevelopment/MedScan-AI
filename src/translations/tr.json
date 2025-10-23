@@ -1,0 +1,502 @@
+{
+  "onboarding": {
+    "message": "MedScan AI'ya Hoş Geldiniz!"
+  },
+  "general": {
+    "back": "Geri",
+    "welcome": "Merhaba",
+    "welcomeBack": "Tekrar Hoş Geldiniz!",
+    "welcomeMessage": "Hoş Geldiniz!",
+    "continue": "Devam Et",
+    "retry": "Yeniden Dene",
+    "close": "Kapat",
+    "gallery": "Galeri",
+    "files": "Dosyalar",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "attention": "Dikkat!",
+    "new": "Yeni",
+    "yes": "Evet",
+    "or": "veya",
+    "typing": "Yazıyor...",
+    "online": "Çevrimiçi",
+    "chatbotPlaceholder": "Bana her şeyi sorabilirsin...",
+    "openSettings": "Ayarları Aç",
+    "seeNotifications": "Bildirimleri Gör",
+    "viewProfile": "Profili Görüntüle",
+    "upgradePlan": "Planı Yükselt",
+    "download": "İndir",
+    "share": "Paylaş",
+    "shareLink": "Bağlantıyı Paylaş",
+    "skip": "Atla",
+    "next": "İleri",
+    "update": "Güncelle",
+    "tryAgain": "Yeniden Dene",
+    "createdAt": "Oluşturulma Tarihi",
+    "and": "ve",
+    "saveDiscount": "TASARRUF ET",
+    "restorePurchase": "Satın almayı geri yükle",
+    "medicalDisclaimer": "Tıbbi Sorumluluk Reddi",
+    "conversationHistory": "Sohbet geçmişi",
+    "freeTrial": "Ücretsiz deneme",
+    "free": "ÜCRETSİZ",
+    "completedScans": "Tamamlanan taramalar",
+    "activeSubscription": "Aktif abonelik",
+    "askAssistant": "AI asistanına sor",
+    "then": "sonra",
+    "perWeek": "haftalık",
+    "perYear": "yıllık",
+    "perMonth": "aylık",
+    "tryForFree": "Ücretsiz Dene",
+    "unlockNow": "Şimdi Aç",
+    "copyText": {
+      "loading": "Kopyalanıyor...",
+      "copied": "Kopyalandı!",
+      "copy": "Bağlantıyı Kopyala"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Kişiselleştirilmiş deneyiminiz yükleniyor...",
+        "second": "Sistemler senkronize ediliyor...",
+        "third": "Verileriniz işleniyor...",
+        "fourth": "Neredeyse hazır, sadece bir dakika..."
+      },
+      "imageScanningLoading": {
+        "first": "Tıbbi görüntüleriniz taranıyor, lütfen bekleyin...",
+        "second": "Detaylar analiz ediliyor, bu biraz zaman alabilir...",
+        "third": "En iyi sonuçlar için doğruluk artırılıyor...",
+        "fourth": "Neredeyse bitti, tarama sonlandırılıyor..."
+      },
+      "loadingChatbot": {
+        "first": "Aria size yardımcı olmak için hazırlanıyor...",
+        "second": "Bekleyin! Aria cevabınızı hazırlıyor...",
+        "third": "Düşünüyor... asistanınız Aria bunun üzerinde çalışıyor!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Bekleyin!",
+    "goBackMessage": "Geri dönmek istediğinizden emin misiniz?"
+  },
+  "internet": {
+    "noConnectionTitle": "Çevrimdışısınız!",
+    "noConnectionMessage": "Mobil veriyi açın veya Wi-Fi'ye bağlanın. Ya da mola verin ve yürüyüşe çıkın!"
+  },
+  "uploadScan": {
+    "title": "Tarama Yükle",
+    "scanNow": "Hemen tara"
+  },
+  "weekDays": {
+    "today": "Bugün",
+    "yesterday": "Dün"
+  },
+  "auth": {
+    "verifyAuthCode": "Doğrulama kodunu onayla",
+    "verifyAuthCodeButton": "Kodu doğrula",
+    "authCodeHeading": "Doğrulama kodu",
+    "loginViaEmailHeading": "Giriş yapalım. Lütfen devam etmek için e-postanızı girin.",
+    "emailAddress": "E-posta"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "MedScan AI'ya Hoş Geldiniz!",
+        "startButton": "Hadi Başlayalım!",
+        "accountButton": "Zaten bir hesabım var"
+      },
+      "login": {
+        "agreeingMessage": "Devam ederek, bizim",
+        "termsAndConditions": "Şartlar ve Koşullar",
+        "privacyPolicy": "Gizlilik Politikası"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "E-posta ile gönderilen doğrulama kodunuzu girin. Lütfen dikkat, kod 5 dakika içinde sona erecek.",
+        "verificationCodeSent": "Doğrulama kodunu şu adrese gönderdik:",
+        "verificationCodeMissing": "Kodu almadınız mı?",
+        "resendCode": "Kodu yeniden gönder",
+        "backToLogin": "Giriş'e Geri Dön"
+      },
+      "namePreferenceScreen": {
+        "heading": "Güvenli, güvenli, basit erişim!",
+        "preferredNameQuestion": "Anonim kalmak için eğlenceli bir rumuz seçin - gizliliğiniz bizim için önemli",
+        "placeholderPreferredName": "Örn., Kaptan Harika, Kraliçe Arı, ya da sadece Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Ücretsiz denemenizin tadını çıkarın! 🎉",
+        "subheading": "Ücretsiz denemeniz sırasında bu harika faydaları deneyimleyin",
+        "review": "Tıbbi tarama analizi bana görüntüler hakkında değerli bilgiler verdi ve sohbet desteği çok yardımcı oldu.",
+        "reviewTrust": "📈 4.512+ kullanıcı tarafından güveniliyor"
+      },
+      "scanInterpretation": {
+        "title": "Analiz sonucu",
+        "headerBackTitle": "Raporlar"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Ücretsiz Deneme Etkin",
+          "heading": "Sınırsız Erişim",
+          "title": "Premium Özellikleri Bugün Açın!",
+          "firstOffering": "Tüm Premium Özelliklere Erişim",
+          "secondOffering": "Reklamsız Deneyim",
+          "thirdOffering": "Sınırsız tarama + çoklu görüntülü tıbbi rapor",
+          "fourthOffering": "7/24 tıbbi AI asistanı ile sınırsız sohbet"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Premium Özellikleri Bugün Açın!",
+        "firstOffering": {
+          "title": "Ücretsiz Denemeyi Başlat",
+          "subtitle": "{{freeScans}} ücretsiz taramanın tadını çıkarın - ödeme yok"
+        },
+        "secondOffering": {
+          "title": "Aylık Plan",
+          "subtitle": "{{ price }}/ay"
+        },
+        "thirdOffering": {
+          "title": "Yıllık Plan",
+          "subtitle": "{{ price }} yıllık"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-Günlük Deneme",
+          "subtitle": "{{ price }} yıllık",
+          "plan": "Haftalık Plan"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "MedScan AI'nın yeni bir sürümü mevcut",
+        "subheading": "Uygulamanın tüm özelliklerinden yararlanmaya devam etmek için en son sürüme güncelleyin - sadece 5 saniye sürüyor!",
+        "action": "Hemen Al!"
+      },
+      "rateAppScreen": {
+        "heading": "Uygulamayı değerli ve ilgi çekici buluyor musunuz?",
+        "like": "Evet, beğendim!",
+        "dislike": "Pek sayılmaz..."
+      },
+      "noInternetScreen": {
+        "heading": "Çevrimdışısınız",
+        "subheading": "Bağlantınız kararsız görünüyor. Lütfen ağ durumunuzu doğrulayın"
+      },
+      "notifications": {
+        "title": "Bildirimler",
+        "noNotifications": "Şu anda hiç bildirim yok - güncellemeler için bizi takip edin!"
+      },
+      "termsOfService": {
+        "title": "Hizmet Şartları"
+      },
+      "privacyPolicy": {
+        "title": "Gizlilik Politikası"
+      },
+      "share": {
+        "title": "Paylaş",
+        "heading": "MedScan AI Uygulamasını Paylaş",
+        "subheading": "Diğerlerinin AI destekli tıbbi görüntü analizinin gücünü keşfetmesine yardımcı olun",
+        "scanMessage": "Uygulamayı indirmek için tara",
+        "shareMessage": "veya favori platformunuz üzerinden paylaşın"
+      },
+      "rate": {
+        "title": "Bize geri bildirim verin!"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Profili Düzenle",
+        "placeholderPreferredName": "Örn., Kaptan Harika, Kraliçe Arı, ya da sadece Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Sabrınız için teşekkür ederiz! İşte AI raporunuz.",
+        "userInput": "Gönderiminiz",
+        "medicalReport": "Tıbbi Rapor",
+        "report": "AI Tarafından Oluşturulan Tıbbi Rapor",
+        "conversationName": "Sohbet adı"
+      },
+      "verifyEmail": {
+        "heading": "E-postayı doğrula"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Analizi Başlat",
+        "mediaFilesUploaded": "{{totalMediaFiles}} medya dosyası yüklediniz"
+      },
+      "disclaimerScreen": {
+        "heading": "Önemli Tıbbi Sorumluluk Reddi",
+        "subheading": "MedScan AI, radyoloji profesyonelleri, sağlık uzmanları, tıp öğrencileri ve meraklılar için tasarlanmıştır",
+        "consentAgreement": "Sorumluluk reddini okudum ve kabul ediyorum.",
+        "firstConsent": "MedScan AI sağlık ölçümleri veya tedavi tavsiyesi sağlamaz, ne de bu amaçlar için tasarlanmıştır. MedScan AI kullanıcıları, herhangi bir klinik karar vermeden önce kendi klinik muhakemelerini uygulamalı ve bilgileri yetkili kaynaklardan doğrulamalıdır.",
+        "secondConsent": "MedScan AI bir teşhis aracı, tedavi platformu veya profesyonel tıbbi tavsiyenin yerine geçmez. Sağlık uzmanlarının tıbbi bilgiye erişmelerine ve tıbbi görüntüleri ve belgeleri analiz etmelerine yardımcı olmak için AI tarafından oluşturulan içgörüler sunar. MedScan AI, lisanslı sağlık uzmanlarını desteklemek için tasarlanmış AI destekli bilgilendirici ve eğitici bir uygulamadır.",
+        "thirdConsent": "MedScan AI hasta kullanımı için tasarlanmamıştır. Doğrudan tıbbi teşhisler, tedavi önerileri veya hasta yönetimi işlevleri sağlamaz.",
+        "fourthConsent": "MedScan AI tıbbi cihaz olarak sınıflandırılmaz ve düzenleyici onay talep etmez. Profesyonel uzmanlığı tamamlamak için eğitim ve bilgilendirme amaçlıdır.",
+        "fifthConsent": "MedScan AI kişisel veya hasta verilerini toplamaz, saklamaz veya işlemez. Tüm kullanıcı etkileşimleri gizlidir ve uygulamanın kapsamıyla sınırlıdır."
+      },
+      "contactUs": {
+        "heading": "Bizimle doğrudan e-posta yoluyla iletişime geçmekten çekinmeyin, ekibimiz en kısa sürede size dönüş yapacaktır",
+        "customerSupport": "Müşteri Desteği",
+        "emailAddress": "E-posta Adresi"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "AI analizi için hangi dili tercih edersiniz?",
+        "languageSelection": "AI yanıtları için bir dil seçin",
+        "languageSearchCriteria": "Dil, ülke kodu veya bayrağa göre ara",
+        "noLanguageFound": "Dil Bulunamadı",
+        "noLanguageFoundSubtitle": "Arama terimlerinizi değiştirmeyi deneyin"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "BT, MRI ve ultrason arasındaki farklar nelerdir?",
+          "two": "Kontrastlı ve kontrastsız görüntüleme arasında ne zaman seçim yapmalıyım?",
+          "three": "Tanı değerinden ödün vermeden radyasyon dozu nasıl en aza indirilebilir?",
+          "four": "Yumuşak doku ve kemik patolojisi tespiti için hangi modaliteler en iyisidir?",
+          "five": "Kalp krizi ve kaygı arasındaki temel uyarı işaretleri nelerdir?",
+          "six": "Bir enfeksiyon için antibiyotikler ve antiviral ilaçlar arasında nasıl karar veririm?",
+          "seven": "Tip 2 diyabet riskini en etkili şekilde azaltan yaşam tarzı değişiklikleri nelerdir?",
+          "eight": "Cerrahi, tıbbi tedaviye göre ne zaman tercih edilen seçenektir?",
+          "nine": "Bakteriyel ve viral pnömoniyi klinik olarak nasıl ayırt edebilirim?",
+          "ten": "Hipertansiyon yönetimi için en son kılavuzlar nelerdir?",
+          "eleven": "Pediatrik hastalar acil durumlarda yetişkinlere göre nasıl farklı belirti verir?",
+          "twelve": "Kronik durumlar için güvenli ağrı yönetimi stratejileri nelerdir?",
+          "thirteen": "Çocukluk aşıları dışında yetişkinler için en kritik aşılar hangileridir?",
+          "fourteen": "Hastane kaynaklı enfeksiyonları önlemek için en iyi uygulamalar nelerdir?",
+          "fifteen": "CBC ve elektrolitler gibi yaygın laboratuvar değerlerini bağlam içinde nasıl yorumlarım?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Bekleyin! Beni silmeyin!",
+    "subtitle": "Bunun yerine geri bildirim gönderin"
+  },
+
+  "pdfPreview": {
+    "noEditorInstalled": "PDF önizlemesi için Adobe Acrobat Reader veya Google PDF Viewer gibi bir PDF görüntüleyici yüklü olduğundan emin olun",
+    "conversationTitlePdf": "AI asistanınız Aria ile sohbet"
+  },
+
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Sabrınız için teşekkür ederiz!"
+      },
+      "finalReportHeader": {
+        "message": "İşte rapor sonucu!"
+      },
+      "uploadFile": {
+        "title": "Lütfen bir tıbbi görüntüleme dosyası yükleyin",
+        "size": "Maks: {{imageLimit}}MB (resimler), {{videoLimit}}MB (videolar)",
+        "location": "Galeri veya Dosyalar'dan seçin",
+        "fileType": "PNG, JPG, PDF veya MP4",
+        "openCamera": "Kamerayı Aç ve Fotoğraf Çek",
+        "scanType": "Sadece Röntgen, BT, MRI, PET veya diğer tıbbi görüntülemelere izin verilir"
+      }
+    }
+  },
+  "home": {
+    "tab": "Ana Sayfa",
+    "homeForeground": {
+      "maxNumberOfScans": "Tarama limitine ulaştınız! Sınırsız tarama için planınızı yükseltin. 🚀",
+      "heading": "MedScan AI'ya Hoş Geldiniz!",
+      "subHeading": "AI analizi için Röntgen, BT taramaları, EKG, MRI, PET taramaları, ultrasonlar veya diğer tıbbi görüntüleri yükleyin."
+    },
+    "scanCategories": {
+      "heading": "Radyoloji Koleksiyonu"
+    },
+    "recentReports": {
+      "heading": "Son Sohbetler",
+      "noReports": "Henüz gösterilecek sohbet yok!"
+    }
+  },
+  "reports": {
+    "tab": "Geçmiş",
+    "noReportsAvailable": "Bu tarih için sohbet geçmişi mevcut değil",
+    "heading": "Sohbet Geçmişi"
+  },
+  "chat": {
+    "tab": "Sohbet"
+  },
+  "settings": {
+    "tab": "Ayarlar",
+    "profile": "Profil",
+    "contactUs": "Bize Ulaşın",
+    "about": "Hakkında",
+    "app_name": "Uygulama Adı",
+    "languages": {
+      "english": "İngilizce",
+      "mandarin_chinese": "Çince",
+      "hindi": "Hintçe",
+      "spanish_spain": "İspanyolca (İspanya)",
+      "spanish_mexico": "İspanyolca (Meksika)",
+      "arabic": "Arapça",
+      "french": "Fransızca",
+      "french_canada": "Fransızca (Kanada)",
+      "portuguese_brazil": "Portekizce (Brezilya)",
+      "portuguese_portugal": "Portekizce (Portekiz)",
+      "german": "Almanca",
+      "japanese": "Japonca",
+      "russian": "Rusça",
+      "korean": "Korece",
+      "italian": "İtalyanca",
+      "turkish": "Türkçe",
+      "vietnamese": "Vietnamca",
+      "polish": "Lehçe",
+      "ukrainian": "Ukraynaca",
+      "romanian": "Romence",
+      "dutch": "Felemenkçe",
+      "czech": "Çekçe",
+      "greek": "Yunanca",
+      "swedish": "İsveççe",
+      "hungarian": "Macarca",
+      "thai": "Tayca",
+      "hebrew": "İbranice",
+      "indonesian": "Endonezce",
+      "malay": "Malayca",
+      "finnish": "Fince",
+      "danish": "Danca",
+      "norwegian": "Norveççe",
+      "slovak": "Slovakça",
+      "croatian": "Hırvatça",
+      "catalan": "Katalanca"
+    },
+    "generale": "Genel",
+    "github": "Github",
+    "language": "Dil",
+    "links": "Bağlantılar",
+    "logout": "Çıkış Yap",
+    "more": "Daha Fazla",
+    "privacy": "Gizlilik Politikası",
+    "faq": "SSS",
+    "rate": "Değerlendir",
+    "share": "Paylaş",
+    "support": "Destek",
+    "support_us": "Bizi Destekleyin",
+    "terms": "Hizmet Şartları",
+    "theme": {
+      "dark": "Koyu",
+      "light": "Açık",
+      "system": "Sistem",
+      "title": "Tema"
+    },
+    "title": "Ayarlar",
+    "version": "Sürüm",
+    "website": "Web Sitesi",
+    "devMode": {
+      "title": "Geliştirici modu",
+      "componentsLibrary": "UI kütüphanesi"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Değerlendirme"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Sebep nedir?",
+      "unnamedConversation": "Başlıksız",
+      "reportTitlePlaceholder": "Başlık ekle"
+    },
+    "WeekBlock": {
+      "week": "Hafta"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Yukarı Kaydır"
+    },
+    "FreeTierStatus": {
+      "heading": "Ücretsiz taramalar",
+      "subheading": "Planınızı yükselterek sınırsız tarama açın",
+      "action": "Yükselt"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Bir resim / video seçin"
+    },
+    "TapToViewLabel": {
+      "label": "Görüntülemek için Dokunun"
+    },
+    "UpgradeBanner": {
+      "heading": "Hemen Yükselt",
+      "subheading": "Planınızı yükselterek sınırsız tarama açın"
+    },
+    "PromptSection": {
+      "message": "Taramalarınız hazır! Şimdi, ne öğrenmek istiyorsunuz?",
+      "prompts": {
+        "first": "Akciğer alanlarında bulunan anormallikleri tanımlayın",
+        "second": "Kardiyak silueti ve mediasten'i değerlendirin",
+        "third": "Kemik yapılarını lezyon veya kırık açısından değerlendirin",
+        "fourth": "Plevral efüzyon varlığı veya yokluğu hakkında yorum yapın"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Röntgen, BT, MRI, EKG ve daha fazlası dahil çeşitli tıbbi taramalardan analiz alın",
+      "second": "Tüm premium özelliklere erişim",
+      "third": "Reklam yok"
+    },
+
+    "Input": {
+      "labels": {
+        "nickname": "Rumuz",
+        "email": "E-posta",
+        "emailVerification": "E-posta Doğrulama"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Talimatlar",
+        "first": "1. Bir seçim karesi oluşturmak için 'Kare Ekle' düğmesine dokunun.",
+        "second": "2. Kareyi ilgi alanınızın üzerine sürükleyin.",
+        "third": "3. Bölgeyi tam olarak kaplamak için köşeleri ayarlayın."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Stüdyoyu Aç",
+        "editMore": "Daha Fazla Düzenle",
+        "continueEditing": "Açıklamalarınızı düzenlemeye devam edilsin mi?",
+        "highlightedRegionsCount": "{{highlightedRegions}} vurgulanmış bölgeniz var. Daha fazla eklemek için aşağıya dokunun",
+        "highlightRegions": "Tıbbi görüntünüzün bölgelerini vurgulamak mı gerekiyor?"
+      },
+      "studioToolbar": {
+        "addSquare": "Kare Ekle"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Üzgünüz, bunun çalışması için kamera izinlerine ihtiyacımız var!",
+    "errorSelectingImagePicker": "Resim seçilirken bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "errorSelectingDocumentPicker": "Belge seçilirken bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "errorTakingPicture": "Fotoğraf çekilirken bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "enableNotifications": {
+      "heading": "Bildirimleri Etkinleştir",
+      "subHeading": "Bildirimler şu anda kapalı. Güncel kalmak için lütfen cihaz ayarlarınızdan etkinleştirin."
+    },
+    "enableNotificationFailed": "Push bildirimleri devre dışı. Önemli güncellemeleri almak için ayarlardan etkinleştirin!",
+    "enableNotificationError": "Bildirimler etkinleştirilirken bir hata oluştu",
+    "notificationDisabledSuccess": "Bildirimler başarıyla devre dışı bırakıldı.",
+    "notificationDisabledRegisterError": "Bildirimler için cihaz kaydı kaldırılamadı.",
+    "notificationDisabledError": "Bildirimler devre dışı bırakılırken bir hata oluştu.",
+    "checkNotificationStatusError": "Bildirim durumu kontrol edilirken hata.",
+    "projectIdNotFound": "Bildirim proje kimliği bulunamadı.",
+    "imageSizeLarge": "Resim çok büyük! Dosya boyutu {{fileSize}} MB, ancak limit {{imageLimit}} MB.",
+    "videoSizeLarge": "Video çok büyük! Dosya boyutu {{fileSize}} MB, ancak limit {{videoLimit}} MB.",
+    "loggedInSuccess": "Başarıyla giriş yapıldı",
+    "loggedOutSuccess": "Başarıyla çıkış yaptınız!",
+    "sendVerificationCodeError": "Doğrulama kodu gönderilirken hata",
+    "validateAuthCodeError": "Auth kodu doğrulanırken hata",
+    "anonymousSignInError": "Anonim giriş yapılırken hata",
+    "emailLoginError": "Giriş yapılırken hata",
+    "preferredLanguageError": "Kullanıcının tercih ettiği dil güncellenirken hata",
+    "sharingNotAvailable": "Paylaşım şu anda cihazınızda kullanılamıyor",
+    "sharingLinkError": "Bağlantı paylaşılamadı.",
+    "individualPushNotificationSuccess": "Bireysel push bildirimleri başarıyla gönderildi!",
+    "globalPushNotificationSuccess": "Küresel push bildirimleri başarıyla gönderildi! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Yorumlama alanları güncellenemedi! ❌",
+    "deleteScanReportFail": "Tarama raporu silinemedi. Lütfen tekrar deneyin",
+    "onboardingUnsuccessful": "Kayıt başarısız oldu. Lütfen tekrar deneyin",
+    "logoutUnsuccessful": "Çıkış başarısız oldu. Lütfen tekrar deneyin",
+    "deleteScanReportQuestion": "Bu raporu kalıcı olarak silmek istediğinizden emin misiniz?",
+    "videoLimitExceeds": "Videonuz {{videoSecondsLimit}} saniyelik limiti aşıyor. Lütfen kırpın ve yeniden yükleyin",
+    "subscriptionActivated": "Aboneliğiniz başarıyla etkinleştirildi! Özel avantajlarınızın tadını çıkarın!",
+    "subscriptionCancelledByUser": "İşlemi iptal ettiniz. Tekrar denemekten çekinmeyin!",
+    "subscriptionActivationFailed": "Aboneliğiniz etkinleştirilemedi. Lütfen tekrar deneyin",
+    "logoutQuestion": "Çıkış yapmak istediğinizden emin misiniz?",
+    "noSubscriptionToRestore": "Oops! Görünüşe göre şu anda aktif bir aboneliğiniz yok. Tam erişimden yararlanmaya devam etmek için lütfen abonelik planlarımızdan birini seçin.",
+    "restorationSuccessful": "Geri yükleme başarılı oldu! Keyfini çıkarın!",
+    "restorationError": "Satın alma geri yüklenirken bir hata oluştu.",
+    "medicalDisclaimerAlert": "MedScan AI uygulaması tıbbi danışmanın yerine geçmez. Bazı teşhisler sadece bilgilendirme/eğitim amaçlıdır. Tıbbi öneriler için daima bir doktora veya lisanslı uzmana danışın.",
+    "scanLimitReached": "Sizin için tarama kalitesini optimize ediyoruz! Yaklaşık {{hours}} saat {{minutes}} dakika sonra tekrar tarama yapabileceksiniz. Herhangi bir tıbbi konu hakkında sorunuz var mı? Beklerken sohbet asistanımıza sorun!",
+    "mixedMediaNotAllowed": "Yüklemeler sadece resimlerden veya sadece videolardan oluşmalıdır, ikisinin karışımından değil.",
+    "multipleVideosNotAllowed": "Daha iyi doğruluk için lütfen aynı anda sadece bir video yükleyin.",
+    "mediaFilesUploadFiles": "Medya dosyalarınız yüklenirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "chatAndMediaFilesLimit": "Sayın kullanıcı, sınırsız sohbet, sınırsız tarama, çoklu görüntü analizi ve daha fazlasından yararlanmak için planınızı yükseltmeniz gerekiyor. 🔓"
+  }
+}

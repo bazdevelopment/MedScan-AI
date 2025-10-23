@@ -1,0 +1,502 @@
+{
+  "onboarding": {
+    "message": "¡Bienvenido a MedScan AI!"
+  },
+  "general": {
+    "back": "Atrás",
+    "welcome": "Hola",
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "welcomeMessage": "¡Bienvenido!",
+    "continue": "Continuar",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "gallery": "Galería",
+    "files": "Archivos",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "attention": "¡Atención!",
+    "new": "Nuevo",
+    "yes": "Sí",
+    "or": "o",
+    "typing": "Escribiendo...",
+    "online": "En línea",
+    "chatbotPlaceholder": "Pregúntame lo que sea...",
+    "openSettings": "Abrir Configuración",
+    "seeNotifications": "Ver notificaciones",
+    "viewProfile": "Ver Perfil",
+    "upgradePlan": "Mejorar Plan",
+    "download": "Descargar",
+    "share": "Compartir",
+    "shareLink": "Compartir Enlace",
+    "skip": "Saltar",
+    "next": "Siguiente",
+    "update": "Actualizar",
+    "tryAgain": "Intentar de nuevo",
+    "createdAt": "Creado En",
+    "and": "y",
+    "saveDiscount": "AHORRAR",
+    "restorePurchase": "Restaurar compra",
+    "medicalDisclaimer": "Aviso Médico",
+    "conversationHistory": "Historial de conversaciones",
+    "freeTrial": "Prueba gratuita",
+    "free": "GRATIS",
+    "completedScans": "Escaneos completados",
+    "activeSubscription": "Suscripción activa",
+    "askAssistant": "Preguntar al asistente IA",
+    "then": "luego",
+    "perWeek": "por semana",
+    "perYear": "por año",
+    "perMonth": "por mes",
+    "tryForFree": "Probar Gratis",
+    "unlockNow": "Desbloquear Ahora",
+    "copyText": {
+      "loading": "Copiando...",
+      "copied": "¡Copiado!",
+      "copy": "Copiar Enlace"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Cargando tu experiencia personalizada...",
+        "second": "Sincronizando sistemas...",
+        "third": "Procesando tus datos...",
+        "fourth": "Casi listo, solo un momento..."
+      },
+      "imageScanningLoading": {
+        "first": "Escaneando tu imagen médica, por favor espera...",
+        "second": "Analizando detalles, esto puede tomar un momento...",
+        "third": "Mejorando la precisión para los mejores resultados...",
+        "fourth": "Casi allí, finalizando el escaneo..."
+      },
+      "loadingChatbot": {
+        "first": "Aria se está preparando para asistirte...",
+        "second": "¡Espera! Aria está preparando tu respuesta...",
+        "third": "Pensando... ¡tu asistente Aria está en ello!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "¡Espera!",
+    "goBackMessage": "¿Estás seguro de que quieres regresar?"
+  },
+  "internet": {
+    "noConnectionTitle": "¡Estás sin conexión!",
+    "noConnectionMessage": "Activa los datos móviles o conéctate a Wi-Fi. ¡O simplemente toma un descanso y sal a caminar!"
+  },
+  "uploadScan": {
+    "title": "Subir Escaneo",
+    "scanNow": "Escanear ahora"
+  },
+  "weekDays": {
+    "today": "Hoy",
+    "yesterday": "Ayer"
+  },
+  "auth": {
+    "verifyAuthCode": "Verificar código de autenticación",
+    "verifyAuthCodeButton": "Verificar código",
+    "authCodeHeading": "Código de autenticación",
+    "loginViaEmailHeading": "Vamos a iniciar tu sesión. Por favor ingresa tu correo electrónico para continuar.",
+    "emailAddress": "Correo electrónico"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "¡Bienvenido a MedScan AI!",
+        "startButton": "¡Comencemos!",
+        "accountButton": "Ya tengo una cuenta"
+      },
+      "login": {
+        "agreeingMessage": "Al continuar, aceptas nuestros",
+        "termsAndConditions": "Términos y Condiciones",
+        "privacyPolicy": "Política de Privacidad"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Ingresa tu código de verificación enviado por correo electrónico. Por favor ten en cuenta que el código expirará en 5 minutos.",
+        "verificationCodeSent": "Hemos enviado el código de verificación a",
+        "verificationCodeMissing": "¿No recibiste el código?",
+        "resendCode": "Reenviar código",
+        "backToLogin": "Volver a Iniciar Sesión"
+      },
+      "namePreferenceScreen": {
+        "heading": "¡Acceso seguro, protegido y simple!",
+        "preferredNameQuestion": "Elige un apodo divertido para mantenerte anónimo - tu privacidad es importante para nosotros",
+        "placeholderPreferredName": "Ej., Capitán Genial, Reina Abeja, o simplemente Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "¡Disfruta tu prueba gratuita! 🎉",
+        "subheading": "Experimenta estos increíbles beneficios durante tu prueba gratuita",
+        "review": "El análisis de escaneo médico me dio información valiosa sobre las imágenes, y el soporte de chat es muy útil.",
+        "reviewTrust": "📈 Confiado por 4,512+ usuarios"
+      },
+      "scanInterpretation": {
+        "title": "Resultado del análisis",
+        "headerBackTitle": "Reportes"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Prueba Gratuita Activada",
+          "heading": " Acceso Ilimitado",
+          "title": "¡Desbloquea Funciones Premium Hoy!",
+          "firstOffering": "Accede a Todas las Funciones Premium",
+          "secondOffering": "Experiencia Sin Anuncios",
+          "thirdOffering": "Escaneos ilimitados + informe médico con múltiples imágenes",
+          "fourthOffering": "Chats ilimitados con un asistente médico IA 24/7"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "¡Desbloquea Funciones Premium Hoy!",
+        "firstOffering": {
+          "title": "Comenzar Prueba Gratuita",
+          "subtitle": "Disfruta {{freeScans}} escaneos gratis - sin pago"
+        },
+        "secondOffering": {
+          "title": "Plan Mensual",
+          "subtitle": "{{ price }}/mes"
+        },
+        "thirdOffering": {
+          "title": "Plan Anual",
+          "subtitle": "{{ price }} por año"
+        },
+        "fourthOffering": {
+          "title": "Prueba de {{trialDays}} Días",
+          "subtitle": "{{ price }} por año",
+          "plan": "Plan Semanal"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Está disponible una nueva versión de MedScan AI",
+        "subheading": "Actualiza a la última versión para seguir disfrutando de todas las funciones de la aplicación - ¡solo toma 5 segundos!",
+        "action": "¡Consíguela ahora!"
+      },
+      "rateAppScreen": {
+        "heading": "¿Te parece valiosa y atractiva la aplicación?",
+        "like": "¡Sí, me gusta!",
+        "dislike": "En realidad no..."
+      },
+      "noInternetScreen": {
+        "heading": "Estás sin conexión",
+        "subheading": "Tu conexión parece inestable. Por favor verifica el estado de tu red"
+      },
+      "notifications": {
+        "title": "Notificaciones",
+        "noNotifications": "No hay notificaciones por ahora - ¡mantente atento a las actualizaciones!"
+      },
+      "termsOfService": {
+        "title": "Términos de Servicio"
+      },
+      "privacyPolicy": {
+        "title": "Política de Privacidad"
+      },
+      "share": {
+        "title": "Compartir",
+        "heading": "Compartir App MedScan AI",
+        "subheading": "Ayuda a otros a descubrir el poder del análisis de imágenes médicas con IA",
+        "scanMessage": "Escanear para descargar la app",
+        "shareMessage": "o compartir por tu plataforma favorita"
+      },
+      "rate": {
+        "title": "¡Danos tu opinión!"
+      },
+      "profile": {
+        "title": "Perfil",
+        "edit": "Editar Perfil",
+        "placeholderPreferredName": "Ej., Capitán Genial, Reina Abeja, o simplemente Alex!"
+      },
+      "generateReportScreen": {
+        "title": "¡Agradecemos tu paciencia! Aquí está tu reporte de IA.",
+        "userInput": "Tu Envío",
+        "medicalReport": "Reporte Médico",
+        "report": "Reporte Médico Generado por IA",
+        "conversationName": "Nombre de la conversación"
+      },
+      "verifyEmail": {
+        "heading": "Verificar correo"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Comenzar Análisis",
+        "mediaFilesUploaded": "Subiste {{totalMediaFiles}} archivos multimedia"
+      },
+      "disclaimerScreen": {
+        "heading": "Aviso Médico Importante",
+        "subheading": "MedScan AI está diseñado para profesionales de radiología, expertos en salud, estudiantes de medicina y entusiastas",
+        "consentAgreement": "He leído y acepto el aviso.",
+        "firstConsent": "MedScan AI no proporciona medidas de salud ni consejos de tratamiento, ni está destinado para tales propósitos. Los usuarios de MedScan AI deben aplicar su criterio clínico y verificar la información de fuentes autorizadas antes de tomar cualquier decisión clínica.",
+        "secondConsent": "MedScan AI no es una herramienta de diagnóstico, plataforma de tratamiento o un reemplazo del consejo médico profesional. Ofrece perspectivas generadas por IA para asistir a profesionales de la salud en el acceso al conocimiento médico y el análisis de imágenes y documentos médicos. MedScan AI es una aplicación informativa y educativa impulsada por IA diseñada más para apoyar a profesionales de la salud con licencia.",
+        "thirdConsent": "MedScan AI no está diseñado para uso de pacientes. No proporciona diagnósticos médicos directos, recomendaciones de tratamiento o funcionalidades de manejo de pacientes.",
+        "fourthConsent": "MedScan AI no está clasificado como dispositivo médico y no reclama aprobación regulatoria. Está destinado para fines educativos e informativos para complementar la experiencia profesional.",
+        "fifthConsent": "MedScan AI no recopila, almacena ni procesa datos personales o de pacientes. Todas las interacciones de los usuarios son confidenciales y limitadas al alcance de la aplicación."
+      },
+      "contactUs": {
+        "heading": "Siéntete libre de enviarnos un correo directamente, y nuestro equipo te responderá lo antes posible",
+        "customerSupport": "Soporte al Cliente",
+        "emailAddress": "Dirección de Correo"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "¿Qué idioma prefieres para el análisis de IA?",
+        "languageSelection": "Elige un idioma para las respuestas de IA",
+        "languageSearchCriteria": "Buscar por idioma, código de país o bandera",
+        "noLanguageFound": "No Se Encontró el Idioma",
+        "noLanguageFoundSubtitle": "Intenta modificar tus términos de búsqueda"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "¿Cuáles son las diferencias entre CT, MRI y ultrasonido?",
+          "two": "¿Cuándo debo solicitar imágenes con contraste versus sin contraste?",
+          "three": "¿Cómo se puede minimizar la dosis de radiación sin comprometer el valor diagnóstico?",
+          "four": "¿Qué modalidades son mejores para detectar patología de tejidos blandos versus hueso?",
+          "five": "¿Cuáles son los signos clave de advertencia de un ataque cardíaco versus ansiedad?",
+          "six": "¿Cómo decido entre antibióticos y antivirales para una infección?",
+          "seven": "¿Qué cambios de estilo de vida reducen más efectivamente el riesgo de diabetes tipo 2?",
+          "eight": "¿Cuándo es la cirugía la opción preferida sobre la terapia médica?",
+          "nine": "¿Cómo puedo diferenciar clínicamente entre neumonía bacteriana y viral?",
+          "ten": "¿Cuáles son las últimas pautas para manejar la hipertensión?",
+          "eleven": "¿Cómo se presentan los pacientes pediátricos de manera diferente a los adultos en emergencias?",
+          "twelve": "¿Cuáles son las estrategias seguras de manejo del dolor para condiciones crónicas?",
+          "thirteen": "¿Qué vacunas son más críticas para adultos más allá de las inmunizaciones infantiles?",
+          "fourteen": "¿Cuáles son las mejores prácticas para prevenir infecciones adquiridas en el hospital?",
+          "fifteen": "¿Cómo interpreto valores comunes de laboratorio como CBC y electrolitos en contexto?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "¡Espera! ¡No me elimines!",
+    "subtitle": "Envía una opinión en su lugar"
+  },
+
+  "pdfPreview": {
+    "noEditorInstalled": "Para previsualizar el PDF, asegúrate de tener un visor de PDF instalado, como Adobe Acrobat Reader o Google PDF Viewer",
+    "conversationTitlePdf": "Conversación con Aria, tu asistente IA"
+  },
+
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "¡Gracias por tu paciencia!"
+      },
+      "finalReportHeader": {
+        "message": "¡Este es el resultado del reporte!"
+      },
+      "uploadFile": {
+        "title": "Por favor sube un archivo de imagen médica",
+        "size": "Máx: {{imageLimit}}MB (imágenes), {{videoLimit}}MB (videos)",
+        "location": "Seleccionar desde Galería o Archivos",
+        "fileType": "PNG, JPG, PDF, o MP4",
+        "openCamera": "Abrir Cámara y Tomar Foto",
+        "scanType": "Solo se permiten Rayos X, CT, MRI, PET u otras imágenes médicas"
+      }
+    }
+  },
+  "home": {
+    "tab": "Inicio",
+    "homeForeground": {
+      "maxNumberOfScans": "¡Alcanzaste el límite de escaneos! Mejora tu plan para escaneos ilimitados. 🚀",
+      "heading": "¡Bienvenido a MedScan AI!",
+      "subHeading": "Sube Rayos X, CT, ECG, MRI, PET, ultrasonidos o cualquier otra imagen médica para análisis de IA."
+    },
+    "scanCategories": {
+      "heading": "Carrete de Radiología"
+    },
+    "recentReports": {
+      "heading": "Chats Recientes",
+      "noReports": "¡Aún no hay chats para mostrar!"
+    }
+  },
+  "reports": {
+    "tab": "Historial",
+    "noReportsAvailable": "No hay historial de chat disponible para esta fecha",
+    "heading": "Historial de Chat"
+  },
+  "chat": {
+    "tab": "Chat"
+  },
+  "settings": {
+    "tab": "Configuración",
+    "profile": "Perfil",
+    "contactUs": "Contáctanos",
+    "about": "Acerca de",
+    "app_name": "Nombre de la App",
+    "languages": {
+      "english": "Inglés",
+      "mandarin_chinese": "Chino",
+      "hindi": "Hindi",
+      "spanish_spain": "Español (España)",
+      "spanish_mexico": "Español (México)",
+      "arabic": "Árabe",
+      "french": "Francés",
+      "french_canada": "Francés (Canadá)",
+      "portuguese_brazil": "Portugués (Brasil)",
+      "portuguese_portugal": "Portugués (Portugal)",
+      "german": "Alemán",
+      "japanese": "Japonés",
+      "russian": "Ruso",
+      "korean": "Coreano",
+      "italian": "Italiano",
+      "turkish": "Turco",
+      "vietnamese": "Vietnamita",
+      "polish": "Polaco",
+      "ukrainian": "Ucraniano",
+      "romanian": "Rumano",
+      "dutch": "Holandés",
+      "czech": "Checo",
+      "greek": "Griego",
+      "swedish": "Sueco",
+      "hungarian": "Húngaro",
+      "thai": "Tailandés",
+      "hebrew": "Hebreo",
+      "indonesian": "Indonesio",
+      "malay": "Malayo",
+      "finnish": "Finlandés",
+      "danish": "Danés",
+      "norwegian": "Noruego",
+      "slovak": "Eslovaco",
+      "croatian": "Croata",
+      "catalan": "Catalán"
+    },
+    "generale": "General",
+    "github": "Github",
+    "language": "Idioma",
+    "links": "Enlaces",
+    "logout": "Cerrar Sesión",
+    "more": "Más",
+    "privacy": "Política de Privacidad",
+    "faq": "Preguntas Frecuentes",
+    "rate": "Calificar",
+    "share": "Compartir",
+    "support": "Soporte",
+    "support_us": "Apóyanos",
+    "terms": "Términos de Servicio",
+    "theme": {
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Sistema",
+      "title": "Tema"
+    },
+    "title": "Configuración",
+    "version": "Versión",
+    "website": "Sitio Web",
+    "devMode": {
+      "title": "Modo desarrollador",
+      "componentsLibrary": "Librería UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Calificación"
+    },
+    "ScanReportCard": {
+      "promptMessage": "¿Cuál es la razón?",
+      "unnamedConversation": "Sin título",
+      "reportTitlePlaceholder": "Agregar un título"
+    },
+    "WeekBlock": {
+      "week": "Semana"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Desplazar hacia Arriba"
+    },
+    "FreeTierStatus": {
+      "heading": "Escaneos gratis",
+      "subheading": "Desbloquea escaneos ilimitados mejorando tu plan",
+      "action": "Mejorar"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Elegir una imagen / video"
+    },
+    "TapToViewLabel": {
+      "label": "Tocar para Ver"
+    },
+    "UpgradeBanner": {
+      "heading": "Mejorar Ahora",
+      "subheading": "Desbloquea escaneos ilimitados mejorando tu plan"
+    },
+    "PromptSection": {
+      "message": "¡Tu escaneo está listo! Ahora, ¿qué te gustaría saber?",
+      "prompts": {
+        "first": "Describe cualquier anormalidad presente en los campos pulmonares",
+        "second": "Evalúa la silueta cardíaca y el mediastino",
+        "third": "Evalúa las estructuras óseas para detectar lesiones o fracturas",
+        "fourth": "Comenta sobre la presencia o ausencia de derrames pleurales"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Obtén análisis de varios escaneos médicos, incluyendo RAYOS X, CT, MRI, ECG y más",
+      "second": "Acceso a todas las funciones premium",
+      "third": "Sin anuncios"
+    },
+
+    "Input": {
+      "labels": {
+        "nickname": "Apodo",
+        "email": "Correo electrónico",
+        "emailVerification": "Verificación de Correo"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instrucciones",
+        "first": "1. Toca el botón 'Agregar Cuadrado' para crear un cuadrado de selección.",
+        "second": "2. Arrastra el cuadrado sobre tu región de interés.",
+        "third": "3. Ajusta las esquinas para cubrir precisamente la región."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Abrir Estudio",
+        "editMore": "Editar Más",
+        "continueEditing": "¿Continuar editando tus anotaciones?",
+        "highlightedRegionsCount": "Tienes {{highlightedRegions}} regiones resaltadas. Toca abajo para agregar más",
+        "highlightRegions": "¿Necesitas resaltar regiones de tu imagen médica?"
+      },
+      "studioToolbar": {
+        "addSquare": "Agregar Cuadrado"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Lo sentimos, ¡necesitamos permisos de cámara para que esto funcione!",
+    "errorSelectingImagePicker": "Algo salió mal al seleccionar la imagen. Por favor intenta de nuevo.",
+    "errorSelectingDocumentPicker": "Algo salió mal al seleccionar el documento. Por favor intenta de nuevo.",
+    "errorTakingPicture": "Algo salió mal al tomar la foto. Por favor intenta de nuevo.",
+    "enableNotifications": {
+      "heading": "Activar Notificaciones",
+      "subHeading": "Las notificaciones están actualmente desactivadas. Para mantenerte actualizado, por favor actívalas en la configuración de tu dispositivo."
+    },
+    "enableNotificationFailed": "Las notificaciones push están deshabilitadas. ¡Habilítalas en configuración para recibir actualizaciones importantes!",
+    "enableNotificationError": "Ocurrió un error al habilitar las notificaciones",
+    "notificationDisabledSuccess": "Notificaciones deshabilitadas exitosamente.",
+    "notificationDisabledRegisterError": "Error al desregistrar el dispositivo para notificaciones.",
+    "notificationDisabledError": "Ocurrió un error al deshabilitar las notificaciones.",
+    "checkNotificationStatusError": "Error al verificar el estado de notificaciones.",
+    "projectIdNotFound": "ID del proyecto de notificaciones no encontrado.",
+    "imageSizeLarge": "¡La imagen es demasiado grande! El tamaño del archivo es {{fileSize}} MB, pero el límite es {{imageLimit}} MB.",
+    "videoSizeLarge": "¡El video es demasiado grande! El tamaño del archivo es {{fileSize}} MB, pero el límite es {{videoLimit}} MB.",
+    "loggedInSuccess": "Inicio de sesión exitoso",
+    "loggedOutSuccess": "¡Has cerrado sesión exitosamente!",
+    "sendVerificationCodeError": "Error al enviar el código de verificación",
+    "validateAuthCodeError": "Error al validar el código de autenticación",
+    "anonymousSignInError": "Error al iniciar sesión anónimamente",
+    "emailLoginError": "Error al iniciar sesión",
+    "preferredLanguageError": "Error al actualizar el idioma preferido del usuario",
+    "sharingNotAvailable": "Compartir no está disponible actualmente en tu dispositivo",
+    "sharingLinkError": "Error al compartir el enlace.",
+    "individualPushNotificationSuccess": "¡Notificaciones push individuales enviadas exitosamente!",
+    "globalPushNotificationSuccess": "¡Notificaciones push globales enviadas exitosamente! 🌍🚀",
+    "interpretationFieldsUpdateFail": "¡Error al actualizar los campos de interpretación! ❌",
+    "deleteScanReportFail": "No se puede eliminar el reporte de escaneo. Por favor intenta de nuevo",
+    "onboardingUnsuccessful": "Configuración inicial fallida. Por favor intenta de nuevo",
+    "logoutUnsuccessful": "Cierre de sesión fallido. Por favor intenta de nuevo",
+    "deleteScanReportQuestion": "¿Estás seguro de que quieres eliminar permanentemente este reporte?",
+    "videoLimitExceeds": "Tu video excede el límite de {{videoSecondsLimit}} segundos. Por favor recórtalo y vuelve a subirlo",
+    "subscriptionActivated": "¡Tu suscripción ha sido activada exitosamente! ¡Disfruta de tus beneficios exclusivos!",
+    "subscriptionCancelledByUser": "Has cancelado la transacción. ¡Siéntete libre de intentarlo de nuevo!",
+    "subscriptionActivationFailed": "Error al activar tu suscripción. Por favor intenta de nuevo",
+    "logoutQuestion": "¿Estás seguro de que quieres cerrar sesión?",
+    "noSubscriptionToRestore": "¡Oops! Parece que no tienes una suscripción activa en este momento. Para continuar disfrutando de acceso completo, por favor elige uno de nuestros planes de suscripción.",
+    "restorationSuccessful": "¡La restauración fue exitosa! ¡Disfruta!",
+    "restorationError": "Ocurrió un error al restaurar la compra.",
+    "medicalDisclaimerAlert": "La app MedScan AI no reemplaza la consulta médica. Algunos diagnósticos son solo para fines informativos/educativos. Para recomendaciones médicas, siempre consulta a un médico o especialista certificado.",
+    "scanLimitReached": "¡Estamos optimizando la calidad de escaneo para ti! Podrás escanear nuevamente en aproximadamente {{hours}} horas y {{minutes}} minutos. ¿Tienes preguntas sobre algún tema médico? ¡Pregunta a nuestro asistente de chat mientras esperas!",
+    "mixedMediaNotAllowed": "Las cargas deben contener solo imágenes o solo videos, no una mezcla de ambos.",
+    "multipleVideosNotAllowed": "Para mejor precisión, por favor sube solo un video a la vez.",
+    "mediaFilesUploadFiles": "Hubo un error al subir tus archivos multimedia. Por favor intenta de nuevo.",
+    "chatAndMediaFilesLimit": "Estimado usuario, necesitas mejorar tu plan para beneficiarte de chats ilimitados, escaneos ilimitados, análisis de múltiples imágenes y más. 🔓"
+  }
+}

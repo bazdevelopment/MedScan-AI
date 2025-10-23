@@ -1,0 +1,499 @@
+{
+  "onboarding": {
+    "message": "Welkom bij MedScan AI!"
+  },
+  "general": {
+    "back": "Terug",
+    "welcome": "Hallo",
+    "welcomeBack": "Welkom terug!",
+    "welcomeMessage": "Welkom!",
+    "continue": "Doorgaan",
+    "retry": "Opnieuw proberen",
+    "close": "Sluiten",
+    "gallery": "Galerij",
+    "files": "Bestanden",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "attention": "Attentie!",
+    "new": "Nieuw",
+    "yes": "Ja",
+    "or": "of",
+    "typing": "Typen...",
+    "online": "Online",
+    "chatbotPlaceholder": "Vraag me alles...",
+    "openSettings": "Instellingen openen",
+    "seeNotifications": "Meldingen bekijken",
+    "viewProfile": "Profiel bekijken",
+    "upgradePlan": "Upgrade Abonnement",
+    "download": "Downloaden",
+    "share": "Delen",
+    "shareLink": "Link delen",
+    "skip": "Overslaan",
+    "next": "Volgende",
+    "update": "Bijwerken",
+    "tryAgain": "Opnieuw proberen",
+    "createdAt": "Aangemaakt op",
+    "and": "en",
+    "saveDiscount": "BESPAAR",
+    "restorePurchase": "Aankoop herstellen",
+    "medicalDisclaimer": "Medische Disclaimer",
+    "conversationHistory": "Gespreksgeschiedenis",
+    "freeTrial": "Gratis proefperiode",
+    "free": "GRATIS",
+    "completedScans": "Scans voltooid",
+    "activeSubscription": "Abonnement actief",
+    "askAssistant": "Vraag AI-assistent",
+    "then": "dan",
+    "perWeek": "per week",
+    "perYear": "per jaar",
+    "perMonth": "per maand",
+    "tryForFree": "Gratis Uitproberen",
+    "unlockNow": "Nu Ontgrendelen",
+    "copyText": {
+      "loading": "Kopiëren...",
+      "copied": "Gekopieerd!",
+      "copy": "Link kopiëren"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Je persoonlijke ervaring wordt geladen...",
+        "second": "Systemen synchroniseren...",
+        "third": "Je gegevens verwerken...",
+        "fourth": "Bijna klaar, nog even geduld..."
+      },
+      "imageScanningLoading": {
+        "first": "Je medische beeldvorming wordt gescand, even geduld...",
+        "second": "Details analyseren, dit kan even duren...",
+        "third": "Nauwkeurigheid verbeteren voor de beste resultaten...",
+        "fourth": "Bijna klaar, scan wordt afgerond..."
+      },
+      "loadingChatbot": {
+        "first": "Aria maakt zich klaar om je te helpen...",
+        "second": "Wacht even! Aria bereidt je antwoord voor...",
+        "third": "Denken... je assistent Aria is ermee bezig!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Wacht even!",
+    "goBackMessage": "Weet je zeker dat je terug wilt gaan?"
+  },
+  "internet": {
+    "noConnectionTitle": "Je bent offline!",
+    "noConnectionMessage": "Zet mobiele data aan of verbind met Wi-Fi. Of neem even een pauze en ga een stukje lopen!"
+  },
+  "uploadScan": {
+    "title": "Scan uploaden",
+    "scanNow": "Nu scannen"
+  },
+  "weekDays": {
+    "today": "Vandaag",
+    "yesterday": "Gisteren"
+  },
+  "auth": {
+    "verifyAuthCode": "Verifieer authenticatiecode",
+    "verifyAuthCodeButton": "Verifieer code",
+    "authCodeHeading": "Authenticatiecode",
+    "loginViaEmailHeading": "Laten we je inloggen. Voer je e-mailadres in om door te gaan.",
+    "emailAddress": "E-mail"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Welkom bij MedScan AI!",
+        "startButton": "Laten we beginnen!",
+        "accountButton": "Ik heb al een account"
+      },
+      "login": {
+        "agreeingMessage": "Door verder te gaan, ga je akkoord met onze",
+        "termsAndConditions": "Algemene Voorwaarden",
+        "privacyPolicy": "Privacybeleid"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Voer je verificatiecode in die via e-mail is verzonden. Let op: de code vervalt over 5 minuten.",
+        "verificationCodeSent": "We hebben de verificatiecode verzonden naar",
+        "verificationCodeMissing": "Geen code ontvangen?",
+        "resendCode": "Code opnieuw verzenden",
+        "backToLogin": "Terug naar Inloggen"
+      },
+      "namePreferenceScreen": {
+        "heading": "Veilige, beveiligde, eenvoudige toegang!",
+        "preferredNameQuestion": "Kies een leuke bijnaam om anoniem te blijven - je privacy is belangrijk voor ons",
+        "placeholderPreferredName": "Bijv., Captain Cool, Queen Bee, of gewoon Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Geniet van je gratis proefperiode! 🎉",
+        "subheading": "Ervaar deze geweldige voordelen tijdens je gratis proefperiode",
+        "review": "De medische scananalyse gaf me waardevolle inzichten in de beelden, en de chatondersteuning is erg behulpzaam.",
+        "reviewTrust": "📈 Vertrouwd door 4.512+ gebruikers"
+      },
+      "scanInterpretation": {
+        "title": "Analyseresultaat",
+        "headerBackTitle": "Rapporten"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Gratis Proefperiode Ingeschakeld",
+          "heading": " Onbeperkte Toegang",
+          "title": "Ontgrendel Premium Functies Vandaag!",
+          "firstOffering": "Toegang tot Alle Premium Functies",
+          "secondOffering": "Advertentievrije Ervaring",
+          "thirdOffering": "Onbeperkte scans + multi-beeld medisch rapport",
+          "fourthOffering": "Onbeperkte chats met een 24/7 medische AI-assistent"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Ontgrendel Premium Functies Vandaag!",
+        "firstOffering": {
+          "title": "Start Gratis Proefperiode",
+          "subtitle": "Geniet van {{freeScans}} gratis scans - geen betaling"
+        },
+        "secondOffering": {
+          "title": "Maandabonnement",
+          "subtitle": "{{ price }}/maand"
+        },
+        "thirdOffering": {
+          "title": "Jaarabonnement",
+          "subtitle": "{{ price }} per jaar"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-Dagen Proefperiode",
+          "subtitle": "{{ price }} per jaar",
+          "plan": "Wekelijks Abonnement"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Er is een nieuwe versie van MedScan AI beschikbaar",
+        "subheading": "Update naar de nieuwste versie om te blijven genieten van alle app-functies - het duurt maar 5 seconden!",
+        "action": "Download nu!"
+      },
+      "rateAppScreen": {
+        "heading": "Vind je de app waardevol en boeiend?",
+        "like": "Ja, ik vind het leuk!",
+        "dislike": "Niet echt..."
+      },
+      "noInternetScreen": {
+        "heading": "Je bent offline",
+        "subheading": "Je verbinding lijkt onstabiel. Controleer je netwerkstatus"
+      },
+      "notifications": {
+        "title": "Meldingen",
+        "noNotifications": "Nog geen meldingen - blijf op de hoogte voor updates!"
+      },
+      "termsOfService": {
+        "title": "Servicevoorwaarden"
+      },
+      "privacyPolicy": {
+        "title": "Privacybeleid"
+      },
+      "share": {
+        "title": "Delen",
+        "heading": "Deel MedScan AI App",
+        "subheading": "Help anderen de kracht van AI-gestuurde medische beeldanalyse te ontdekken",
+        "scanMessage": "Scan om de app te downloaden",
+        "shareMessage": "of deel via je favoriete platform"
+      },
+      "rate": {
+        "title": "Geef ons feedback!"
+      },
+      "profile": {
+        "title": "Profiel",
+        "edit": "Profiel Bewerken",
+        "placeholderPreferredName": "Bijv., Captain Cool, Queen Bee, of gewoon Alex!"
+      },
+      "generateReportScreen": {
+        "title": "We waarderen je geduld! Hier is je AI-rapport.",
+        "userInput": "Je Inzending",
+        "medicalReport": "Medisch Rapport",
+        "report": "AI-gegenereerd Medisch Rapport",
+        "conversationName": "Gespreksnaam"
+      },
+      "verifyEmail": {
+        "heading": "E-mail verifiëren"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Start Analyse",
+        "mediaFilesUploaded": "Je hebt {{totalMediaFiles}} mediabestanden geüpload"
+      },
+      "disclaimerScreen": {
+        "heading": "Belangrijke Medische Disclaimer",
+        "subheading": "MedScan AI is ontworpen voor radiologieprofessionals, gezondheidsexperts, medische studenten en enthousiastelingen",
+        "consentAgreement": "Ik heb de disclaimer gelezen en ga ermee akkoord.",
+        "firstConsent": "MedScan AI biedt geen gezondheidsmetingen of behandeladvies, en is niet bedoeld voor dergelijke doeleinden. Gebruikers van MedScan AI moeten hun klinisch oordeel toepassen en informatie van gezaghebbende bronnen verifiëren voordat ze klinische beslissingen nemen.",
+        "secondConsent": "MedScan AI is geen diagnostisch hulpmiddel, behandelplatform of vervanging voor professioneel medisch advies. Het biedt AI-gegenereerde inzichten om zorgprofessionals te helpen bij het toegang krijgen tot medische kennis en het analyseren van medische beelden en documenten. MedScan AI is een AI-gestuurde informatieve en educatieve app die meer is ontworpen om licentiehoudende zorgprofessionals te ondersteunen.",
+        "thirdConsent": "MedScan AI is niet ontworpen voor patiëntgebruik. Het biedt geen directe medische diagnoses, behandelingsaanbevelingen of functionaliteiten voor patiëntbeheer.",
+        "fourthConsent": "MedScan AI is niet geclassificeerd als een medisch hulpmiddel en claimt geen regelgevende goedkeuring. Het is bedoeld voor educatieve en informatieve doeleinden om professionele expertise aan te vullen.",
+        "fifthConsent": "MedScan AI verzamelt, slaat of verwerkt geen persoonlijke of patiëntgegevens. Alle gebruikersinteracties zijn vertrouwelijk en beperkt tot de reikwijdte van de app."
+      },
+      "contactUs": {
+        "heading": "Stuur ons gerust direct een e-mail, en ons team zal zo snel mogelijk contact met je opnemen",
+        "customerSupport": "Klantenservice",
+        "emailAddress": "E-mailadres"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Welke taal geef je de voorkeur voor de AI-analyse?",
+        "languageSelection": "Kies een taal voor AI-antwoorden",
+        "languageSearchCriteria": "Zoek op taal, landcode of vlag",
+        "noLanguageFound": "Geen Taal Gevonden",
+        "noLanguageFoundSubtitle": "Probeer je zoektermen aan te passen"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Wat zijn de verschillen tussen CT, MRI en echografie?",
+          "two": "Wanneer moet ik contrastverbeterde beeldvorming bestellen versus niet-contrast?",
+          "three": "Hoe kan de stralingsdosis worden geminimaliseerd zonder de diagnostische waarde in gevaar te brengen?",
+          "four": "Welke modaliteiten zijn het beste voor het detecteren van zachte weefsel- versus botpathologie?",
+          "five": "Wat zijn de belangrijkste waarschuwingssignalen van een hartaanval versus angst?",
+          "six": "Hoe besluit ik tussen antibiotica en antivirale middelen voor een infectie?",
+          "seven": "Welke levensstijlveranderingen verminderen het risico op diabetes type 2 het meest effectief?",
+          "eight": "Wanneer is chirurgie de voorkeursoptie boven medische therapie?",
+          "nine": "Hoe kan ik klinisch onderscheid maken tussen bacteriële en virale longontsteking?",
+          "ten": "Wat zijn de nieuwste richtlijnen voor het beheren van hypertensie?",
+          "eleven": "Hoe presenteren pediatrische patiënten zich anders dan volwassenen in noodsituaties?",
+          "twelve": "Wat zijn veilige strategieën voor pijnmanagement bij chronische aandoeningen?",
+          "thirteen": "Welke vaccins zijn het meest cruciaal voor volwassenen naast kindervaccinaties?",
+          "fourteen": "Wat zijn de beste praktijken voor het voorkomen van ziekenhuisinfecties?",
+          "fifteen": "Hoe interpreteer ik algemene labwaarden zoals CBC en elektrolyten in context?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Wacht! Verwijder me niet!",
+    "subtitle": "Stuur in plaats daarvan feedback"
+  },
+  "pdfPreview": {
+    "noEditorInstalled": "Zorg dat je een PDF-viewer hebt geïnstalleerd, zoals Adobe Acrobat Reader of Google PDF Viewer, om de PDF te bekijken",
+    "conversationTitlePdf": "Gesprek met Aria, je AI-assistent"
+  },
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Bedankt voor je geduld!"
+      },
+      "finalReportHeader": {
+        "message": "Dit is het rapportresultaat!"
+      },
+      "uploadFile": {
+        "title": "Upload een medisch beeldvormingsbestand",
+        "size": "Max: {{imageLimit}}MB (afbeeldingen), {{videoLimit}}MB (video's)",
+        "location": "Selecteer uit Galerij of Bestanden",
+        "fileType": "PNG, JPG, PDF, of MP4",
+        "openCamera": "Open Camera & Maak Foto",
+        "scanType": "Alleen röntgenfoto's, CT, MRI, PET of andere medische beeldvorming toegestaan"
+      }
+    }
+  },
+  "home": {
+    "tab": "Home",
+    "homeForeground": {
+      "maxNumberOfScans": "Je hebt de scanlimiet bereikt! Upgrade je abonnement voor onbeperkte scans. 🚀",
+      "heading": "Welkom bij MedScan AI!",
+      "subHeading": "Upload röntgenfoto's, CT-scans, ECG's, MRI's, PET-scans, echo's of andere medische beelden voor AI-analyse."
+    },
+    "scanCategories": {
+      "heading": "Radiologie Reel"
+    },
+    "recentReports": {
+      "heading": "Recente Gesprekken",
+      "noReports": "Nog geen gesprekken om te tonen!"
+    }
+  },
+  "reports": {
+    "tab": "Geschiedenis",
+    "noReportsAvailable": "Geen gespreksgeschiedenis beschikbaar voor deze datum",
+    "heading": "Gespreksgeschiedenis"
+  },
+  "chat": {
+    "tab": "Chat"
+  },
+  "settings": {
+    "tab": "Instellingen",
+    "profile": "Profiel",
+    "contactUs": "Neem contact op",
+    "about": "Over",
+    "app_name": "App Naam",
+    "languages": {
+      "english": "Engels",
+      "mandarin_chinese": "Chinees",
+      "hindi": "Hindi",
+      "spanish_spain": "Spaans (Spanje)",
+      "spanish_mexico": "Spaans (Mexico)",
+      "arabic": "Arabisch",
+      "french": "Frans",
+      "french_canada": "Frans (Canada)",
+      "portuguese_brazil": "Portugees (Brazilië)",
+      "portuguese_portugal": "Portugees (Portugal)",
+      "german": "Duits",
+      "japanese": "Japans",
+      "russian": "Russisch",
+      "korean": "Koreaans",
+      "italian": "Italiaans",
+      "turkish": "Turks",
+      "vietnamese": "Vietnamees",
+      "polish": "Pools",
+      "ukrainian": "Oekraïens",
+      "romanian": "Roemeens",
+      "dutch": "Nederlands",
+      "czech": "Tsjechisch",
+      "greek": "Grieks",
+      "swedish": "Zweeds",
+      "hungarian": "Hongaars",
+      "thai": "Thais",
+      "hebrew": "Hebreeuws",
+      "indonesian": "Indonesisch",
+      "malay": "Maleis",
+      "finnish": "Fins",
+      "danish": "Deens",
+      "norwegian": "Noors",
+      "slovak": "Slowaaks",
+      "croatian": "Kroatisch",
+      "catalan": "Catalaans"
+    },
+    "generale": "Algemeen",
+    "github": "Github",
+    "language": "Taal",
+    "links": "Links",
+    "logout": "Uitloggen",
+    "more": "Meer",
+    "privacy": "Privacybeleid",
+    "faq": "FAQ",
+    "rate": "Beoordelen",
+    "share": "Delen",
+    "support": "Ondersteuning",
+    "support_us": "Ondersteun Ons",
+    "terms": "Servicevoorwaarden",
+    "theme": {
+      "dark": "Donker",
+      "light": "Licht",
+      "system": "Systeem",
+      "title": "Thema"
+    },
+    "title": "Instellingen",
+    "version": "Versie",
+    "website": "Website",
+    "devMode": {
+      "title": "Ontwikkelaarsmodus",
+      "componentsLibrary": "UI-bibliotheek"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Beoordeling"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Wat is de reden?",
+      "unnamedConversation": "Naamloos",
+      "reportTitlePlaceholder": "Voeg een titel toe"
+    },
+    "WeekBlock": {
+      "week": "Week"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Scroll naar Boven"
+    },
+    "FreeTierStatus": {
+      "heading": "Gratis scans",
+      "subheading": "Ontgrendel onbeperkte scans door je abonnement te upgraden",
+      "action": "Upgrade"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Kies een afbeelding / video"
+    },
+    "TapToViewLabel": {
+      "label": "Tik om te Bekijken"
+    },
+    "UpgradeBanner": {
+      "heading": "Upgrade Nu",
+      "subheading": "Ontgrendel onbeperkte scans door je abonnement te upgraden"
+    },
+    "PromptSection": {
+      "message": "Je scan is klaar! Wat wil je nu weten?",
+      "prompts": {
+        "first": "Beschrijf eventuele afwijkingen in de longvelden",
+        "second": "Evalueer de cardiale silhoeet en mediastinum",
+        "third": "Evalueer de botstructuren op laesies of fracturen",
+        "fourth": "Geef commentaar op de aan- of afwezigheid van pleuravocht"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Krijg analyses van verschillende medische scans, waaronder röntgenfoto's, CT, MRI, ECG en meer",
+      "second": "Toegang tot alle premium functies",
+      "third": "Geen advertenties"
+    },
+    "Input": {
+      "labels": {
+        "nickname": "Bijnaam",
+        "email": "E-mail",
+        "emailVerification": "E-mailverificatie"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Instructies",
+        "first": "1. Tik op de 'Vierkant toevoegen' knop om een selectievierkant te maken.",
+        "second": "2. Sleep het vierkant over je interessegebied.",
+        "third": "3. Pas de hoeken aan om het gebied precies te bedekken."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Studio Openen",
+        "editMore": "Meer Bewerken",
+        "continueEditing": "Doorgaan met het bewerken van je annotaties?",
+        "highlightedRegionsCount": "Je hebt {{highlightedRegions}} gemarkeerde gebieden. Tik hieronder om meer toe te voegen",
+        "highlightRegions": "Moet je gebieden van je medische afbeelding markeren?"
+      },
+      "studioToolbar": {
+        "addSquare": "Vierkant toevoegen"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Sorry, we hebben cameratoestemming nodig om dit te laten werken!",
+    "errorSelectingImagePicker": "Er is iets misgegaan bij het selecteren van de afbeelding. Probeer het opnieuw.",
+    "errorSelectingDocumentPicker": "Er is iets misgegaan bij het selecteren van het document. Probeer het opnieuw.",
+    "errorTakingPicture": "Er is iets misgegaan bij het maken van de foto. Probeer het opnieuw.",
+    "enableNotifications": {
+      "heading": "Meldingen inschakelen",
+      "subHeading": "Meldingen zijn momenteel uitgeschakeld. Schakel ze in je apparaatinstellingen in om op de hoogte te blijven."
+    },
+    "enableNotificationFailed": "Pushmeldingen zijn uitgeschakeld. Schakel ze in de instellingen in om belangrijke updates te ontvangen!",
+    "enableNotificationError": "Er is een fout opgetreden bij het inschakelen van meldingen",
+    "notificationDisabledSuccess": "Meldingen succesvol uitgeschakeld.",
+    "notificationDisabledRegisterError": "Kan apparaat niet uitschrijven voor meldingen.",
+    "notificationDisabledError": "Er is een fout opgetreden bij het uitschakelen van meldingen.",
+    "checkNotificationStatusError": "Fout bij controleren meldingsstatus.",
+    "projectIdNotFound": "Meldingenproject-ID niet gevonden.",
+    "imageSizeLarge": "Afbeelding is te groot! Bestandsgrootte is {{fileSize}} MB, maar de limiet is {{imageLimit}} MB.",
+    "videoSizeLarge": "Video is te groot! Bestandsgrootte is {{fileSize}} MB, maar de limiet is {{videoLimit}} MB.",
+    "loggedInSuccess": "Succesvol ingelogd",
+    "loggedOutSuccess": "Je bent succesvol uitgelogd!",
+    "sendVerificationCodeError": "Fout bij verzenden verificatiecode",
+    "validateAuthCodeError": "Fout bij valideren auth-code",
+    "anonymousSignInError": "Fout bij anoniem inloggen",
+    "emailLoginError": "Fout bij inloggen",
+    "preferredLanguageError": "Fout bij bijwerken voorkeurstaal gebruiker",
+    "sharingNotAvailable": "Delen is momenteel niet beschikbaar op je apparaat",
+    "sharingLinkError": "Kan link niet delen.",
+    "individualPushNotificationSuccess": "Individuele pushmeldingen succesvol verzonden!",
+    "globalPushNotificationSuccess": "Globale pushmeldingen succesvol verzonden! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Kan interpretatievelden niet bijwerken! ❌",
+    "deleteScanReportFail": "Kan de scanrapportage niet verwijderen. Probeer het opnieuw",
+    "onboardingUnsuccessful": "Onboarding niet succesvol. Probeer het opnieuw",
+    "logoutUnsuccessful": "Uitloggen niet succesvol. Probeer het opnieuw",
+    "deleteScanReportQuestion": "Weet je zeker dat je dit rapport permanent wilt verwijderen?",
+    "videoLimitExceeds": "Je video overschrijdt de limiet van {{videoSecondsLimit}} seconden. Knip hem bij en upload opnieuw",
+    "subscriptionActivated": "Je abonnement is succesvol geactiveerd! Geniet van je exclusieve voordelen!",
+    "subscriptionCancelledByUser": "Je hebt de transactie geannuleerd. Probeer het gerust opnieuw!",
+    "subscriptionActivationFailed": "Kan je abonnement niet activeren. Probeer het opnieuw",
+    "logoutQuestion": "Weet je zeker dat je wilt uitloggen?",
+    "noSubscriptionToRestore": "Oeps! Het lijkt erop dat je momenteel geen actief abonnement hebt. Kies een van onze abonnementsopties om volledige toegang te behouden.",
+    "restorationSuccessful": "Herstel was succesvol! Geniet ervan!",
+    "restorationError": "Er is een fout opgetreden bij het herstellen van de aankoop.",
+    "medicalDisclaimerAlert": "De MedScan AI-app vervangt geen medisch consult. Sommige diagnoses zijn alleen voor informatieve/educatieve doeleinden. Raadpleeg voor medische aanbevelingen altijd een arts of gelicentieerde specialist.",
+    "scanLimitReached": "We optimaliseren de scankwaliteit voor je! Je kunt over ongeveer {{hours}} uur en {{minutes}} minuten weer scannen. Heb je vragen over een medisch onderwerp? Vraag het onze chatassistent terwijl je wacht!",
+    "mixedMediaNotAllowed": "Uploads moeten alleen afbeeldingen of alleen video's bevatten, geen mix van beide.",
+    "multipleVideosNotAllowed": "Upload voor betere nauwkeurigheid slechts één video per keer.",
+    "mediaFilesUploadFiles": "Er is een fout opgetreden bij het uploaden van je mediabestanden. Probeer het opnieuw.",
+    "chatAndMediaFilesLimit": "Beste gebruiker, je moet je abonnement upgraden om te profiteren van onbeperkte chats, onbeperkte scans, multi-beeldanalyse en meer. 🔓"
+  }
+}

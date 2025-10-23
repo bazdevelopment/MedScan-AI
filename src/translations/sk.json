@@ -1,0 +1,502 @@
+{
+  "onboarding": {
+    "message": "Vitajte v MedScan AI!"
+  },
+  "general": {
+    "back": "Späť",
+    "welcome": "Ahoj",
+    "welcomeBack": "Vitajte späť!",
+    "welcomeMessage": "Vitajte!",
+    "continue": "Pokračovať",
+    "retry": "Skúsiť znova",
+    "close": "Zavrieť",
+    "gallery": "Galéria",
+    "files": "Súbory",
+    "cancel": "Zrušiť",
+    "delete": "Odstrániť",
+    "attention": "Pozor!",
+    "new": "Nové",
+    "yes": "Áno",
+    "or": "alebo",
+    "typing": "Píšem...",
+    "online": "Online",
+    "chatbotPlaceholder": "Opýtajte sa ma čokoľvek...",
+    "openSettings": "Otvoriť nastavenia",
+    "seeNotifications": "Zobraziť upozornenia",
+    "viewProfile": "Zobraziť profil",
+    "upgradePlan": "Inovovať plán",
+    "download": "Stiahnuť",
+    "share": "Zdieľať",
+    "shareLink": "Zdieľať odkaz",
+    "skip": "Preskočiť",
+    "next": "Ďalej",
+    "update": "Aktualizovať",
+    "tryAgain": "Skúsiť znova",
+    "createdAt": "Vytvorené",
+    "and": "a",
+    "saveDiscount": "UŠETRITE",
+    "restorePurchase": "Obnoviť nákup",
+    "medicalDisclaimer": "Zdravotné vyhlásenie",
+    "conversationHistory": "História konverzácií",
+    "freeTrial": "Skúšobná verzia",
+    "free": "ZADARMO",
+    "completedScans": "Dokončené skeny",
+    "activeSubscription": "Aktívne predplatné",
+    "askAssistant": "Opýtajte sa asistenta AI",
+    "then": "potom",
+    "perWeek": "za týždeň",
+    "perYear": "za rok",
+    "perMonth": "za mesiac",
+    "tryForFree": "Vyskúšať zadarmo",
+    "unlockNow": "Odomknúť teraz",
+    "copyText": {
+      "loading": "Kopírujem...",
+      "copied": "Skopírované!",
+      "copy": "Kopírovať odkaz"
+    },
+    "loadingMessages": {
+      "initialAppLoad": {
+        "first": "Načítava sa vaša personalizovaná skúsenosť...",
+        "second": "Synchronizujú sa systémy...",
+        "third": "Spracúvajú sa vaše dáta...",
+        "fourth": "Takmer hotovo, chvíľu strpenia..."
+      },
+      "imageScanningLoading": {
+        "first": "Skenujem vaše lekárske snímky, čakajte prosím...",
+        "second": "Analyzujem podrobnosti, môže to chvíľu trvať...",
+        "third": "Zvyšujem presnosť pre najlepšie výsledky...",
+        "fourth": "Takmer hotovo, dokončujem skenovanie..."
+      },
+      "loadingChatbot": {
+        "first": "Aria sa pripravuje na pomoc...",
+        "second": "Počkajte! Aria pripravuje vašu odpoveď...",
+        "third": "Premýšľam... vaša asistentka Aria na tom pracuje!"
+      }
+    }
+  },
+  "backHandler": {
+    "holdOn": "Počkajte!",
+    "goBackMessage": "Naozaj sa chcete vrátiť späť?"
+  },
+  "internet": {
+    "noConnectionTitle": "Ste offline!",
+    "noConnectionMessage": "Zapnite mobilné dáta alebo sa pripojte k Wi-Fi. Alebo si dajte prestávku a choďte na prechádzku!"
+  },
+  "uploadScan": {
+    "title": "Nahrať sken",
+    "scanNow": "Skenovať teraz"
+  },
+  "weekDays": {
+    "today": "Dnes",
+    "yesterday": "Včera"
+  },
+  "auth": {
+    "verifyAuthCode": "Overiť overovací kód",
+    "verifyAuthCodeButton": "Overiť kód",
+    "authCodeHeading": "Overovací kód",
+    "loginViaEmailHeading": "Poďme sa prihlásiť. Ak chcete pokračovať, zadajte svoj e-mail.",
+    "emailAddress": "E-mail"
+  },
+  "rootLayout": {
+    "screens": {
+      "welcome": {
+        "heading": "Vitajte v MedScan AI!",
+        "startButton": "Poďme na to!",
+        "accountButton": "Už mám účet"
+      },
+      "login": {
+        "agreeingMessage": "Pokračovaním súhlasíte s našimi",
+        "termsAndConditions": "Podmienkami",
+        "privacyPolicy": "Ochranou súkromia"
+      },
+      "verifyAuthCode": {
+        "verificationCodeHeading": "Zadajte svoj overovací kód zaslaný e-mailom. Upozorňujeme, že kód vyprší za 5 minút.",
+        "verificationCodeSent": "Overovací kód sme poslali na",
+        "verificationCodeMissing": "Nedostali ste kód?",
+        "resendCode": "Znovu poslať kód",
+        "backToLogin": "Späť na prihlásenie"
+      },
+      "namePreferenceScreen": {
+        "heading": "Bezpečný, zabezpečený, jednoduchý prístup!",
+        "preferredNameQuestion": "Vyberte si zábavnú prezývku, aby ste zostali anonymní - vaše súkromie je pre nás dôležité",
+        "placeholderPreferredName": "Napr. Captain Cool, Queen Bee, alebo len Alex!"
+      },
+      "freeTrialPreview": {
+        "heading": "Užite si svoju skúšobnú verziu! 🎉",
+        "subheading": "Počas svojej skúšobnej verzie zažite tieto úžasné výhody",
+        "review": "Analýza lekárskych snímok mi poskytla cenné poznatky o obrázkoch a podpora chatu je veľmi užitočná.",
+        "reviewTrust": "📈 Dôveruje viac ako 4 512 používateľov"
+      },
+      "scanInterpretation": {
+        "title": "Výsledok analýzy",
+        "headerBackTitle": "Reporty"
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "freeTrialEnabled": "Povolená skúšobná verzia",
+          "heading": "Neobmedzený prístup",
+          "title": "Odomknite prémiové funkcie ešte dnes!",
+          "firstOffering": "Prístup ku všetkým prémiovým funkciám",
+          "secondOffering": "Skúsenosť bez reklám",
+          "thirdOffering": "Neobmedzené skeny + lekársky report z viacerých obrázkov",
+          "fourthOffering": "Neobmedzené konverzácie s lekársym asistentom AI 24/7"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "heading": "Odomknite prémiové funkcie ešte dnes!",
+        "firstOffering": {
+          "title": "Spustiť skúšobnú verziu",
+          "subtitle": "Využite {{freeScans}} bezplatných skenov - žiadna platba"
+        },
+        "secondOffering": {
+          "title": "Mesačný plán",
+          "subtitle": "{{ price }}/mesiac"
+        },
+        "thirdOffering": {
+          "title": "Ročný plán",
+          "subtitle": "{{ price }} ročne"
+        },
+        "fourthOffering": {
+          "title": "{{trialDays}}-dňová skúšobná verzia",
+          "subtitle": "{{ price }} ročne",
+          "plan": "Týždenný plán"
+        }
+      },
+      "newAppVersionScreen": {
+        "heading": "Je k dispozícii nová verzia MedScan AI",
+        "subheading": "Aktualizujte na najnovšiu verziu, aby ste naďalej využívali všetky funkcie aplikácie - trvá to len 5 sekúnd!",
+        "action": "Získať teraz!"
+      },
+      "rateAppScreen": {
+        "heading": "Považujete aplikáciu za užitočnú a pútavú?",
+        "like": "Áno, páči sa mi!",
+        "dislike": "Ani nie..."
+      },
+      "noInternetScreen": {
+        "heading": "Ste offline",
+        "subheading": "Vaše pripojenie sa zdá byť nestabilné. Skontrolujte stav siete"
+      },
+      "notifications": {
+        "title": "Upozornenia",
+        "noNotifications": "Zatiaľ žiadne upozornenia - zostaňte naladení na novinky!"
+      },
+      "termsOfService": {
+        "title": "Podmienky služby"
+      },
+      "privacyPolicy": {
+        "title": "Ochrana súkromia"
+      },
+      "share": {
+        "title": "Zdieľať",
+        "heading": "Zdieľať aplikáciu MedScan AI",
+        "subheading": "Pomôžte ostatným objaviť silu analýzy lekárskych snímok pomocou AI",
+        "scanMessage": "Naskenujte na stiahnutie aplikácie",
+        "shareMessage": "alebo zdieľajte prostredníctvom svojej obľúbenej platformy"
+      },
+      "rate": {
+        "title": "Dajte nám spätnú väzbu!"
+      },
+      "profile": {
+        "title": "Profil",
+        "edit": "Upraviť profil",
+        "placeholderPreferredName": "Napr. Captain Cool, Queen Bee, alebo len Alex!"
+      },
+      "generateReportScreen": {
+        "title": "Oceňujeme vašu trpezlivosť! Tu je váš report AI.",
+        "userInput": "Vaše podanie",
+        "medicalReport": "Lekársky report",
+        "report": "Lekársky report generovaný AI",
+        "conversationName": "Názov konverzácie"
+      },
+      "verifyEmail": {
+        "heading": "Overiť e-mail"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Spustiť analýzu",
+        "mediaFilesUploaded": "Nahrali ste {{totalMediaFiles}} multimediálnych súborov"
+      },
+      "disclaimerScreen": {
+        "heading": "Dôležité zdravotné vyhlásenie",
+        "subheading": "MedScan AI je navrhnutý pre rádiológov, zdravotníckych odborníkov, študentov medicíny a nadšencov",
+        "consentAgreement": "Prečítal(a) som si a súhlasím s vyhlásením.",
+        "firstConsent": "MedScan AI neposkytuje zdravotné merania alebo rady ohľadom liečby, ani nie je určený na takéto účely. Používatelia MedScan AI musia uplatniť svoj klinický úsudok a overiť informácie z autoritatívnych zdrojov pred akýmkoľvek klinickým rozhodnutím.",
+        "secondConsent": "MedScan AI nie je diagnostický nástroj, platforma na liečbu ani náhrada odborného lekárskeho poradenstva. Ponúka poznatky generované AI na pomoc zdravotníckym pracovníkom pri prístupe k lekárskej znalosti a analýze lekárskych obrázkov a dokumentov. MedScan AI je informačná a vzdelávacia aplikácia poháňaná AI navrhnutá skôr na podporu licencovaných zdravotníckych pracovníkov.",
+        "thirdConsent": "MedScan AI nie je navrhnutý pre použitie pacientmi. Neposkytuje priame lekárske diagnózy, odporúčania liečby ani funkcie riadenia pacientov.",
+        "fourthConsent": "MedScan AI nie je klasifikovaný ako lekársky prístroj a nepožaduje regulačné schválenie. Je určený na vzdelávacie a informačné účely na doplnenie odbornej expertízy.",
+        "fifthConsent": "MedScan AI nezhromažďuje, neukladá ani nespracúva osobné údaje alebo údaje pacientov. Všetky interakcie používateľov sú dôverné a obmedzené na rozsah aplikácie."
+      },
+      "contactUs": {
+        "heading": "Kľudne nám napíšte priamo a náš tím sa vám čo najskôr ozve späť",
+        "customerSupport": "Zákaznícka podpora",
+        "emailAddress": "E-mailová adresa"
+      },
+      "languageAnalysisModal": {
+        "languagePreferenceQuestion": "Aký jazyk uprednostňujete pre analýzu AI?",
+        "languageSelection": "Vyberte jazyk pre odpovede AI",
+        "languageSearchCriteria": "Hľadať podľa jazyka, kódu krajiny alebo vlajky",
+        "noLanguageFound": "Nenašiel sa žiadny jazyk",
+        "noLanguageFoundSubtitle": "Skúste upraviť svoje vyhľadávacie výrazy"
+      },
+      "chatScreen": {
+        "randomQuestions": {
+          "one": "Aké sú rozdiely medzi CT, MRI a ultrazvukom?",
+          "two": "Kedy mám objednať zobrazovanie s kontrastnou látkou oproti bez nej?",
+          "three": "Ako možno minimalizovať dávku žiarenia bez ohrozenia diagnostickej hodnoty?",
+          "fourth": "Ktoré metódy sú najlepšie na detekciu patológie mäkkých tkanív oproti kosti?",
+          "five": "Aké sú kľúčové varovné signály infarktu oproti úzkosti?",
+          "six": "Ako sa rozhodnúť medzi antibiotikami a antivirálikami pri infekcii?",
+          "seven": "Aké zmeny životného štýlu najúčinnejšie znižujú riziko cukrovky 2. typu?",
+          "eight": "Kedy je chirurgický zákrok vhodnejšou voľbou oproti liekovej terapii?",
+          "nine": "Ako klinicky rozlíšiť medzi bakteriálnym a vírusovým zápalom pľúc?",
+          "ten": "Aké sú najnovšie pokyny pre liečbu hypertenzie?",
+          "eleven": "Ako sa pediatrickí pacienti prejavujú inak ako dospelí v núdzových situáciách?",
+          "twelve": "Aké sú bezpečné stratégie liečby bolesti pre chronické ochorenia?",
+          "thirteen": "Ktoré vakcíny sú najdôležitejšie pre dospelých okrem detských očkovaní?",
+          "fourteen": "Aké sú najlepšie postupy na prevenciu nozokomiálnych nákaz?",
+          "fifteen": "Ako interpretovať bežné laboratórne hodnoty ako CBC a elektrolyty v kontexte?"
+        }
+      }
+    }
+  },
+  "deleteApp": {
+    "title": "Počkajte! Nemažte ma!",
+    "subtitle": "Namiesto toho nám dajte spätnú väzbu"
+  },
+
+  "pdfPreview": {
+    "noEditorInstalled": "Ak chcete zobraziť ukážku PDF, uistite sa, že máte nainštalovaný prehliadač PDF, ako je Adobe Acrobat Reader alebo Google PDF Viewer",
+    "conversationTitlePdf": "Konverzácia s Aria, vašou asistentkou AI"
+  },
+
+  "flows": {
+    "createReport": {
+      "finalReportForeground": {
+        "message": "Ďakujeme za vašu trpezlivosť!"
+      },
+      "finalReportHeader": {
+        "message": "Toto je výsledok reportu!"
+      },
+      "uploadFile": {
+        "title": "Nahrajte lekársky zobrazovací súbor",
+        "size": "Max: {{imageLimit}}MB (obrázky), {{videoLimit}}MB (videá)",
+        "location": "Vyberte z Galérie alebo Súborov",
+        "fileType": "PNG, JPG, PDF alebo MP4",
+        "openCamera": "Otvoriť kameru a odfotiť",
+        "scanType": "Povolené sú len röntgeny, CT, MRI, PET alebo iné lekárske zobrazovanie"
+      }
+    }
+  },
+  "home": {
+    "tab": "Domov",
+    "homeForeground": {
+      "maxNumberOfScans": "Dosiahli ste limit skenov! Inovujte svoj plán pre neobmedzené skeny. 🚀",
+      "heading": "Vitajte v MedScan AI!",
+      "subHeading": "Nahrajte röntgeny, CT skeny, EKG, MRI, PET skeny, ultrazvuky alebo akékoľvek iné lekárske obrázky na analýzu AI."
+    },
+    "scanCategories": {
+      "heading": "Rádiológia"
+    },
+    "recentReports": {
+      "heading": "Nedávne konverzácie",
+      "noReports": "Zatiaľ žiadne konverzácie na zobrazenie!"
+    }
+  },
+  "reports": {
+    "tab": "História",
+    "noReportsAvailable": "Pre tento dátum nie je k dispozícii žiadna história konverzácií",
+    "heading": "História konverzácií"
+  },
+  "chat": {
+    "tab": "Konverzácia"
+  },
+  "settings": {
+    "tab": "Nastavenia",
+    "profile": "Profil",
+    "contactUs": "Kontaktujte nás",
+    "about": "O aplikácii",
+    "app_name": "Názov aplikácie",
+    "languages": {
+      "english": "Angličtina",
+      "mandarin_chinese": "Čínština",
+      "hindi": "Hindčina",
+      "spanish_spain": "Španielčina (Španielsko)",
+      "spanish_mexico": "Španielčina (Mexiko)",
+      "arabic": "Arabčina",
+      "french": "Francúzština",
+      "french_canada": "Francúzština (Kanada)",
+      "portuguese_brazil": "Portugalčina (Brazília)",
+      "portuguese_portugal": "Portugalčina (Portugalsko)",
+      "german": "Nemčina",
+      "japanese": "Japončina",
+      "russian": "Ruština",
+      "korean": "Kórejčina",
+      "italian": "Taliančina",
+      "turkish": "Turečtina",
+      "vietnamese": "Vietnamčina",
+      "polish": "Poľština",
+      "ukrainian": "Ukrajinčina",
+      "romanian": "Rumunčina",
+      "dutch": "Holandčina",
+      "czech": "Čeština",
+      "greek": "Gréčtina",
+      "swedish": "Švédčina",
+      "hungarian": "Maďarčina",
+      "thai": "Thajčina",
+      "hebrew": "Hebrejčina",
+      "indonesian": "Indonézština",
+      "malay": "Malajčina",
+      "finnish": "Fínčina",
+      "danish": "Dánčina",
+      "norwegian": "Nórčina",
+      "slovak": "Slovenčina",
+      "croatian": "Chorvátčina",
+      "catalan": "Katalánčina"
+    },
+    "generale": "Všeobecné",
+    "github": "Github",
+    "language": "Jazyk",
+    "links": "Odkazy",
+    "logout": "Odhlásiť sa",
+    "more": "Viac",
+    "privacy": "Ochrana súkromia",
+    "faq": "Často kladené otázky",
+    "rate": "Ohodnotiť",
+    "share": "Zdieľať",
+    "support": "Podpora",
+    "support_us": "Podporte nás",
+    "terms": "Podmienky služby",
+    "theme": {
+      "dark": "Tmavý",
+      "light": "Svetlý",
+      "system": "Systém",
+      "title": "Téma"
+    },
+    "title": "Nastavenia",
+    "version": "Verzia",
+    "website": "Webstránka",
+    "devMode": {
+      "title": "Režim pre vývojárov",
+      "componentsLibrary": "Knižnica UI"
+    }
+  },
+  "components": {
+    "ReportCard": {
+      "rating": "Hodnotenie"
+    },
+    "ScanReportCard": {
+      "promptMessage": "Aký je dôvod?",
+      "unnamedConversation": "Nepomenované",
+      "reportTitlePlaceholder": "Pridať názov"
+    },
+    "WeekBlock": {
+      "week": "Týždeň"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Posunúť hore"
+    },
+    "FreeTierStatus": {
+      "heading": "Bezplatné skeny",
+      "subheading": "Odomknite neobmedzené skeny inováciou vášho plánu",
+      "action": "Inovovať"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Vyberte obrázok / video"
+    },
+    "TapToViewLabel": {
+      "label": "Kliknite pre zobrazenie"
+    },
+    "UpgradeBanner": {
+      "heading": "Inovovať teraz",
+      "subheading": "Odomknite neobmedzené skeny inováciou vášho plánu"
+    },
+    "PromptSection": {
+      "message": "Váš sken je pripravený! Čo by ste teraz chceli zistiť?",
+      "prompts": {
+        "first": "Popíšte akékoľvek abnormality prítomné v pľúcnych poliach",
+        "second": "Vyhodnoťte srdcový tieň a mediastinum",
+        "third": "Vyhodnoťte kostné štruktúry na lézie alebo zlomeniny",
+        "fourth": "Komentujte prítomnosť alebo neprítomnosť pleurálnych výpotkov"
+      }
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Získajte analýzu z rôznych lekárskych skenov vrátane röntgenu, CT, MRI, EKG a ďalších",
+      "second": "Prístup ku všetkým prémiovým funkciám",
+      "third": "Žiadne reklamy"
+    },
+
+    "Input": {
+      "labels": {
+        "nickname": "Prezývka",
+        "email": "E-mail",
+        "emailVerification": "Overenie e-mailu"
+      }
+    },
+    "ImageAnnotationStudio": {
+      "instructions": {
+        "title": "Inštrukcie",
+        "first": "1. Klepnite na tlačidlo 'Pridať štvorec' pre vytvorenie výberového štvorca.",
+        "second": "2. Potiahnite štvorec nad oblasťou vášho záujmu.",
+        "third": "3. Upravte rohy pre presné pokrytie oblasti."
+      },
+      "OpenStudioSection": {
+        "openStudioButton": "Otvoriť štúdio",
+        "editMore": "Upraviť viac",
+        "continueEditing": "Pokračovať v úprave anotácií?",
+        "highlightedRegionsCount": "Máte {{highlightedRegions}} zvýraznených oblastí. Klepnite nižšie pre pridanie ďalších",
+        "highlightRegions": "Potrebujete zvýrazniť oblasti vášho lekárskeho obrázka?"
+      },
+      "studioToolbar": {
+        "addSquare": "Pridať štvorec"
+      }
+    }
+  },
+  "alerts": {
+    "mediaPickerPermissions": "Prepáčte, potrebujeme povolenia kamery, aby to fungovalo!",
+    "errorSelectingImagePicker": "Pri výbere obrázka sa niečo pokazilo. Skúste to znova.",
+    "errorSelectingDocumentPicker": "Pri výbere dokumentu sa niečo pokazilo. Skúste to znova.",
+    "errorTakingPicture": "Pri fotografovaní sa niečo pokazilo. Skúste to znova.",
+    "enableNotifications": {
+      "heading": "Povoliť upozornenia",
+      "subHeading": "Upozornenia sú momentálne vypnuté. Ak chcete zostať informovaní, povoľte ich v nastaveniach zariadenia."
+    },
+    "enableNotificationFailed": "Push upozornenia sú vypnuté. Povoľte ich v nastaveniach, aby ste dostávali dôležité aktualizácie!",
+    "enableNotificationError": "Pri povolovaní upozornení sa vyskytla chyba",
+    "notificationDisabledSuccess": "Upozornenia boli úspešne zakázané.",
+    "notificationDisabledRegisterError": "Nepodarilo sa zrušiť registráciu zariadenia pre upozornenia.",
+    "notificationDisabledError": "Pri zakazovaní upozornení sa vyskytla chyba.",
+    "checkNotificationStatusError": "Chyba pri kontrole stavu upozornení.",
+    "projectIdNotFound": "ID projektu upozornení nebolo nájdené.",
+    "imageSizeLarge": "Obrázok je príliš veľký! Veľkosť súboru je {{fileSize}} MB, ale limit je {{imageLimit}} MB.",
+    "videoSizeLarge": "Video je príliš veľké! Veľkosť súboru je {{fileSize}} MB, ale limit je {{videoLimit}} MB.",
+    "loggedInSuccess": "Úspešne prihlásené",
+    "loggedOutSuccess": "Boli ste úspešne odhlásení!",
+    "sendVerificationCodeError": "Chyba pri odosielaní overovacieho kódu",
+    "validateAuthCodeError": "Chyba pri overovaní auth kódu",
+    "anonymousSignInError": "Chyba pri anonymnom prihlasovaní",
+    "emailLoginError": "Chyba pri prihlasovaní",
+    "preferredLanguageError": "Chyba pri aktualizácii preferovaného jazyka používateľa",
+    "sharingNotAvailable": "Zdieľanie momentálne nie je k dispozícii na vašom zariadení",
+    "sharingLinkError": "Nepodarilo sa zdieľať odkaz.",
+    "individualPushNotificationSuccess": "Individuálne push upozornenia boli úspešne odoslané!",
+    "globalPushNotificationSuccess": "Globálne push upozornenia boli úspešne odoslané! 🌍🚀",
+    "interpretationFieldsUpdateFail": "Nepodarilo sa aktualizovať polia interpretácie! ❌",
+    "deleteScanReportFail": "Nie je možné odstrániť report skenu. Skúste to znova",
+    "onboardingUnsuccessful": "Zavedenie bolo neúspešné. Skúste to znova",
+    "logoutUnsuccessful": "Odhlásenie bolo neúspešné. Skúste to znova",
+    "deleteScanReportQuestion": "Naozaj chcete natrvalo odstrániť tento report?",
+    "videoLimitExceeds": "Vaše video prekračuje limit {{videoSecondsLimit}} sekúnd. Skráťte ho a znova nahrajte",
+    "subscriptionActivated": "Vaše predplatné bolo úspešne aktivované! Užite si svoje exkluzívne výhody!",
+    "subscriptionCancelledByUser": "Zrušili ste transakciu. Kľudne to skúste znova!",
+    "subscriptionActivationFailed": "Nepodarilo sa aktivovať vaše predplatné. Skúste to znova",
+    "logoutQuestion": "Naozaj sa chcete odhlásiť?",
+    "noSubscriptionToRestore": "Ops! Zdá sa, že momentálne nemáte aktívne predplatné. Ak chcete naďalej využívať plný prístup, vyberte si jeden z našich predplatných plánov.",
+    "restorationSuccessful": "Obnovenie bolo úspešné! Užite si!",
+    "restorationError": "Pri obnovovaní nákupu sa vyskytla chyba.",
+    "medicalDisclaimerAlert": "Aplikácia MedScan AI nenahradzuje lekársku konzultáciu. Niektoré diagnózy sú len na informačné/vzdelávacie účely. Pre lekárske odporúčania sa vždy poraďte s lekárom alebo licencovaným špecialistom.",
+    "scanLimitReached": "Optimalizujeme pre vás kvalitu skenovania! Budete môcť znova skenovať približne o {{hours}} hodín a {{minutes}} minút. Máte nejaké otázky o nejakej lekárskej téme? Spýtajte sa nášho asistenta chatu, kým čakáte!",
+    "mixedMediaNotAllowed": "Nahrávky musia obsahovať len obrázky alebo len videá, nie ich zmes.",
+    "multipleVideosNotAllowed": "Pre lepšiu presnosť nahrajte naraz len jedno video.",
+    "mediaFilesUploadFiles": "Pri nahrávaní vašich multimediálnych súborov sa vyskytla chyba. Skúste to znova.",
+    "chatAndMediaFilesLimit": "Vážený používateľ, musíte inovovať svoj plán, aby ste mohli využívať neobmedzené konverzácie, neobmedzené skeny, analýzu viacerých obrázkov a ďalšie. 🔓"
+  }
+}

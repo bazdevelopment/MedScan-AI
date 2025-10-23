@@ -49,6 +49,10 @@ export type LanguageCode =
   | 'la'
 
   // --- Additional Asian Languages ---
+  | 'es-ES'
+  | 'es-MX'
+  | 'fr-CA'
+  | 'pt-PT'
   | 'id'
   | 'ms'
   | 'vi'
@@ -107,12 +111,15 @@ export const LANGUAGES: TLanguages = {
   ja: '日本語 🇯🇵',
   ko: '한국어 🇰🇷',
   zh: '中文 (简体) 🇨🇳',
+  'es-ES': 'Español (España) 🇪🇸',
+  'es-MX': 'Español (México) 🇲🇽',
   'zh-TW': '中文 (繁體) 🇹🇼',
+  'fr-CA': 'Français (Canada) 🇨🇦',
   hi: 'हिन्दी 🇮🇳',
   ar: 'العربية 🇸🇦',
   tr: 'Türkçe 🇹🇷',
   pl: 'Polski 🇵🇱',
-  nl: 'Nederlands 🇳🇱',
+  nl: 'Dutch (Nederlands) 🇳🇱',
   ro: 'Română 🇷🇴',
   uk: 'Українська 🇺🇦',
   sv: 'Svenska 🇸🇪',
@@ -130,6 +137,7 @@ export const LANGUAGES: TLanguages = {
 
   // --- Additional European Languages ---
   'pt-BR': 'Português (Brasil) 🇧🇷',
+  'pt-PT': 'Português (Portugal) 🇵🇹',
   sk: 'Slovenčina 🇸🇰',
   et: 'Eesti 🇪🇪',
   ga: 'Gaeilge 🇮🇪',

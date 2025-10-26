@@ -166,7 +166,7 @@ export default function Home() {
             />
           )}
           {!areErrorsOnScanCategories && (
-            <>
+            <View className="mt-3">
               <Text className="mx-4 mb-3 mt-2 font-semibold-nunito">
                 {translate('home.scanCategories.heading')}
               </Text>
@@ -176,7 +176,7 @@ export default function Home() {
                 isLoading={areScanCategoriesLoading}
                 className="ml-4"
               />
-            </>
+            </View>
           )}
           <Text className="mx-6 mb-4 mt-8 font-semibold-nunito">
             {translate('home.recentReports.heading')}

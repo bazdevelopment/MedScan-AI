@@ -1571,7 +1571,7 @@ export const analyzeMultipleImagesWithUrlsHandler = async (
     if (images.length > 8) {
       throw new functions.https.HttpsError(
         'invalid-argument',
-        'Maximum 5 images allowed per analysis',
+        'Maximum 8 images allowed per analysis',
       );
     }
 
@@ -1674,7 +1674,7 @@ ${userPromptInput}`;
       const messages: any[] = [
         {
           role: 'user',
-          content: promptMessage || 'Analyze the provided images.', // Simplified text for history
+          content: promptMessage || '', // Simplified text for history
           // Optionally store URLs for display purposes in your app
           imageUrls: images,
         },

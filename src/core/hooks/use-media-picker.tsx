@@ -36,7 +36,6 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
   const {
     i18n: { language },
   } = useTranslation();
-  const { data: userInfo } = useUser(language);
 
   const handleLoadFile = (file: string) => {
     setFile(file);
@@ -73,7 +72,7 @@ export const useMediaPiker = ({ onUploadFinished }: IMediaPicker) => {
         allowsEditing: false, // Disable editing for multiple selection
         quality: 0.9, //!if you use quality=1 the image size will be bigger and the risk is to exceed the AI limit (5MB currently)
         base64: false,
-        selectionLimit: 6,
+        selectionLimit: 8,
       });
 
       // Check if the user didn't cancel the action and assets are available

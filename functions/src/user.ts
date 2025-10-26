@@ -71,7 +71,7 @@ const loginUserAnonymouslyHandler = async (data: {
       .set({
         userId: newUserId,
         isAnonymous: true, // Mark the user as anonymous
-        scansRemaining: 2, // Example field
+        scansRemaining: 1, // Example field
         subscribed: false, // Example field
         isActive: false, // Example field
         isOtpVerified: true, // Example field set to true for anonymous users
@@ -89,7 +89,6 @@ const loginUserAnonymouslyHandler = async (data: {
 
     // Step 4: Generate a custom token for the user
     const customToken = await admin.auth().createCustomToken(newUserId);
-
     return {
       userId: newUserId,
       message: isNewUser

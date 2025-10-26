@@ -57,7 +57,10 @@ export const LANGUAGES: TLanguages = {
   // --- Original List (with consistent naming) ---
   en: 'English 🇺🇸',
   es: 'Español 🇪🇸',
+  'es-ES': 'Español 🇪🇸',
+  'es-MX': 'Español (Mexico) 🇲🇽',
   fr: 'Français 🇫🇷',
+  'fr-CA': 'Français (Canada) 🇫🇷',
   de: 'Deutsch 🇩🇪',
   it: 'Italiano 🇮🇹',
   pt: 'Português 🇵🇹',
@@ -88,6 +91,7 @@ export const LANGUAGES: TLanguages = {
 
   // --- Additional European Languages ---
   'pt-BR': 'Português (Brasil) 🇧🇷',
+  'pt-PT': 'Português (Portugal) 🇵🇹',
   sk: 'Slovenčina 🇸🇰',
   et: 'Eesti 🇪🇪',
   ga: 'Gaeilge 🇮🇪',

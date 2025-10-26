@@ -26,7 +26,7 @@ export const tabScreens: ITabsNavigationScreen[] = [
       <ChatIcon
         color={color}
         strokeWidth={1.75}
-        top={-5}
+        top={-2.5}
         width={24}
         height={24}
         focused={focused}

@@ -15,6 +15,7 @@ import {
   type StoryUser,
 } from './scan-category-stories.interface';
 import { scanCategoryStyles } from './scan-category-stories.styles';
+import { useSelectedLanguage } from '@/core';
 
 const ScanCategoriesStories: React.FC<{
   categories: ScanType[];
@@ -23,6 +24,7 @@ const ScanCategoriesStories: React.FC<{
 }> = ({ categories, isLoading, className }) => {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
+  const { language } = useSelectedLanguage();
 
   const ref = useRef<InstagramStoriesPublicMethods>(null);
   const stories = useMemo(
@@ -63,6 +65,7 @@ const ScanCategoriesStories: React.FC<{
         containerStyle={{ marginTop: -20 }}
         avatarListContainerStyle={{
           paddingRight: 16,
+          paddingLeft: language === 'ar' || language === 'he' ? 300 : 0,
         }}
         avatarBorderColors={[
           colors.primary[900],

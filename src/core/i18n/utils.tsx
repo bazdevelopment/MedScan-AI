@@ -30,7 +30,8 @@ export const translate = memoize(
 
 export const changeLanguage = (lang: Language) => {
   i18n.changeLanguage(lang);
-  if (lang === 'ar') {
+  // !!arabic and hebrew are RTL languages
+  if (lang === 'ar' || lang === 'he') {
     I18nManager.forceRTL(true);
   } else {
     I18nManager.forceRTL(false);

@@ -3840,7 +3840,7 @@ PODS:
   - RNPurchases (8.11.10):
     - PurchasesHybridCommon (= 14.2.0)
     - React-Core
-  - RNReanimated (3.17.5):
+  - RNReanimated (3.19.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -3863,10 +3863,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 3.17.5)
-    - RNReanimated/worklets (= 3.17.5)
+    - RNReanimated/reanimated (= 3.19.3)
+    - RNReanimated/worklets (= 3.19.3)
     - Yoga
-  - RNReanimated/reanimated (3.17.5):
+  - RNReanimated/reanimated (3.19.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -3889,9 +3889,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated/apple (= 3.17.5)
+    - RNReanimated/reanimated/apple (= 3.19.3)
     - Yoga
-  - RNReanimated/reanimated/apple (3.17.5):
+  - RNReanimated/reanimated/apple (3.19.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -3915,7 +3915,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated/worklets (3.17.5):
+  - RNReanimated/worklets (3.19.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -3938,9 +3938,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/worklets/apple (= 3.17.5)
+    - RNReanimated/worklets/apple (= 3.19.3)
     - Yoga
-  - RNReanimated/worklets/apple (3.17.5):
+  - RNReanimated/worklets/apple (3.19.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -4692,7 +4692,7 @@ SPEC CHECKSUMS:
   RNFlashList: 1897a8ba91227cd2c1dfcf2e893ebbd25f61786e
   RNGestureHandler: 8ff2b1434b0ff8bab28c8242a656fb842990bbc8
   RNPurchases: f465d1bc4cc84c2ea46c528930ac602275e047b6
-  RNReanimated: a3f55346df73f35c38bf0b446294d3d0b1ac8cf9
+  RNReanimated: b5e5f252891b973a5d1497f08cdecba0b42db1f5
   RNScreens: 90b905d545a5ebbe976985702b8a39e3475727b2
   RNSVG: 4470464e129f6bc58b78b961850b054dbbea8ef7
   SDWebImage: 9f177d83116802728e122410fb25ad88f5c7608a

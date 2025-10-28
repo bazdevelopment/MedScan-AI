@@ -29,11 +29,6 @@ const Branding = ({
         >
           MedScan AI
         </Text>
-        {/* <Text
-          className={`text-center font-medium-nunito text-sm tracking-[3px] ${textColor}`}
-        >
-          ANALYZER
-        </Text> */}
       </View>
     </View>
   );

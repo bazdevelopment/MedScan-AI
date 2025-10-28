@@ -145,7 +145,7 @@ const PricingCard = ({
         <View>
           {originalPrice && (
             <View className="mt-1 flex-row">
-              <Text className="mr-2 font-semibold-nunito text-base text-gray-400 line-through">
+              <Text className="mr-2 font-semibold-nunito text-base text-gray-600 line-through">
                 {originalPrice}
               </Text>
               <Text className="font-semibold-nunito text-base text-gray-900">
@@ -404,19 +404,25 @@ const PaywallNew = () => {
                 />
               )}
               {weeklyOffering && (
-                <PricingCard
-                  title={weeklyOffering.title}
-                  subtitle={`${translate('general.then')} ${weeklyOffering.price} ${translate('general.perWeek')}`}
-                  price=""
-                  isSelected={selectedPlan === 'weekly'}
-                  onPress={() => handlePlanSelection('weekly')}
-                  isFree={true}
-                />
+                <>
+                  <PricingCard
+                    title={weeklyOffering.title}
+                    subtitle={`${translate('general.then')} ${weeklyOffering.price} ${translate('general.perWeek')}`}
+                    price=""
+                    isSelected={selectedPlan === 'weekly'}
+                    onPress={() => handlePlanSelection('weekly')}
+                    isFree={true}
+                  />
+
+                  <Text className="ml-2 -top-2 text-center font-primary-nunito text-sm text-gray-900">
+                    {translate('general.noPaymentNow')}
+                  </Text>
+                </>
               )}
             </View>
 
             {/* Free Trial Toggle */}
-            <View className="mb-8 mt-3 flex-row items-center justify-between rounded-2xl bg-gray-100 p-4 dark:bg-charcoal-800">
+            <View className="mb-8  flex-row items-center justify-between rounded-2xl bg-gray-100 p-4 dark:bg-charcoal-800">
               <Text className="font-bold-nunito text-lg text-gray-900">
                 {translate(
                   'rootLayout.screens.paywallOnboarding.freeTierOfferings.freeTrialEnabled',

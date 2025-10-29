@@ -322,6 +322,22 @@ export default function RootLayout() {
         />
 
         <Stack.Screen
+          name="citations"
+          options={{
+            header: (props) => (
+              <CustomHeader
+                {...props}
+                title={translate('settings.citations')}
+                titleClassName="text-black"
+                titlePosition="center"
+                onGoBack={router.back}
+                backIconColor={isDark ? colors.white : colors.black}
+              />
+            ),
+          }}
+        />
+
+        <Stack.Screen
           name="welcome"
           options={{
             headerShown: false,

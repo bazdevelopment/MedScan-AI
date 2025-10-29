@@ -83,12 +83,11 @@ const CitationsScreen: React.FC = () => {
       >
         {/* Introductory Text */}
         <Text className="mb-6 text-base">
-          MicroScan AI: Microscopy app provides educational insights based on
-          established medical and scientific standards. Below are the sources
-          and guidelines referenced by Aura, our AI Microscopy Assistant, for
-          the analysis of microscopy samples. These citations ensure
+          MedScan AI app provides educational insights based on established
+          medical and scientific standards. Below are the sources and guidelines
+          referenced by Aria, our AI Medical Assistant. These citations ensure
           transparency and accuracy for your learning experience. For medical
-          advice, always consult a qualified healthcare professional
+          advice, always consult a qualified healthcare professional.
         </Text>
 
         {/* Citations List */}
